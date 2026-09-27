@@ -12,18 +12,6 @@
   <link rel="icon" type="image/png" href="icon-192.png">
   <link rel="apple-touch-icon" href="icon-192.png">
   <link rel="manifest" href="manifest.json">
-  <script>
-    (function () {
-      try {
-        var t = localStorage.getItem('secD_theme');
-        if (!t || t === 'cyber') {
-          t = 'campus';
-          localStorage.setItem('secD_theme', 'campus');
-        }
-        document.documentElement.setAttribute('data-theme', t);
-      } catch (e) { }
-    })();
-  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -84,20 +72,19 @@
       --orb-3-color: rgba(16, 185, 129, 0.14);
     }
 
-    :root[data-theme="campus"],
-    :root[data-theme="cyber"] {
+    :root[data-theme="campus"] {
       --bg-canvas: #020612;
-      --bg-phone: transparent;
+      --bg-phone: #050a18;
       --bg-mesh: transparent;
-      --card-bg: rgba(10, 18, 38, 0.80);
+      --card-bg: rgba(11, 20, 40, 0.90);
       --card-solid: #091326;
-      --card-surface-grad: linear-gradient(160deg, rgba(16, 28, 56, 0.84) 0%, rgba(7, 14, 28, 0.88) 100%);
-      --card-border: rgba(56, 189, 248, 0.32);
+      --card-surface-grad: linear-gradient(160deg, rgba(22, 38, 72, 0.92) 0%, rgba(9, 17, 34, 0.95) 100%);
+      --card-border: rgba(56, 189, 248, 0.28);
       --card-rim: inset 0 1px 0 rgba(255, 255, 255, 0.22);
       --card-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 14px 34px -8px rgba(0, 0, 0, 0.78);
-      --card-hover: rgba(26, 46, 84, 0.92);
-      --header-bg: linear-gradient(180deg, rgba(8, 16, 32, 0.92) 0%, rgba(4, 9, 20, 0.94) 100%);
-      --recessed-bg: rgba(3, 7, 16, 0.80);
+      --card-hover: rgba(26, 46, 84, 0.95);
+      --header-bg: linear-gradient(180deg, rgba(8, 16, 32, 0.97) 0%, rgba(4, 9, 20, 0.97) 100%);
+      --recessed-bg: rgba(3, 7, 16, 0.88);
 
       --text-main: #f8fafc;
       --text-muted: #cbd5e1;
@@ -529,22 +516,12 @@
       z-index: 0;
       pointer-events: none;
       display: none;
-      background-color: #020612;
-      background-image: url('campus.jpg');
-      background-size: cover;
-      background-position: center 25%;
       transform: translateZ(0);
       backface-visibility: hidden;
     }
 
-    :root[data-theme="campus"] .campus-bg-layer,
-    :root[data-theme="cyber"] .campus-bg-layer {
-      display: block !important;
-    }
-
-    :root[data-theme="campus"] .aurora-ambient-bg,
-    :root[data-theme="cyber"] .aurora-ambient-bg {
-      display: none !important;
+    :root[data-theme="campus"] .campus-bg-layer {
+      display: block;
     }
 
     .campus-photo-img {
@@ -554,13 +531,11 @@
       width: 110%;
       height: 110%;
       object-fit: cover;
-      object-position: center 25%;
+      object-position: center;
       transform: translateZ(0);
       will-change: transform;
       animation: campusPanZoom 26s ease-in-out infinite alternate;
-      filter: saturate(1.18) brightness(0.98);
-      display: block !important;
-      opacity: 1 !important;
+      filter: saturate(1.12) brightness(0.90);
     }
 
     @keyframes campusPanZoom {
@@ -585,7 +560,7 @@
       inset: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(180deg, rgba(2, 6, 18, 0.32) 0%, rgba(3, 7, 18, 0.48) 40%, rgba(2, 6, 15, 0.72) 100%);
+      background: linear-gradient(180deg, rgba(3, 7, 18, 0.74) 0%, rgba(3, 7, 18, 0.84) 50%, rgba(2, 6, 15, 0.94) 100%);
       pointer-events: none;
     }
 
@@ -4175,7 +4150,7 @@
         style="background:var(--card-surface-grad); border:1px solid var(--card-border); border-radius:14px; padding:12px; display:flex; flex-direction:column; gap:8px;">
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Installed Version:</span>
-          <strong id="installedVersionDisplay" style="color:var(--gold-accent);">v5.1.0 (Quantum Campus Pro)</strong>
+          <strong style="color:var(--gold-accent);">v4.7.0 (Daylight Pearl Pro)</strong>
         </div>
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Notification:</span>
@@ -5468,7 +5443,7 @@
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
     const LOCAL_APP_VERSION_NAME = '5.1.0';
     const LOCAL_APP_VERSION_CODE = 29;
-    const LOCAL_APP_BUILD_HASH = 'a4e293b5494e';
+    const LOCAL_APP_BUILD_HASH = '9f70ec6f9996';
 
     let cachedLatestVersionCode = 29;
 
@@ -5510,10 +5485,6 @@
 
     function openUpdateModal() {
       triggerHaptic(10);
-      const instDisplay = document.getElementById('installedVersionDisplay');
-      if (instDisplay) {
-        instDisplay.textContent = `v${LOCAL_APP_VERSION_NAME} (Quantum Campus Pro)`;
-      }
       openModal('updateModal');
       checkInAppUpdate(false);
     }
@@ -5579,18 +5550,14 @@
             banner.style.display = 'none';
           }
           const vTitle = document.getElementById('otaVersionTitle');
-          if (vTitle) vTitle.textContent = `Update Available (${versionName || 'v5.1.0'})`;
+          if (vTitle) vTitle.textContent = `Update Available (${versionName || 'v4.7.1'})`;
         }
         if (otaPill) otaPill.textContent = 'Update Ready!';
-        if (statusLabel) statusLabel.textContent = `New update ready (${versionName || 'v5.1.0'})! Tap "Update App Now"`;
-        if (isManual) showToast(`New update found (${versionName || 'v5.1.0'})! Tap "Update App Now"`);
+        if (statusLabel) statusLabel.textContent = `New update ready (${versionName || 'v4.7.1'})! Tap "Update App Now"`;
+        if (isManual) showToast(`New update found (${versionName || 'v4.7.1'})! Tap "Update App Now"`);
       } else {
         if (banner) banner.style.display = 'none';
-        if (otaPill) otaPill.textContent = `v${LOCAL_APP_VERSION_NAME} Latest`;
-        if (statusLabel) statusLabel.textContent = `App is up to date (v${LOCAL_APP_VERSION_NAME})!`;
-        if (isManual) showToast(`✅ App is already on the latest version (v${LOCAL_APP_VERSION_NAME})!`);
-      }
-    };
+        if (otaPill) otaPill.textContent = 'v4.7 Latest';
         if (statusLabel) statusLabel.textContent = `App is up to date (v${LOCAL_APP_VERSION_NAME})!`;
         if (isManual) showToast(`✅ App is already on the latest version (v${LOCAL_APP_VERSION_NAME})!`);
       }
@@ -5673,14 +5640,14 @@
             banner.style.display = 'none';
           }
           const vTitle = document.getElementById('otaVersionTitle');
-          if (vTitle) vTitle.textContent = `Update Available (${data.versionName || 'v5.1.0'})`;
+          if (vTitle) vTitle.textContent = `Update Available (${data.versionName || 'v4.7.1'})`;
         }
         if (otaPill) otaPill.textContent = 'Update Ready!';
-        if (statusLabel) statusLabel.textContent = `New update ready (${data.versionName || 'v5.1.0'})! Tap "Update App Now"`;
-        if (isManual) showToast(`New update found (${data.versionName || 'v5.1.0'})! Tap "Update App Now"`);
+        if (statusLabel) statusLabel.textContent = `New update ready (${data.versionName || 'v4.7.1'})! Tap "Update App Now"`;
+        if (isManual) showToast(`New update found (${data.versionName || 'v4.7.1'})! Tap "Update App Now"`);
       } else {
         if (banner) banner.style.display = 'none';
-        if (otaPill) otaPill.textContent = `v${LOCAL_APP_VERSION_NAME} Latest`;
+        if (otaPill) otaPill.textContent = 'v4.7 Latest';
         if (statusLabel) statusLabel.textContent = `App is up to date (v${LOCAL_APP_VERSION_NAME})!`;
         if (isManual) showToast(`✅ App is already on the latest version (v${LOCAL_APP_VERSION_NAME})!`);
       }
@@ -5906,7 +5873,6 @@
     }
 
     function applyThemeAppearance(theme) {
-      if (theme === 'cyber') theme = 'campus';
       document.documentElement.setAttribute('data-theme', theme);
       const metaTheme = document.querySelector('meta[name="theme-color"]');
       if (metaTheme) {
@@ -5915,14 +5881,6 @@
       const appbarThemeIcon = document.getElementById('appbarThemeIcon');
       if (appbarThemeIcon) {
         appbarThemeIcon.textContent = theme === 'campus' ? '🏛️' : (theme === 'light' ? '🌙' : '☀️');
-      }
-      const campusBg = document.getElementById('campusBg');
-      if (campusBg) {
-        campusBg.style.display = (theme === 'campus') ? 'block' : 'none';
-      }
-      const auroraBg = document.getElementById('auroraBg');
-      if (auroraBg) {
-        auroraBg.style.display = (theme === 'campus') ? 'none' : 'block';
       }
       if (window.AndroidUpdater && typeof window.AndroidUpdater.setSystemTheme === 'function') {
         try {
@@ -7546,21 +7504,12 @@
 
     // INITIALIZATION
     function init() {
-      let savedTheme = localStorage.getItem('secD_theme');
-      if (!savedTheme || savedTheme === 'cyber') {
-        savedTheme = 'campus';
-        localStorage.setItem('secD_theme', 'campus');
-      }
+      const savedTheme = localStorage.getItem('secD_theme') || 'campus';
       applyThemeAppearance(savedTheme);
       const savedAnim = localStorage.getItem('secD_anim_theme') || 'on';
       document.documentElement.setAttribute('data-anim-theme', savedAnim);
       syncHoloMenuPills();
       enforcePermanentDriveShareLock();
-
-      const instDisplay = document.getElementById('installedVersionDisplay');
-      if (instDisplay) {
-        instDisplay.textContent = `v${LOCAL_APP_VERSION_NAME} (Quantum Campus Pro)`;
-      }
 
       // Check stored batch: default strictly to Set-A so user never sees "ALL"
       let storedPref = localStorage.getItem('secD_batch_pref');
