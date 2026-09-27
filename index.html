@@ -3861,15 +3861,6 @@
       <button class="secondary-btn" onclick="checkInAppUpdate(true)">
         🔍 Check for New Update
       </button>
-
-      <button class="secondary-btn" style="border-color:rgba(245,158,11,0.45); color:#f59e0b;"
-        onclick="sendTestClassNotification()">
-        🔔 Test Notification
-      </button>
-
-      <button class="secondary-btn" onclick="downloadFullApk()">
-        ⬇️ Download Latest APK (Direct)
-      </button>
     </div>
   </div>
 
@@ -3914,10 +3905,6 @@
               🗑️ Clear
             </button>
           </div>
-          <button class="notif-action-btn notif-test-btn" onclick="sendTestClassNotification()"
-            title="Send Sample Class Notification">
-            🔔 Test Alert
-          </button>
         </div>
       </div>
 
@@ -4581,7 +4568,7 @@
       localStorage.setItem('secD_sound', 'true');
       syncAndroidNotificationPrefs();
       syncHoloMenuPills();
-      sendTestClassNotification();
+      showToast('🔔 Notification Alert Active (5m Pre-Class)');
     }
 
     function resolveSlotForBatch(slot, batch) {
@@ -4823,9 +4810,6 @@
               <div class="notif-empty-desc">
                 ${this.activeFilter !== 'all' ? 'No notifications found in this category.' : '5-minute pre-class reminders, timetable changes, and app updates are saved here automatically.'}
               </div>
-              <button class="primary-btn" style="margin-top:8px; padding:8px 14px; font-size:0.75rem;" onclick="sendTestClassNotification()">
-                🔔 Send Sample Alert
-              </button>
             </div>
           `;
           return;
@@ -5025,10 +5009,10 @@
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
     const LOCAL_APP_VERSION_NAME = '4.7.1';
-    const LOCAL_APP_VERSION_CODE = 23;
-    const LOCAL_APP_BUILD_HASH = '8ea8358b7a66';
+    const LOCAL_APP_VERSION_CODE = 24;
+    const LOCAL_APP_BUILD_HASH = '978bc786465a';
 
-    let cachedLatestVersionCode = 23;
+    let cachedLatestVersionCode = 24;
 
     function getEffectiveVersionCode() {
       const stored = parseInt(localStorage.getItem('secD_local_version_code'), 10);
