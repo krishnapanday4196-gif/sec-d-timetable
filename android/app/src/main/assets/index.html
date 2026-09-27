@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="cyber" data-anim-theme="on">
 
 <head>
   <meta charset="UTF-8">
@@ -7,7 +7,7 @@
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="theme-color" content="#080c14">
+  <meta name="theme-color" content="#040816">
   <title>CSE D Timetable</title>
   <link rel="icon" type="image/png" href="icon-192.png">
   <link rel="apple-touch-icon" href="icon-192.png">
@@ -69,7 +69,58 @@
       --orb-1-color: rgba(56, 189, 248, 0.22);
       --orb-2-color: rgba(168, 85, 247, 0.18);
       --orb-3-color: rgba(16, 185, 129, 0.14);
-      --aurora-opacity: 0.65;
+    }
+
+    :root[data-theme="cyber"] {
+      --bg-canvas: #02050e;
+      --bg-phone: #040816;
+      --bg-mesh:
+        radial-gradient(circle at 14% 10%, rgba(56, 189, 248, 0.22) 0%, transparent 45%),
+        radial-gradient(circle at 86% 20%, rgba(168, 85, 247, 0.20) 0%, transparent 48%),
+        radial-gradient(circle at 50% 60%, rgba(244, 63, 94, 0.12) 0%, transparent 60%),
+        #040816;
+      --card-bg: rgba(14, 23, 44, 0.94);
+      --card-solid: #0c152a;
+      --card-surface-grad: linear-gradient(160deg, #162548 0%, #0a1224 100%);
+      --card-border: rgba(56, 189, 248, 0.26);
+      --card-rim: inset 0 1px 0 rgba(255, 255, 255, 0.20);
+      --card-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 14px 32px -8px rgba(0, 0, 0, 0.72);
+      --card-hover: #1c2e58;
+      --header-bg: linear-gradient(180deg, rgba(12, 20, 38, 0.98) 0%, rgba(6, 11, 24, 0.98) 100%);
+      --recessed-bg: #030612;
+
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-sub: #64748b;
+
+      --accent: #38bdf8;
+      --accent-secondary: #a855f7;
+      --accent-glow: rgba(56, 189, 248, 0.52);
+      --accent-bg: rgba(56, 189, 248, 0.18);
+
+      --gold-accent: #fbbf24;
+      --gold-bg: linear-gradient(135deg, rgba(245, 158, 11, 0.22), rgba(217, 119, 6, 0.10));
+      --gold-border: rgba(251, 191, 36, 0.5);
+
+      --live-red: #f43f5e;
+      --live-glow: rgba(244, 63, 94, 0.6);
+      --live-bg: rgba(244, 63, 94, 0.18);
+
+      --set-a-color: #10b981;
+      --set-a-bg: rgba(16, 185, 129, 0.18);
+      --set-a-border: rgba(16, 185, 129, 0.5);
+
+      --set-b-color: #c084fc;
+      --set-b-bg: rgba(192, 132, 252, 0.18);
+      --set-b-border: rgba(192, 132, 252, 0.5);
+
+      --success: #10b981;
+      --warning: #f59e0b;
+
+      --orb-1-color: rgba(56, 189, 248, 0.35);
+      --orb-2-color: rgba(168, 85, 247, 0.30);
+      --orb-3-color: rgba(244, 63, 94, 0.25);
+      --aurora-opacity: 0.85;
     }
 
     :root[data-theme="light"] {
@@ -417,10 +468,6 @@
       z-index: 0;
       pointer-events: none;
       background-color: var(--bg-phone);
-      background-image: 
-        radial-gradient(circle at 12% 12%, var(--orb-1-color) 0%, transparent 45%),
-        radial-gradient(circle at 88% 28%, var(--orb-2-color) 0%, transparent 50%),
-        radial-gradient(circle at 48% 82%, var(--orb-3-color) 0%, transparent 45%);
       transition: background-color 0.25s ease;
       contain: strict;
       transform: translateZ(0);
@@ -428,6 +475,56 @@
     }
 
     .aurora-orb {
+      position: absolute;
+      border-radius: 50%;
+      opacity: var(--aurora-opacity, 0.65);
+      transform: translate3d(0, 0, 0);
+      will-change: transform;
+      pointer-events: none;
+      contain: strict;
+    }
+
+    .orb-primary {
+      width: 440px;
+      height: 440px;
+      background: radial-gradient(circle, var(--orb-1-color) 0%, rgba(56, 189, 248, 0.26) 32%, transparent 70%);
+      top: -80px;
+      left: -80px;
+      animation: auroraFloat1 20s ease-in-out infinite alternate;
+      transform: translateZ(0);
+    }
+
+    .orb-secondary {
+      width: 490px;
+      height: 490px;
+      background: radial-gradient(circle, var(--orb-2-color) 0%, rgba(168, 85, 247, 0.24) 36%, transparent 70%);
+      top: 28%;
+      right: -100px;
+      animation: auroraFloat2 26s ease-in-out infinite alternate;
+      transform: translateZ(0);
+    }
+
+    .orb-accent {
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle, var(--orb-3-color) 0%, rgba(244, 63, 94, 0.20) 30%, transparent 70%);
+      bottom: 8%;
+      left: 10%;
+      animation: auroraFloat3 22s ease-in-out infinite alternate;
+      transform: translateZ(0);
+    }
+
+    .orb-cyan {
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.22) 0%, rgba(56, 189, 248, 0.16) 38%, transparent 70%);
+      top: 62%;
+      right: 4%;
+      animation: auroraFloat1 24s ease-in-out infinite alternate-reverse;
+      transform: translateZ(0);
+    }
+
+    :root[data-anim-theme="off"] .aurora-orb {
       display: none !important;
     }
 
@@ -522,6 +619,14 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       animation: brandShimmer 7s linear infinite;
+    }
+
+    :root[data-theme="cyber"] .brand-name {
+      background: linear-gradient(90deg, #38bdf8 0%, #a855f7 28%, #f43f5e 55%, #38bdf8 82%, #10b981 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: brandShimmer 5.5s linear infinite;
     }
 
     .brand-subtitle {
@@ -3618,10 +3723,11 @@
 <body>
 
   <!-- DYNAMIC ANIMATED AURORA THEME CANVAS -->
-  <div class="aurora-ambient-bg" aria-hidden="true">
+  <div class="aurora-ambient-bg" id="auroraBg" aria-hidden="true">
     <div class="aurora-orb orb-primary"></div>
     <div class="aurora-orb orb-secondary"></div>
     <div class="aurora-orb orb-accent"></div>
+    <div class="aurora-orb orb-cyan"></div>
   </div>
 
   <!-- Toast Message -->
@@ -3757,17 +3863,31 @@
           </div>
         </button>
 
-        <!-- 5. Dark / Light Theme Switcher -->
+        <!-- 5. Theme Mode Switcher -->
         <button class="holo-menu-item" id="themeBtn" onclick="toggleTheme()">
           <div class="holo-item-left">
-            <div class="holo-orb-icon orb-violet"><span id="themeIcon">☀️</span></div>
+            <div class="holo-orb-icon orb-violet"><span id="themeIcon">🌌</span></div>
             <div class="holo-item-texts">
               <span class="holo-item-title">Theme Mode</span>
-              <span class="holo-item-sub">Dark or Light appearance</span>
+              <span class="holo-item-sub" id="menuThemeSub">Animated Cyber Aurora</span>
             </div>
           </div>
           <div class="holo-item-right">
-            <span class="holo-item-pill pill-theme" id="menuThemePill">🌙 Dark</span>
+            <span class="holo-item-pill pill-theme" id="menuThemePill">🌌 Cyber</span>
+          </div>
+        </button>
+
+        <!-- 5b. Animated Theme Background Switcher -->
+        <button class="holo-menu-item" id="animThemeBtn" onclick="toggleAnimationTheme()">
+          <div class="holo-item-left">
+            <div class="holo-orb-icon orb-cyan"><span>✨</span></div>
+            <div class="holo-item-texts">
+              <span class="holo-item-title">Animation Theme</span>
+              <span class="holo-item-sub">Live cosmic aurora mesh (60fps)</span>
+            </div>
+          </div>
+          <div class="holo-item-right">
+            <span class="holo-item-pill pill-on" id="menuAnimPill">✨ ON</span>
           </div>
         </button>
       </div>
@@ -4777,13 +4897,26 @@
         soundPill.className = `holo-item-pill ${chimeEnabled ? 'pill-on' : 'pill-off'}`;
       }
 
-      const curTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+      const curTheme = document.documentElement.getAttribute('data-theme') || 'cyber';
       const themeIcon = document.getElementById('themeIcon');
       const themePill = document.getElementById('menuThemePill');
+      const themeSub = document.getElementById('menuThemeSub');
 
-      if (themeIcon) themeIcon.textContent = curTheme === 'dark' ? '☀️' : '🌙';
+      if (themeIcon) {
+        themeIcon.textContent = curTheme === 'cyber' ? '🌌' : (curTheme === 'light' ? '☀️' : '🌙');
+      }
       if (themePill) {
-        themePill.textContent = curTheme === 'dark' ? '🌙 Dark' : '☀️ Light';
+        themePill.textContent = curTheme === 'cyber' ? '🌌 Cyber' : (curTheme === 'light' ? '☀️ Light' : '🌙 Dark');
+      }
+      if (themeSub) {
+        themeSub.textContent = curTheme === 'cyber' ? 'Live Cosmic Aurora (60fps)' : (curTheme === 'light' ? 'Daylight Pearl Appearance' : 'Minimal Obsidian Dark');
+      }
+
+      const animState = document.documentElement.getAttribute('data-anim-theme') || 'on';
+      const menuAnimPill = document.getElementById('menuAnimPill');
+      if (menuAnimPill) {
+        menuAnimPill.textContent = animState === 'on' ? '✨ ON' : 'OFF';
+        menuAnimPill.className = `holo-item-pill ${animState === 'on' ? 'pill-on' : 'pill-off'}`;
       }
     }
 
@@ -5276,9 +5409,9 @@
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
     const LOCAL_APP_VERSION_NAME = '4.7.1';
     const LOCAL_APP_VERSION_CODE = 25;
-    const LOCAL_APP_BUILD_HASH = 'ea5e461ac78a';
+    const LOCAL_APP_BUILD_HASH = '7a1d5f4603b9';
 
-    let cachedLatestVersionCode = 26;
+    let cachedLatestVersionCode = 27;
 
     function getEffectiveVersionCode() {
       const stored = parseInt(localStorage.getItem('secD_local_version_code'), 10);
@@ -5709,11 +5842,11 @@
       document.documentElement.setAttribute('data-theme', theme);
       const metaTheme = document.querySelector('meta[name="theme-color"]');
       if (metaTheme) {
-        metaTheme.setAttribute('content', theme === 'light' ? '#f8fafc' : '#080c14');
+        metaTheme.setAttribute('content', theme === 'light' ? '#f8fafc' : (theme === 'cyber' ? '#040816' : '#080c14'));
       }
       const appbarThemeIcon = document.getElementById('appbarThemeIcon');
       if (appbarThemeIcon) {
-        appbarThemeIcon.textContent = theme === 'light' ? '🌙' : '☀️';
+        appbarThemeIcon.textContent = theme === 'cyber' ? '🌌' : (theme === 'light' ? '🌙' : '☀️');
       }
       if (window.AndroidUpdater && typeof window.AndroidUpdater.setSystemTheme === 'function') {
         try {
@@ -5725,15 +5858,34 @@
     function toggleTheme() {
       triggerHaptic(14);
       const html = document.documentElement;
-      const cur = html.getAttribute('data-theme') || 'dark';
-      const next = cur === 'dark' ? 'light' : 'dark';
+      const cur = html.getAttribute('data-theme') || 'cyber';
+      let next = 'cyber';
+      if (cur === 'cyber') next = 'dark';
+      else if (cur === 'dark') next = 'light';
+      else next = 'cyber';
 
-      // Instant switch: zero delay, zero stutter
       applyThemeAppearance(next);
       localStorage.setItem('secD_theme', next);
       syncHoloMenuPills();
 
-      showToast(next === 'dark' ? '🌙 Obsidian Dark Theme Active' : '☀️ Daylight Pearl White Theme Active');
+      if (next === 'cyber') {
+        showToast('🌌 Animated Cyber Aurora Theme Active!');
+      } else if (next === 'dark') {
+        showToast('🌙 Obsidian Dark Theme Active');
+      } else {
+        showToast('☀️ Daylight Pearl White Theme Active');
+      }
+    }
+
+    function toggleAnimationTheme() {
+      triggerHaptic(14);
+      const html = document.documentElement;
+      const isOff = html.getAttribute('data-anim-theme') === 'off';
+      const nextState = isOff ? 'on' : 'off';
+      html.setAttribute('data-anim-theme', nextState);
+      localStorage.setItem('secD_anim_theme', nextState);
+      syncHoloMenuPills();
+      showToast(nextState === 'on' ? '✨ Animated Theme Active (60fps)' : '🌑 Static Background (Power Saver)');
     }
 
     function toggleDesktopWidth() {
@@ -7318,8 +7470,10 @@
 
       // INITIALIZATION
       function init() {
-        const savedTheme = localStorage.getItem('secD_theme') || 'dark';
+        const savedTheme = localStorage.getItem('secD_theme') || 'cyber';
         applyThemeAppearance(savedTheme);
+        const savedAnim = localStorage.getItem('secD_anim_theme') || 'on';
+        document.documentElement.setAttribute('data-anim-theme', savedAnim);
         syncHoloMenuPills();
         enforcePermanentDriveShareLock();
 
