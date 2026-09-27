@@ -5065,8 +5065,20 @@
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
     const LOCAL_APP_VERSION_NAME = '4.7.1';
-    const LOCAL_APP_VERSION_CODE = 20;
-    const LOCAL_APP_BUILD_HASH = 'f5347a169fd5';
+    const LOCAL_APP_VERSION_CODE = 21;
+    const LOCAL_APP_BUILD_HASH = 'f03ac3f1e5cc';
+
+    let cachedLatestVersionCode = 21;
+
+    function getEffectiveVersionCode() {
+      const stored = parseInt(localStorage.getItem('secD_local_version_code'), 10);
+      return (stored && stored > LOCAL_APP_VERSION_CODE) ? stored : LOCAL_APP_VERSION_CODE;
+    }
+
+    function getEffectiveHash() {
+      const stored = localStorage.getItem('secD_local_hash');
+      return (stored && stored.length > 5) ? stored : LOCAL_APP_BUILD_HASH;
+    }
 
     const UPDATE_SERVERS = [
       'https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main', // 24/7 GitHub Cloud CDN (Works even when PC is off!)
@@ -5102,41 +5114,30 @@
     // Determines strictly if a genuinely newer update exists
     function isNewUpdateAvailable(serverVersionName, serverVersionCode, serverHtmlHash) {
       const sCode = parseInt(serverVersionCode, 10) || 0;
+      const effectiveCode = getEffectiveVersionCode();
+      const effectiveHash = getEffectiveHash();
 
-      // 1. If server provides a valid numeric versionCode:
-      if (sCode > 0) {
-        if (sCode > LOCAL_APP_VERSION_CODE) {
-          return true; // Genuinely newer build
-        }
-        if (sCode < LOCAL_APP_VERSION_CODE) {
-          return false; // Server is behind or older
-        }
-      }
-
-      // 2. If version code matches local or wasn't provided, compare version name strings:
-      if (serverVersionName) {
-        const cleanServerVer = String(serverVersionName).replace(/^[vV]/, '').trim();
-        const cleanLocalVer = String(LOCAL_APP_VERSION_NAME).replace(/^[vV]/, '').trim();
-        if (cleanServerVer === cleanLocalVer && sCode <= LOCAL_APP_VERSION_CODE) {
-          return false; // Exactly the same release (e.g. 4.7.0 == 4.7.0)
-        }
-      }
-
-      // 3. Fallback to hash check only if versions are ambiguous:
-      let currentHash = '';
-      if (window.AndroidUpdater && typeof window.AndroidUpdater.getCurrentOtaHash === 'function') {
-        try { currentHash = window.AndroidUpdater.getCurrentOtaHash(); } catch (e) { }
-      }
-      if (!currentHash) {
-        currentHash = localStorage.getItem('secD_local_hash') || '';
-      }
-
-      // If server version code is known and <= local, do not treat hash difference as update
-      if (sCode > 0 && sCode <= LOCAL_APP_VERSION_CODE) {
+      // 1. If server version code is less than or equal to current build: NOT an update
+      if (sCode > 0 && sCode <= effectiveCode) {
         return false;
       }
 
-      if (serverHtmlHash && currentHash && serverHtmlHash !== currentHash && serverHtmlHash !== LOCAL_APP_BUILD_HASH) {
+      // 2. If server hash matches what is already running or stored: NOT an update
+      if (serverHtmlHash && (serverHtmlHash === effectiveHash || serverHtmlHash === LOCAL_APP_BUILD_HASH)) {
+        return false;
+      }
+
+      // 3. If version names match and sCode <= effectiveCode: NOT an update
+      if (serverVersionName) {
+        const cleanServerVer = String(serverVersionName).replace(/^[vV]/, '').trim();
+        const cleanLocalVer = String(LOCAL_APP_VERSION_NAME).replace(/^[vV]/, '').trim();
+        if (cleanServerVer === cleanLocalVer && sCode <= effectiveCode) {
+          return false;
+        }
+      }
+
+      // 4. Genuine update ONLY if server versionCode is strictly higher AND hash is new
+      if (sCode > effectiveCode && serverHtmlHash && serverHtmlHash !== effectiveHash) {
         return true;
       }
 
