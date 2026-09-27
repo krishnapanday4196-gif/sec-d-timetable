@@ -4162,9 +4162,12 @@
         </div>
 
         <div class="form-group" id="pmFacultyEditGroup" style="margin-top:4px;">
-          <label for="pmFacultyInput">👨‍🏫 Subject Faculty / Teacher Name:</label>
-          <input type="text" id="pmFacultyInput" class="modal-input"
-            placeholder="e.g. Dr. Rajesh Sharma / Prof. Neha Gupta">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+            <label for="pmFacultyInput" style="margin:0;">👨‍🏫 Subject Faculty / Teacher Name:</label>
+            <span id="pmFacLockBadge" style="font-size:0.65rem; color:#f59e0b; font-weight:700;">🔒 Admin Locked</span>
+          </div>
+          <input type="text" id="pmFacultyInput" class="modal-input" readonly
+            placeholder="Official Faculty Name" style="opacity:0.85;">
         </div>
 
         <div class="form-group" style="margin-top:4px;">
@@ -4196,25 +4199,32 @@
     <div class="modal-sheet" style="max-height:86vh; overflow-y:auto;">
       <div class="modal-handle"></div>
       <div class="modal-header">
-        <div class="modal-title">👨‍🏫 Section-D Faculty List</div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div class="modal-title">👨‍🏫 Section-D Faculty List</div>
+          <span id="facultyAdminBadge" class="faculty-badge" style="font-size:0.65rem; padding:2px 7px;">🔒 Locked</span>
+        </div>
         <button class="modal-close-btn" onclick="closeModal('facultyModal')">✕</button>
       </div>
 
-      <p style="font-size:0.78rem; color:var(--text-muted); line-height:1.35;">
-        Subject-wise faculty names shown across all timetable cards, Live Radar, and Excel exports. You can also update
-        any teacher's name below:
-      </p>
+      <!-- Admin Status Banner -->
+      <div id="facultyAdminNotice"
+        style="background:rgba(245,158,11,0.12); border:1px solid rgba(245,158,11,0.3); border-radius:10px; padding:8px 12px; display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+        <span id="facultyAdminStatusText" style="font-size:0.75rem; color:var(--text-muted);">🔒 Official Faculty names are locked.</span>
+        <button id="facultyUnlockBtn" class="secondary-btn" style="padding:4px 10px; font-size:0.72rem; border-color:#f59e0b; color:#f59e0b;" onclick="handleFacultyAdminUnlock()">
+          🔐 Admin Unlock
+        </button>
+      </div>
 
       <div id="facultyDirectoryList"
-        style="display:flex; flex-direction:column; gap:10px; max-height:52vh; overflow-y:auto; padding-right:4px;">
+        style="display:flex; flex-direction:column; gap:10px; max-height:50vh; overflow-y:auto; padding-right:4px;">
         <!-- Populated dynamically -->
       </div>
 
-      <div style="display:flex; gap:8px; margin-top:4px;">
-        <button class="primary-btn" style="flex:2;" onclick="saveAllFacultyNames()">
+      <div style="display:flex; gap:8px; margin-top:8px;">
+        <button class="primary-btn" id="saveFacultyBtn" style="flex:2;" onclick="saveAllFacultyNames()">
           💾 Save All Faculty Names
         </button>
-        <button class="secondary-btn" style="flex:1;" onclick="resetAllFacultyNames()">
+        <button class="secondary-btn" id="resetFacultyBtn" style="flex:1;" onclick="resetAllFacultyNames()">
           ↺ Reset
         </button>
       </div>
@@ -4386,9 +4396,91 @@
       return 'Section-D Faculty';
     }
 
+    // Admin Password Protection for Faculty Customization (Krishna Only)
+    const ADMIN_FACULTY_SECRET = 'kri777py';
+
+    function isFacultyAdminUnlocked() {
+      return sessionStorage.getItem('secD_faculty_admin') === 'true' || localStorage.getItem('secD_faculty_admin') === 'true';
+    }
+
+    function handleFacultyAdminUnlock() {
+      if (isFacultyAdminUnlocked()) {
+        showToast('🔓 Admin mode already unlocked!');
+        updateFacultyAdminUI();
+        return;
+      }
+      const entered = prompt('🔐 Enter Admin Password to Edit Faculty Names:');
+      if (entered === null) return;
+      if (entered.trim() === ADMIN_FACULTY_SECRET) {
+        sessionStorage.setItem('secD_faculty_admin', 'true');
+        localStorage.setItem('secD_faculty_admin', 'true');
+        triggerHaptic(20);
+        showToast('🔓 Admin Unlocked! Faculty editing enabled.');
+        updateFacultyAdminUI();
+      } else {
+        triggerHaptic(40);
+        alert('❌ Incorrect Password! Only Krishna (Admin) can modify faculty names.');
+      }
+    }
+
+    function updateFacultyAdminUI() {
+      const isUnlocked = isFacultyAdminUnlocked();
+      const badge = document.getElementById('facultyAdminBadge');
+      if (badge) {
+        badge.textContent = isUnlocked ? '🔓 Unlocked (Admin)' : '🔒 Locked';
+        badge.style.color = isUnlocked ? '#10b981' : '#f59e0b';
+        badge.style.borderColor = isUnlocked ? '#10b981' : 'rgba(245,158,11,0.4)';
+      }
+      const statusText = document.getElementById('facultyAdminStatusText');
+      if (statusText) {
+        statusText.innerHTML = isUnlocked
+          ? '<span style="color:#10b981; font-weight:700;">🔓 Admin Mode Active (Krishna)</span>'
+          : '<span style="color:var(--text-muted);">🔒 Official Faculty names are locked.</span>';
+      }
+      const unlockBtn = document.getElementById('facultyUnlockBtn');
+      if (unlockBtn) {
+        unlockBtn.style.display = isUnlocked ? 'none' : 'block';
+      }
+      const saveBtn = document.getElementById('saveFacultyBtn');
+      if (saveBtn) {
+        saveBtn.style.opacity = isUnlocked ? '1' : '0.6';
+      }
+      const resetBtn = document.getElementById('resetFacultyBtn');
+      if (resetBtn) {
+        resetBtn.style.opacity = isUnlocked ? '1' : '0.6';
+      }
+
+      document.querySelectorAll('.faculty-dir-input').forEach(inp => {
+        if (isUnlocked) {
+          inp.removeAttribute('readonly');
+          inp.style.opacity = '1';
+        } else {
+          inp.setAttribute('readonly', 'true');
+          inp.style.opacity = '0.75';
+        }
+      });
+
+      const pmLockBadge = document.getElementById('pmFacLockBadge');
+      if (pmLockBadge) {
+        pmLockBadge.textContent = isUnlocked ? '🔓 Admin Unlocked' : '🔒 Admin Locked';
+        pmLockBadge.style.color = isUnlocked ? '#10b981' : '#f59e0b';
+      }
+      const pmFacInput = document.getElementById('pmFacultyInput');
+      if (pmFacInput) {
+        if (isUnlocked) {
+          pmFacInput.removeAttribute('readonly');
+          pmFacInput.style.opacity = '1';
+        } else {
+          pmFacInput.setAttribute('readonly', 'true');
+          pmFacInput.style.opacity = '0.75';
+        }
+      }
+    }
+
     function openFacultyModal() {
       triggerHaptic(10);
       const listEl = document.getElementById('facultyDirectoryList');
+      const isUnlocked = isFacultyAdminUnlocked();
       if (listEl) {
         listEl.innerHTML = '';
         Object.keys(defaultFacultyMap).forEach((subj, idx) => {
@@ -4397,15 +4489,20 @@
           row.style.cssText = 'background:var(--card-surface-grad); border:1px solid var(--card-border); border-radius:10px; padding:8px 10px; display:flex; flex-direction:column; gap:5px;';
           row.innerHTML = `
             <label style="font-size:0.75rem; font-weight:700; color:var(--text-main);">${idx + 1}. ${subj}</label>
-            <input type="text" class="modal-input faculty-dir-input" data-subject="${subj}" value="${currentFaculty.replace(/"/g, '&quot;')}" style="padding:7px 10px; font-size:0.8rem;" placeholder="Enter Faculty Name">
+            <input type="text" class="modal-input faculty-dir-input" data-subject="${subj}" value="${currentFaculty.replace(/"/g, '&quot;')}" ${isUnlocked ? '' : 'readonly'} style="padding:7px 10px; font-size:0.8rem; opacity:${isUnlocked ? '1' : '0.75'};" placeholder="Enter Faculty Name">
           `;
           listEl.appendChild(row);
         });
       }
+      updateFacultyAdminUI();
       openModal('facultyModal');
     }
 
     function saveAllFacultyNames() {
+      if (!isFacultyAdminUnlocked()) {
+        handleFacultyAdminUnlock();
+        if (!isFacultyAdminUnlocked()) return;
+      }
       triggerHaptic(12);
       document.querySelectorAll('.faculty-dir-input').forEach(inp => {
         const subj = inp.getAttribute('data-subject');
@@ -4422,6 +4519,10 @@
     }
 
     function resetAllFacultyNames() {
+      if (!isFacultyAdminUnlocked()) {
+        handleFacultyAdminUnlock();
+        if (!isFacultyAdminUnlocked()) return;
+      }
       triggerHaptic(10);
       customFacultyMap = {};
       localStorage.removeItem('secD_faculty_map');
@@ -5009,10 +5110,10 @@
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
     const LOCAL_APP_VERSION_NAME = '4.7.1';
-    const LOCAL_APP_VERSION_CODE = 24;
-    const LOCAL_APP_BUILD_HASH = '978bc786465a';
+    const LOCAL_APP_VERSION_CODE = 25;
+    const LOCAL_APP_BUILD_HASH = '38fa3d4c3754';
 
-    let cachedLatestVersionCode = 24;
+    let cachedLatestVersionCode = 25;
 
     function getEffectiveVersionCode() {
       const stored = parseInt(localStorage.getItem('secD_local_version_code'), 10);
@@ -6526,13 +6627,28 @@
         const pmFacBadge = document.getElementById('pmFaculty');
         const pmFacGroup = document.getElementById('pmFacultyEditGroup');
         const pmFacInput = document.getElementById('pmFacultyInput');
+        const isUnlocked = isFacultyAdminUnlocked();
         if (fac) {
           if (pmFacBadge) {
             pmFacBadge.textContent = `👨‍🏫 ${fac}`;
             pmFacBadge.style.display = 'inline-flex';
           }
           if (pmFacGroup) pmFacGroup.style.display = 'block';
-          if (pmFacInput) pmFacInput.value = fac;
+          if (pmFacInput) {
+            pmFacInput.value = fac;
+            if (isUnlocked) {
+              pmFacInput.removeAttribute('readonly');
+              pmFacInput.style.opacity = '1';
+            } else {
+              pmFacInput.setAttribute('readonly', 'true');
+              pmFacInput.style.opacity = '0.75';
+            }
+          }
+          const pmLockBadge = document.getElementById('pmFacLockBadge');
+          if (pmLockBadge) {
+            pmLockBadge.textContent = isUnlocked ? '🔓 Admin Unlocked' : '🔒 Admin Locked';
+            pmLockBadge.style.color = isUnlocked ? '#10b981' : '#f59e0b';
+          }
         } else {
           if (pmFacBadge) pmFacBadge.style.display = 'none';
           if (pmFacGroup) pmFacGroup.style.display = 'none';
@@ -6570,16 +6686,18 @@
 
         const pmFacInput = document.getElementById('pmFacultyInput');
         if (pmFacInput && subject && getFacultyForSubject(subject)) {
-          const newFac = pmFacInput.value.trim();
-          if (newFac) {
-            customFacultyMap[subject.trim()] = newFac;
-            localStorage.setItem('secD_faculty_map', JSON.stringify(customFacultyMap));
+          if (isFacultyAdminUnlocked()) {
+            const newFac = pmFacInput.value.trim();
+            if (newFac) {
+              customFacultyMap[subject.trim()] = newFac;
+              localStorage.setItem('secD_faculty_map', JSON.stringify(customFacultyMap));
+            }
           }
         }
 
         renderTodayLectures(viewingDate);
         updateLiveState(true);
-        showToast('✅ Faculty & Note saved!');
+        showToast('✅ Note saved!');
         closeModal('periodModal');
       }
 
