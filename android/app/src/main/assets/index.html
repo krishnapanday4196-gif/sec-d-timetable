@@ -728,6 +728,115 @@
       -webkit-backdrop-filter: blur(20px) saturate(175%) !important;
     }
 
+    /* ============================================================
+       PREMIUM GLOWING HIGHLIGHTED TEXT ENGINE
+       ============================================================ */
+    .aurora-highlight-watermark {
+      position: absolute;
+      top: 36%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+      width: 100%;
+      text-align: center;
+      opacity: 0.16;
+      animation: watermarkFloat 18s ease-in-out infinite alternate;
+      will-change: transform;
+    }
+
+    .watermark-word {
+      font-size: clamp(4.5rem, 20vw, 8.5rem);
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      line-height: 0.88;
+      background: linear-gradient(135deg, #00f0ff 0%, #a855f7 40%, #fbbf24 80%, #f43f5e 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.28);
+      filter: drop-shadow(0 0 25px rgba(56, 189, 248, 0.6));
+    }
+
+    .watermark-sub {
+      font-size: clamp(1rem, 5vw, 2rem);
+      font-weight: 800;
+      letter-spacing: 0.38em;
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: 6px;
+      text-shadow: 0 0 16px rgba(168, 85, 247, 0.5);
+    }
+
+    @keyframes watermarkFloat {
+      0% {
+        transform: translate(-50%, -52%) rotate(-1.5deg) scale(0.97);
+      }
+      50% {
+        transform: translate(-48%, -48%) rotate(1deg) scale(1.03);
+      }
+      100% {
+        transform: translate(-52%, -50%) rotate(-1deg) scale(1);
+      }
+    }
+
+    .glow-highlight-ribbon {
+      margin: 10px 12px 2px 12px;
+      padding: 7px 12px;
+      border-radius: 12px;
+      background: linear-gradient(90deg, rgba(56, 189, 248, 0.14) 0%, rgba(168, 85, 247, 0.18) 50%, rgba(251, 191, 36, 0.14) 100%);
+      border: 1px solid rgba(56, 189, 248, 0.38);
+      box-shadow: 0 6px 20px -4px rgba(56, 189, 248, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      animation: highlightPulseGlow 4s ease-in-out infinite alternate;
+    }
+
+    .neon-highlight-badge {
+      background: linear-gradient(135deg, #00f0ff 0%, #38bdf8 50%, #c084fc 100%);
+      color: #030712;
+      font-weight: 900;
+      font-size: 0.68rem;
+      letter-spacing: 0.05em;
+      padding: 2px 8px;
+      border-radius: 6px;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.7);
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .ribbon-highlight-text {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #f8fafc;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex: 1;
+    }
+
+    @keyframes highlightPulseGlow {
+      0% {
+        border-color: rgba(56, 189, 248, 0.38);
+        box-shadow: 0 6px 20px -4px rgba(56, 189, 248, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      }
+      50% {
+        border-color: rgba(168, 85, 247, 0.65);
+        box-shadow: 0 6px 24px -2px rgba(168, 85, 247, 0.40), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+      }
+      100% {
+        border-color: rgba(251, 191, 36, 0.55);
+        box-shadow: 0 6px 22px -2px rgba(251, 191, 36, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.30);
+      }
+    }
+
     .campus-photo-img {
       position: absolute;
       top: -5%;
@@ -3999,6 +4108,10 @@
     <div class="aurora-orb orb-gold"></div>
     <div class="aurora-orb orb-emerald"></div>
     <div class="aurora-orb orb-rose"></div>
+    <div class="aurora-highlight-watermark" aria-hidden="true">
+      <span class="watermark-word">SEC-D</span>
+      <span class="watermark-sub">TIMETABLE</span>
+    </div>
   </div>
 
   <!-- QUANTUM CAMPUS PHOTO CINEMATIC OVERLAY LAYER -->
@@ -4193,6 +4306,12 @@
     <div class="sim-banner" id="simBanner">
       <span>⚠️ SIMULATING: <strong id="simTimeLabel">--:--</strong></span>
       <button onclick="stopSimulation()">Reset to Real Clock ↺</button>
+    </div>
+
+    <!-- GLOWING HIGHLIGHTED STATUS RIBBON -->
+    <div class="glow-highlight-ribbon" id="glowHighlightRibbon">
+      <span class="ribbon-sparkle">✨</span>
+      <span class="ribbon-highlight-text"><mark class="neon-highlight-badge">SEC-D TIMETABLE</mark> Live Classes • Lab & Faculty Schedule</span>
     </div>
 
     <!-- Clock Ribbon -->
@@ -5702,9 +5821,9 @@
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '5.4.0';
-    const LOCAL_APP_VERSION_CODE = 34;
-    const LOCAL_APP_BUILD_HASH = 'f738be7d9772';
+    const LOCAL_APP_VERSION_NAME = '5.4.1';
+    const LOCAL_APP_VERSION_CODE = 35;
+    const LOCAL_APP_BUILD_HASH = '03038702063c';
 
     let cachedLatestVersionCode = 29;
 
