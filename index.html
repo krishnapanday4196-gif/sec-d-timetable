@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="cyber" data-anim-theme="on">
+<html lang="en" data-theme="campus">
 
 <head>
   <meta charset="UTF-8">
@@ -216,6 +216,7 @@
       0% {
         background-position: -200% center;
       }
+
       100% {
         background-position: 200% center;
       }
@@ -225,7 +226,9 @@
       0% {
         transform: translate3d(-140%, 0, 0) skewX(-22deg);
       }
-      45%, 100% {
+
+      45%,
+      100% {
         transform: translate3d(260%, 0, 0) skewX(-22deg);
       }
     }
@@ -235,9 +238,11 @@
         opacity: 0;
         transform: translate3d(0, 22px, 0) scale(0.96);
       }
+
       65% {
         transform: translate3d(0, -3px, 0) scale(1.008);
       }
+
       100% {
         opacity: 1;
         transform: translate3d(0, 0, 0) scale(1);
@@ -248,6 +253,7 @@
       0% {
         transform: rotate(0deg);
       }
+
       100% {
         transform: rotate(360deg);
       }
@@ -257,6 +263,7 @@
       0% {
         transform: rotate(360deg);
       }
+
       100% {
         transform: rotate(0deg);
       }
@@ -266,16 +273,20 @@
       0% {
         transform: translate3d(-100%, 0, 0);
       }
+
       100% {
         transform: translate3d(220%, 0, 0);
       }
     }
 
     @keyframes liveDotPulse {
-      0%, 100% {
+
+      0%,
+      100% {
         transform: scale(1);
         box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.75);
       }
+
       50% {
         transform: scale(1.18);
         box-shadow: 0 0 0 7px rgba(244, 63, 94, 0);
@@ -286,19 +297,24 @@
       0% {
         box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.75);
       }
+
       60% {
         box-shadow: 0 0 0 8px rgba(244, 63, 94, 0);
       }
+
       100% {
         box-shadow: 0 0 0 0 rgba(244, 63, 94, 0);
       }
     }
 
     @keyframes liveCardAura {
-      0%, 100% {
+
+      0%,
+      100% {
         border-color: rgba(244, 63, 94, 0.65) !important;
         box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 8px 24px -4px rgba(244, 63, 94, 0.35);
       }
+
       50% {
         border-color: rgba(244, 63, 94, 1) !important;
         box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), 0 12px 32px -2px rgba(244, 63, 94, 0.6);
@@ -306,9 +322,12 @@
     }
 
     @keyframes navIconFloat {
-      0%, 100% {
+
+      0%,
+      100% {
         transform: translate3d(0, -1px, 0) scale(1.06);
       }
+
       50% {
         transform: translate3d(0, -4px, 0) scale(1.14);
       }
@@ -318,9 +337,11 @@
       0% {
         transform: scale(0.92);
       }
+
       55% {
         transform: scale(1.05);
       }
+
       100% {
         transform: translateY(-1px) scale(1);
       }
@@ -330,27 +351,35 @@
       0% {
         transform: scale(0.92);
       }
+
       55% {
         transform: scale(1.04);
       }
+
       100% {
         transform: scale(1);
       }
     }
 
     @keyframes heroGlowPulse {
-      0%, 100% {
+
+      0%,
+      100% {
         filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.28));
       }
+
       50% {
         filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.62));
       }
     }
 
     @keyframes heroLiveGlowPulse {
-      0%, 100% {
+
+      0%,
+      100% {
         filter: drop-shadow(0 0 10px rgba(244, 63, 94, 0.35));
       }
+
       50% {
         filter: drop-shadow(0 0 22px rgba(244, 63, 94, 0.75));
       }
@@ -360,6 +389,7 @@
       0% {
         opacity: 0;
       }
+
       100% {
         opacity: 1;
       }
@@ -462,6 +492,7 @@
     .aurora-ambient-bg {
       position: fixed;
       inset: 0;
+
       width: 100vw;
       height: 100vh;
       overflow: hidden;
@@ -2031,14 +2062,37 @@
       transform: translateZ(0);
     }
 
-    .lecture-card:nth-child(1) { animation-delay: 0.02s; }
-    .lecture-card:nth-child(2) { animation-delay: 0.05s; }
-    .lecture-card:nth-child(3) { animation-delay: 0.08s; }
-    .lecture-card:nth-child(4) { animation-delay: 0.11s; }
-    .lecture-card:nth-child(5) { animation-delay: 0.14s; }
-    .lecture-card:nth-child(6) { animation-delay: 0.17s; }
-    .lecture-card:nth-child(7) { animation-delay: 0.20s; }
-    .lecture-card:nth-child(8) { animation-delay: 0.23s; }
+    .lecture-card:nth-child(1) {
+      animation-delay: 0.02s;
+    }
+
+    .lecture-card:nth-child(2) {
+      animation-delay: 0.05s;
+    }
+
+    .lecture-card:nth-child(3) {
+      animation-delay: 0.08s;
+    }
+
+    .lecture-card:nth-child(4) {
+      animation-delay: 0.11s;
+    }
+
+    .lecture-card:nth-child(5) {
+      animation-delay: 0.14s;
+    }
+
+    .lecture-card:nth-child(6) {
+      animation-delay: 0.17s;
+    }
+
+    .lecture-card:nth-child(7) {
+      animation-delay: 0.20s;
+    }
+
+    .lecture-card:nth-child(8) {
+      animation-delay: 0.23s;
+    }
 
     .lecture-card:hover {
       transform: translateY(-2px) translateZ(0);
@@ -2412,6 +2466,7 @@
         transform: translate3d(0, 100%, 0);
         opacity: 0.6;
       }
+
       100% {
         transform: translate3d(0, 0, 0);
         opacity: 1;
@@ -3906,7 +3961,9 @@
         <button class="ota-apply-btn" onclick="executeInAppUpdate()">
           ⚡ Update Now
         </button>
-        <button class="ota-dismiss-btn" onclick="dismissUpdateBanner()" style="background:transparent; border:none; color:inherit; font-size:1.15rem; cursor:pointer; padding:6px; opacity:0.8; line-height:1;" title="Dismiss">✕</button>
+        <button class="ota-dismiss-btn" onclick="dismissUpdateBanner()"
+          style="background:transparent; border:none; color:inherit; font-size:1.15rem; cursor:pointer; padding:6px; opacity:0.8; line-height:1;"
+          title="Dismiss">✕</button>
       </div>
     </div>
 
@@ -4160,7 +4217,8 @@
           <div class="notif-modal-icon-badge">🔔</div>
           <div>
             <div class="modal-title" style="margin-bottom:2px;">Notification Library</div>
-            <div style="font-size:0.72rem; color:var(--text-muted); font-weight:500;">Saved alerts & class reminders</div>
+            <div style="font-size:0.72rem; color:var(--text-muted); font-weight:500;">Saved alerts & class reminders
+            </div>
           </div>
         </div>
         <button class="modal-close-btn" onclick="closeModal('notificationLibraryModal')">✕</button>
@@ -4210,7 +4268,8 @@
       </div>
 
       <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.4;">
-        Share official direct APK download link with Section-D classmates! High-speed 24/7 direct download hosted on GitHub.
+        Share official direct APK download link with Section-D classmates! High-speed 24/7 direct download hosted on
+        GitHub.
       </p>
 
       <div style="display:flex; flex-direction:column; gap:8px;">
@@ -4243,7 +4302,8 @@
           style="background:#ffffff; padding:8px; border-radius:12px; display:inline-flex; align-items:center; justify-content:center;">
           <img id="shareQrImg"
             src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Fraw.githubusercontent.com%2Fkrishnapanday4196-gif%2Fsec-d-timetable%2Fmain%2FCSE_D_Timetable.apk"
-            alt="GitHub Direct APK QR Code" style="width:130px; height:130px; display:block;" onerror="this.style.display='none'">
+            alt="GitHub Direct APK QR Code" style="width:130px; height:130px; display:block;"
+            onerror="this.style.display='none'">
         </div>
         <span id="shareLinkDisplay"
           style="font-size:0.68rem; font-family:monospace; color:var(--accent); word-break:break-all; text-align:center;">
@@ -4451,8 +4511,8 @@
             <label for="pmFacultyInput" style="margin:0;">👨‍🏫 Subject Faculty / Teacher Name:</label>
             <span id="pmFacLockBadge" style="font-size:0.65rem; color:#f59e0b; font-weight:700;">🔒 Admin Locked</span>
           </div>
-          <input type="text" id="pmFacultyInput" class="modal-input" readonly
-            placeholder="Official Faculty Name" style="opacity:0.85;">
+          <input type="text" id="pmFacultyInput" class="modal-input" readonly placeholder="Official Faculty Name"
+            style="opacity:0.85;">
         </div>
 
         <div class="form-group" style="margin-top:4px;">
@@ -4486,7 +4546,8 @@
       <div class="modal-header">
         <div style="display:flex; align-items:center; gap:8px;">
           <div class="modal-title">👨‍🏫 Section-D Faculty List</div>
-          <span id="facultyAdminBadge" class="faculty-badge" style="font-size:0.65rem; padding:2px 7px;">🔒 Locked</span>
+          <span id="facultyAdminBadge" class="faculty-badge" style="font-size:0.65rem; padding:2px 7px;">🔒
+            Locked</span>
         </div>
         <button class="modal-close-btn" onclick="closeModal('facultyModal')">✕</button>
       </div>
@@ -4494,8 +4555,11 @@
       <!-- Admin Status Banner -->
       <div id="facultyAdminNotice"
         style="background:rgba(245,158,11,0.12); border:1px solid rgba(245,158,11,0.3); border-radius:10px; padding:8px 12px; display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-        <span id="facultyAdminStatusText" style="font-size:0.75rem; color:var(--text-muted);">🔒 Official Faculty names are locked.</span>
-        <button id="facultyUnlockBtn" class="secondary-btn" style="padding:4px 10px; font-size:0.72rem; border-color:#f59e0b; color:#f59e0b;" onclick="handleFacultyAdminUnlock()">
+        <span id="facultyAdminStatusText" style="font-size:0.75rem; color:var(--text-muted);">🔒 Official Faculty names
+          are locked.</span>
+        <button id="facultyUnlockBtn" class="secondary-btn"
+          style="padding:4px 10px; font-size:0.72rem; border-color:#f59e0b; color:#f59e0b;"
+          onclick="handleFacultyAdminUnlock()">
           🔐 Admin Unlock
         </button>
       </div>
@@ -5409,9 +5473,9 @@
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
     const LOCAL_APP_VERSION_NAME = '4.7.1';
     const LOCAL_APP_VERSION_CODE = 25;
-    const LOCAL_APP_BUILD_HASH = '7a1d5f4603b9';
+    const LOCAL_APP_BUILD_HASH = '232437b45370';
 
-    let cachedLatestVersionCode = 27;
+    let cachedLatestVersionCode = 28;
 
     function getEffectiveVersionCode() {
       const stored = parseInt(localStorage.getItem('secD_local_version_code'), 10);
@@ -5842,11 +5906,11 @@
       document.documentElement.setAttribute('data-theme', theme);
       const metaTheme = document.querySelector('meta[name="theme-color"]');
       if (metaTheme) {
-        metaTheme.setAttribute('content', theme === 'light' ? '#f8fafc' : (theme === 'cyber' ? '#040816' : '#080c14'));
+        metaTheme.setAttribute('content', theme === 'light' ? '#f8fafc' : (theme === 'campus' ? '#070b16' : '#080c14'));
       }
       const appbarThemeIcon = document.getElementById('appbarThemeIcon');
       if (appbarThemeIcon) {
-        appbarThemeIcon.textContent = theme === 'cyber' ? '🌌' : (theme === 'light' ? '🌙' : '☀️');
+        appbarThemeIcon.textContent = theme === 'campus' ? '🏛️' : (theme === 'light' ? '🌙' : '☀️');
       }
       if (window.AndroidUpdater && typeof window.AndroidUpdater.setSystemTheme === 'function') {
         try {
@@ -5858,34 +5922,23 @@
     function toggleTheme() {
       triggerHaptic(14);
       const html = document.documentElement;
-      const cur = html.getAttribute('data-theme') || 'cyber';
-      let next = 'cyber';
-      if (cur === 'cyber') next = 'dark';
+      const cur = html.getAttribute('data-theme') || 'campus';
+      let next = 'campus';
+      if (cur === 'campus') next = 'dark';
       else if (cur === 'dark') next = 'light';
-      else next = 'cyber';
+      else next = 'campus';
 
       applyThemeAppearance(next);
       localStorage.setItem('secD_theme', next);
       syncHoloMenuPills();
 
-      if (next === 'cyber') {
-        showToast('🌌 Animated Cyber Aurora Theme Active!');
+      if (next === 'campus') {
+        showToast('🏛️ Quantum Campus Animated Theme Active!');
       } else if (next === 'dark') {
         showToast('🌙 Obsidian Dark Theme Active');
       } else {
         showToast('☀️ Daylight Pearl White Theme Active');
       }
-    }
-
-    function toggleAnimationTheme() {
-      triggerHaptic(14);
-      const html = document.documentElement;
-      const isOff = html.getAttribute('data-anim-theme') === 'off';
-      const nextState = isOff ? 'on' : 'off';
-      html.setAttribute('data-anim-theme', nextState);
-      localStorage.setItem('secD_anim_theme', nextState);
-      syncHoloMenuPills();
-      showToast(nextState === 'on' ? '✨ Animated Theme Active (60fps)' : '🌑 Static Background (Power Saver)');
     }
 
     function toggleDesktopWidth() {
@@ -6259,51 +6312,51 @@
       }
 
       slots.forEach((s, idx) => {
-          const periodCfg = periods.find(p => p.id === s.period);
-          const start = periodCfg ? periodCfg.startMins : 0;
-          const end = periodCfg ? periodCfg.endMins : 0;
+        const periodCfg = periods.find(p => p.id === s.period);
+        const start = periodCfg ? periodCfg.startMins : 0;
+        const end = periodCfg ? periodCfg.endMins : 0;
 
-          const isLive = isToday && (currentMinutes >= start && currentMinutes < end);
-          const isCompleted = isToday && (currentMinutes >= end);
-          const isUpcoming = isToday && (currentMinutes < start);
+        const isLive = isToday && (currentMinutes >= start && currentMinutes < end);
+        const isCompleted = isToday && (currentMinutes >= end);
+        const isUpcoming = isToday && (currentMinutes < start);
 
-          let cardBorderClass = 'all-card';
-          if (selectedBatch === 'Set-A') cardBorderClass = 'set-a-card';
-          else if (selectedBatch === 'Set-B') cardBorderClass = 'set-b-card';
+        let cardBorderClass = 'all-card';
+        if (selectedBatch === 'Set-A') cardBorderClass = 'set-a-card';
+        else if (selectedBatch === 'Set-B') cardBorderClass = 'set-b-card';
 
-          const card = document.createElement('div');
-          card.className = `lecture-card ${cardBorderClass} ${isLive ? 'is-live' : ''} ${isCompleted ? 'is-completed' : ''}`;
-          card.style.animationDelay = `${idx * 45}ms`;
-          card.dataset.periodId = s.period;
+        const card = document.createElement('div');
+        card.className = `lecture-card ${cardBorderClass} ${isLive ? 'is-live' : ''} ${isCompleted ? 'is-completed' : ''}`;
+        card.style.animationDelay = `${idx * 45}ms`;
+        card.dataset.periodId = s.period;
 
-          const dateKey = `${dateObj.getFullYear()}-${dateObj.getMonth() + 1}-${dateObj.getDate()}_${s.period}`;
-          const attStatus = attendanceMap[dateKey];
+        const dateKey = `${dateObj.getFullYear()}-${dateObj.getMonth() + 1}-${dateObj.getDate()}_${s.period}`;
+        const attStatus = attendanceMap[dateKey];
 
-          let statusTag = '';
-          if (isToday) {
-            if (isLive) {
-              statusTag = '<span class="status-tag status-live-pill">● LIVE NOW</span>';
-            } else if (isCompleted) {
-              statusTag = '<span class="status-tag status-done-pill">✓ Done</span>';
-            } else if (isUpcoming) {
-              statusTag = '<span class="status-tag status-upcoming-pill">Upcoming</span>';
-            }
-          } else if (isTomorrow) {
-            statusTag = '<span class="status-tag status-upcoming-pill" style="background:rgba(245, 158, 11, 0.15); color:#f59e0b; border-color:rgba(245, 158, 11, 0.3);">🌅 Tomorrow</span>';
-          } else {
-            statusTag = `<span class="status-tag status-upcoming-pill">${dayName}</span>`;
+        let statusTag = '';
+        if (isToday) {
+          if (isLive) {
+            statusTag = '<span class="status-tag status-live-pill">● LIVE NOW</span>';
+          } else if (isCompleted) {
+            statusTag = '<span class="status-tag status-done-pill">✓ Done</span>';
+          } else if (isUpcoming) {
+            statusTag = '<span class="status-tag status-upcoming-pill">Upcoming</span>';
           }
+        } else if (isTomorrow) {
+          statusTag = '<span class="status-tag status-upcoming-pill" style="background:rgba(245, 158, 11, 0.15); color:#f59e0b; border-color:rgba(245, 158, 11, 0.3);">🌅 Tomorrow</span>';
+        } else {
+          statusTag = `<span class="status-tag status-upcoming-pill">${dayName}</span>`;
+        }
 
-          // PURE UNMIXED RENDERING:
-          if (s.isSplit) {
-            if (selectedBatch === 'Set-A') {
-              // STRICTLY SET-A CLASS ONLY (ZERO SET-B MENTION)
-              const isLab = s.setA.subject.toLowerCase().includes('lab');
-              const isMentor = s.setA.subject.toLowerCase().includes('mentor');
-              const typeTag = isLab ? '🔬 Set-A Lab' : (isMentor ? '🧑‍🏫 Set-A Mentor' : '📚 Set-A Self Study');
-              const facA = getFacultyForSubject(s.setA.subject);
+        // PURE UNMIXED RENDERING:
+        if (s.isSplit) {
+          if (selectedBatch === 'Set-A') {
+            // STRICTLY SET-A CLASS ONLY (ZERO SET-B MENTION)
+            const isLab = s.setA.subject.toLowerCase().includes('lab');
+            const isMentor = s.setA.subject.toLowerCase().includes('mentor');
+            const typeTag = isLab ? '🔬 Set-A Lab' : (isMentor ? '🧑‍🏫 Set-A Mentor' : '📚 Set-A Self Study');
+            const facA = getFacultyForSubject(s.setA.subject);
 
-              card.innerHTML = `
+            card.innerHTML = `
               <div class="card-top-row">
                 <div class="slot-timing-box">
                   <span class="slot-pill-name">${s.period}</span>
@@ -6325,20 +6378,20 @@
                 </button>
               </div>
             `;
-              card.onclick = (e) => {
-                if (e.target.tagName !== 'BUTTON') {
-                  openPeriodModal(s.period, s.setA.subject, s.setA.room, s.timing, dateKey);
-                }
-              };
+            card.onclick = (e) => {
+              if (e.target.tagName !== 'BUTTON') {
+                openPeriodModal(s.period, s.setA.subject, s.setA.room, s.timing, dateKey);
+              }
+            };
 
-            } else if (selectedBatch === 'Set-B') {
-              // STRICTLY SET-B CLASS ONLY (ZERO SET-A MENTION)
-              const isLab = s.setB.subject.toLowerCase().includes('lab');
-              const isMentor = s.setB.subject.toLowerCase().includes('mentor');
-              const typeTag = isLab ? '🔬 Set-B Lab' : (isMentor ? '🧑‍🏫 Set-B Mentor' : '📚 Set-B Self Study');
-              const facB = getFacultyForSubject(s.setB.subject);
+          } else if (selectedBatch === 'Set-B') {
+            // STRICTLY SET-B CLASS ONLY (ZERO SET-A MENTION)
+            const isLab = s.setB.subject.toLowerCase().includes('lab');
+            const isMentor = s.setB.subject.toLowerCase().includes('mentor');
+            const typeTag = isLab ? '🔬 Set-B Lab' : (isMentor ? '🧑‍🏫 Set-B Mentor' : '📚 Set-B Self Study');
+            const facB = getFacultyForSubject(s.setB.subject);
 
-              card.innerHTML = `
+            card.innerHTML = `
               <div class="card-top-row">
                 <div class="slot-timing-box">
                   <span class="slot-pill-name">${s.period}</span>
@@ -6360,20 +6413,20 @@
                 </button>
               </div>
             `;
-              card.onclick = (e) => {
-                if (e.target.tagName !== 'BUTTON') {
-                  openPeriodModal(s.period, s.setB.subject, s.setB.room, s.timing, dateKey);
-                }
-              };
+            card.onclick = (e) => {
+              if (e.target.tagName !== 'BUTTON') {
+                openPeriodModal(s.period, s.setB.subject, s.setB.room, s.timing, dateKey);
+              }
+            };
 
-            } else {
-              // "ALL / COMBINED" MODE: DUAL CLEAN CARDS
-              const facA = getFacultyForSubject(s.setA.subject);
-              const facB = getFacultyForSubject(s.setB.subject);
-              const roomA = s.setA.room !== '-' ? `📍 ${s.setA.room}` : '📍 Campus / Library';
-              const roomB = s.setB.room !== '-' ? `📍 ${s.setB.room}` : '📍 Campus / Library';
+          } else {
+            // "ALL / COMBINED" MODE: DUAL CLEAN CARDS
+            const facA = getFacultyForSubject(s.setA.subject);
+            const facB = getFacultyForSubject(s.setB.subject);
+            const roomA = s.setA.room !== '-' ? `📍 ${s.setA.room}` : '📍 Campus / Library';
+            const roomB = s.setB.room !== '-' ? `📍 ${s.setB.room}` : '📍 Campus / Library';
 
-              card.innerHTML = `
+            card.innerHTML = `
               <div class="card-top-row">
                 <div class="slot-timing-box">
                   <span class="slot-pill-name">${s.period}</span>
@@ -6413,33 +6466,33 @@
                 </button>
               </div>
             `;
-              card.onclick = (e) => {
-                if (e.target.tagName !== 'BUTTON') {
-                  openPeriodModal(s.period, s.setA.subject, s.setA.room, s.timing, dateKey);
-                }
-              };
-            }
-          } else {
-            // Regular Common Lecture or Lunch Break
-            const isLunch = s.subject.toLowerCase().includes('lunch') || s.period === 'L4';
-            let batchBadge = '';
-            if (!isLunch) {
-              if (selectedBatch === 'Set-A') {
-                batchBadge = '<span class="hero-batch-badge badge-set-a">🅰️ Set-A (Theory)</span>';
-              } else if (selectedBatch === 'Set-B') {
-                batchBadge = '<span class="hero-batch-badge badge-set-b">🅱️ Set-B (Theory)</span>';
-              } else {
-                batchBadge = '<span class="hero-batch-badge badge-set-all">👥 Common Class (A-108)</span>';
+            card.onclick = (e) => {
+              if (e.target.tagName !== 'BUTTON') {
+                openPeriodModal(s.period, s.setA.subject, s.setA.room, s.timing, dateKey);
               }
+            };
+          }
+        } else {
+          // Regular Common Lecture or Lunch Break
+          const isLunch = s.subject.toLowerCase().includes('lunch') || s.period === 'L4';
+          let batchBadge = '';
+          if (!isLunch) {
+            if (selectedBatch === 'Set-A') {
+              batchBadge = '<span class="hero-batch-badge badge-set-a">🅰️ Set-A (Theory)</span>';
+            } else if (selectedBatch === 'Set-B') {
+              batchBadge = '<span class="hero-batch-badge badge-set-b">🅱️ Set-B (Theory)</span>';
+            } else {
+              batchBadge = '<span class="hero-batch-badge badge-set-all">👥 Common Class (A-108)</span>';
             }
-            const facCommon = isLunch ? '' : getFacultyForSubject(s.subject);
-            const roomDisplay = isLunch ? '📍 Mess' : (s.room !== '-' ? '📍 ' + s.room : 'Campus / Common');
-            const attBtnHtml = isLunch ? '' : `
+          }
+          const facCommon = isLunch ? '' : getFacultyForSubject(s.subject);
+          const roomDisplay = isLunch ? '📍 Mess' : (s.room !== '-' ? '📍 ' + s.room : 'Campus / Common');
+          const attBtnHtml = isLunch ? '' : `
               <button class="att-toggle-btn ${attStatus === 'attended' ? 'attended' : attStatus === 'missed' ? 'missed' : ''}" onclick="quickToggleAttendance(event, '${dateKey}')">
                 ${attStatus === 'attended' ? '✓ Attended' : attStatus === 'missed' ? '✗ Missed' : 'Mark Att'}
               </button>`;
 
-            card.innerHTML = `
+          card.innerHTML = `
             <div class="card-top-row">
               <div class="slot-timing-box">
                 <span class="slot-pill-name">${s.period}</span>
@@ -6459,1067 +6512,1065 @@
               ${attBtnHtml}
             </div>
           `;
-            if (!isLunch) {
-              card.onclick = (e) => {
-                if (e.target.tagName !== 'BUTTON') {
-                  openPeriodModal(s.period, s.subject, s.room, s.timing, dateKey);
-                }
-              };
-            } else {
-              card.style.cursor = 'default';
-            }
+          if (!isLunch) {
+            card.onclick = (e) => {
+              if (e.target.tagName !== 'BUTTON') {
+                openPeriodModal(s.period, s.subject, s.room, s.timing, dateKey);
+              }
+            };
+          } else {
+            card.style.cursor = 'default';
           }
-
-          container.appendChild(card);
-        });
-      }
-
-      // ACCURATE TICKING SIMULATION & TIME FUNCTIONS
-      function getCurrentTotalSeconds() {
-        if (isSimulating) {
-          const elapsedRealSecs = Math.floor((Date.now() - simStartWallTime) / 1000);
-          return simBaseTotalSecs + elapsedRealSecs;
         }
-        const now = new Date();
-        return now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
+
+        container.appendChild(card);
+      });
+    }
+
+    // ACCURATE TICKING SIMULATION & TIME FUNCTIONS
+    function getCurrentTotalSeconds() {
+      if (isSimulating) {
+        const elapsedRealSecs = Math.floor((Date.now() - simStartWallTime) / 1000);
+        return simBaseTotalSecs + elapsedRealSecs;
       }
+      const now = new Date();
+      return now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
+    }
 
-      function getSimulatedDate() {
-        const d = new Date();
-        if (simDay !== null) {
-          const curDay = d.getDay();
-          const diff = simDay - curDay;
-          d.setDate(d.getDate() + diff);
-        }
-        return d;
+    function getSimulatedDate() {
+      const d = new Date();
+      if (simDay !== null) {
+        const curDay = d.getDay();
+        const diff = simDay - curDay;
+        d.setDate(d.getDate() + diff);
       }
+      return d;
+    }
 
-      // Opens simulator and dynamically populates clean buttons for the selected day
-      function openSimulatorModal() {
-        const currentDay = viewingDate.getDay() === 0 ? 5 : viewingDate.getDay();
-        document.getElementById('simDaySelect').value = String(currentDay);
-        renderSimulatorButtons();
-        openModal('simulatorModal');
-      }
+    // Opens simulator and dynamically populates clean buttons for the selected day
+    function openSimulatorModal() {
+      const currentDay = viewingDate.getDay() === 0 ? 5 : viewingDate.getDay();
+      document.getElementById('simDaySelect').value = String(currentDay);
+      renderSimulatorButtons();
+      openModal('simulatorModal');
+    }
 
-      // DYNAMIC SIMULATOR BUTTON GENERATOR (Matches current day & selected batch with ZERO MIXING!)
-      function renderSimulatorButtons() {
-        const grid = document.getElementById('simDynamicGrid');
-        grid.innerHTML = '';
+    // DYNAMIC SIMULATOR BUTTON GENERATOR (Matches current day & selected batch with ZERO MIXING!)
+    function renderSimulatorButtons() {
+      const grid = document.getElementById('simDynamicGrid');
+      grid.innerHTML = '';
 
-        const dayNum = parseInt(document.getElementById('simDaySelect').value) || 5;
-        const slots = weeklySchedule[dayNum] || [];
+      const dayNum = parseInt(document.getElementById('simDaySelect').value) || 5;
+      const slots = weeklySchedule[dayNum] || [];
 
-        periods.forEach((p, idx) => {
-          const s = slots[idx];
-          if (!s) return;
+      periods.forEach((p, idx) => {
+        const s = slots[idx];
+        if (!s) return;
 
-          let title = s.subject;
-          let room = s.room;
-          let batchPrefix = selectedBatch === 'Set-B' ? '🅱️ Set-B' : '🅰️ Set-A';
+        let title = s.subject;
+        let room = s.room;
+        let batchPrefix = selectedBatch === 'Set-B' ? '🅱️ Set-B' : '🅰️ Set-A';
 
-          if (s.isSplit) {
-            if (selectedBatch === 'Set-B') {
-              title = s.setB.subject;
-              room = s.setB.room;
-            } else {
-              title = s.setA.subject;
-              room = s.setA.room;
-            }
+        if (s.isSplit) {
+          if (selectedBatch === 'Set-B') {
+            title = s.setB.subject;
+            room = s.setB.room;
+          } else {
+            title = s.setA.subject;
+            room = s.setA.room;
           }
+        }
 
-          const btn = document.createElement('button');
-          btn.className = 'sim-jump-btn';
+        const btn = document.createElement('button');
+        btn.className = 'sim-jump-btn';
 
-          const h = p.simMid.h;
-          const m = p.simMid.m;
-          const h12 = h > 12 ? h - 12 : h;
-          const ampm = h >= 12 ? 'PM' : 'AM';
-          const timeDisplay = `${String(h12).padStart(2, '0')}:${String(m).padStart(2, '0')} ${ampm}`;
+        const h = p.simMid.h;
+        const m = p.simMid.m;
+        const h12 = h > 12 ? h - 12 : h;
+        const ampm = h >= 12 ? 'PM' : 'AM';
+        const timeDisplay = `${String(h12).padStart(2, '0')}:${String(m).padStart(2, '0')} ${ampm}`;
 
-          btn.innerHTML = `
+        btn.innerHTML = `
           <span>${p.id === 'L4' ? '🍱 Lunch' : '🔴 ' + p.id} (${timeDisplay})</span>
           <span class="sim-btn-sub">${batchPrefix}: ${title} ${room !== '-' ? '(' + room + ')' : ''}</span>
         `;
 
-          btn.onclick = () => {
-            simulateTime(h, m, dayNum);
-            closeModal('simulatorModal'); // AUTO-CLOSE MODAL!
-          };
+        btn.onclick = () => {
+          simulateTime(h, m, dayNum);
+          closeModal('simulatorModal'); // AUTO-CLOSE MODAL!
+        };
 
-          grid.appendChild(btn);
+        grid.appendChild(btn);
+      });
+    }
+
+    // Start Simulation with Real-time Clock Ticking
+    function simulateTime(hours, mins, dayNum = null) {
+      isSimulating = true;
+      simBaseTotalSecs = hours * 3600 + mins * 60;
+      simStartWallTime = Date.now();
+
+      if (dayNum !== null) simDay = parseInt(dayNum);
+      else simDay = 5; // Default Friday
+
+      document.getElementById('simBanner').style.display = 'flex';
+
+      const simulatedDate = getSimulatedDate();
+      selectDay(simulatedDate);
+      updateLiveState();
+
+      const h12 = hours > 12 ? hours - 12 : (hours === 0 ? 12 : hours);
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      showToast(`Simulating ${dayNames[simDay]} ${h12}:${String(mins).padStart(2, '0')} ${ampm}`);
+
+      document.getElementById('circularHeroCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function applyCustomSimTime() {
+      const tVal = document.getElementById('simCustomTime').value;
+      const dVal = document.getElementById('simDaySelect').value;
+      if (!tVal) return;
+      const [h, m] = tVal.split(':').map(Number);
+      simulateTime(h, m, dVal);
+      closeModal('simulatorModal');
+    }
+
+    function stopSimulation() {
+      isSimulating = false;
+      simBaseTotalSecs = null;
+      simStartWallTime = null;
+      simDay = null;
+      document.getElementById('simBanner').style.display = 'none';
+      selectDay(new Date());
+      updateLiveState();
+      showToast('Returned to real live clock');
+    }
+
+    function setTextIfChanged(el, text) {
+      if (el && el.textContent !== text) {
+        el.textContent = text;
+      }
+    }
+
+    let _liveDom = null;
+
+    // REAL-TIME ENGINE: CLOCK, 5-MIN PRE-CLASS ALERTS & CIRCULAR PROGRESS RING
+    function updateLiveState(forceDomSync = false) {
+      if (!_liveDom) {
+        _liveDom = {
+          liveClock: document.getElementById('liveClock'),
+          simTimeLabel: document.getElementById('simTimeLabel'),
+          hero: document.getElementById('circularHeroCard'),
+          heroRing: document.getElementById('heroProgressRing'),
+          circleTimer: document.getElementById('circleTimer'),
+          circleTimerSub: document.getElementById('circleTimerSub'),
+          heroSlotBadge: document.getElementById('heroSlotBadge'),
+          heroBatchBadge: document.getElementById('heroBatchBadge'),
+          heroSubjectName: document.getElementById('heroSubjectName'),
+          heroRoomBadge: document.getElementById('heroRoomBadge'),
+          heroFacultyBadge: document.getElementById('heroFacultyBadge'),
+          orbitStatusTxt: document.getElementById('orbitStatusTxt')
+        };
+      }
+      const { hero, heroRing, circleTimer, circleTimerSub, heroSlotBadge, heroBatchBadge, heroSubjectName, heroRoomBadge, heroFacultyBadge, orbitStatusTxt, liveClock, simTimeLabel } = _liveDom;
+
+      const totalSecs = getCurrentTotalSeconds();
+      const currentH = Math.floor(totalSecs / 3600) % 24;
+      const currentM = Math.floor((totalSecs % 3600) / 60);
+      const currentS = totalSecs % 60;
+
+      const currentMinutes = currentH * 60 + currentM;
+      const now = isSimulating ? getSimulatedDate() : new Date();
+      const currentDay = now.getDay();
+
+      const h12 = currentH % 12 === 0 ? 12 : currentH % 12;
+      const ampm = currentH >= 12 ? 'PM' : 'AM';
+      const clockStr = `${String(h12).padStart(2, '0')}:${String(currentM).padStart(2, '0')}:${String(currentS).padStart(2, '0')} ${ampm}`;
+      setTextIfChanged(liveClock, clockStr);
+
+      if (isSimulating) {
+        setTextIfChanged(simTimeLabel, `${clockStr} (${dayNames[currentDay]})`);
+      }
+
+      const isViewingToday = (viewingDate.toDateString() === now.toDateString());
+      const minuteKey = `${currentDay}_${currentMinutes}_${viewingDate.toDateString()}_${selectedBatch}`;
+      const minuteChanged = forceDomSync || (minuteKey !== lastRenderedMinuteKey);
+
+      if (minuteChanged) {
+        lastRenderedMinuteKey = minuteKey;
+        updateDateDisplay();
+
+        // Update Orbit Stepper Dots (L1 to L8) only once per minute or on state change
+        document.querySelectorAll('.orbit-dot').forEach((dot, idx) => {
+          const pCfg = periods[idx];
+          const isPeriodLive = isViewingToday && (currentMinutes >= pCfg.startMins && currentMinutes < pCfg.endMins && currentDay !== 0);
+          const isPeriodDone = isViewingToday && (currentMinutes >= pCfg.endMins && currentDay !== 0);
+
+          dot.classList.toggle('active-spinning', isPeriodLive);
+          dot.classList.toggle('completed', isPeriodDone);
         });
-      }
 
-      // Start Simulation with Real-time Clock Ticking
-      function simulateTime(hours, mins, dayNum = null) {
-        isSimulating = true;
-        simBaseTotalSecs = hours * 3600 + mins * 60;
-        simStartWallTime = Date.now();
-
-        if (dayNum !== null) simDay = parseInt(dayNum);
-        else simDay = 5; // Default Friday
-
-        document.getElementById('simBanner').style.display = 'flex';
-
-        const simulatedDate = getSimulatedDate();
-        selectDay(simulatedDate);
-        updateLiveState();
-
-        const h12 = hours > 12 ? hours - 12 : (hours === 0 ? 12 : hours);
-        const ampm = hours >= 12 ? 'PM' : 'AM';
-        showToast(`Simulating ${dayNames[simDay]} ${h12}:${String(mins).padStart(2, '0')} ${ampm}`);
-
-        document.getElementById('circularHeroCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-
-      function applyCustomSimTime() {
-        const tVal = document.getElementById('simCustomTime').value;
-        const dVal = document.getElementById('simDaySelect').value;
-        if (!tVal) return;
-        const [h, m] = tVal.split(':').map(Number);
-        simulateTime(h, m, dVal);
-        closeModal('simulatorModal');
-      }
-
-      function stopSimulation() {
-        isSimulating = false;
-        simBaseTotalSecs = null;
-        simStartWallTime = null;
-        simDay = null;
-        document.getElementById('simBanner').style.display = 'none';
-        selectDay(new Date());
-        updateLiveState();
-        showToast('Returned to real live clock');
-      }
-
-      function setTextIfChanged(el, text) {
-        if (el && el.textContent !== text) {
-          el.textContent = text;
-        }
-      }
-
-      let _liveDom = null;
-
-      // REAL-TIME ENGINE: CLOCK, 5-MIN PRE-CLASS ALERTS & CIRCULAR PROGRESS RING
-      function updateLiveState(forceDomSync = false) {
-        if (!_liveDom) {
-          _liveDom = {
-            liveClock: document.getElementById('liveClock'),
-            simTimeLabel: document.getElementById('simTimeLabel'),
-            hero: document.getElementById('circularHeroCard'),
-            heroRing: document.getElementById('heroProgressRing'),
-            circleTimer: document.getElementById('circleTimer'),
-            circleTimerSub: document.getElementById('circleTimerSub'),
-            heroSlotBadge: document.getElementById('heroSlotBadge'),
-            heroBatchBadge: document.getElementById('heroBatchBadge'),
-            heroSubjectName: document.getElementById('heroSubjectName'),
-            heroRoomBadge: document.getElementById('heroRoomBadge'),
-            heroFacultyBadge: document.getElementById('heroFacultyBadge'),
-            orbitStatusTxt: document.getElementById('orbitStatusTxt')
-          };
-        }
-        const { hero, heroRing, circleTimer, circleTimerSub, heroSlotBadge, heroBatchBadge, heroSubjectName, heroRoomBadge, heroFacultyBadge, orbitStatusTxt, liveClock, simTimeLabel } = _liveDom;
-
-        const totalSecs = getCurrentTotalSeconds();
-        const currentH = Math.floor(totalSecs / 3600) % 24;
-        const currentM = Math.floor((totalSecs % 3600) / 60);
-        const currentS = totalSecs % 60;
-
-        const currentMinutes = currentH * 60 + currentM;
-        const now = isSimulating ? getSimulatedDate() : new Date();
-        const currentDay = now.getDay();
-
-        const h12 = currentH % 12 === 0 ? 12 : currentH % 12;
-        const ampm = currentH >= 12 ? 'PM' : 'AM';
-        const clockStr = `${String(h12).padStart(2, '0')}:${String(currentM).padStart(2, '0')}:${String(currentS).padStart(2, '0')} ${ampm}`;
-        setTextIfChanged(liveClock, clockStr);
-
-        if (isSimulating) {
-          setTextIfChanged(simTimeLabel, `${clockStr} (${dayNames[currentDay]})`);
-        }
-
-        const isViewingToday = (viewingDate.toDateString() === now.toDateString());
-        const minuteKey = `${currentDay}_${currentMinutes}_${viewingDate.toDateString()}_${selectedBatch}`;
-        const minuteChanged = forceDomSync || (minuteKey !== lastRenderedMinuteKey);
-
-        if (minuteChanged) {
-          lastRenderedMinuteKey = minuteKey;
-          updateDateDisplay();
-
-          // Update Orbit Stepper Dots (L1 to L8) only once per minute or on state change
-          document.querySelectorAll('.orbit-dot').forEach((dot, idx) => {
-            const pCfg = periods[idx];
-            const isPeriodLive = isViewingToday && (currentMinutes >= pCfg.startMins && currentMinutes < pCfg.endMins && currentDay !== 0);
-            const isPeriodDone = isViewingToday && (currentMinutes >= pCfg.endMins && currentDay !== 0);
-
-            dot.classList.toggle('active-spinning', isPeriodLive);
-            dot.classList.toggle('completed', isPeriodDone);
+        // Sync active glowing border in today's card list only once per minute
+        if (isViewingToday) {
+          document.querySelectorAll('.lecture-card').forEach(card => {
+            const pId = card.dataset.periodId;
+            const pCfg = periods.find(p => p.id === pId);
+            if (pCfg) {
+              const isCardLive = (currentMinutes >= pCfg.startMins && currentMinutes < pCfg.endMins);
+              const isCardDone = (currentMinutes >= pCfg.endMins);
+              card.classList.toggle('is-live', isCardLive);
+              card.classList.toggle('is-completed', isCardDone);
+            }
           });
+        }
+      }
 
-          // Sync active glowing border in today's card list only once per minute
-          if (isViewingToday) {
-            document.querySelectorAll('.lecture-card').forEach(card => {
-              const pId = card.dataset.periodId;
-              const pCfg = periods.find(p => p.id === pId);
-              if (pCfg) {
-                const isCardLive = (currentMinutes >= pCfg.startMins && currentMinutes < pCfg.endMins);
-                const isCardDone = (currentMinutes >= pCfg.endMins);
-                card.classList.toggle('is-live', isCardLive);
-                card.classList.toggle('is-completed', isCardDone);
-              }
-            });
+      if (!isViewingToday) {
+        const tomorrow = new Date(now);
+        tomorrow.setDate(now.getDate() + 1);
+        if (viewingDate.toDateString() === tomorrow.toDateString()) {
+          setTextIfChanged(orbitStatusTxt, `Tomorrow's 8 Periods`);
+        } else {
+          setTextIfChanged(orbitStatusTxt, `${dayNames[viewingDate.getDay()]}'s 8 Periods`);
+        }
+      }
+
+      // Sunday & Holiday Check
+      if (isTodayHoliday(now)) {
+        hero.classList.remove('is-active-live');
+        heroRing.style.strokeDashoffset = CIRCLE_CIRCUMFERENCE;
+        setTextIfChanged(circleTimer, 'OFF');
+        setTextIfChanged(circleTimerSub, currentDay === 0 ? 'SUNDAY' : 'HOLIDAY');
+        setTextIfChanged(heroSlotBadge, currentDay === 0 ? 'Weekend' : 'Holiday');
+        setTextIfChanged(heroBatchBadge, 'College Off');
+        setTextIfChanged(heroSubjectName, currentDay === 0 ? '🏖️ College Off (Sunday)' : '🏖️ College Off (Holiday)');
+        setTextIfChanged(heroRoomBadge, 'No Lectures Today');
+        if (heroFacultyBadge) heroFacultyBadge.style.display = 'none';
+        setTextIfChanged(orbitStatusTxt, 'College Closed');
+        return;
+      }
+
+      const todaysSlots = weeklySchedule[currentDay] || [];
+
+      // Check for 5-Minute Pre-Class Notification (fires when next class is <= 5 mins away)
+      for (let i = 0; i < periods.length; i++) {
+        if (i === 3) continue; // Skip Lunch L4
+        const pStartSecs = periods[i].startMins * 60;
+        const secsUntilStart = pStartSecs - totalSecs;
+        if (secsUntilStart > 0 && secsUntilStart <= 300) {
+          const notifKey = `${now.toDateString()}_${periods[i].id}_${selectedBatch}`;
+          if (lastFiveMinNotifiedKey !== notifKey) {
+            lastFiveMinNotifiedKey = notifKey;
+            localStorage.setItem('secD_last_5m_notif', notifKey);
+            dispatchClassNotification(periods[i], todaysSlots[i]);
           }
+          break;
+        }
+      }
+
+      // Find Ongoing Period
+      let activeIndex = -1;
+      for (let i = 0; i < periods.length; i++) {
+        if (currentMinutes >= periods[i].startMins && currentMinutes < periods[i].endMins) {
+          activeIndex = i;
+          break;
+        }
+      }
+
+      if (activeIndex !== -1) {
+        // ONGOING LECTURE DETECTED!
+        const p = periods[activeIndex];
+        const s = todaysSlots[activeIndex];
+
+        hero.classList.add('is-active-live');
+        setTextIfChanged(heroSlotBadge, `${p.id} • ${p.timing}`);
+        if (isViewingToday) setTextIfChanged(orbitStatusTxt, `Period ${activeIndex + 1} of 8 (Live)`);
+
+        if (lastNotifiedPeriod !== p.id) {
+          lastNotifiedPeriod = p.id;
         }
 
-        if (!isViewingToday) {
-          const tomorrow = new Date(now);
-          tomorrow.setDate(now.getDate() + 1);
-          if (viewingDate.toDateString() === tomorrow.toDateString()) {
-            setTextIfChanged(orbitStatusTxt, `Tomorrow's 8 Periods`);
+        // STRICT UNMIXED DISPLAY BASED ON BATCH
+        let subj = s.subject;
+        let room = s.room;
+        let batchTag = '';
+        let liveFaculty = '';
+
+        if (s.isSplit) {
+          if (selectedBatch === 'Set-A') {
+            subj = s.setA.subject;
+            room = s.setA.room;
+            liveFaculty = getFacultyForSubject(s.setA.subject);
+            batchTag = '🅰️ Set-A Live';
+            heroBatchBadge.className = 'hero-batch-badge badge-set-a';
+          } else if (selectedBatch === 'Set-B') {
+            subj = s.setB.subject;
+            room = s.setB.room;
+            liveFaculty = getFacultyForSubject(s.setB.subject);
+            batchTag = '🅱️ Set-B Live';
+            heroBatchBadge.className = 'hero-batch-badge badge-set-b';
           } else {
-            setTextIfChanged(orbitStatusTxt, `${dayNames[viewingDate.getDay()]}'s 8 Periods`);
+            subj = `A: ${s.setA.subject} | B: ${s.setB.subject}`;
+            room = `A: ${s.setA.room} | B: ${s.setB.room}`;
+            liveFaculty = getFacultyForSubject(s.setA.subject) || getFacultyForSubject(s.setB.subject);
+            batchTag = '👥 Split Live';
+            heroBatchBadge.className = 'hero-batch-badge badge-set-all';
+          }
+        } else {
+          subj = s.subject;
+          room = s.room;
+          const isLunchLive = subj.toLowerCase().includes('lunch') || p.id === 'L4';
+          liveFaculty = isLunchLive ? '' : getFacultyForSubject(s.subject);
+          if (isLunchLive) {
+            room = 'Mess';
+            batchTag = '';
+          } else if (selectedBatch === 'Set-A') {
+            batchTag = '🅰️ Set-A (Theory)';
+            heroBatchBadge.className = 'hero-batch-badge badge-set-a';
+          } else if (selectedBatch === 'Set-B') {
+            batchTag = '🅱️ Set-B (Theory)';
+            heroBatchBadge.className = 'hero-batch-badge badge-set-b';
+          } else {
+            batchTag = '👥 Common (Both Sets)';
+            heroBatchBadge.className = 'hero-batch-badge badge-set-all';
           }
         }
 
-        // Sunday & Holiday Check
-        if (isTodayHoliday(now)) {
-          hero.classList.remove('is-active-live');
+        setTextIfChanged(heroSubjectName, subj);
+        setTextIfChanged(heroRoomBadge, room !== '-' ? `📍 ${room}` : '📍 Campus / Common');
+        if (batchTag) {
+          setTextIfChanged(heroBatchBadge, batchTag);
+          heroBatchBadge.style.display = 'inline-flex';
+        } else {
+          heroBatchBadge.style.display = 'none';
+        }
+        if (heroFacultyBadge) {
+          if (liveFaculty) {
+            setTextIfChanged(heroFacultyBadge, `👨‍🏫 ${liveFaculty}`);
+            heroFacultyBadge.style.display = 'inline-flex';
+          } else {
+            heroFacultyBadge.style.display = 'none';
+          }
+        }
+
+        // REAL-TIME TICKING CIRCULAR RING MATH (Ticks second-by-second!)
+        const slotTotalSecs = (p.endMins - p.startMins) * 60;
+        const slotElapsedSecs = (currentMinutes - p.startMins) * 60 + currentS;
+        const slotRemainingSecs = Math.max(0, slotTotalSecs - slotElapsedSecs);
+
+        const progressFraction = Math.min(1, Math.max(0, slotElapsedSecs / slotTotalSecs));
+        const offset = CIRCLE_CIRCUMFERENCE * (1 - progressFraction);
+        heroRing.style.strokeDashoffset = offset;
+
+        // Countdown inside ring (MM:SS)
+        const remMins = Math.floor(slotRemainingSecs / 60);
+        const remSecs = slotRemainingSecs % 60;
+        setTextIfChanged(circleTimer, `${remMins}:${String(remSecs).padStart(2, '0')}`);
+        setTextIfChanged(circleTimerSub, 'LEFT');
+
+      } else {
+        // BREAK / BEFORE / AFTER
+        hero.classList.remove('is-active-live');
+        heroBatchBadge.style.display = 'inline-flex';
+
+        if (currentMinutes < periods[0].startMins) {
+          const secsToFirst = periods[0].startMins * 60 - totalSecs;
+          const diffMins = Math.ceil(secsToFirst / 60);
+          const firstSlot = todaysSlots[0];
+          const firstInfo = resolveSlotForBatch(firstSlot, selectedBatch);
+          const firstFac = firstInfo ? getFacultyForSubject(firstInfo.subject.replace(/^A:\s*/, '').split('|')[0].trim()) : '';
+
           heroRing.style.strokeDashoffset = CIRCLE_CIRCUMFERENCE;
-          setTextIfChanged(circleTimer, 'OFF');
-          setTextIfChanged(circleTimerSub, currentDay === 0 ? 'SUNDAY' : 'HOLIDAY');
-          setTextIfChanged(heroSlotBadge, currentDay === 0 ? 'Weekend' : 'Holiday');
-          setTextIfChanged(heroBatchBadge, 'College Off');
-          setTextIfChanged(heroSubjectName, currentDay === 0 ? '🏖️ College Off (Sunday)' : '🏖️ College Off (Holiday)');
-          setTextIfChanged(heroRoomBadge, 'No Lectures Today');
-          if (heroFacultyBadge) heroFacultyBadge.style.display = 'none';
-          setTextIfChanged(orbitStatusTxt, 'College Closed');
-          return;
-        }
-
-        const todaysSlots = weeklySchedule[currentDay] || [];
-
-        // Check for 5-Minute Pre-Class Notification (fires when next class is <= 5 mins away)
-        for (let i = 0; i < periods.length; i++) {
-          if (i === 3) continue; // Skip Lunch L4
-          const pStartSecs = periods[i].startMins * 60;
-          const secsUntilStart = pStartSecs - totalSecs;
-          if (secsUntilStart > 0 && secsUntilStart <= 300) {
-            const notifKey = `${now.toDateString()}_${periods[i].id}_${selectedBatch}`;
-            if (lastFiveMinNotifiedKey !== notifKey) {
-              lastFiveMinNotifiedKey = notifKey;
-              localStorage.setItem('secD_last_5m_notif', notifKey);
-              dispatchClassNotification(periods[i], todaysSlots[i]);
-            }
-            break;
-          }
-        }
-
-        // Find Ongoing Period
-        let activeIndex = -1;
-        for (let i = 0; i < periods.length; i++) {
-          if (currentMinutes >= periods[i].startMins && currentMinutes < periods[i].endMins) {
-            activeIndex = i;
-            break;
-          }
-        }
-
-        if (activeIndex !== -1) {
-          // ONGOING LECTURE DETECTED!
-          const p = periods[activeIndex];
-          const s = todaysSlots[activeIndex];
-
-          hero.classList.add('is-active-live');
-          setTextIfChanged(heroSlotBadge, `${p.id} • ${p.timing}`);
-          if (isViewingToday) setTextIfChanged(orbitStatusTxt, `Period ${activeIndex + 1} of 8 (Live)`);
-
-          if (lastNotifiedPeriod !== p.id) {
-            lastNotifiedPeriod = p.id;
-          }
-
-          // STRICT UNMIXED DISPLAY BASED ON BATCH
-          let subj = s.subject;
-          let room = s.room;
-          let batchTag = '';
-          let liveFaculty = '';
-
-          if (s.isSplit) {
-            if (selectedBatch === 'Set-A') {
-              subj = s.setA.subject;
-              room = s.setA.room;
-              liveFaculty = getFacultyForSubject(s.setA.subject);
-              batchTag = '🅰️ Set-A Live';
-              heroBatchBadge.className = 'hero-batch-badge badge-set-a';
-            } else if (selectedBatch === 'Set-B') {
-              subj = s.setB.subject;
-              room = s.setB.room;
-              liveFaculty = getFacultyForSubject(s.setB.subject);
-              batchTag = '🅱️ Set-B Live';
-              heroBatchBadge.className = 'hero-batch-badge badge-set-b';
-            } else {
-              subj = `A: ${s.setA.subject} | B: ${s.setB.subject}`;
-              room = `A: ${s.setA.room} | B: ${s.setB.room}`;
-              liveFaculty = getFacultyForSubject(s.setA.subject) || getFacultyForSubject(s.setB.subject);
-              batchTag = '👥 Split Live';
-              heroBatchBadge.className = 'hero-batch-badge badge-set-all';
-            }
-          } else {
-            subj = s.subject;
-            room = s.room;
-            const isLunchLive = subj.toLowerCase().includes('lunch') || p.id === 'L4';
-            liveFaculty = isLunchLive ? '' : getFacultyForSubject(s.subject);
-            if (isLunchLive) {
-              room = 'Mess';
-              batchTag = '';
-            } else if (selectedBatch === 'Set-A') {
-              batchTag = '🅰️ Set-A (Theory)';
-              heroBatchBadge.className = 'hero-batch-badge badge-set-a';
-            } else if (selectedBatch === 'Set-B') {
-              batchTag = '🅱️ Set-B (Theory)';
-              heroBatchBadge.className = 'hero-batch-badge badge-set-b';
-            } else {
-              batchTag = '👥 Common (Both Sets)';
-              heroBatchBadge.className = 'hero-batch-badge badge-set-all';
-            }
-          }
-
-          setTextIfChanged(heroSubjectName, subj);
-          setTextIfChanged(heroRoomBadge, room !== '-' ? `📍 ${room}` : '📍 Campus / Common');
-          if (batchTag) {
-            setTextIfChanged(heroBatchBadge, batchTag);
-            heroBatchBadge.style.display = 'inline-flex';
-          } else {
-            heroBatchBadge.style.display = 'none';
-          }
-          if (heroFacultyBadge) {
-            if (liveFaculty) {
-              setTextIfChanged(heroFacultyBadge, `👨‍🏫 ${liveFaculty}`);
+          if (secsToFirst <= 300 && firstInfo) {
+            const rmM = Math.floor(secsToFirst / 60);
+            const rmS = secsToFirst % 60;
+            setTextIfChanged(circleTimer, `${rmM}:${String(rmS).padStart(2, '0')}`);
+            setTextIfChanged(circleTimerSub, 'IN 5 MINS');
+            setTextIfChanged(heroSlotBadge, `⏰ L1 Starting Soon`);
+            setTextIfChanged(heroSubjectName, firstInfo.subject);
+            setTextIfChanged(heroRoomBadge, `📍 ${firstInfo.room}`);
+            if (heroFacultyBadge && firstFac) {
+              setTextIfChanged(heroFacultyBadge, `👨‍🏫 ${firstFac}`);
               heroFacultyBadge.style.display = 'inline-flex';
-            } else {
+            }
+          } else {
+            setTextIfChanged(circleTimer, `${diffMins}m`);
+            setTextIfChanged(circleTimerSub, 'STARTS IN');
+            setTextIfChanged(heroSlotBadge, 'Pre-College');
+            setTextIfChanged(heroSubjectName, firstInfo ? `Next (09:00): ${firstInfo.subject}` : '🌅 Classes start at 09:00 AM');
+            setTextIfChanged(heroRoomBadge, firstInfo ? `📍 ${firstInfo.room}` : 'First Bell at 09:00');
+            if (heroFacultyBadge && firstFac) {
+              setTextIfChanged(heroFacultyBadge, `👨‍🏫 ${firstFac}`);
+              heroFacultyBadge.style.display = 'inline-flex';
+            } else if (heroFacultyBadge) {
               heroFacultyBadge.style.display = 'none';
             }
           }
-
-          // REAL-TIME TICKING CIRCULAR RING MATH (Ticks second-by-second!)
-          const slotTotalSecs = (p.endMins - p.startMins) * 60;
-          const slotElapsedSecs = (currentMinutes - p.startMins) * 60 + currentS;
-          const slotRemainingSecs = Math.max(0, slotTotalSecs - slotElapsedSecs);
-
-          const progressFraction = Math.min(1, Math.max(0, slotElapsedSecs / slotTotalSecs));
-          const offset = CIRCLE_CIRCUMFERENCE * (1 - progressFraction);
-          heroRing.style.strokeDashoffset = offset;
-
-          // Countdown inside ring (MM:SS)
-          const remMins = Math.floor(slotRemainingSecs / 60);
-          const remSecs = slotRemainingSecs % 60;
-          setTextIfChanged(circleTimer, `${remMins}:${String(remSecs).padStart(2, '0')}`);
-          setTextIfChanged(circleTimerSub, 'LEFT');
-
-        } else {
-          // BREAK / BEFORE / AFTER
-          hero.classList.remove('is-active-live');
-          heroBatchBadge.style.display = 'inline-flex';
-
-          if (currentMinutes < periods[0].startMins) {
-            const secsToFirst = periods[0].startMins * 60 - totalSecs;
-            const diffMins = Math.ceil(secsToFirst / 60);
-            const firstSlot = todaysSlots[0];
-            const firstInfo = resolveSlotForBatch(firstSlot, selectedBatch);
-            const firstFac = firstInfo ? getFacultyForSubject(firstInfo.subject.replace(/^A:\s*/, '').split('|')[0].trim()) : '';
-
-            heroRing.style.strokeDashoffset = CIRCLE_CIRCUMFERENCE;
-            if (secsToFirst <= 300 && firstInfo) {
-              const rmM = Math.floor(secsToFirst / 60);
-              const rmS = secsToFirst % 60;
-              setTextIfChanged(circleTimer, `${rmM}:${String(rmS).padStart(2, '0')}`);
-              setTextIfChanged(circleTimerSub, 'IN 5 MINS');
-              setTextIfChanged(heroSlotBadge, `⏰ L1 Starting Soon`);
-              setTextIfChanged(heroSubjectName, firstInfo.subject);
-              setTextIfChanged(heroRoomBadge, `📍 ${firstInfo.room}`);
-              if (heroFacultyBadge && firstFac) {
-                setTextIfChanged(heroFacultyBadge, `👨‍🏫 ${firstFac}`);
-                heroFacultyBadge.style.display = 'inline-flex';
-              }
-            } else {
-              setTextIfChanged(circleTimer, `${diffMins}m`);
-              setTextIfChanged(circleTimerSub, 'STARTS IN');
-              setTextIfChanged(heroSlotBadge, 'Pre-College');
-              setTextIfChanged(heroSubjectName, firstInfo ? `Next (09:00): ${firstInfo.subject}` : '🌅 Classes start at 09:00 AM');
-              setTextIfChanged(heroRoomBadge, firstInfo ? `📍 ${firstInfo.room}` : 'First Bell at 09:00');
-              if (heroFacultyBadge && firstFac) {
-                setTextIfChanged(heroFacultyBadge, `👨‍🏫 ${firstFac}`);
-                heroFacultyBadge.style.display = 'inline-flex';
-              } else if (heroFacultyBadge) {
-                heroFacultyBadge.style.display = 'none';
-              }
-            }
-            if (selectedBatch === 'ALL' || selectedBatch === 'Combined' || selectedBatch === 'Combine') {
-              setTextIfChanged(heroBatchBadge, 'Set A+B');
-              heroBatchBadge.className = 'hero-batch-badge badge-set-all';
-            } else if (selectedBatch === 'Set-B') {
-              setTextIfChanged(heroBatchBadge, 'Set-B');
-              heroBatchBadge.className = 'hero-batch-badge badge-set-b';
-            } else {
-              setTextIfChanged(heroBatchBadge, 'Set-A');
-              heroBatchBadge.className = 'hero-batch-badge badge-set-a';
-            }
-            if (isViewingToday) setTextIfChanged(orbitStatusTxt, 'Starts at 09:00 AM');
-
-          } else if (currentMinutes >= periods[periods.length - 1].endMins) {
-            if (heroFacultyBadge) heroFacultyBadge.style.display = 'none';
-            heroRing.style.strokeDashoffset = 0; // 100% full
-            setTextIfChanged(circleTimer, 'DONE');
-            setTextIfChanged(circleTimerSub, '8/8 OVER');
-            setTextIfChanged(heroSlotBadge, 'Dismissed');
-            if (selectedBatch === 'ALL' || selectedBatch === 'Combined' || selectedBatch === 'Combine') {
-              setTextIfChanged(heroBatchBadge, 'Set A+B');
-              heroBatchBadge.className = 'hero-batch-badge badge-set-all';
-            } else if (selectedBatch === 'Set-B') {
-              setTextIfChanged(heroBatchBadge, 'Set-B Done');
-              heroBatchBadge.className = 'hero-batch-badge badge-set-b';
-            } else {
-              setTextIfChanged(heroBatchBadge, 'Set-A Done');
-              heroBatchBadge.className = 'hero-batch-badge badge-set-a';
-            }
-            setTextIfChanged(heroSubjectName, '🎉 All 8 lectures completed for today!');
-            setTextIfChanged(heroRoomBadge, 'See you tomorrow!');
-            if (isViewingToday) setTextIfChanged(orbitStatusTxt, 'All 8 Periods Over');
-
+          if (selectedBatch === 'ALL' || selectedBatch === 'Combined' || selectedBatch === 'Combine') {
+            setTextIfChanged(heroBatchBadge, 'Set A+B');
+            heroBatchBadge.className = 'hero-batch-badge badge-set-all';
+          } else if (selectedBatch === 'Set-B') {
+            setTextIfChanged(heroBatchBadge, 'Set-B');
+            heroBatchBadge.className = 'hero-batch-badge badge-set-b';
           } else {
-            // Passing break
-            let nextPIdx = periods.findIndex(p => p.startMins > currentMinutes);
-            if (nextPIdx !== -1) {
-              const nextP = periods[nextPIdx];
-              const nextSlot = todaysSlots[nextPIdx];
-              const nextInfo = resolveSlotForBatch(nextSlot, selectedBatch);
-              const nextFac = nextInfo ? getFacultyForSubject(nextInfo.subject.replace(/^A:\s*/, '').split('|')[0].trim()) : '';
-              const diffMins = nextP.startMins - currentMinutes;
-              heroRing.style.strokeDashoffset = CIRCLE_CIRCUMFERENCE * 0.5;
-              setTextIfChanged(circleTimer, `${diffMins}m`);
-              setTextIfChanged(circleTimerSub, 'NEXT IN');
-              setTextIfChanged(heroSlotBadge, `Next: ${nextP.id}`);
-              setTextIfChanged(heroBatchBadge, 'Starting Soon');
-              setTextIfChanged(heroSubjectName, nextInfo ? nextInfo.subject : `☕ Break • Next: ${nextP.id}`);
-              setTextIfChanged(heroRoomBadge, nextInfo ? `📍 ${nextInfo.room}` : `Starts at ${nextP.timing.split('-')[0].trim()}`);
-              if (heroFacultyBadge && nextFac) {
-                setTextIfChanged(heroFacultyBadge, `👨‍🏫 ${nextFac}`);
-                heroFacultyBadge.style.display = 'inline-flex';
-              } else if (heroFacultyBadge) {
-                heroFacultyBadge.style.display = 'none';
-              }
-              if (isViewingToday) setTextIfChanged(orbitStatusTxt, `Next: ${nextP.id}`);
-            }
+            setTextIfChanged(heroBatchBadge, 'Set-A');
+            heroBatchBadge.className = 'hero-batch-badge badge-set-a';
           }
-        }
-      }
+          if (isViewingToday) setTextIfChanged(orbitStatusTxt, 'Starts at 09:00 AM');
 
-      // Attendance & Modal Notes
-      function quickToggleAttendance(event, dateKey) {
-        triggerHaptic(15);
-        event.stopPropagation();
-        const current = attendanceMap[dateKey];
-        if (!current) {
-          attendanceMap[dateKey] = 'attended';
-          showToast('Marked as Attended ✓');
-        } else if (current === 'attended') {
-          attendanceMap[dateKey] = 'missed';
-          showToast('Marked as Missed ✗');
+        } else if (currentMinutes >= periods[periods.length - 1].endMins) {
+          if (heroFacultyBadge) heroFacultyBadge.style.display = 'none';
+          heroRing.style.strokeDashoffset = 0; // 100% full
+          setTextIfChanged(circleTimer, 'DONE');
+          setTextIfChanged(circleTimerSub, '8/8 OVER');
+          setTextIfChanged(heroSlotBadge, 'Dismissed');
+          if (selectedBatch === 'ALL' || selectedBatch === 'Combined' || selectedBatch === 'Combine') {
+            setTextIfChanged(heroBatchBadge, 'Set A+B');
+            heroBatchBadge.className = 'hero-batch-badge badge-set-all';
+          } else if (selectedBatch === 'Set-B') {
+            setTextIfChanged(heroBatchBadge, 'Set-B Done');
+            heroBatchBadge.className = 'hero-batch-badge badge-set-b';
+          } else {
+            setTextIfChanged(heroBatchBadge, 'Set-A Done');
+            heroBatchBadge.className = 'hero-batch-badge badge-set-a';
+          }
+          setTextIfChanged(heroSubjectName, '🎉 All 8 lectures completed for today!');
+          setTextIfChanged(heroRoomBadge, 'See you tomorrow!');
+          if (isViewingToday) setTextIfChanged(orbitStatusTxt, 'All 8 Periods Over');
+
         } else {
-          delete attendanceMap[dateKey];
-          showToast('Attendance Reset');
+          // Passing break
+          let nextPIdx = periods.findIndex(p => p.startMins > currentMinutes);
+          if (nextPIdx !== -1) {
+            const nextP = periods[nextPIdx];
+            const nextSlot = todaysSlots[nextPIdx];
+            const nextInfo = resolveSlotForBatch(nextSlot, selectedBatch);
+            const nextFac = nextInfo ? getFacultyForSubject(nextInfo.subject.replace(/^A:\s*/, '').split('|')[0].trim()) : '';
+            const diffMins = nextP.startMins - currentMinutes;
+            heroRing.style.strokeDashoffset = CIRCLE_CIRCUMFERENCE * 0.5;
+            setTextIfChanged(circleTimer, `${diffMins}m`);
+            setTextIfChanged(circleTimerSub, 'NEXT IN');
+            setTextIfChanged(heroSlotBadge, `Next: ${nextP.id}`);
+            setTextIfChanged(heroBatchBadge, 'Starting Soon');
+            setTextIfChanged(heroSubjectName, nextInfo ? nextInfo.subject : `☕ Break • Next: ${nextP.id}`);
+            setTextIfChanged(heroRoomBadge, nextInfo ? `📍 ${nextInfo.room}` : `Starts at ${nextP.timing.split('-')[0].trim()}`);
+            if (heroFacultyBadge && nextFac) {
+              setTextIfChanged(heroFacultyBadge, `👨‍🏫 ${nextFac}`);
+              heroFacultyBadge.style.display = 'inline-flex';
+            } else if (heroFacultyBadge) {
+              heroFacultyBadge.style.display = 'none';
+            }
+            if (isViewingToday) setTextIfChanged(orbitStatusTxt, `Next: ${nextP.id}`);
+          }
         }
-        localStorage.setItem('secD_attendance', JSON.stringify(attendanceMap));
-        renderTodayLectures(viewingDate);
+      }
+    }
+
+    // Attendance & Modal Notes
+    function quickToggleAttendance(event, dateKey) {
+      triggerHaptic(15);
+      event.stopPropagation();
+      const current = attendanceMap[dateKey];
+      if (!current) {
+        attendanceMap[dateKey] = 'attended';
+        showToast('Marked as Attended ✓');
+      } else if (current === 'attended') {
+        attendanceMap[dateKey] = 'missed';
+        showToast('Marked as Missed ✗');
+      } else {
+        delete attendanceMap[dateKey];
+        showToast('Attendance Reset');
+      }
+      localStorage.setItem('secD_attendance', JSON.stringify(attendanceMap));
+      renderTodayLectures(viewingDate);
+    }
+
+    function openPeriodModal(periodId, subject, room, timing, dateKey) {
+      activeModalSlotData = { periodId, subject, room, timing, dateKey };
+      document.getElementById('pmTitle').textContent = `${periodId} Details`;
+      document.getElementById('pmSubject').textContent = subject;
+      document.getElementById('pmRoom').textContent = room !== '-' ? `📍 ${room}` : '📍 Campus / Common';
+      document.getElementById('pmTime').textContent = `⏰ ${timing}`;
+      document.getElementById('pmSlot').textContent = periodId;
+
+      const fac = getFacultyForSubject(subject);
+      const pmFacBadge = document.getElementById('pmFaculty');
+      const pmFacGroup = document.getElementById('pmFacultyEditGroup');
+      const pmFacInput = document.getElementById('pmFacultyInput');
+      const isUnlocked = isFacultyAdminUnlocked();
+      if (fac) {
+        if (pmFacBadge) {
+          pmFacBadge.textContent = `👨‍🏫 ${fac}`;
+          pmFacBadge.style.display = 'inline-flex';
+        }
+        if (pmFacGroup) pmFacGroup.style.display = 'block';
+        if (pmFacInput) {
+          pmFacInput.value = fac;
+          if (isUnlocked) {
+            pmFacInput.removeAttribute('readonly');
+            pmFacInput.style.opacity = '1';
+          } else {
+            pmFacInput.setAttribute('readonly', 'true');
+            pmFacInput.style.opacity = '0.75';
+          }
+        }
+        const pmLockBadge = document.getElementById('pmFacLockBadge');
+        if (pmLockBadge) {
+          pmLockBadge.textContent = isUnlocked ? '🔓 Admin Unlocked' : '🔒 Admin Locked';
+          pmLockBadge.style.color = isUnlocked ? '#10b981' : '#f59e0b';
+        }
+      } else {
+        if (pmFacBadge) pmFacBadge.style.display = 'none';
+        if (pmFacGroup) pmFacGroup.style.display = 'none';
       }
 
-      function openPeriodModal(periodId, subject, room, timing, dateKey) {
-        activeModalSlotData = { periodId, subject, room, timing, dateKey };
-        document.getElementById('pmTitle').textContent = `${periodId} Details`;
-        document.getElementById('pmSubject').textContent = subject;
-        document.getElementById('pmRoom').textContent = room !== '-' ? `📍 ${room}` : '📍 Campus / Common';
-        document.getElementById('pmTime').textContent = `⏰ ${timing}`;
-        document.getElementById('pmSlot').textContent = periodId;
+      document.getElementById('pmNoteInput').value = classNotesMap[dateKey] || '';
+      openModal('periodModal');
+    }
 
-        const fac = getFacultyForSubject(subject);
-        const pmFacBadge = document.getElementById('pmFaculty');
-        const pmFacGroup = document.getElementById('pmFacultyEditGroup');
-        const pmFacInput = document.getElementById('pmFacultyInput');
-        const isUnlocked = isFacultyAdminUnlocked();
-        if (fac) {
-          if (pmFacBadge) {
-            pmFacBadge.textContent = `👨‍🏫 ${fac}`;
-            pmFacBadge.style.display = 'inline-flex';
+    function markAttendanceFromModal(status) {
+      if (!activeModalSlotData) return;
+      const { dateKey } = activeModalSlotData;
+      if (status === 'clear') {
+        delete attendanceMap[dateKey];
+        showToast('Attendance Reset');
+      } else {
+        attendanceMap[dateKey] = status;
+        showToast(`Marked ${status === 'attended' ? 'Attended ✓' : 'Missed ✗'}`);
+      }
+      localStorage.setItem('secD_attendance', JSON.stringify(attendanceMap));
+      renderTodayLectures(viewingDate);
+      closeModal('periodModal');
+    }
+
+    function saveClassNote() {
+      if (!activeModalSlotData) return;
+      const { dateKey, subject } = activeModalSlotData;
+      const note = document.getElementById('pmNoteInput').value.trim();
+      if (note) {
+        classNotesMap[dateKey] = note;
+      } else {
+        delete classNotesMap[dateKey];
+      }
+      localStorage.setItem('secD_notes', JSON.stringify(classNotesMap));
+
+      const pmFacInput = document.getElementById('pmFacultyInput');
+      if (pmFacInput && subject && getFacultyForSubject(subject)) {
+        if (isFacultyAdminUnlocked()) {
+          const newFac = pmFacInput.value.trim();
+          if (newFac) {
+            customFacultyMap[subject.trim()] = newFac;
+            localStorage.setItem('secD_faculty_map', JSON.stringify(customFacultyMap));
           }
-          if (pmFacGroup) pmFacGroup.style.display = 'block';
-          if (pmFacInput) {
-            pmFacInput.value = fac;
-            if (isUnlocked) {
-              pmFacInput.removeAttribute('readonly');
-              pmFacInput.style.opacity = '1';
+        }
+      }
+
+      renderTodayLectures(viewingDate);
+      updateLiveState(true);
+      showToast('✅ Note saved!');
+      closeModal('periodModal');
+    }
+
+    function handleDatePickerChange(val) {
+      if (!val) return;
+      const parts = val.split('-').map(Number);
+      if (parts.length !== 3 || isNaN(parts[0]) || isNaN(parts[1]) || isNaN(parts[2])) {
+        showToast('Invalid date format');
+        return;
+      }
+      const chosen = new Date(parts[0], parts[1] - 1, parts[2]);
+      selectDay(chosen);
+      closeModal('calendarModal');
+
+      const now = isSimulating ? getSimulatedDate() : new Date();
+      const tomorrow = new Date(now);
+      tomorrow.setDate(now.getDate() + 1);
+
+      if (chosen.toDateString() === now.toDateString()) {
+        showToast(`Viewing Today (${dayNames[chosen.getDay()]})`);
+      } else if (chosen.toDateString() === tomorrow.toDateString()) {
+        showToast(`Viewing Tomorrow (${dayNames[chosen.getDay()]})`);
+      } else {
+        showToast(`Viewing ${dayNames[chosen.getDay()]}, ${parts[2]} ${chosen.toLocaleString('default', { month: 'short' })}`);
+      }
+    }
+
+    // EXCEL CSV EXPORT (Fixed local date calculation)
+    function generateExcelCSV() {
+      const set = document.getElementById('exportBatchSelect').value;
+      const subject = document.getElementById('exportSubjectSelect').value;
+      const startStr = document.getElementById('exportStartDate').value;
+      const endStr = document.getElementById('exportEndDate').value;
+
+      if (!startStr || !endStr) {
+        alert('Please choose both Start and End Dates.');
+        return;
+      }
+
+      const start = new Date(startStr + 'T00:00:00');
+      const end = new Date(endStr + 'T23:59:59');
+      if (start > end) {
+        alert('Start Date must be before or equal to End Date.');
+        return;
+      }
+
+      const rows = [
+        ['Date (YYYY-MM-DD)', 'Day', 'Period Slot', 'Timing', 'Subject Name', 'Faculty Name', 'Batch / Set', 'Classroom', 'Count']
+      ];
+
+      let count = 0;
+      let curr = new Date(start);
+
+      while (curr <= end) {
+        const dayIdx = curr.getDay();
+        if (dayIdx !== 0) {
+          const y = curr.getFullYear();
+          const m = String(curr.getMonth() + 1).padStart(2, '0');
+          const d = String(curr.getDate()).padStart(2, '0');
+          const dateStr = `${y}-${m}-${d}`;
+
+          const slots = weeklySchedule[dayIdx] || [];
+          slots.forEach(s => {
+            if (s.isSplit) {
+              const matchedA = (set === 'ALL' || set === 'Set-A') &&
+                (subject === 'ALL' || s.setA.subject.toLowerCase().includes(subject.toLowerCase()));
+              if (matchedA) {
+                count++;
+                rows.push([
+                  dateStr,
+                  dayNames[dayIdx],
+                  s.period,
+                  s.timing,
+                  s.setA.subject,
+                  getFacultyForSubject(s.setA.subject) || '-',
+                  'Set-A',
+                  s.setA.room,
+                  1
+                ]);
+              }
+
+              const matchedB = (set === 'ALL' || set === 'Set-B') &&
+                (subject === 'ALL' || s.setB.subject.toLowerCase().includes(subject.toLowerCase()));
+              if (matchedB) {
+                count++;
+                rows.push([
+                  dateStr,
+                  dayNames[dayIdx],
+                  s.period,
+                  s.timing,
+                  s.setB.subject,
+                  getFacultyForSubject(s.setB.subject) || '-',
+                  'Set-B',
+                  s.setB.room,
+                  1
+                ]);
+              }
             } else {
-              pmFacInput.setAttribute('readonly', 'true');
-              pmFacInput.style.opacity = '0.75';
-            }
-          }
-          const pmLockBadge = document.getElementById('pmFacLockBadge');
-          if (pmLockBadge) {
-            pmLockBadge.textContent = isUnlocked ? '🔓 Admin Unlocked' : '🔒 Admin Locked';
-            pmLockBadge.style.color = isUnlocked ? '#10b981' : '#f59e0b';
-          }
-        } else {
-          if (pmFacBadge) pmFacBadge.style.display = 'none';
-          if (pmFacGroup) pmFacGroup.style.display = 'none';
-        }
-
-        document.getElementById('pmNoteInput').value = classNotesMap[dateKey] || '';
-        openModal('periodModal');
-      }
-
-      function markAttendanceFromModal(status) {
-        if (!activeModalSlotData) return;
-        const { dateKey } = activeModalSlotData;
-        if (status === 'clear') {
-          delete attendanceMap[dateKey];
-          showToast('Attendance Reset');
-        } else {
-          attendanceMap[dateKey] = status;
-          showToast(`Marked ${status === 'attended' ? 'Attended ✓' : 'Missed ✗'}`);
-        }
-        localStorage.setItem('secD_attendance', JSON.stringify(attendanceMap));
-        renderTodayLectures(viewingDate);
-        closeModal('periodModal');
-      }
-
-      function saveClassNote() {
-        if (!activeModalSlotData) return;
-        const { dateKey, subject } = activeModalSlotData;
-        const note = document.getElementById('pmNoteInput').value.trim();
-        if (note) {
-          classNotesMap[dateKey] = note;
-        } else {
-          delete classNotesMap[dateKey];
-        }
-        localStorage.setItem('secD_notes', JSON.stringify(classNotesMap));
-
-        const pmFacInput = document.getElementById('pmFacultyInput');
-        if (pmFacInput && subject && getFacultyForSubject(subject)) {
-          if (isFacultyAdminUnlocked()) {
-            const newFac = pmFacInput.value.trim();
-            if (newFac) {
-              customFacultyMap[subject.trim()] = newFac;
-              localStorage.setItem('secD_faculty_map', JSON.stringify(customFacultyMap));
-            }
-          }
-        }
-
-        renderTodayLectures(viewingDate);
-        updateLiveState(true);
-        showToast('✅ Note saved!');
-        closeModal('periodModal');
-      }
-
-      function handleDatePickerChange(val) {
-        if (!val) return;
-        const parts = val.split('-').map(Number);
-        if (parts.length !== 3 || isNaN(parts[0]) || isNaN(parts[1]) || isNaN(parts[2])) {
-          showToast('Invalid date format');
-          return;
-        }
-        const chosen = new Date(parts[0], parts[1] - 1, parts[2]);
-        selectDay(chosen);
-        closeModal('calendarModal');
-
-        const now = isSimulating ? getSimulatedDate() : new Date();
-        const tomorrow = new Date(now);
-        tomorrow.setDate(now.getDate() + 1);
-
-        if (chosen.toDateString() === now.toDateString()) {
-          showToast(`Viewing Today (${dayNames[chosen.getDay()]})`);
-        } else if (chosen.toDateString() === tomorrow.toDateString()) {
-          showToast(`Viewing Tomorrow (${dayNames[chosen.getDay()]})`);
-        } else {
-          showToast(`Viewing ${dayNames[chosen.getDay()]}, ${parts[2]} ${chosen.toLocaleString('default', { month: 'short' })}`);
-        }
-      }
-
-      // EXCEL CSV EXPORT (Fixed local date calculation)
-      function generateExcelCSV() {
-        const set = document.getElementById('exportBatchSelect').value;
-        const subject = document.getElementById('exportSubjectSelect').value;
-        const startStr = document.getElementById('exportStartDate').value;
-        const endStr = document.getElementById('exportEndDate').value;
-
-        if (!startStr || !endStr) {
-          alert('Please choose both Start and End Dates.');
-          return;
-        }
-
-        const start = new Date(startStr + 'T00:00:00');
-        const end = new Date(endStr + 'T23:59:59');
-        if (start > end) {
-          alert('Start Date must be before or equal to End Date.');
-          return;
-        }
-
-        const rows = [
-          ['Date (YYYY-MM-DD)', 'Day', 'Period Slot', 'Timing', 'Subject Name', 'Faculty Name', 'Batch / Set', 'Classroom', 'Count']
-        ];
-
-        let count = 0;
-        let curr = new Date(start);
-
-        while (curr <= end) {
-          const dayIdx = curr.getDay();
-          if (dayIdx !== 0) {
-            const y = curr.getFullYear();
-            const m = String(curr.getMonth() + 1).padStart(2, '0');
-            const d = String(curr.getDate()).padStart(2, '0');
-            const dateStr = `${y}-${m}-${d}`;
-
-            const slots = weeklySchedule[dayIdx] || [];
-            slots.forEach(s => {
-              if (s.isSplit) {
-                const matchedA = (set === 'ALL' || set === 'Set-A') &&
-                  (subject === 'ALL' || s.setA.subject.toLowerCase().includes(subject.toLowerCase()));
-                if (matchedA) {
-                  count++;
-                  rows.push([
-                    dateStr,
-                    dayNames[dayIdx],
-                    s.period,
-                    s.timing,
-                    s.setA.subject,
-                    getFacultyForSubject(s.setA.subject) || '-',
-                    'Set-A',
-                    s.setA.room,
-                    1
-                  ]);
-                }
-
-                const matchedB = (set === 'ALL' || set === 'Set-B') &&
-                  (subject === 'ALL' || s.setB.subject.toLowerCase().includes(subject.toLowerCase()));
-                if (matchedB) {
-                  count++;
-                  rows.push([
-                    dateStr,
-                    dayNames[dayIdx],
-                    s.period,
-                    s.timing,
-                    s.setB.subject,
-                    getFacultyForSubject(s.setB.subject) || '-',
-                    'Set-B',
-                    s.setB.room,
-                    1
-                  ]);
-                }
-              } else {
-                const matchedCommon = (subject === 'ALL' || s.subject.toLowerCase().includes(subject.toLowerCase()));
-                if (matchedCommon) {
-                  count++;
-                  rows.push([
-                    dateStr,
-                    dayNames[dayIdx],
-                    s.period,
-                    s.timing,
-                    s.subject,
-                    getFacultyForSubject(s.subject) || '-',
-                    'Common',
-                    s.room,
-                    1
-                  ]);
-                }
+              const matchedCommon = (subject === 'ALL' || s.subject.toLowerCase().includes(subject.toLowerCase()));
+              if (matchedCommon) {
+                count++;
+                rows.push([
+                  dateStr,
+                  dayNames[dayIdx],
+                  s.period,
+                  s.timing,
+                  s.subject,
+                  getFacultyForSubject(s.subject) || '-',
+                  'Common',
+                  s.room,
+                  1
+                ]);
               }
-            });
-          }
-          curr.setDate(curr.getDate() + 1);
+            }
+          });
         }
-
-        if (count === 0) {
-          alert('No classes found for the selected criteria.');
-          return;
-        }
-
-        rows.push([]);
-        rows.push(['--- SUMMARY ---', '']);
-        rows.push(['Total Classes Queried:', count]);
-        rows.push(['Batch Queried:', set]);
-        rows.push(['Subject Queried:', subject]);
-
-        const csvContent = '\uFEFF' + rows.map(r => r.map(c => `"${String(c).replace(/"/g, '""')}"`).join(',')).join('\r\n');
-        const fileName = `SecD_Timetable_${startStr}_to_${endStr}.csv`;
-        exportFileToDevice(fileName, csvContent, 'text/csv', '📊 Excel CSV downloaded to Downloads');
+        curr.setDate(curr.getDate() + 1);
       }
 
-      // PLAIN TEXT TIMETABLE EXPORT (.TXT)
-      function generatePlainTextTimetable() {
-        const set = document.getElementById('exportBatchSelect').value;
-        const subject = document.getElementById('exportSubjectSelect').value;
-        const startStr = document.getElementById('exportStartDate').value;
-        const endStr = document.getElementById('exportEndDate').value;
+      if (count === 0) {
+        alert('No classes found for the selected criteria.');
+        return;
+      }
 
-        if (!startStr || !endStr) {
-          alert('Please choose both Start and End Dates.');
-          return;
-        }
+      rows.push([]);
+      rows.push(['--- SUMMARY ---', '']);
+      rows.push(['Total Classes Queried:', count]);
+      rows.push(['Batch Queried:', set]);
+      rows.push(['Subject Queried:', subject]);
 
-        const start = new Date(startStr + 'T00:00:00');
-        const end = new Date(endStr + 'T23:59:59');
-        if (start > end) {
-          alert('Start Date must be before or equal to End Date.');
-          return;
-        }
+      const csvContent = '\uFEFF' + rows.map(r => r.map(c => `"${String(c).replace(/"/g, '""')}"`).join(',')).join('\r\n');
+      const fileName = `SecD_Timetable_${startStr}_to_${endStr}.csv`;
+      exportFileToDevice(fileName, csvContent, 'text/csv', '📊 Excel CSV downloaded to Downloads');
+    }
 
-        const lines = [
-          '======================================================================',
-          '            B.TECH CSE GROUP-A (SECTION-D) TIMETABLE SCHEDULE         ',
-          '                      QUANTUM UNIVERSITY, ROORKEE                     ',
-          '======================================================================',
-          `Generated On : ${new Date().toLocaleString()}`,
-          `Batch / Set  : ${set}`,
-          `Subject      : ${subject}`,
-          `Date Range   : ${startStr} to ${endStr}`,
-          '======================================================================',
-          ''
-        ];
+    // PLAIN TEXT TIMETABLE EXPORT (.TXT)
+    function generatePlainTextTimetable() {
+      const set = document.getElementById('exportBatchSelect').value;
+      const subject = document.getElementById('exportSubjectSelect').value;
+      const startStr = document.getElementById('exportStartDate').value;
+      const endStr = document.getElementById('exportEndDate').value;
 
-        let count = 0;
-        let curr = new Date(start);
+      if (!startStr || !endStr) {
+        alert('Please choose both Start and End Dates.');
+        return;
+      }
 
-        while (curr <= end) {
-          const dayIdx = curr.getDay();
-          if (dayIdx !== 0) {
-            const y = curr.getFullYear();
-            const m = String(curr.getMonth() + 1).padStart(2, '0');
-            const d = String(curr.getDate()).padStart(2, '0');
-            const dateStr = `${y}-${m}-${d}`;
+      const start = new Date(startStr + 'T00:00:00');
+      const end = new Date(endStr + 'T23:59:59');
+      if (start > end) {
+        alert('Start Date must be before or equal to End Date.');
+        return;
+      }
 
-            lines.push(`📅 ${dayNames[dayIdx]} (${dateStr}):`);
-            lines.push('----------------------------------------------------------------------');
+      const lines = [
+        '======================================================================',
+        '            B.TECH CSE GROUP-A (SECTION-D) TIMETABLE SCHEDULE         ',
+        '                      QUANTUM UNIVERSITY, ROORKEE                     ',
+        '======================================================================',
+        `Generated On : ${new Date().toLocaleString()}`,
+        `Batch / Set  : ${set}`,
+        `Subject      : ${subject}`,
+        `Date Range   : ${startStr} to ${endStr}`,
+        '======================================================================',
+        ''
+      ];
 
-            const slots = weeklySchedule[dayIdx] || [];
-            let dayCount = 0;
-            slots.forEach(s => {
-              if (s.isSplit) {
-                if (set === 'ALL' || set === 'Set-A') {
-                  if (subject === 'ALL' || s.setA.subject.toLowerCase().includes(subject.toLowerCase())) {
-                    count++; dayCount++;
-                    const fac = getFacultyForSubject(s.setA.subject) || 'Faculty';
-                    lines.push(`  • [${s.period}] ${s.timing} ➔ ${s.setA.subject} (Set-A)`);
-                    lines.push(`    Faculty: ${fac} | Room: ${s.setA.room}`);
-                  }
-                }
-                if (set === 'ALL' || set === 'Set-B') {
-                  if (subject === 'ALL' || s.setB.subject.toLowerCase().includes(subject.toLowerCase())) {
-                    count++; dayCount++;
-                    const fac = getFacultyForSubject(s.setB.subject) || 'Faculty';
-                    lines.push(`  • [${s.period}] ${s.timing} ➔ ${s.setB.subject} (Set-B)`);
-                    lines.push(`    Faculty: ${fac} | Room: ${s.setB.room}`);
-                  }
-                }
-              } else {
-                if (subject === 'ALL' || s.subject.toLowerCase().includes(subject.toLowerCase())) {
+      let count = 0;
+      let curr = new Date(start);
+
+      while (curr <= end) {
+        const dayIdx = curr.getDay();
+        if (dayIdx !== 0) {
+          const y = curr.getFullYear();
+          const m = String(curr.getMonth() + 1).padStart(2, '0');
+          const d = String(curr.getDate()).padStart(2, '0');
+          const dateStr = `${y}-${m}-${d}`;
+
+          lines.push(`📅 ${dayNames[dayIdx]} (${dateStr}):`);
+          lines.push('----------------------------------------------------------------------');
+
+          const slots = weeklySchedule[dayIdx] || [];
+          let dayCount = 0;
+          slots.forEach(s => {
+            if (s.isSplit) {
+              if (set === 'ALL' || set === 'Set-A') {
+                if (subject === 'ALL' || s.setA.subject.toLowerCase().includes(subject.toLowerCase())) {
                   count++; dayCount++;
-                  const fac = getFacultyForSubject(s.subject) || 'Faculty';
-                  lines.push(`  • [${s.period}] ${s.timing} ➔ ${s.subject}`);
-                  lines.push(`    Faculty: ${fac} | Room: ${s.room}`);
+                  const fac = getFacultyForSubject(s.setA.subject) || 'Faculty';
+                  lines.push(`  • [${s.period}] ${s.timing} ➔ ${s.setA.subject} (Set-A)`);
+                  lines.push(`    Faculty: ${fac} | Room: ${s.setA.room}`);
                 }
               }
-            });
-
-            if (dayCount === 0) {
-              lines.push('  (No classes matching criteria)');
-            }
-            lines.push('');
-          }
-          curr.setDate(curr.getDate() + 1);
-        }
-
-        if (count === 0) {
-          alert('No classes found for the selected criteria.');
-          return;
-        }
-
-        lines.push('======================================================================');
-        lines.push(`Total Classes: ${count}`);
-        lines.push('======================================================================');
-
-        const textData = lines.join('\r\n');
-        const fileName = `SecD_Timetable_${startStr}_to_${endStr}.txt`;
-        exportFileToDevice(fileName, textData, 'text/plain', '📄 Text Timetable downloaded to Downloads');
-      }
-
-      // COPY TIMETABLE TEXT TO CLIPBOARD
-      function copyTimetableText() {
-        triggerHaptic(12);
-        const set = document.getElementById('exportBatchSelect').value;
-        const startStr = document.getElementById('exportStartDate').value;
-        const endStr = document.getElementById('exportEndDate').value;
-
-        let text = `📅 *CSE D Timetable (${set})*\n`;
-        text += `Range: ${startStr} to ${endStr}\n\n`;
-
-        for (let day = 1; day <= 6; day++) {
-          text += `*${dayNames[day]}:*\n`;
-          const slots = weeklySchedule[day] || [];
-          slots.forEach(s => {
-            let sub = s.subject;
-            let rm = s.room;
-            if (s.isSplit) {
-              sub = (set === 'Set-B') ? s.setB.subject : s.setA.subject;
-              rm = (set === 'Set-B') ? s.setB.room : s.setA.room;
-            }
-            if (sub && !sub.includes('Lunch')) {
-              text += `• ${s.period} (${s.timing.split('-')[0].trim()}): ${sub} (📍 ${rm})\n`;
-            }
-          });
-          text += '\n';
-        }
-
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(text).then(() => {
-            showToast('📋 Timetable copied to clipboard! Paste anywhere');
-          }).catch(() => {
-            showToast('📋 Copied to clipboard!');
-          });
-        } else {
-          const ta = document.createElement('textarea');
-          ta.value = text;
-          document.body.appendChild(ta);
-          ta.select();
-          document.execCommand('copy');
-          document.body.removeChild(ta);
-          showToast('📋 Timetable copied to clipboard! Paste anywhere');
-        }
-      }
-
-      // CALENDAR (.ICS) EXPORT
-      function generateCalendarICS() {
-        let icsEvents = [];
-        const now = new Date();
-        const mondayOffset = now.getDay() === 0 ? -6 : 1 - now.getDay();
-        const monday = new Date(now);
-        monday.setDate(now.getDate() + mondayOffset);
-
-        for (let day = 1; day <= 6; day++) {
-          const d = new Date(monday);
-          d.setDate(monday.getDate() + (day - 1));
-          const yStr = d.getFullYear();
-          const mStr = String(d.getMonth() + 1).padStart(2, '0');
-          const dStr = String(d.getDate()).padStart(2, '0');
-
-          const slots = weeklySchedule[day] || [];
-          slots.forEach(s => {
-            const pCfg = periods.find(p => p.id === s.period);
-            if (!pCfg) return;
-
-            const startH = String(Math.floor(pCfg.startMins / 60)).padStart(2, '0');
-            const startM = String(pCfg.startMins % 60).padStart(2, '0');
-            const endH = String(Math.floor(pCfg.endMins / 60)).padStart(2, '0');
-            const endM = String(pCfg.endMins % 60).padStart(2, '0');
-
-            let sub = s.subject;
-            let rm = s.room;
-            if (s.isSplit) {
-              sub = (selectedBatch === 'Set-B') ? s.setB.subject : s.setA.subject;
-              rm = (selectedBatch === 'Set-B') ? s.setB.room : s.setA.room;
-            }
-            const fac = getFacultyForSubject(sub);
-
-            icsEvents.push([
-              'BEGIN:VEVENT',
-              `SUMMARY:${sub}${fac ? ' (' + fac + ')' : ''}`,
-              `LOCATION:${rm !== '-' ? rm : 'Campus'}`,
-              `DTSTART:${yStr}${mStr}${dStr}T${startH}${startM}00`,
-              `DTEND:${yStr}${mStr}${dStr}T${endH}${endM}00`,
-              `DESCRIPTION:B.Tech CSE GroupA-Section-D Class (${s.period}) - Faculty: ${fac || 'N/A'}`,
-              'STATUS:CONFIRMED',
-              'END:VEVENT'
-            ].join('\r\n'));
-          });
-        }
-
-        const icsData = [
-          'BEGIN:VCALENDAR',
-          'VERSION:2.0',
-          'PRODID:-//Sec-D Timetable//College Schedule//EN',
-          'CALSCALE:GREGORIAN',
-          'METHOD:PUBLISH',
-          ...icsEvents,
-          'END:VCALENDAR'
-        ].join('\r\n');
-
-        const fileName = 'SecD_Timetable_Week.ics';
-        exportFileToDevice(fileName, icsData, 'text/calendar', '📅 Calendar .ics downloaded to Downloads');
-      }
-
-      // MULTI-PLATFORM FILE EXPORTER (Direct Download to Mobile File Manager / Downloads Folder)
-      async function exportFileToDevice(fileName, content, mimeType, successMessage) {
-        triggerHaptic(14);
-
-        // 1. Native Android APK Direct Phone Files Saver (Saves directly into Phone's Downloads folder)
-        if (window.AndroidUpdater && typeof window.AndroidUpdater.saveToPhoneFiles === 'function') {
-          try {
-            const ok = window.AndroidUpdater.saveToPhoneFiles(fileName, content, mimeType);
-            if (ok) {
-              closeModal('exportModal');
-              showToast(successMessage || `📂 Saved in Phone Files (Downloads): ${fileName}`);
-
-              try {
-                NotificationLibrary.addNotification({
-                  title: `📥 Timetable Downloaded: ${fileName}`,
-                  shortBody: `Saved in Phone Downloads folder`,
-                  bigText: `📂 File: ${fileName}\n📍 Location: Internal Storage > Download folder\nTap notification or open File Manager to view.`,
-                  type: 'system'
-                });
-              } catch (ignored) { }
-              return true;
-            }
-          } catch (e) {
-            console.warn('Native saveToPhoneFiles error:', e);
-          }
-        }
-
-        // 2. Web Share API with File (Supported on Android Chrome & Modern Mobile Browsers)
-        if (typeof navigator !== 'undefined' && navigator.canShare && typeof File !== 'undefined') {
-          try {
-            const file = new File([content], fileName, { type: mimeType });
-            if (navigator.canShare({ files: [file] })) {
-              await navigator.share({
-                files: [file],
-                title: fileName,
-                text: `CSE D Timetable Export: ${fileName}`
-              });
-              closeModal('exportModal');
-              showToast(`✅ Saved / Shared: ${fileName}`);
-              return true;
-            }
-          } catch (shareErr) {
-            if (shareErr.name === 'AbortError') return true;
-          }
-        }
-
-        // 3. Direct Browser Data URI / Blob Download (Works immediately without server network dependence)
-        let downloaded = false;
-        try {
-          const blob = new Blob([content], { type: `${mimeType};charset=utf-8;` });
-          const blobUrl = URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.href = blobUrl;
-          a.download = fileName;
-          a.style.display = 'none';
-          document.body.appendChild(a);
-          a.click();
-          setTimeout(() => {
-            document.body.removeChild(a);
-            URL.revokeObjectURL(blobUrl);
-          }, 800);
-          downloaded = true;
-        } catch (e) {
-          console.warn('Browser blob download error:', e);
-        }
-
-        // 3b. Fallback to Data URI if blob didn't trigger
-        if (!downloaded) {
-          try {
-            const dataUri = `data:${mimeType};charset=utf-8,` + encodeURIComponent(content);
-            const a = document.createElement('a');
-            a.href = dataUri;
-            a.setAttribute('download', fileName);
-            a.target = '_blank';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            downloaded = true;
-          } catch (e) { }
-        }
-
-        // 4. Server Attachment Download Fallback
-        if (!downloaded) {
-          try {
-            const serverUrl = getUpdateServerUrl();
-            const res = await fetch(`${serverUrl}/store-export`, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json', 'bypass-tunnel-reminder': 'true' },
-              body: JSON.stringify({ fileName, content, mimeType })
-            });
-            if (res.ok) {
-              const data = await res.json();
-              if (data.downloadUrl) {
-                window.location.href = `${serverUrl}${data.downloadUrl}`;
-                closeModal('exportModal');
-                showToast(successMessage || '📥 Downloading to Phone Files...');
-                return true;
+              if (set === 'ALL' || set === 'Set-B') {
+                if (subject === 'ALL' || s.setB.subject.toLowerCase().includes(subject.toLowerCase())) {
+                  count++; dayCount++;
+                  const fac = getFacultyForSubject(s.setB.subject) || 'Faculty';
+                  lines.push(`  • [${s.period}] ${s.timing} ➔ ${s.setB.subject} (Set-B)`);
+                  lines.push(`    Faculty: ${fac} | Room: ${s.setB.room}`);
+                }
+              }
+            } else {
+              if (subject === 'ALL' || s.subject.toLowerCase().includes(subject.toLowerCase())) {
+                count++; dayCount++;
+                const fac = getFacultyForSubject(s.subject) || 'Faculty';
+                lines.push(`  • [${s.period}] ${s.timing} ➔ ${s.subject}`);
+                lines.push(`    Faculty: ${fac} | Room: ${s.room}`);
               }
             }
-          } catch (e) { }
-        }
-
-        try {
-          NotificationLibrary.addNotification({
-            title: `📥 Timetable Downloaded: ${fileName}`,
-            shortBody: `Saved in Phone Downloads folder`,
-            bigText: `📂 File: ${fileName}\n📍 Location: Internal Storage > Download folder\nCheck your Phone's File Manager (Downloads) to view.`,
-            type: 'system'
           });
-        } catch (ignored) { }
 
-        closeModal('exportModal');
-        showToast(successMessage || `📥 Downloaded to Phone Files: ${fileName}`);
-        return true;
+          if (dayCount === 0) {
+            lines.push('  (No classes matching criteria)');
+          }
+          lines.push('');
+        }
+        curr.setDate(curr.getDate() + 1);
       }
 
-      // INITIALIZATION
-      function init() {
-        const savedTheme = localStorage.getItem('secD_theme') || 'cyber';
-        applyThemeAppearance(savedTheme);
-        const savedAnim = localStorage.getItem('secD_anim_theme') || 'on';
-        document.documentElement.setAttribute('data-anim-theme', savedAnim);
-        syncHoloMenuPills();
-        enforcePermanentDriveShareLock();
+      if (count === 0) {
+        alert('No classes found for the selected criteria.');
+        return;
+      }
 
-        // Check stored batch: default strictly to Set-A so user never sees "ALL"
-        let storedPref = localStorage.getItem('secD_batch_pref');
-        if (!storedPref || (storedPref !== 'Set-A' && storedPref !== 'Set-B' && storedPref !== 'ALL')) {
-          storedPref = 'Set-A';
-        }
-        setBatchFilter(storedPref);
+      lines.push('======================================================================');
+      lines.push(`Total Classes: ${count}`);
+      lines.push('======================================================================');
 
-        const today = new Date();
-        const yyyy = today.getFullYear();
-        const mm = String(today.getMonth() + 1).padStart(2, '0');
-        const dd = String(today.getDate()).padStart(2, '0');
-        document.getElementById('exportStartDate').value = `${yyyy}-${mm}-${dd}`;
+      const textData = lines.join('\r\n');
+      const fileName = `SecD_Timetable_${startStr}_to_${endStr}.txt`;
+      exportFileToDevice(fileName, textData, 'text/plain', '📄 Text Timetable downloaded to Downloads');
+    }
 
-        const future = new Date(today);
-        future.setDate(today.getDate() + 14);
-        const fyyyy = future.getFullYear();
-        const fmm = String(future.getMonth() + 1).padStart(2, '0');
-        const fdd = String(future.getDate()).padStart(2, '0');
-        document.getElementById('exportEndDate').value = `${fyyyy}-${fmm}-${fdd}`;
+    // COPY TIMETABLE TEXT TO CLIPBOARD
+    function copyTimetableText() {
+      triggerHaptic(12);
+      const set = document.getElementById('exportBatchSelect').value;
+      const startStr = document.getElementById('exportStartDate').value;
+      const endStr = document.getElementById('exportEndDate').value;
 
-        renderDayPills();
-        selectDay(new Date());
-        updateLiveState(true);
-        syncAndroidNotificationPrefs();
-        NotificationLibrary.syncFromNative();
-        NotificationLibrary.updateBadges();
+      let text = `📅 *CSE D Timetable (${set})*\n`;
+      text += `Range: ${startStr} to ${endStr}\n\n`;
 
-        if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.protocol === 'http:')) {
-          try { navigator.serviceWorker.register('sw.js').catch(() => { }); } catch (e) { }
-        }
-
-        // Lightweight 60fps real-time ticking every second
-        setInterval(() => updateLiveState(false), 1000);
-        // Check OTA update once on launch and when app returns to foreground (zero background polling lag)
-        setTimeout(() => checkInAppUpdate(false), 2500);
-        document.addEventListener('visibilitychange', () => {
-          if (!document.hidden) {
-            updateLiveState(true);
+      for (let day = 1; day <= 6; day++) {
+        text += `*${dayNames[day]}:*\n`;
+        const slots = weeklySchedule[day] || [];
+        slots.forEach(s => {
+          let sub = s.subject;
+          let rm = s.room;
+          if (s.isSplit) {
+            sub = (set === 'Set-B') ? s.setB.subject : s.setA.subject;
+            rm = (set === 'Set-B') ? s.setB.room : s.setA.room;
           }
+          if (sub && !sub.includes('Lunch')) {
+            text += `• ${s.period} (${s.timing.split('-')[0].trim()}): ${sub} (📍 ${rm})\n`;
+          }
+        });
+        text += '\n';
+      }
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast('📋 Timetable copied to clipboard! Paste anywhere');
+        }).catch(() => {
+          showToast('📋 Copied to clipboard!');
+        });
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        showToast('📋 Timetable copied to clipboard! Paste anywhere');
+      }
+    }
+
+    // CALENDAR (.ICS) EXPORT
+    function generateCalendarICS() {
+      let icsEvents = [];
+      const now = new Date();
+      const mondayOffset = now.getDay() === 0 ? -6 : 1 - now.getDay();
+      const monday = new Date(now);
+      monday.setDate(now.getDate() + mondayOffset);
+
+      for (let day = 1; day <= 6; day++) {
+        const d = new Date(monday);
+        d.setDate(monday.getDate() + (day - 1));
+        const yStr = d.getFullYear();
+        const mStr = String(d.getMonth() + 1).padStart(2, '0');
+        const dStr = String(d.getDate()).padStart(2, '0');
+
+        const slots = weeklySchedule[day] || [];
+        slots.forEach(s => {
+          const pCfg = periods.find(p => p.id === s.period);
+          if (!pCfg) return;
+
+          const startH = String(Math.floor(pCfg.startMins / 60)).padStart(2, '0');
+          const startM = String(pCfg.startMins % 60).padStart(2, '0');
+          const endH = String(Math.floor(pCfg.endMins / 60)).padStart(2, '0');
+          const endM = String(pCfg.endMins % 60).padStart(2, '0');
+
+          let sub = s.subject;
+          let rm = s.room;
+          if (s.isSplit) {
+            sub = (selectedBatch === 'Set-B') ? s.setB.subject : s.setA.subject;
+            rm = (selectedBatch === 'Set-B') ? s.setB.room : s.setA.room;
+          }
+          const fac = getFacultyForSubject(sub);
+
+          icsEvents.push([
+            'BEGIN:VEVENT',
+            `SUMMARY:${sub}${fac ? ' (' + fac + ')' : ''}`,
+            `LOCATION:${rm !== '-' ? rm : 'Campus'}`,
+            `DTSTART:${yStr}${mStr}${dStr}T${startH}${startM}00`,
+            `DTEND:${yStr}${mStr}${dStr}T${endH}${endM}00`,
+            `DESCRIPTION:B.Tech CSE GroupA-Section-D Class (${s.period}) - Faculty: ${fac || 'N/A'}`,
+            'STATUS:CONFIRMED',
+            'END:VEVENT'
+          ].join('\r\n'));
         });
       }
 
-      window.onload = init;
+      const icsData = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//Sec-D Timetable//College Schedule//EN',
+        'CALSCALE:GREGORIAN',
+        'METHOD:PUBLISH',
+        ...icsEvents,
+        'END:VCALENDAR'
+      ].join('\r\n');
+
+      const fileName = 'SecD_Timetable_Week.ics';
+      exportFileToDevice(fileName, icsData, 'text/calendar', '📅 Calendar .ics downloaded to Downloads');
+    }
+
+    // MULTI-PLATFORM FILE EXPORTER (Direct Download to Mobile File Manager / Downloads Folder)
+    async function exportFileToDevice(fileName, content, mimeType, successMessage) {
+      triggerHaptic(14);
+
+      // 1. Native Android APK Direct Phone Files Saver (Saves directly into Phone's Downloads folder)
+      if (window.AndroidUpdater && typeof window.AndroidUpdater.saveToPhoneFiles === 'function') {
+        try {
+          const ok = window.AndroidUpdater.saveToPhoneFiles(fileName, content, mimeType);
+          if (ok) {
+            closeModal('exportModal');
+            showToast(successMessage || `📂 Saved in Phone Files (Downloads): ${fileName}`);
+
+            try {
+              NotificationLibrary.addNotification({
+                title: `📥 Timetable Downloaded: ${fileName}`,
+                shortBody: `Saved in Phone Downloads folder`,
+                bigText: `📂 File: ${fileName}\n📍 Location: Internal Storage > Download folder\nTap notification or open File Manager to view.`,
+                type: 'system'
+              });
+            } catch (ignored) { }
+            return true;
+          }
+        } catch (e) {
+          console.warn('Native saveToPhoneFiles error:', e);
+        }
+      }
+
+      // 2. Web Share API with File (Supported on Android Chrome & Modern Mobile Browsers)
+      if (typeof navigator !== 'undefined' && navigator.canShare && typeof File !== 'undefined') {
+        try {
+          const file = new File([content], fileName, { type: mimeType });
+          if (navigator.canShare({ files: [file] })) {
+            await navigator.share({
+              files: [file],
+              title: fileName,
+              text: `CSE D Timetable Export: ${fileName}`
+            });
+            closeModal('exportModal');
+            showToast(`✅ Saved / Shared: ${fileName}`);
+            return true;
+          }
+        } catch (shareErr) {
+          if (shareErr.name === 'AbortError') return true;
+        }
+      }
+
+      // 3. Direct Browser Data URI / Blob Download (Works immediately without server network dependence)
+      let downloaded = false;
+      try {
+        const blob = new Blob([content], { type: `${mimeType};charset=utf-8;` });
+        const blobUrl = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = blobUrl;
+        a.download = fileName;
+        a.style.display = 'none';
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(() => {
+          document.body.removeChild(a);
+          URL.revokeObjectURL(blobUrl);
+        }, 800);
+        downloaded = true;
+      } catch (e) {
+        console.warn('Browser blob download error:', e);
+      }
+
+      // 3b. Fallback to Data URI if blob didn't trigger
+      if (!downloaded) {
+        try {
+          const dataUri = `data:${mimeType};charset=utf-8,` + encodeURIComponent(content);
+          const a = document.createElement('a');
+          a.href = dataUri;
+          a.setAttribute('download', fileName);
+          a.target = '_blank';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          downloaded = true;
+        } catch (e) { }
+      }
+
+      // 4. Server Attachment Download Fallback
+      if (!downloaded) {
+        try {
+          const serverUrl = getUpdateServerUrl();
+          const res = await fetch(`${serverUrl}/store-export`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'bypass-tunnel-reminder': 'true' },
+            body: JSON.stringify({ fileName, content, mimeType })
+          });
+          if (res.ok) {
+            const data = await res.json();
+            if (data.downloadUrl) {
+              window.location.href = `${serverUrl}${data.downloadUrl}`;
+              closeModal('exportModal');
+              showToast(successMessage || '📥 Downloading to Phone Files...');
+              return true;
+            }
+          }
+        } catch (e) { }
+      }
+
+      try {
+        NotificationLibrary.addNotification({
+          title: `📥 Timetable Downloaded: ${fileName}`,
+          shortBody: `Saved in Phone Downloads folder`,
+          bigText: `📂 File: ${fileName}\n📍 Location: Internal Storage > Download folder\nCheck your Phone's File Manager (Downloads) to view.`,
+          type: 'system'
+        });
+      } catch (ignored) { }
+
+      closeModal('exportModal');
+      showToast(successMessage || `📥 Downloaded to Phone Files: ${fileName}`);
+      return true;
+    }
+
+    // INITIALIZATION
+    function init() {
+      const savedTheme = localStorage.getItem('secD_theme') || 'campus';
+      applyThemeAppearance(savedTheme);
+      syncHoloMenuPills();
+      enforcePermanentDriveShareLock();
+
+      // Check stored batch: default strictly to Set-A so user never sees "ALL"
+      let storedPref = localStorage.getItem('secD_batch_pref');
+      if (!storedPref || (storedPref !== 'Set-A' && storedPref !== 'Set-B' && storedPref !== 'ALL')) {
+        storedPref = 'Set-A';
+      }
+      setBatchFilter(storedPref);
+
+      const today = new Date();
+      const yyyy = today.getFullYear();
+      const mm = String(today.getMonth() + 1).padStart(2, '0');
+      const dd = String(today.getDate()).padStart(2, '0');
+      document.getElementById('exportStartDate').value = `${yyyy}-${mm}-${dd}`;
+
+      const future = new Date(today);
+      future.setDate(today.getDate() + 14);
+      const fyyyy = future.getFullYear();
+      const fmm = String(future.getMonth() + 1).padStart(2, '0');
+      const fdd = String(future.getDate()).padStart(2, '0');
+      document.getElementById('exportEndDate').value = `${fyyyy}-${fmm}-${fdd}`;
+
+      renderDayPills();
+      selectDay(new Date());
+      updateLiveState(true);
+      syncAndroidNotificationPrefs();
+      NotificationLibrary.syncFromNative();
+      NotificationLibrary.updateBadges();
+
+      if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.protocol === 'http:')) {
+        try { navigator.serviceWorker.register('sw.js').catch(() => { }); } catch (e) { }
+      }
+
+      // Lightweight 60fps real-time ticking every second
+      setInterval(() => updateLiveState(false), 1000);
+      // Check OTA update once on launch and when app returns to foreground (zero background polling lag)
+      setTimeout(() => checkInAppUpdate(false), 2500);
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) {
+          updateLiveState(true);
+        }
+      });
+    }
+
+    window.onload = init;
   </script>
 </body>
 
