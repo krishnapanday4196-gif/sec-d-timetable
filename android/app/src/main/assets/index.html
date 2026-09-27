@@ -8,7 +8,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="theme-color" content="#040816">
-  <title>CSE D Timetable</title>
+  <title>SEC-D Timetable</title>
   <link rel="icon" type="image/png" href="icon-192.png">
   <link rel="apple-touch-icon" href="icon-192.png">
   <link rel="manifest" href="manifest.json">
@@ -216,6 +216,84 @@
 
       100% {
         background-position: 200% center;
+      }
+    }
+
+    /* ============================================================
+       NEXT-GEN QUANTUM-PRISMATIC ANIMATION ENGINE FOR SEC-D
+       Preserves original shimmer + adds unprecedented 4D light aura,
+       photonic glint, chromatic breathing, and micro-spark flare.
+       ============================================================ */
+    @keyframes quantumAuroraBreath {
+      0%, 100% {
+        filter: drop-shadow(0 0 1px rgba(56, 189, 248, 0.8))
+                drop-shadow(0 0 7px rgba(56, 189, 248, 0.45))
+                drop-shadow(0 0 16px rgba(168, 85, 247, 0.3));
+      }
+      33% {
+        filter: drop-shadow(0 0 2px rgba(251, 191, 36, 0.85))
+                drop-shadow(0 0 9px rgba(245, 158, 11, 0.55))
+                drop-shadow(0 0 18px rgba(56, 189, 248, 0.35));
+      }
+      66% {
+        filter: drop-shadow(0 0 2px rgba(192, 132, 252, 0.85))
+                drop-shadow(0 0 8px rgba(168, 85, 247, 0.55))
+                drop-shadow(0 0 18px rgba(244, 63, 94, 0.35));
+      }
+    }
+
+    @keyframes photonicGlintSweep {
+      0%, 12% {
+        transform: translate3d(-140%, 0, 0) skewX(-24deg);
+        opacity: 0;
+      }
+      18% {
+        opacity: 0.95;
+      }
+      34% {
+        transform: translate3d(240%, 0, 0) skewX(-24deg);
+        opacity: 0;
+      }
+      100% {
+        transform: translate3d(240%, 0, 0) skewX(-24deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes brandStarlightPulse {
+      0%, 100% {
+        transform: scale(0.85) rotate(0deg);
+        filter: drop-shadow(0 0 2px #38bdf8) brightness(1.1);
+        opacity: 0.85;
+      }
+      50% {
+        transform: scale(1.35) rotate(180deg);
+        filter: drop-shadow(0 0 6px #fbbf24) drop-shadow(0 0 12px #38bdf8) brightness(1.75);
+        opacity: 1;
+      }
+    }
+
+    @keyframes holoMicroFloat {
+      0%, 100% {
+        transform: translate3d(0, 0, 0);
+      }
+      50% {
+        transform: translate3d(0, -1.2px, 0);
+      }
+    }
+
+    @keyframes quantumSurgeBurst {
+      0% {
+        transform: scale(1);
+        filter: brightness(1);
+      }
+      30% {
+        transform: scale(1.06) translateY(-1px);
+        filter: brightness(1.6) drop-shadow(0 0 15px #38bdf8) drop-shadow(0 0 25px #fbbf24);
+      }
+      100% {
+        transform: scale(1);
+        filter: brightness(1);
       }
     }
 
@@ -640,29 +718,84 @@
     }
 
     .brand-name {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
       font-size: 1.06rem;
       font-weight: 800;
       letter-spacing: -0.02em;
-      color: var(--text-main);
       white-space: nowrap;
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
+      animation: holoMicroFloat 4s ease-in-out infinite;
+      transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .brand-name:active {
+      transform: scale(0.96) translate3d(0, 1px, 0);
+    }
+
+    .brand-name-text {
+      position: relative;
+      display: inline-block;
+      white-space: nowrap;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 250% auto;
+      will-change: background-position, filter;
+      animation: brandShimmer 5.5s linear infinite, quantumAuroraBreath 5.5s ease-in-out infinite;
       overflow: hidden;
-      text-overflow: ellipsis;
     }
 
-    :root[data-theme="dark"] .brand-name {
-      background: linear-gradient(90deg, #ffffff 0%, #38bdf8 30%, #ffffff 60%, #a855f7 85%, #ffffff 100%);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: brandShimmer 7s linear infinite;
+    .brand-name-text::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 45%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.35) 42%,
+        rgba(255, 255, 255, 0.95) 50%,
+        rgba(255, 255, 255, 0.35) 58%,
+        transparent 100%
+      );
+      pointer-events: none;
+      mix-blend-mode: overlay;
+      animation: photonicGlintSweep 4.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      will-change: transform, opacity;
     }
 
-    :root[data-theme="campus"] .brand-name {
-      background: linear-gradient(90deg, #38bdf8 0%, #fbbf24 35%, #38bdf8 70%, #f59e0b 100%);
-      background-size: 200% auto;
+    .brand-name-spark {
+      display: inline-block;
+      font-size: 0.74rem;
+      line-height: 1;
+      background: linear-gradient(135deg, #fbbf24 0%, #38bdf8 50%, #c084fc 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: brandShimmer 5.5s linear infinite;
+      animation: brandStarlightPulse 3.2s ease-in-out infinite;
+      pointer-events: none;
+      flex-shrink: 0;
+    }
+
+    :root[data-theme="dark"] .brand-name-text,
+    :root[data-theme="dark"] .brand-name:not(:has(.brand-name-text)) {
+      background: linear-gradient(95deg, #ffffff 0%, #38bdf8 22%, #ffffff 45%, #a855f7 68%, #38bdf8 85%, #ffffff 100%);
+      background-size: 250% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    :root[data-theme="campus"] .brand-name-text,
+    :root[data-theme="campus"] .brand-name:not(:has(.brand-name-text)) {
+      background: linear-gradient(95deg, #38bdf8 0%, #ffffff 18%, #fbbf24 38%, #38bdf8 58%, #c084fc 78%, #fbbf24 92%, #38bdf8 100%);
+      background-size: 250% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .brand-subtitle {
@@ -2628,13 +2761,13 @@
       transform: translateZ(0);
     }
 
-    :root[data-theme="light"] .brand-name {
-      background: linear-gradient(90deg, #0f172a 0%, #2563eb 35%, #0f172a 65%, #1d4ed8 85%, #0f172a 100%);
-      background-size: 200% auto;
+    :root[data-theme="light"] .brand-name-text,
+    :root[data-theme="light"] .brand-name:not(:has(.brand-name-text)) {
+      background: linear-gradient(95deg, #0f172a 0%, #2563eb 24%, #0284c7 48%, #7c3aed 72%, #1d4ed8 88%, #0f172a 100%);
+      background-size: 250% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       font-weight: 800;
-      animation: brandShimmer 7s linear infinite;
     }
 
     :root[data-theme="light"] .brand-badge {
@@ -3768,10 +3901,10 @@
     <header class="top-appbar">
       <div class="appbar-header">
         <div class="brand-title">
-          <img src="logo.png" alt="CSE D Logo" class="brand-logo-img">
+          <img src="logo.png" alt="SEC-D Logo" class="brand-logo-img">
           <div class="brand-text-stack">
             <div class="brand-title-wrap">
-              <span class="brand-name">CSE D Timetable</span>
+              <span class="brand-name" id="brandTitle" onclick="triggerQuantumBrandSurge()" title="SEC-D Timetable"><span class="brand-name-text">SEC-D Timetable</span><span class="brand-name-spark" aria-hidden="true">✦</span></span>
               <span class="brand-badge">PRO SEC-D</span>
             </div>
             <span class="brand-subtitle">Quantum University • B.Tech CSE</span>
@@ -4235,7 +4368,7 @@
     <div class="modal-sheet">
       <div class="modal-handle"></div>
       <div class="modal-header">
-        <div class="modal-title">📤 Share CSE D Timetable</div>
+        <div class="modal-title">📤 Share SEC-D Timetable</div>
         <button class="modal-close-btn" onclick="closeModal('shareAppModal')">✕</button>
       </div>
 
@@ -4960,6 +5093,17 @@
       }
     }
 
+    function triggerQuantumBrandSurge() {
+      try {
+        if (typeof triggerHaptic === 'function') triggerHaptic(18);
+        const el = document.getElementById('brandTitle');
+        if (!el) return;
+        el.style.animation = 'none';
+        void el.offsetWidth;
+        el.style.animation = 'quantumSurgeBurst 0.65s cubic-bezier(0.34, 1.56, 0.64, 1), holoMicroFloat 4s ease-in-out infinite 0.65s';
+      } catch (e) { }
+    }
+
     function toggleHoloMenu() {
       triggerHaptic(14);
       const btn = document.getElementById('holoMenuBtn');
@@ -5441,9 +5585,9 @@
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '5.1.0';
-    const LOCAL_APP_VERSION_CODE = 29;
-    const LOCAL_APP_BUILD_HASH = '9f70ec6f9996';
+    const LOCAL_APP_VERSION_NAME = '5.2.0';
+    const LOCAL_APP_VERSION_CODE = 30;
+    const LOCAL_APP_BUILD_HASH = 'ee5759e178cb';
 
     let cachedLatestVersionCode = 29;
 
@@ -5668,7 +5812,7 @@
         bannerBtn.textContent = '⏳ Updating...';
         bannerBtn.disabled = true;
       }
-      showToast(`⚡ Updating CSE D Timetable to v${LOCAL_APP_VERSION_NAME}...`);
+      showToast(`⚡ Updating SEC-D Timetable to v${LOCAL_APP_VERSION_NAME}...`);
 
       window.onOtaUpdateComplete = function (success) {
         if (success) {
@@ -5680,9 +5824,9 @@
           }
           try {
             NotificationLibrary.addNotification({
-              title: `✅ CSE D Timetable Updated!`,
+              title: `✅ SEC-D Timetable Updated!`,
               shortBody: 'Your app has been updated with the latest schedule & features.',
-              bigText: '🎉 CSE D Timetable has been updated to the latest version!',
+              bigText: '🎉 SEC-D Timetable has been updated to the latest version!',
               type: 'update'
             });
           } catch (e) { }
@@ -5721,7 +5865,7 @@
           const res = await fetch(`${serverUrl}/index.html?t=${Date.now()}`, fetchOpts);
           if (!res.ok) continue;
           const newHtml = await res.text();
-          if (newHtml.length < 1000 || !newHtml.includes('CSE D Timetable')) continue;
+          if (newHtml.length < 1000 || (!newHtml.includes('SEC-D Timetable') && !newHtml.includes('CSE D Timetable'))) continue;
 
           if (window.AndroidUpdater && typeof window.AndroidUpdater.applyOtaUpdate === 'function') {
             window.AndroidUpdater.applyOtaUpdate(newHtml, cachedLatestHash || 'latest');
@@ -5783,7 +5927,7 @@
 
     function getFormattedShareMessage() {
       const publicUrl = GITHUB_APK_SHARE_URL;
-      return `🎓 *CSE D Timetable App Pro (B.Tech CSE Sec-D)*\n\n` +
+      return `🎓 *SEC-D Timetable App Pro (B.Tech CSE Sec-D)*\n\n` +
         `✨ 3D Holographic Command Deck & Luxury UI (60fps)\n` +
         `✅ Official Section-D Faculty Names on All Classes\n` +
         `✅ Pre-Class Alert Notification\n` +
@@ -5833,7 +5977,7 @@
       if (typeof navigator !== 'undefined' && navigator.share) {
         try {
           await navigator.share({
-            title: 'CSE D Timetable App (GitHub Direct Download)',
+            title: 'SEC-D Timetable App (GitHub Direct Download)',
             text: msg
           });
           closeModal('shareAppModal');
@@ -7289,7 +7433,7 @@
       const startStr = document.getElementById('exportStartDate').value;
       const endStr = document.getElementById('exportEndDate').value;
 
-      let text = `📅 *CSE D Timetable (${set})*\n`;
+      let text = `📅 *SEC-D Timetable (${set})*\n`;
       text += `Range: ${startStr} to ${endStr}\n\n`;
 
       for (let day = 1; day <= 6; day++) {
@@ -7421,7 +7565,7 @@
             await navigator.share({
               files: [file],
               title: fileName,
-              text: `CSE D Timetable Export: ${fileName}`
+              text: `SEC-D Timetable Export: ${fileName}`
             });
             closeModal('exportModal');
             showToast(`✅ Saved / Shared: ${fileName}`);

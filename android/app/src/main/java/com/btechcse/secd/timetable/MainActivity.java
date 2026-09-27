@@ -45,7 +45,7 @@ import java.security.MessageDigest;
 
 public class MainActivity extends Activity {
     private WebView mWebView;
-    private static final int CURRENT_APK_VERSION = 25;
+    private static final int CURRENT_APK_VERSION = 30;
     public static final String GITHUB_APK_SHARE_URL = "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/CSE_D_Timetable.apk";
     public static final String GOOGLE_DRIVE_SHARE_URL = GITHUB_APK_SHARE_URL;
     private ValueCallback<Uri[]> mFilePathCallback;
@@ -500,7 +500,7 @@ public class MainActivity extends Activity {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    Toast.makeText(mContext, "⚡ Updating CSE D Timetable...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "⚡ Updating SEC-D Timetable...", Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -518,7 +518,7 @@ public class MainActivity extends Activity {
                             String newHash = obj.optString("htmlHash", "");
                             final String verName = obj.optString("versionName", "Latest");
                             String newHtml = httpGetText(baseUrl + "/index.html?t=" + System.currentTimeMillis(), 10000);
-                            if (newHtml != null && newHtml.length() > 1000 && newHtml.contains("CSE D Timetable")) {
+                            if (newHtml != null && newHtml.length() > 1000 && (newHtml.contains("SEC-D Timetable") || newHtml.contains("CSE D Timetable"))) {
                                 applyOtaUpdate(newHtml, newHash);
                                 runOnUiThread(new Runnable() {
                                     @Override
