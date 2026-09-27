@@ -20,6 +20,7 @@
     rel="stylesheet">
 
   <style>
+    :root,
     :root[data-theme="dark"] {
       --bg-canvas: #02050b;
       --bg-phone: #050914;
@@ -71,48 +72,44 @@
       --orb-3-color: rgba(16, 185, 129, 0.14);
     }
 
-    :root[data-theme="cyber"] {
-      --bg-canvas: #02050e;
-      --bg-phone: #040816;
-      --bg-mesh:
-        radial-gradient(circle at 14% 10%, rgba(56, 189, 248, 0.22) 0%, transparent 45%),
-        radial-gradient(circle at 86% 20%, rgba(168, 85, 247, 0.20) 0%, transparent 48%),
-        radial-gradient(circle at 50% 60%, rgba(244, 63, 94, 0.12) 0%, transparent 60%),
-        #040816;
-      --card-bg: rgba(14, 23, 44, 0.94);
-      --card-solid: #0c152a;
-      --card-surface-grad: linear-gradient(160deg, #162548 0%, #0a1224 100%);
-      --card-border: rgba(56, 189, 248, 0.26);
-      --card-rim: inset 0 1px 0 rgba(255, 255, 255, 0.20);
-      --card-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 14px 32px -8px rgba(0, 0, 0, 0.72);
-      --card-hover: #1c2e58;
-      --header-bg: linear-gradient(180deg, rgba(12, 20, 38, 0.98) 0%, rgba(6, 11, 24, 0.98) 100%);
-      --recessed-bg: #030612;
+    :root[data-theme="campus"] {
+      --bg-canvas: #020612;
+      --bg-phone: #050a18;
+      --bg-mesh: transparent;
+      --card-bg: rgba(11, 20, 40, 0.90);
+      --card-solid: #091326;
+      --card-surface-grad: linear-gradient(160deg, rgba(22, 38, 72, 0.92) 0%, rgba(9, 17, 34, 0.95) 100%);
+      --card-border: rgba(56, 189, 248, 0.28);
+      --card-rim: inset 0 1px 0 rgba(255, 255, 255, 0.22);
+      --card-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 14px 34px -8px rgba(0, 0, 0, 0.78);
+      --card-hover: rgba(26, 46, 84, 0.95);
+      --header-bg: linear-gradient(180deg, rgba(8, 16, 32, 0.97) 0%, rgba(4, 9, 20, 0.97) 100%);
+      --recessed-bg: rgba(3, 7, 16, 0.88);
 
       --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --text-sub: #64748b;
+      --text-muted: #cbd5e1;
+      --text-sub: #94a3b8;
 
       --accent: #38bdf8;
-      --accent-secondary: #a855f7;
-      --accent-glow: rgba(56, 189, 248, 0.52);
+      --accent-secondary: #f59e0b;
+      --accent-glow: rgba(56, 189, 248, 0.55);
       --accent-bg: rgba(56, 189, 248, 0.18);
 
       --gold-accent: #fbbf24;
-      --gold-bg: linear-gradient(135deg, rgba(245, 158, 11, 0.22), rgba(217, 119, 6, 0.10));
-      --gold-border: rgba(251, 191, 36, 0.5);
+      --gold-bg: linear-gradient(135deg, rgba(245, 158, 11, 0.25), rgba(217, 119, 6, 0.12));
+      --gold-border: rgba(251, 191, 36, 0.55);
 
       --live-red: #f43f5e;
-      --live-glow: rgba(244, 63, 94, 0.6);
-      --live-bg: rgba(244, 63, 94, 0.18);
+      --live-glow: rgba(244, 63, 94, 0.65);
+      --live-bg: rgba(244, 63, 94, 0.20);
 
       --set-a-color: #10b981;
       --set-a-bg: rgba(16, 185, 129, 0.18);
-      --set-a-border: rgba(16, 185, 129, 0.5);
+      --set-a-border: rgba(16, 185, 129, 0.55);
 
       --set-b-color: #c084fc;
       --set-b-bg: rgba(192, 132, 252, 0.18);
-      --set-b-border: rgba(192, 132, 252, 0.5);
+      --set-b-border: rgba(192, 132, 252, 0.55);
 
       --success: #10b981;
       --warning: #f59e0b;
@@ -235,17 +232,13 @@
 
     @keyframes cardCascadeIn {
       0% {
-        opacity: 0;
-        transform: translate3d(0, 22px, 0) scale(0.96);
-      }
-
-      65% {
-        transform: translate3d(0, -3px, 0) scale(1.008);
+        opacity: 1;
+        transform: translate3d(0, 10px, 0);
       }
 
       100% {
         opacity: 1;
-        transform: translate3d(0, 0, 0) scale(1);
+        transform: translate3d(0, 0, 0);
       }
     }
 
@@ -505,58 +498,70 @@
       will-change: auto;
     }
 
+    /* Disable laggy cosmic orbs to free phone GPU and battery */
     .aurora-orb {
-      position: absolute;
-      border-radius: 50%;
-      opacity: var(--aurora-opacity, 0.65);
-      transform: translate3d(0, 0, 0);
-      will-change: transform;
-      pointer-events: none;
-      contain: strict;
-    }
-
-    .orb-primary {
-      width: 440px;
-      height: 440px;
-      background: radial-gradient(circle, var(--orb-1-color) 0%, rgba(56, 189, 248, 0.26) 32%, transparent 70%);
-      top: -80px;
-      left: -80px;
-      animation: auroraFloat1 20s ease-in-out infinite alternate;
-      transform: translateZ(0);
-    }
-
-    .orb-secondary {
-      width: 490px;
-      height: 490px;
-      background: radial-gradient(circle, var(--orb-2-color) 0%, rgba(168, 85, 247, 0.24) 36%, transparent 70%);
-      top: 28%;
-      right: -100px;
-      animation: auroraFloat2 26s ease-in-out infinite alternate;
-      transform: translateZ(0);
-    }
-
-    .orb-accent {
-      width: 420px;
-      height: 420px;
-      background: radial-gradient(circle, var(--orb-3-color) 0%, rgba(244, 63, 94, 0.20) 30%, transparent 70%);
-      bottom: 8%;
-      left: 10%;
-      animation: auroraFloat3 22s ease-in-out infinite alternate;
-      transform: translateZ(0);
-    }
-
-    .orb-cyan {
-      width: 380px;
-      height: 380px;
-      background: radial-gradient(circle, rgba(16, 185, 129, 0.22) 0%, rgba(56, 189, 248, 0.16) 38%, transparent 70%);
-      top: 62%;
-      right: 4%;
-      animation: auroraFloat1 24s ease-in-out infinite alternate-reverse;
-      transform: translateZ(0);
-    }
-
-    :root[data-anim-theme="off"] .aurora-orb {
       display: none !important;
+    }
+
+    /* ============================================================
+       QUANTUM CAMPUS PHOTO ANIMATED BACKGROUND LAYER
+       (Hardware-Accelerated Ken Burns Cinematic Motion)
+       ============================================================ */
+    .campus-bg-layer {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+      display: none;
+      transform: translateZ(0);
+      backface-visibility: hidden;
+    }
+
+    :root[data-theme="campus"] .campus-bg-layer {
+      display: block;
+    }
+
+    .campus-photo-img {
+      position: absolute;
+      top: -5%;
+      left: -5%;
+      width: 110%;
+      height: 110%;
+      object-fit: cover;
+      object-position: center;
+      transform: translateZ(0);
+      will-change: transform;
+      animation: campusPanZoom 26s ease-in-out infinite alternate;
+      filter: saturate(1.12) brightness(0.90);
+    }
+
+    @keyframes campusPanZoom {
+      0% {
+        transform: scale(1.02) translate3d(0, 0, 0);
+      }
+      50% {
+        transform: scale(1.12) translate3d(-1.5%, -1%, 0);
+      }
+      100% {
+        transform: scale(1.04) translate3d(1%, -0.5%, 0);
+      }
+    }
+
+    :root[data-anim-theme="off"] .campus-photo-img {
+      animation: none !important;
+      transform: scale(1.04) translate3d(0, 0, 0) !important;
+    }
+
+    .campus-photo-overlay {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(3, 7, 18, 0.74) 0%, rgba(3, 7, 18, 0.84) 50%, rgba(2, 6, 15, 0.94) 100%);
+      pointer-events: none;
     }
 
     /* Instant responsive theme transition (Zero lag) */
@@ -652,8 +657,8 @@
       animation: brandShimmer 7s linear infinite;
     }
 
-    :root[data-theme="cyber"] .brand-name {
-      background: linear-gradient(90deg, #38bdf8 0%, #a855f7 28%, #f43f5e 55%, #38bdf8 82%, #10b981 100%);
+    :root[data-theme="campus"] .brand-name {
+      background: linear-gradient(90deg, #38bdf8 0%, #fbbf24 35%, #38bdf8 70%, #f59e0b 100%);
       background-size: 200% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -728,8 +733,8 @@
 
     @keyframes tile3DFlipIn {
       0% {
-        opacity: 0;
-        transform: perspective(600px) rotateX(-25deg) translate3d(24px, -8px, 0) scale(0.92);
+        opacity: 1;
+        transform: perspective(600px) rotateX(-12deg) translate3d(8px, -4px, 0) scale(0.96);
       }
 
       100% {
@@ -960,9 +965,15 @@
       border: 1px solid rgba(148, 163, 184, 0.24);
       color: var(--text-main);
       cursor: pointer;
+      opacity: 1 !important;
+      transform: translateZ(0);
       transition: transform 0.16s ease, border-color 0.2s ease, box-shadow 0.2s ease;
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14);
-      animation: tile3DFlipIn 0.36s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+    }
+
+    :root[data-theme="campus"] .holo-dock-btn {
+      background: linear-gradient(145deg, #182a4d, #0e1a32);
+      border-color: rgba(56, 189, 248, 0.30);
     }
 
     :root[data-theme="light"] .holo-dock-btn {
@@ -1007,29 +1018,16 @@
       cursor: pointer;
       color: var(--text-main);
       text-align: left;
+      opacity: 1 !important;
+      transform: translateZ(0);
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
-      animation: tile3DFlipIn 0.42s cubic-bezier(0.22, 1, 0.36, 1) backwards;
       transition: transform 0.16s ease, border-color 0.2s ease, background 0.2s ease;
     }
 
-    .holo-menu-item:nth-child(1) {
-      animation-delay: 0.03s;
-    }
-
-    .holo-menu-item:nth-child(2) {
-      animation-delay: 0.07s;
-    }
-
-    .holo-menu-item:nth-child(3) {
-      animation-delay: 0.11s;
-    }
-
-    .holo-menu-item:nth-child(4) {
-      animation-delay: 0.15s;
-    }
-
-    .holo-menu-item:nth-child(5) {
-      animation-delay: 0.19s;
+    :root[data-theme="campus"] .holo-menu-item {
+      background: rgba(14, 25, 52, 0.76);
+      border-color: rgba(56, 189, 248, 0.26);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
     }
 
     :root[data-theme="light"] .holo-menu-item {
@@ -2057,41 +2055,9 @@
       cursor: pointer;
       box-shadow: var(--card-shadow);
       contain: content;
-      animation: cardCascadeIn 0.38s cubic-bezier(0.22, 1, 0.36, 1) both;
+      opacity: 1 !important;
       transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s ease, border-color 0.2s ease;
       transform: translateZ(0);
-    }
-
-    .lecture-card:nth-child(1) {
-      animation-delay: 0.02s;
-    }
-
-    .lecture-card:nth-child(2) {
-      animation-delay: 0.05s;
-    }
-
-    .lecture-card:nth-child(3) {
-      animation-delay: 0.08s;
-    }
-
-    .lecture-card:nth-child(4) {
-      animation-delay: 0.11s;
-    }
-
-    .lecture-card:nth-child(5) {
-      animation-delay: 0.14s;
-    }
-
-    .lecture-card:nth-child(6) {
-      animation-delay: 0.17s;
-    }
-
-    .lecture-card:nth-child(7) {
-      animation-delay: 0.20s;
-    }
-
-    .lecture-card:nth-child(8) {
-      animation-delay: 0.23s;
     }
 
     .lecture-card:hover {
@@ -3777,6 +3743,12 @@
 
 <body>
 
+  <!-- QUANTUM CAMPUS PHOTO ANIMATED BACKGROUND LAYER -->
+  <div class="campus-bg-layer" id="campusBg" aria-hidden="true">
+    <img src="campus.jpg" alt="Quantum Campus" class="campus-photo-img" />
+    <div class="campus-photo-overlay"></div>
+  </div>
+
   <!-- DYNAMIC ANIMATED AURORA THEME CANVAS -->
   <div class="aurora-ambient-bg" id="auroraBg" aria-hidden="true">
     <div class="aurora-orb orb-primary"></div>
@@ -3840,7 +3812,7 @@
           <span class="holo-deck-dot"></span>
           <span>QUICK OPTIONS</span>
         </div>
-        <span class="holo-deck-tag">SEC-D v4.7</span>
+        <span class="holo-deck-tag">SEC-D v5.1</span>
       </div>
 
       <div class="holo-deck-grid">
@@ -3884,7 +3856,7 @@
             </div>
           </div>
           <div class="holo-item-right">
-            <span class="holo-item-pill pill-on" id="menuOtaPill">v4.7 Latest</span>
+            <span class="holo-item-pill pill-on" id="menuOtaPill">v5.1 Latest</span>
             <span class="holo-item-arrow">›</span>
           </div>
         </button>
@@ -3921,14 +3893,14 @@
         <!-- 5. Theme Mode Switcher -->
         <button class="holo-menu-item" id="themeBtn" onclick="toggleTheme()">
           <div class="holo-item-left">
-            <div class="holo-orb-icon orb-violet"><span id="themeIcon">🌌</span></div>
+            <div class="holo-orb-icon orb-violet"><span id="themeIcon">🏛️</span></div>
             <div class="holo-item-texts">
               <span class="holo-item-title">Theme Mode</span>
-              <span class="holo-item-sub" id="menuThemeSub">Animated Cyber Aurora</span>
+              <span class="holo-item-sub" id="menuThemeSub">Quantum Campus Live</span>
             </div>
           </div>
           <div class="holo-item-right">
-            <span class="holo-item-pill pill-theme" id="menuThemePill">🌌 Cyber</span>
+            <span class="holo-item-pill pill-theme" id="menuThemePill">🏛️ Campus</span>
           </div>
         </button>
 
@@ -3937,8 +3909,8 @@
           <div class="holo-item-left">
             <div class="holo-orb-icon orb-cyan"><span>✨</span></div>
             <div class="holo-item-texts">
-              <span class="holo-item-title">Animation Theme</span>
-              <span class="holo-item-sub">Live cosmic aurora mesh (60fps)</span>
+              <span class="holo-item-title">Campus Animation</span>
+              <span class="holo-item-sub" id="menuAnimSub">Smooth Ken Burns live motion</span>
             </div>
           </div>
           <div class="holo-item-right">
@@ -4961,26 +4933,30 @@
         soundPill.className = `holo-item-pill ${chimeEnabled ? 'pill-on' : 'pill-off'}`;
       }
 
-      const curTheme = document.documentElement.getAttribute('data-theme') || 'cyber';
+      const curTheme = document.documentElement.getAttribute('data-theme') || 'campus';
       const themeIcon = document.getElementById('themeIcon');
       const themePill = document.getElementById('menuThemePill');
       const themeSub = document.getElementById('menuThemeSub');
 
       if (themeIcon) {
-        themeIcon.textContent = curTheme === 'cyber' ? '🌌' : (curTheme === 'light' ? '☀️' : '🌙');
+        themeIcon.textContent = curTheme === 'campus' ? '🏛️' : (curTheme === 'light' ? '☀️' : '🌙');
       }
       if (themePill) {
-        themePill.textContent = curTheme === 'cyber' ? '🌌 Cyber' : (curTheme === 'light' ? '☀️ Light' : '🌙 Dark');
+        themePill.textContent = curTheme === 'campus' ? '🏛️ Campus' : (curTheme === 'light' ? '☀️ Light' : '🌙 Dark');
       }
       if (themeSub) {
-        themeSub.textContent = curTheme === 'cyber' ? 'Live Cosmic Aurora (60fps)' : (curTheme === 'light' ? 'Daylight Pearl Appearance' : 'Minimal Obsidian Dark');
+        themeSub.textContent = curTheme === 'campus' ? 'Quantum Campus Live Pan/Zoom' : (curTheme === 'light' ? 'Daylight Pearl Appearance' : 'Minimal Obsidian Dark');
       }
 
       const animState = document.documentElement.getAttribute('data-anim-theme') || 'on';
       const menuAnimPill = document.getElementById('menuAnimPill');
+      const menuAnimSub = document.getElementById('menuAnimSub');
       if (menuAnimPill) {
         menuAnimPill.textContent = animState === 'on' ? '✨ ON' : 'OFF';
         menuAnimPill.className = `holo-item-pill ${animState === 'on' ? 'pill-on' : 'pill-off'}`;
+      }
+      if (menuAnimSub) {
+        menuAnimSub.textContent = animState === 'on' ? 'Smooth Ken Burns live motion' : 'Static photo backdrop';
       }
     }
 
@@ -4996,12 +4972,6 @@
         closeHoloMenu();
       } else {
         syncHoloMenuPills();
-        // Reset 3D tile cascade animation so it replays cleanly every time menu opens
-        deck.querySelectorAll('.holo-menu-item, .holo-dock-btn').forEach(item => {
-          item.style.animation = 'none';
-          void item.offsetWidth;
-          item.style.animation = '';
-        });
         btn.classList.add('is-open');
         deck.classList.add('is-open', 'show');
         backdrop.classList.add('is-open', 'show');
@@ -5471,11 +5441,11 @@
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '4.7.1';
-    const LOCAL_APP_VERSION_CODE = 25;
-    const LOCAL_APP_BUILD_HASH = '232437b45370';
+    const LOCAL_APP_VERSION_NAME = '5.1.0';
+    const LOCAL_APP_VERSION_CODE = 29;
+    const LOCAL_APP_BUILD_HASH = '9f70ec6f9996';
 
-    let cachedLatestVersionCode = 28;
+    let cachedLatestVersionCode = 29;
 
     function getEffectiveVersionCode() {
       const stored = parseInt(localStorage.getItem('secD_local_version_code'), 10);
@@ -5939,6 +5909,17 @@
       } else {
         showToast('☀️ Daylight Pearl White Theme Active');
       }
+    }
+
+    function toggleAnimationTheme() {
+      triggerHaptic(14);
+      const html = document.documentElement;
+      const cur = html.getAttribute('data-anim-theme') || 'on';
+      const next = cur === 'on' ? 'off' : 'on';
+      html.setAttribute('data-anim-theme', next);
+      localStorage.setItem('secD_anim_theme', next);
+      syncHoloMenuPills();
+      showToast(next === 'on' ? '✨ Campus Live Motion ON' : '⏸️ Background Motion Paused');
     }
 
     function toggleDesktopWidth() {
@@ -7525,6 +7506,8 @@
     function init() {
       const savedTheme = localStorage.getItem('secD_theme') || 'campus';
       applyThemeAppearance(savedTheme);
+      const savedAnim = localStorage.getItem('secD_anim_theme') || 'on';
+      document.documentElement.setAttribute('data-anim-theme', savedAnim);
       syncHoloMenuPills();
       enforcePermanentDriveShareLock();
 
