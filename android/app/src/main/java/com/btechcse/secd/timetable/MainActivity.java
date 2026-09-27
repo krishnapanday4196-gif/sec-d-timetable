@@ -45,7 +45,7 @@ import java.security.MessageDigest;
 
 public class MainActivity extends Activity {
     private WebView mWebView;
-    private static final int CURRENT_APK_VERSION = 22;
+    private static final int CURRENT_APK_VERSION = 23;
     public static final String GITHUB_APK_SHARE_URL = "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/CSE_D_Timetable.apk";
     public static final String GOOGLE_DRIVE_SHARE_URL = GITHUB_APK_SHARE_URL;
     private ValueCallback<Uri[]> mFilePathCallback;
@@ -842,7 +842,7 @@ public class MainActivity extends Activity {
             return "🎓 *CSE D Timetable App Pro (B.Tech CSE Sec-D)*\n\n" +
                     "✨ 3D Holographic Command Deck & Luxury UI (60fps)\n" +
                     "✅ Official Section-D Faculty Names on All Classes\n" +
-                    "✅ 5-Minute Pre-Class Alert Notification\n" +
+                    "✅ Pre-Class Alert Notification\n" +
                     "✅ Strict Set-A & Set-B Routine + Excel Export\n\n" +
                     "📲 *Direct Download Link (GitHub 24/7 Fast Download):*\n" + GITHUB_APK_SHARE_URL + "\n\n" +
                     "🌐 *GitHub Repository:*\nhttps://github.com/krishnapanday4196-gif/sec-d-timetable";
