@@ -260,19 +260,6 @@
       }
     }
 
-    @keyframes brandStarlightPulse {
-      0%, 100% {
-        transform: scale(0.85) rotate(0deg);
-        filter: drop-shadow(0 0 2px #38bdf8) brightness(1.1);
-        opacity: 0.85;
-      }
-      50% {
-        transform: scale(1.35) rotate(180deg);
-        filter: drop-shadow(0 0 6px #fbbf24) drop-shadow(0 0 12px #38bdf8) brightness(1.75);
-        opacity: 1;
-      }
-    }
-
     @keyframes holoMicroFloat {
       0%, 100% {
         transform: translate3d(0, 0, 0);
@@ -768,18 +755,6 @@
       mix-blend-mode: overlay;
       animation: photonicGlintSweep 4.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
       will-change: transform, opacity;
-    }
-
-    .brand-name-spark {
-      display: inline-block;
-      font-size: 0.74rem;
-      line-height: 1;
-      background: linear-gradient(135deg, #fbbf24 0%, #38bdf8 50%, #c084fc 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: brandStarlightPulse 3.2s ease-in-out infinite;
-      pointer-events: none;
-      flex-shrink: 0;
     }
 
     :root[data-theme="dark"] .brand-name-text,
@@ -3904,7 +3879,7 @@
           <img src="logo.png" alt="SEC-D Logo" class="brand-logo-img">
           <div class="brand-text-stack">
             <div class="brand-title-wrap">
-              <span class="brand-name" id="brandTitle" onclick="triggerQuantumBrandSurge()" title="SEC-D Timetable"><span class="brand-name-text">SEC-D Timetable</span><span class="brand-name-spark" aria-hidden="true">✦</span></span>
+              <span class="brand-name" id="brandTitle" onclick="triggerQuantumBrandSurge()" title="SEC-D Timetable"><span class="brand-name-text">SEC-D Timetable</span></span>
               <span class="brand-badge">PRO SEC-D</span>
             </div>
             <span class="brand-subtitle">Quantum University • B.Tech CSE</span>
@@ -5585,9 +5560,9 @@
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '5.2.0';
-    const LOCAL_APP_VERSION_CODE = 30;
-    const LOCAL_APP_BUILD_HASH = 'ee5759e178cb';
+    const LOCAL_APP_VERSION_NAME = '5.2.1';
+    const LOCAL_APP_VERSION_CODE = 31;
+    const LOCAL_APP_BUILD_HASH = '6df15ae215c2';
 
     let cachedLatestVersionCode = 29;
 
