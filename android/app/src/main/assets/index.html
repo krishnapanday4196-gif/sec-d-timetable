@@ -3959,7 +3959,7 @@
     </div>
   </div>
 
-  <!-- MODAL: SHARE APP (GUARANTEED GOOGLE DRIVE LINK SHARE) -->
+  <!-- MODAL: SHARE APP (GUARANTEED GITHUB DIRECT APK LINK & QR) -->
   <div class="modal-overlay" id="shareAppModal" onclick="closeModalOnOverlay(event, 'shareAppModal')">
     <div class="modal-sheet">
       <div class="modal-handle"></div>
@@ -3969,15 +3969,15 @@
       </div>
 
       <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.4;">
-        Share official Google Drive download link with Section-D classmates! Koi kitni bhi baar share kare, hamesha official Google Drive ka hi link aayega.
+        Share official direct APK download link with Section-D classmates! High-speed 24/7 direct download hosted on GitHub.
       </p>
 
       <div style="display:flex; flex-direction:column; gap:8px;">
-        <!-- Option 1: 1-Tap WhatsApp Link Share (Google Drive) -->
+        <!-- Option 1: 1-Tap WhatsApp Link Share (GitHub Direct) -->
         <button class="primary-btn"
           style="background:linear-gradient(135deg, #25D366, #128C7E); color:#ffffff; justify-content:center; font-weight:800; box-shadow:0 8px 24px rgba(37,211,102,0.35);"
           onclick="shareOnWhatsApp()">
-          💬 Share Google Drive Link on WhatsApp
+          💬 Share APK Link on WhatsApp
         </button>
 
         <div style="display:flex; gap:8px;">
@@ -3985,9 +3985,9 @@
           <button class="secondary-btn" style="flex:1; justify-content:center;" onclick="shareViaSystemChooser()">
             📤 Other Apps
           </button>
-          <!-- Option 3: Copy Drive Link -->
+          <!-- Option 3: Copy GitHub Download Link -->
           <button class="secondary-btn" style="flex:1; justify-content:center;" onclick="copyAppShareLink()">
-            📋 Copy Drive Link
+            📋 Copy Download Link
           </button>
         </div>
       </div>
@@ -3995,18 +3995,18 @@
       <!-- QR Code Section for Classmates in A-108 to scan -->
       <div
         style="background:var(--card-surface-grad); border:1px solid var(--card-border); border-radius:16px; padding:12px; display:flex; flex-direction:column; align-items:center; gap:8px; margin-top:4px;">
-        <span style="font-size:0.75rem; font-weight:800; color:var(--text-main);">📱 Scan QR Code to Open Google Drive</span>
+        <span style="font-size:0.75rem; font-weight:800; color:var(--text-main);">📱 Scan QR Code to Download APK</span>
         <span style="font-size:0.68rem; color:var(--text-muted); text-align:center;">Classmates can scan this with any
-          phone camera or Google Lens to download directly from Drive!</span>
+          phone camera or Google Lens to download directly from GitHub!</span>
         <div
           style="background:#ffffff; padding:8px; border-radius:12px; display:inline-flex; align-items:center; justify-content:center;">
           <img id="shareQrImg"
-            src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Fdrive.google.com%2Ffile%2Fd%2F1D1RM5HeDF1fbyIFF9L7By1askH0g--FX%2Fview%3Fusp%3Dsharing"
-            alt="Google Drive QR Code" style="width:130px; height:130px; display:block;" onerror="this.style.display='none'">
+            src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Fraw.githubusercontent.com%2Fkrishnapanday4196-gif%2Fsec-d-timetable%2Fmain%2FCSE_D_Timetable.apk"
+            alt="GitHub Direct APK QR Code" style="width:130px; height:130px; display:block;" onerror="this.style.display='none'">
         </div>
         <span id="shareLinkDisplay"
           style="font-size:0.68rem; font-family:monospace; color:var(--accent); word-break:break-all; text-align:center;">
-          https://drive.google.com/file/d/1D1RM5HeDF1fbyIFF9L7By1askH0g--FX/view?usp=sharing
+          https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/CSE_D_Timetable.apk
         </span>
       </div>
     </div>
@@ -5065,10 +5065,10 @@
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
     const LOCAL_APP_VERSION_NAME = '4.7.1';
-    const LOCAL_APP_VERSION_CODE = 21;
-    const LOCAL_APP_BUILD_HASH = 'f03ac3f1e5cc';
+    const LOCAL_APP_VERSION_CODE = 22;
+    const LOCAL_APP_BUILD_HASH = '7a0a5d02986e';
 
-    let cachedLatestVersionCode = 21;
+    let cachedLatestVersionCode = 22;
 
     function getEffectiveVersionCode() {
       const stored = parseInt(localStorage.getItem('secD_local_version_code'), 10);
@@ -5088,8 +5088,9 @@
       'http://40.40.24.45:8080'                                                      // Local Wi-Fi Direct
     ];
     let activeConnectedServer = UPDATE_SERVERS[0];
-    const GOOGLE_DRIVE_SHARE_URL = Object.freeze('https://drive.google.com/file/d/1D1RM5HeDF1fbyIFF9L7By1askH0g--FX/view?usp=sharing');
-    const directShareUrl = GOOGLE_DRIVE_SHARE_URL;
+    const GITHUB_APK_SHARE_URL = Object.freeze('https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/CSE_D_Timetable.apk');
+    const GOOGLE_DRIVE_SHARE_URL = GITHUB_APK_SHARE_URL;
+    const directShareUrl = GITHUB_APK_SHARE_URL;
     let otaServerUpdateUrl = '';
     let cachedLatestHash = '';
     let cachedLatestHtml = '';
@@ -5384,36 +5385,37 @@
       }
     }
 
-    function enforcePermanentDriveShareLock() {
+    function enforcePermanentShareLock() {
       const qr = document.getElementById('shareQrImg');
       if (qr) {
-        qr.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(GOOGLE_DRIVE_SHARE_URL)}`;
+        qr.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(GITHUB_APK_SHARE_URL)}`;
       }
       const disp = document.getElementById('shareLinkDisplay');
       if (disp) {
-        disp.textContent = GOOGLE_DRIVE_SHARE_URL;
+        disp.textContent = GITHUB_APK_SHARE_URL;
       }
     }
+    const enforcePermanentDriveShareLock = enforcePermanentShareLock;
 
-    // APP SHARE ENGINE (GUARANTEED PERMANENT GOOGLE DRIVE LINK & QR)
+    // APP SHARE ENGINE (24/7 GITHUB DIRECT APK LINK & QR)
     function openShareModal() {
       triggerHaptic(10);
-      enforcePermanentDriveShareLock();
+      enforcePermanentShareLock();
       openModal('shareAppModal');
     }
 
     function getFormattedShareMessage() {
-      const publicUrl = GOOGLE_DRIVE_SHARE_URL;
+      const publicUrl = GITHUB_APK_SHARE_URL;
       return `🎓 *CSE D Timetable App Pro (B.Tech CSE Sec-D)*\n\n` +
         `✨ 3D Holographic Command Deck & Luxury UI (60fps)\n` +
         `✅ Official Section-D Faculty Names on All Classes\n` +
         `✅ 5-Minute Pre-Class Alert Notification\n` +
         `✅ Strict Set-A & Set-B Routine + Excel Export\n\n` +
-        `📲 *Direct Download Link (Google Drive - No IP needed):*\n${publicUrl}`;
+        `📲 *Direct Download Link (GitHub 24/7 Fast Download):*\n${publicUrl}\n\n` +
+        `🌐 *GitHub Repository:*\nhttps://github.com/krishnapanday4196-gif/sec-d-timetable`;
     }
 
     function shareApkFileDirectly() {
-      // Guaranteed: koi kitni bhi baar share kare, hamesha Google Drive ka link hi share hoga
       shareOnWhatsApp();
     }
 
@@ -5454,7 +5456,7 @@
       if (typeof navigator !== 'undefined' && navigator.share) {
         try {
           await navigator.share({
-            title: 'CSE D Timetable App (Google Drive)',
+            title: 'CSE D Timetable App (GitHub Direct Download)',
             text: msg
           });
           closeModal('shareAppModal');
@@ -5466,15 +5468,15 @@
 
     function copyAppShareLink() {
       triggerHaptic(10);
-      const publicUrl = GOOGLE_DRIVE_SHARE_URL;
+      const publicUrl = GITHUB_APK_SHARE_URL;
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(publicUrl).then(() => {
-          showToast('✅ Google Drive link copied to clipboard!');
+          showToast('✅ GitHub download link copied to clipboard!');
         }).catch(() => {
-          prompt('Copy Google Drive download link:', publicUrl);
+          prompt('Copy GitHub download link:', publicUrl);
         });
       } else {
-        prompt('Copy Google Drive download link:', publicUrl);
+        prompt('Copy GitHub download link:', publicUrl);
       }
       closeModal('shareAppModal');
     }

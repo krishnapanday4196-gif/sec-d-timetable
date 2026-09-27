@@ -45,8 +45,9 @@ import java.security.MessageDigest;
 
 public class MainActivity extends Activity {
     private WebView mWebView;
-    private static final int CURRENT_APK_VERSION = 20;
-    public static final String GOOGLE_DRIVE_SHARE_URL = "https://drive.google.com/file/d/1D1RM5HeDF1fbyIFF9L7By1askH0g--FX/view?usp=sharing";
+    private static final int CURRENT_APK_VERSION = 22;
+    public static final String GITHUB_APK_SHARE_URL = "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/CSE_D_Timetable.apk";
+    public static final String GOOGLE_DRIVE_SHARE_URL = GITHUB_APK_SHARE_URL;
     private ValueCallback<Uri[]> mFilePathCallback;
     private static final int FILE_CHOOSER_REQUEST_CODE = 2001;
     private static final int NOTIF_PERM_REQUEST_CODE = 3001;
@@ -835,7 +836,7 @@ public class MainActivity extends Activity {
         }
 
         private String getGuaranteedDriveMessage(String customMsg) {
-            if (customMsg != null && customMsg.contains("drive.google.com")) {
+            if (customMsg != null && (customMsg.contains("githubusercontent.com") || customMsg.contains("github.com"))) {
                 return customMsg;
             }
             return "🎓 *CSE D Timetable App Pro (B.Tech CSE Sec-D)*\n\n" +
@@ -843,7 +844,8 @@ public class MainActivity extends Activity {
                     "✅ Official Section-D Faculty Names on All Classes\n" +
                     "✅ 5-Minute Pre-Class Alert Notification\n" +
                     "✅ Strict Set-A & Set-B Routine + Excel Export\n\n" +
-                    "📲 *Direct Download Link (Google Drive - No IP needed):*\n" + GOOGLE_DRIVE_SHARE_URL;
+                    "📲 *Direct Download Link (GitHub 24/7 Fast Download):*\n" + GITHUB_APK_SHARE_URL + "\n\n" +
+                    "🌐 *GitHub Repository:*\nhttps://github.com/krishnapanday4196-gif/sec-d-timetable";
         }
 
         @JavascriptInterface
