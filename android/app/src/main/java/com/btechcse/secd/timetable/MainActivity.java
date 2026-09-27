@@ -217,11 +217,8 @@ public class MainActivity extends Activity {
                     );
                     mPendingNotifTitle = null;
                     mPendingNotifShortBody = null;
-                    mPendingNotifBigText = null;
-                } else {
-                    ClassReminderReceiver.triggerSampleUpcomingNotification(this);
                 }
-                Toast.makeText(this, "🔔 Class Notifications Enabled (5 Min Before Class)!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "🔔 5-Minute Class Reminders Active!", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, "🔔 Please allow notifications for 5-Min Class Alerts", Toast.LENGTH_LONG).show();
             }

@@ -4984,10 +4984,40 @@
       return false;
     }
 
+    function isTodayHoliday(date = new Date()) {
+      const day = date.getDay();
+      if (day === 0) return true; // Sunday is always holiday
+
+      const yyyy = date.getFullYear();
+      const mm = String(date.getMonth() + 1).padStart(2, '0');
+      const dd = String(date.getDate()).padStart(2, '0');
+      const dateStr = `${yyyy}-${mm}-${dd}`;
+
+      // User / college custom marked holidays in localStorage
+      try {
+        const customHolidays = JSON.parse(localStorage.getItem('secD_custom_holidays') || '[]');
+        if (customHolidays.includes(dateStr)) return true;
+      } catch (e) { }
+
+      // National / Gazetted Holidays
+      const m = date.getMonth(); // 0-based
+      const d = date.getDate();
+      if (m === 0 && d === 26) return true; // Republic Day (26 Jan)
+      if (m === 7 && d === 15) return true; // Independence Day (15 Aug)
+      if (m === 9 && d === 2) return true;  // Gandhi Jayanti (2 Oct)
+      if (m === 11 && d === 25) return true; // Christmas (25 Dec)
+
+      return false;
+    }
+
     function dispatchClassNotification(periodObj, slotObj) {
       if (!chimeEnabled || !periodObj || !slotObj) return;
+      const now = isSimulating ? getSimulatedDate() : new Date();
+      if (isTodayHoliday(now)) return; // ABSOLUTELY ZERO NOTIFICATIONS ON SUNDAY OR HOLIDAYS!
+
       const info = resolveSlotForBatch(slotObj, selectedBatch);
       if (!info || !info.subject) return;
+      // Filter out non-classes (Lunch, Self Study, Free Period)
       if (info.subject.includes('Lunch') || info.subject === 'Self Study' || info.subject === 'Free Period') return;
 
       const faculty = getFacultyForSubject(info.subject.replace(/^A:\s*/, '').split('|')[0].trim());
@@ -6287,15 +6317,15 @@
           }
         }
 
-        // Sunday Check
-        if (currentDay === 0) {
+        // Sunday & Holiday Check
+        if (isTodayHoliday(now)) {
           hero.classList.remove('is-active-live');
           heroRing.style.strokeDashoffset = CIRCLE_CIRCUMFERENCE;
           setTextIfChanged(circleTimer, 'OFF');
-          setTextIfChanged(circleTimerSub, 'SUNDAY');
-          setTextIfChanged(heroSlotBadge, 'Weekend');
-          setTextIfChanged(heroBatchBadge, 'Holiday');
-          setTextIfChanged(heroSubjectName, '🏖️ College Off (Sunday)');
+          setTextIfChanged(circleTimerSub, currentDay === 0 ? 'SUNDAY' : 'HOLIDAY');
+          setTextIfChanged(heroSlotBadge, currentDay === 0 ? 'Weekend' : 'Holiday');
+          setTextIfChanged(heroBatchBadge, 'College Off');
+          setTextIfChanged(heroSubjectName, currentDay === 0 ? '🏖️ College Off (Sunday)' : '🏖️ College Off (Holiday)');
           setTextIfChanged(heroRoomBadge, 'No Lectures Today');
           if (heroFacultyBadge) heroFacultyBadge.style.display = 'none';
           setTextIfChanged(orbitStatusTxt, 'College Closed');
@@ -6340,7 +6370,6 @@
 
           if (lastNotifiedPeriod !== p.id) {
             lastNotifiedPeriod = p.id;
-            playChime();
           }
 
           // STRICT UNMIXED DISPLAY BASED ON BATCH

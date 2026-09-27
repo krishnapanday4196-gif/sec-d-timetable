@@ -72,20 +72,64 @@ public class ClassReminderReceiver extends BroadcastReceiver {
         }
     }
 
+    public static boolean isHoliday(Context context, Calendar cal) {
+        if (cal == null) return false;
+        // 1. Sunday check (always holiday)
+        if (cal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+            return true;
+        }
+
+        // 2. Custom holiday set by user/college in prefs
+        try {
+            if (context != null) {
+                SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+                String customHolidays = prefs.getString("custom_holiday_dates", "");
+                int y = cal.get(Calendar.YEAR);
+                int m = cal.get(Calendar.MONTH) + 1;
+                int d = cal.get(Calendar.DAY_OF_MONTH);
+                String dateStr = String.format(java.util.Locale.US, "%04d-%02d-%02d", y, m, d);
+                if (customHolidays.contains(dateStr)) {
+                    return true;
+                }
+            }
+        } catch (Exception ignored) {}
+
+        // 3. National / Major Gazetted Holidays
+        int month = cal.get(Calendar.MONTH); // 0-based
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+
+        if (month == Calendar.JANUARY && day == 26) return true; // Republic Day
+        if (month == Calendar.AUGUST && day == 15) return true;  // Independence Day
+        if (month == Calendar.OCTOBER && day == 2) return true;   // Gandhi Jayanti
+        if (month == Calendar.DECEMBER && day == 25) return true; // Christmas
+
+        return false;
+    }
+
     private void handlePeriodReminder(Context context, int periodIdx) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         boolean enabled = prefs.getBoolean("alerts_enabled", true);
         if (!enabled) return;
 
         Calendar now = Calendar.getInstance();
+        // Never send notification on Sunday or Holiday!
+        if (isHoliday(context, now)) {
+            return;
+        }
+
         int calDay = now.get(Calendar.DAY_OF_WEEK);
         // Convert Calendar.DAY_OF_WEEK (Sun=1..Sat=7) to our 0..6 (Sun=0, Mon=1..Sat=6)
         int dayIdx = calDay - 1;
-        if (dayIdx <= 0 || dayIdx > 6) return; // Sunday holiday
+        if (dayIdx <= 0 || dayIdx > 6) return;
 
         String batch = prefs.getString("selected_batch", "Set-A");
         ClassInfo info = getClassInfo(dayIdx, periodIdx, batch);
         if (info == null || info.isSkip) return;
+
+        // Skip non-lecture periods: Lunch, Free Period, Self Study
+        if (info.subject == null || info.subject.contains("Lunch") || info.subject.contains("Self Study") || info.subject.contains("Free Period")) {
+            return;
+        }
 
         String startTime = PERIOD_TIMINGS[periodIdx].split("-")[0].trim();
         String title = "⏰ Class 5 Minute Me Shuru Hone Wali Hai! (" + PERIOD_IDS[periodIdx] + " • " + startTime + ")";
@@ -472,12 +516,12 @@ public class ClassReminderReceiver extends BroadcastReceiver {
             target.set(Calendar.SECOND, 0);
             target.set(Calendar.MILLISECOND, 0);
 
-            // If this time has already passed today, schedule for tomorrow
+            // If this time has already passed today, advance by 1 day
             if (target.getTimeInMillis() <= now.getTimeInMillis() + 2000) {
                 target.add(Calendar.DAY_OF_YEAR, 1);
             }
-            // If target falls on Sunday, advance to Monday
-            if (target.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+            // Skip Sundays and any Holidays
+            while (isHoliday(context, target)) {
                 target.add(Calendar.DAY_OF_YEAR, 1);
             }
 
@@ -491,16 +535,7 @@ public class ClassReminderReceiver extends BroadcastReceiver {
             }
             PendingIntent pi = PendingIntent.getBroadcast(context, 500 + periodIdx, intent, flags);
 
-            Intent showAppIntent = new Intent(context, MainActivity.class);
-            PendingIntent showPi = PendingIntent.getActivity(context, 600 + periodIdx, showAppIntent, flags);
-
             long triggerAt = target.getTimeInMillis();
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                try {
-                    am.setAlarmClock(new AlarmManager.AlarmClockInfo(triggerAt, showPi), pi);
-                    return;
-                } catch (Exception ignored) {}
-            }
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                 if (am.canScheduleExactAlarms()) {
                     am.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, triggerAt, pi);
