@@ -547,30 +547,167 @@
        HIGH-PERFORMANCE BUTTERY-SMOOTH AMBIENT GRADIENT THEME CANVAS
        (GPU-Optimized: Zero Stutter, Instant 120fps/60fps, No Throttling)
        ============================================================ */
+    /* ============================================================
+       MULTI-COLOR DYNAMIC LIVING AURORA BACKGROUND SYSTEM
+       Hardware-accelerated, 120fps GPU, zero-lag fluid motion
+       ============================================================ */
+    @keyframes multiColorMeshFlow {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    @keyframes orbFloat1 {
+      0%, 100% {
+        transform: translate3d(-10%, -10%, 0) scale(1);
+      }
+      33% {
+        transform: translate3d(35%, 25%, 0) scale(1.15);
+      }
+      66% {
+        transform: translate3d(15%, 55%, 0) scale(0.92);
+      }
+    }
+
+    @keyframes orbFloat2 {
+      0%, 100% {
+        transform: translate3d(40%, 60%, 0) scale(1.05);
+      }
+      33% {
+        transform: translate3d(-15%, 30%, 0) scale(0.9);
+      }
+      66% {
+        transform: translate3d(25%, -15%, 0) scale(1.2);
+      }
+    }
+
+    @keyframes orbFloat3 {
+      0%, 100% {
+        transform: translate3d(20%, 10%, 0) scale(0.95);
+      }
+      40% {
+        transform: translate3d(-25%, 50%, 0) scale(1.18);
+      }
+      75% {
+        transform: translate3d(50%, 35%, 0) scale(1.02);
+      }
+    }
+
+    @keyframes orbFloat4 {
+      0%, 100% {
+        transform: translate3d(-20%, 70%, 0) scale(1.1);
+      }
+      50% {
+        transform: translate3d(30%, 5%, 0) scale(0.88);
+      }
+    }
+
+    @keyframes orbFloat5 {
+      0%, 100% {
+        transform: translate3d(60%, -5%, 0) scale(0.92);
+      }
+      50% {
+        transform: translate3d(-10%, 40%, 0) scale(1.16);
+      }
+    }
+
     .aurora-ambient-bg {
       position: fixed;
       inset: 0;
-
       width: 100vw;
       height: 100vh;
       overflow: hidden;
       z-index: 0;
       pointer-events: none;
-      background-color: var(--bg-phone);
-      transition: background-color 0.25s ease;
+      background-color: #030712;
       contain: strict;
       transform: translateZ(0);
-      will-change: auto;
     }
 
-    /* Disable laggy cosmic orbs to free phone GPU and battery */
+    .aurora-mesh-gradient {
+      position: absolute;
+      inset: -20%;
+      width: 140%;
+      height: 140%;
+      background: radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.28) 0%, transparent 45%),
+                  radial-gradient(circle at 90% 15%, rgba(168, 85, 247, 0.32) 0%, transparent 50%),
+                  radial-gradient(circle at 50% 85%, rgba(16, 185, 129, 0.25) 0%, transparent 45%),
+                  radial-gradient(circle at 80% 80%, rgba(245, 158, 11, 0.28) 0%, transparent 45%),
+                  radial-gradient(circle at 20% 75%, rgba(244, 63, 94, 0.26) 0%, transparent 45%),
+                  linear-gradient(135deg, #020612 0%, #060e22 50%, #030818 100%);
+      background-size: 200% 200%;
+      animation: multiColorMeshFlow 16s ease-in-out infinite alternate;
+      will-change: background-position;
+    }
+
     .aurora-orb {
-      display: none !important;
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(65px);
+      pointer-events: none;
+      will-change: transform;
+      mix-blend-mode: screen;
+      opacity: 0.95;
+    }
+
+    /* 1. Electric Cyan Orb */
+    .aurora-orb.orb-cyan {
+      top: 5%;
+      left: 10%;
+      width: 340px;
+      height: 340px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.65) 0%, rgba(6, 182, 212, 0.28) 50%, transparent 70%);
+      animation: orbFloat1 20s ease-in-out infinite;
+    }
+
+    /* 2. Cyber Purple/Violet Orb */
+    .aurora-orb.orb-purple {
+      top: 35%;
+      right: 5%;
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.60) 0%, rgba(139, 92, 246, 0.28) 50%, transparent 70%);
+      animation: orbFloat2 24s ease-in-out infinite;
+    }
+
+    /* 3. Solar Gold / Warm Amber Orb */
+    .aurora-orb.orb-gold {
+      top: 55%;
+      left: 15%;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(251, 191, 36, 0.52) 0%, rgba(245, 158, 11, 0.24) 50%, transparent 70%);
+      animation: orbFloat3 18s ease-in-out infinite;
+    }
+
+    /* 4. Neo Emerald / Mint Orb */
+    .aurora-orb.orb-emerald {
+      bottom: 5%;
+      right: 15%;
+      width: 310px;
+      height: 310px;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.48) 0%, rgba(52, 211, 153, 0.22) 50%, transparent 70%);
+      animation: orbFloat4 22s ease-in-out infinite;
+    }
+
+    /* 5. Laser Rose / Pink Flare Orb */
+    .aurora-orb.orb-rose {
+      top: 15%;
+      right: 25%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(244, 63, 94, 0.50) 0%, rgba(236, 72, 153, 0.22) 50%, transparent 70%);
+      animation: orbFloat5 26s ease-in-out infinite;
     }
 
     /* ============================================================
-       QUANTUM CAMPUS PHOTO ANIMATED BACKGROUND LAYER
-       (Hardware-Accelerated Ken Burns Cinematic Motion)
+       QUANTUM CAMPUS PHOTO CINEMATIC OVERLAY LAYER
        ============================================================ */
     .campus-bg-layer {
       position: fixed;
@@ -578,11 +715,13 @@
       width: 100vw;
       height: 100vh;
       overflow: hidden;
-      z-index: 0;
+      z-index: 1;
       pointer-events: none;
       display: none;
       transform: translateZ(0);
       backface-visibility: hidden;
+      opacity: 0.22;
+      mix-blend-mode: luminosity;
     }
 
     :root[data-theme="campus"] .campus-bg-layer {
@@ -600,7 +739,7 @@
       transform: translateZ(0);
       will-change: transform;
       animation: campusPanZoom 26s ease-in-out infinite alternate;
-      filter: saturate(1.12) brightness(0.90);
+      filter: saturate(1.15) brightness(0.85);
     }
 
     @keyframes campusPanZoom {
@@ -625,7 +764,7 @@
       inset: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(180deg, rgba(3, 7, 18, 0.74) 0%, rgba(3, 7, 18, 0.84) 50%, rgba(2, 6, 15, 0.94) 100%);
+      background: radial-gradient(circle at 50% 30%, rgba(3, 7, 18, 0.25) 0%, rgba(2, 6, 15, 0.65) 100%);
       pointer-events: none;
     }
 
@@ -3851,18 +3990,20 @@
 
 <body>
 
-  <!-- QUANTUM CAMPUS PHOTO ANIMATED BACKGROUND LAYER -->
+  <!-- DYNAMIC ANIMATED MULTI-COLOR AURORA THEME CANVAS -->
+  <div class="aurora-ambient-bg" id="auroraBg" aria-hidden="true">
+    <div class="aurora-mesh-gradient"></div>
+    <div class="aurora-orb orb-cyan"></div>
+    <div class="aurora-orb orb-purple"></div>
+    <div class="aurora-orb orb-gold"></div>
+    <div class="aurora-orb orb-emerald"></div>
+    <div class="aurora-orb orb-rose"></div>
+  </div>
+
+  <!-- QUANTUM CAMPUS PHOTO CINEMATIC OVERLAY LAYER -->
   <div class="campus-bg-layer" id="campusBg" aria-hidden="true">
     <img src="campus.jpg" alt="Quantum Campus" class="campus-photo-img" />
     <div class="campus-photo-overlay"></div>
-  </div>
-
-  <!-- DYNAMIC ANIMATED AURORA THEME CANVAS -->
-  <div class="aurora-ambient-bg" id="auroraBg" aria-hidden="true">
-    <div class="aurora-orb orb-primary"></div>
-    <div class="aurora-orb orb-secondary"></div>
-    <div class="aurora-orb orb-accent"></div>
-    <div class="aurora-orb orb-cyan"></div>
   </div>
 
   <!-- Toast Message -->
@@ -5560,9 +5701,9 @@
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '5.2.1';
-    const LOCAL_APP_VERSION_CODE = 31;
-    const LOCAL_APP_BUILD_HASH = '6df15ae215c2';
+    const LOCAL_APP_VERSION_NAME = '5.3.0';
+    const LOCAL_APP_VERSION_CODE = 32;
+    const LOCAL_APP_BUILD_HASH = '6ccc5e2631ce';
 
     let cachedLatestVersionCode = 29;
 
@@ -5660,20 +5801,10 @@
 
       if (hasUpdate) {
         cachedLatestHash = htmlHash;
-        const dismissed = localStorage.getItem('secD_dismissed_update_ver');
-        const updateVerKey = htmlHash || versionName;
-        if (banner) {
-          if (isManual || dismissed !== updateVerKey) {
-            banner.style.display = 'flex';
-          } else {
-            banner.style.display = 'none';
-          }
-          const vTitle = document.getElementById('otaVersionTitle');
-          if (vTitle) vTitle.textContent = `Update Available (${versionName || 'v4.7.1'})`;
-        }
-        if (otaPill) otaPill.textContent = 'Update Ready!';
-        if (statusLabel) statusLabel.textContent = `New update ready (${versionName || 'v4.7.1'})! Tap "Update App Now"`;
-        if (isManual) showToast(`New update found (${versionName || 'v4.7.1'})! Tap "Update App Now"`);
+        showToast(`🚀 New SEC-D Update (v${versionName || '5.3.0'}) Found! Updating...`);
+        setTimeout(() => {
+          performInAppUpdate();
+        }, 500);
       } else {
         if (banner) banner.style.display = 'none';
         if (otaPill) otaPill.textContent = 'v4.7 Latest';
@@ -5750,20 +5881,10 @@
 
       if (hasUpdate) {
         cachedLatestHash = data.htmlHash;
-        const dismissed = localStorage.getItem('secD_dismissed_update_ver');
-        const updateVerKey = data.htmlHash || data.versionName;
-        if (banner) {
-          if (isManual || dismissed !== updateVerKey) {
-            banner.style.display = 'flex';
-          } else {
-            banner.style.display = 'none';
-          }
-          const vTitle = document.getElementById('otaVersionTitle');
-          if (vTitle) vTitle.textContent = `Update Available (${data.versionName || 'v4.7.1'})`;
-        }
-        if (otaPill) otaPill.textContent = 'Update Ready!';
-        if (statusLabel) statusLabel.textContent = `New update ready (${data.versionName || 'v4.7.1'})! Tap "Update App Now"`;
-        if (isManual) showToast(`New update found (${data.versionName || 'v4.7.1'})! Tap "Update App Now"`);
+        showToast(`🚀 New SEC-D Update (v${data.versionName || '5.3.0'}) Found! Updating...`);
+        setTimeout(() => {
+          performInAppUpdate();
+        }, 500);
       } else {
         if (banner) banner.style.display = 'none';
         if (otaPill) otaPill.textContent = 'v4.7 Latest';
