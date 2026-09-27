@@ -159,15 +159,22 @@
     }
 
     /* ============================================================
-       60FPS HARDWARE-ACCELERATED KEYFRAME ANIMATIONS & ANIMATED THEME
+       60FPS/120FPS GPU-ACCELERATED SPRING KEYFRAMES & FLUID SHEEN
        ============================================================ */
+    @keyframes brandShimmer {
+      0% {
+        background-position: -200% center;
+      }
+      100% {
+        background-position: 200% center;
+      }
+    }
+
     @keyframes holoSweep {
       0% {
         transform: translate3d(-140%, 0, 0) skewX(-22deg);
       }
-
-      45%,
-      100% {
+      45%, 100% {
         transform: translate3d(260%, 0, 0) skewX(-22deg);
       }
     }
@@ -175,9 +182,11 @@
     @keyframes cardCascadeIn {
       0% {
         opacity: 0;
-        transform: translate3d(0, 18px, 0) scale(0.97);
+        transform: translate3d(0, 22px, 0) scale(0.96);
       }
-
+      65% {
+        transform: translate3d(0, -3px, 0) scale(1.008);
+      }
       100% {
         opacity: 1;
         transform: translate3d(0, 0, 0) scale(1);
@@ -188,9 +197,17 @@
       0% {
         transform: rotate(0deg);
       }
-
       100% {
         transform: rotate(360deg);
+      }
+    }
+
+    @keyframes chronoCounterOrbit {
+      0% {
+        transform: rotate(360deg);
+      }
+      100% {
+        transform: rotate(0deg);
       }
     }
 
@@ -198,36 +215,102 @@
       0% {
         transform: translate3d(-100%, 0, 0);
       }
-
       100% {
         transform: translate3d(220%, 0, 0);
       }
     }
 
     @keyframes liveDotPulse {
-
-      0%,
-      100% {
-        transform: scale(1.05);
-        opacity: 0.9;
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.75);
       }
-
       50% {
-        transform: scale(1.25);
-        opacity: 1;
-        filter: drop-shadow(0 0 6px rgba(244, 63, 94, 0.7));
+        transform: scale(1.18);
+        box-shadow: 0 0 0 7px rgba(244, 63, 94, 0);
+      }
+    }
+
+    @keyframes liveRadarPing {
+      0% {
+        box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.75);
+      }
+      60% {
+        box-shadow: 0 0 0 8px rgba(244, 63, 94, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(244, 63, 94, 0);
+      }
+    }
+
+    @keyframes liveCardAura {
+      0%, 100% {
+        border-color: rgba(244, 63, 94, 0.65) !important;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 8px 24px -4px rgba(244, 63, 94, 0.35);
+      }
+      50% {
+        border-color: rgba(244, 63, 94, 1) !important;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), 0 12px 32px -2px rgba(244, 63, 94, 0.6);
       }
     }
 
     @keyframes navIconFloat {
-
-      0%,
-      100% {
+      0%, 100% {
         transform: translate3d(0, -1px, 0) scale(1.06);
       }
-
       50% {
         transform: translate3d(0, -4px, 0) scale(1.14);
+      }
+    }
+
+    @keyframes pillPop {
+      0% {
+        transform: scale(0.92);
+      }
+      55% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: translateY(-1px) scale(1);
+      }
+    }
+
+    @keyframes batchPop {
+      0% {
+        transform: scale(0.92);
+      }
+      55% {
+        transform: scale(1.04);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes heroGlowPulse {
+      0%, 100% {
+        filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.28));
+      }
+      50% {
+        filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.62));
+      }
+    }
+
+    @keyframes heroLiveGlowPulse {
+      0%, 100% {
+        filter: drop-shadow(0 0 10px rgba(244, 63, 94, 0.35));
+      }
+      50% {
+        filter: drop-shadow(0 0 22px rgba(244, 63, 94, 0.75));
+      }
+    }
+
+    @keyframes modalBackdropFade {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
       }
     }
 
@@ -434,9 +517,11 @@
     }
 
     :root[data-theme="dark"] .brand-name {
-      background: linear-gradient(90deg, #ffffff 0%, #e2e8f0 60%, #38bdf8 100%);
+      background: linear-gradient(90deg, #ffffff 0%, #38bdf8 30%, #ffffff 60%, #a855f7 85%, #ffffff 100%);
+      background-size: 200% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      animation: brandShimmer 7s linear infinite;
     }
 
     .brand-subtitle {
@@ -986,17 +1071,19 @@
       border: none;
       background: transparent;
       white-space: nowrap;
-      transition: transform 0.18s ease, color 0.2s ease;
+      transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+      transform: translateZ(0);
     }
 
     .batch-tab:active {
-      transform: scale(0.95);
+      transform: scale(0.92) translateZ(0);
     }
 
     .batch-tab.active-seta,
     .batch-tab.active-setb,
     .batch-tab.active-all {
       color: #ffffff;
+      animation: batchPop 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     .batch-tab.active-seta::after,
@@ -1294,20 +1381,43 @@
       justify-content: center;
       background: radial-gradient(circle, rgba(15, 23, 42, 0.75) 0%, rgba(15, 23, 42, 0.2) 68%, transparent 72%);
       border-radius: 50%;
+      animation: heroGlowPulse 4s ease-in-out infinite;
+      transform: translateZ(0);
     }
 
     .circular-gauge-container::before {
       content: '';
       position: absolute;
-      inset: -3px;
+      inset: -4px;
       border-radius: 50%;
-      border: 1.5px dashed rgba(56, 189, 248, 0.38);
-      animation: chronoOrbitSpin 16s linear infinite;
+      border: 1.5px dashed rgba(56, 189, 248, 0.45);
+      animation: chronoOrbitSpin 14s linear infinite;
       pointer-events: none;
+      transform: translateZ(0);
+    }
+
+    .circular-gauge-container::after {
+      content: '';
+      position: absolute;
+      inset: 2px;
+      border-radius: 50%;
+      border: 1px dotted rgba(251, 191, 36, 0.35);
+      animation: chronoCounterOrbit 18s linear infinite;
+      pointer-events: none;
+      transform: translateZ(0);
+    }
+
+    .circular-hero-card.is-active-live .circular-gauge-container {
+      animation: heroLiveGlowPulse 2.4s ease-in-out infinite;
     }
 
     .circular-hero-card.is-active-live .circular-gauge-container::before {
-      border-color: rgba(244, 63, 94, 0.55);
+      border-color: rgba(244, 63, 94, 0.7);
+      animation-duration: 8s;
+    }
+
+    .circular-hero-card.is-active-live .circular-gauge-container::after {
+      border-color: rgba(244, 63, 94, 0.45);
       animation-duration: 10s;
     }
 
@@ -1566,11 +1676,12 @@
       font-weight: 800;
       white-space: nowrap;
       cursor: pointer;
-      transition: transform 0.16s ease, border-color 0.2s ease;
+      transition: transform 0.16s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.2s ease, background 0.2s ease;
+      transform: translateZ(0);
     }
 
     .quick-view-btn:active {
-      transform: scale(0.95);
+      transform: scale(0.93) translateZ(0);
     }
 
     .quick-view-btn.active {
@@ -1578,12 +1689,14 @@
       color: #ffffff;
       border-color: transparent;
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 5px 15px var(--accent-glow);
+      animation: batchPop 0.26s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     .quick-view-btn#btnViewTomorrow.active {
       background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 5px 15px rgba(245, 158, 11, 0.38);
       border-color: transparent;
+      animation: batchPop 0.26s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     /* 6-COLUMN SYMMETRICAL DAY PILLS (MON - SAT FIT EDGE-TO-EDGE) */
@@ -1611,10 +1724,11 @@
       cursor: pointer;
       color: var(--text-main);
       transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.2s ease;
+      transform: translateZ(0);
     }
 
     .day-pill:active {
-      transform: scale(0.92);
+      transform: scale(0.91) translateZ(0);
     }
 
     .day-pill.active {
@@ -1622,7 +1736,8 @@
       color: #ffffff;
       border-color: transparent;
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.38), 0 6px 14px var(--accent-glow);
-      transform: translateY(-1px);
+      transform: translateY(-1px) translateZ(0);
+      animation: pillPop 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     .day-pill.today-highlight:not(.active) {
@@ -1806,8 +1921,23 @@
       cursor: pointer;
       box-shadow: var(--card-shadow);
       contain: content;
-      animation: cardCascadeIn 0.36s cubic-bezier(0.22, 1, 0.36, 1) both;
-      transition: transform 0.16s ease;
+      animation: cardCascadeIn 0.38s cubic-bezier(0.22, 1, 0.36, 1) both;
+      transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+      transform: translateZ(0);
+    }
+
+    .lecture-card:nth-child(1) { animation-delay: 0.02s; }
+    .lecture-card:nth-child(2) { animation-delay: 0.05s; }
+    .lecture-card:nth-child(3) { animation-delay: 0.08s; }
+    .lecture-card:nth-child(4) { animation-delay: 0.11s; }
+    .lecture-card:nth-child(5) { animation-delay: 0.14s; }
+    .lecture-card:nth-child(6) { animation-delay: 0.17s; }
+    .lecture-card:nth-child(7) { animation-delay: 0.20s; }
+    .lecture-card:nth-child(8) { animation-delay: 0.23s; }
+
+    .lecture-card:hover {
+      transform: translateY(-2px) translateZ(0);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
     }
 
     .lecture-card.set-a-card {
@@ -1823,7 +1953,7 @@
     }
 
     .lecture-card:active {
-      transform: scale(0.982);
+      transform: scale(0.978) translateY(0) translateZ(0);
       background: var(--card-hover);
     }
 
@@ -1834,6 +1964,8 @@
       background:
         radial-gradient(circle at 88% 18%, rgba(244, 63, 94, 0.18), transparent 55%),
         var(--card-surface-grad);
+      animation: liveCardAura 3s ease-in-out infinite alternate;
+      transform: translateZ(0);
     }
 
     .lecture-card.is-live::after {
@@ -1901,6 +2033,8 @@
       background: linear-gradient(135deg, #f43f5e, #e11d48);
       color: #ffffff;
       box-shadow: 0 2px 8px var(--live-glow);
+      animation: liveRadarPing 1.8s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+      transform: translateZ(0);
     }
 
     .status-done-pill {
@@ -2145,6 +2279,7 @@
       display: none;
       justify-content: center;
       align-items: flex-end;
+      animation: modalBackdropFade 0.22s ease-out;
     }
 
     .modal-sheet {
@@ -2162,16 +2297,19 @@
       flex-direction: column;
       gap: 14px;
       overflow-y: auto;
-      animation: sheetUp 0.22s cubic-bezier(0.32, 0.72, 0, 1);
+      animation: sheetUp 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateZ(0);
+      will-change: transform;
     }
 
     @keyframes sheetUp {
-      from {
-        transform: translateY(100%);
+      0% {
+        transform: translate3d(0, 100%, 0);
+        opacity: 0.6;
       }
-
-      to {
-        transform: translateY(0);
+      100% {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
       }
     }
 
@@ -2207,6 +2345,12 @@
       align-items: center;
       justify-content: center;
       font-size: 0.85rem;
+      transition: transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.2s ease;
+      transform: translateZ(0);
+    }
+
+    .modal-close-btn:active {
+      transform: scale(0.88) translateZ(0);
     }
 
     /* DYNAMIC SIMULATOR GRID */
@@ -2286,6 +2430,13 @@
       justify-content: center;
       gap: 6px;
       box-shadow: 0 3px 12px var(--accent-glow);
+      transition: transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s ease;
+      transform: translateZ(0);
+    }
+
+    .primary-btn:active {
+      transform: scale(0.96) translateZ(0);
+      box-shadow: 0 1px 4px var(--accent-glow);
     }
 
     .secondary-btn {
@@ -2301,29 +2452,39 @@
       align-items: center;
       justify-content: center;
       gap: 6px;
+      transition: transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.2s ease;
+      transform: translateZ(0);
+    }
+
+    .secondary-btn:active {
+      transform: scale(0.96) translateZ(0);
     }
 
     .toast-msg {
       position: fixed;
       top: 16px;
       left: 50%;
-      transform: translateX(-50%) translateY(-100px);
+      transform: translate3d(-50%, -100px, 0) scale(0.92);
+      opacity: 0;
       background: #10b981;
       color: #fff;
-      padding: 8px 18px;
+      padding: 9px 20px;
       border-radius: 25px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      font-size: 0.82rem;
+      font-weight: 800;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45), 0 0 12px rgba(16, 185, 129, 0.4);
       z-index: 2000;
-      transition: transform 0.3s ease;
+      transition: transform 0.38s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.26s ease;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 7px;
+      pointer-events: none;
     }
 
     .toast-msg.show {
-      transform: translateX(-50%) translateY(0);
+      transform: translate3d(-50%, 0, 0) scale(1);
+      opacity: 1;
+      pointer-events: auto;
     }
 
     /* ============================================================
@@ -2342,10 +2503,12 @@
     }
 
     :root[data-theme="light"] .brand-name {
-      background: linear-gradient(135deg, #0f172a 0%, #1e40af 55%, #2563eb 100%);
+      background: linear-gradient(90deg, #0f172a 0%, #2563eb 35%, #0f172a 65%, #1d4ed8 85%, #0f172a 100%);
+      background-size: 200% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       font-weight: 800;
+      animation: brandShimmer 7s linear infinite;
     }
 
     :root[data-theme="light"] .brand-badge {
@@ -2806,7 +2969,9 @@
       border: 1.5px solid #f43f5e !important;
       border-left: 5.5px solid #e11d48 !important;
       background: linear-gradient(165deg, #ffffff 0%, #fff5f5 100%) !important;
-      box-shadow: 0 8px 26px -4px rgba(244, 63, 94, 0.16), 0 2px 6px rgba(244, 63, 94, 0.06) !important;
+      box-shadow: 0 8px 26px -4px rgba(244, 63, 94, 0.22), 0 2px 6px rgba(244, 63, 94, 0.08) !important;
+      animation: liveCardAura 3s ease-in-out infinite alternate;
+      transform: translateZ(0);
     }
 
     :root[data-theme="light"] .lecture-card.is-completed {
@@ -5111,9 +5276,9 @@
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
     const LOCAL_APP_VERSION_NAME = '4.7.1';
     const LOCAL_APP_VERSION_CODE = 25;
-    const LOCAL_APP_BUILD_HASH = '38fa3d4c3754';
+    const LOCAL_APP_BUILD_HASH = 'ea5e461ac78a';
 
-    let cachedLatestVersionCode = 25;
+    let cachedLatestVersionCode = 26;
 
     function getEffectiveVersionCode() {
       const stored = parseInt(localStorage.getItem('secD_local_version_code'), 10);
