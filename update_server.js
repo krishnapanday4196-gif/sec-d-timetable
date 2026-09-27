@@ -13,7 +13,7 @@ const BACKUP_SUBDOMAIN = 'cse-d-timetable-live';
 
 const APP_VERSION_NAME = '4.7.1';
 const APP_VERSION_CODE = 21;
-const GITHUB_APK_SHARE_URL = 'https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/CSE_D_Timetable.apk';
+const GITHUB_APK_SHARE_URL = 'https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/SecD_Timetable.apk';
 const GOOGLE_DRIVE_SHARE_URL = GITHUB_APK_SHARE_URL;
 
 let currentPublicUrl = `https://${PRIMARY_SUBDOMAIN}.loca.lt`;

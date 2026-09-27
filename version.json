@@ -1,15 +1,15 @@
 {
-  "versionName": "5.3.0",
-  "versionCode": 32,
-  "apkVersionCode": 32,
-  "htmlHash": "6ccc5e2631ce",
+  "versionName": "5.3.1",
+  "versionCode": 33,
+  "apkVersionCode": 33,
+  "htmlHash": "1a93391b812f",
   "apkHash": "ff82ea61e678",
   "apkSize": "3.37 MB",
-  "updatedAt": 1790524918527,
+  "updatedAt": 1790525370124,
   "publicUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main",
   "githubUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main",
   "pagesUrl": "https://krishnapanday4196-gif.github.io/sec-d-timetable",
-  "apkUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/CSE_D_Timetable.apk",
+  "apkUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/SecD_Timetable.apk",
   "htmlUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/index.html",
   "downloadUrl": "https://krishnapanday4196-gif.github.io/sec-d-timetable"
 }

@@ -45,8 +45,8 @@ import java.security.MessageDigest;
 
 public class MainActivity extends Activity {
     private WebView mWebView;
-    private static final int CURRENT_APK_VERSION = 32;
-    public static final String GITHUB_APK_SHARE_URL = "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/CSE_D_Timetable.apk";
+    private static final int CURRENT_APK_VERSION = 33;
+    public static final String GITHUB_APK_SHARE_URL = "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/SecD_Timetable.apk";
     public static final String GOOGLE_DRIVE_SHARE_URL = GITHUB_APK_SHARE_URL;
     private ValueCallback<Uri[]> mFilePathCallback;
     private static final int FILE_CHOOSER_REQUEST_CODE = 2001;
@@ -815,7 +815,7 @@ public class MainActivity extends Activity {
                                 shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                             }
                             shareIntent.putExtra(Intent.EXTRA_SUBJECT, fileName);
-                            shareIntent.putExtra(Intent.EXTRA_TEXT, "CSE D Timetable Export: " + fileName);
+                            shareIntent.putExtra(Intent.EXTRA_TEXT, "SEC-D Timetable Export: " + fileName);
                             Intent chooser = Intent.createChooser(shareIntent, "Open or Send " + fileName);
                             chooser.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             mContext.startActivity(chooser);
@@ -839,7 +839,7 @@ public class MainActivity extends Activity {
             if (customMsg != null && (customMsg.contains("githubusercontent.com") || customMsg.contains("github.com"))) {
                 return customMsg;
             }
-            return "🎓 *CSE D Timetable App Pro (B.Tech CSE Sec-D)*\n\n" +
+            return "🎓 *SEC-D Timetable App Pro (B.Tech CSE Sec-D)*\n\n" +
                     "✨ 3D Holographic Command Deck & Luxury UI (60fps)\n" +
                     "✅ Official Section-D Faculty Names on All Classes\n" +
                     "✅ Pre-Class Alert Notification\n" +
@@ -879,7 +879,7 @@ public class MainActivity extends Activity {
                             } catch (Exception e2) {
                                 Intent sendIntent = new Intent(Intent.ACTION_SEND);
                                 sendIntent.setType("text/plain");
-                                sendIntent.putExtra(Intent.EXTRA_SUBJECT, "CSE D Timetable (Google Drive)");
+                                sendIntent.putExtra(Intent.EXTRA_SUBJECT, "SEC-D Timetable (Google Drive)");
                                 sendIntent.putExtra(Intent.EXTRA_TEXT, finalMsg);
                                 Intent chooser = Intent.createChooser(sendIntent, "Share Timetable Google Drive Link");
                                 chooser.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -925,7 +925,7 @@ public class MainActivity extends Activity {
                         try {
                             Intent sendIntent = new Intent(Intent.ACTION_SEND);
                             sendIntent.setType("text/plain");
-                            sendIntent.putExtra(Intent.EXTRA_SUBJECT, "CSE D Timetable App (Google Drive)");
+                            sendIntent.putExtra(Intent.EXTRA_SUBJECT, "SEC-D Timetable App (Google Drive)");
                             sendIntent.putExtra(Intent.EXTRA_TEXT, finalMsg);
                             Intent chooser = Intent.createChooser(sendIntent, "Share Google Drive Link via");
                             chooser.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

@@ -24,11 +24,13 @@ if %ERRORLEVEL% EQU 0 (
     echo [3/3] Copying generated APK to workspace root...
     copy /Y "e:\sec d\android\app\build\outputs\apk\debug\app-debug.apk" "e:\sec d\CSE_D_Timetable.apk" >nul
     copy /Y "e:\sec d\android\app\build\outputs\apk\debug\app-debug.apk" "e:\sec d\SecD_Timetable.apk" >nul
+    copy /Y "e:\sec d\android\app\build\outputs\apk\debug\app-debug.apk" "e:\sec d\SEC_D_Timetable.apk" >nul
     echo.
     echo ========================================================
     echo    SUCCESS! APK generated:
-    echo    - e:\sec d\CSE_D_Timetable.apk
     echo    - e:\sec d\SecD_Timetable.apk
+    echo    - e:\sec d\SEC_D_Timetable.apk
+    echo    - e:\sec d\CSE_D_Timetable.apk
     echo ========================================================
 ) else (
     echo.

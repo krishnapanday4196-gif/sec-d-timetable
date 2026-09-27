@@ -1,6 +1,6 @@
 {
   "name": "SEC-D Timetable",
-  "short_name": "SEC-D",
+  "short_name": "SEC-D Timetable",
   "description": "Real-time Live Timetable for B.Tech CSE Group-A Section-D with countdown, attendance and lab split view.",
   "start_url": "./index.html",
   "display": "standalone",
