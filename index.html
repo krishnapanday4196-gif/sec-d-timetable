@@ -933,12 +933,22 @@
     .lite-device .aurora-orb.orb-rose {
       display: none !important;
     }
-    .lite-device .aurora-mesh-gradient {
+    /* Lite-device mesh: dark/campus = dark bg, light = white bg */
+    :root[data-theme="dark"] .lite-device .aurora-mesh-gradient,
+    :root[data-theme="campus"] .lite-device .aurora-mesh-gradient {
       animation: none !important;
       background-size: 100% 100% !important;
       background: radial-gradient(circle at 20% 20%, rgba(0,240,255,0.15) 0%, transparent 55%),
                   radial-gradient(circle at 80% 80%, rgba(168,85,247,0.15) 0%, transparent 55%),
                   linear-gradient(145deg, #02040a 0%, #050a16 100%) !important;
+    }
+    :root[data-theme="light"] .lite-device .aurora-mesh-gradient {
+      animation: none !important;
+      background-size: 100% 100% !important;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(37,99,235,0.10) 0%, transparent 55%),
+        radial-gradient(circle at 85% 85%, rgba(139,92,246,0.08) 0%, transparent 55%),
+        linear-gradient(180deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%) !important;
     }
     /* Replace glass blur with solid semi-transparent (10x cheaper on dark themes) */
     :root[data-theme="dark"] .lite-device .lecture-card,
@@ -6490,6 +6500,22 @@
           window.AndroidUpdater.setSystemTheme(theme === 'light');
         } catch (e) { }
       }
+      // Repaint lite-device inline styles when theme changes
+      // DOM surgery sets inline styles once - they must be corrected on theme switch
+      if (document.body.classList.contains('lite-device')) {
+        const isLight = theme === 'light';
+        const auroraBg = document.getElementById('auroraBg');
+        if (auroraBg) auroraBg.style.backgroundColor = isLight ? '#f1f5f9' : '#02050e';
+        const mesh = document.querySelector('.aurora-mesh-gradient');
+        if (mesh) {
+          mesh.style.background = isLight
+            ? 'radial-gradient(circle at 15% 15%,rgba(37,99,235,0.10) 0%,transparent 55%),radial-gradient(circle at 85% 85%,rgba(139,92,246,0.08) 0%,transparent 55%),linear-gradient(180deg,#ffffff 0%,#f8fafc 50%,#f1f5f9 100%)'
+            : 'radial-gradient(circle at 20% 20%,rgba(0,240,255,0.12) 0%,transparent 55%),radial-gradient(circle at 80% 80%,rgba(168,85,247,0.12) 0%,transparent 55%),linear-gradient(145deg,#02040a 0%,#050a16 100%)';
+        }
+        document.querySelectorAll('.lecture-card,.top-appbar,.modal-sheet,.notif-card,.quick-action-card,.time-sim-card,.circular-gauge-container').forEach(function(el) {
+          el.style.background = isLight ? '' : 'rgba(10,16,32,0.95)';
+        });
+      }
     }
 
     function toggleTheme() {
@@ -8169,6 +8195,8 @@
         // ----- STAGE 3: DOM Surgery -----
         // CSS hide still causes paint. Removing from DOM = zero GPU cost.
         const doSurgery = () => {
+          const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+
           // Remove all 5 aurora orbs — biggest GPU offenders (blur+blend+animate)
           document.querySelectorAll('.aurora-orb').forEach(el => el.remove());
 
@@ -8180,9 +8208,29 @@
           const wm = document.querySelector('.aurora-highlight-watermark');
           if (wm) wm.remove();
 
-          // Stop mesh gradient animation completely
+          // Fix aurora background & mesh for current theme
+          const auroraBg = document.getElementById('auroraBg');
+          if (auroraBg) {
+            auroraBg.style.backgroundColor = isLight ? '#f1f5f9' : '#02050e';
+          }
           const mesh = document.querySelector('.aurora-mesh-gradient');
-          if (mesh) { mesh.style.animation = 'none'; mesh.style.backgroundSize = '100% 100%'; }
+          if (mesh) {
+            mesh.style.animation = 'none';
+            mesh.style.backgroundSize = '100% 100%';
+            if (isLight) {
+              mesh.style.background = [
+                'radial-gradient(circle at 15% 15%, rgba(37,99,235,0.10) 0%, transparent 55%)',
+                'radial-gradient(circle at 85% 85%, rgba(139,92,246,0.08) 0%, transparent 55%)',
+                'linear-gradient(180deg,#ffffff 0%,#f8fafc 50%,#f1f5f9 100%)'
+              ].join(',');
+            } else {
+              mesh.style.background = [
+                'radial-gradient(circle at 20% 20%,rgba(0,240,255,0.12) 0%,transparent 55%)',
+                'radial-gradient(circle at 80% 80%,rgba(168,85,247,0.12) 0%,transparent 55%)',
+                'linear-gradient(145deg,#02040a 0%,#050a16 100%)'
+              ].join(',');
+            }
+          }
 
           // Kill all remaining will-change (too many compositor layers = lag)
           document.querySelectorAll('*').forEach(el => {
@@ -8190,15 +8238,19 @@
             if (wc && wc !== 'auto') el.style.willChange = 'auto';
           });
 
-          // Remove backdrop-filter from all glass cards via direct inline override
+          // Remove backdrop-filter + set correct bg for glass cards
           document.querySelectorAll(
             '.lecture-card,.top-appbar,.modal-sheet,.notif-card,.quick-action-card,.time-sim-card,.circular-gauge-container,.glow-highlight-ribbon,.holo-menu-panel'
           ).forEach(el => {
             el.style.backdropFilter = 'none';
             el.style.webkitBackdropFilter = 'none';
+            // Only force dark bg on dark themes — light theme has white via CSS
+            if (!isLight) {
+              el.style.background = 'rgba(10,16,32,0.95)';
+            }
           });
 
-          console.info('[Qtimex Perf v2] Lite mode DOM surgery done. Reason: ' + reason);
+          console.info('[Qtimex Perf v2] Theme-aware DOM surgery done. Theme=' + (isLight ? 'light' : 'dark') + ' Reason=' + reason);
         };
 
         if (typeof requestIdleCallback === 'function') {
