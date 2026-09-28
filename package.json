@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "localtunnel": "^2.0.2"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.5"
   }
 }
