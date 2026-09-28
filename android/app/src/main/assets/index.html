@@ -8,9 +8,9 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="theme-color" content="#040816">
-  <title>SEC-D Timetable</title>
-  <link rel="icon" type="image/png" href="icon-192.png">
-  <link rel="apple-touch-icon" href="icon-192.png">
+  <title>Qtimex</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="apple-touch-icon" href="logo.png">
   <link rel="manifest" href="manifest.json">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -4216,10 +4216,10 @@
     <header class="top-appbar">
       <div class="appbar-header">
         <div class="brand-title">
-          <img src="logo.png" alt="SEC-D Logo" class="brand-logo-img">
+          <img src="logo.png" alt="Qtimex Logo" class="brand-logo-img">
           <div class="brand-text-stack">
             <div class="brand-title-wrap">
-              <span class="brand-name" id="brandTitle" onclick="triggerQuantumBrandSurge()" title="SEC-D Timetable"><span class="brand-name-text">SEC-D Timetable</span></span>
+              <span class="brand-name" id="brandTitle" onclick="triggerQuantumBrandSurge()" title="Qtimex"><span class="brand-name-text">Qtimex</span></span>
               <span class="brand-badge" id="brandSectionBadge" onclick="showToast('Tap any section pill below to switch!')" style="cursor:pointer;" title="Current Section">SEC-D ▾</span>
             </div>
             <span class="brand-subtitle">Quantum University • B.Tech CSE</span>
@@ -5085,10 +5085,7 @@
       if (brandBadge) {
         brandBadge.textContent = `${currentSection} ▾`;
       }
-      const brandText = document.querySelector('.brand-name-text');
-      if (brandText) {
-        brandText.textContent = `${currentSection} Timetable`;
-      }
+      // Brand name "Qtimex" fixed rahega — section badge alag hai
       const watermark = document.querySelector('.watermark-word');
       if (watermark) {
         watermark.textContent = currentSection;
@@ -5877,8 +5874,8 @@
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
     const LOCAL_APP_VERSION_NAME = '5.5.0';
-    const LOCAL_APP_VERSION_CODE = 36;
-    const LOCAL_APP_BUILD_HASH = 'fb8b200e1087';
+    const LOCAL_APP_VERSION_CODE = 37;
+    const LOCAL_APP_BUILD_HASH = 'ac89f5bf3248';
 
     let cachedLatestVersionCode = 29;
 
