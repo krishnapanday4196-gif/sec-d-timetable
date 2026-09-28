@@ -8049,42 +8049,111 @@
 
 
     // ============================================================
-    // LITE-DEVICE AUTO-DETECTION
-    // Detects low-end hardware and applies .lite-device class to
-    // <body> so heavy CSS animations/blur are auto-disabled.
-    // No user setting needed â€” fully transparent optimization.
+    // NEXT-LEVEL PERFORMANCE ENGINE v2
+    // 3-stage detection: hardware > rAF benchmark > DOM surgery
+    // Physically removes heavy GPU nodes on slow devices.
     // ============================================================
-    (function detectLiteDevice() {
-      let isLite = false;
+    (function performanceEngine() {
 
-      // 1. Navigator hardware concurrency (CPU cores) â€” <4 cores = lite
-      if (typeof navigator !== 'undefined') {
-        const cores = navigator.hardwareConcurrency || 4;
-        if (cores <= 2) isLite = true;
+      // ----- STAGE 1: Static hardware signals -----
+      let liteScore = 0;
+      const nav = typeof navigator !== 'undefined' ? navigator : null;
+
+      if (nav) {
+        const cores = nav.hardwareConcurrency || 4;
+        if (cores <= 2) liteScore += 3;
+        else if (cores <= 4) liteScore += 1;
+
+        if (nav.deviceMemory) {
+          if (nav.deviceMemory <= 1) liteScore += 4;
+          else if (nav.deviceMemory <= 2) liteScore += 3;
+          else if (nav.deviceMemory <= 3) liteScore += 1;
+        }
+
+        if (nav.connection) {
+          if (nav.connection.effectiveType === 'slow-2g' || nav.connection.effectiveType === '2g') liteScore += 2;
+          if (nav.connection.saveData) liteScore += 3;
+        }
       }
 
-      // 2. Device Memory API â€” <2 GB RAM = lite
-      if (!isLite && typeof navigator !== 'undefined' && navigator.deviceMemory) {
-        if (navigator.deviceMemory < 2) isLite = true;
-      }
-
-      // 3. Connection speed â€” 2g/slow-2g = definitely lite
-      if (!isLite && typeof navigator !== 'undefined' && navigator.connection) {
-        const conn = navigator.connection;
-        if (conn.effectiveType === '2g' || conn.effectiveType === 'slow-2g') isLite = true;
-        if (conn.saveData === true) isLite = true;  // user explicitly requested data-save
-      }
-
-      // 4. Respect user's manual anim setting â€” if they turned off anims, don't bother
-      const animPref = localStorage.getItem('secD_anim_theme');
-      if (animPref === 'off') isLite = false; // CSS already handles anim-off, no need to double-apply
-
-      // 5. Apply or remove lite class
-      if (isLite) {
+      function applyLiteMode(reason) {
+        if (document.body.classList.contains('lite-device')) return;
         document.body.classList.add('lite-device');
-        console.info('[Qtimex] Lite-device mode active â€” GPU optimizations applied for smooth performance.');
+
+        // ----- STAGE 3: DOM Surgery -----
+        // CSS hide still causes paint. Removing from DOM = zero GPU cost.
+        const doSurgery = () => {
+          // Remove all 5 aurora orbs — biggest GPU offenders (blur+blend+animate)
+          document.querySelectorAll('.aurora-orb').forEach(el => el.remove());
+
+          // Remove cosmic canvas
+          const canvas = document.getElementById('cosmicCanvas');
+          if (canvas) canvas.remove();
+
+          // Remove animated watermark
+          const wm = document.querySelector('.aurora-highlight-watermark');
+          if (wm) wm.remove();
+
+          // Stop mesh gradient animation completely
+          const mesh = document.querySelector('.aurora-mesh-gradient');
+          if (mesh) { mesh.style.animation = 'none'; mesh.style.backgroundSize = '100% 100%'; }
+
+          // Kill all remaining will-change (too many compositor layers = lag)
+          document.querySelectorAll('*').forEach(el => {
+            const wc = getComputedStyle(el).willChange;
+            if (wc && wc !== 'auto') el.style.willChange = 'auto';
+          });
+
+          // Remove backdrop-filter from all glass cards via direct inline override
+          document.querySelectorAll(
+            '.lecture-card,.top-appbar,.modal-sheet,.notif-card,.quick-action-card,.time-sim-card,.circular-gauge-container,.glow-highlight-ribbon,.holo-menu-panel'
+          ).forEach(el => {
+            el.style.backdropFilter = 'none';
+            el.style.webkitBackdropFilter = 'none';
+          });
+
+          console.info('[Qtimex Perf v2] Lite mode DOM surgery done. Reason: ' + reason);
+        };
+
+        if (typeof requestIdleCallback === 'function') {
+          requestIdleCallback(doSurgery, { timeout: 600 });
+        } else {
+          setTimeout(doSurgery, 100);
+        }
       }
+
+      // Apply immediately if hardware score is clearly low-end
+      if (liteScore >= 3) {
+        applyLiteMode('hw-score=' + liteScore);
+        return;
+      }
+
+      // ----- STAGE 2: rAF frame-timing micro-benchmark -----
+      // Catches laggy devices that have decent specs on paper
+      const t0 = performance.now();
+      let frames = 0;
+      let done = false;
+
+      function bench() {
+        frames++;
+        if (frames >= 10) {
+          done = true;
+          const avg = (performance.now() - t0) / frames;
+          // < 40fps average on first 10 frames = definitely struggling
+          if (avg > 25) applyLiteMode('bench=' + avg.toFixed(1) + 'ms');
+          return;
+        }
+        requestAnimationFrame(bench);
+      }
+      requestAnimationFrame(bench);
+
+      // Fallback: if rAF never fires fast enough, decide at 2s mark
+      setTimeout(() => {
+        if (!done && liteScore >= 1) applyLiteMode('timeout-score=' + liteScore);
+      }, 2000);
+
     })();
+
 
     // INITIALIZATION
     function init() {
