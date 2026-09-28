@@ -757,6 +757,7 @@
       line-height: 0.88;
       background: linear-gradient(135deg, #00f0ff 0%, #a855f7 40%, #fbbf24 80%, #f43f5e 100%);
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
       -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.28);
       filter: drop-shadow(0 0 25px rgba(56, 189, 248, 0.6));
@@ -868,6 +869,104 @@
       transform: scale(1.04) translate3d(0, 0, 0) !important;
     }
 
+    /* ============================================================
+       PERFORMANCE OPTIMIZATION LAYER
+       Kills heavy GPU work on low-end devices & reduced-motion.
+       Keeps the app looking premium without lag or stutter.
+       ============================================================ */
+
+    /* --- Animation OFF: stop all continuous animations --- */
+    :root[data-anim-theme="off"] .aurora-orb,
+    :root[data-anim-theme="off"] .aurora-mesh-gradient,
+    :root[data-anim-theme="off"] .aurora-highlight-watermark,
+    :root[data-anim-theme="off"] .glow-highlight-ribbon,
+    :root[data-anim-theme="off"] .brand-logo-img,
+    :root[data-anim-theme="off"] .live-dot,
+    :root[data-anim-theme="off"] .live-radar-ring {
+      animation: none !important;
+      transition: none !important;
+    }
+    :root[data-anim-theme="off"] .aurora-orb {
+      filter: none !important;
+      opacity: 0.5 !important;
+      mix-blend-mode: normal !important;
+    }
+    :root[data-anim-theme="off"] .aurora-mesh-gradient {
+      background-size: 100% 100% !important;
+    }
+    :root[data-anim-theme="off"] .brand-logo-img {
+      filter: none !important;
+    }
+
+    /* --- OS reduced-motion override --- */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .aurora-orb {
+        animation: none !important;
+        filter: none !important;
+        mix-blend-mode: normal !important;
+        opacity: 0.45 !important;
+      }
+      .aurora-mesh-gradient,
+      .aurora-highlight-watermark { animation: none !important; }
+    }
+
+    /* ============================================================
+       .lite-device â€” JS adds this class on low-RAM/CPU detection
+       Removes the biggest GPU offenders, keeps visual quality
+       ============================================================ */
+    .lite-device .aurora-orb {
+      filter: none !important;
+      mix-blend-mode: normal !important;
+      opacity: 0.25 !important;
+      animation: none !important;
+      width: 180px !important;
+      height: 180px !important;
+    }
+    /* Keep only 2 orbs on lite devices */
+    .lite-device .aurora-orb.orb-gold,
+    .lite-device .aurora-orb.orb-emerald,
+    .lite-device .aurora-orb.orb-rose {
+      display: none !important;
+    }
+    .lite-device .aurora-mesh-gradient {
+      animation: none !important;
+      background-size: 100% 100% !important;
+      background: radial-gradient(circle at 20% 20%, rgba(0,240,255,0.15) 0%, transparent 55%),
+                  radial-gradient(circle at 80% 80%, rgba(168,85,247,0.15) 0%, transparent 55%),
+                  linear-gradient(145deg, #02040a 0%, #050a16 100%) !important;
+    }
+    /* Replace glass blur with solid semi-transparent (10x cheaper) */
+    .lite-device .lecture-card,
+    .lite-device .top-appbar,
+    .lite-device .circular-gauge-container,
+    .lite-device .quick-action-card,
+    .lite-device .modal-sheet,
+    .lite-device .notif-card,
+    .lite-device .time-sim-card {
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      background: rgba(10, 16, 32, 0.93) !important;
+    }
+    .lite-device .aurora-highlight-watermark,
+    .lite-device .glow-highlight-ribbon {
+      animation: none !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+    }
+    /* Kill expensive drop-shadow filters that repaint every frame */
+    .lite-device .brand-logo-img {
+      filter: none !important;
+    }
+    /* Instant transitions only on lite device */
+    .lite-device * {
+      transition-duration: 0.1s !important;
+    }
+
     .campus-photo-overlay {
       position: absolute;
       inset: 0;
@@ -977,6 +1076,7 @@
       display: inline-block;
       white-space: nowrap;
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
       background-size: 250% auto;
       will-change: background-position, filter;
@@ -1010,6 +1110,7 @@
       background: linear-gradient(95deg, #ffffff 0%, #38bdf8 22%, #ffffff 45%, #a855f7 68%, #38bdf8 85%, #ffffff 100%);
       background-size: 250% auto;
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
@@ -1018,6 +1119,7 @@
       background: linear-gradient(95deg, #38bdf8 0%, #ffffff 18%, #fbbf24 38%, #38bdf8 58%, #c084fc 78%, #fbbf24 92%, #38bdf8 100%);
       background-size: 250% auto;
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
@@ -2108,6 +2210,7 @@
       color: var(--text-main);
       display: -webkit-box;
       -webkit-line-clamp: 2;
+      line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
@@ -3074,6 +3177,7 @@
       background: linear-gradient(95deg, #0f172a 0%, #2563eb 24%, #0284c7 48%, #7c3aed 72%, #1d4ed8 88%, #0f172a 100%);
       background-size: 250% auto;
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
       font-weight: 800;
     }
@@ -7800,26 +7904,40 @@
       exportFileToDevice(fileName, icsData, 'text/calendar', '📅 Calendar .ics downloaded to Downloads');
     }
 
-    // MULTI-PLATFORM FILE EXPORTER (Direct Download to Mobile File Manager / Downloads Folder)
+    // MULTI-PLATFORM FILE EXPORTER — Lag-Free (optimized for low-end devices)
     async function exportFileToDevice(fileName, content, mimeType, successMessage) {
       triggerHaptic(14);
+
+      // defer() — runs fn in idle time so heavy work never blocks the UI paint
+      const defer = (fn) => new Promise(resolve => {
+        const task = () => { try { resolve(fn()); } catch (e) { resolve(null); } };
+        if (typeof requestIdleCallback === 'function') {
+          requestIdleCallback(task, { timeout: 400 });
+        } else {
+          setTimeout(task, 0);
+        }
+      });
 
       // 1. Native Android APK Direct Phone Files Saver (Saves directly into Phone's Downloads folder)
       if (window.AndroidUpdater && typeof window.AndroidUpdater.saveToPhoneFiles === 'function') {
         try {
-          const ok = window.AndroidUpdater.saveToPhoneFiles(fileName, content, mimeType);
+          // saveToPhoneFiles is sync — defer it so it doesn't block the touch-response frame
+          const ok = await defer(() => window.AndroidUpdater.saveToPhoneFiles(fileName, content, mimeType));
           if (ok) {
             closeModal('exportModal');
             showToast(successMessage || `📂 Saved in Phone Files (Downloads): ${fileName}`);
 
-            try {
-              NotificationLibrary.addNotification({
-                title: `📥 Timetable Downloaded: ${fileName}`,
-                shortBody: `Saved in Phone Downloads folder`,
-                bigText: `📂 File: ${fileName}\n📍 Location: Internal Storage > Download folder\nTap notification or open File Manager to view.`,
-                type: 'system'
-              });
-            } catch (ignored) { }
+            // Non-critical — fire notification after toast, don't block return
+            setTimeout(() => {
+              try {
+                NotificationLibrary.addNotification({
+                  title: `📥 Timetable Downloaded: ${fileName}`,
+                  shortBody: `Saved in Phone Downloads folder`,
+                  bigText: `📂 File: ${fileName}\n📍 Location: Internal Storage > Download folder\nTap notification or open File Manager to view.`,
+                  type: 'system'
+                });
+              } catch (_) { }
+            }, 300);
             return true;
           }
         } catch (e) {
@@ -7828,57 +7946,69 @@
       }
 
       // 2. Web Share API with File (Supported on Android Chrome & Modern Mobile Browsers)
-      if (typeof navigator !== 'undefined' && navigator.canShare && typeof File !== 'undefined') {
+      if (typeof navigator !== 'undefined' && typeof navigator.canShare === 'function' && typeof File !== 'undefined') {
         try {
-          const file = new File([content], fileName, { type: mimeType });
-          if (navigator.canShare({ files: [file] })) {
-            await navigator.share({
-              files: [file],
-              title: fileName,
-              text: `Qtimex Export: ${fileName}`
-            });
+          // File() construction is memory-heavy on large content — defer it
+          const shareFile = await defer(() => new File([content], fileName, { type: mimeType }));
+          if (shareFile && navigator.canShare({ files: [shareFile] })) {
+            await navigator.share({ files: [shareFile], title: fileName, text: `Qtimex Export: ${fileName}` });
             closeModal('exportModal');
             showToast(`✅ Saved / Shared: ${fileName}`);
             return true;
           }
         } catch (shareErr) {
-          if (shareErr.name === 'AbortError') return true;
+          if (shareErr && shareErr.name === 'AbortError') return true;
+          // else fall through to blob download
         }
       }
 
-      // 3. Direct Browser Data URI / Blob Download (Works immediately without server network dependence)
+      // 3. Blob Download — show instant feedback first, then do heavy work in background
+      closeModal('exportModal');
+      showToast(successMessage || `📥 Preparing download...`);
+
       let downloaded = false;
       try {
-        const blob = new Blob([content], { type: `${mimeType};charset=utf-8;` });
-        const blobUrl = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = blobUrl;
-        a.download = fileName;
-        a.style.display = 'none';
-        document.body.appendChild(a);
-        a.click();
-        setTimeout(() => {
-          document.body.removeChild(a);
-          URL.revokeObjectURL(blobUrl);
-        }, 800);
-        downloaded = true;
+        // Blob creation can spike memory on large files — defer it
+        const result = await defer(() => {
+          const blob = new Blob([content], { type: `${mimeType};charset=utf-8;` });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = fileName;
+          a.style.display = 'none';
+          return { url, a };
+        });
+        if (result && result.url) {
+          document.body.appendChild(result.a);
+          result.a.click();
+          // Give the browser time to initiate the download before cleanup
+          setTimeout(() => {
+            try { document.body.removeChild(result.a); } catch (_) { }
+            URL.revokeObjectURL(result.url);
+          }, 1200);
+          downloaded = true;
+          showToast(successMessage || `📂 Downloaded: ${fileName}`);
+        }
       } catch (e) {
-        console.warn('Browser blob download error:', e);
+        console.warn('Blob download error:', e);
       }
 
-      // 3b. Fallback to Data URI if blob didn't trigger
+      // 3b. Data-URI fallback — encodeURIComponent is CPU-heavy, so defer it
       if (!downloaded) {
         try {
-          const dataUri = `data:${mimeType};charset=utf-8,` + encodeURIComponent(content);
-          const a = document.createElement('a');
-          a.href = dataUri;
-          a.setAttribute('download', fileName);
-          a.target = '_blank';
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-          downloaded = true;
-        } catch (e) { }
+          const dataUri = await defer(() => `data:${mimeType};charset=utf-8,` + encodeURIComponent(content));
+          if (dataUri) {
+            const a = document.createElement('a');
+            a.href = dataUri;
+            a.setAttribute('download', fileName);
+            a.target = '_blank';
+            document.body.appendChild(a);
+            a.click();
+            // Small delay so the click fully registers before removing
+            setTimeout(() => { try { document.body.removeChild(a); } catch (_) { } }, 200);
+            downloaded = true;
+          }
+        } catch (e) { console.warn('DataURI fallback error:', e); }
       }
 
       // 4. Server Attachment Download Fallback
@@ -7902,19 +8032,59 @@
         } catch (e) { }
       }
 
-      try {
-        NotificationLibrary.addNotification({
-          title: `📥 Timetable Downloaded: ${fileName}`,
-          shortBody: `Saved in Phone Downloads folder`,
-          bigText: `📂 File: ${fileName}\n📍 Location: Internal Storage > Download folder\nCheck your Phone's File Manager (Downloads) to view.`,
-          type: 'system'
-        });
-      } catch (ignored) { }
+      // Fire-and-forget notification — non-blocking
+      setTimeout(() => {
+        try {
+          NotificationLibrary.addNotification({
+            title: `📥 Timetable Downloaded: ${fileName}`,
+            shortBody: `Saved in Phone Downloads folder`,
+            bigText: `📂 File: ${fileName}\n📍 Location: Internal Storage > Download folder\nCheck your Phone's File Manager (Downloads) to view.`,
+            type: 'system'
+          });
+        } catch (_) { }
+      }, 500);
 
-      closeModal('exportModal');
-      showToast(successMessage || `📥 Downloaded to Phone Files: ${fileName}`);
       return true;
     }
+
+
+    // ============================================================
+    // LITE-DEVICE AUTO-DETECTION
+    // Detects low-end hardware and applies .lite-device class to
+    // <body> so heavy CSS animations/blur are auto-disabled.
+    // No user setting needed â€” fully transparent optimization.
+    // ============================================================
+    (function detectLiteDevice() {
+      let isLite = false;
+
+      // 1. Navigator hardware concurrency (CPU cores) â€” <4 cores = lite
+      if (typeof navigator !== 'undefined') {
+        const cores = navigator.hardwareConcurrency || 4;
+        if (cores <= 2) isLite = true;
+      }
+
+      // 2. Device Memory API â€” <2 GB RAM = lite
+      if (!isLite && typeof navigator !== 'undefined' && navigator.deviceMemory) {
+        if (navigator.deviceMemory < 2) isLite = true;
+      }
+
+      // 3. Connection speed â€” 2g/slow-2g = definitely lite
+      if (!isLite && typeof navigator !== 'undefined' && navigator.connection) {
+        const conn = navigator.connection;
+        if (conn.effectiveType === '2g' || conn.effectiveType === 'slow-2g') isLite = true;
+        if (conn.saveData === true) isLite = true;  // user explicitly requested data-save
+      }
+
+      // 4. Respect user's manual anim setting â€” if they turned off anims, don't bother
+      const animPref = localStorage.getItem('secD_anim_theme');
+      if (animPref === 'off') isLite = false; // CSS already handles anim-off, no need to double-apply
+
+      // 5. Apply or remove lite class
+      if (isLite) {
+        document.body.classList.add('lite-device');
+        console.info('[Qtimex] Lite-device mode active â€” GPU optimizations applied for smooth performance.');
+      }
+    })();
 
     // INITIALIZATION
     function init() {
