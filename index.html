@@ -3164,6 +3164,73 @@
       color-scheme: light;
     }
 
+    /* ============================================================
+       LIGHT THEME - AURORA BACKGROUND COMPLETE OVERRIDE
+       Without these, dark #02050e shows through in light mode
+       ============================================================ */
+    :root[data-theme="light"] .aurora-ambient-bg {
+      background-color: #f1f5f9 !important;
+    }
+
+    :root[data-theme="light"] .aurora-mesh-gradient {
+      background:
+        radial-gradient(circle at 10% 10%, rgba(37, 99, 235, 0.10) 0%, transparent 50%),
+        radial-gradient(circle at 88% 15%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.06) 0%, transparent 55%),
+        radial-gradient(circle at 80% 85%, rgba(59, 130, 246, 0.07) 0%, transparent 50%),
+        radial-gradient(circle at 18% 80%, rgba(245, 158, 11, 0.07) 0%, transparent 50%),
+        linear-gradient(180deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%) !important;
+      background-size: 100% 100% !important;
+      animation: none !important;
+    }
+
+    /* Light theme orbs - soft pastel colors on white */
+    :root[data-theme="light"] .aurora-orb {
+      mix-blend-mode: multiply !important;
+      opacity: 0.18 !important;
+      filter: blur(50px) !important;
+    }
+    :root[data-theme="light"] .aurora-orb.orb-cyan {
+      background: radial-gradient(circle, rgba(37,99,235,0.7) 0%, transparent 70%) !important;
+    }
+    :root[data-theme="light"] .aurora-orb.orb-purple {
+      background: radial-gradient(circle, rgba(139,92,246,0.6) 0%, transparent 70%) !important;
+    }
+    :root[data-theme="light"] .aurora-orb.orb-gold {
+      background: radial-gradient(circle, rgba(245,158,11,0.5) 0%, transparent 70%) !important;
+    }
+    :root[data-theme="light"] .aurora-orb.orb-emerald {
+      background: radial-gradient(circle, rgba(16,185,129,0.5) 0%, transparent 70%) !important;
+    }
+    :root[data-theme="light"] .aurora-orb.orb-rose {
+      background: radial-gradient(circle, rgba(244,63,94,0.45) 0%, transparent 70%) !important;
+    }
+
+    /* Light theme watermark - visible on white bg */
+    :root[data-theme="light"] .aurora-highlight-watermark {
+      opacity: 0.10 !important;
+    }
+    :root[data-theme="light"] .watermark-word {
+      background: linear-gradient(135deg, #2563eb 0%, #7c3aed 40%, #d97706 80%, #e11d48 100%) !important;
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      filter: none !important;
+    }
+
+    /* Light theme cards - remove dark glass blur */
+    :root[data-theme="light"] .lecture-card,
+    :root[data-theme="light"] .top-appbar,
+    :root[data-theme="light"] .circular-gauge-container,
+    :root[data-theme="light"] .quick-action-card,
+    :root[data-theme="light"] .notif-card,
+    :root[data-theme="light"] .time-sim-card {
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+    }
+
+
+
     /* TOP BAR - LUXURY CRISP TYPOGRAPHY (GPU-ACCELERATED) */
     :root[data-theme="light"] .top-appbar {
       background: rgba(255, 255, 255, 0.96);
