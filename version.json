@@ -1,16 +1,17 @@
 {
-  "versionName": "5.7.0",
-  "versionCode": 50,
-  "apkVersionCode": 50,
-  "htmlHash": "90a766c70fba",
+  "versionName": "5.7.1",
+  "versionCode": 51,
+  "apkVersionCode": 51,
+  "htmlHash": "e01b764d8634",
   "apkHash": "2c5274c7401a",
-  "apkSize": "2.55 MB",
-  "updatedAt": 1790883138561,
+  "apkSize": 2668620,
+  "updatedAt": 1790885203872,
   "publicUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main",
   "githubUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main",
   "pagesUrl": "https://krishnapanday4196-gif.github.io/sec-d-timetable",
   "apkUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/SecD_Timetable.apk",
   "htmlUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/index.html",
   "downloadUrl": "https://krishnapanday4196-gif.github.io/sec-d-timetable",
-  "lastUpdated": "2026-10-01T19:32:18.561Z"
+  "lastUpdated": "2026-10-01T20:06:43.873Z",
+  "apkMd5": "67f862a25d164bf34a0915ae4714091a"
 }

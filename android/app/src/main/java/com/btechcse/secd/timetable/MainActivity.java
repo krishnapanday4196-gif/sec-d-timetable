@@ -45,7 +45,7 @@ import java.security.MessageDigest;
 
 public class MainActivity extends Activity {
     private WebView mWebView;
-    private static final int CURRENT_APK_VERSION = 50;
+    private static final int CURRENT_APK_VERSION = 51;
     public static final String GITHUB_APK_SHARE_URL = "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/SecD_Timetable.apk";
     public static final String GOOGLE_DRIVE_SHARE_URL = GITHUB_APK_SHARE_URL;
     private ValueCallback<Uri[]> mFilePathCallback;
