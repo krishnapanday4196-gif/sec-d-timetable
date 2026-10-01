@@ -15,9 +15,10 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Non-render-blocking font load: media="print" prevents blocking, onload swaps to "all" -->
   <link
     href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;700;800&display=swap"
-    rel="stylesheet">
+    rel="stylesheet" media="print" onload="this.media='all'">
 
   <style>
     :root,
@@ -114,6 +115,247 @@
       --orb-2-color: rgba(168, 85, 247, 0.30);
       --orb-3-color: rgba(244, 63, 94, 0.25);
       --aurora-opacity: 0.85;
+    }
+
+    
+    :root[data-theme="cyber-neon"] {
+      --bg-canvas: #050212;
+      --bg-phone: transparent;
+      --bg-mesh: transparent;
+      --card-bg: rgba(14, 8, 38, 0.78);
+      --card-solid: #0d0628;
+      --card-surface-grad: linear-gradient(160deg, rgba(28, 12, 60, 0.82) 0%, rgba(10, 4, 30, 0.85) 100%);
+      --card-border: rgba(0, 240, 255, 0.35);
+      --card-rim: inset 0 1px 0 rgba(255, 0, 150, 0.45);
+      --card-shadow: inset 0 1px 0 rgba(0, 240, 255, 0.25), 0 14px 34px -8px rgba(0, 240, 255, 0.35);
+      --card-hover: rgba(38, 16, 75, 0.92);
+      --header-bg: linear-gradient(180deg, rgba(14, 7, 36, 0.94) 0%, rgba(8, 3, 22, 0.90) 100%);
+      --recessed-bg: rgba(6, 2, 18, 0.82);
+
+      --text-main: #f5f3ff;
+      --text-muted: #c4b5fd;
+      --text-sub: #8b5cf6;
+
+      --accent: #00f0ff;
+      --accent-secondary: #ff007f;
+      --accent-glow: rgba(0, 240, 255, 0.65);
+      --accent-bg: rgba(0, 240, 255, 0.20);
+
+      --gold-accent: #facc15;
+      --gold-bg: linear-gradient(135deg, rgba(250, 204, 21, 0.25), rgba(234, 88, 12, 0.15));
+      --gold-border: rgba(250, 204, 21, 0.65);
+
+      --live-red: #ff0055;
+      --live-glow: rgba(255, 0, 85, 0.75);
+      --live-bg: rgba(255, 0, 85, 0.22);
+
+      --set-a-color: #00ffaa;
+      --set-a-bg: rgba(0, 255, 170, 0.20);
+      --set-a-border: rgba(0, 255, 170, 0.65);
+
+      --set-b-color: #ff00d4;
+      --set-b-bg: rgba(255, 0, 212, 0.20);
+      --set-b-border: rgba(255, 0, 212, 0.65);
+
+      --success: #00ffaa;
+      --warning: #ffb703;
+
+      --orb-1-color: rgba(0, 240, 255, 0.40);
+      --orb-2-color: rgba(255, 0, 127, 0.35);
+      --orb-3-color: rgba(157, 78, 221, 0.30);
+      --aurora-opacity: 0.95;
+    }
+
+    :root[data-theme="sunset"] {
+      --bg-canvas: #0d0608;
+      --bg-phone: transparent;
+      --bg-mesh: transparent;
+      --card-bg: rgba(28, 12, 16, 0.78);
+      --card-solid: #1c080d;
+      --card-surface-grad: linear-gradient(160deg, rgba(46, 16, 22, 0.82) 0%, rgba(18, 5, 8, 0.85) 100%);
+      --card-border: rgba(255, 107, 107, 0.35);
+      --card-rim: inset 0 1px 0 rgba(255, 180, 50, 0.35);
+      --card-shadow: inset 0 1px 0 rgba(255, 107, 107, 0.22), 0 14px 34px -8px rgba(255, 75, 43, 0.4);
+      --card-hover: rgba(58, 20, 28, 0.92);
+      --header-bg: linear-gradient(180deg, rgba(28, 10, 14, 0.94) 0%, rgba(14, 4, 7, 0.90) 100%);
+      --recessed-bg: rgba(14, 4, 7, 0.82);
+
+      --text-main: #fff5f5;
+      --text-muted: #fecdd3;
+      --text-sub: #fda4af;
+
+      --accent: #ff6b6b;
+      --accent-secondary: #f59e0b;
+      --accent-glow: rgba(255, 107, 107, 0.65);
+      --accent-bg: rgba(255, 107, 107, 0.20);
+
+      --gold-accent: #fbbf24;
+      --gold-bg: linear-gradient(135deg, rgba(251, 191, 36, 0.25), rgba(249, 115, 22, 0.15));
+      --gold-border: rgba(251, 191, 36, 0.65);
+
+      --live-red: #ff3366;
+      --live-glow: rgba(255, 51, 102, 0.75);
+      --live-bg: rgba(255, 51, 102, 0.22);
+
+      --set-a-color: #34d399;
+      --set-a-bg: rgba(52, 211, 153, 0.20);
+      --set-a-border: rgba(52, 211, 153, 0.65);
+
+      --set-b-color: #f43f5e;
+      --set-b-bg: rgba(244, 63, 94, 0.20);
+      --set-b-border: rgba(244, 63, 94, 0.65);
+
+      --success: #10b981;
+      --warning: #f59e0b;
+
+      --orb-1-color: rgba(255, 107, 107, 0.38);
+      --orb-2-color: rgba(251, 191, 36, 0.30);
+      --orb-3-color: rgba(236, 72, 153, 0.25);
+      --aurora-opacity: 0.90;
+    }
+
+    :root[data-theme="emerald"] {
+      --bg-canvas: #020f09;
+      --bg-phone: transparent;
+      --bg-mesh: transparent;
+      --card-bg: rgba(6, 28, 18, 0.78);
+      --card-solid: #041d11;
+      --card-surface-grad: linear-gradient(160deg, rgba(10, 42, 28, 0.82) 0%, rgba(4, 20, 13, 0.85) 100%);
+      --card-border: rgba(16, 185, 129, 0.35);
+      --card-rim: inset 0 1px 0 rgba(52, 211, 153, 0.4);
+      --card-shadow: inset 0 1px 0 rgba(16, 185, 129, 0.25), 0 14px 34px -8px rgba(16, 185, 129, 0.35);
+      --card-hover: rgba(12, 54, 36, 0.92);
+      --header-bg: linear-gradient(180deg, rgba(6, 28, 18, 0.94) 0%, rgba(3, 15, 10, 0.90) 100%);
+      --recessed-bg: rgba(3, 15, 10, 0.82);
+
+      --text-main: #ecfdf5;
+      --text-muted: #a7f3d0;
+      --text-sub: #6ee7b7;
+
+      --accent: #10b981;
+      --accent-secondary: #06b6d4;
+      --accent-glow: rgba(16, 185, 129, 0.65);
+      --accent-bg: rgba(16, 185, 129, 0.20);
+
+      --gold-accent: #eab308;
+      --gold-bg: linear-gradient(135deg, rgba(234, 179, 8, 0.25), rgba(16, 185, 129, 0.15));
+      --gold-border: rgba(234, 179, 8, 0.65);
+
+      --live-red: #f43f5e;
+      --live-glow: rgba(244, 63, 94, 0.75);
+      --live-bg: rgba(244, 63, 94, 0.22);
+
+      --set-a-color: #34d399;
+      --set-a-bg: rgba(52, 211, 153, 0.20);
+      --set-a-border: rgba(52, 211, 153, 0.65);
+
+      --set-b-color: #38bdf8;
+      --set-b-bg: rgba(56, 189, 248, 0.20);
+      --set-b-border: rgba(56, 189, 248, 0.65);
+
+      --success: #10b981;
+      --warning: #f59e0b;
+
+      --orb-1-color: rgba(16, 185, 129, 0.40);
+      --orb-2-color: rgba(6, 182, 212, 0.32);
+      --orb-3-color: rgba(52, 211, 153, 0.25);
+      --aurora-opacity: 0.90;
+    }
+
+    :root[data-theme="cosmic"] {
+      --bg-canvas: #090218;
+      --bg-phone: transparent;
+      --bg-mesh: transparent;
+      --card-bg: rgba(22, 10, 42, 0.78);
+      --card-solid: #15062c;
+      --card-surface-grad: linear-gradient(160deg, rgba(38, 16, 72, 0.82) 0%, rgba(16, 6, 32, 0.85) 100%);
+      --card-border: rgba(168, 85, 247, 0.35);
+      --card-rim: inset 0 1px 0 rgba(217, 70, 239, 0.4);
+      --card-shadow: inset 0 1px 0 rgba(168, 85, 247, 0.25), 0 14px 34px -8px rgba(168, 85, 247, 0.38);
+      --card-hover: rgba(48, 20, 92, 0.92);
+      --header-bg: linear-gradient(180deg, rgba(22, 10, 42, 0.94) 0%, rgba(12, 4, 24, 0.90) 100%);
+      --recessed-bg: rgba(12, 4, 24, 0.82);
+
+      --text-main: #faf5ff;
+      --text-muted: #e9d5ff;
+      --text-sub: #d8b4fe;
+
+      --accent: #a855f7;
+      --accent-secondary: #ec4899;
+      --accent-glow: rgba(168, 85, 247, 0.65);
+      --accent-bg: rgba(168, 85, 247, 0.20);
+
+      --gold-accent: #fbbf24;
+      --gold-bg: linear-gradient(135deg, rgba(251, 191, 36, 0.25), rgba(168, 85, 247, 0.15));
+      --gold-border: rgba(251, 191, 36, 0.65);
+
+      --live-red: #f43f5e;
+      --live-glow: rgba(244, 63, 94, 0.75);
+      --live-bg: rgba(244, 63, 94, 0.22);
+
+      --set-a-color: #38bdf8;
+      --set-a-bg: rgba(56, 189, 248, 0.20);
+      --set-a-border: rgba(56, 189, 248, 0.65);
+
+      --set-b-color: #f472b6;
+      --set-b-bg: rgba(244, 114, 182, 0.20);
+      --set-b-border: rgba(244, 114, 182, 0.65);
+
+      --success: #10b981;
+      --warning: #f59e0b;
+
+      --orb-1-color: rgba(168, 85, 247, 0.40);
+      --orb-2-color: rgba(236, 72, 153, 0.35);
+      --orb-3-color: rgba(139, 92, 246, 0.28);
+      --aurora-opacity: 0.95;
+    }
+
+    :root[data-theme="gold"] {
+      --bg-canvas: #0c0903;
+      --bg-phone: transparent;
+      --bg-mesh: transparent;
+      --card-bg: rgba(28, 20, 6, 0.78);
+      --card-solid: #1f1604;
+      --card-surface-grad: linear-gradient(160deg, rgba(46, 32, 10, 0.82) 0%, rgba(18, 12, 4, 0.85) 100%);
+      --card-border: rgba(245, 158, 11, 0.38);
+      --card-rim: inset 0 1px 0 rgba(251, 191, 36, 0.45);
+      --card-shadow: inset 0 1px 0 rgba(245, 158, 11, 0.25), 0 14px 34px -8px rgba(245, 158, 11, 0.38);
+      --card-hover: rgba(58, 40, 12, 0.92);
+      --header-bg: linear-gradient(180deg, rgba(28, 20, 6, 0.94) 0%, rgba(14, 10, 3, 0.90) 100%);
+      --recessed-bg: rgba(14, 10, 3, 0.82);
+
+      --text-main: #fffbeb;
+      --text-muted: #fde68a;
+      --text-sub: #fcd34d;
+
+      --accent: #f59e0b;
+      --accent-secondary: #fbbf24;
+      --accent-glow: rgba(245, 158, 11, 0.65);
+      --accent-bg: rgba(245, 158, 11, 0.20);
+
+      --gold-accent: #f59e0b;
+      --gold-bg: linear-gradient(135deg, rgba(245, 158, 11, 0.30), rgba(217, 119, 6, 0.15));
+      --gold-border: rgba(245, 158, 11, 0.70);
+
+      --live-red: #ef4444;
+      --live-glow: rgba(239, 68, 68, 0.75);
+      --live-bg: rgba(239, 68, 68, 0.22);
+
+      --set-a-color: #10b981;
+      --set-a-bg: rgba(16, 185, 129, 0.20);
+      --set-a-border: rgba(16, 185, 129, 0.65);
+
+      --set-b-color: #fbbf24;
+      --set-b-bg: rgba(251, 191, 36, 0.20);
+      --set-b-border: rgba(251, 191, 36, 0.65);
+
+      --success: #10b981;
+      --warning: #f59e0b;
+
+      --orb-1-color: rgba(245, 158, 11, 0.40);
+      --orb-2-color: rgba(251, 191, 36, 0.35);
+      --orb-3-color: rgba(217, 119, 6, 0.28);
+      --aurora-opacity: 0.95;
     }
 
     :root[data-theme="light"] {
@@ -4384,10 +4626,552 @@
     .aurora-orb { transform: translateZ(0); backface-visibility: hidden; }
     .app-header { transform: translateZ(0); backface-visibility: hidden; }
     @media (prefers-reduced-motion: reduce) { .aurora-orb, .aurora-mesh-gradient { animation: none !important; } }
+  
+    /* ============================================================
+       AGGRESSIVE MOBILE PERFORMANCE: Kill GPU-heavy effects
+       backdrop-filter is the #1 mobile performance killer.
+       Replace with solid semi-transparent backgrounds.
+       ============================================================ */
+    @media (max-width: 768px) {
+      .aurora-orb {
+        filter: none !important;
+        mix-blend-mode: normal !important;
+        opacity: 0.3 !important;
+      }
+      .aurora-orb.orb-gold,
+      .aurora-orb.orb-emerald,
+      .aurora-orb.orb-rose {
+        display: none !important;
+      }
+      .aurora-mesh-gradient {
+        animation-duration: 120s !important;
+      }
+      .lecture-card,
+      .top-appbar,
+      .circular-gauge-container,
+      .quick-action-card,
+      .modal-sheet,
+      .notif-card,
+      .time-sim-card,
+      .glow-highlight-ribbon,
+      .holo-menu-panel {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+      }
+      .brand-logo-img {
+        animation: none !important;
+      }
+      .aurora-highlight-watermark {
+        animation: none !important;
+      }
+      .campus-photo-img {
+        animation: none !important;
+        transform: scale(1.02) !important;
+      }
+    }
+
+  
+    /* ULTRA-SMOOTH 60FPS HARDWARE-ACCELERATED ENGINE */
+    html {
+      transition: background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .lecture-card, .top-appbar, .modal-sheet, .circular-hero-card, .orbit-tracker-section, .notif-card, .heads-up-banner {
+      will-change: transform, opacity;
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+
+    /* HOLIDAY CELEBRATION CARD */
+    .empty-holiday-card {
+      background: var(--card-surface-grad);
+      border: 1px solid var(--gold-border);
+      box-shadow: 0 16px 40px -10px rgba(0,0,0,0.6), 0 0 25px var(--gold-border);
+      border-radius: 24px;
+      padding: 24px 18px;
+      margin: 12px 0 24px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      animation: holidayGlowFloat 4s ease-in-out infinite alternate;
+    }
+    @keyframes holidayGlowFloat {
+      0% { transform: translateY(0px); box-shadow: 0 12px 30px -10px rgba(0,0,0,0.5), 0 0 15px var(--gold-border); }
+      100% { transform: translateY(-4px); box-shadow: 0 18px 45px -8px rgba(0,0,0,0.7), 0 0 35px var(--gold-border); }
+    }
+    .holiday-icon-glow {
+      font-size: 3.6rem;
+      margin-bottom: 8px;
+      display: inline-block;
+      animation: iconPulse 2.2s ease-in-out infinite;
+    }
+    @keyframes iconPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.12); }
+    }
+    .holiday-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 12px;
+      background: var(--gold-bg);
+      border: 1px solid var(--gold-border);
+      color: var(--gold-accent);
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+    .holiday-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+    .holiday-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+      max-width: 320px;
+      margin: 0 auto 12px auto;
+    }
+    .holiday-quote {
+      font-size: 0.75rem;
+      color: var(--accent);
+      font-style: italic;
+      margin-bottom: 18px;
+    }
+    .holiday-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-width: 280px;
+      margin: 0 auto;
+    }
+
+    /* IN-APP HEADS-UP NOTIFICATION BANNER */
+    .heads-up-banner {
+      position: fixed;
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-160%);
+      width: calc(100% - 24px);
+      max-width: 480px;
+      background: var(--card-solid);
+      border: 1.5px solid var(--accent);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px var(--accent-glow);
+      border-radius: 18px;
+      padding: 12px 14px;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      pointer-events: none;
+    }
+    .heads-up-banner.is-showing {
+      transform: translateX(-50%) translateY(0);
+      pointer-events: auto;
+    }
+    .heads-up-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--accent-bg);
+      border: 1px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      animation: notifBellRing 1s ease-in-out infinite;
+    }
+    @keyframes notifBellRing {
+      0%, 100% { transform: rotate(0deg); }
+      20%, 60% { transform: rotate(-15deg); }
+      40%, 80% { transform: rotate(15deg); }
+    }
+    .heads-up-content {
+      flex: 1;
+      min-width: 0;
+    }
+    .heads-up-title {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--text-main);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .heads-up-sub {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      line-height: 1.3;
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .heads-up-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .heads-up-btn {
+      padding: 6px 10px;
+      background: var(--accent);
+      color: #020612;
+      border: none;
+      border-radius: 10px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .heads-up-dismiss {
+      background: transparent;
+      border: none;
+      color: var(--text-sub);
+      font-size: 1rem;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    /* THEME STUDIO MODAL STYLES */
+    .theme-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .theme-card-option {
+      background: var(--card-surface-grad);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 12px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .theme-card-option:hover, .theme-card-option:active {
+      transform: translateY(-2px) scale(1.02);
+    }
+    .theme-card-option.active-theme {
+      border-color: var(--accent);
+      box-shadow: 0 0 16px var(--accent-glow);
+    }
+    .theme-card-option.active-theme::after {
+      content: '✓ ACTIVE';
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      font-size: 0.58rem;
+      font-weight: 800;
+      background: var(--accent);
+      color: #020612;
+      padding: 2px 6px;
+      border-radius: 8px;
+    }
+    .theme-palette-swatches {
+      display: flex;
+      gap: 4px;
+      height: 18px;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .theme-swatch-item {
+      flex: 1;
+      height: 100%;
+    }
+    .theme-title-text {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .theme-desc-text {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      line-height: 1.25;
+    }
+
+    /* ACADEMIC CALENDAR MODAL STYLES */
+    .calendar-tab-btn {
+      flex: 1;
+      padding: 8px 12px;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .calendar-tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+    .academic-event-card {
+      background: var(--card-surface-grad);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: transform 0.2s;
+    }
+    .academic-event-card:hover {
+      transform: translateX(3px);
+      border-color: var(--accent);
+    }
+    .event-icon-box {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--accent-bg);
+      border: 1px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .event-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .event-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .event-date {
+      font-size: 0.7rem;
+      color: var(--text-sub);
+      margin-top: 2px;
+    }
+    .event-countdown-pill {
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-size: 0.65rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .countdown-today { background: rgba(244,63,94,0.25); color: #f43f5e; border: 1px solid #f43f5e; }
+    .countdown-soon { background: rgba(245,158,11,0.2); color: #f59e0b; border: 1px solid #f59e0b; }
+    .countdown-upcoming { background: rgba(56,189,248,0.2); color: #38bdf8; border: 1px solid #38bdf8; }
+    .countdown-passed { background: rgba(148,163,184,0.15); color: #94a3b8; }
+
+    /* MULTI-SECTION FACULTY DIRECTORY STYLES */
+    .fac-sec-tabs {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      scrollbar-width: none;
+    }
+    .fac-sec-tabs::-webkit-scrollbar { display: none; }
+    .fac-sec-pill {
+      padding: 5px 12px;
+      border-radius: 12px;
+      background: var(--card-solid);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .fac-sec-pill.active {
+      background: var(--accent);
+      color: #020612;
+      border-color: var(--accent);
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
+    .fac-card-item {
+      background: var(--card-surface-grad);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      position: relative;
+      transition: all 0.2s;
+    }
+    .fac-card-item:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 15px -4px rgba(0,0,0,0.4);
+    }
+    .fac-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .fac-avatar-name {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .fac-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--accent-bg);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .fac-name-text {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .fac-subject-pill {
+      font-size: 0.68rem;
+      padding: 2px 7px;
+      border-radius: 6px;
+      background: var(--card-solid);
+      border: 1px solid var(--card-border);
+      color: var(--accent);
+      max-width: 240px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: inline-block;
+    }
+    .fac-actions-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      margin-top: 4px;
+    }
+    .fac-room-badge {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+    .appbar-quick-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .appbar-quick-btn:hover {
+      transform: scale(1.06);
+      border-color: var(--accent);
+      box-shadow: 0 0 12px var(--accent-glow);
+    }
+
+  </style>
+  <!-- Splash Screen Styles (inline for instant render, zero FOUC) -->
+  <style>
+    .splash-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #020612;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+    .splash-screen.hide {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .splash-logo {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      border: 3px solid #38bdf8;
+      box-shadow: 0 0 24px rgba(56, 189, 248, 0.5), 0 0 48px rgba(56, 189, 248, 0.2);
+      animation: splashPulse 1.6s ease-in-out infinite;
+      margin-bottom: 18px;
+    }
+    .splash-title {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #38bdf8, #c084fc, #fbbf24);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 6px;
+    }
+    .splash-sub {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-size: 0.78rem;
+      color: #64748b;
+      letter-spacing: 0.12em;
+      font-weight: 600;
+    }
+    .splash-dots {
+      display: flex;
+      gap: 6px;
+      margin-top: 22px;
+    }
+    .splash-dots span {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #38bdf8;
+      animation: splashDot 1.2s ease-in-out infinite;
+    }
+    .splash-dots span:nth-child(2) { animation-delay: 0.15s; }
+    .splash-dots span:nth-child(3) { animation-delay: 0.3s; }
+    @keyframes splashPulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 24px rgba(56, 189, 248, 0.5); }
+      50% { transform: scale(1.06); box-shadow: 0 0 36px rgba(56, 189, 248, 0.7), 0 0 60px rgba(168, 85, 247, 0.3); }
+    }
+    @keyframes splashDot {
+      0%, 80%, 100% { opacity: 0.3; transform: scale(0.8); }
+      40% { opacity: 1; transform: scale(1.3); }
+    }
   </style>
 </head>
 
 <body>
+
+  <!-- INSTANT SPLASH SCREEN (renders before anything else, hides white screen) -->
+  <div class="splash-screen" id="splashScreen">
+    <img src="logo_small.png" alt="" class="splash-logo" />
+    <div class="splash-title">Qtimex</div>
+    <div class="splash-sub">SEC-D TIMETABLE</div>
+    <div class="splash-dots"><span></span><span></span><span></span></div>
+  </div>
 
   <!-- DYNAMIC ANIMATED MULTI-COLOR AURORA THEME CANVAS -->
   <div class="aurora-ambient-bg" id="auroraBg" aria-hidden="true">
@@ -4430,7 +5214,16 @@
             <span class="brand-subtitle">Quantum University • B.Tech CSE</span>
           </div>
         </div>
-        <div class="appbar-actions">
+        <div class="appbar-actions" style="display:flex; align-items:center; gap:6px;">
+          <!-- 1-Tap Colorful Themes Studio -->
+          <button class="appbar-quick-btn" id="themeQuickBtn" onclick="openThemePickerModal()" title="Theme Studio (Vibrant Colors & Animations)" aria-label="Theme Studio">
+            🎨
+          </button>
+          <!-- 1-Tap Academic Calendar & Holidays -->
+          <button class="appbar-quick-btn" id="calQuickBtn" onclick="openAcademicCalendarModal()" title="Academic Calendar & Holidays (Odd Sem 2026-27)" aria-label="Academic Calendar">
+            📅
+          </button>
+          <!-- Holo Command Deck Menu Button -->
           <button class="holo-menu-trigger" id="holoMenuBtn" onclick="toggleHoloMenu()" title="Open Quick Menu"
             aria-label="Open Quick Menu">
             <span class="hbar hbar-1"></span>
@@ -4480,17 +5273,33 @@
       </div>
 
       <div class="holo-deck-grid">
-        <!-- 1. Faculty Directory -->
+
+        <!-- 1. Faculty Directory (All Sections) -->
         <button class="holo-menu-item" id="facultyDirBtn" onclick="closeHoloMenu(); openFacultyModal();">
           <div class="holo-item-left">
             <div class="holo-orb-icon orb-gold">👨‍🏫</div>
             <div class="holo-item-texts">
-              <span class="holo-item-title">Section-D Faculty List</span>
-              <span class="holo-item-sub">View & edit subject teachers</span>
+              <span class="holo-item-title">All Sections Faculty List</span>
+              <span class="holo-item-sub">View & add teachers for any section</span>
             </div>
           </div>
           <div class="holo-item-right">
-            <span class="holo-item-pill">16 Subj</span>
+            <span class="holo-item-pill">10 Secs</span>
+            <span class="holo-item-arrow">›</span>
+          </div>
+        </button>
+
+        <!-- 1b. Academic & Holiday Calendar (PDF Ingested) -->
+        <button class="holo-menu-item" id="academicCalBtn" onclick="closeHoloMenu(); openAcademicCalendarModal();">
+          <div class="holo-item-left">
+            <div class="holo-orb-icon orb-rose">📅</div>
+            <div class="holo-item-texts">
+              <span class="holo-item-title">Academic & Holiday Calendar</span>
+              <span class="holo-item-sub">Quantum University Odd Sem 26-27</span>
+            </div>
+          </div>
+          <div class="holo-item-right">
+            <span class="holo-item-pill pill-on">Holidays</span>
             <span class="holo-item-arrow">›</span>
           </div>
         </button>
@@ -4520,18 +5329,18 @@
             </div>
           </div>
           <div class="holo-item-right">
-            <span class="holo-item-pill pill-on" id="menuOtaPill">v5.1 Latest</span>
+            <span class="holo-item-pill pill-on" id="menuOtaPill">v5.5 Latest</span>
             <span class="holo-item-arrow">›</span>
           </div>
         </button>
 
-        <!-- 4. Notification (Real Phone System Notification) -->
-        <button class="holo-menu-item" id="soundBtn" onclick="closeHoloMenu(); enableAndTestClassNotification();">
+        <!-- 4. Pre-Class Notification Settings & Tester -->
+        <button class="holo-menu-item" id="soundBtn" onclick="closeHoloMenu(); openNotificationSettingsModal();">
           <div class="holo-item-left">
             <div class="holo-orb-icon orb-rose"><span id="soundIcon">🔔</span></div>
             <div class="holo-item-texts">
-              <span class="holo-item-title">Notification</span>
-              <span class="holo-item-sub">Class shuru hone se 5m pahle alert</span>
+              <span class="holo-item-title">Class Notifications</span>
+              <span class="holo-item-sub">Pre-class alerts & multi-sec tester</span>
             </div>
           </div>
           <div class="holo-item-right">
@@ -4554,17 +5363,17 @@
           </div>
         </button>
 
-        <!-- 5. Theme Mode Switcher -->
-        <button class="holo-menu-item" id="themeBtn" onclick="toggleTheme()">
+        <!-- 5. Colorful Themes Studio -->
+        <button class="holo-menu-item" id="themeBtn" onclick="closeHoloMenu(); openThemePickerModal();">
           <div class="holo-item-left">
-            <div class="holo-orb-icon orb-violet"><span id="themeIcon">🏛️</span></div>
+            <div class="holo-orb-icon orb-violet">🎨</div>
             <div class="holo-item-texts">
-              <span class="holo-item-title">Theme Mode</span>
-              <span class="holo-item-sub" id="menuThemeSub">Quantum Campus Live</span>
+              <span class="holo-item-title">Colorful Themes Studio</span>
+              <span class="holo-item-sub" id="menuThemeSub">8 Vibrant 60fps Themes</span>
             </div>
           </div>
           <div class="holo-item-right">
-            <span class="holo-item-pill pill-theme" id="menuThemePill">🏛️ Campus</span>
+            <span class="holo-item-pill pill-theme" id="menuThemePill">🎨 Themes</span>
           </div>
         </button>
 
@@ -4581,6 +5390,7 @@
             <span class="holo-item-pill pill-on" id="menuAnimPill">✨ ON</span>
           </div>
         </button>
+
       </div>
     </div>
 
@@ -5181,43 +5991,241 @@
     </div>
   </div>
 
-  <!-- MODAL: SECTION-D FACULTY DIRECTORY -->
-  <div class="modal-overlay" id="facultyModal" onclick="closeModalOnOverlay(event, 'facultyModal')">
+  
+  <!-- MODAL: QUANTUM UNIVERSITY ACADEMIC & HOLIDAY CALENDAR (ODD SEM 2026-27) -->
+  <div class="modal-overlay" id="academicCalendarModal" onclick="closeModalOnOverlay(event, 'academicCalendarModal')">
+    <div class="modal-sheet" style="max-height:88vh; overflow-y:auto;">
+      <div class="modal-handle"></div>
+      <div class="modal-header">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div class="modal-title">📅 Academic Calendar 2026-27</div>
+          <span class="period-count-badge badge-set-a" style="font-size:0.65rem;">Odd Sem</span>
+        </div>
+        <button class="modal-close-btn" onclick="closeModal('academicCalendarModal')">✕</button>
+      </div>
+
+      <div style="background:var(--card-surface-grad); border:1px solid var(--card-border); border-radius:12px; padding:10px 12px; margin-bottom:10px;">
+        <div style="font-size:0.82rem; font-weight:800; color:var(--text-main);">🏛️ Quantum University, Roorkee</div>
+        <div style="font-size:0.72rem; color:var(--text-muted); margin-top:2px;">Official Odd Semester 2026-27 Academic Calendar • <strong>Total 92 Teaching Days</strong></div>
+      </div>
+
+      <!-- Calendar Tabs: Holidays vs Academic Milestones -->
+      <div style="display:flex; border-bottom:1px solid var(--card-border); margin-bottom:12px;">
+        <button class="calendar-tab-btn active" id="tabHolidaysBtn" onclick="switchCalendarTab('holidays')">
+          🎉 Holidays & Vacations (<span id="holidaysCountBadge">11</span>)
+        </button>
+        <button class="calendar-tab-btn" id="tabAcademicBtn" onclick="switchCalendarTab('academic')">
+          📚 Exams & Milestones (<span id="academicCountBadge">20</span>)
+        </button>
+      </div>
+
+      <!-- Tab Content: Holidays List -->
+      <div id="calendarHolidaysContent" style="display:flex; flex-direction:column; gap:8px; max-height:54vh; overflow-y:auto; padding-right:4px;">
+        <!-- Rendered by renderAcademicCalendar() -->
+      </div>
+
+      <!-- Tab Content: Academic Events List -->
+      <div id="calendarAcademicContent" style="display:none; flex-direction:column; gap:8px; max-height:54vh; overflow-y:auto; padding-right:4px;">
+        <!-- Rendered by renderAcademicCalendar() -->
+      </div>
+
+      <div style="display:flex; gap:8px; margin-top:12px;">
+        <button class="primary-btn" style="flex:1;" onclick="jumpToTodayLive(); closeModal('academicCalendarModal');">
+          📍 Go To Today's Timetable
+        </button>
+        <button class="secondary-btn" style="flex:1;" onclick="closeModal('academicCalendarModal')">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: COLORFUL THEMES STUDIO -->
+  <div class="modal-overlay" id="themeModal" onclick="closeModalOnOverlay(event, 'themeModal')">
     <div class="modal-sheet" style="max-height:86vh; overflow-y:auto;">
       <div class="modal-handle"></div>
       <div class="modal-header">
         <div style="display:flex; align-items:center; gap:8px;">
-          <div class="modal-title">👨‍🏫 Section-D Faculty List</div>
-          <span id="facultyAdminBadge" class="faculty-badge" style="font-size:0.65rem; padding:2px 7px;">🔒
-            Locked</span>
+          <div class="modal-title">🎨 Colorful Themes Studio</div>
+          <span class="period-count-badge badge-set-all" style="font-size:0.65rem;">60 FPS Lag-Free</span>
+        </div>
+        <button class="modal-close-btn" onclick="closeModal('themeModal')">✕</button>
+      </div>
+
+      <p style="font-size:0.75rem; color:var(--text-muted); line-height:1.4; margin-bottom:8px;">
+        Select from vibrant, hardware-accelerated color themes tailored for day and night study. Buttery-smooth with zero lag!
+      </p>
+
+      <div class="theme-grid" id="themeGridContainer">
+        <!-- Rendered dynamically by renderThemePickerModal() -->
+      </div>
+
+      <div style="display:flex; gap:8px; margin-top:14px;">
+        <button class="secondary-btn" style="flex:1;" onclick="toggleAnimationTheme()">
+          ✨ Toggle Motion
+        </button>
+        <button class="primary-btn" style="flex:1;" onclick="closeModal('themeModal')">
+          ✓ Done
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: PRE-CLASS NOTIFICATION SETTINGS & MULTI-SECTION TESTER -->
+  <div class="modal-overlay" id="notifSettingsModal" onclick="closeModalOnOverlay(event, 'notifSettingsModal')">
+    <div class="modal-sheet" style="max-height:86vh; overflow-y:auto;">
+      <div class="modal-handle"></div>
+      <div class="modal-header">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div class="modal-title">🔔 Pre-Class Notifications</div>
+          <span class="period-count-badge badge-set-a" style="font-size:0.65rem;">All Sections</span>
+        </div>
+        <button class="modal-close-btn" onclick="closeModal('notifSettingsModal')">✕</button>
+      </div>
+
+      <div style="background:var(--card-surface-grad); border:1px solid var(--card-border); border-radius:14px; padding:12px; margin-bottom:12px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <div style="font-size:0.85rem; font-weight:800; color:var(--text-main);">Pre-Class Alert System</div>
+            <div style="font-size:0.72rem; color:var(--text-muted); margin-top:2px;">Fires 5m before each lecture in your section</div>
+          </div>
+          <button class="primary-btn" id="notifMasterToggleBtn" style="padding:6px 14px; font-size:0.75rem;" onclick="toggleMasterNotification()">
+            🔔 Active
+          </button>
+        </div>
+      </div>
+
+      <div style="font-size:0.75rem; font-weight:800; color:var(--text-sub); margin-bottom:6px; letter-spacing:0.5px;">
+        TEST NOTIFICATION FOR ANY SECTION
+      </div>
+
+      <div style="background:var(--card-surface-grad); border:1px solid var(--card-border); border-radius:14px; padding:12px; display:flex; flex-direction:column; gap:10px;">
+        <div class="form-group" style="margin:0;">
+          <label for="testNotifSecSelect">Select Section to Test:</label>
+          <select id="testNotifSecSelect" class="modal-input" style="padding:8px 10px;">
+            <option value="Sec-A">Section A (Room C-302)</option>
+            <option value="Sec-B">Section B (Room C-305)</option>
+            <option value="Sec-C">Section C (Room C-306)</option>
+            <option value="Sec-D" selected>Section D (Room A-108)</option>
+            <option value="Sec-E">Section E (Room A-208)</option>
+            <option value="Sec-H">Section H (Room A-211)</option>
+            <option value="Sec-I">Section I (Room A-302)</option>
+            <option value="Sec-J">Section J (Room A-308)</option>
+            <option value="Sec-K">Section K (Room C-302)</option>
+            <option value="Sec-L">Section L (Room A-311)</option>
+          </select>
+        </div>
+
+        <button class="primary-btn" style="justify-content:center; background:linear-gradient(135deg, #00f0ff, #7000ff); color:#ffffff; font-weight:800;" onclick="triggerTestAlertForChosenSection()">
+          🚀 Send Test Pre-Class Alert Now
+        </button>
+        <span style="font-size:0.68rem; color:var(--text-muted); text-align:center;">Tests Status Bar Alert + In-App Heads-Up Banner + Audio Chime!</span>
+      </div>
+
+      <div style="display:flex; gap:8px; margin-top:14px;">
+        <button class="secondary-btn" style="flex:1;" onclick="openNotificationLibraryModal(); closeModal('notifSettingsModal');">
+          📚 Open Library
+        </button>
+        <button class="primary-btn" style="flex:1;" onclick="closeModal('notifSettingsModal')">
+          ✓ Save Settings
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: ALL SECTIONS FACULTY DIRECTORY & MANAGER -->
+  <div class="modal-overlay" id="facultyModal" onclick="closeModalOnOverlay(event, 'facultyModal')">
+    <div class="modal-sheet" style="max-height:88vh; overflow-y:auto;">
+      <div class="modal-handle"></div>
+      <div class="modal-header">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div class="modal-title">👨‍🏫 Faculty Directory & Manager</div>
+          <span id="facultySectionBadge" class="period-count-badge badge-set-a" style="font-size:0.65rem;">Sec-D</span>
         </div>
         <button class="modal-close-btn" onclick="closeModal('facultyModal')">✕</button>
       </div>
 
-      <!-- Admin Status Banner -->
-      <div id="facultyAdminNotice"
-        style="background:rgba(245,158,11,0.12); border:1px solid rgba(245,158,11,0.3); border-radius:10px; padding:8px 12px; display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-        <span id="facultyAdminStatusText" style="font-size:0.75rem; color:var(--text-muted);">🔒 Official Faculty names
-          are locked.</span>
-        <button id="facultyUnlockBtn" class="secondary-btn"
-          style="padding:4px 10px; font-size:0.72rem; border-color:#f59e0b; color:#f59e0b;"
-          onclick="handleFacultyAdminUnlock()">
-          🔐 Admin Unlock
+      <!-- Section Tabs (Sec-A to Sec-L) -->
+      <div style="font-size:0.7rem; font-weight:800; color:var(--text-sub); margin-bottom:6px; letter-spacing:0.5px;">
+        SELECT SECTION TO VIEW / EDIT:
+      </div>
+      <div class="fac-sec-tabs" id="facSecTabsTrack">
+        <!-- Rendered by renderFacultyDirectory() -->
+      </div>
+
+      <!-- Search & Add Actions Bar -->
+      <div style="display:flex; gap:8px; margin:10px 0;">
+        <input type="text" id="facultySearchInput" class="modal-input" placeholder="🔍 Search faculty or subject..." style="flex:1; padding:8px 12px; font-size:0.8rem;" oninput="filterFacultyDirectoryList()">
+        <button class="primary-btn" style="width:auto; padding:8px 14px; font-size:0.75rem; white-space:nowrap;" onclick="openAddFacultyModal()">
+          ➕ Add Faculty
         </button>
       </div>
 
-      <div id="facultyDirectoryList"
-        style="display:flex; flex-direction:column; gap:10px; max-height:50vh; overflow-y:auto; padding-right:4px;">
+      <!-- Faculty Cards List -->
+      <div id="facultyDirectoryList" style="display:flex; flex-direction:column; gap:8px; max-height:50vh; overflow-y:auto; padding-right:4px;">
         <!-- Populated dynamically -->
       </div>
 
-      <div style="display:flex; gap:8px; margin-top:8px;">
+      <div style="display:flex; gap:8px; margin-top:12px;">
         <button class="primary-btn" id="saveFacultyBtn" style="flex:2;" onclick="saveAllFacultyNames()">
-          💾 Save All Faculty Names
+          💾 Save All Names
         </button>
-        <button class="secondary-btn" id="resetFacultyBtn" style="flex:1;" onclick="resetAllFacultyNames()">
-          ↺ Reset
+        <button class="secondary-btn" id="resetFacultyBtn" style="flex:1;" onclick="resetCurrentSectionFaculty()">
+          ↺ Reset Section
         </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: ADD / EDIT FACULTY MEMBER -->
+  <div class="modal-overlay" id="addFacultyModal" onclick="closeModalOnOverlay(event, 'addFacultyModal')">
+    <div class="modal-sheet">
+      <div class="modal-handle"></div>
+      <div class="modal-header">
+        <div class="modal-title" id="addFacultyModalTitle">➕ Add Faculty Member</div>
+        <button class="modal-close-btn" onclick="closeModal('addFacultyModal')">✕</button>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <div class="form-group">
+          <label for="newFacSection">Section:</label>
+          <select id="newFacSection" class="modal-input">
+            <option value="Sec-A">Section A</option>
+            <option value="Sec-B">Section B</option>
+            <option value="Sec-C">Section C</option>
+            <option value="Sec-D" selected>Section D</option>
+            <option value="Sec-E">Section E</option>
+            <option value="Sec-H">Section H</option>
+            <option value="Sec-I">Section I</option>
+            <option value="Sec-J">Section J</option>
+            <option value="Sec-K">Section K</option>
+            <option value="Sec-L">Section L</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="newFacSubject">Subject Name:</label>
+          <input type="text" id="newFacSubject" class="modal-input" placeholder="e.g. Operating System / Physics Lab">
+        </div>
+
+        <div class="form-group">
+          <label for="newFacName">Faculty / Teacher Name:</label>
+          <input type="text" id="newFacName" class="modal-input" placeholder="e.g. Dr. Amit Sharma / Prof. John">
+        </div>
+
+        <div class="form-group">
+          <label for="newFacRoom">Room / Cabin Number:</label>
+          <input type="text" id="newFacRoom" class="modal-input" placeholder="e.g. Room A-108 or Cabin B-302">
+        </div>
+
+        <div style="display:flex; gap:8px; margin-top:8px;">
+          <button class="primary-btn" style="flex:1;" onclick="submitNewFaculty()">
+            ✓ Save Faculty Member
+          </button>
+          <button class="secondary-btn" style="width:auto;" onclick="closeModal('addFacultyModal')">
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -5238,9 +6246,30 @@
     const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const shortDayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-    // ALL 10 QUANTUM UNIVERSITY SECTIONS (100% OFFLINE BUNDLED)
-    const ALL_SECTIONS = {"Sec-A": {"name": "Section A", "room": "A-102", "schedule": {"1": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Front-End Web Development", "room": "A-102", "faculty": "Mr. Mukesh Kumar Tiwari"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Environmental Studies-I", "room": "A-102", "faculty": "Mr. Aman Kumar"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Technical Training - Advance Programming in C", "room": "A-102", "faculty": "Mr. Amit Kumnar Sachan"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "set": "ALL", "subject": "Computational & Quantum Physics", "room": "A-102", "faculty": "Dr. Shaily Chaudhary"}, {"period": "L6", "timing": "01:35 - 02:30", "set": "ALL", "subject": "Environmental Studies-I", "room": "A-102", "faculty": "Mr. Aman Kumar"}, {"period": "L7", "timing": "02:30 - 03:25", "isSplit": true, "setA": {"subject": "Self Study", "room": "-", "set": "Set-A", "faculty": ""}, "setB": {"subject": "Computational & Quantum Physics Lab", "room": "Physics Lab", "set": "Set-B", "faculty": "Dr. Shaily Chaudhary"}}, {"period": "L8", "timing": "03:25 - 04:20", "isSplit": true, "setA": {"subject": "Self Study", "room": "-", "set": "Set-A", "faculty": ""}, "setB": {"subject": "Computational & Quantum Physics Lab", "room": "Physics Lab", "set": "Set-B", "faculty": "Dr. Shaily Chaudhary"}}], "2": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Computational Mathematics for Intelligent Systems", "room": "A-102", "faculty": "Mr. Vipin Kumar Saini"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Basics of Computer and C Programming", "room": "A-102", "faculty": "Dr. Chunnu"}, {"period": "L3", "timing": "10:50 - 11:45", "isSplit": true, "setA": {"subject": "Communication & Professional Skills -I", "room": "B-302", "set": "Set-A", "faculty": "Ms. Kajal Chauhan"}, "setB": {"subject": "Self Study", "room": "-", "set": "Set-B", "faculty": ""}}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "isSplit": true, "setA": {"subject": "Basics of Computer and C Programming Lab", "room": "E-305", "set": "Set-A", "faculty": "Dr. Chunnu"}, "setB": {"subject": "Front-End Web Development Lab", "room": "E-309", "set": "Set-B", "faculty": "Mr. Mukesh Kumar Tiwari"}}, {"period": "L6", "timing": "01:35 - 02:30", "isSplit": true, "setA": {"subject": "Basics of Computer and C Programming Lab", "room": "E-305", "set": "Set-A", "faculty": "Dr. Chunnu"}, "setB": {"subject": "Front-End Web Development Lab", "room": "E-309", "set": "Set-B", "faculty": "Mr. Mukesh Kumar Tiwari"}}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "Communication & Professional Skills -I", "room": "A-102", "faculty": "Ms. Kajal Chauhan"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "Mentor Mentee Meeting(Set-M2)", "room": "A-004", "faculty": "Mr. Rudra Pratap Singh"}], "3": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Front-End Web Development", "room": "A-102", "faculty": "Mr. Mukesh Kumar Tiwari"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Technical Training - Advance Programming in C", "room": "A-102", "faculty": "Mr. Amit Kumnar Sachan"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Slow & Fast Learner Classes", "room": "A-102", "faculty": "Section-A Faculty"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "set": "ALL", "subject": "Technical Training - Advance Programming in C", "room": "A-102", "faculty": "Mr. Amit Kumnar Sachan"}, {"period": "L6", "timing": "01:35 - 02:30", "set": "ALL", "subject": "Fundamentals of Intelligent & Autonomous Systems", "room": "A-102", "faculty": "Dr. Shobhit Srivastava"}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}], "4": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Communication & Professional Skills -I", "room": "A-102", "faculty": "Ms. Kajal Chauhan"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Basics of Computer and C Programming", "room": "A-102", "faculty": "Dr. Chunnu"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Computational Mathematics for Intelligent Systems", "room": "A-102", "faculty": "Mr. Vipin Kumar Saini"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "isSplit": true, "setA": {"subject": "Front-End Web Development Lab", "room": "E-309", "set": "Set-A", "faculty": "Mr. Mukesh Kumar Tiwari"}, "setB": {"subject": "Basics of Computer and C Programming Lab", "room": "E-305", "set": "Set-B", "faculty": "Dr. Chunnu"}}, {"period": "L6", "timing": "01:35 - 02:30", "isSplit": true, "setA": {"subject": "Front-End Web Development Lab", "room": "E-309", "set": "Set-A", "faculty": "Mr. Mukesh Kumar Tiwari"}, "setB": {"subject": "Basics of Computer and C Programming Lab", "room": "E-305", "set": "Set-B", "faculty": "Dr. Chunnu"}}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "Computational & Quantum Physics", "room": "A-102", "faculty": "Dr. Shaily Chaudhary"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "Mentor Mentee Meeting(Set-M1)", "room": "A-004", "faculty": "Mr. Ashish Kumar"}], "5": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Computational & Quantum Physics", "room": "A-102", "faculty": "Dr. Shaily Chaudhary"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Front-End Web Development", "room": "A-102", "faculty": "Mr. Mukesh Kumar Tiwari"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Fundamentals of Intelligent & Autonomous Systems", "room": "A-102", "faculty": "Dr. Shobhit Srivastava"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "set": "ALL", "subject": "Computational Mathematics for Intelligent Systems", "room": "A-102", "faculty": "Mr. Vipin Kumar Saini"}, {"period": "L6", "timing": "01:35 - 02:30", "isSplit": true, "setA": {"subject": "Self Study", "room": "-", "set": "Set-A", "faculty": ""}, "setB": {"subject": "Communication & Professional Skills -I", "room": "B-302", "set": "Set-B", "faculty": "Ms. Kajal Chauhan"}}, {"period": "L7", "timing": "02:30 - 03:25", "isSplit": true, "setA": {"subject": "Computational & Quantum Physics Lab", "room": "Physics Lab", "set": "Set-A", "faculty": "Dr. Shaily Chaudhary"}, "setB": {"subject": "Self Study", "room": "-", "set": "Set-B", "faculty": ""}}, {"period": "L8", "timing": "03:25 - 04:20", "isSplit": true, "setA": {"subject": "Computational & Quantum Physics Lab", "room": "Physics Lab", "set": "Set-A", "faculty": "Dr. Shaily Chaudhary"}, "setB": {"subject": "Self Study", "room": "-", "set": "Set-B", "faculty": ""}}], "6": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Computational Mathematics for Intelligent Systems", "room": "A-102", "faculty": "Mr. Vipin Kumar Saini"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Basics of Computer and C Programming", "room": "A-102", "faculty": "Dr. Chunnu"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Mini Project-I", "room": "A-102", "faculty": "Mrs. Ankita Singh Rana"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "set": "ALL", "subject": "Computational & Quantum Physics", "room": "A-102", "faculty": "Dr. Shaily Chaudhary"}, {"period": "L6", "timing": "01:35 - 02:30", "set": "ALL", "subject": "Fundamentals of Intelligent & Autonomous Systems", "room": "A-102", "faculty": "Dr. Shobhit Srivastava"}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}]}}, "Sec-B": {"name": "Section B", "room": "A-103", "schedule": {"1": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Basics of Computer and C Programming", "room": "A-103", "faculty": "Mrs. Ankita Singh Rana"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Front-End Web Development", "room": "A-103", "faculty": "Mr. Mukesh Kumar Tiwari"}, {"period": "L3", "timing": "10:50 - 11:45", "isSplit": true, "setA": {"subject": "Communication & Professional Skills -I", "room": "B-302", "set": "Set-A", "faculty": "Ms. Manvi Tyagi"}, "setB": {"subject": "Self Study", "room": "-", "set": "Set-B", "faculty": ""}}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "set": "ALL", "subject": "Technical Training - Advance Programming in C", "room": "A-103", "faculty": "Mr. Rahul Panda"}, {"period": "L6", "timing": "01:35 - 02:30", "set": "ALL", "subject": "Communication & Professional Skills -I", "room": "A-103", "faculty": "Ms. Manvi Tyagi"}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "Computational & Quantum Physics", "room": "A-103", "faculty": "Dr. Surendra Singh"}, {"period": "L8", "timing": "03:25 - 04:20", "isSplit": true, "setA": {"subject": "Mentor Mentee Meeting (M1)", "room": "A-004", "set": "Set-A", "faculty": "Dr. Surendra Singh"}, "setB": {"subject": "Mentor Mentee Meeting (M2)", "room": "A-008", "set": "Set-B", "faculty": "Mr. Sachin Saini"}}], "2": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Basics of Computer and C Programming", "room": "A-103", "faculty": "Mrs. Ankita Singh Rana"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Environmental Studies-I", "room": "A-103", "faculty": "Mr. Aman Kumar"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Front-End Web Development", "room": "A-103", "faculty": "Mr. Mukesh Kumar Tiwari"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "set": "ALL", "subject": "Computational & Quantum Physics", "room": "A-103", "faculty": "Dr. Surendra Singh"}, {"period": "L6", "timing": "01:35 - 02:30", "set": "ALL", "subject": "Environmental Studies-I", "room": "A-103", "faculty": "Mr. Aman Kumar"}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "Fundamentals of Intelligent & Autonomous Systems", "room": "A-103", "faculty": "Dr. Shobhit Srivastava"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "Slow & Fast Learner Classes", "room": "A-103", "faculty": "Section-B Faculty"}], "3": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Basics of Computer and C Programming", "room": "A-103", "faculty": "Mrs. Ankita Singh Rana"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Computational Mathematics for Intelligent Systems", "room": "A-103", "faculty": "Dr. Gunjan Agarwal"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Front-End Web Development", "room": "A-103", "faculty": "Mr. Mukesh Kumar Tiwari"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "isSplit": true, "setA": {"subject": "Basics of Computer and C Programming Lab", "room": "E-305", "set": "Set-A", "faculty": "Dr. Chunnu"}, "setB": {"subject": "Front-End Web Development Lab", "room": "E-309", "set": "Set-B", "faculty": "Mr. Mukesh Kumar Tiwari"}}, {"period": "L6", "timing": "01:35 - 02:30", "isSplit": true, "setA": {"subject": "Basics of Computer and C Programming Lab", "room": "E-305", "set": "Set-A", "faculty": "Dr. Chunnu"}, "setB": {"subject": "Front-End Web Development Lab", "room": "E-309", "set": "Set-B", "faculty": "Mr. Mukesh Kumar Tiwari"}}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}], "4": [{"period": "L1", "timing": "09:00 - 09:55", "isSplit": true, "setA": {"subject": "Self Study", "room": "-", "set": "Set-A", "faculty": ""}, "setB": {"subject": "Communication & Professional Skills -I", "room": "B-302", "set": "Set-B", "faculty": "Ms. Manvi Tyagi"}}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Fundamentals of Intelligent & Autonomous Systems", "room": "A-103", "faculty": "Dr. Shobhit Srivastava"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Technical Training - Advance Programming in C", "room": "A-103", "faculty": "Mr. Rahul Panda"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "set": "ALL", "subject": "Computational Mathematics for Intelligent Systems", "room": "A-103", "faculty": "Dr. Gunjan Agarwal"}, {"period": "L6", "timing": "01:35 - 02:30", "set": "ALL", "subject": "Mini Project-I", "room": "A-103", "faculty": "Mr. Parikshit"}, {"period": "L7", "timing": "02:30 - 03:25", "isSplit": true, "setA": {"subject": "Computational & Quantum Physics Lab", "room": "Physics Lab", "set": "Set-A", "faculty": "Dr. Surendra Singh"}, "setB": {"subject": "Self Study", "room": "-", "set": "Set-B", "faculty": ""}}, {"period": "L8", "timing": "03:25 - 04:20", "isSplit": true, "setA": {"subject": "Computational & Quantum Physics Lab", "room": "Physics Lab", "set": "Set-A", "faculty": "Dr. Surendra Singh"}, "setB": {"subject": "Self Study", "room": "-", "set": "Set-B", "faculty": ""}}], "5": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Technical Training - Advance Programming in C", "room": "A-103", "faculty": "Mr. Rahul Panda"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Computational Mathematics for Intelligent Systems", "room": "A-103", "faculty": "Dr. Gunjan Agarwal"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Computational & Quantum Physics", "room": "A-103", "faculty": "Dr. Surendra Singh"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "isSplit": true, "setA": {"subject": "Front-End Web Development Lab", "room": "E-309", "set": "Set-A", "faculty": "Mr. Mukesh Kumar Tiwari"}, "setB": {"subject": "Basics of Computer and C Programming Lab", "room": "E-305", "set": "Set-B", "faculty": "Dr. Chunnu"}}, {"period": "L6", "timing": "01:35 - 02:30", "isSplit": true, "setA": {"subject": "Front-End Web Development Lab", "room": "E-309", "set": "Set-A", "faculty": "Mr. Mukesh Kumar Tiwari"}, "setB": {"subject": "Basics of Computer and C Programming Lab", "room": "E-305", "set": "Set-B", "faculty": "Dr. Chunnu"}}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "Communication & Professional Skills -I", "room": "A-103", "faculty": "Ms. Manvi Tyagi"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "Self Study", "room": "-", "faculty": ""}], "6": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Computational Mathematics for Intelligent Systems", "room": "A-103", "faculty": "Dr. Gunjan Agarwal"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Computational & Quantum Physics", "room": "A-103", "faculty": "Dr. Surendra Singh"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Fundamentals of Intelligent & Autonomous Systems", "room": "A-103", "faculty": "Dr. Shobhit Srivastava"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "isSplit": true, "setA": {"subject": "Self Study", "room": "-", "set": "Set-A", "faculty": ""}, "setB": {"subject": "Computational & Quantum Physics Lab", "room": "Physics Lab", "set": "Set-B", "faculty": "Dr. Surendra Singh"}}, {"period": "L6", "timing": "01:35 - 02:30", "isSplit": true, "setA": {"subject": "Self Study", "room": "-", "set": "Set-A", "faculty": ""}, "setB": {"subject": "Computational & Quantum Physics Lab", "room": "Physics Lab", "set": "Set-B", "faculty": "Dr. Surendra Singh"}}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}]}}, "Sec-C": {"name": "Section C", "room": "A-104", "schedule": {"1": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Computational Mathematics for Intelligent Systems", "room": "A-104", "faculty": "Mr. Vipin Kumar Saini"}, {"period": "L2", "timing": "09:55 - 10:50", "isSplit": true, "setA": {"subject": "Self Study", "room": "-", "set": "Set-A", "faculty": ""}, "setB": {"subject": "Communication & Professional Skills -I", "room": "B-302", "set": "Set-B", "faculty": "Ms. Manvi Tyagi"}}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Slow & Fast Learner Classes", "room": "A-104", "faculty": "Section-C Faculty"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "isSplit": true, "setA": {"subject": "Basics of Computer and C Programming Lab", "room": "E-309", "set": "Set-A", "faculty": "Mrs. Ankita Singh Rana"}, "setB": {"subject": "Front-End Web Development Lab", "room": "E-307", "set": "Set-B", "faculty": "Mr. Mukesh Kumar Tiwari"}}, {"period": "L6", "timing": "01:35 - 02:30", "isSplit": true, "setA": {"subject": "Basics of Computer and C Programming Lab", "room": "E-309", "set": "Set-A", "faculty": "Mrs. Ankita Singh Rana"}, "setB": {"subject": "Front-End Web Development Lab", "room": "E-307", "set": "Set-B", "faculty": "Mr. Mukesh Kumar Tiwari"}}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "Technical Training - Advance Programming in C", "room": "A-104", "faculty": "Mr. Rahul Panda"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "Mini Project-I", "room": "A-104", "faculty": "Mr. Himanshu Verma"}], "2": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Front-End Web Development", "room": "A-104", "faculty": "Mr. Mukesh Kumar Tiwari"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Computational & Quantum Physics", "room": "A-104", "faculty": "Dr. Ajay Kumar Sharma"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Self Study", "room": "-", "faculty": ""}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "set": "ALL", "subject": "Computational Mathematics for Intelligent Systems", "room": "A-104", "faculty": "Mr. Vipin Kumar Saini"}, {"period": "L6", "timing": "01:35 - 02:30", "set": "ALL", "subject": "Fundamentals of Intelligent & Autonomous Systems", "room": "A-104", "faculty": "Mr. Ankur Jain"}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "Technical Training - Advance Programming in C", "room": "A-104", "faculty": "Mr. Rahul Panda"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "Self Study", "room": "-", "faculty": ""}], "3": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Computational Mathematics for Intelligent Systems", "room": "A-104", "faculty": "Mr. Vipin Kumar Saini"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Environmental Studies-I", "room": "A-104", "faculty": "Mr. Aman Kumar"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Fundamentals of Intelligent & Autonomous Systems", "room": "A-104", "faculty": "Mr. Ankur Jain"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "set": "ALL", "subject": "Computational & Quantum Physics", "room": "A-104", "faculty": "Dr. Ajay Kumar Sharma"}, {"period": "L6", "timing": "01:35 - 02:30", "set": "ALL", "subject": "Environmental Studies-I", "room": "A-104", "faculty": "Mr. Aman Kumar"}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}], "4": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Basics of Computer and C Programming", "room": "A-104", "faculty": "Mrs. Ankita Singh Rana"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Front-End Web Development", "room": "A-104", "faculty": "Mr. Mukesh Kumar Tiwari"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Computational & Quantum Physics", "room": "A-104", "faculty": "Dr. Ajay Kumar Sharma"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "isSplit": true, "setA": {"subject": "Computational & Quantum Physics Lab", "room": "Physics Lab", "set": "Set-A", "faculty": "Dr. Ajay Kumar Sharma"}, "setB": {"subject": "Self Study", "room": "-", "set": "Set-B", "faculty": ""}}, {"period": "L6", "timing": "01:35 - 02:30", "isSplit": true, "setA": {"subject": "Computational & Quantum Physics Lab", "room": "Physics Lab", "set": "Set-A", "faculty": "Dr. Ajay Kumar Sharma"}, "setB": {"subject": "Self Study", "room": "-", "set": "Set-B", "faculty": ""}}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "Communication & Professional Skills -I", "room": "A-104", "faculty": "Ms. Manvi Tyagi"}, {"period": "L8", "timing": "03:25 - 04:20", "isSplit": true, "setA": {"subject": "Mentor Mentee Meeting (M1)", "room": "A-008", "set": "Set-A", "faculty": "Mr. Visnu Vishvakarma"}, "setB": {"subject": "Mentor Mentee Meeting (M2)", "room": "A-009", "set": "Set-B", "faculty": "Dr. Partap Singh"}}], "5": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Basics of Computer and C Programming", "room": "A-104", "faculty": "Mrs. Ankita Singh Rana"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Computational Mathematics for Intelligent Systems", "room": "A-104", "faculty": "Mr. Vipin Kumar Saini"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Computational & Quantum Physics", "room": "A-104", "faculty": "Dr. Ajay Kumar Sharma"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "isSplit": true, "setA": {"subject": "Self Study", "room": "-", "set": "Set-A", "faculty": ""}, "setB": {"subject": "Computational & Quantum Physics Lab", "room": "Physics Lab", "set": "Set-B", "faculty": "Dr. Ajay Kumar Sharma"}}, {"period": "L6", "timing": "01:35 - 02:30", "isSplit": true, "setA": {"subject": "Self Study", "room": "-", "set": "Set-A", "faculty": ""}, "setB": {"subject": "Computational & Quantum Physics Lab", "room": "Physics Lab", "set": "Set-B", "faculty": "Dr. Ajay Kumar Sharma"}}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "Fundamentals of Intelligent & Autonomous Systems", "room": "A-104", "faculty": "Mr. Ankur Jain"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "Communication & Professional Skills -I", "room": "A-104", "faculty": "Ms. Manvi Tyagi"}], "6": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Basics of Computer and C Programming", "room": "A-104", "faculty": "Mrs. Ankita Singh Rana"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Front-End Web Development", "room": "A-104", "faculty": "Mr. Mukesh Kumar Tiwari"}, {"period": "L3", "timing": "10:50 - 11:45", "isSplit": true, "setA": {"subject": "Communication & Professional Skills -I", "room": "B-302", "set": "Set-A", "faculty": "Ms. Manvi Tyagi"}, "setB": {"subject": "Self Study", "room": "-", "set": "Set-B", "faculty": ""}}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "isSplit": true, "setA": {"subject": "Front-End Web Development Lab", "room": "E-307", "set": "Set-A", "faculty": "Mr. Mukesh Kumar Tiwari"}, "setB": {"subject": "Basics of Computer and C Programming Lab", "room": "E-309", "set": "Set-B", "faculty": "Mrs. Ankita Singh Rana"}}, {"period": "L6", "timing": "01:35 - 02:30", "isSplit": true, "setA": {"subject": "Front-End Web Development Lab", "room": "E-307", "set": "Set-A", "faculty": "Mr. Mukesh Kumar Tiwari"}, "setB": {"subject": "Basics of Computer and C Programming Lab", "room": "E-309", "set": "Set-B", "faculty": "Mrs. Ankita Singh Rana"}}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}]}}, "Sec-D": {"name": "Section D", "room": "A-108", "schedule": {"1": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Technical Training - Advance Programming in C", "room": "A-108", "faculty": "Mr. Rahul Panda"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Environmental Studies-I", "room": "A-108", "faculty": "Mr. Akash Saini"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Basics of Computer and C Programming", "room": "A-108", "faculty": "Mrs. Ankita Singh Rana"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "set": "ALL", "subject": "Slow & Fast Learner Classes", "room": "-", "faculty": "Section-D Faculty"}, {"period": "L6", "timing": "01:35 - 02:30", "set": "ALL", "subject": "Environmental Studies-I", "room": "A-108", "faculty": "Mr. Akash Saini"}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "Communication & Professional Skills -I", "room": "A-108", "faculty": "Ms. Manvi Tyagi"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "Mini Project-I", "room": "A-108", "faculty": "Mr. Rahul Panda"}], "2": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Computational & Quantum Physics", "room": "A-108", "faculty": "Dr. Prosenjit Sarkar"}, {"period": "L2", "timing": "09:55 - 10:50", "isSplit": true, "setA": {"subject": "Self Study", "room": "-", "set": "Set-A", "faculty": ""}, "setB": {"subject": "Communication & Professional Skills -I", "room": "B-302", "set": "Set-B", "faculty": "Ms. Manvi Tyagi"}}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Basics of Computer and C Programming", "room": "A-108", "faculty": "Mrs. Ankita Singh Rana"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "isSplit": true, "setA": {"subject": "Basics of Computer and C Programming Lab", "room": "E-303", "set": "Set-A", "faculty": "Mrs. Ankita Singh Rana"}, "setB": {"subject": "Front-End Web Development Lab", "room": "B-303", "set": "Set-B", "faculty": "Mrs. Shilpy Sharma"}}, {"period": "L6", "timing": "01:35 - 02:30", "isSplit": true, "setA": {"subject": "Basics of Computer and C Programming Lab", "room": "E-303", "set": "Set-A", "faculty": "Mrs. Ankita Singh Rana"}, "setB": {"subject": "Front-End Web Development Lab", "room": "B-303", "set": "Set-B", "faculty": "Mrs. Shilpy Sharma"}}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "Computational Mathematics for Intelligent Systems", "room": "A-108", "faculty": "Dr. Monika"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "Communication & Professional Skills -I", "room": "A-108", "faculty": "Ms. Manvi Tyagi"}], "3": [{"period": "L1", "timing": "09:00 - 09:55", "isSplit": true, "setA": {"subject": "Front-End Web Development Lab", "room": "E-307", "set": "Set-A", "faculty": "Mrs. Shilpy Sharma"}, "setB": {"subject": "Computational & Quantum Physics Lab", "room": "Physics Lab", "set": "Set-B", "faculty": "Dr. Prosenjit Sarkar"}}, {"period": "L2", "timing": "09:55 - 10:50", "isSplit": true, "setA": {"subject": "Front-End Web Development Lab", "room": "E-307", "set": "Set-A", "faculty": "Mrs. Shilpy Sharma"}, "setB": {"subject": "Computational & Quantum Physics Lab", "room": "Physics Lab", "set": "Set-B", "faculty": "Dr. Prosenjit Sarkar"}}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Basics of Computer and C Programming", "room": "A-108", "faculty": "Mrs. Ankita Singh Rana"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "isSplit": true, "setA": {"subject": "Self Study", "room": "-", "set": "Set-A", "faculty": ""}, "setB": {"subject": "Basics of Computer and C Programming Lab", "room": "E-303", "set": "Set-B", "faculty": "Mrs. Ankita Singh Rana"}}, {"period": "L6", "timing": "01:35 - 02:30", "isSplit": true, "setA": {"subject": "Self Study", "room": "-", "set": "Set-A", "faculty": ""}, "setB": {"subject": "Basics of Computer and C Programming Lab", "room": "E-303", "set": "Set-B", "faculty": "Mrs. Ankita Singh Rana"}}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}], "4": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Front-End Web Development", "room": "A-108", "faculty": "Mrs. Shilpy Sharma"}, {"period": "L2", "timing": "09:55 - 10:50", "isSplit": true, "setA": {"subject": "Communication & Professional Skills -I", "room": "B-302", "set": "Set-A", "faculty": "Ms. Manvi Tyagi"}, "setB": {"subject": "Self Study", "room": "-", "set": "Set-B", "faculty": ""}}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Fundamentals of Intelligent & Autonomous Systems", "room": "A-108", "faculty": "Mr. Ankur Jain"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "set": "ALL", "subject": "Computational Mathematics for Intelligent Systems", "room": "A-108", "faculty": "Dr. Monika"}, {"period": "L6", "timing": "01:35 - 02:30", "set": "ALL", "subject": "Computational & Quantum Physics", "room": "A-108", "faculty": "Dr. Prosenjit Sarkar"}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "Self Study", "room": "-", "faculty": ""}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "Technical Training - Advance Programming in C", "room": "A-108", "faculty": "Mr. Rahul Panda"}], "5": [{"period": "L1", "timing": "09:00 - 09:55", "isSplit": true, "setA": {"subject": "Computational & Quantum Physics Lab", "room": "Physics Lab", "set": "Set-A", "faculty": "Dr. Prosenjit Sarkar"}, "setB": {"subject": "Self Study", "room": "-", "set": "Set-B", "faculty": ""}}, {"period": "L2", "timing": "09:55 - 10:50", "isSplit": true, "setA": {"subject": "Computational & Quantum Physics Lab", "room": "Physics Lab", "set": "Set-A", "faculty": "Dr. Prosenjit Sarkar"}, "setB": {"subject": "Self Study", "room": "-", "set": "Set-B", "faculty": ""}}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Computational Mathematics for Intelligent Systems", "room": "A-108", "faculty": "Dr. Monika"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "set": "ALL", "subject": "Computational & Quantum Physics", "room": "A-109", "faculty": "Dr. Prosenjit Sarkar"}, {"period": "L6", "timing": "01:35 - 02:30", "set": "ALL", "subject": "Fundamentals of Intelligent & Autonomous Systems", "room": "A-302", "faculty": "Mr. Ankur Jain"}, {"period": "L7", "timing": "02:30 - 03:25", "isSplit": true, "setA": {"subject": "Mentor Mentee Meeting (M1)", "room": "A-009", "set": "Set-A", "faculty": "Mr. Shivam"}, "setB": {"subject": "Mentor Mentee Meeting (M2)", "room": "A-011", "set": "Set-B", "faculty": "Mr. Vishal Parmar"}}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "Front-End Web Development", "room": "A-108", "faculty": "Mrs. Shilpy Sharma"}], "6": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Front-End Web Development", "room": "A-108", "faculty": "Mrs. Shilpy Sharma"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Computational & Quantum Physics", "room": "A-109", "faculty": "Dr. Prosenjit Sarkar"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Computational Mathematics for Intelligent Systems", "room": "A-108", "faculty": "Dr. Monika"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "set": "ALL", "subject": "Fundamentals of Intelligent & Autonomous Systems", "room": "A-108", "faculty": "Mr. Ankur Jain"}, {"period": "L6", "timing": "01:35 - 02:30", "set": "ALL", "subject": "Technical Training - Advance Programming in C", "room": "A-108", "faculty": "Mr. Rahul Panda"}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}]}}, "Sec-E": {"name": "Section E", "room": "E-204", "schedule": {"1": [{"period": "L1", "timing": "09:00 - 09:55", "isSplit": true, "setA": {"subject": "Basics of Computer and C Programming Lab", "room": "E-303", "set": "Set-A", "faculty": "Mr. Amit Kumar Sachan"}, "setB": {"subject": "Communication & Professional Skills -I", "room": "B-302", "set": "Set-B", "faculty": "Ms. Srishti Raturi"}}, {"period": "L2", "timing": "09:55 - 10:50", "isSplit": true, "setA": {"subject": "Basics of Computer and C Programming Lab", "room": "E-303", "set": "Set-A", "faculty": "Mr. Amit Kumar Sachan"}, "setB": {"subject": "Front-End Web Development Lab", "room": "E-309", "set": "Set-B", "faculty": "Mr. Ashish Kumar"}}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Front-End Web Development", "room": "E-204", "faculty": "Mr. Paramjeet Singh"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "set": "ALL", "subject": "Computational & Quantum Physics", "room": "E-204", "faculty": "Dr. Rupali Mishra"}, {"period": "L6", "timing": "01:35 - 02:30", "set": "ALL", "subject": "Mini Project-I", "room": "E-204", "faculty": "Mr. Amit Kumar Sachan"}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "Self Study", "room": "-", "faculty": ""}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "Environmental Studies-I", "room": "E-204", "faculty": "Mr. Akash Saini"}], "2": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Computational Mathematics for Intelligent Systems", "room": "E-204", "faculty": "Mr. Ajay Kumar"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Environmental Studies-I", "room": "A-209", "faculty": "Mr. Akash Saini"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Technical Training - Advance Programming in C", "room": "E-204", "faculty": "Mr. Rahul Panda"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "set": "ALL", "subject": "Mentor Mentee Meeting(Set-M2)", "room": "A-008", "faculty": "Dr. Raj Kumar"}, {"period": "L6", "timing": "01:35 - 02:30", "set": "ALL", "subject": "Computational & Quantum Physics", "room": "E-204", "faculty": "Dr. Rupali Mishra"}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "Basics of Computer and C Programming", "room": "E-204", "faculty": "Mr. Amit Kumar Sachan"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "Mentor Mentee Meeting(Set-M1)", "room": "A-008", "faculty": "Dr. Shaily Chaudhary"}], "3": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Computational Mathematics for Intelligent Systems", "room": "E-204", "faculty": "Mr. Ajay Kumar"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Communication & Professional Skills -I", "room": "E-204", "faculty": "Ms. Manvi Tyagi"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Basics of Computer and C Programming", "room": "E-204", "faculty": "Mr. Amit Kumar Sachan"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "isSplit": true, "setA": {"subject": "Computational & Quantum Physics Lab", "room": "Physics Lab", "set": "Set-A", "faculty": "Dr. Prosenjit Sarkar"}, "setB": {"subject": "Front-End Web Development Lab", "room": "E-310", "set": "Set-B", "faculty": "Mr. Ashish Kumar"}}, {"period": "L6", "timing": "01:35 - 02:30", "isSplit": true, "setA": {"subject": "Computational & Quantum Physics Lab", "room": "Physics Lab", "set": "Set-A", "faculty": "Dr. Prosenjit Sarkar"}, "setB": {"subject": "Self Study", "room": "-", "set": "Set-B", "faculty": ""}}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}], "4": [{"period": "L1", "timing": "09:00 - 09:55", "isSplit": true, "setA": {"subject": "Front-End Web Development Lab", "room": "E-303", "set": "Set-A", "faculty": "Mr. Ashish Kumar"}, "setB": {"subject": "Computational & Quantum Physics Lab", "room": "Physics Lab", "set": "Set-B", "faculty": "Dr. Prosenjit Sarkar"}}, {"period": "L2", "timing": "09:55 - 10:50", "isSplit": true, "setA": {"subject": "Front-End Web Development Lab", "room": "E-303", "set": "Set-A", "faculty": "Mr. Ashish Kumar"}, "setB": {"subject": "Computational & Quantum Physics Lab", "room": "Physics Lab", "set": "Set-B", "faculty": "Dr. Prosenjit Sarkar"}}, {"period": "L3", "timing": "10:50 - 11:45", "isSplit": true, "setA": {"subject": "Communication & Professional Skills -I", "room": "B-302", "set": "Set-A", "faculty": "Dr. Poulami Banerjee"}, "setB": {"subject": "Self Study", "room": "-", "set": "Set-B", "faculty": ""}}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "set": "ALL", "subject": "Computational Mathematics for Intelligent Systems", "room": "E-204", "faculty": "Mr. Ajay Kumar"}, {"period": "L6", "timing": "01:35 - 02:30", "set": "ALL", "subject": "Fundamentals of Intelligent & Autonomous Systems", "room": "E-204", "faculty": "Mr. Thomas Mathew"}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "Front-End Web Development", "room": "E-204", "faculty": "Mr. Paramjeet Singh"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "Computational & Quantum Physics", "room": "E-204", "faculty": "Dr. Rupali Mishra"}], "5": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Communication & Professional Skills -I", "room": "E-201", "faculty": "Ms. Manvi Tyagi"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Fundamentals of Intelligent & Autonomous Systems", "room": "E-204", "faculty": "Mr. Thomas Mathew"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Slow & Fast Learner Classes", "room": "E-204", "faculty": "Section-E Faculty"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "isSplit": true, "setA": {"subject": "Self Study", "room": "-", "set": "Set-A", "faculty": ""}, "setB": {"subject": "Basics of Computer and C Programming Lab", "room": "E-203", "set": "Set-B", "faculty": "Mr. Amit Kumar Sachan"}}, {"period": "L6", "timing": "01:35 - 02:30", "set": "ALL", "subject": "Front-End Web Development", "room": "E-204", "faculty": "Mr. Paramjeet Singh"}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "Technical Training - Advance Programming in C", "room": "E-204", "faculty": "Mr. Rahul Panda"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "Computational Mathematics for Intelligent Systems", "room": "E-204", "faculty": "Mr. Ajay Kumar"}], "6": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Computational & Quantum Physics", "room": "E-204", "faculty": "Dr. Rupali Mishra"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Technical Training - Advance Programming in C", "room": "E-204", "faculty": "Mr. Rahul Panda"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Basics of Computer and C Programming", "room": "E-204", "faculty": "Mr. Amit Kumar Sachan"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "isSplit": true, "setA": {"subject": "Self Study", "room": "-", "set": "Set-A", "faculty": ""}, "setB": {"subject": "Basics of Computer and C Programming Lab", "room": "E-203", "set": "Set-B", "faculty": "Mr. Amit Kumar Sachan"}}, {"period": "L6", "timing": "01:35 - 02:30", "set": "ALL", "subject": "Fundamentals of Intelligent & Autonomous Systems", "room": "E-204", "faculty": "Mr. Thomas Mathew"}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}]}}, "Sec-H": {"name": "Section H", "room": "A-302", "schedule": {"1": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Basics of Computer and C Programming", "room": "A-303", "faculty": "Dr. Md. Iqbal"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Operating System", "room": "A-302", "faculty": "Ms. Parul Tyagi"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Graph Theory and Probability", "room": "A-302", "faculty": "Mrs. Neetu Mourya"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "isSplit": true, "setA": {"subject": "Front-End Web Development Lab", "room": "B-304A", "set": "Set-A", "faculty": "Mrs. Shilpy Sharma"}, "setB": {"subject": "Self Study", "room": "-", "set": "Set-B", "faculty": ""}}, {"period": "L6", "timing": "01:35 - 02:30", "isSplit": true, "setA": {"subject": "Front-End Web Development Lab", "room": "B-304A", "set": "Set-A", "faculty": "Mrs. Shilpy Sharma"}, "setB": {"subject": "Self Study", "room": "-", "set": "Set-B", "faculty": ""}}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "Communication & Professional Skills -I", "room": "A-110", "faculty": "Dr. Srishti Raturi"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "Front-End Web Development", "room": "A-302", "faculty": "Mrs. Shilpy Sharma"}], "2": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Front-End Web Development", "room": "A-109", "faculty": "Mrs. Shilpy Sharma"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Environmental Studies-I", "room": "A-302", "faculty": "Ms. Preeti Bisht"}, {"period": "L3", "timing": "10:50 - 11:45", "isSplit": true, "setA": {"subject": "Self Study", "room": "-", "set": "Set-A", "faculty": ""}, "setB": {"subject": "Front-End Web Development Lab", "room": "E-307", "set": "Set-B", "faculty": "Mrs. Shilpy Sharma"}}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "set": "ALL", "subject": "Graph Theory and Probability", "room": "A-302", "faculty": "Mrs. Neetu Mourya"}, {"period": "L6", "timing": "01:35 - 02:30", "set": "ALL", "subject": "Environmental Studies-I", "room": "A-302", "faculty": "Ms. Preeti Bisht"}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "Fundamentals of Intelligent & Autonomous Systems", "room": "A-302", "faculty": "Dr. Sunil Kumar Maurya"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "Mentor Mentee Meeting(Set-M1)", "room": "A-009", "faculty": "Ms. Manisha Dhami"}], "3": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Basics of Computer and C Programming", "room": "A-109", "faculty": "Dr. Md. Iqbal"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Operating System", "room": "A-109", "faculty": "Ms. Parul Tyagi"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Technical Training - Advance Programming in C", "room": "A-109", "faculty": "Mr. Manish Kumar"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "isSplit": true, "setA": {"subject": "Communication & Professional Skills -I", "room": "B-302", "set": "Set-A", "faculty": "Dr. Srishti Raturi"}, "setB": {"subject": "Self Study", "room": "-", "set": "Set-B", "faculty": ""}}, {"period": "L6", "timing": "01:35 - 02:30", "set": "ALL", "subject": "Fundamentals of Intelligent & Autonomous Systems", "room": "A-302", "faculty": "Dr. Sunil Kumar Maurya"}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}], "4": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Technical Training - Advance Programming in C", "room": "A-302", "faculty": "Mr. Manish Kumar"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Basics of Computer and C Programming", "room": "A-110", "faculty": "Dr. Md. Iqbal"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Front-End Web Development", "room": "A-110", "faculty": "Mrs. Shilpy Sharma"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "isSplit": true, "setA": {"subject": "Basics of Computer and C Programming Lab", "room": "B-304B", "set": "Set-A", "faculty": "Dr. Md. Iqbal"}, "setB": {"subject": "Communication & Professional Skills -I", "room": "B-302", "set": "Set-B", "faculty": "Dr. Srishti Raturi"}}, {"period": "L6", "timing": "01:35 - 02:30", "isSplit": true, "setA": {"subject": "Basics of Computer and C Programming Lab", "room": "B-304B", "set": "Set-A", "faculty": "Dr. Md. Iqbal"}, "setB": {"subject": "Self Study", "room": "-", "set": "Set-B", "faculty": ""}}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "Self Study", "room": "-", "faculty": ""}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "Self Study", "room": "-", "faculty": ""}], "5": [{"period": "L1", "timing": "09:00 - 09:55", "isSplit": true, "setA": {"subject": "Self Study", "room": "-", "set": "Set-A", "faculty": ""}, "setB": {"subject": "Basics of Computer and C Programming Lab", "room": "E-203", "set": "Set-B", "faculty": "Dr. Md. Iqbal"}}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Graph Theory and Probability", "room": "A-302", "faculty": "Mrs. Neetu Mourya"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Technical Training - Advance Programming in C", "room": "A-302", "faculty": "Mr. Manish Kumar"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "set": "ALL", "subject": "Self Study", "room": "-", "faculty": ""}, {"period": "L6", "timing": "01:35 - 02:30", "isSplit": true, "setA": {"subject": "Self Study", "room": "-", "set": "Set-A", "faculty": ""}, "setB": {"subject": "Basics of Computer and C Programming Lab", "room": "B-304B", "set": "Set-B", "faculty": "Dr. Md. Iqbal"}}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "Operating System", "room": "A-302", "faculty": "Ms. Parul Tyagi"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "Slow & Fast Learner Classes", "room": "A-302", "faculty": "Section-H Faculty"}], "6": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Mentor Mentee Meeting(Set-M2)", "room": "A-109", "faculty": "Mr. Satendra Kumar"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Fundamentals of Intelligent & Autonomous Systems", "room": "A-303", "faculty": "Dr. Sunil Kumar Maurya"}, {"period": "L3", "timing": "10:50 - 11:45", "isSplit": true, "setA": {"subject": "Self Study", "room": "-", "set": "Set-A", "faculty": ""}, "setB": {"subject": "Front-End Web Development Lab", "room": "E-307", "set": "Set-B", "faculty": "Mrs. Shilpy Sharma"}}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "set": "ALL", "subject": "Mini Project-I", "room": "A-112", "faculty": "Ms. Anshika"}, {"period": "L6", "timing": "01:35 - 02:30", "set": "ALL", "subject": "Communication & Professional Skills -I", "room": "A-109", "faculty": "Dr. Srishti Raturi"}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}]}}, "Sec-I": {"name": "Section I", "room": "A-303", "schedule": {"1": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Communication & Professional Skills -I", "room": "A-210", "faculty": "Ms. Kajal Chauhan"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Technical Training - Advance Programming in C", "room": "A-303", "faculty": "Mr. Manish Kumar"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Fundamentals of Intelligent & Autonomous Systems", "room": "A-303", "faculty": "Mr. Shivaji Chudhary"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "isSplit": true, "setA": {"subject": "Communication & Professional Skills -I", "room": "B-302", "set": "Set-A", "faculty": "Ms. Kajal Chauhan"}, "setB": {"subject": "Self Study", "room": "-", "set": "Set-B", "faculty": ""}}, {"period": "L6", "timing": "01:35 - 02:30", "set": "ALL", "subject": "Operating System", "room": "A-303", "faculty": "Ms. Parul Tyagi"}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "Technical Training - Advance Programming in C", "room": "A-302", "faculty": "Mr. Manish Kumar"}, {"period": "L8", "timing": "03:25 - 04:20", "isSplit": true, "setA": {"subject": "Mentor Mentee Meeting (M1)", "room": "A-009", "set": "Set-A", "faculty": "Dr. Rupali Mishra"}, "setB": {"subject": "Mentor Mentee Meeting (M2)", "room": "A-010", "set": "Set-B", "faculty": "Mr. Vishal Penuly"}}], "2": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Graph Theory and Probability", "room": "A-303", "faculty": "Mrs. Neetu Mourya"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Basics of Computer and C Programming", "room": "A-303", "faculty": "Mr. Amit Kumar Sachan"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Front-End Web Development", "room": "A-303", "faculty": "Mr. Ankush"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "set": "ALL", "subject": "Technical Training - Advance Programming in C", "room": "A-303", "faculty": "Mr. Manish Kumar"}, {"period": "L6", "timing": "01:35 - 02:30", "isSplit": true, "setA": {"subject": "Self Study", "room": "-", "set": "Set-A", "faculty": ""}, "setB": {"subject": "Communication & Professional Skills -I", "room": "B-302", "set": "Set-B", "faculty": "Ms. Kajal Chauhan"}}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "Fundamentals of Intelligent & Autonomous Systems", "room": "A-303", "faculty": "Mr. Shivaji Chudhary"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "Self Study", "room": "-", "faculty": ""}], "3": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Self Study", "room": "-", "faculty": ""}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Graph Theory and Probability", "room": "A-303", "faculty": "Mrs. Neetu Mourya"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Environmental Studies-I", "room": "A-303", "faculty": "Ms. Preeti Bisht"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "set": "ALL", "subject": "Communication & Professional Skills -I", "room": "A-303", "faculty": "Ms. Kajal Chauhan"}, {"period": "L6", "timing": "01:35 - 02:30", "set": "ALL", "subject": "Environmental Studies-I", "room": "A-303", "faculty": "Ms. Preeti Bisht"}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}], "4": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Basics of Computer and C Programming", "room": "A-303", "faculty": "Mr. Amit Kumar Sachan"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Front-End Web Development", "room": "A-303", "faculty": "Mr. Ankush"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Operating System", "room": "A-303", "faculty": "Ms. Parul Tyagi"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "isSplit": true, "setA": {"subject": "Front-End Web Development Lab", "room": "B-304A", "set": "Set-A", "faculty": "Mr. Ankush"}, "setB": {"subject": "Basics of Computer and C Programming Lab", "room": "E-203", "set": "Set-B", "faculty": "Mr. Rahul Panda"}}, {"period": "L6", "timing": "01:35 - 02:30", "isSplit": true, "setA": {"subject": "Front-End Web Development Lab", "room": "B-304A", "set": "Set-A", "faculty": "Mr. Ankush"}, "setB": {"subject": "Basics of Computer and C Programming Lab", "room": "E-203", "set": "Set-B", "faculty": "Mr. Rahul Panda"}}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "Self Study", "room": "-", "faculty": ""}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "Self Study", "room": "-", "faculty": ""}], "5": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Graph Theory and Probability", "room": "A-303", "faculty": "Mrs. Neetu Mourya"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Self Study", "room": "-", "faculty": ""}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Operating System", "room": "A-303", "faculty": "Ms. Parul Tyagi"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "isSplit": true, "setA": {"subject": "Basics of Computer and C Programming Lab", "room": "E-202", "set": "Set-A", "faculty": "Mr. Rahul Panda"}, "setB": {"subject": "Front-End Web Development Lab", "room": "B-304A", "set": "Set-B", "faculty": "Mr. Ankush"}}, {"period": "L6", "timing": "01:35 - 02:30", "isSplit": true, "setA": {"subject": "Basics of Computer and C Programming Lab", "room": "E-202", "set": "Set-A", "faculty": "Mr. Rahul Panda"}, "setB": {"subject": "Front-End Web Development Lab", "room": "B-304A", "set": "Set-B", "faculty": "Mr. Ankush"}}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "Slow & Fast Learner Classes", "room": "A-303", "faculty": "Section-I Faculty"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "Self Study", "room": "-", "faculty": ""}], "6": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Front-End Web Development", "room": "A-303", "faculty": "Mr. Ankush"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Mini Project-I", "room": "A-202", "faculty": "Dr. Himanshu"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Fundamentals of Intelligent & Autonomous Systems", "room": "A-303", "faculty": "Mr. Shivaji Chudhary"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "set": "ALL", "subject": "Self Study", "room": "-", "faculty": ""}, {"period": "L6", "timing": "01:35 - 02:30", "set": "ALL", "subject": "Basics of Computer and C Programming", "room": "A-202", "faculty": "Mr. Amit Kumar Sachan"}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}]}}, "Sec-J": {"name": "Section J", "room": "A-211", "schedule": {"1": [{"period": "L1", "timing": "09:00 - 09:55", "isSplit": true, "setA": {"subject": "Front-End Web Development Lab", "room": "E-305", "set": "Set-A", "faculty": "Mr. Ankush"}, "setB": {"subject": "Self Study", "room": "-", "set": "Set-B", "faculty": ""}}, {"period": "L2", "timing": "09:55 - 10:50", "isSplit": true, "setA": {"subject": "Front-End Web Development Lab", "room": "E-305", "set": "Set-A", "faculty": "Mr. Ankush"}, "setB": {"subject": "Self Study", "room": "-", "set": "Set-B", "faculty": ""}}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Operating System", "room": "A-211", "faculty": "Mrs. Shivani Chauhan"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "set": "ALL", "subject": "Graph Theory and Probability", "room": "A-303", "faculty": "Mrs. Neetu Mourya"}, {"period": "L6", "timing": "01:35 - 02:30", "set": "ALL", "subject": "Environmental Studies-I", "room": "MBA Seminar Hall", "faculty": "Mr. Vishal Parmar"}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "Self Study", "room": "-", "faculty": ""}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "Mentor Mentee Meeting(Set-M1)", "room": "A-011", "faculty": "Mrs. Gunjan Agarwal"}], "2": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Operating System", "room": "A-208", "faculty": "Mrs. Shivani Chauhan"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Front-End Web Development", "room": "A-108", "faculty": "Mr. Ankush"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Technical Training - Advance Programming in C", "room": "A-211", "faculty": "Mr. Manish Kumar"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "isSplit": true, "setA": {"subject": "Basics of Computer and C Programming Lab", "room": "E-307", "set": "Set-A", "faculty": "Dr. Md. Iqbal"}, "setB": {"subject": "Front-End Web Development Lab", "room": "B-304A", "set": "Set-B", "faculty": "Mr. Ankush"}}, {"period": "L6", "timing": "01:35 - 02:30", "isSplit": true, "setA": {"subject": "Basics of Computer and C Programming Lab", "room": "E-307", "set": "Set-A", "faculty": "Dr. Md. Iqbal"}, "setB": {"subject": "Front-End Web Development Lab", "room": "B-304A", "set": "Set-B", "faculty": "Mr. Ankush"}}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "Self Study", "room": "-", "faculty": ""}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "Self Study", "room": "-", "faculty": ""}], "3": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Fundamentals of Intelligent & Autonomous Systems", "room": "A-211", "faculty": "Dr. Sunil Kumar Maurya"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Basics of Computer and C Programming", "room": "A-211", "faculty": "Dr. Md. Iqbal"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Graph Theory and Probability", "room": "A-302", "faculty": "Mrs. Neetu Mourya"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "isSplit": true, "setA": {"subject": "Self Study", "room": "-", "set": "Set-A", "faculty": ""}, "setB": {"subject": "Basics of Computer and C Programming Lab", "room": "B-303", "set": "Set-B", "faculty": "Dr. Md. Iqbal"}}, {"period": "L6", "timing": "01:35 - 02:30", "isSplit": true, "setA": {"subject": "Self Study", "room": "-", "set": "Set-A", "faculty": ""}, "setB": {"subject": "Basics of Computer and C Programming Lab", "room": "B-303", "set": "Set-B", "faculty": "Dr. Md. Iqbal"}}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}], "4": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Communication & Professional Skills -I", "room": "A-109", "faculty": "Dr. Poulami Banerjee"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Operating System", "room": "A-109", "faculty": "Mrs. Shivani Chauhan"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Graph Theory and Probability", "room": "A-302", "faculty": "Mrs. Neetu Mourya"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "set": "ALL", "subject": "Mini Project-I", "room": "A-102", "faculty": "Dr. Vinod Kumar"}, {"period": "L6", "timing": "01:35 - 02:30", "set": "ALL", "subject": "Technical Training - Advance Programming in C", "room": "A-102", "faculty": "Mr. Manish Kumar"}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "Communication & Professional Skills -I", "room": "A-103", "faculty": "Dr. Poulami Banerjee"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "Mentor Mentee Meeting(Set-M2)", "room": "A-011", "faculty": "Mr. Vishal Penuly"}], "5": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Technical Training - Advance Programming in C", "room": "A-304", "faculty": "Mr. Manish Kumar"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Basics of Computer and C Programming", "room": "A-303", "faculty": "Dr. Md. Iqbal"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Front-End Web Development", "room": "E-205", "faculty": "Mr. Ankush"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "isSplit": true, "setA": {"subject": "Communication & Professional Skills -I", "room": "B-302", "set": "Set-A", "faculty": "Dr. Poulami Banerjee"}, "setB": {"subject": "Self Study", "room": "-", "set": "Set-B", "faculty": ""}}, {"period": "L6", "timing": "01:35 - 02:30", "set": "ALL", "subject": "Slow & Fast Learner Classes", "room": "A-211", "faculty": "Section-J Faculty"}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "Self Study", "room": "-", "faculty": ""}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "Self Study", "room": "-", "faculty": ""}], "6": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Fundamentals of Intelligent & Autonomous Systems", "room": "A-302", "faculty": "Dr. Sunil Kumar Maurya"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Basics of Computer and C Programming", "room": "A-302", "faculty": "Dr. Md. Iqbal"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Front-End Web Development", "room": "A-304", "faculty": "Mr. Ankush"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "isSplit": true, "setA": {"subject": "Self Study", "room": "-", "set": "Set-A", "faculty": ""}, "setB": {"subject": "Communication & Professional Skills -I", "room": "B-302", "set": "Set-B", "faculty": "Dr. Poulami Banerjee"}}, {"period": "L6", "timing": "01:35 - 02:30", "set": "ALL", "subject": "Fundamentals of Intelligent & Autonomous Systems", "room": "A-211", "faculty": "Dr. Sunil Kumar Maurya"}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}]}}, "Sec-K": {"name": "Section K", "room": "A-109", "schedule": {"1": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Foundations of Embedded Systems (ECE+EE)", "room": "A-305", "faculty": "Mr. Rohit Krishna Yadav"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Basics of Mechanical Engineering (ME)", "room": "A-311", "faculty": "Dr. Shobhit Srivastava"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Introduction to Civil Engineering (CE)", "room": "A-109", "faculty": "Dr. Karan Babbar"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "set": "ALL", "subject": "Mathematics-I", "room": "A-104", "faculty": "Dr. Monika"}, {"period": "L6", "timing": "01:35 - 02:30", "set": "ALL", "subject": "Foundations of Embedded Systems (ECE+EE)", "room": "A-109", "faculty": "Mr. Rohit Krishna Yadav"}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "Basics of Computer and C Programming", "room": "A-109", "faculty": "Mr. Vikalpa Tyagi"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "Self Study", "room": "-", "faculty": ""}], "2": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Communication & Professional Skills -I", "room": "A-302", "faculty": "Dr. Srishti Raturi"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Basic Electrical and Electronics Engineering", "room": "C-301", "faculty": "Mr. Rohit Krishna Yadav"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Introduction to Civil Engineering (CE)", "room": "C-301", "faculty": "Dr. Karan Babbar"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "set": "ALL", "subject": "Foundations of Embedded Systems (ECE+EE)", "room": "A-109", "faculty": "Mr. Rohit Krishna Yadav"}, {"period": "L6", "timing": "01:35 - 02:30", "set": "ALL", "subject": "Basics of Computer and C Programming", "room": "A-109", "faculty": "Mr. Vikalpa Tyagi"}, {"period": "L7", "timing": "02:30 - 03:25", "isSplit": true, "setA": {"subject": "Communication & Professional Skills -I (ECE+EE)", "room": "B-302", "set": "Set-A", "faculty": "Dr. Srishti Raturi"}, "setB": {"subject": "Self Study (ME+CE)", "room": "-", "set": "Set-B", "faculty": ""}}, {"period": "L8", "timing": "03:25 - 04:20", "isSplit": true, "setA": {"subject": "Self Study (ECE+EE)", "room": "-", "set": "Set-A", "faculty": ""}, "setB": {"subject": "Communication & Professional Skills -I (ME+CE)", "room": "B-302", "set": "Set-B", "faculty": "Dr. Srishti Raturi"}}], "3": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Self Study", "room": "-", "faculty": ""}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Slow & Fast Learner Classes", "room": "A-109", "faculty": "Section-K Faculty"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Basic Electrical and Electronics Engineering", "room": "C-302", "faculty": "Mr. Rohit Krishna Yadav"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "isSplit": true, "setA": {"subject": "Basics of Computer & C Lab (ECE+EE)", "room": "E-307", "set": "Set-A", "faculty": "Mr. Vikalpa Tyagi"}, "setB": {"subject": "Self Study (ME+CE)", "room": "-", "set": "Set-B", "faculty": ""}}, {"period": "L6", "timing": "01:35 - 02:30", "isSplit": true, "setA": {"subject": "Self Study (ECE+EE)", "room": "-", "set": "Set-A", "faculty": ""}, "setB": {"subject": "Basics of Computer & C Lab (ME+CE)", "room": "E-307", "set": "Set-B", "faculty": "Mr. Vikalpa Tyagi"}}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}], "4": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Basic Electrical and Electronics Engineering Lab", "room": "E-104", "faculty": "Mr. Rohit Krishna Yadav"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Basic Electrical and Electronics Engineering Lab", "room": "E-104", "faculty": "Mr. Rohit Krishna Yadav"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Mathematics-I", "room": "A-109", "faculty": "Dr. Monika"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "set": "ALL", "subject": "Basic Electrical and Electronics Engineering", "room": "C-302", "faculty": "Mr. Rohit Krishna Yadav"}, {"period": "L6", "timing": "01:35 - 02:30", "set": "ALL", "subject": "Basics of Mechanical Engineering (ME)", "room": "A-301", "faculty": "Dr. Shobhit Srivastava"}, {"period": "L7", "timing": "02:30 - 03:25", "isSplit": true, "setA": {"subject": "Engineering Graphics and Design (ME+CE)", "room": "DH-2", "set": "Set-A", "faculty": "Mr. Thomas Mathew"}, "setB": {"subject": "Foundations of Embedded Systems Lab (ECE+EE)", "room": "E-202", "set": "Set-B", "faculty": "Mr. Rohit Krishna Yadav"}}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "Self Study", "room": "-", "faculty": ""}], "5": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Human Values and Ethics", "room": "A-201", "faculty": "Ms. Kajal Chauhan"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Basics of Computer and C Programming", "room": "A-109", "faculty": "Mr. Vikalpa Tyagi"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Communication & Professional Skills -I", "room": "A-209", "faculty": "Dr. Srishti Raturi"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "set": "ALL", "subject": "Mathematics-I", "room": "A-302", "faculty": "Dr. Monika"}, {"period": "L6", "timing": "01:35 - 02:30", "set": "ALL", "subject": "Mentor Mentee Meeting", "room": "A-303", "faculty": "Mr. Thomas Mathew"}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "Engineering Graphics and Design (ME+CE)", "room": "DH-2", "faculty": "Mr. Thomas Mathew"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "Self Study", "room": "-", "faculty": ""}], "6": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Basics of Mechanical Engineering (ME)", "room": "C-302", "faculty": "Dr. Shobhit Srivastava"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Mathematics-I", "room": "C-302", "faculty": "Dr. Monika"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Mini Project-I", "room": "C-302", "faculty": "Mr. Vishu"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "set": "ALL", "subject": "Basic Electrical and Electronics Engineering", "room": "C-302", "faculty": "Mr. Rohit Krishna Yadav"}, {"period": "L6", "timing": "01:35 - 02:30", "set": "ALL", "subject": "Human Values and Ethics", "room": "C-302", "faculty": "Ms. Kajal Chauhan"}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}]}}, "Sec-L": {"name": "Section L", "room": "A-311", "schedule": {"1": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Graph Theory and Probability", "room": "A-311", "faculty": "Mr. Shakti Singh"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Self Study", "room": "-", "faculty": ""}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Operating System", "room": "A-311", "faculty": "Mrs. Shilpy Sharma"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "isSplit": true, "setA": {"subject": "Front-End Web Development Lab", "room": "E-202", "set": "Set-A", "faculty": "Mr. Ankush"}, "setB": {"subject": "Basics of Computer and C Programming Lab", "room": "E-310", "set": "Set-B", "faculty": "Dr. Ashish Saini"}}, {"period": "L6", "timing": "01:35 - 02:30", "isSplit": true, "setA": {"subject": "Front-End Web Development Lab", "room": "E-202", "set": "Set-A", "faculty": "Mr. Ankush"}, "setB": {"subject": "Self Study", "room": "-", "set": "Set-B", "faculty": ""}}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "Front-End Web Development", "room": "A-311", "faculty": "Mr. Ankush"}, {"period": "L8", "timing": "03:25 - 04:20", "isSplit": true, "setA": {"subject": "Mentor Mentee Meeting (M2)", "room": "A-013", "set": "Set-A", "faculty": "Ms. Anshika"}, "setB": {"subject": "Mentor Mentee Meeting (M1)", "room": "A-010", "set": "Set-B", "faculty": "Mr. Jayhind Yadav"}}], "2": [{"period": "L1", "timing": "09:00 - 09:55", "isSplit": true, "setA": {"subject": "Communication & Professional Skills -I", "room": "B-302", "set": "Set-A", "faculty": "Dr. Poulami Banerjee"}, "setB": {"subject": "Self Study", "room": "-", "set": "Set-B", "faculty": ""}}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Basics of Computer and C Programming", "room": "A-311", "faculty": "Dr. Ashish Saini"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Slow & Fast Learner Classes", "room": "A-311", "faculty": "Section-L Faculty"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "set": "ALL", "subject": "Graph Theory and Probability", "room": "A-311", "faculty": "Mr. Shakti Singh"}, {"period": "L6", "timing": "01:35 - 02:30", "set": "ALL", "subject": "Self Study", "room": "-", "faculty": ""}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "Technical Training - Advance Programming in C", "room": "A-311", "faculty": "Mr. Manish Kumar"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "Self Study", "room": "-", "faculty": ""}], "3": [{"period": "L1", "timing": "09:00 - 09:55", "isSplit": true, "setA": {"subject": "Self Study", "room": "-", "set": "Set-A", "faculty": ""}, "setB": {"subject": "Front-End Web Development Lab", "room": "E-309", "set": "Set-B", "faculty": "Mr. Ankush"}}, {"period": "L2", "timing": "09:55 - 10:50", "isSplit": true, "setA": {"subject": "Basics of Computer and C Programming Lab", "room": "E-303", "set": "Set-A", "faculty": "Dr. Ashish Saini"}, "setB": {"subject": "Front-End Web Development Lab", "room": "E-309", "set": "Set-B", "faculty": "Mr. Ankush"}}, {"period": "L3", "timing": "10:50 - 11:45", "isSplit": true, "setA": {"subject": "Basics of Computer and C Programming Lab", "room": "E-303", "set": "Set-A", "faculty": "Dr. Ashish Saini"}, "setB": {"subject": "Self Study", "room": "-", "set": "Set-B", "faculty": ""}}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "set": "ALL", "subject": "Front-End Web Development", "room": "A-311", "faculty": "Mr. Ankush"}, {"period": "L6", "timing": "01:35 - 02:30", "isSplit": true, "setA": {"subject": "Self Study", "room": "-", "set": "Set-A", "faculty": ""}, "setB": {"subject": "Communication & Professional Skills -I", "room": "B-302", "set": "Set-B", "faculty": "Dr. Poulami Banerjee"}}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}], "4": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Graph Theory and Probability", "room": "A-311", "faculty": "Mr. Shakti Singh"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Basics of Computer and C Programming", "room": "A-311", "faculty": "Dr. Ashish Saini"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Mini Project-I", "room": "E-204", "faculty": "Dr. Raj Kumar"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "set": "ALL", "subject": "Fundamentals of Intelligent & Autonomous Systems", "room": "A-311", "faculty": "Mr. Shivaji Chudhary"}, {"period": "L6", "timing": "01:35 - 02:30", "set": "ALL", "subject": "Operating System", "room": "A-305", "faculty": "Mrs. Shilpy Sharma"}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "Self Study", "room": "-", "faculty": ""}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "Self Study", "room": "-", "faculty": ""}], "5": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Front-End Web Development", "room": "A-311", "faculty": "Mr. Ankush"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Operating System", "room": "A-311", "faculty": "Mrs. Shilpy Sharma"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Basics of Computer and C Programming", "room": "A-311", "faculty": "Dr. Ashish Saini"}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "set": "ALL", "subject": "Technical Training - Advance Programming in C", "room": "A-311", "faculty": "Mr. Manish Kumar"}, {"period": "L6", "timing": "01:35 - 02:30", "set": "ALL", "subject": "Fundamentals of Intelligent & Autonomous Systems", "room": "A-311", "faculty": "Mr. Shivaji Chudhary"}, {"period": "L7", "timing": "02:30 - 03:25", "isSplit": true, "setA": {"subject": "Self Study", "room": "-", "set": "Set-A", "faculty": ""}, "setB": {"subject": "Basics of Computer and C Programming Lab", "room": "E-305", "set": "Set-B", "faculty": "Dr. Ashish Saini"}}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "Self Study", "room": "-", "faculty": ""}], "6": [{"period": "L1", "timing": "09:00 - 09:55", "set": "ALL", "subject": "Technical Training - Advance Programming in C", "room": "A-311", "faculty": "Mr. Manish Kumar"}, {"period": "L2", "timing": "09:55 - 10:50", "set": "ALL", "subject": "Communication & Professional Skills -I", "room": "A-311", "faculty": "Dr. Poulami Banerjee"}, {"period": "L3", "timing": "10:50 - 11:45", "set": "ALL", "subject": "Self Study", "room": "-", "faculty": ""}, {"period": "L4", "timing": "11:45 - 12:40", "set": "ALL", "subject": "🍱 Lunch Break", "room": "Mess", "faculty": ""}, {"period": "L5", "timing": "12:40 - 01:35", "set": "ALL", "subject": "Self Study", "room": "-", "faculty": ""}, {"period": "L6", "timing": "01:35 - 02:30", "set": "ALL", "subject": "Fundamentals of Intelligent & Autonomous Systems", "room": "A-311", "faculty": "Mr. Shivaji Chudhary"}, {"period": "L7", "timing": "02:30 - 03:25", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}, {"period": "L8", "timing": "03:25 - 04:20", "set": "ALL", "subject": "PROPS", "room": "-", "faculty": "PROPS Coordinator"}]}}};
+    // Only Sec-D loaded inline for instant startup (~8KB vs 81KB)
+    // Other sections lazy-loaded on demand from sections_data.json
+    let ALL_SECTIONS = {"Sec-D":{"name":"Section D","room":"A-108","schedule":{"1":[{"period":"L1","timing":"09:00 - 09:55","set":"ALL","subject":"Technical Training - Advance Programming in C","room":"A-108","faculty":"Mr. Rahul Panda"},{"period":"L2","timing":"09:55 - 10:50","set":"ALL","subject":"Environmental Studies-I","room":"A-108","faculty":"Mr. Akash Saini"},{"period":"L3","timing":"10:50 - 11:45","set":"ALL","subject":"Basics of Computer and C Programming","room":"A-108","faculty":"Mrs. Ankita Singh Rana"},{"period":"L4","timing":"11:45 - 12:40","set":"ALL","subject":"🍱 Lunch Break","room":"Mess","faculty":""},{"period":"L5","timing":"12:40 - 01:35","set":"ALL","subject":"Slow & Fast Learner Classes","room":"-","faculty":"Section-D Faculty"},{"period":"L6","timing":"01:35 - 02:30","set":"ALL","subject":"Environmental Studies-I","room":"A-108","faculty":"Mr. Akash Saini"},{"period":"L7","timing":"02:30 - 03:25","set":"ALL","subject":"Communication & Professional Skills -I","room":"A-108","faculty":"Ms. Manvi Tyagi"},{"period":"L8","timing":"03:25 - 04:20","set":"ALL","subject":"Mini Project-I","room":"A-108","faculty":"Mr. Rahul Panda"}],"2":[{"period":"L1","timing":"09:00 - 09:55","set":"ALL","subject":"Computational & Quantum Physics","room":"A-108","faculty":"Dr. Prosenjit Sarkar"},{"period":"L2","timing":"09:55 - 10:50","isSplit":true,"setA":{"subject":"Self Study","room":"-","set":"Set-A","faculty":""},"setB":{"subject":"Communication & Professional Skills -I","room":"B-302","set":"Set-B","faculty":"Ms. Manvi Tyagi"}},{"period":"L3","timing":"10:50 - 11:45","set":"ALL","subject":"Basics of Computer and C Programming","room":"A-108","faculty":"Mrs. Ankita Singh Rana"},{"period":"L4","timing":"11:45 - 12:40","set":"ALL","subject":"🍱 Lunch Break","room":"Mess","faculty":""},{"period":"L5","timing":"12:40 - 01:35","isSplit":true,"setA":{"subject":"Basics of Computer and C Programming Lab","room":"E-303","set":"Set-A","faculty":"Mrs. Ankita Singh Rana"},"setB":{"subject":"Front-End Web Development Lab","room":"B-303","set":"Set-B","faculty":"Mrs. Shilpy Sharma"}},{"period":"L6","timing":"01:35 - 02:30","isSplit":true,"setA":{"subject":"Basics of Computer and C Programming Lab","room":"E-303","set":"Set-A","faculty":"Mrs. Ankita Singh Rana"},"setB":{"subject":"Front-End Web Development Lab","room":"B-303","set":"Set-B","faculty":"Mrs. Shilpy Sharma"}},{"period":"L7","timing":"02:30 - 03:25","set":"ALL","subject":"Computational Mathematics for Intelligent Systems","room":"A-108","faculty":"Dr. Monika"},{"period":"L8","timing":"03:25 - 04:20","set":"ALL","subject":"Communication & Professional Skills -I","room":"A-108","faculty":"Ms. Manvi Tyagi"}],"3":[{"period":"L1","timing":"09:00 - 09:55","isSplit":true,"setA":{"subject":"Front-End Web Development Lab","room":"E-307","set":"Set-A","faculty":"Mrs. Shilpy Sharma"},"setB":{"subject":"Computational & Quantum Physics Lab","room":"Physics Lab","set":"Set-B","faculty":"Dr. Prosenjit Sarkar"}},{"period":"L2","timing":"09:55 - 10:50","isSplit":true,"setA":{"subject":"Front-End Web Development Lab","room":"E-307","set":"Set-A","faculty":"Mrs. Shilpy Sharma"},"setB":{"subject":"Computational & Quantum Physics Lab","room":"Physics Lab","set":"Set-B","faculty":"Dr. Prosenjit Sarkar"}},{"period":"L3","timing":"10:50 - 11:45","set":"ALL","subject":"Basics of Computer and C Programming","room":"A-108","faculty":"Mrs. Ankita Singh Rana"},{"period":"L4","timing":"11:45 - 12:40","set":"ALL","subject":"🍱 Lunch Break","room":"Mess","faculty":""},{"period":"L5","timing":"12:40 - 01:35","isSplit":true,"setA":{"subject":"Self Study","room":"-","set":"Set-A","faculty":""},"setB":{"subject":"Basics of Computer and C Programming Lab","room":"E-303","set":"Set-B","faculty":"Mrs. Ankita Singh Rana"}},{"period":"L6","timing":"01:35 - 02:30","isSplit":true,"setA":{"subject":"Self Study","room":"-","set":"Set-A","faculty":""},"setB":{"subject":"Basics of Computer and C Programming Lab","room":"E-303","set":"Set-B","faculty":"Mrs. Ankita Singh Rana"}},{"period":"L7","timing":"02:30 - 03:25","set":"ALL","subject":"PROPS","room":"-","faculty":"PROPS Coordinator"},{"period":"L8","timing":"03:25 - 04:20","set":"ALL","subject":"PROPS","room":"-","faculty":"PROPS Coordinator"}],"4":[{"period":"L1","timing":"09:00 - 09:55","set":"ALL","subject":"Front-End Web Development","room":"A-108","faculty":"Mrs. Shilpy Sharma"},{"period":"L2","timing":"09:55 - 10:50","isSplit":true,"setA":{"subject":"Communication & Professional Skills -I","room":"B-302","set":"Set-A","faculty":"Ms. Manvi Tyagi"},"setB":{"subject":"Self Study","room":"-","set":"Set-B","faculty":""}},{"period":"L3","timing":"10:50 - 11:45","set":"ALL","subject":"Fundamentals of Intelligent & Autonomous Systems","room":"A-108","faculty":"Mr. Ankur Jain"},{"period":"L4","timing":"11:45 - 12:40","set":"ALL","subject":"🍱 Lunch Break","room":"Mess","faculty":""},{"period":"L5","timing":"12:40 - 01:35","set":"ALL","subject":"Computational Mathematics for Intelligent Systems","room":"A-108","faculty":"Dr. Monika"},{"period":"L6","timing":"01:35 - 02:30","set":"ALL","subject":"Computational & Quantum Physics","room":"A-108","faculty":"Dr. Prosenjit Sarkar"},{"period":"L7","timing":"02:30 - 03:25","set":"ALL","subject":"Self Study","room":"-","faculty":""},{"period":"L8","timing":"03:25 - 04:20","set":"ALL","subject":"Technical Training - Advance Programming in C","room":"A-108","faculty":"Mr. Rahul Panda"}],"5":[{"period":"L1","timing":"09:00 - 09:55","isSplit":true,"setA":{"subject":"Computational & Quantum Physics Lab","room":"Physics Lab","set":"Set-A","faculty":"Dr. Prosenjit Sarkar"},"setB":{"subject":"Self Study","room":"-","set":"Set-B","faculty":""}},{"period":"L2","timing":"09:55 - 10:50","isSplit":true,"setA":{"subject":"Computational & Quantum Physics Lab","room":"Physics Lab","set":"Set-A","faculty":"Dr. Prosenjit Sarkar"},"setB":{"subject":"Self Study","room":"-","set":"Set-B","faculty":""}},{"period":"L3","timing":"10:50 - 11:45","set":"ALL","subject":"Computational Mathematics for Intelligent Systems","room":"A-108","faculty":"Dr. Monika"},{"period":"L4","timing":"11:45 - 12:40","set":"ALL","subject":"🍱 Lunch Break","room":"Mess","faculty":""},{"period":"L5","timing":"12:40 - 01:35","set":"ALL","subject":"Computational & Quantum Physics","room":"A-109","faculty":"Dr. Prosenjit Sarkar"},{"period":"L6","timing":"01:35 - 02:30","set":"ALL","subject":"Fundamentals of Intelligent & Autonomous Systems","room":"A-302","faculty":"Mr. Ankur Jain"},{"period":"L7","timing":"02:30 - 03:25","isSplit":true,"setA":{"subject":"Mentor Mentee Meeting (M1)","room":"A-009","set":"Set-A","faculty":"Mr. Shivam"},"setB":{"subject":"Mentor Mentee Meeting (M2)","room":"A-011","set":"Set-B","faculty":"Mr. Vishal Parmar"}},{"period":"L8","timing":"03:25 - 04:20","set":"ALL","subject":"Front-End Web Development","room":"A-108","faculty":"Mrs. Shilpy Sharma"}],"6":[{"period":"L1","timing":"09:00 - 09:55","set":"ALL","subject":"Front-End Web Development","room":"A-108","faculty":"Mrs. Shilpy Sharma"},{"period":"L2","timing":"09:55 - 10:50","set":"ALL","subject":"Computational & Quantum Physics","room":"A-109","faculty":"Dr. Prosenjit Sarkar"},{"period":"L3","timing":"10:50 - 11:45","set":"ALL","subject":"Computational Mathematics for Intelligent Systems","room":"A-108","faculty":"Dr. Monika"},{"period":"L4","timing":"11:45 - 12:40","set":"ALL","subject":"🍱 Lunch Break","room":"Mess","faculty":""},{"period":"L5","timing":"12:40 - 01:35","set":"ALL","subject":"Fundamentals of Intelligent & Autonomous Systems","room":"A-108","faculty":"Mr. Ankur Jain"},{"period":"L6","timing":"01:35 - 02:30","set":"ALL","subject":"Technical Training - Advance Programming in C","room":"A-108","faculty":"Mr. Rahul Panda"},{"period":"L7","timing":"02:30 - 03:25","set":"ALL","subject":"PROPS","room":"-","faculty":"PROPS Coordinator"},{"period":"L8","timing":"03:25 - 04:20","set":"ALL","subject":"PROPS","room":"-","faculty":"PROPS Coordinator"}]}}};
+    let _allSectionsLoaded = false;
 
+    // Lazy-load remaining sections when user switches section
+    function _ensureAllSections(callback) {
+      if (_allSectionsLoaded) { if (callback) callback(); return; }
+      // Load from bundled asset (works offline in WebView APK)
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', 'sections_data.json', true);
+      xhr.onload = function() {
+        if (xhr.status === 200 || xhr.status === 0) {
+          try {
+            ALL_SECTIONS = JSON.parse(xhr.responseText);
+            _allSectionsLoaded = true;
+            console.info('[Perf] Lazy-loaded all sections data');
+          } catch(e) { console.warn('[Perf] sections_data.json parse error'); }
+        }
+        if (callback) callback();
+      };
+      xhr.onerror = function() { if (callback) callback(); };
+      xhr.send();
+    }
     let currentSection = localStorage.getItem('quantum_section_pref') || 'Sec-D';
 
     function getActiveSchedule() {
@@ -5250,12 +6279,21 @@
     let weeklySchedule = getActiveSchedule();
 
     function selectSection(secKey) {
-      if (!ALL_SECTIONS[secKey]) return;
       triggerHaptic(12);
+      if (!ALL_SECTIONS[secKey]) {
+        showToast('⏳ Loading section data...');
+        _ensureAllSections(() => {
+          if (!ALL_SECTIONS[secKey]) { showToast('❌ Section not found'); return; }
+          _doSelectSection(secKey);
+        });
+        return;
+      }
+      _doSelectSection(secKey);
+    }
+    function _doSelectSection(secKey) {
       currentSection = secKey;
       localStorage.setItem('quantum_section_pref', secKey);
       weeklySchedule = getActiveSchedule();
-
       renderSectionPills();
       renderTodayLectures(viewingDate);
       updateLiveState(true);
@@ -5263,6 +6301,8 @@
     }
 
     function renderSectionPills() {
+      // Lazy-load all sections data for pills display
+      if (!_allSectionsLoaded) { _ensureAllSections(() => renderSectionPills()); }
       const track = document.getElementById('sectionPillsTrack');
       if (track) {
         const secKeys = Object.keys(ALL_SECTIONS);
@@ -5302,7 +6342,9 @@
     }
 
 
-    // Official Quantum University Roorkee — B.Tech I Yr GroupA-Section-D Faculty Mapping
+    // ==========================================
+    // MULTI-SECTION FACULTY DIRECTORY & MANAGER
+    // ==========================================
     const defaultFacultyMap = {
       'Technical Training - Advance Programming in C': 'Mr. Rahul Panda',
       'Environmental Studies-I': 'Mr. Akash Saini',
@@ -5322,161 +6364,268 @@
       'PROPS': 'PROPS Activity Coordinator'
     };
 
-    let customFacultyMap = JSON.parse(localStorage.getItem('secD_faculty_map') || '{}');
-    // Auto-clean any old generic placeholder strings from localStorage so official faculty names appear
-    Object.keys(customFacultyMap).forEach(k => {
-      const v = String(customFacultyMap[k] || '');
-      if (v.startsWith('Prof. (') || v.startsWith('Faculty Mentor') || v === 'Subject Faculty') {
-        delete customFacultyMap[k];
+    // Extract default faculties automatically for any section from ALL_SECTIONS
+    function getSectionDefaultFacultyMap(secKey) {
+      const map = {};
+      const secData = ALL_SECTIONS[secKey];
+      if (secData && secData.schedule) {
+        Object.keys(secData.schedule).forEach(dayKey => {
+          const slots = secData.schedule[dayKey] || [];
+          slots.forEach(slot => {
+            if (slot.subject && slot.faculty) {
+              const cleanSubj = slot.subject.trim();
+              if (!map[cleanSubj] && !cleanSubj.includes('Lunch') && cleanSubj !== 'Self Study' && cleanSubj !== 'Free Period') {
+                map[cleanSubj] = slot.faculty.trim();
+              }
+            }
+            if (slot.isSplit) {
+              if (slot.setA && slot.setA.subject && slot.setA.faculty) {
+                map[slot.setA.subject.trim()] = slot.setA.faculty.trim();
+              }
+              if (slot.setB && slot.setB.subject && slot.setB.faculty) {
+                map[slot.setB.subject.trim()] = slot.setB.faculty.trim();
+              }
+            }
+          });
+        });
       }
-    });
-    localStorage.setItem('secD_faculty_map', JSON.stringify(customFacultyMap));
+      if (secKey === 'Sec-D') {
+        Object.assign(map, defaultFacultyMap);
+      }
+      return map;
+    }
 
-    function getFacultyForSubject(subjectName) {
+    // Get custom faculty map for a section from localStorage
+    function getSectionCustomFacultyMap(secKey) {
+      try {
+        const key = 'quantum_faculty_custom_' + secKey;
+        const stored = localStorage.getItem(key);
+        if (stored) return JSON.parse(stored);
+      } catch (e) { }
+      if (secKey === 'Sec-D') {
+        try {
+          const legacy = localStorage.getItem('secD_faculty_map');
+          if (legacy) return JSON.parse(legacy);
+        } catch (e) { }
+      }
+      return {};
+    }
+
+    function saveSectionCustomFacultyMap(secKey, map) {
+      try {
+        localStorage.setItem('quantum_faculty_custom_' + secKey, JSON.stringify(map));
+        if (secKey === 'Sec-D') {
+          localStorage.setItem('secD_faculty_map', JSON.stringify(map));
+        }
+      } catch (e) { }
+    }
+
+    // Dynamic Faculty Resolver for any section and subject
+    function getFacultyForSubject(subjectName, secKey = currentSection) {
       if (!subjectName) return '';
       const clean = subjectName.trim();
       if (clean.includes('Lunch') || clean === 'Self Study' || clean === 'Free Period') {
         return '';
       }
-      if (customFacultyMap[clean]) return customFacultyMap[clean];
+      const custom = getSectionCustomFacultyMap(secKey);
+      if (custom[clean]) return custom[clean];
+
+      const defaults = getSectionDefaultFacultyMap(secKey);
+      if (defaults[clean]) return defaults[clean];
+
       if (defaultFacultyMap[clean]) return defaultFacultyMap[clean];
-      return 'Section-D Faculty';
+      return `${secKey} Faculty`;
     }
 
-    // Admin Password Protection for Faculty Customization (Krishna Only)
-    const ADMIN_FACULTY_SECRET = 'kri777py';
+    let activeFacultyModalSection = currentSection;
 
-    function isFacultyAdminUnlocked() {
-      return sessionStorage.getItem('secD_faculty_admin') === 'true' || localStorage.getItem('secD_faculty_admin') === 'true';
-    }
-
-    function handleFacultyAdminUnlock() {
-      if (isFacultyAdminUnlocked()) {
-        showToast('🔓 Admin mode already unlocked!');
-        updateFacultyAdminUI();
-        return;
-      }
-      const entered = prompt('🔐 Enter Admin Password to Edit Faculty Names:');
-      if (entered === null) return;
-      if (entered.trim() === ADMIN_FACULTY_SECRET) {
-        sessionStorage.setItem('secD_faculty_admin', 'true');
-        localStorage.setItem('secD_faculty_admin', 'true');
-        triggerHaptic(20);
-        showToast('🔓 Admin Unlocked! Faculty editing enabled.');
-        updateFacultyAdminUI();
-      } else {
-        triggerHaptic(40);
-        alert('❌ Incorrect Password! Only Krishna (Admin) can modify faculty names.');
-      }
-    }
-
-    function updateFacultyAdminUI() {
-      const isUnlocked = isFacultyAdminUnlocked();
-      const badge = document.getElementById('facultyAdminBadge');
-      if (badge) {
-        badge.textContent = isUnlocked ? '🔓 Unlocked (Admin)' : '🔒 Locked';
-        badge.style.color = isUnlocked ? '#10b981' : '#f59e0b';
-        badge.style.borderColor = isUnlocked ? '#10b981' : 'rgba(245,158,11,0.4)';
-      }
-      const statusText = document.getElementById('facultyAdminStatusText');
-      if (statusText) {
-        statusText.innerHTML = isUnlocked
-          ? '<span style="color:#10b981; font-weight:700;">🔓 Admin Mode Active (Krishna)</span>'
-          : '<span style="color:var(--text-muted);">🔒 Official Faculty names are locked.</span>';
-      }
-      const unlockBtn = document.getElementById('facultyUnlockBtn');
-      if (unlockBtn) {
-        unlockBtn.style.display = isUnlocked ? 'none' : 'block';
-      }
-      const saveBtn = document.getElementById('saveFacultyBtn');
-      if (saveBtn) {
-        saveBtn.style.opacity = isUnlocked ? '1' : '0.6';
-      }
-      const resetBtn = document.getElementById('resetFacultyBtn');
-      if (resetBtn) {
-        resetBtn.style.opacity = isUnlocked ? '1' : '0.6';
-      }
-
-      document.querySelectorAll('.faculty-dir-input').forEach(inp => {
-        if (isUnlocked) {
-          inp.removeAttribute('readonly');
-          inp.style.opacity = '1';
-        } else {
-          inp.setAttribute('readonly', 'true');
-          inp.style.opacity = '0.75';
-        }
-      });
-
-      const pmLockBadge = document.getElementById('pmFacLockBadge');
-      if (pmLockBadge) {
-        pmLockBadge.textContent = isUnlocked ? '🔓 Admin Unlocked' : '🔒 Admin Locked';
-        pmLockBadge.style.color = isUnlocked ? '#10b981' : '#f59e0b';
-      }
-      const pmFacInput = document.getElementById('pmFacultyInput');
-      if (pmFacInput) {
-        if (isUnlocked) {
-          pmFacInput.removeAttribute('readonly');
-          pmFacInput.style.opacity = '1';
-        } else {
-          pmFacInput.setAttribute('readonly', 'true');
-          pmFacInput.style.opacity = '0.75';
-        }
-      }
-    }
-
-    function openFacultyModal() {
+    function openFacultyModal(targetSec = currentSection) {
       triggerHaptic(10);
+      _ensureAllSections(() => {
+        activeFacultyModalSection = targetSec || currentSection;
+        const badge = document.getElementById('facultySectionBadge');
+        if (badge) badge.textContent = activeFacultyModalSection;
+        renderFacultySectionTabs();
+        renderFacultyDirectoryList();
+        openModal('facultyModal');
+      });
+    }
+
+    function renderFacultySectionTabs() {
+      const track = document.getElementById('facSecTabsTrack');
+      if (!track) return;
+      const secKeys = Object.keys(ALL_SECTIONS);
+      track.innerHTML = secKeys.map(k => {
+        const isActive = (k === activeFacultyModalSection);
+        return `<button class="fac-sec-pill ${isActive ? 'active' : ''}" onclick="selectFacultyModalSection('${k}')">
+          ${k}
+        </button>`;
+      }).join('');
+    }
+
+    function selectFacultyModalSection(secKey) {
+      triggerHaptic(8);
+      activeFacultyModalSection = secKey;
+      const badge = document.getElementById('facultySectionBadge');
+      if (badge) badge.textContent = secKey;
+      renderFacultySectionTabs();
+      renderFacultyDirectoryList();
+    }
+
+    function renderFacultyDirectoryList(searchQuery = '') {
       const listEl = document.getElementById('facultyDirectoryList');
-      const isUnlocked = isFacultyAdminUnlocked();
-      if (listEl) {
-        listEl.innerHTML = '';
-        Object.keys(defaultFacultyMap).forEach((subj, idx) => {
-          const currentFaculty = getFacultyForSubject(subj);
-          const row = document.createElement('div');
-          row.style.cssText = 'background:var(--card-surface-grad); border:1px solid var(--card-border); border-radius:10px; padding:8px 10px; display:flex; flex-direction:column; gap:5px;';
-          row.innerHTML = `
-            <label style="font-size:0.75rem; font-weight:700; color:var(--text-main);">${idx + 1}. ${subj}</label>
-            <input type="text" class="modal-input faculty-dir-input" data-subject="${subj}" value="${currentFaculty.replace(/"/g, '&quot;')}" ${isUnlocked ? '' : 'readonly'} style="padding:7px 10px; font-size:0.8rem; opacity:${isUnlocked ? '1' : '0.75'};" placeholder="Enter Faculty Name">
-          `;
-          listEl.appendChild(row);
+      if (!listEl) return;
+      listEl.innerHTML = '';
+
+      const defMap = getSectionDefaultFacultyMap(activeFacultyModalSection);
+      const custMap = getSectionCustomFacultyMap(activeFacultyModalSection);
+
+      // Combine all unique subjects
+      const allSubjects = Array.from(new Set([...Object.keys(defMap), ...Object.keys(custMap)]));
+
+      let filtered = allSubjects;
+      if (searchQuery && searchQuery.trim().length > 0) {
+        const q = searchQuery.toLowerCase().trim();
+        filtered = allSubjects.filter(s => {
+          const fac = (custMap[s] || defMap[s] || '').toLowerCase();
+          return s.toLowerCase().includes(q) || fac.includes(q);
         });
       }
-      updateFacultyAdminUI();
-      openModal('facultyModal');
+
+      if (filtered.length === 0) {
+        listEl.innerHTML = `
+          <div style="text-align:center; padding:24px 10px; color:var(--text-sub); font-size:0.8rem;">
+            🔍 No faculty found matching "${searchQuery}".<br>
+            <button class="primary-btn" style="margin:10px auto 0 auto;" onclick="openAddFacultyModal()">
+              ➕ Add New Faculty
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach((subj, idx) => {
+        const currentFaculty = custMap[subj] || defMap[subj] || `${activeFacultyModalSection} Faculty`;
+        const isCustom = Boolean(custMap[subj]);
+        const initials = currentFaculty.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase() || '👨‍🏫';
+
+        const card = document.createElement('div');
+        card.className = 'fac-card-item';
+        card.innerHTML = `
+          <div class="fac-header-row">
+            <div class="fac-avatar-name">
+              <div class="fac-avatar">${initials}</div>
+              <div>
+                <div class="fac-name-text">${currentFaculty}</div>
+                <div class="fac-subject-pill" title="${subj}">${subj}</div>
+              </div>
+            </div>
+            ${isCustom ? '<span style="font-size:0.6rem; color:var(--accent); border:1px solid var(--accent); padding:1px 5px; border-radius:6px; font-weight:700;">Custom</span>' : ''}
+          </div>
+          <div class="fac-actions-row">
+            <span class="fac-room-badge">📍 ${ALL_SECTIONS[activeFacultyModalSection] ? ALL_SECTIONS[activeFacultyModalSection].room : 'Campus'}</span>
+            <div style="display:flex; gap:6px;">
+              <button class="secondary-btn" style="padding:4px 8px; font-size:0.7rem;" onclick="editFaculty('${activeFacultyModalSection}', '${subj.replace(/'/g, "\\'")}')">
+                ✏️ Edit
+              </button>
+              ${isCustom ? `<button class="secondary-btn" style="padding:4px 8px; font-size:0.7rem; color:#ef4444; border-color:rgba(239,68,68,0.4);" onclick="deleteCustomFaculty('${activeFacultyModalSection}', '${subj.replace(/'/g, "\\'")}')">
+                🗑️
+              </button>` : ''}
+            </div>
+          </div>
+        `;
+        listEl.appendChild(card);
+      });
+    }
+
+    function filterFacultyDirectoryList() {
+      const q = (document.getElementById('facultySearchInput') || {}).value || '';
+      renderFacultyDirectoryList(q);
+    }
+
+    function openAddFacultyModal() {
+      triggerHaptic(10);
+      const sel = document.getElementById('newFacSection');
+      if (sel) sel.value = activeFacultyModalSection;
+      const subInp = document.getElementById('newFacSubject');
+      const nameInp = document.getElementById('newFacName');
+      const roomInp = document.getElementById('newFacRoom');
+      if (subInp) subInp.value = '';
+      if (nameInp) nameInp.value = '';
+      if (roomInp) roomInp.value = ALL_SECTIONS[activeFacultyModalSection] ? ALL_SECTIONS[activeFacultyModalSection].room : 'A-108';
+      openModal('addFacultyModal');
+    }
+
+    function submitNewFaculty() {
+      const sec = (document.getElementById('newFacSection') || {}).value || activeFacultyModalSection;
+      const subj = (document.getElementById('newFacSubject') || {}).value.trim();
+      const name = (document.getElementById('newFacName') || {}).value.trim();
+      if (!subj || !name) {
+        showToast('⚠️ Please enter both Subject and Faculty Name!');
+        return;
+      }
+      triggerHaptic(14);
+      const cust = getSectionCustomFacultyMap(sec);
+      cust[subj] = name;
+      saveSectionCustomFacultyMap(sec, cust);
+
+      showToast(`✅ Added ${name} to ${sec}!`);
+      closeModal('addFacultyModal');
+      renderFacultyDirectoryList();
+      renderTodayLectures(viewingDate);
+      updateLiveState(true);
+    }
+
+    function editFaculty(secKey, subj) {
+      triggerHaptic(10);
+      const cur = getFacultyForSubject(subj, secKey);
+      const newName = prompt(`✏️ Edit Faculty for "${subj}" (${secKey}):`, cur);
+      if (newName === null) return;
+      const trimmed = newName.trim();
+      if (!trimmed) {
+        showToast('⚠️ Faculty name cannot be empty');
+        return;
+      }
+      const cust = getSectionCustomFacultyMap(secKey);
+      cust[subj] = trimmed;
+      saveSectionCustomFacultyMap(secKey, cust);
+
+      triggerHaptic(14);
+      showToast(`✅ Updated to ${trimmed}`);
+      renderFacultyDirectoryList();
+      renderTodayLectures(viewingDate);
+      updateLiveState(true);
+    }
+
+    function deleteCustomFaculty(secKey, subj) {
+      if (!confirm(`Delete custom faculty entry for "${subj}"?`)) return;
+      triggerHaptic(12);
+      const cust = getSectionCustomFacultyMap(secKey);
+      delete cust[subj];
+      saveSectionCustomFacultyMap(secKey, cust);
+
+      showToast('🗑️ Reverted to official default');
+      renderFacultyDirectoryList();
+      renderTodayLectures(viewingDate);
+      updateLiveState(true);
     }
 
     function saveAllFacultyNames() {
-      if (!isFacultyAdminUnlocked()) {
-        handleFacultyAdminUnlock();
-        if (!isFacultyAdminUnlocked()) return;
-      }
-      triggerHaptic(12);
-      document.querySelectorAll('.faculty-dir-input').forEach(inp => {
-        const subj = inp.getAttribute('data-subject');
-        const val = inp.value.trim();
-        if (subj && val) {
-          customFacultyMap[subj] = val;
-        }
-      });
-      localStorage.setItem('secD_faculty_map', JSON.stringify(customFacultyMap));
-      renderTodayLectures(viewingDate);
-      updateLiveState(true);
-      showToast('✅ All Faculty Names updated!');
+      showToast('✅ All section faculty names saved!');
       closeModal('facultyModal');
     }
 
-    function resetAllFacultyNames() {
-      if (!isFacultyAdminUnlocked()) {
-        handleFacultyAdminUnlock();
-        if (!isFacultyAdminUnlocked()) return;
-      }
-      triggerHaptic(10);
-      customFacultyMap = {};
-      localStorage.removeItem('secD_faculty_map');
+    function resetCurrentSectionFaculty() {
+      if (!confirm(`Reset all custom faculty changes for ${activeFacultyModalSection} back to official defaults?`)) return;
+      triggerHaptic(14);
+      try {
+        localStorage.removeItem('quantum_faculty_custom_' + activeFacultyModalSection);
+        if (activeFacultyModalSection === 'Sec-D') localStorage.removeItem('secD_faculty_map');
+      } catch (e) { }
+      showToast(`↺ Official ${activeFacultyModalSection} Faculty restored`);
+      renderFacultyDirectoryList();
       renderTodayLectures(viewingDate);
       updateLiveState(true);
-      showToast('↺ Official Section-D Faculty names restored');
-      closeModal('facultyModal');
     }
 
     // State Variables
@@ -5563,15 +6712,16 @@
       const themeIcon = document.getElementById('themeIcon');
       const themePill = document.getElementById('menuThemePill');
       const themeSub = document.getElementById('menuThemeSub');
+      const tObj = (typeof THEMES_LIST !== 'undefined' ? THEMES_LIST.find(t => t.id === curTheme) : null) || { icon: '🏛️', name: 'Campus', desc: 'Quantum Campus Live' };
 
       if (themeIcon) {
-        themeIcon.textContent = curTheme === 'campus' ? '🏛️' : (curTheme === 'light' ? '☀️' : '🌙');
+        themeIcon.textContent = tObj.icon;
       }
       if (themePill) {
-        themePill.textContent = curTheme === 'campus' ? '🏛️ Campus' : (curTheme === 'light' ? '☀️ Light' : '🌙 Dark');
+        themePill.textContent = `${tObj.icon} ${tObj.name}`;
       }
       if (themeSub) {
-        themeSub.textContent = curTheme === 'campus' ? 'Quantum Campus Live Pan/Zoom' : (curTheme === 'light' ? 'Daylight Pearl Appearance' : 'Minimal Obsidian Dark');
+        themeSub.textContent = tObj.desc;
       }
 
       const animState = document.documentElement.getAttribute('data-anim-theme') || 'on';
@@ -5998,89 +7148,446 @@
       return false;
     }
 
-    function isTodayHoliday(date = new Date()) {
+    // =========================================================================
+    // QUANTUM UNIVERSITY ACADEMIC & HOLIDAY CALENDAR ODD SEMESTER 2026-27 (PDF)
+    // =========================================================================
+    const QUANTUM_ACADEMIC_CALENDAR = {
+      session: 'Odd Semester 2026-27',
+      university: 'Quantum University, Roorkee',
+      totalTeachingDays: 92,
+      holidays: [
+        { id: 'h1', name: 'Sawan-Shivratri Holidays', startDate: '2026-08-11', endDate: '2026-08-11', type: 'festival', icon: '🔱', desc: 'University holiday on occasion of Sawan Shivratri' },
+        { id: 'h2', name: 'Independence Day Holiday', startDate: '2026-08-15', endDate: '2026-08-15', type: 'national', icon: '🇮🇳', desc: 'National Holiday celebrating 80th Independence Day' },
+        { id: 'h3', name: 'Raksha Bandhan Holiday', startDate: '2026-08-28', endDate: '2026-08-28', type: 'festival', icon: '🪁', desc: 'University holiday celebrating Raksha Bandhan' },
+        { id: 'h4', name: 'Shri Krishna Janmashtami Holiday', startDate: '2026-09-04', endDate: '2026-09-04', type: 'festival', icon: '🪈', desc: 'University holiday for Shri Krishna Janmashtami celebration' },
+        { id: 'h5', name: 'Gandhi Jayanti Holiday', startDate: '2026-10-02', endDate: '2026-10-02', type: 'national', icon: '🕊️', desc: 'National Holiday celebrating Mahatma Gandhi Jayanti' },
+        { id: 'h6', name: 'Dussehra Holiday', startDate: '2026-10-20', endDate: '2026-10-20', type: 'festival', icon: '🏹', desc: 'University holiday observing Dussehra / Vijayadashami' },
+        { id: 'h7', name: 'Diwali Vacations', startDate: '2026-11-06', endDate: '2026-11-10', type: 'vacation', icon: '🪔', desc: 'University Diwali Vacations (06 Nov to 10 Nov 2026)' },
+        { id: 'h8', name: 'Christmas Holiday', startDate: '2026-12-25', endDate: '2026-12-25', type: 'festival', icon: '🎄', desc: 'Official holiday celebrating Christmas Day' },
+        { id: 'h9', name: 'Winter Vacation (Slot One)', startDate: '2027-01-05', endDate: '2027-01-10', type: 'vacation', icon: '❄️', desc: 'University Winter Vacation Slot 1 (05 Jan to 10 Jan 2027)' },
+        { id: 'h10', name: 'Winter Vacation (Slot Two)', startDate: '2027-01-12', endDate: '2027-01-17', type: 'vacation', icon: '❄️', desc: 'University Winter Vacation Slot 2 (12 Jan to 17 Jan 2027)' },
+        { id: 'h11', name: 'Republic Day Holiday', startDate: '2027-01-26', endDate: '2027-01-26', type: 'national', icon: '🇮🇳', desc: 'National Holiday celebrating Republic Day of India' }
+      ],
+      academicEvents: [
+        { title: 'Commencement of 2nd, 3rd and 4th Year Classes', startDate: '2026-07-28', endDate: '2026-07-28', tag: 'Academic', icon: '🎓', note: 'Classes begin in all respects' },
+        { title: 'Commencement of B.Tech First Year Classes', startDate: '2026-08-03', endDate: '2026-08-03', tag: 'Freshers', icon: '🚀', note: 'First year engineering batch classes start' },
+        { title: 'Commencement of Rest of All First Year Programs', startDate: '2026-08-04', endDate: '2026-08-04', tag: 'Freshers', icon: '🏫', note: 'All other UG/PG first year classes commence' },
+        { title: 'Orientation Program of First Year Students', startDate: '2026-08-10', endDate: '2026-08-12', tag: 'Orientation', icon: '🧭', note: 'Conducted by First Year Coordinators and team' },
+        { title: 'Fresher\'s Party', startDate: '2026-09-05', endDate: '2026-09-05', tag: 'Cultural', icon: '🎉', note: 'P.N.O team event for new students' },
+        { title: 'Lab Quiz 1 on ERP (3rd & 4th Year)', startDate: '2026-09-07', endDate: '2026-09-12', tag: 'Exam', icon: '📝', note: 'Online Quiz via University ERP portal' },
+        { title: 'Lab Quiz 1 on ERP (2nd Year)', startDate: '2026-09-14', endDate: '2026-09-19', tag: 'Exam', icon: '📝', note: 'Online Quiz via University ERP portal' },
+        { title: 'Lab Quiz 1 on ERP (1st Year)', startDate: '2026-09-21', endDate: '2026-09-24', tag: 'Exam', icon: '📝', note: 'Online Quiz via University ERP portal' },
+        { title: 'Abhivyakti and Kavyanjali Fest', startDate: '2026-09-25', endDate: '2026-09-26', tag: 'Cultural', icon: '🎭', note: 'University Annual Literary & Poetry Festival' },
+        { title: 'Mid Semester Exams (All Years)', startDate: '2026-10-01', endDate: '2026-10-09', tag: 'Exams', icon: '📊', note: 'Odd Sem Mid-Term examination by COE' },
+        { title: 'Lab Quiz 2 on ERP (3rd & 4th Year)', startDate: '2026-10-19', endDate: '2026-10-22', tag: 'Exam', icon: '📝', note: 'Online Quiz 2 via ERP portal' },
+        { title: 'Lab Quiz 2 on ERP (2nd Year)', startDate: '2026-10-23', endDate: '2026-10-29', tag: 'Exam', icon: '📝', note: 'Online Quiz 2 via ERP portal' },
+        { title: 'Convocation Ceremony', startDate: '2026-11-14', endDate: '2026-11-14', tag: 'Ceremony', icon: '🎓', note: 'Annual Degree Award Ceremony' },
+        { title: 'Lab Quiz 2 on ERP (1st Year)', startDate: '2026-11-16', endDate: '2026-11-21', tag: 'Exam', icon: '📝', note: 'Online Quiz 2 via ERP portal' },
+        { title: 'Last Day Teaching Day (Total 92 Days)', startDate: '2026-11-28', endDate: '2026-11-28', tag: 'Semester End', icon: '🏁', note: '100% course coverage certification by Directors' },
+        { title: 'Commencement of ESE Lab Examinations', startDate: '2026-12-02', endDate: '2026-12-08', tag: 'Lab Exam', icon: '🔬', note: 'End Semester Practical Lab exams' },
+        { title: 'End Semester Theory Examinations (ESE)', startDate: '2026-12-09', endDate: '2026-12-24', tag: 'Final Exam', icon: '📑', note: 'Final University End Semester Exams' },
+        { title: 'Result Declaration of ESE', startDate: '2027-01-14', endDate: '2027-01-14', tag: 'Results', icon: '🏆', note: 'Official ESE Odd Sem results declaration' },
+        { title: 'Next Semester Registration', startDate: '2027-01-19', endDate: '2027-01-20', tag: 'Registration', icon: '✍️', note: 'Registration for Even Semester 2026-27' },
+        { title: 'Commencement of Next Semester Classes', startDate: '2027-01-21', endDate: '2027-01-21', tag: 'New Semester', icon: '🌟', note: 'Even Semester 2026-27 classes commence' }
+      ]
+    };
+
+    let _forceWeekdayPreview = false;
+
+    function toggleForceWeekdayPreview() {
+      _forceWeekdayPreview = !_forceWeekdayPreview;
+      triggerHaptic(12);
+      renderTodayLectures(viewingDate);
+      showToast(_forceWeekdayPreview ? '👁️ Showing regular weekday schedule preview' : '🎉 Restored Holiday View');
+    }
+
+    // Comprehensive Holiday Finder (matches Sunday, PDF holidays, and custom holidays)
+    function getHolidayInfo(date = new Date()) {
       const day = date.getDay();
-      if (day === 0) return true; // Sunday is always holiday
+      if (day === 0) {
+        return { isHoliday: true, name: 'Sunday Weekend', type: 'weekend', icon: '🏖️', desc: 'No college lectures today. Campus resumes Monday.' };
+      }
 
       const yyyy = date.getFullYear();
       const mm = String(date.getMonth() + 1).padStart(2, '0');
       const dd = String(date.getDate()).padStart(2, '0');
       const dateStr = `${yyyy}-${mm}-${dd}`;
+      const monthDayStr = `${mm}-${dd}`;
 
-      // User / college custom marked holidays in localStorage
+      // Check Quantum Academic Calendar Holidays from PDF
+      for (const hol of QUANTUM_ACADEMIC_CALENDAR.holidays) {
+        // Direct exact date match or date range match
+        if (dateStr >= hol.startDate && dateStr <= hol.endDate) {
+          return { isHoliday: true, name: hol.name, type: hol.type, icon: hol.icon, desc: hol.desc };
+        }
+        // Month-day matching (covers simulated or future dates with matching MM-DD)
+        const startMD = hol.startDate.slice(5);
+        const endMD = hol.endDate.slice(5);
+        if (monthDayStr >= startMD && monthDayStr <= endMD) {
+          return { isHoliday: true, name: hol.name, type: hol.type, icon: hol.icon, desc: hol.desc };
+        }
+      }
+
+      // Check Custom Marked Holidays in localStorage
       try {
         const customHolidays = JSON.parse(localStorage.getItem('secD_custom_holidays') || '[]');
-        if (customHolidays.includes(dateStr)) return true;
+        if (customHolidays.includes(dateStr)) {
+          return { isHoliday: true, name: 'University Custom Holiday', type: 'custom', icon: '🎉', desc: 'Designated holiday for Quantum University students.' };
+        }
       } catch (e) { }
 
-      // National / Gazetted Holidays
-      const m = date.getMonth(); // 0-based
-      const d = date.getDate();
-      if (m === 0 && d === 26) return true; // Republic Day (26 Jan)
-      if (m === 7 && d === 15) return true; // Independence Day (15 Aug)
-      if (m === 9 && d === 2) return true;  // Gandhi Jayanti (2 Oct)
-      if (m === 11 && d === 25) return true; // Christmas (25 Dec)
-
-      return false;
+      return null;
     }
 
-    function dispatchClassNotification(periodObj, slotObj) {
+    function isTodayHoliday(date = new Date()) {
+      return Boolean(getHolidayInfo(date));
+    }
+
+    // Academic & Holiday Calendar Modal Engine
+    let currentCalendarTab = 'holidays';
+
+    function openAcademicCalendarModal() {
+      triggerHaptic(10);
+      renderAcademicCalendar();
+      openModal('academicCalendarModal');
+    }
+
+    function switchCalendarTab(tabKey) {
+      triggerHaptic(8);
+      currentCalendarTab = tabKey;
+      const tabH = document.getElementById('tabHolidaysBtn');
+      const tabA = document.getElementById('tabAcademicBtn');
+      const contH = document.getElementById('calendarHolidaysContent');
+      const contA = document.getElementById('calendarAcademicContent');
+
+      if (tabH && tabA && contH && contA) {
+        tabH.classList.toggle('active', tabKey === 'holidays');
+        tabA.classList.toggle('active', tabKey === 'academic');
+        contH.style.display = tabKey === 'holidays' ? 'flex' : 'none';
+        contA.style.display = tabKey === 'academic' ? 'flex' : 'none';
+      }
+    }
+
+    function renderAcademicCalendar() {
+      const contH = document.getElementById('calendarHolidaysContent');
+      const contA = document.getElementById('calendarAcademicContent');
+      const countH = document.getElementById('holidaysCountBadge');
+      const countA = document.getElementById('academicCountBadge');
+
+      if (countH) countH.textContent = QUANTUM_ACADEMIC_CALENDAR.holidays.length;
+      if (countA) countA.textContent = QUANTUM_ACADEMIC_CALENDAR.academicEvents.length;
+
+      const now = isSimulating ? getSimulatedDate() : new Date();
+      const todayStr = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
+
+      // Render Holidays
+      if (contH) {
+        contH.innerHTML = QUANTUM_ACADEMIC_CALENDAR.holidays.map(h => {
+          let dateDisplay = h.startDate;
+          if (h.startDate !== h.endDate) {
+            dateDisplay = `${h.startDate} to ${h.endDate}`;
+          }
+          let countdownText = 'Upcoming';
+          let countdownClass = 'countdown-upcoming';
+
+          if (todayStr >= h.startDate && todayStr <= h.endDate) {
+            countdownText = 'Today 🎉';
+            countdownClass = 'countdown-today';
+          } else if (todayStr > h.endDate) {
+            countdownText = 'Passed';
+            countdownClass = 'countdown-passed';
+          } else {
+            const diffDays = Math.ceil((new Date(h.startDate) - new Date(todayStr)) / (1000 * 60 * 60 * 24));
+            if (diffDays <= 7) {
+              countdownText = diffDays === 1 ? 'Tomorrow' : `In ${diffDays} Days`;
+              countdownClass = 'countdown-soon';
+            } else {
+              countdownText = `In ${diffDays} Days`;
+            }
+          }
+
+          return `
+            <div class="academic-event-card" onclick="jumpToCalendarDate('${h.startDate}')" title="Tap to view this date in timetable" style="cursor:pointer;">
+              <div class="event-icon-box">${h.icon}</div>
+              <div class="event-info">
+                <div class="event-title">${h.name}</div>
+                <div class="event-date">📅 ${dateDisplay} • ${h.desc}</div>
+              </div>
+              <span class="event-countdown-pill ${countdownClass}">${countdownText}</span>
+            </div>
+          `;
+        }).join('');
+      }
+
+      // Render Academic Events
+      if (contA) {
+        contA.innerHTML = QUANTUM_ACADEMIC_CALENDAR.academicEvents.map(e => {
+          let dateDisplay = e.startDate;
+          if (e.startDate !== e.endDate) {
+            dateDisplay = `${e.startDate} to ${e.endDate}`;
+          }
+          let countdownText = 'Scheduled';
+          let countdownClass = 'countdown-upcoming';
+
+          if (todayStr >= e.startDate && todayStr <= e.endDate) {
+            countdownText = 'Active Now ⚡';
+            countdownClass = 'countdown-today';
+          } else if (todayStr > e.endDate) {
+            countdownText = 'Completed';
+            countdownClass = 'countdown-passed';
+          } else {
+            const diffDays = Math.ceil((new Date(e.startDate) - new Date(todayStr)) / (1000 * 60 * 60 * 24));
+            if (diffDays <= 7) {
+              countdownText = diffDays === 1 ? 'Tomorrow' : `In ${diffDays} Days`;
+              countdownClass = 'countdown-soon';
+            } else {
+              countdownText = `In ${diffDays} Days`;
+            }
+          }
+
+          return `
+            <div class="academic-event-card" onclick="jumpToCalendarDate('${e.startDate}')" title="Tap to view date in timetable" style="cursor:pointer;">
+              <div class="event-icon-box">${e.icon}</div>
+              <div class="event-info">
+                <div class="event-title">${e.title}</div>
+                <div class="event-date">📅 ${dateDisplay} • ${e.note || e.tag}</div>
+              </div>
+              <span class="event-countdown-pill ${countdownClass}">${countdownText}</span>
+            </div>
+          `;
+        }).join('');
+      }
+    }
+
+    function jumpToCalendarDate(dateStr) {
+      triggerHaptic(12);
+      closeModal('academicCalendarModal');
+      handleDatePickerChange(dateStr);
+      showToast(`📅 Viewing ${dateStr}`);
+    }
+
+    // ==========================================
+    // COLORFUL THEMES STUDIO (8 VIBRANT THEMES)
+    // ==========================================
+    const THEMES_LIST = [
+      {
+        id: 'campus',
+        name: 'Quantum Campus',
+        icon: '🏛️',
+        desc: 'Official Quantum Blue & Amber live campus backdrop',
+        swatches: ['#020612', '#38bdf8', '#f59e0b', '#10b981']
+      },
+      {
+        id: 'cyber-neon',
+        name: 'Cyberpunk Neon',
+        icon: '🌌',
+        desc: 'Futuristic electric cyan, hot magenta & laser purple',
+        swatches: ['#050212', '#00f0ff', '#ff007f', '#00ffaa']
+      },
+      {
+        id: 'sunset',
+        name: 'Sunset Horizon',
+        icon: '🌅',
+        desc: 'Deep evening twilight, fiery rose & golden sunrise',
+        swatches: ['#0d0608', '#ff6b6b', '#f59e0b', '#ff3366']
+      },
+      {
+        id: 'emerald',
+        name: 'Emerald Matrix',
+        icon: '🌲',
+        desc: 'Cyber forest obsidian, radiant mint & bioluminescent teal',
+        swatches: ['#020f09', '#10b981', '#06b6d4', '#34d399']
+      },
+      {
+        id: 'cosmic',
+        name: 'Cosmic Nebula',
+        icon: '⚡',
+        desc: 'Galactic ultraviolet, interstellar dark & fuchsia neon',
+        swatches: ['#090218', '#a855f7', '#ec4899', '#38bdf8']
+      },
+      {
+        id: 'gold',
+        name: 'Imperial Gold',
+        icon: '👑',
+        desc: 'Obsidian luxury, 24K radiant gold & warm brass sheen',
+        swatches: ['#0c0903', '#f59e0b', '#fbbf24', '#fde68a']
+      },
+      {
+        id: 'dark',
+        name: 'Obsidian Dark',
+        icon: '🌙',
+        desc: 'Pure minimal OLED pitch-black power saver',
+        swatches: ['#02050b', '#091326', '#38bdf8', '#94a3b8']
+      },
+      {
+        id: 'light',
+        name: 'Daylight Pearl',
+        icon: '☀️',
+        desc: 'Crisp daytime high-contrast clear study mode',
+        swatches: ['#f8fafc', '#ffffff', '#2563eb', '#059669']
+      }
+    ];
+
+    function openThemePickerModal() {
+      triggerHaptic(10);
+      renderThemePickerModal();
+      openModal('themeModal');
+    }
+
+    function renderThemePickerModal() {
+      const container = document.getElementById('themeGridContainer');
+      if (!container) return;
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'campus';
+
+      container.innerHTML = THEMES_LIST.map(t => {
+        const isActive = (t.id === currentTheme);
+        return `
+          <div class="theme-card-option ${isActive ? 'active-theme' : ''}" onclick="setTheme('${t.id}')">
+            <div class="theme-palette-swatches">
+              ${t.swatches.map(c => `<div class="theme-swatch-item" style="background:${c};"></div>`).join('')}
+            </div>
+            <div class="theme-title-text">${t.icon} ${t.name}</div>
+            <div class="theme-desc-text">${t.desc}</div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function setTheme(themeKey) {
+      triggerHaptic(14);
+      applyThemeAppearance(themeKey);
+      localStorage.setItem('secD_theme', themeKey);
+      syncHoloMenuPills();
+      renderThemePickerModal();
+      const themeObj = THEMES_LIST.find(t => t.id === themeKey) || { name: themeKey, icon: '🎨' };
+      showToast(`${themeObj.icon} ${themeObj.name} Theme Active!`);
+    }
+
+    // ==============================================================
+    // PRE-CLASS NOTIFICATION & IN-APP HEADS-UP ALERT FOR ALL SECTIONS
+    // ==============================================================
+    let headsUpTimer = null;
+
+    function showHeadsUpNotification(title, sub, meta = null) {
+      const banner = document.getElementById('headsUpNotifBanner');
+      const titleEl = document.getElementById('headsUpTitle');
+      const subEl = document.getElementById('headsUpSub');
+      if (!banner || !titleEl || !subEl) return;
+
+      titleEl.textContent = title;
+      subEl.textContent = sub;
+      banner.setAttribute('data-meta', meta ? JSON.stringify(meta) : '');
+
+      banner.classList.add('is-showing');
+      if (headsUpTimer) clearTimeout(headsUpTimer);
+      headsUpTimer = setTimeout(() => {
+        banner.classList.remove('is-showing');
+      }, 7000);
+    }
+
+    function dismissHeadsUpNotification(shouldView = false) {
+      const banner = document.getElementById('headsUpNotifBanner');
+      if (banner) banner.classList.remove('is-showing');
+      if (shouldView) {
+        jumpToTodayLive();
+      }
+    }
+
+    function openNotificationSettingsModal() {
+      triggerHaptic(10);
+      const masterBtn = document.getElementById('notifMasterToggleBtn');
+      if (masterBtn) {
+        masterBtn.textContent = chimeEnabled ? '🔔 Active' : '🔕 Paused';
+        masterBtn.style.background = chimeEnabled ? '#10b981' : '#64748b';
+      }
+      const sel = document.getElementById('testNotifSecSelect');
+      if (sel) sel.value = currentSection;
+      openModal('notifSettingsModal');
+    }
+
+    function toggleMasterNotification() {
+      triggerHaptic(12);
+      chimeEnabled = !chimeEnabled;
+      localStorage.setItem('secD_sound', chimeEnabled ? 'true' : 'false');
+      syncAndroidNotificationPrefs();
+      syncHoloMenuPills();
+      const masterBtn = document.getElementById('notifMasterToggleBtn');
+      if (masterBtn) {
+        masterBtn.textContent = chimeEnabled ? '🔔 Active' : '🔕 Paused';
+        masterBtn.style.background = chimeEnabled ? '#10b981' : '#64748b';
+      }
+      showToast(chimeEnabled ? '🔔 Pre-Class Notifications Active' : '🔕 Notifications Paused');
+    }
+
+    function triggerTestAlertForChosenSection() {
+      const sel = document.getElementById('testNotifSecSelect');
+      const chosenSec = (sel && sel.value) ? sel.value : currentSection;
+      sendTestClassNotification(chosenSec);
+    }
+
+    // MULTI-SECTION NOTIFICATION DISPATCHER
+    function dispatchClassNotification(periodObj, slotObj, sectionKey = currentSection, minsBefore = 5) {
       if (!chimeEnabled || !periodObj || !slotObj) return;
       const now = isSimulating ? getSimulatedDate() : new Date();
-      if (isTodayHoliday(now)) return; // ABSOLUTELY ZERO NOTIFICATIONS ON SUNDAY OR HOLIDAYS!
+      if (isTodayHoliday(now)) return; // ABSOLUTELY ZERO NOTIFICATIONS ON SUNDAY OR UNIVERSITY HOLIDAYS!
 
       const info = resolveSlotForBatch(slotObj, selectedBatch);
       if (!info || !info.subject) return;
-      // Filter out non-classes (Lunch, Self Study, Free Period)
       if (info.subject.includes('Lunch') || info.subject === 'Self Study' || info.subject === 'Free Period') return;
 
-      const faculty = getFacultyForSubject(info.subject.replace(/^A:\s*/, '').split('|')[0].trim());
+      const faculty = getFacultyForSubject(info.subject.replace(/^A:s*/, '').split('|')[0].trim(), sectionKey);
       const startTimeStr = periodObj.timing.split('-')[0].trim();
-      const title = `⏰ Class 5 Minute Me Shuru Hone Wali Hai! (${periodObj.id} • ${startTimeStr})`;
+      const secName = ALL_SECTIONS[sectionKey] ? ALL_SECTIONS[sectionKey].name : sectionKey;
+      const title = `⏰ [${sectionKey}] Class ${minsBefore}m Me Shuru Hogi! (${periodObj.id} • ${startTimeStr})`;
       const shortBody = `📚 ${info.subject} • 👨‍🏫 ${faculty} (📍 ${info.room})`;
-      const bigText = `⏰ Aapki class 5 minute me shuru hone wali hai!\n📚 Subject: ${info.subject}\n👨‍🏫 Faculty: ${faculty}\n📍 Room: ${info.room} (${info.batchLabel})\n🕘 Timing: ${periodObj.timing}`;
+      const bigText = `⏰ Aapki class ${minsBefore} minute me shuru hone wali hai!\n🏫 Section: ${secName}\n📚 Subject: ${info.subject}\n👨‍🏫 Faculty: ${faculty}\n📍 Room: ${info.room} (${info.batchLabel})\n🕘 Timing: ${periodObj.timing}`;
 
       playChime(true);
-      triggerHaptic([200, 100, 200]);
-      showSystemAppNotification(title, shortBody, bigText, 'class_reminder', { periodId: periodObj.id, timing: periodObj.timing });
+      triggerHaptic([220, 100, 220]);
+      showHeadsUpNotification(title, shortBody, { periodId: periodObj.id, sectionKey });
+      showSystemAppNotification(title, shortBody, bigText, 'class_reminder', { periodId: periodObj.id, timing: periodObj.timing, sectionKey });
     }
 
-    function sendTestClassNotification() {
+    function sendTestClassNotification(targetSec = currentSection) {
       triggerHaptic([120, 60, 160]);
       chimeEnabled = true;
       localStorage.setItem('secD_sound', 'true');
       syncAndroidNotificationPrefs();
       syncHoloMenuPills();
 
-      const now = isSimulating ? getSimulatedDate() : new Date();
-      const day = now.getDay() === 0 ? 1 : now.getDay();
-      const daySlots = weeklySchedule[day] || weeklySchedule[1];
+      _ensureAllSections(() => {
+        const secData = ALL_SECTIONS[targetSec] || ALL_SECTIONS[currentSection] || ALL_SECTIONS['Sec-D'];
+        const secSchedule = secData.schedule || weeklySchedule;
+        const now = isSimulating ? getSimulatedDate() : new Date();
+        const day = now.getDay() === 0 ? 1 : now.getDay();
+        const daySlots = secSchedule[day] || secSchedule[1];
 
-      // Pick the next upcoming class today (or L1 if after college hours)
-      const totalSecs = getCurrentTotalSeconds();
-      const currentMinutes = Math.floor(totalSecs / 60);
-      let targetIdx = periods.findIndex((p, i) => i !== 3 && p.startMins > currentMinutes);
-      if (targetIdx === -1) targetIdx = 0;
+        const totalSecs = getCurrentTotalSeconds();
+        const currentMinutes = Math.floor(totalSecs / 60);
+        let targetIdx = periods.findIndex((p, i) => i !== 3 && p.startMins > currentMinutes);
+        if (targetIdx === -1) targetIdx = 0;
 
-      const sampleSlot = daySlots[targetIdx] || daySlots[0];
-      const samplePeriod = periods[targetIdx] || periods[0];
-      const info = resolveSlotForBatch(sampleSlot, selectedBatch);
-      const fac = getFacultyForSubject(info.subject.replace(/^A:\s*/, '').split('|')[0].trim());
-      const startTimeStr = samplePeriod.timing.split('-')[0].trim();
+        const sampleSlot = daySlots[targetIdx] || daySlots[0];
+        const samplePeriod = periods[targetIdx] || periods[0];
+        const info = resolveSlotForBatch(sampleSlot, selectedBatch);
+        const fac = getFacultyForSubject(info.subject.replace(/^A:s*/, '').split('|')[0].trim(), targetSec);
+        const startTimeStr = samplePeriod.timing.split('-')[0].trim();
 
-      const title = `⏰ Class 5 Minute Me Shuru Hone Wali Hai! (${samplePeriod.id} • ${startTimeStr})`;
-      const shortBody = `📚 ${info.subject} • 👨‍🏫 ${fac} (📍 ${info.room})`;
-      const bigText = `⏰ Aapki class 5 minute me shuru hone wali hai!\n📚 Subject: ${info.subject}\n👨‍🏫 Faculty: ${fac}\n📍 Room: ${info.room} (${info.batchLabel})\n🕘 Timing: ${samplePeriod.timing}`;
+        const title = `⏰ [${targetSec}] Class 5m Me Shuru Hogi! (${samplePeriod.id} • ${startTimeStr})`;
+        const shortBody = `📚 ${info.subject} • 👨‍🏫 ${fac} (📍 ${info.room})`;
+        const bigText = `⏰ Aapki class 5 minute me shuru hone wali hai!\n🏫 Section: ${secData.name}\n📚 Subject: ${info.subject}\n👨‍🏫 Faculty: ${fac}\n📍 Room: ${info.room} (${info.batchLabel})\n🕘 Timing: ${samplePeriod.timing}`;
 
-      playChime(true);
-      showSystemAppNotification(title, shortBody, bigText, 'class_reminder', { periodId: samplePeriod.id, timing: samplePeriod.timing });
-      showToast('🔔 Notification Saved to Library & Sent to Phone!');
+        playChime(true);
+        showHeadsUpNotification(title, shortBody);
+        showSystemAppNotification(title, shortBody, bigText, 'class_reminder', { periodId: samplePeriod.id, timing: samplePeriod.timing, sectionKey: targetSec });
+        showToast(`🔔 Test Alert Sent for ${targetSec}!`);
+      });
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '5.5.0';
-    const LOCAL_APP_VERSION_CODE = 47;
-    const LOCAL_APP_BUILD_HASH = 'mukqer66';
+    const LOCAL_APP_VERSION_NAME = '5.6.0';
+    const LOCAL_APP_VERSION_CODE = 48;
+    const LOCAL_APP_BUILD_HASH = 'c98a9fee5628';
 
     let cachedLatestVersionCode = 29;
 
@@ -6489,32 +7996,25 @@
       document.documentElement.setAttribute('data-theme', theme);
       const metaTheme = document.querySelector('meta[name="theme-color"]');
       if (metaTheme) {
-        metaTheme.setAttribute('content', theme === 'light' ? '#f8fafc' : (theme === 'campus' ? '#070b16' : '#080c14'));
+        let metaColor = '#020612';
+        if (theme === 'light') metaColor = '#f8fafc';
+        else if (theme === 'dark') metaColor = '#02050b';
+        else if (theme === 'cyber-neon') metaColor = '#050212';
+        else if (theme === 'sunset') metaColor = '#0d0608';
+        else if (theme === 'emerald') metaColor = '#020f09';
+        else if (theme === 'cosmic') metaColor = '#090218';
+        else if (theme === 'gold') metaColor = '#0c0903';
+        metaTheme.setAttribute('content', metaColor);
       }
       const appbarThemeIcon = document.getElementById('appbarThemeIcon');
       if (appbarThemeIcon) {
-        appbarThemeIcon.textContent = theme === 'campus' ? '🏛️' : (theme === 'light' ? '🌙' : '☀️');
+        const tObj = (typeof THEMES_LIST !== 'undefined' ? THEMES_LIST.find(t => t.id === theme) : null) || { icon: '🎨' };
+        appbarThemeIcon.textContent = tObj.icon;
       }
       if (window.AndroidUpdater && typeof window.AndroidUpdater.setSystemTheme === 'function') {
         try {
           window.AndroidUpdater.setSystemTheme(theme === 'light');
         } catch (e) { }
-      }
-      // Repaint lite-device inline styles when theme changes
-      // DOM surgery sets inline styles once - they must be corrected on theme switch
-      if (document.body.classList.contains('lite-device')) {
-        const isLight = theme === 'light';
-        const auroraBg = document.getElementById('auroraBg');
-        if (auroraBg) auroraBg.style.backgroundColor = isLight ? '#f1f5f9' : '#02050e';
-        const mesh = document.querySelector('.aurora-mesh-gradient');
-        if (mesh) {
-          mesh.style.background = isLight
-            ? 'radial-gradient(circle at 15% 15%,rgba(37,99,235,0.10) 0%,transparent 55%),radial-gradient(circle at 85% 85%,rgba(139,92,246,0.08) 0%,transparent 55%),linear-gradient(180deg,#ffffff 0%,#f8fafc 50%,#f1f5f9 100%)'
-            : 'radial-gradient(circle at 20% 20%,rgba(0,240,255,0.12) 0%,transparent 55%),radial-gradient(circle at 80% 80%,rgba(168,85,247,0.12) 0%,transparent 55%),linear-gradient(145deg,#02040a 0%,#050a16 100%)';
-        }
-        document.querySelectorAll('.lecture-card,.top-appbar,.modal-sheet,.notif-card,.quick-action-card,.time-sim-card,.circular-gauge-container').forEach(function(el) {
-          el.style.background = isLight ? '' : 'rgba(10,16,32,0.95)';
-        });
       }
     }
 
@@ -6522,22 +8022,11 @@
       triggerHaptic(14);
       const html = document.documentElement;
       const cur = html.getAttribute('data-theme') || 'campus';
-      let next = 'campus';
-      if (cur === 'campus') next = 'dark';
-      else if (cur === 'dark') next = 'light';
-      else next = 'campus';
+      const order = ['campus', 'cyber-neon', 'sunset', 'emerald', 'cosmic', 'gold', 'dark', 'light'];
+      const curIdx = order.indexOf(cur);
+      const next = order[(curIdx + 1) % order.length];
 
-      applyThemeAppearance(next);
-      localStorage.setItem('secD_theme', next);
-      syncHoloMenuPills();
-
-      if (next === 'campus') {
-        showToast('🏛️ Quantum Campus Animated Theme Active!');
-      } else if (next === 'dark') {
-        showToast('🌙 Obsidian Dark Theme Active');
-      } else {
-        showToast('☀️ Daylight Pearl White Theme Active');
-      }
+      setTheme(next);
     }
 
     function toggleAnimationTheme() {
@@ -6834,23 +8323,32 @@
       const isTomorrow = (dateObj.toDateString() === tomorrow.toDateString());
       const dateNumStr = dateObj.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
 
-      // Handle Sunday Holiday
-      if (dayIndex === 0) {
-        const holidayTitle = isToday ? 'Sunday Holiday' : (isTomorrow ? 'Sunday (Tomorrow)' : 'Sunday Holiday');
-        const holidaySub = isTomorrow ? 'No classes tomorrow! College resumes Monday.' : 'No college lectures today. Resumes Monday.';
+      // Check Holiday (Quantum Academic Calendar PDF + Sunday + Custom Holidays)
+      const holidayInfo = getHolidayInfo(dateObj);
+      if (holidayInfo && !_forceWeekdayPreview) {
+        const holidayTitle = holidayInfo.name;
+        const holidaySub = holidayInfo.desc;
+        const holidayIcon = holidayInfo.icon || '🎉';
 
         container.innerHTML = `
-          <div class="empty-holiday">
-            <div style="font-size:3rem; margin-bottom:8px;">🏖️</div>
-            <h3 style="color:var(--text-main); font-size:1.15rem; margin-bottom:6px;">${holidayTitle}</h3>
-            <p style="font-size:0.82rem; color:var(--text-sub); line-height:1.4; max-width:300px; margin:0 auto 16px auto;">${holidaySub}</p>
-            <button class="primary-btn" style="max-width:240px; margin:0 auto;" onclick="selectNextMonday()">
-              📅 View Monday's Timetable
-            </button>
+          <div class="empty-holiday-card">
+            <div class="holiday-icon-glow">${holidayIcon}</div>
+            <div class="holiday-badge">${holidayInfo.type ? holidayInfo.type.toUpperCase() : 'OFFICIAL'} HOLIDAY</div>
+            <h3 class="holiday-title">${holidayTitle}</h3>
+            <p class="holiday-desc">${holidaySub}</p>
+            <div class="holiday-quote">"University campus is closed today as per Quantum Academic Calendar Odd Sem 2026-27. No classes scheduled!" ✨</div>
+            <div class="holiday-actions">
+              <button class="primary-btn" style="width:100%; justify-content:center;" onclick="openAcademicCalendarModal()">
+                📅 View Full Academic Calendar
+              </button>
+              <button class="secondary-btn" style="width:100%; justify-content:center;" onclick="toggleForceWeekdayPreview()">
+                👁️ Preview Regular Weekday Schedule
+              </button>
+            </div>
           </div>
         `;
-        if (headerTitle) headerTitle.innerHTML = `<span>🏖️</span> <span>${holidayTitle}</span>`;
-        if (headerSub) headerSub.textContent = holidaySub;
+        if (headerTitle) headerTitle.innerHTML = `<span>${holidayIcon}</span> <span>${holidayTitle}</span>`;
+        if (headerSub) headerSub.textContent = `${dateNumStr} • University Holiday (No Classes Scheduled)`;
         if (countBadge) { countBadge.textContent = 'Holiday'; countBadge.className = 'period-count-badge badge-set-all'; }
 
         // Update viewingDateBanner
@@ -6861,9 +8359,9 @@
             const bannerIcon = document.getElementById('bannerDateIcon');
             const bannerTitle = document.getElementById('bannerDateTitle');
             const bannerSub = document.getElementById('bannerDateSub');
-            if (bannerIcon) bannerIcon.textContent = '🏖️';
-            if (bannerTitle) bannerTitle.textContent = isTomorrow ? "Tomorrow is Sunday (Holiday)" : "Sunday Holiday";
-            if (bannerSub) bannerSub.textContent = `${dateNumStr} • College Closed`;
+            if (bannerIcon) bannerIcon.textContent = holidayIcon;
+            if (bannerTitle) bannerTitle.textContent = isTomorrow ? `Tomorrow is ${holidayTitle}` : holidayTitle;
+            if (bannerSub) bannerSub.textContent = `${dateNumStr} • University Closed`;
           } else {
             banner.style.display = 'none';
           }
@@ -7346,18 +8844,19 @@
         }
       }
 
-      // Sunday & Holiday Check
-      if (isTodayHoliday(now)) {
+      // Sunday & Holiday Check from Quantum Academic Calendar
+      const curHol = getHolidayInfo(now);
+      if (curHol) {
         hero.classList.remove('is-active-live');
         heroRing.style.strokeDashoffset = CIRCLE_CIRCUMFERENCE;
         setTextIfChanged(circleTimer, 'OFF');
-        setTextIfChanged(circleTimerSub, currentDay === 0 ? 'SUNDAY' : 'HOLIDAY');
-        setTextIfChanged(heroSlotBadge, currentDay === 0 ? 'Weekend' : 'Holiday');
-        setTextIfChanged(heroBatchBadge, 'College Off');
-        setTextIfChanged(heroSubjectName, currentDay === 0 ? '🏖️ College Off (Sunday)' : '🏖️ College Off (Holiday)');
-        setTextIfChanged(heroRoomBadge, 'No Lectures Today');
+        setTextIfChanged(circleTimerSub, curHol.type ? curHol.type.toUpperCase() : 'HOLIDAY');
+        setTextIfChanged(heroSlotBadge, curHol.icon || '🎉');
+        setTextIfChanged(heroBatchBadge, 'University Off');
+        setTextIfChanged(heroSubjectName, `${curHol.icon || '🏖️'} ${curHol.name}`);
+        setTextIfChanged(heroRoomBadge, 'No Classes Today');
         if (heroFacultyBadge) heroFacultyBadge.style.display = 'none';
-        setTextIfChanged(orbitStatusTxt, 'College Closed');
+        setTextIfChanged(orbitStatusTxt, curHol.name);
         return;
       }
 
@@ -7373,7 +8872,7 @@
           if (lastFiveMinNotifiedKey !== notifKey) {
             lastFiveMinNotifiedKey = notifKey;
             localStorage.setItem('secD_last_5m_notif', notifKey);
-            dispatchClassNotification(periods[i], todaysSlots[i]);
+            dispatchClassNotification(periods[i], todaysSlots[i], currentSection, 5);
           }
           break;
         }
@@ -8325,26 +9824,59 @@
       renderDayPills();
       selectDay(new Date());
       updateLiveState(true);
-      syncAndroidNotificationPrefs();
-      NotificationLibrary.syncFromNative();
-      NotificationLibrary.updateBadges();
 
-      if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.protocol === 'http:')) {
-        try { navigator.serviceWorker.register('sw.js').catch(() => { }); } catch (e) { }
+      // ── SPLASH SCREEN DISMISS ──
+      // Hide splash after first meaningful paint (content is now visible)
+      const splash = document.getElementById('splashScreen');
+      if (splash) {
+        requestAnimationFrame(() => {
+          splash.classList.add('hide');
+          // Remove from DOM after fade-out animation completes
+          setTimeout(() => { try { splash.remove(); } catch(_){} }, 500);
+        });
+      }
+
+      // ── DEFERRED NON-CRITICAL WORK ──
+      // Push notification sync, service worker, and particle engine to idle time
+      // so they don't block first paint or early interaction
+      const deferredInit = () => {
+        syncAndroidNotificationPrefs();
+        NotificationLibrary.syncFromNative();
+        NotificationLibrary.updateBadges();
+
+        if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.protocol === 'http:')) {
+          try { navigator.serviceWorker.register('sw.js').catch(() => { }); } catch (e) { }
+        }
+
+        // Check OTA update once on launch and when app returns to foreground (zero background polling lag)
+        setTimeout(() => checkInAppUpdate(false), 2500);
+
+        // Launch cosmic stardust ONLY on high-end devices (skip on mobile to prevent lag)
+        const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+        const hasGoodGPU = (navigator.hardwareConcurrency || 2) >= 6 && (navigator.deviceMemory || 2) >= 4;
+        if (!isMobile || hasGoodGPU) {
+          initCosmicStardust();
+        } else {
+          console.info('[Perf] Skipped cosmic stardust on mobile device');
+        }
+      };
+
+      if (typeof requestIdleCallback === 'function') {
+        requestIdleCallback(deferredInit, { timeout: 1200 });
+      } else {
+        setTimeout(deferredInit, 200);
       }
 
       // Lightweight 60fps real-time ticking every second
-      setInterval(() => updateLiveState(false), 1000);
-      // Check OTA update once on launch and when app returns to foreground (zero background polling lag)
-      setTimeout(() => checkInAppUpdate(false), 2500);
+      // Only tick when tab/app is visible — saves CPU when minimized
+      let _liveInterval = setInterval(() => {
+        if (!document.hidden) updateLiveState(false);
+      }, 1000);
       document.addEventListener('visibilitychange', () => {
         if (!document.hidden) {
           updateLiveState(true);
         }
       });
-
-      // Launch multi-color cosmic stardust dynamic particle background
-      initCosmicStardust();
     }
 
     /* ============================================================
@@ -8464,7 +9996,14 @@
       animId = requestAnimationFrame(render);
     }
 
-    window.onload = init;
+    // Use DOMContentLoaded instead of window.onload so init doesn't wait
+    // for external resources (fonts, images) — eliminates white screen lag
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      // DOM already ready (e.g. script at bottom of body)
+      init();
+    }
   </script>
 </body>
 
