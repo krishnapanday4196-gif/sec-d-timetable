@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- SEC-D Timetable - CSE D Timetable - Quantum University Qtimex Official Build -->
 <html lang="en" data-theme="campus">
 
 <head>
@@ -7585,9 +7586,9 @@
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '5.6.0';
-    const LOCAL_APP_VERSION_CODE = 48;
-    const LOCAL_APP_BUILD_HASH = 'c98a9fee5628';
+    const LOCAL_APP_VERSION_NAME = '5.6.1';
+    const LOCAL_APP_VERSION_CODE = 49;
+    const LOCAL_APP_BUILD_HASH = '549e10428166';
 
     let cachedLatestVersionCode = 29;
 
@@ -7681,7 +7682,16 @@
 
       if (hasUpdate) {
         cachedLatestHash = htmlHash;
-        showToast(`🚀 New SEC-D Update (v${versionName || '5.3.0'}) Found! Updating...`);
+        if (banner) {
+          banner.style.display = 'flex';
+          const title = document.getElementById('otaVersionTitle');
+          if (title) title.textContent = `New Update Available! (v${versionName || '5.6.0'})`;
+        }
+        if (otaPill) {
+          otaPill.textContent = `v${versionName || '5.6.0'} Available`;
+          otaPill.className = 'holo-item-pill pill-on';
+        }
+        showToast(`🚀 New Update (v${versionName || '5.6.0'}) Found! Updating...`); (v${versionName || '5.3.0'}) Found! Updating...`);
         setTimeout(() => {
           performInAppUpdate();
         }, 500);
@@ -7771,6 +7781,12 @@
         if (statusLabel) statusLabel.textContent = `App is up to date (v${LOCAL_APP_VERSION_NAME})!`;
         if (isManual) showToast(`✅ App is already on the latest version (v${LOCAL_APP_VERSION_NAME})!`);
       }
+    }
+
+    
+    function performInAppUpdate() {
+      console.info('[OTA] performInAppUpdate invoked -> delegating to executeInAppUpdate()');
+      return executeInAppUpdate();
     }
 
     async function executeInAppUpdate() {
