@@ -5511,9 +5511,9 @@
     </section>
 
     <!-- CIRCULAR 8-PERIOD DAY ORBIT STEPPER -->
-    <div class="orbit-tracker-section">
+    <div class="orbit-tracker-section" id="orbitTrackerSection">
       <div class="orbit-header">
-        <span>Today's 8-Period Orbit</span>
+        <span id="orbitTitleTxt">Today's 8-Period Orbit</span>
         <span id="orbitStatusTxt" style="color:var(--accent);">Period 1 of 8</span>
       </div>
       <div class="orbit-circles-row">
@@ -7496,6 +7496,7 @@
       _forceWeekdayPreview = !_forceWeekdayPreview;
       triggerHaptic(12);
       renderTodayLectures(viewingDate);
+      updateLiveState(true);
       showToast(_forceWeekdayPreview ? '👁️ Showing regular weekday schedule preview' : '🎉 Restored Holiday View');
     }
 
@@ -7883,9 +7884,9 @@
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '5.7.1';
-    const LOCAL_APP_VERSION_CODE = 54;
-    const LOCAL_APP_BUILD_HASH = '8518f0c6e509';
+    const LOCAL_APP_VERSION_NAME = '5.7.2';
+    const LOCAL_APP_VERSION_CODE = 55;
+    const LOCAL_APP_BUILD_HASH = '99cc39ddc7c9';
 
     let cachedLatestVersionCode = 29;
 
@@ -8504,6 +8505,7 @@
       renderDayPills();
       renderTodayLectures(viewingDate);
       updateDateDisplay();
+      updateLiveState(true);
     }
 
     function jumpToTodayLive() {
@@ -8638,7 +8640,9 @@
 
       // Check Holiday (Quantum Academic Calendar PDF + Sunday + Custom Holidays)
       const holidayInfo = getHolidayInfo(dateObj);
+      const orbitSec = document.getElementById('orbitTrackerSection') || document.querySelector('.orbit-tracker-section');
       if (holidayInfo && !_forceWeekdayPreview) {
+        if (orbitSec) orbitSec.style.display = 'none';
         const holidayTitle = holidayInfo.name;
         const holidaySub = holidayInfo.desc;
         const holidayIcon = holidayInfo.icon || '🎉';
@@ -8697,6 +8701,10 @@
             </button>
           </div>
         `;
+      }
+
+      if (orbitSec) {
+        orbitSec.style.display = (dayIndex === 0 && !_forceWeekdayPreview) ? 'none' : '';
       }
 
       const slots = weeklySchedule[dayIndex] || [];
@@ -9112,10 +9120,12 @@
           heroSubjectName: document.getElementById('heroSubjectName'),
           heroRoomBadge: document.getElementById('heroRoomBadge'),
           heroFacultyBadge: document.getElementById('heroFacultyBadge'),
-          orbitStatusTxt: document.getElementById('orbitStatusTxt')
+          orbitStatusTxt: document.getElementById('orbitStatusTxt'),
+          orbitSection: document.getElementById('orbitTrackerSection') || document.querySelector('.orbit-tracker-section'),
+          orbitTitleTxt: document.getElementById('orbitTitleTxt')
         };
       }
-      const { hero, heroRing, circleTimer, circleTimerSub, heroSlotBadge, heroBatchBadge, heroSubjectName, heroRoomBadge, heroFacultyBadge, orbitStatusTxt, liveClock, simTimeLabel } = _liveDom;
+      const { hero, heroRing, circleTimer, circleTimerSub, heroSlotBadge, heroBatchBadge, heroSubjectName, heroRoomBadge, heroFacultyBadge, orbitStatusTxt, orbitSection, orbitTitleTxt, liveClock, simTimeLabel } = _liveDom;
 
       const totalSecs = getCurrentTotalSeconds();
       const currentH = Math.floor(totalSecs / 3600) % 24;
@@ -9136,25 +9146,43 @@
       }
 
       const isViewingToday = (viewingDate.toDateString() === now.toDateString());
-      const minuteKey = `${currentDay}_${currentMinutes}_${viewingDate.toDateString()}_${selectedBatch}`;
+      const minuteKey = `${currentDay}_${currentMinutes}_${viewingDate.toDateString()}_${selectedBatch}_${_forceWeekdayPreview ? 1 : 0}`;
       const minuteChanged = forceDomSync || (minuteKey !== lastRenderedMinuteKey);
+
+      // Sunday & Holiday check for viewing date and today
+      const viewingHol = getHolidayInfo(viewingDate);
+      const viewingHasClasses = (!viewingHol || _forceWeekdayPreview) && viewingDate.getDay() !== 0 && ((weeklySchedule[viewingDate.getDay()] || []).length > 0);
+      const todayHol = getHolidayInfo(now);
+      const todayHasClasses = (!todayHol || _forceWeekdayPreview) && currentDay !== 0 && ((weeklySchedule[currentDay] || []).length > 0);
+
+      // 8-PERIOD ORBIT STEPPER VISIBILITY:
+      // Show ONLY when classes actually exist! Hidden completely on holidays and Sundays.
+      const orbitSec = orbitSection || document.getElementById('orbitTrackerSection') || document.querySelector('.orbit-tracker-section');
+      if (orbitSec) {
+        orbitSec.style.display = viewingHasClasses ? '' : 'none';
+      }
 
       if (minuteChanged) {
         lastRenderedMinuteKey = minuteKey;
         updateDateDisplay();
 
         // Update Orbit Stepper Dots (L1 to L8) only once per minute or on state change
+        // NEVER spin, pulse or blink on holidays or days with no classes!
         document.querySelectorAll('.orbit-dot').forEach((dot, idx) => {
+          if (!viewingHasClasses || !isViewingToday || !todayHasClasses) {
+            dot.classList.remove('active-spinning', 'completed');
+            return;
+          }
           const pCfg = periods[idx];
-          const isPeriodLive = isViewingToday && (currentMinutes >= pCfg.startMins && currentMinutes < pCfg.endMins && currentDay !== 0);
-          const isPeriodDone = isViewingToday && (currentMinutes >= pCfg.endMins && currentDay !== 0);
+          const isPeriodLive = (currentMinutes >= pCfg.startMins && currentMinutes < pCfg.endMins);
+          const isPeriodDone = (currentMinutes >= pCfg.endMins);
 
           dot.classList.toggle('active-spinning', isPeriodLive);
           dot.classList.toggle('completed', isPeriodDone);
         });
 
         // Sync active glowing border in today's card list only once per minute
-        if (isViewingToday) {
+        if (isViewingToday && todayHasClasses) {
           document.querySelectorAll('.lecture-card').forEach(card => {
             const pId = card.dataset.periodId;
             const pCfg = periods.find(p => p.id === pId);
@@ -9168,6 +9196,19 @@
         }
       }
 
+      if (orbitTitleTxt) {
+        const tomorrow = new Date(now);
+        tomorrow.setDate(now.getDate() + 1);
+        const isTomorrow = (viewingDate.toDateString() === tomorrow.toDateString());
+        if (isViewingToday) {
+          setTextIfChanged(orbitTitleTxt, "Today's 8-Period Orbit");
+        } else if (isTomorrow) {
+          setTextIfChanged(orbitTitleTxt, "Tomorrow's 8-Period Orbit");
+        } else {
+          setTextIfChanged(orbitTitleTxt, `${dayNames[viewingDate.getDay()]}'s 8-Period Orbit`);
+        }
+      }
+
       if (!isViewingToday) {
         const tomorrow = new Date(now);
         tomorrow.setDate(now.getDate() + 1);
@@ -9176,21 +9217,21 @@
         } else {
           setTextIfChanged(orbitStatusTxt, `${dayNames[viewingDate.getDay()]}'s 8 Periods`);
         }
+      } else if (!todayHasClasses) {
+        setTextIfChanged(orbitStatusTxt, todayHol ? todayHol.name : 'No Classes');
       }
 
-      // Sunday & Holiday Check from Quantum Academic Calendar
-      const curHol = getHolidayInfo(now);
-      if (curHol) {
+      // Sunday & Holiday Check from Quantum Academic Calendar for Today's Circular Ring
+      if (todayHol && !_forceWeekdayPreview) {
         hero.classList.remove('is-active-live');
         heroRing.style.strokeDashoffset = CIRCLE_CIRCUMFERENCE;
         setTextIfChanged(circleTimer, 'OFF');
-        setTextIfChanged(circleTimerSub, curHol.type ? curHol.type.toUpperCase() : 'HOLIDAY');
-        setTextIfChanged(heroSlotBadge, curHol.icon || '🎉');
+        setTextIfChanged(circleTimerSub, todayHol.type ? todayHol.type.toUpperCase() : 'HOLIDAY');
+        setTextIfChanged(heroSlotBadge, todayHol.icon || '🎉');
         setTextIfChanged(heroBatchBadge, 'University Off');
-        setTextIfChanged(heroSubjectName, `${curHol.icon || '🏖️'} ${curHol.name}`);
+        setTextIfChanged(heroSubjectName, `${todayHol.icon || '🏖️'} ${todayHol.name}`);
         setTextIfChanged(heroRoomBadge, 'No Classes Today');
         if (heroFacultyBadge) heroFacultyBadge.style.display = 'none';
-        setTextIfChanged(orbitStatusTxt, curHol.name);
         return;
       }
 
