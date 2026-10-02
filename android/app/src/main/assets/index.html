@@ -6164,49 +6164,59 @@
 
   <!-- MODAL: ALL SECTIONS FACULTY DIRECTORY & MANAGER -->
   <div class="modal-overlay" id="facultyModal" onclick="closeModalOnOverlay(event, 'facultyModal')">
-    <div class="modal-sheet" style="max-height:88vh; overflow-y:auto;">
+    <div class="modal-sheet" style="max-height:90vh; display:flex; flex-direction:column; padding:16px 14px 12px 14px; box-sizing:border-box;">
       <div class="modal-handle"></div>
-      <div class="modal-header">
+
+      <!-- Header: Clean responsive row -->
+      <div class="modal-header" style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; flex-shrink:0;">
         <div style="display:flex; align-items:center; gap:8px;">
-          <div class="modal-title">👨‍🏫 Faculty Directory & Manager</div>
+          <div class="modal-title" style="font-size:1.05rem; font-weight:800;">👨‍🏫 Faculty Directory</div>
           <span id="facultySectionBadge" class="period-count-badge badge-set-a" style="font-size:0.65rem;">Sec-D</span>
-          <span id="facultyAdminStatusBadge" class="period-count-badge" style="font-size:0.65rem; background:rgba(245,158,11,0.18); color:#f59e0b; border:1px solid rgba(245,158,11,0.45); cursor:pointer;" onclick="toggleFacultyAdminMode()">🔒 Admin Locked</span>
+          <span id="facultyAdminStatusBadge" class="period-count-badge" style="font-size:0.65rem; background:rgba(245,158,11,0.18); color:#f59e0b; border:1px solid rgba(245,158,11,0.45); cursor:pointer;" onclick="toggleFacultyAdminMode()">🔒 Protected</span>
         </div>
         <button class="modal-close-btn" onclick="closeModal('facultyModal')">✕</button>
       </div>
 
-      <!-- Section Tabs (Sec-A to Sec-L) -->
-      <div style="flex-shrink:0; margin-bottom:4px;">
-        <div style="font-size:0.7rem; font-weight:800; color:var(--text-sub); margin-bottom:4px; letter-spacing:0.5px;">
-          SELECT SECTION TO VIEW / EDIT:
-        </div>
-        <div class="fac-sec-tabs" id="facSecTabsTrack">
+      <!-- Search Input: Full-width row -->
+      <div style="margin-bottom:8px; flex-shrink:0;">
+        <input type="text" id="facultySearchInput" class="modal-input" placeholder="🔍 Search faculty, teacher or subject..." style="width:100%; box-sizing:border-box; padding:9px 12px; font-size:0.82rem; border-radius:10px;" oninput="filterFacultyDirectoryList()">
+      </div>
+
+      <!-- Section Selector Tabs (Sec-A to Sec-L) -->
+      <div style="flex-shrink:0; margin-bottom:6px;">
+        <div class="fac-sec-tabs" id="facSecTabsTrack" style="margin:0 !important; min-height:42px !important; height:42px !important; padding:2px 0 6px 0 !important;">
           <!-- Rendered by renderFacultySectionTabs() -->
         </div>
       </div>
 
-      <!-- Search & Add Actions Bar -->
-      <div style="display:flex; gap:8px; margin:10px 0;">
-        <input type="text" id="facultySearchInput" class="modal-input" placeholder="🔍 Search faculty or subject..." style="flex:1; padding:8px 12px; font-size:0.8rem;" oninput="filterFacultyDirectoryList()">
-        <button id="facultyAdminToggleBtn" class="secondary-btn" style="width:auto; padding:8px 12px; font-size:0.75rem; white-space:nowrap; border-color:rgba(245,158,11,0.5); color:#f59e0b;" onclick="toggleFacultyAdminMode()">🔑 Admin Mode</button>
-        <button class="primary-btn" style="width:auto; padding:8px 14px; font-size:0.75rem; white-space:nowrap;" onclick="openAddFacultyModal()">
-          ➕ Add Faculty
-        </button>
-      </div>
-
-      <!-- Faculty Cards List -->
-      <div id="facultyDirectoryList" style="display:flex; flex-direction:column; gap:8px; max-height:50vh; overflow-y:auto; padding-right:4px;">
+      <!-- Faculty Cards List: Clean scrollable container -->
+      <div id="facultyDirectoryList" style="display:flex; flex-direction:column; gap:8px; flex:1; min-height:180px; max-height:50vh; overflow-y:auto; padding-right:2px; box-sizing:border-box;">
         <!-- Populated dynamically -->
       </div>
 
-      <div style="display:flex; gap:8px; margin-top:12px;">
-        <button class="primary-btn" id="saveFacultyBtn" style="flex:2;" onclick="saveAllFacultyNames()">
-          💾 Save All Names
-        </button>
-        <button class="secondary-btn" id="resetFacultyBtn" style="flex:1;" onclick="resetCurrentSectionFaculty()">
-          ↺ Reset Section
+      <!-- Footer: Locked Mode (Normal Students View) -->
+      <div id="facModalLockedFooter" style="display:flex; align-items:center; justify-content:space-between; margin-top:8px; padding-top:8px; border-top:1px solid rgba(255,255,255,0.08); flex-shrink:0;">
+        <span style="font-size:0.7rem; color:var(--text-sub);">🔒 Official Faculty Directory (Verified)</span>
+        <button class="secondary-btn" style="padding:5px 12px; font-size:0.72rem; border-color:rgba(56,189,248,0.4); color:var(--accent);" onclick="toggleFacultyAdminMode()">
+          🔑 Admin Login
         </button>
       </div>
+
+      <!-- Footer: Admin Mode (Owner Only View) -->
+      <div id="facModalAdminFooter" style="display:none; flex-direction:column; gap:6px; margin-top:8px; padding-top:8px; border-top:1px solid rgba(16,185,129,0.3); flex-shrink:0;">
+        <div style="display:flex; gap:8px;">
+          <button class="primary-btn" style="flex:1; padding:8px; font-size:0.75rem; justify-content:center;" onclick="openAddFacultyModal()">
+            ➕ Add Faculty
+          </button>
+          <button class="secondary-btn" style="flex:1; padding:8px; font-size:0.75rem; justify-content:center;" onclick="resetCurrentSectionFaculty()">
+            ↺ Reset Section
+          </button>
+        </div>
+        <button class="secondary-btn" style="width:100%; padding:6px; font-size:0.72rem; justify-content:center; color:#ef4444; border-color:rgba(239,68,68,0.4);" onclick="toggleFacultyAdminMode()">
+          🔒 Lock & Exit Admin Mode
+        </button>
+      </div>
+
     </div>
   </div>
 
@@ -6421,7 +6431,8 @@
     let _isFacultyAdminUnlocked = false;
     let _pendingAdminAction = null;
     const PIN_SALT = '_qtimex_secD_salt_2026';
-    const DEFAULT_PIN_HASH = '094b91a60397c0b6f73bcc47c3bdfe2042841ef2ffa2b4cc079f57f884c1986a'; // PIN: 2026
+    // Salted SHA-256 cryptographic hash of strong Master Admin Password: Krishna@SecD#2026
+    const DEFAULT_PIN_HASH = 'e061f1c876c7a6a2a19029a540935352d435aa7ba0cd8380f38226ce688134a6';
     const INTEGRITY_SECRET = '::SEC_D_TIMETABLE_INTEGRITY_KEY_9921';
 
     // Pure JS Cryptographic SHA-256 for client-side synchronous security checks
@@ -6502,7 +6513,7 @@
     }
 
     function getStoredPinHash() {
-      return localStorage.getItem('qtimex_admin_pin_hash') || DEFAULT_PIN_HASH;
+      return DEFAULT_PIN_HASH;
     }
 
     function isFacultyAdminUnlocked() {
@@ -6519,7 +6530,8 @@
 
     function updateFacultyAdminUI() {
       const badge = document.getElementById('facultyAdminStatusBadge');
-      const btn = document.getElementById('facultyAdminToggleBtn');
+      const lockedFooter = document.getElementById('facModalLockedFooter');
+      const adminFooter = document.getElementById('facModalAdminFooter');
       const pmLockBadge = document.getElementById('pmFacLockBadge');
       const pmFacInput = document.getElementById('pmFacultyInput');
 
@@ -6530,22 +6542,20 @@
           badge.style.color = '#10b981';
           badge.style.borderColor = 'rgba(16, 185, 129, 0.5)';
         } else {
-          badge.textContent = '🔒 Admin Locked';
+          badge.textContent = '🔒 Protected';
           badge.style.background = 'rgba(245, 158, 11, 0.18)';
           badge.style.color = '#f59e0b';
           badge.style.borderColor = 'rgba(245, 158, 11, 0.45)';
         }
       }
 
-      if (btn) {
+      if (lockedFooter && adminFooter) {
         if (_isFacultyAdminUnlocked) {
-          btn.textContent = '🔒 Lock Admin';
-          btn.style.borderColor = 'rgba(239, 68, 68, 0.5)';
-          btn.style.color = '#ef4444';
+          lockedFooter.style.display = 'none';
+          adminFooter.style.display = 'flex';
         } else {
-          btn.textContent = '🔑 Admin Mode';
-          btn.style.borderColor = 'rgba(245, 158, 11, 0.5)';
-          btn.style.color = '#f59e0b';
+          lockedFooter.style.display = 'flex';
+          adminFooter.style.display = 'none';
         }
       }
 
@@ -6582,13 +6592,13 @@
 
     function verifyAdminPinSubmit() {
       const pinInput = document.getElementById('adminPinInput');
-      const enteredPin = (pinInput ? pinInput.value : '').trim();
+      const entered = (pinInput ? pinInput.value : '').trim();
       const err = document.getElementById('adminPinError');
-      if (!enteredPin) {
-        if (err) { err.textContent = '⚠️ Please enter Master PIN!'; err.style.display = 'block'; }
+      if (!entered) {
+        if (err) { err.textContent = '⚠️ Please enter Master Password!'; err.style.display = 'block'; }
         return;
       }
-      const enteredHash = sha256(enteredPin + PIN_SALT);
+      const enteredHash = sha256(entered + PIN_SALT);
       if (enteredHash === getStoredPinHash()) {
         _isFacultyAdminUnlocked = true;
         closeModal('adminPinModal');
@@ -6604,10 +6614,10 @@
       } else {
         triggerHaptic(20);
         if (err) {
-          err.textContent = '⚠️ Incorrect Admin PIN! Access denied.';
+          err.textContent = '⚠️ Incorrect Admin Password! Access denied.';
           err.style.display = 'block';
         }
-        showToast('❌ Incorrect Admin PIN!');
+        showToast('❌ Incorrect Admin Password!');
       }
     }
 
@@ -6623,47 +6633,6 @@
           showToast('🔓 Admin Mode Active');
         });
       }
-    }
-
-    function openChangeAdminPinModal() {
-      closeModal('adminPinModal');
-      const cInp = document.getElementById('currentPinInput');
-      const nInp = document.getElementById('newPinInput');
-      const cfInp = document.getElementById('confirmNewPinInput');
-      if (cInp) cInp.value = '';
-      if (nInp) nInp.value = '';
-      if (cfInp) cfInp.value = '';
-      openModal('changePinModal');
-    }
-
-    function submitChangeAdminPin() {
-      const curPin = (document.getElementById('currentPinInput') || {}).value || '';
-      const newPin = (document.getElementById('newPinInput') || {}).value || '';
-      const confPin = (document.getElementById('confirmNewPinInput') || {}).value || '';
-
-      if (!curPin || !newPin || !confPin) {
-        showToast('⚠️ Please fill all PIN fields!');
-        return;
-      }
-      if (sha256(curPin + PIN_SALT) !== getStoredPinHash()) {
-        showToast('❌ Current PIN is incorrect!');
-        return;
-      }
-      if (newPin.length < 4) {
-        showToast('⚠️ New PIN must be at least 4 digits!');
-        return;
-      }
-      if (newPin !== confPin) {
-        showToast('⚠️ New PIN and Confirm PIN do not match!');
-        return;
-      }
-
-      const newHash = sha256(newPin + PIN_SALT);
-      localStorage.setItem('qtimex_admin_pin_hash', newHash);
-      _isFacultyAdminUnlocked = true;
-      closeModal('changePinModal');
-      showToast('✅ Admin PIN changed successfully!');
-      updateFacultyAdminUI();
     }
 
     // Get custom faculty map for a section from localStorage (with anti-tamper signature check)
@@ -6700,7 +6669,7 @@
     // Save custom faculty map with cryptographic signature (Admin Only)
     function saveSectionCustomFacultyMap(secKey, map) {
       if (!_isFacultyAdminUnlocked) {
-        showToast('🔒 Unauthorized! Admin PIN required to modify faculty.');
+        showToast('🔒 Unauthorized! Admin Password required to modify faculty.');
         return false;
       }
       try {
@@ -6801,9 +6770,11 @@
         listEl.innerHTML = `
           <div style="text-align:center; padding:24px 10px; color:var(--text-sub); font-size:0.8rem;">
             🔍 No faculty found matching "${searchQuery}".<br>
-            <button class="primary-btn" style="margin:10px auto 0 auto;" onclick="openAddFacultyModal()">
-              ➕ Add New Faculty
-            </button>
+            ${_isFacultyAdminUnlocked ? `
+              <button class="primary-btn" style="margin:10px auto 0 auto;" onclick="openAddFacultyModal()">
+                ➕ Add New Faculty
+              </button>
+            ` : ''}
           </div>
         `;
         return;
@@ -6812,31 +6783,40 @@
       filtered.forEach((subj, idx) => {
         const currentFaculty = custMap[subj] || defMap[subj] || `${activeFacultyModalSection} Faculty`;
         const isCustom = Boolean(custMap[subj]);
-        const initials = currentFaculty.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase() || '👨‍🏫';
+        const initials = currentFaculty.split(' ').filter(Boolean).map(n => n[0]).join('').slice(0, 2).toUpperCase() || '👨‍🏫';
+        const room = ALL_SECTIONS[activeFacultyModalSection] ? ALL_SECTIONS[activeFacultyModalSection].room : 'Campus';
 
         const card = document.createElement('div');
         card.className = 'fac-card-item';
         card.innerHTML = `
-          <div class="fac-header-row">
-            <div class="fac-avatar-name">
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:10px;">
+            <div style="display:flex; align-items:center; gap:10px; min-width:0; flex:1;">
               <div class="fac-avatar">${initials}</div>
-              <div>
-                <div class="fac-name-text">${currentFaculty}</div>
-                <div class="fac-subject-pill" title="${subj}">${subj}</div>
+              <div style="min-width:0; flex:1;">
+                <div class="fac-name-text" style="font-size:0.88rem; font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${currentFaculty}</div>
+                <div style="display:flex; align-items:center; gap:6px; margin-top:3px; flex-wrap:wrap;">
+                  <span class="fac-subject-pill" title="${subj}">${subj}</span>
+                  <span class="fac-room-badge">📍 ${room}</span>
+                  ${isCustom ? '<span style="font-size:0.58rem; color:var(--accent); border:1px solid var(--accent); padding:1px 5px; border-radius:5px; font-weight:700;">Custom</span>' : ''}
+                </div>
               </div>
             </div>
-            ${isCustom ? '<span style="font-size:0.6rem; color:var(--accent); border:1px solid var(--accent); padding:1px 5px; border-radius:6px; font-weight:700;">Custom</span>' : ''}
-          </div>
-          <div class="fac-actions-row">
-            <span class="fac-room-badge">📍 ${ALL_SECTIONS[activeFacultyModalSection] ? ALL_SECTIONS[activeFacultyModalSection].room : 'Campus'}</span>
-            <div style="display:flex; gap:6px;">
-              <button class="secondary-btn" style="padding:4px 8px; font-size:0.7rem;" onclick="editFaculty('${activeFacultyModalSection}', '${subj.replace(/'/g, "\\'")}')">
-                ${_isFacultyAdminUnlocked ? '✏️ Edit' : '🔒 Edit'}
-              </button>
-              ${isCustom ? `<button class="secondary-btn" style="padding:4px 8px; font-size:0.7rem; color:#ef4444; border-color:rgba(239,68,68,0.4);" onclick="deleteCustomFaculty('${activeFacultyModalSection}', '${subj.replace(/'/g, "\\'")}')">
-                🗑️
-              </button>` : ''}
-            </div>
+            ${_isFacultyAdminUnlocked ? `
+              <div style="display:flex; gap:6px; flex-shrink:0;">
+                <button class="secondary-btn" style="padding:5px 9px; font-size:0.72rem;" onclick="editFaculty('${activeFacultyModalSection}', '${subj.replace(/'/g, "\\'")}')">
+                  ✏️ Edit
+                </button>
+                ${isCustom ? `
+                  <button class="secondary-btn" style="padding:5px 8px; font-size:0.72rem; color:#ef4444; border-color:rgba(239,68,68,0.4);" onclick="deleteCustomFaculty('${activeFacultyModalSection}', '${subj.replace(/'/g, "\\'")}')">
+                    🗑️
+                  </button>
+                ` : ''}
+              </div>
+            ` : `
+              <div style="flex-shrink:0;">
+                <span style="font-size:0.62rem; color:var(--text-sub); background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); padding:2px 7px; border-radius:6px; font-weight:600;">Official</span>
+              </div>
+            `}
           </div>
         `;
         listEl.appendChild(card);
@@ -6944,6 +6924,7 @@
         updateLiveState(true);
       });
     }
+    
 
     // State Variables
     let selectedBatch = localStorage.getItem('secD_batch_pref') || 'Set-A';
@@ -7903,8 +7884,8 @@
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
     const LOCAL_APP_VERSION_NAME = '5.7.1';
-    const LOCAL_APP_VERSION_CODE = 53;
-    const LOCAL_APP_BUILD_HASH = 'f9a8fc178ee7';
+    const LOCAL_APP_VERSION_CODE = 54;
+    const LOCAL_APP_BUILD_HASH = '8518f0c6e509';
 
     let cachedLatestVersionCode = 29;
 
@@ -8657,33 +8638,14 @@
 
       // Check Holiday (Quantum Academic Calendar PDF + Sunday + Custom Holidays)
       const holidayInfo = getHolidayInfo(dateObj);
-      let holidayBannerHtml = '';
       if (holidayInfo && !_forceWeekdayPreview) {
         const holidayTitle = holidayInfo.name;
         const holidaySub = holidayInfo.desc;
         const holidayIcon = holidayInfo.icon || '🎉';
 
-        holidayBannerHtml = `
-          <div class="empty-holiday-card" style="margin-bottom:16px;">
-            <div class="holiday-icon-glow">${holidayIcon}</div>
-            <div class="holiday-badge">${holidayInfo.type ? holidayInfo.type.toUpperCase() : 'OFFICIAL'} HOLIDAY</div>
-            <h3 class="holiday-title">${holidayTitle}</h3>
-            <p class="holiday-desc">${holidaySub}</p>
-            <div class="holiday-quote">"University campus is closed today as per Quantum Academic Calendar Odd Sem 2026-27. No classes scheduled!" ✨</div>
-            <div class="holiday-actions">
-              <button class="primary-btn" style="width:100%; justify-content:center;" onclick="openAcademicCalendarModal()">
-                📅 View Full Academic Calendar
-              </button>
-            </div>
-          </div>
-          <div style="display:flex; align-items:center; justify-content:space-between; margin:10px 0 12px 0; padding:0 4px;">
-            <span style="font-size:0.75rem; font-weight:800; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.06em;">📋 ${dayName} Routine Reference</span>
-            <span style="font-size:0.65rem; background:rgba(244, 63, 94, 0.18); color:var(--live-red); padding:3px 8px; border-radius:12px; font-weight:700;">🏖️ Holiday (Off)</span>
-          </div>
-        `;
         if (headerTitle) headerTitle.innerHTML = `<span>${holidayIcon}</span> <span>${holidayTitle}</span>`;
-        if (headerSub) headerSub.textContent = `${dateNumStr} • University Holiday (${dayName} Classes Off)`;
-        if (countBadge) { countBadge.textContent = 'Holiday'; countBadge.className = 'period-count-badge badge-set-all'; }
+        if (headerSub) headerSub.textContent = `${dateNumStr} • University Holiday (No Classes Scheduled)`;
+        if (countBadge) { countBadge.textContent = 'Holiday (Off)'; countBadge.className = 'period-count-badge badge-set-all'; }
 
         // Update viewingDateBanner
         const banner = document.getElementById('viewingDateBanner');
@@ -8701,18 +8663,40 @@
           }
         }
 
-        // Sunday Weekend: Campus closed, show quick Monday preview
-        if (dayIndex === 0) {
-          container.innerHTML = holidayBannerHtml + `
-            <div style="text-align:center; padding:24px 16px;">
-              <p style="font-size:0.85rem; color:var(--text-sub); margin-bottom:12px;">Enjoy your Sunday! Classes will resume on Monday.</p>
-              <button class="secondary-btn" style="display:inline-flex; align-items:center; gap:6px; margin:0 auto;" onclick="selectNextMonday()">
-                📅 View Monday Routine →
+        // ON HOLIDAYS: Campus is closed — DO NOT RENDER ANY CLASSES!
+        container.innerHTML = `
+          <div class="empty-holiday-card" style="margin-bottom:16px;">
+            <div class="holiday-icon-glow">${holidayIcon}</div>
+            <div class="holiday-badge">${holidayInfo.type ? holidayInfo.type.toUpperCase() : 'OFFICIAL'} HOLIDAY</div>
+            <h3 class="holiday-title">${holidayTitle}</h3>
+            <p class="holiday-desc">${holidaySub}</p>
+            <div class="holiday-quote">"University campus is closed today as per Quantum Academic Calendar. No lectures or classes are scheduled!" ✨</div>
+            <div class="holiday-actions" style="display:flex; flex-direction:column; gap:8px;">
+              <button class="primary-btn" style="width:100%; justify-content:center;" onclick="openAcademicCalendarModal()">
+                📅 View Full Academic Calendar
+              </button>
+              <button class="secondary-btn" style="width:100%; justify-content:center; font-size:0.75rem; border-color:rgba(255,255,255,0.12); color:var(--text-sub);" onclick="toggleForceWeekdayPreview()">
+                👁️ Preview Regular ${dayName} Routine
               </button>
             </div>
-          `;
-          return;
-        }
+          </div>
+        `;
+        return; // <--- IMMEDIATELY RETURN: NO CLASSES SHOWN ON HOLIDAY!
+      }
+
+      // If user explicitly chose to preview routine during a holiday:
+      let holidayBannerHtml = '';
+      if (holidayInfo && _forceWeekdayPreview) {
+        holidayBannerHtml = `
+          <div style="background:rgba(244,63,94,0.15); border:1px solid rgba(244,63,94,0.35); border-radius:12px; padding:10px 14px; margin-bottom:12px; display:flex; align-items:center; justify-content:space-between; gap:10px;">
+            <div style="font-size:0.78rem; color:#f87171;">
+              <strong>${holidayInfo.icon || '🕊️'} ${holidayInfo.name}</strong> • Classes are officially OFF today.
+            </div>
+            <button class="secondary-btn" style="padding:4px 8px; font-size:0.7rem; white-space:nowrap;" onclick="toggleForceWeekdayPreview()">
+              🏖️ Holiday View
+            </button>
+          </div>
+        `;
       }
 
       const slots = weeklySchedule[dayIndex] || [];
@@ -10237,69 +10221,36 @@
     }
   </script>
 
-  <!-- MODAL: MASTER ADMIN PIN VERIFICATION (FACULTY LOCK PROTECTION) -->
+  <!-- MODAL: MASTER ADMIN AUTHENTICATION (FACULTY LOCK PROTECTION) -->
   <div class="modal-overlay" id="adminPinModal" onclick="closeModalOnOverlay(event, 'adminPinModal')">
-    <div class="modal-sheet" style="max-width:390px;">
+    <div class="modal-sheet" style="max-width:380px;">
       <div class="modal-handle"></div>
       <div class="modal-header">
         <div class="modal-title" style="display:flex; align-items:center; gap:8px;">
-          <span>🔐</span> <span>Faculty Admin Security</span>
+          <span>🔐</span> <span>Master Admin Verification</span>
         </div>
         <button class="modal-close-btn" onclick="closeModal('adminPinModal')">✕</button>
       </div>
       <div style="padding:10px 0;">
         <div style="font-size:0.82rem; color:var(--text-muted); margin-bottom:14px; line-height:1.45;">
-          Faculty details are protected. Only the authorized Admin can add, edit, or reset faculty names.
+          Faculty details are protected. Only the official administrator can modify faculty records.
         </div>
         <div class="form-group">
-          <label for="adminPinInput">Enter Master Admin PIN:</label>
-          <input type="password" id="adminPinInput" class="modal-input" placeholder="Default PIN: 2026" inputmode="numeric" style="font-size:1.15rem; letter-spacing:5px; text-align:center; font-weight:700;" maxlength="10" onkeydown="if(event.key==='Enter') verifyAdminPinSubmit()">
+          <label for="adminPinInput">Master Admin Password:</label>
+          <input type="password" id="adminPinInput" class="modal-input" placeholder="Enter Master Password" style="font-size:1.05rem; letter-spacing:2px; text-align:center; font-weight:700;" onkeydown="if(event.key==='Enter') verifyAdminPinSubmit()">
         </div>
         <div id="adminPinError" style="display:none; color:#ef4444; font-size:0.8rem; margin:8px 0; font-weight:700; text-align:center;">
-          ⚠️ Incorrect Admin PIN! Access denied.
-        </div>
-        <div style="display:flex; gap:8px; margin-top:14px;">
-          <button class="secondary-btn" style="flex:1;" onclick="closeModal('adminPinModal')">Cancel</button>
-          <button class="primary-btn" style="flex:2;" onclick="verifyAdminPinSubmit()">🔓 Unlock Admin</button>
-        </div>
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:14px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.08);">
-          <span style="font-size:0.7rem; color:var(--text-sub);">Default PIN: 2026</span>
-          <button style="background:none; border:none; color:var(--accent); font-size:0.75rem; cursor:pointer; font-weight:600; text-decoration:underline;" onclick="openChangeAdminPinModal()">Change PIN</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL: CHANGE ADMIN PIN -->
-  <div class="modal-overlay" id="changePinModal" onclick="closeModalOnOverlay(event, 'changePinModal')">
-    <div class="modal-sheet" style="max-width:390px;">
-      <div class="modal-handle"></div>
-      <div class="modal-header">
-        <div class="modal-title">🔑 Change Master Admin PIN</div>
-        <button class="modal-close-btn" onclick="closeModal('changePinModal')">✕</button>
-      </div>
-      <div style="padding:10px 0;">
-        <div class="form-group">
-          <label for="currentPinInput">Current Admin PIN:</label>
-          <input type="password" id="currentPinInput" class="modal-input" placeholder="Current PIN" inputmode="numeric" maxlength="10">
-        </div>
-        <div class="form-group" style="margin-top:8px;">
-          <label for="newPinInput">New Admin PIN:</label>
-          <input type="password" id="newPinInput" class="modal-input" placeholder="Enter new PIN" inputmode="numeric" maxlength="10">
-        </div>
-        <div class="form-group" style="margin-top:8px;">
-          <label for="confirmNewPinInput">Confirm New PIN:</label>
-          <input type="password" id="confirmNewPinInput" class="modal-input" placeholder="Re-enter new PIN" inputmode="numeric" maxlength="10">
+          ⚠️ Incorrect Admin Password! Access denied.
         </div>
         <div style="display:flex; gap:8px; margin-top:16px;">
-          <button class="secondary-btn" style="flex:1;" onclick="closeModal('changePinModal')">Cancel</button>
-          <button class="primary-btn" style="flex:2;" onclick="submitChangeAdminPin()">💾 Save New PIN</button>
+          <button class="secondary-btn" style="flex:1;" onclick="closeModal('adminPinModal')">Cancel</button>
+          <button class="primary-btn" style="flex:2;" onclick="verifyAdminPinSubmit()">🔓 Verify Admin</button>
         </div>
       </div>
     </div>
   </div>
 
-<script>
+  <script>
     // ── PRIVACY & ANTI-TAMPER SECURITY ENFORCEMENT ──
     try {
       // Prevent unauthorized context menu inspecting
@@ -10325,3 +10276,4 @@
 </body>
 
 </html>
+
