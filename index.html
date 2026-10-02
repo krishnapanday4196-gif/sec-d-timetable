@@ -7922,42 +7922,33 @@
     function dismissUpdateBanner() {
       const banner = document.getElementById('inAppUpdateBanner');
       if (banner) banner.style.display = 'none';
-      const key = cachedLatestHash || LOCAL_APP_VERSION_NAME;
-      localStorage.setItem('secD_dismissed_update_ver', key);
+      const codeToDismiss = cachedLatestVersionCode || (LOCAL_APP_VERSION_CODE + 1);
+      localStorage.setItem('secD_dismissed_update_code', String(codeToDismiss));
+      showToast('Update reminder dismissed');
     }
 
     function openUpdateModal() {
       triggerHaptic(10);
       openModal('updateModal');
-      checkInAppUpdate(false);
+      checkInAppUpdate(true);
     }
 
-    // Determines strictly if a genuinely newer update exists
-    function isNewUpdateAvailable(serverVersionName, serverVersionCode, serverHtmlHash) {
+    // Determines strictly if a genuinely newer update exists based strictly on versionCode integer
+    function isNewUpdateAvailable(serverVersionName, serverVersionCode) {
       const sCode = parseInt(serverVersionCode, 10) || 0;
-      const effectiveCode = getEffectiveVersionCode();
-      const effectiveHash = getEffectiveHash();
+      const currentCode = LOCAL_APP_VERSION_CODE;
 
-      // 1. If server versionCode is strictly higher, it's definitely an update
-      if (sCode > effectiveCode) {
+      // An update is ONLY valid if the server version code is strictly GREATER than current app version code!
+      if (sCode > currentCode) {
+        // If user already dismissed this specific version, do not prompt repeatedly
+        const dismissed = parseInt(localStorage.getItem('secD_dismissed_update_code'), 10) || 0;
+        if (dismissed >= sCode) {
+          return false;
+        }
         return true;
       }
 
-      // 2. If server version code is less than current build: NOT an update
-      if (sCode > 0 && sCode < effectiveCode) {
-        return false;
-      }
-
-      // 3. If server hash matches what is already running or stored: NOT an update
-      if (serverHtmlHash && (serverHtmlHash === effectiveHash || serverHtmlHash === LOCAL_APP_BUILD_HASH)) {
-        return false;
-      }
-
-      // 4. Same version code but new hash found
-      if (serverHtmlHash && serverHtmlHash !== effectiveHash && serverHtmlHash !== LOCAL_APP_BUILD_HASH) {
-        return true;
-      }
-
+      // If server version code <= current build: APP IS CURRENT, NO UPDATE!
       return false;
     }
 
@@ -7976,26 +7967,29 @@
       const otaPill = document.getElementById('menuOtaPill');
       const banner = document.getElementById('inAppUpdateBanner');
 
-      const hasUpdate = isNewUpdateAvailable(versionName, serverVersionCode, htmlHash);
+      const hasUpdate = isNewUpdateAvailable(versionName, serverVersionCode);
 
       if (hasUpdate) {
         cachedLatestHash = htmlHash;
+        cachedLatestVersionCode = parseInt(serverVersionCode, 10) || 0;
         if (banner) {
           banner.style.display = 'flex';
           const title = document.getElementById('otaVersionTitle');
-          if (title) title.textContent = `New Update Available! (v${versionName || '5.6.0'})`;
+          const sub = document.getElementById('otaVersionSub');
+          if (title) title.textContent = `New Update Available! (v${versionName || 'Latest'})`;
+          if (sub) sub.textContent = 'Tap Update Now to install the latest timetable.';
         }
         if (otaPill) {
-          otaPill.textContent = `v${versionName || '5.6.0'} Available`;
+          otaPill.textContent = `v${versionName || ''} Available`;
           otaPill.className = 'holo-item-pill pill-on';
         }
-        showToast(`🚀 New Update (v${versionName || '5.7.0'}) Found! Updating...`);
-        setTimeout(() => {
-          performInAppUpdate();
-        }, 500);
+        if (statusLabel) statusLabel.textContent = `New v${versionName || ''} is available!`;
+        if (isManual) {
+          showToast(`🚀 New Version (v${versionName || ''}) available! Click 'Update Now'.`);
+        }
       } else {
         if (banner) banner.style.display = 'none';
-        if (otaPill) otaPill.textContent = 'v4.7 Latest';
+        if (otaPill) otaPill.textContent = `v${LOCAL_APP_VERSION_NAME} Latest`;
         if (statusLabel) statusLabel.textContent = `App is up to date (v${LOCAL_APP_VERSION_NAME})!`;
         if (isManual) showToast(`✅ App is already on the latest version (v${LOCAL_APP_VERSION_NAME})!`);
       }
@@ -8065,17 +8059,29 @@
       const banner = document.getElementById('inAppUpdateBanner');
       const otaPill = document.getElementById('menuOtaPill');
 
-      const hasUpdate = isNewUpdateAvailable(data.versionName, data.versionCode, data.htmlHash);
+      const hasUpdate = isNewUpdateAvailable(data.versionName, data.versionCode);
 
       if (hasUpdate) {
         cachedLatestHash = data.htmlHash;
-        showToast(`🚀 New SEC-D Update (v${data.versionName || '5.3.0'}) Found! Updating...`);
-        setTimeout(() => {
-          performInAppUpdate();
-        }, 500);
+        cachedLatestVersionCode = parseInt(data.versionCode, 10) || 0;
+        if (banner) {
+          banner.style.display = 'flex';
+          const title = document.getElementById('otaVersionTitle');
+          const sub = document.getElementById('otaVersionSub');
+          if (title) title.textContent = `New Update Available! (v${data.versionName || ''})`;
+          if (sub) sub.textContent = 'Tap Update Now to install the latest timetable.';
+        }
+        if (otaPill) {
+          otaPill.textContent = `v${data.versionName || ''} Available`;
+          otaPill.className = 'holo-item-pill pill-on';
+        }
+        if (statusLabel) statusLabel.textContent = `New v${data.versionName || ''} is available!`;
+        if (isManual) {
+          showToast(`🚀 New Version (v${data.versionName || ''}) available! Click 'Update Now'.`);
+        }
       } else {
         if (banner) banner.style.display = 'none';
-        if (otaPill) otaPill.textContent = 'v4.7 Latest';
+        if (otaPill) otaPill.textContent = `v${LOCAL_APP_VERSION_NAME} Latest`;
         if (statusLabel) statusLabel.textContent = `App is up to date (v${LOCAL_APP_VERSION_NAME})!`;
         if (isManual) showToast(`✅ App is already on the latest version (v${LOCAL_APP_VERSION_NAME})!`);
       }
@@ -8111,6 +8117,9 @@
           if (cachedLatestHash) {
             localStorage.setItem('secD_local_hash', cachedLatestHash);
             localStorage.setItem('secD_dismissed_update_ver', cachedLatestHash);
+          }
+          if (cachedLatestVersionCode) {
+            localStorage.setItem('secD_dismissed_update_code', String(cachedLatestVersionCode));
           }
           try {
             NotificationLibrary.addNotification({
@@ -8163,6 +8172,9 @@
 
           localStorage.setItem('secD_local_hash', cachedLatestHash || 'latest');
           localStorage.setItem('secD_dismissed_update_ver', cachedLatestHash || 'latest');
+          if (cachedLatestVersionCode) {
+            localStorage.setItem('secD_dismissed_update_code', String(cachedLatestVersionCode));
+          }
           showToast(`🎉 App Updated to v${LOCAL_APP_VERSION_NAME}!`);
           setTimeout(() => window.location.reload(true), 350);
           return;

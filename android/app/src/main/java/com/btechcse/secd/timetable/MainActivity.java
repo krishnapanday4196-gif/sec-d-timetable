@@ -45,7 +45,7 @@ import java.security.MessageDigest;
 
 public class MainActivity extends Activity {
     private WebView mWebView;
-    private static final int CURRENT_APK_VERSION = 51;
+    private static final int CURRENT_APK_VERSION = 55;
     public static final String GITHUB_APK_SHARE_URL = "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/SecD_Timetable.apk";
     public static final String GOOGLE_DRIVE_SHARE_URL = GITHUB_APK_SHARE_URL;
     private ValueCallback<Uri[]> mFilePathCallback;
@@ -174,7 +174,6 @@ public class MainActivity extends Activity {
         });
 
         loadBestAvailablePage();
-        startAutoBackgroundUpdateCheck();
     }
 
     private void requestNotificationPermissionIfNeeded() {
@@ -269,65 +268,7 @@ public class MainActivity extends Activity {
     }
 
     private void startAutoBackgroundUpdateCheck() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(3500);
-                    String[] candidateUrls = new String[]{
-                        "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main",
-                        "https://cdn.jsdelivr.net/gh/krishnapanday4196-gif/sec-d-timetable@main"
-                    };
-                    for (String baseUrl : candidateUrls) {
-                        try {
-                            String verJson = httpGetText(baseUrl + "/version.json?t=" + System.currentTimeMillis(), 6000);
-                            JSONObject obj = new JSONObject(verJson);
-                            int remoteCode = obj.optInt("versionCode", 0);
-                            String remoteHash = obj.optString("htmlHash", "");
-                            final String verName = obj.optString("versionName", "Latest");
-
-                            SharedPreferences prefs = getSharedPreferences("ota_prefs", Context.MODE_PRIVATE);
-                            String currentHash = prefs.getString("ota_hash", "");
-
-                            boolean isNewer = (remoteCode > CURRENT_APK_VERSION) || 
-                                              (!remoteHash.isEmpty() && !remoteHash.equals(currentHash) && !remoteHash.equals(computeMd5First12(getAssets().open("index.html"))));
-
-                            if (isNewer) {
-                                String newHtml = httpGetText(baseUrl + "/index.html?t=" + System.currentTimeMillis(), 12000);
-                                if (newHtml != null && newHtml.length() > 1000 && (newHtml.contains("SEC-D Timetable") || newHtml.contains("CSE D Timetable") || newHtml.contains("Qtimex"))) {
-                                    copyAssetToInternal("logo.png");
-                                    copyAssetToInternal("icon-192.png");
-                                    copyAssetToInternal("icon-512.png");
-                                    copyAssetToInternal("manifest.json");
-
-                                    final File otaFile = new File(getFilesDir(), "index.html");
-                                    FileOutputStream fos = new FileOutputStream(otaFile, false);
-                                    fos.write(newHtml.getBytes(StandardCharsets.UTF_8));
-                                    fos.flush();
-                                    fos.close();
-
-                                    prefs.edit()
-                                            .putInt("apk_ver", CURRENT_APK_VERSION)
-                                            .putString("ota_hash", remoteHash)
-                                            .apply();
-
-                                    runOnUiThread(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            try {
-                                                Toast.makeText(MainActivity.this, "⚡ Updated to v" + verName + "!", Toast.LENGTH_SHORT).show();
-                                                mWebView.loadUrl("file://" + otaFile.getAbsolutePath() + "?t=" + System.currentTimeMillis());
-                                            } catch (Exception ignored) {}
-                                        }
-                                    });
-                                    return;
-                                }
-                            }
-                        } catch (Exception ignored) {}
-                    }
-                } catch (Exception ignored) {}
-            }
-        }).start();
+        // Disabled: Auto-updates and reloads are strictly controlled via user confirmation in Web UI
     }
 
     private String computeMd5First12(InputStream in) {
