@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "localtunnel": "^2.0.2"
+    "localtunnel": "^2.0.2",
+    "qrcode": "^1.5.4"
   },
   "devDependencies": {
     "sharp": "^0.35.5"
