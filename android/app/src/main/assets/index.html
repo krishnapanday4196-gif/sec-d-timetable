@@ -4475,7 +4475,7 @@
         style="background:var(--card-surface-grad); border:1px solid var(--card-border); border-radius:14px; padding:12px; display:flex; flex-direction:column; gap:8px;">
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Installed Version:</span>
-          <strong style="color:var(--gold-accent);">v5.8.0 (Quantum Dual-Vibrant)</strong>
+          <strong style="color:var(--gold-accent);">v5.8.1 (Quantum Dual-Vibrant)</strong>
         </div>
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Notification:</span>
@@ -6316,11 +6316,11 @@
       showToast(_forceWeekdayPreview ? '👁️ Showing regular weekday schedule preview' : '🎉 Restored Holiday View');
     }
 
-    // Comprehensive Holiday Finder (matches Sunday, PDF holidays, and custom holidays)
+    // Comprehensive Holiday & Examination Finder (matches Sunday, PDF holidays, Exams, and custom dates)
     function getHolidayInfo(date = new Date()) {
       const day = date.getDay();
       if (day === 0) {
-        return { isHoliday: true, name: 'Sunday Weekend', type: 'weekend', icon: '🏖️', desc: 'No college lectures today. Campus resumes Monday.' };
+        return { isHoliday: true, isExam: false, name: 'Sunday Weekend', type: 'weekend', icon: '🏖️', desc: 'No college lectures today. Campus resumes Monday.' };
       }
 
       const yyyy = date.getFullYear();
@@ -6329,25 +6329,53 @@
       const dateStr = `${yyyy}-${mm}-${dd}`;
       const monthDayStr = `${mm}-${dd}`;
 
-      // Check Quantum Academic Calendar Holidays from PDF
+      // 1. Check Quantum Academic Calendar Holidays from PDF
       for (const hol of QUANTUM_ACADEMIC_CALENDAR.holidays) {
-        // Direct exact date match or date range match
         if (dateStr >= hol.startDate && dateStr <= hol.endDate) {
-          return { isHoliday: true, name: hol.name, type: hol.type, icon: hol.icon, desc: hol.desc };
+          return { isHoliday: true, isExam: false, name: hol.name, type: hol.type, icon: hol.icon, desc: hol.desc };
         }
-        // Month-day matching (covers simulated or future dates with matching MM-DD)
         const startMD = hol.startDate.slice(5);
         const endMD = hol.endDate.slice(5);
         if (monthDayStr >= startMD && monthDayStr <= endMD) {
-          return { isHoliday: true, name: hol.name, type: hol.type, icon: hol.icon, desc: hol.desc };
+          return { isHoliday: true, isExam: false, name: hol.name, type: hol.type, icon: hol.icon, desc: hol.desc };
         }
       }
 
-      // Check Custom Marked Holidays in localStorage
+      // 2. Check University Examinations (Mid-Semester, End-Semester & Lab Exams)
+      // Regular teaching lectures are suspended during university examinations!
+      if (QUANTUM_ACADEMIC_CALENDAR.academicEvents) {
+        for (const ev of QUANTUM_ACADEMIC_CALENDAR.academicEvents) {
+          const isExamEvent = (ev.tag && /exam/i.test(ev.tag)) || /mid semester|end semester|ese/i.test(ev.title);
+          const isMajorExam = isExamEvent && !/quiz/i.test(ev.title);
+          if (isMajorExam) {
+            const matchExact = (dateStr >= ev.startDate && dateStr <= ev.endDate);
+            const startMD = ev.startDate.slice(5);
+            const endMD = ev.endDate.slice(5);
+            const matchMD = (monthDayStr >= startMD && monthDayStr <= endMD);
+            if (matchExact || matchMD) {
+              const rangeStr = (ev.startDate !== ev.endDate) ? `${ev.startDate} to ${ev.endDate}` : ev.startDate;
+              return {
+                isHoliday: true,
+                isExam: true,
+                name: ev.title,
+                type: 'exam',
+                icon: ev.icon || '📝',
+                desc: `${ev.note || 'University Examination'} (${rangeStr})`
+              };
+            }
+          }
+        }
+      }
+
+      // 3. Check Custom Marked Holidays & Exams in localStorage
       try {
         const customHolidays = JSON.parse(localStorage.getItem('secD_custom_holidays') || '[]');
         if (customHolidays.includes(dateStr)) {
-          return { isHoliday: true, name: 'University Custom Holiday', type: 'custom', icon: '🎉', desc: 'Designated holiday for Quantum University students.' };
+          return { isHoliday: true, isExam: false, name: 'University Custom Holiday', type: 'custom', icon: '🎉', desc: 'Designated holiday for Quantum University students.' };
+        }
+        const customExams = JSON.parse(localStorage.getItem('secD_custom_exams') || '[]');
+        if (customExams.includes(dateStr)) {
+          return { isHoliday: true, isExam: true, name: 'University Examination', type: 'exam', icon: '📝', desc: 'University Examination Day • Regular classes suspended' };
         }
       } catch (e) { }
 
@@ -6661,9 +6689,9 @@
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '5.8.0';
-    const LOCAL_APP_VERSION_CODE = 56;
-    const LOCAL_APP_BUILD_HASH = '05b08870bfb7';
+    const LOCAL_APP_VERSION_NAME = '5.8.1';
+    const LOCAL_APP_VERSION_CODE = 57;
+    const LOCAL_APP_BUILD_HASH = '283b26551c05';
 
     let cachedLatestVersionCode = 29;
 
@@ -7446,17 +7474,23 @@
           }
         }
 
-        // ON HOLIDAYS: Campus is closed — DO NOT RENDER ANY CLASSES!
+        // ON EXAMS & HOLIDAYS: Regular classes are suspended — DO NOT RENDER ANY CLASSES!
+        const isExamDay = Boolean(holidayInfo.isExam);
+        const badgeLabel = isExamDay ? 'EXAMINATION IN PROGRESS • NO CLASSES' : `${holidayInfo.type ? holidayInfo.type.toUpperCase() : 'OFFICIAL'} HOLIDAY`;
+        const quoteText = isExamDay
+          ? '"Regular timetable lectures are suspended during university examinations as per Controller of Examinations (COE) schedule. Best wishes for your examinations!" 🎯'
+          : '"University campus is closed today as per Quantum Academic Calendar. No lectures or classes are scheduled!" ✨';
+
         container.innerHTML = `
-          <div class="empty-holiday-card" style="margin-bottom:16px;">
+          <div class="empty-holiday-card" style="margin-bottom:16px; ${isExamDay ? 'border-color: rgba(56, 189, 248, 0.4); box-shadow: 0 16px 40px -10px rgba(0,0,0,0.6), 0 0 25px rgba(56, 189, 248, 0.2);' : ''}">
             <div class="holiday-icon-glow">${holidayIcon}</div>
-            <div class="holiday-badge">${holidayInfo.type ? holidayInfo.type.toUpperCase() : 'OFFICIAL'} HOLIDAY</div>
+            <div class="holiday-badge" style="${isExamDay ? 'background:linear-gradient(135deg, var(--accent), var(--accent-secondary)); color:#020612; border:none; font-weight:800;' : ''}">${badgeLabel}</div>
             <h3 class="holiday-title">${holidayTitle}</h3>
             <p class="holiday-desc">${holidaySub}</p>
-            <div class="holiday-quote">"University campus is closed today as per Quantum Academic Calendar. No lectures or classes are scheduled!" ✨</div>
+            <div class="holiday-quote">${quoteText}</div>
             <div class="holiday-actions" style="display:flex; flex-direction:column; gap:8px;">
               <button class="primary-btn" style="width:100%; justify-content:center;" onclick="openAcademicCalendarModal()">
-                📅 View Full Academic Calendar
+                📅 View Examination Schedule
               </button>
               <button class="secondary-btn" style="width:100%; justify-content:center; font-size:0.75rem; border-color:rgba(255,255,255,0.12); color:var(--text-sub);" onclick="toggleForceWeekdayPreview()">
                 👁️ Preview Regular ${dayName} Routine
@@ -7464,7 +7498,7 @@
             </div>
           </div>
         `;
-        return; // <--- IMMEDIATELY RETURN: NO CLASSES SHOWN ON HOLIDAY!
+        return; // <--- IMMEDIATELY RETURN: NO CLASSES SHOWN ON EXAM OR HOLIDAY!
       }
 
       // If user explicitly chose to preview routine during a holiday:
@@ -7472,11 +7506,11 @@
       if (holidayInfo && _forceWeekdayPreview) {
         holidayBannerHtml = `
           <div style="background:rgba(244,63,94,0.15); border:1px solid rgba(244,63,94,0.35); border-radius:12px; padding:10px 14px; margin-bottom:12px; display:flex; align-items:center; justify-content:space-between; gap:10px;">
-            <div style="font-size:0.78rem; color:#f87171;">
-              <strong>${holidayInfo.icon || '🕊️'} ${holidayInfo.name}</strong> • Classes are officially OFF today.
+            <div style="font-size:0.78rem; color:${holidayInfo.isExam ? 'var(--accent)' : '#f87171'};">
+              <strong>${holidayInfo.icon || '📝'} ${holidayInfo.name}</strong> • Classes are officially OFF today.
             </div>
             <button class="secondary-btn" style="padding:4px 8px; font-size:0.7rem; white-space:nowrap;" onclick="toggleForceWeekdayPreview()">
-              🏖️ Holiday View
+              ${holidayInfo.isExam ? '📝 Exam View' : '🏖️ Holiday View'}
             </button>
           </div>
         `;
@@ -8000,16 +8034,16 @@
         setTextIfChanged(orbitStatusTxt, todayHol ? todayHol.name : 'No Classes');
       }
 
-      // Sunday & Holiday Check from Quantum Academic Calendar for Today's Circular Ring
+      // Sunday, Holiday & Exam Check from Quantum Academic Calendar for Today's Circular Ring
       if (todayHol && !_forceWeekdayPreview) {
         hero.classList.remove('is-active-live');
         heroRing.style.strokeDashoffset = CIRCLE_CIRCUMFERENCE;
-        setTextIfChanged(circleTimer, 'OFF');
-        setTextIfChanged(circleTimerSub, todayHol.type ? todayHol.type.toUpperCase() : 'HOLIDAY');
-        setTextIfChanged(heroSlotBadge, todayHol.icon || '🎉');
-        setTextIfChanged(heroBatchBadge, 'University Off');
-        setTextIfChanged(heroSubjectName, `${todayHol.icon || '🏖️'} ${todayHol.name}`);
-        setTextIfChanged(heroRoomBadge, 'No Classes Today');
+        setTextIfChanged(circleTimer, todayHol.isExam ? 'EXAM' : 'OFF');
+        setTextIfChanged(circleTimerSub, todayHol.isExam ? 'EXAMINATIONS' : (todayHol.type ? todayHol.type.toUpperCase() : 'HOLIDAY'));
+        setTextIfChanged(heroSlotBadge, todayHol.icon || (todayHol.isExam ? '📝' : '🎉'));
+        setTextIfChanged(heroBatchBadge, todayHol.isExam ? 'Exam Period' : 'University Off');
+        setTextIfChanged(heroSubjectName, `${todayHol.icon || (todayHol.isExam ? '📝' : '🏖️')} ${todayHol.name}`);
+        setTextIfChanged(heroRoomBadge, todayHol.isExam ? 'Regular Classes Suspended' : 'No Classes Today');
         if (heroFacultyBadge) heroFacultyBadge.style.display = 'none';
         return;
       }
