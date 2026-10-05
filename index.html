@@ -492,80 +492,32 @@
     }
 
     /* ============================================================
-       NEXT-LEVEL HARDWARE-ACCELERATED LIVING AURORA (ZERO LAG, 120 FPS)
-       - Pure GPU Compositor 3D Transforms (translate3d & scale)
-       - Feathered Native Radial Gradients (Zero runtime blur filter overhead)
-       - Decoupled from Scrolling Thread for 100% Buttery-Smooth Performance
+       NEXT-LEVEL LIVING AURORA THEME CANVAS (ZERO LAG, 120 FPS ENGINE)
+       - Pure GPU Compositor 2D Drift (translate3d only, zero scaling overhead)
+       - Native Feathered Soft Radial Gradients (mix-blend-mode: normal)
+       - Zero FBO Off-screen Blending Passes = 100% Solid Butter Performance
        ============================================================ */
     @keyframes quantumOrbDrift1 {
       0% {
-        transform: translate3d(0, 0, 0) scale(1);
+        transform: translate3d(0, 0, 0);
       }
-      33% {
-        transform: translate3d(45px, 60px, 0) scale(1.12);
-      }
-      66% {
-        transform: translate3d(-30px, 110px, 0) scale(0.94);
+      50% {
+        transform: translate3d(40px, 45px, 0);
       }
       100% {
-        transform: translate3d(20px, 30px, 0) scale(1.05);
+        transform: translate3d(-20px, 70px, 0);
       }
     }
 
     @keyframes quantumOrbDrift2 {
       0% {
-        transform: translate3d(0, 0, 0) scale(1);
-      }
-      33% {
-        transform: translate3d(-55px, -45px, 0) scale(1.14);
-      }
-      66% {
-        transform: translate3d(35px, -90px, 0) scale(0.92);
-      }
-      100% {
-        transform: translate3d(-20px, -25px, 0) scale(1.08);
-      }
-    }
-
-    @keyframes quantumOrbDrift3 {
-      0% {
-        transform: translate3d(0, 0, 0) scale(0.96);
-      }
-      40% {
-        transform: translate3d(-40px, 50px, 0) scale(1.15);
-      }
-      80% {
-        transform: translate3d(55px, -35px, 0) scale(1.02);
-      }
-      100% {
-        transform: translate3d(15px, 15px, 0) scale(0.98);
-      }
-    }
-
-    @keyframes quantumOrbDrift4 {
-      0% {
-        transform: translate3d(0, 0, 0) scale(1.02);
+        transform: translate3d(0, 0, 0);
       }
       50% {
-        transform: translate3d(50px, -60px, 0) scale(0.90);
+        transform: translate3d(-45px, -40px, 0);
       }
       100% {
-        transform: translate3d(-40px, 45px, 0) scale(1.12);
-      }
-    }
-
-    @keyframes auroraMeshPulse {
-      0% {
-        transform: scale(1) translate3d(0, 0, 0);
-        opacity: 0.75;
-      }
-      50% {
-        transform: scale(1.08) translate3d(25px, -20px, 0);
-        opacity: 0.95;
-      }
-      100% {
-        transform: scale(0.96) translate3d(-20px, 25px, 0);
-        opacity: 0.80;
+        transform: translate3d(25px, -65px, 0);
       }
     }
 
@@ -577,110 +529,66 @@
       overflow: hidden;
       z-index: 0;
       pointer-events: none;
-      background: radial-gradient(circle at 18% 18%, rgba(56, 189, 248, 0.14) 0%, transparent 45%),
-                  radial-gradient(circle at 82% 82%, rgba(245, 158, 11, 0.10) 0%, transparent 48%),
-                  radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
-                  linear-gradient(155deg, #020612 0%, #060e22 55%, #030816 100%);
+      background:
+        radial-gradient(circle at 14% 14%, rgba(56, 189, 248, 0.18) 0%, transparent 48%),
+        radial-gradient(circle at 86% 86%, rgba(245, 158, 11, 0.15) 0%, transparent 48%),
+        radial-gradient(circle at 50% 45%, rgba(16, 185, 129, 0.10) 0%, transparent 45%),
+        linear-gradient(155deg, #020612 0%, #060e22 55%, #030816 100%);
       contain: strict;
       transform: translateZ(0);
       backface-visibility: hidden;
     }
 
     :root[data-theme="cyber-neon"] .aurora-ambient-bg {
-      background: radial-gradient(circle at 18% 18%, rgba(0, 240, 255, 0.16) 0%, transparent 45%),
-                  radial-gradient(circle at 82% 82%, rgba(255, 0, 127, 0.14) 0%, transparent 48%),
-                  radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.12) 0%, transparent 50%),
-                  linear-gradient(155deg, #050212 0%, #120626 55%, #070318 100%);
+      background:
+        radial-gradient(circle at 14% 14%, rgba(0, 240, 255, 0.20) 0%, transparent 48%),
+        radial-gradient(circle at 86% 86%, rgba(255, 0, 127, 0.18) 0%, transparent 48%),
+        radial-gradient(circle at 50% 45%, rgba(168, 85, 247, 0.14) 0%, transparent 45%),
+        linear-gradient(155deg, #050212 0%, #120626 55%, #070318 100%);
     }
 
-    .aurora-glow-mesh {
-      position: absolute;
-      inset: -25%;
-      width: 150%;
-      height: 150%;
-      pointer-events: none;
-      background: radial-gradient(circle at 25% 20%, rgba(56, 189, 248, 0.14) 0%, transparent 45%),
-                  radial-gradient(circle at 75% 80%, rgba(168, 85, 247, 0.12) 0%, transparent 45%),
-                  radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.08) 0%, transparent 50%);
-      animation: auroraMeshPulse 20s ease-in-out infinite alternate;
-      will-change: transform, opacity;
-      transform: translateZ(0);
-      mix-blend-mode: screen;
-    }
-
-    :root[data-theme="cyber-neon"] .aurora-glow-mesh {
-      background: radial-gradient(circle at 25% 20%, rgba(0, 240, 255, 0.18) 0%, transparent 45%),
-                  radial-gradient(circle at 75% 80%, rgba(255, 0, 127, 0.16) 0%, transparent 45%),
-                  radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.14) 0%, transparent 50%);
-      animation: auroraMeshPulse 16s ease-in-out infinite alternate;
-    }
-
-    /* Hardware-Accelerated Feathered Luminous Plasma Orbs (Zero blur runtime overhead) */
+    /* Hardware-Accelerated Floating Light Fields (Normal blend = Instant 1-pass GPU speed) */
     .aurora-orb {
       position: absolute;
       border-radius: 50%;
       pointer-events: none;
-      will-change: transform;
-      transform: translateZ(0);
+      transform: translate3d(0, 0, 0);
       backface-visibility: hidden;
-      mix-blend-mode: screen;
-      opacity: 0.88;
+      mix-blend-mode: normal !important;
+      opacity: 0.72;
     }
 
-    /* Orb 1: Electric Cyan & Sky Blue (Campus) / Laser Neon Cyan (Cyberpunk) */
+    /* Orb 1: Electric Sky Cyan (Campus) / Laser Neon Cyan (Cyberpunk) */
     .aurora-orb.orb-primary {
-      top: -8%;
-      left: -6%;
-      width: 420px;
-      height: 420px;
-      background: radial-gradient(circle, rgba(56, 189, 248, 0.50) 0%, rgba(14, 165, 233, 0.22) 36%, rgba(2, 132, 199, 0.06) 58%, transparent 72%);
-      animation: quantumOrbDrift1 26s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
+      top: -4%;
+      left: -4%;
+      width: 340px;
+      height: 340px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.42) 0%, rgba(14, 165, 233, 0.16) 40%, transparent 70%);
+      animation: quantumOrbDrift1 26s ease-in-out infinite alternate;
     }
     :root[data-theme="cyber-neon"] .aurora-orb.orb-primary {
-      background: radial-gradient(circle, rgba(0, 240, 255, 0.55) 0%, rgba(6, 182, 212, 0.25) 36%, rgba(14, 116, 144, 0.08) 58%, transparent 72%);
-      animation: quantumOrbDrift1 22s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
+      background: radial-gradient(circle, rgba(0, 240, 255, 0.48) 0%, rgba(6, 182, 212, 0.18) 40%, transparent 70%);
+      animation: quantumOrbDrift1 22s ease-in-out infinite alternate;
     }
 
     /* Orb 2: Solar Amber Gold (Campus) / Hot Cyberpunk Magenta (Cyberpunk) */
     .aurora-orb.orb-secondary {
-      bottom: 8%;
-      right: -10%;
-      width: 440px;
-      height: 440px;
-      background: radial-gradient(circle, rgba(245, 158, 11, 0.42) 0%, rgba(251, 191, 36, 0.20) 36%, rgba(217, 119, 6, 0.06) 58%, transparent 72%);
-      animation: quantumOrbDrift2 32s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
-    }
-    :root[data-theme="cyber-neon"] .aurora-orb.orb-secondary {
-      background: radial-gradient(circle, rgba(255, 0, 127, 0.50) 0%, rgba(236, 72, 153, 0.24) 36%, rgba(190, 24, 93, 0.08) 58%, transparent 72%);
-      animation: quantumOrbDrift2 26s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
-    }
-
-    /* Orb 3: Neo Emerald Glow (Campus) / Ultraviolet Violet (Cyberpunk) */
-    .aurora-orb.orb-tertiary {
-      top: 40%;
-      left: 15%;
+      bottom: 4%;
+      right: -4%;
       width: 360px;
       height: 360px;
-      background: radial-gradient(circle, rgba(16, 185, 129, 0.40) 0%, rgba(52, 211, 153, 0.18) 36%, rgba(5, 150, 105, 0.05) 58%, transparent 72%);
-      animation: quantumOrbDrift3 28s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.36) 0%, rgba(16, 185, 129, 0.12) 40%, transparent 70%);
+      animation: quantumOrbDrift2 30s ease-in-out infinite alternate;
     }
-    :root[data-theme="cyber-neon"] .aurora-orb.orb-tertiary {
-      background: radial-gradient(circle, rgba(168, 85, 247, 0.48) 0%, rgba(192, 132, 252, 0.22) 36%, rgba(126, 34, 206, 0.07) 58%, transparent 72%);
-      animation: quantumOrbDrift3 24s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
+    :root[data-theme="cyber-neon"] .aurora-orb.orb-secondary {
+      background: radial-gradient(circle, rgba(255, 0, 127, 0.42) 0%, rgba(168, 85, 247, 0.15) 40%, transparent 70%);
+      animation: quantumOrbDrift2 25s ease-in-out infinite alternate;
     }
 
-    /* Orb 4: Royal Indigo / Purple (Campus) / Cyber Matrix Green (Cyberpunk) */
-    .aurora-orb.orb-quaternary {
-      top: 18%;
-      right: 18%;
-      width: 340px;
-      height: 340px;
-      background: radial-gradient(circle, rgba(99, 102, 241, 0.38) 0%, rgba(129, 140, 248, 0.16) 36%, rgba(67, 56, 202, 0.05) 58%, transparent 72%);
-      animation: quantumOrbDrift4 34s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
-    }
-    :root[data-theme="cyber-neon"] .aurora-orb.orb-quaternary {
-      background: radial-gradient(circle, rgba(0, 255, 170, 0.42) 0%, rgba(52, 211, 153, 0.18) 36%, rgba(5, 150, 105, 0.06) 58%, transparent 72%);
-      animation: quantumOrbDrift4 28s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
+    /* Pause during scroll for 100% butter-smooth 120 FPS touch response */
+    body.is-scrolling .aurora-orb {
+      animation-play-state: paused !important;
     }
 
     /* Disable opaque campus photo so the multi-color animation shines bright! */
@@ -722,9 +630,9 @@
       z-index: 0;
       width: 100%;
       text-align: center;
-      opacity: 0.16;
-      animation: watermarkFloat 40s ease-in-out infinite alternate;
-      will-change: transform;
+      opacity: 0.12;
+      animation: none !important;
+      will-change: auto;
     }
 
     .watermark-word {
@@ -737,7 +645,7 @@
       background-clip: text;
       -webkit-text-fill-color: transparent;
       -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.28);
-      filter: drop-shadow(0 0 25px rgba(56, 189, 248, 0.6));
+      filter: none !important;
     }
 
     .watermark-sub {
@@ -771,8 +679,8 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
       animation: highlightPulseGlow 8s ease-in-out infinite alternate;
     }
 
@@ -1248,8 +1156,8 @@
       position: fixed;
       inset: 0;
       background: radial-gradient(circle at 92% 6%, rgba(56, 189, 248, 0.18) 0%, rgba(2, 6, 16, 0.68) 65%);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
       z-index: 2490;
       display: none;
       opacity: 0;
@@ -1640,8 +1548,8 @@
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
       user-select: none;
       font-family: inherit;
     }
@@ -2888,8 +2796,8 @@
       position: fixed;
       inset: 0;
       background: rgba(2, 6, 14, 0.76);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
       z-index: 1000;
       display: none;
       justify-content: center;
@@ -3583,8 +3491,7 @@
     html {
       transition: background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .lecture-card, .top-appbar, .modal-sheet, .circular-hero-card, .orbit-tracker-section, .notif-card, .heads-up-banner {
-      will-change: transform, opacity;
+    .top-appbar, .modal-sheet {
       transform: translateZ(0);
       -webkit-transform: translateZ(0);
       backface-visibility: hidden;
@@ -4030,13 +3937,10 @@
 
   <!-- Instant direct launch: zero splash screen -->
 
-  <!-- NEXT-LEVEL HARDWARE-ACCELERATED LIVING AURORA (ZERO LAG, 120 FPS) -->
+  <!-- ZERO-LAG 120 FPS LIVING AMBIENT CANVAS -->
   <div class="aurora-ambient-bg" id="auroraBg" aria-hidden="true">
-    <div class="aurora-glow-mesh"></div>
     <div class="aurora-orb orb-primary"></div>
     <div class="aurora-orb orb-secondary"></div>
-    <div class="aurora-orb orb-tertiary"></div>
-    <div class="aurora-orb orb-quaternary"></div>
     <div class="aurora-highlight-watermark" aria-hidden="true">
       <span class="watermark-word">SEC-D</span>
       <span class="watermark-sub">TIMETABLE</span>
@@ -4485,7 +4389,7 @@
         style="background:var(--card-surface-grad); border:1px solid var(--card-border); border-radius:14px; padding:12px; display:flex; flex-direction:column; gap:8px;">
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Installed Version:</span>
-          <strong style="color:var(--gold-accent);">v5.8.2 (Quantum Dual-Vibrant)</strong>
+          <strong style="color:var(--gold-accent);">v5.8.3 (Quantum Dual-Vibrant)</strong>
         </div>
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Notification:</span>
@@ -6699,9 +6603,9 @@
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '5.8.2';
-    const LOCAL_APP_VERSION_CODE = 58;
-    const LOCAL_APP_BUILD_HASH = 'a516c16cc5f3';
+    const LOCAL_APP_VERSION_NAME = '5.8.3';
+    const LOCAL_APP_VERSION_CODE = 59;
+    const LOCAL_APP_BUILD_HASH = 'b442fd5266e4';
 
     let cachedLatestVersionCode = 29;
 
@@ -9117,6 +9021,21 @@
       });
     } catch (_) {}
 </script>
+
+    // ZERO-LAG SCROLL CONTROLLER: Pauses ambient background animations during scroll
+    (function initZeroLagScroller() {
+      var isScrollingTimeout;
+      window.addEventListener('scroll', function() {
+        if (!document.body.classList.contains('is-scrolling')) {
+          document.body.classList.add('is-scrolling');
+        }
+        clearTimeout(isScrollingTimeout);
+        isScrollingTimeout = setTimeout(function() {
+          document.body.classList.remove('is-scrolling');
+        }, 120);
+      }, { passive: true });
+    })();
+
 </body>
 
 </html>

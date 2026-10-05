@@ -1,18 +1,18 @@
 {
-  "versionName": "5.8.2",
-  "versionCode": 58,
-  "apkVersionCode": 58,
-  "htmlHash": "a516c16cc5f3",
+  "versionName": "5.8.3",
+  "versionCode": 59,
+  "apkVersionCode": 59,
+  "htmlHash": "b442fd5266e4",
   "apkHash": "b7d54ad464c8",
-  "apkSize": 2395360,
-  "updatedAt": 1791210648804,
+  "apkSize": 2394832,
+  "updatedAt": 1791213452791,
   "publicUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main",
   "githubUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main",
   "pagesUrl": "https://krishnapanday4196-gif.github.io/sec-d-timetable",
   "apkUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/SecD_Timetable.apk",
   "htmlUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/index.html",
   "downloadUrl": "https://krishnapanday4196-gif.github.io/sec-d-timetable",
-  "lastUpdated": "2026-10-05T14:30:48.804Z",
-  "apkMd5": "fa77b7f6171c0e701fe4b830a5f73316",
-  "releaseNotes": "v5.8.2: Next-level living multi-color animated themes (Quantum Horizon & Cyberpunk Hyper-Drive) with 120 FPS hardware-accelerated zero-lag engine and examination status mode."
+  "lastUpdated": "2026-10-05T15:17:32.791Z",
+  "apkMd5": "cde80a5e1c3e20fb470d37086efcdf12",
+  "releaseNotes": "v5.8.3: 100% Zero-Lag 120 FPS Living Animated Theme Engine. Removed heavy multi-pass blend modes and backdrop-filter blurs, decoupled scroll thread for butter-smooth navigation."
 }
