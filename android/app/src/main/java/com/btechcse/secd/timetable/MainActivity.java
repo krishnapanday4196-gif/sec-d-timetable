@@ -54,6 +54,7 @@ public class MainActivity extends Activity {
     private String mPendingNotifTitle = null;
     private String mPendingNotifShortBody = null;
     private String mPendingNotifBigText = null;
+    private boolean mIsLightTheme = false;
 
     @SuppressLint({"SetJavaScriptEnabled", "Deprecation"})
     @Override
@@ -360,6 +361,8 @@ public class MainActivity extends Activity {
                 @Override
                 public void run() {
                     try {
+                        mIsLightTheme = isLight;
+                        setTheme(isLight ? R.style.Theme_SecDTimetable_Light : R.style.Theme_SecDTimetable);
                         Window window = getWindow();
                         window.setStatusBarColor(isLight ? 0xFFFFFFFF : 0xFF080C14);
                         window.setNavigationBarColor(isLight ? 0xFFF8FAFC : 0xFF0F172A);
@@ -379,6 +382,43 @@ public class MainActivity extends Activity {
                             }
                             decor.setSystemUiVisibility(flags);
                         }
+                    } catch (Exception ignored) {}
+                }
+            });
+        }
+
+        @JavascriptInterface
+        public void openNativeDatePicker(final int year, final int month, final int day) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        int themeResId = mIsLightTheme 
+                                ? R.style.Theme_SecDTimetable_DatePicker_Light 
+                                : android.R.style.Theme_Material_Dialog;
+
+                        android.app.DatePickerDialog datePickerDialog = new android.app.DatePickerDialog(
+                                MainActivity.this,
+                                themeResId,
+                                new android.app.DatePickerDialog.OnDateSetListener() {
+                                    @Override
+                                    public void onDateSet(android.widget.DatePicker view, int y, int m, int d) {
+                                        String mStr = String.format(java.util.Locale.US, "%02d", m + 1);
+                                        String dStr = String.format(java.util.Locale.US, "%02d", d);
+                                        final String dateStr = y + "-" + mStr + "-" + dStr;
+                                        if (mWebView != null) {
+                                            mWebView.evaluateJavascript(
+                                                    "if(window.onNativeDatePicked){window.onNativeDatePicked('" + dateStr + "');}else if(typeof handleDatePickerChange === 'function'){handleDatePickerChange('" + dateStr + "');}",
+                                                    null
+                                            );
+                                        }
+                                    }
+                                },
+                                year,
+                                month,
+                                day
+                        );
+                        datePickerDialog.show();
                     } catch (Exception ignored) {}
                 }
             });

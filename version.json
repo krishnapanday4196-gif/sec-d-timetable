@@ -1,18 +1,18 @@
 {
-  "versionName": "5.9.5",
-  "versionCode": 65,
-  "apkVersionCode": 65,
-  "htmlHash": "c584e46855c9",
+  "versionName": "5.9.6",
+  "versionCode": 66,
+  "apkVersionCode": 66,
+  "htmlHash": "9055bcece00c",
   "apkHash": "b7d54ad464c8",
-  "apkSize": 2399124,
-  "updatedAt": 1791216453251,
+  "apkSize": 2402880,
+  "updatedAt": 1791217014224,
   "publicUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main",
   "githubUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main",
   "pagesUrl": "https://krishnapanday4196-gif.github.io/sec-d-timetable",
   "apkUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/SecD_Timetable.apk",
   "htmlUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/index.html",
   "downloadUrl": "https://krishnapanday4196-gif.github.io/sec-d-timetable",
-  "lastUpdated": "2026-10-05T16:07:33.251Z",
-  "apkMd5": "69a742fb72c679405aeaa0ff91e7ba11",
-  "releaseNotes": "v5.9.5: White Date Picker & Calendar Modal in Aura Light theme. Integrated color-scheme: light and native Android window bridge for pure white mobile calendar pickers."
+  "lastUpdated": "2026-10-05T16:16:54.224Z",
+  "apkMd5": "2fcff23a651266f64dbb9f3ae3d9554d",
+  "releaseNotes": "v5.9.6: Pure White Date Calendar in Aura Light with In-App Interactive Month Calendar & Android Native Light DatePickerDialog bridge."
 }

@@ -4,5 +4,23 @@
         <item name="android:statusBarColor">#080C14</item>
         <item name="android:navigationBarColor">#0F172A</item>
         <item name="android:windowBackground">#080C14</item>
+        <item name="android:datePickerDialogTheme">@android:style/Theme.Material.Dialog</item>
+        <item name="android:timePickerDialogTheme">@android:style/Theme.Material.Dialog</item>
+    </style>
+
+    <style name="Theme.SecDTimetable.Light" parent="@android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">#FFFFFF</item>
+        <item name="android:navigationBarColor">#F8FAFC</item>
+        <item name="android:windowBackground">#FFFFFF</item>
+        <item name="android:datePickerDialogTheme">@style/Theme.SecDTimetable.DatePicker.Light</item>
+        <item name="android:timePickerDialogTheme">@android:style/Theme.Material.Light.Dialog</item>
+    </style>
+
+    <style name="Theme.SecDTimetable.DatePicker.Light" parent="@android:style/Theme.Material.Light.Dialog">
+        <item name="android:colorAccent">#4F46E5</item>
+        <item name="android:colorPrimary">#4F46E5</item>
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:textColorPrimary">#0F172A</item>
+        <item name="android:textColorSecondary">#475569</item>
     </style>
 </resources>
