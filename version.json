@@ -1,18 +1,18 @@
 {
-  "versionName": "5.9.3",
-  "versionCode": 63,
-  "apkVersionCode": 63,
-  "htmlHash": "5c3aaf6f7635",
+  "versionName": "5.9.4",
+  "versionCode": 64,
+  "apkVersionCode": 64,
+  "htmlHash": "e8c5a2491b61",
   "apkHash": "b7d54ad464c8",
-  "apkSize": 2398532,
-  "updatedAt": 1791215451200,
+  "apkSize": 2398712,
+  "updatedAt": 1791216059365,
   "publicUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main",
   "githubUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main",
   "pagesUrl": "https://krishnapanday4196-gif.github.io/sec-d-timetable",
   "apkUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/SecD_Timetable.apk",
   "htmlUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/index.html",
   "downloadUrl": "https://krishnapanday4196-gif.github.io/sec-d-timetable",
-  "lastUpdated": "2026-10-05T15:50:51.200Z",
-  "apkMd5": "26200c3b349cd9048664b13da2c3a20a",
-  "releaseNotes": "v5.9.3: Completely unified Aura Celestial theme. Fixed dark drawer in light mode, corrected unreadable exam badge text, cohesive Royal Indigo palette with white pearl cards and 120 FPS zero-lag engine."
+  "lastUpdated": "2026-10-05T16:00:59.365Z",
+  "apkMd5": "e1560c25e985b2fb140377f49a5e272a",
+  "releaseNotes": "v5.9.4: Fixed washed-out ribbon text and pink pulsating border in Aura Light. Transformed into crisp white card with Royal Indigo badge and readable slate text."
 }
