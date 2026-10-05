@@ -9,6 +9,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="theme-color" content="#040816">
+  <meta name="color-scheme" content="light dark">
   <title>Qtimex</title>
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="apple-touch-icon" href="logo.png">
@@ -24,6 +25,7 @@
   <style>
     :root,
     :root[data-theme="campus"] {
+      color-scheme: dark !important;
       --bg-canvas: #020612;
       --bg-phone: #020612;
       --bg-mesh: transparent;
@@ -72,6 +74,7 @@
     }
 
     :root[data-theme="cyber-neon"] {
+      color-scheme: dark !important;
       --bg-canvas: #050212;
       --bg-phone: #050212;
       --bg-mesh: transparent;
@@ -120,6 +123,7 @@
     }
 
     :root[data-theme="aura-light"] {
+      color-scheme: light !important;
       --bg-canvas: #f8fafc;
       --bg-phone: #f8fafc;
       --bg-mesh: transparent;
@@ -4220,6 +4224,80 @@
       color: #4f46e5 !important;
     }
 
+    
+    /* ============================================================
+       WHITE CALENDAR & DATE PICKER IN AURA LIGHT THEME (MOBILE & DESKTOP)
+       ============================================================ */
+    :root[data-theme="aura-light"] #calendarModal .modal-sheet,
+    :root[data-theme="aura-light"] #academicCalendarModal .modal-sheet {
+      background: #ffffff !important;
+      border: 1px solid rgba(226, 232, 240, 0.95) !important;
+      box-shadow: 0 -10px 40px rgba(15, 23, 42, 0.12) !important;
+      color: #0f172a !important;
+    }
+
+    :root[data-theme="aura-light"] .quick-jump-pill {
+      background: #ffffff !important;
+      border: 1px solid rgba(226, 232, 240, 0.95) !important;
+      color: #0f172a !important;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
+    }
+    :root[data-theme="aura-light"] .quick-jump-pill:hover {
+      background: #f8fafc !important;
+      border-color: rgba(79, 70, 229, 0.4) !important;
+    }
+
+    :root[data-theme="aura-light"] .modal-day-chip {
+      background: #ffffff !important;
+      border: 1px solid rgba(226, 232, 240, 0.95) !important;
+      color: #334155 !important;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
+    }
+    :root[data-theme="aura-light"] .modal-day-chip.active {
+      background: linear-gradient(135deg, #4f46e5, #4338ca) !important;
+      color: #ffffff !important;
+      border-color: transparent !important;
+      box-shadow: 0 3px 10px rgba(79, 70, 229, 0.3) !important;
+    }
+
+    :root[data-theme="aura-light"] .modal-input,
+    :root[data-theme="aura-light"] input[type="date"] {
+      background: #ffffff !important;
+      border: 1.5px solid rgba(203, 213, 225, 0.95) !important;
+      color: #0f172a !important;
+      color-scheme: light !important;
+    }
+    :root[data-theme="aura-light"] input[type="date"]::-webkit-calendar-picker-indicator {
+      filter: none !important;
+      cursor: pointer;
+    }
+
+    :root[data-theme="aura-light"] .academic-event-card {
+      background: #ffffff !important;
+      border: 1px solid rgba(226, 232, 240, 0.95) !important;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
+    }
+    :root[data-theme="aura-light"] .event-icon-box {
+      background: rgba(79, 70, 229, 0.08) !important;
+      border: 1px solid rgba(79, 70, 229, 0.20) !important;
+    }
+    :root[data-theme="aura-light"] .event-title {
+      color: #0f172a !important;
+    }
+    :root[data-theme="aura-light"] .event-date {
+      color: #64748b !important;
+    }
+    :root[data-theme="aura-light"] .calendar-tab-btn {
+      color: #64748b !important;
+      border-bottom: 2px solid transparent !important;
+      background: transparent !important;
+    }
+    :root[data-theme="aura-light"] .calendar-tab-btn.active {
+      color: #4f46e5 !important;
+      border-bottom: 2px solid #4f46e5 !important;
+      font-weight: 800 !important;
+    }
+
     /* Section selector buttons */
     :root[data-theme="aura-light"] .sec-pill-btn {
       background: #ffffff !important;
@@ -4852,7 +4930,7 @@
         style="background:var(--card-surface-grad); border:1px solid var(--card-border); border-radius:14px; padding:12px; display:flex; flex-direction:column; gap:8px;">
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Installed Version:</span>
-          <strong style="color:var(--gold-accent);">v5.9.4 (Quantum Triple-Spectrum)</strong>
+          <strong style="color:var(--gold-accent);">v5.9.5 (Quantum Triple-Spectrum)</strong>
         </div>
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Notification:</span>
@@ -7073,9 +7151,9 @@
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '5.9.4';
-    const LOCAL_APP_VERSION_CODE = 64;
-    const LOCAL_APP_BUILD_HASH = 'e8c5a2491b61';
+    const LOCAL_APP_VERSION_NAME = '5.9.5';
+    const LOCAL_APP_VERSION_CODE = 65;
+    const LOCAL_APP_BUILD_HASH = 'c584e46855c9';
 
     let cachedLatestVersionCode = 29;
 
@@ -7524,7 +7602,8 @@
       }
       if (window.AndroidUpdater && typeof window.AndroidUpdater.setSystemTheme === 'function') {
         try {
-          window.AndroidUpdater.setSystemTheme(false);
+          const isLight = (theme === 'aura-light');
+          window.AndroidUpdater.setSystemTheme(isLight);
         } catch (e) { }
       }
     }
