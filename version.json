@@ -1,18 +1,18 @@
 {
-  "versionName": "5.9.0",
-  "versionCode": 60,
-  "apkVersionCode": 60,
-  "htmlHash": "b1d0b8826f7a",
+  "versionName": "5.9.1",
+  "versionCode": 61,
+  "apkVersionCode": 61,
+  "htmlHash": "14c69bf096e4",
   "apkHash": "b7d54ad464c8",
-  "apkSize": 2395660,
-  "updatedAt": 1791213931359,
+  "apkSize": 2397348,
+  "updatedAt": 1791214400792,
   "publicUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main",
   "githubUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main",
   "pagesUrl": "https://krishnapanday4196-gif.github.io/sec-d-timetable",
   "apkUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/SecD_Timetable.apk",
   "htmlUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/index.html",
   "downloadUrl": "https://krishnapanday4196-gif.github.io/sec-d-timetable",
-  "lastUpdated": "2026-10-05T15:25:31.359Z",
-  "apkMd5": "e66bf427d28764f30f0b191f599bad46",
-  "releaseNotes": "v5.9.0: Quantum Cyber Luxury Edition. Ultra-premium aerospace UI with cybernetic matrix holographic grid, beveled titanium glass cards, metallic hologram watermark, and 120 FPS zero-lag living plasma themes."
+  "lastUpdated": "2026-10-05T15:33:20.792Z",
+  "apkMd5": "a663728b8bcd330fe08eb4a8f49fcc1a",
+  "releaseNotes": "v5.9.1: Added Aura Light (Celestial) theme with luminous pearl white, iridescent sky cyan, celestial violet and rose aura glow, running on the 120 FPS zero-lag living plasma engine."
 }
