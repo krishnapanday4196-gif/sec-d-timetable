@@ -5327,7 +5327,7 @@
         style="background:var(--card-surface-grad); border:1px solid var(--card-border); border-radius:14px; padding:12px; display:flex; flex-direction:column; gap:8px;">
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Installed Version:</span>
-          <strong style="color:var(--gold-accent);">v5.9.10 (Quantum Triple-Spectrum)</strong>
+          <strong style="color:var(--gold-accent);">v5.9.11 (Quantum Triple-Spectrum)</strong>
         </div>
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Notification:</span>
@@ -5347,6 +5347,11 @@
       <button class="primary-btn" id="inAppUpdateMainBtn" style="background:linear-gradient(135deg, #10b981, #059669);"
         onclick="executeInAppUpdate()">
         ⚡ Update App Now (1-Tap Instant)
+      </button>
+
+      <button class="secondary-btn" style="background:rgba(79, 70, 229, 0.12); border:1.5px solid #4f46e5; color:#4f46e5; font-weight:800; justify-content:center;"
+        onclick="downloadFullApk()">
+        📲 Direct Download & Install APK (v5.9.11)
       </button>
 
       <button class="secondary-btn" onclick="checkInAppUpdate(true)">
@@ -7589,9 +7594,9 @@
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '5.9.10';
-    const LOCAL_APP_VERSION_CODE = 70;
-    const LOCAL_APP_BUILD_HASH = '5f6aa0a08b44';
+    const LOCAL_APP_VERSION_NAME = '5.9.11';
+    const LOCAL_APP_VERSION_CODE = 71;
+    const LOCAL_APP_BUILD_HASH = '18760860ef18';
 
     let cachedLatestVersionCode = 29;
 
@@ -7639,21 +7644,19 @@
     }
 
     // Determines strictly if a genuinely newer update exists based strictly on versionCode integer
-    function isNewUpdateAvailable(serverVersionName, serverVersionCode) {
+    function isNewUpdateAvailable(serverVersionName, serverVersionCode, isManual = false) {
       const sCode = parseInt(serverVersionCode, 10) || 0;
       const currentCode = LOCAL_APP_VERSION_CODE;
 
-      // An update is ONLY valid if the server version code is strictly GREATER than current app version code!
       if (sCode > currentCode) {
-        // If user already dismissed this specific version, do not prompt repeatedly
-        const dismissed = parseInt(localStorage.getItem('secD_dismissed_update_code'), 10) || 0;
-        if (dismissed >= sCode) {
-          return false;
+        if (!isManual) {
+          const dismissed = parseInt(localStorage.getItem('secD_dismissed_update_code'), 10) || 0;
+          if (dismissed >= sCode) {
+            return false;
+          }
         }
         return true;
       }
-
-      // If server version code <= current build: APP IS CURRENT, NO UPDATE!
       return false;
     }
 
@@ -7672,7 +7675,7 @@
       const otaPill = document.getElementById('menuOtaPill');
       const banner = document.getElementById('inAppUpdateBanner');
 
-      const hasUpdate = isNewUpdateAvailable(versionName, serverVersionCode);
+      const hasUpdate = isNewUpdateAvailable(versionName, serverVersionCode, isManual);
 
       if (hasUpdate) {
         cachedLatestHash = htmlHash;
@@ -7764,7 +7767,7 @@
       const banner = document.getElementById('inAppUpdateBanner');
       const otaPill = document.getElementById('menuOtaPill');
 
-      const hasUpdate = isNewUpdateAvailable(data.versionName, data.versionCode);
+      const hasUpdate = isNewUpdateAvailable(data.versionName, data.versionCode, isManual);
 
       if (hasUpdate) {
         cachedLatestHash = data.htmlHash;
@@ -7797,9 +7800,11 @@
       console.info('[OTA] performInAppUpdate invoked -> delegating to executeInAppUpdate()');
       return executeInAppUpdate();
     }
-
     async function executeInAppUpdate() {
       triggerHaptic(15);
+      localStorage.removeItem('secD_dismissed_update_code');
+      localStorage.removeItem('secD_dismissed_update_ver');
+
       const banner = document.getElementById('inAppUpdateBanner');
       if (banner) banner.style.display = 'none';
 
@@ -7813,28 +7818,11 @@
         bannerBtn.textContent = '⏳ Updating...';
         bannerBtn.disabled = true;
       }
-      showToast(`⚡ Updating Qtimex to v${LOCAL_APP_VERSION_NAME}...`);
+      showToast('⚡ Updating app from GitHub Cloud CDN...');
 
       window.onOtaUpdateComplete = function (success) {
         if (success) {
-          const banner = document.getElementById('inAppUpdateBanner');
-          if (banner) banner.style.display = 'none';
-          if (cachedLatestHash) {
-            localStorage.setItem('secD_local_hash', cachedLatestHash);
-            localStorage.setItem('secD_dismissed_update_ver', cachedLatestHash);
-          }
-          if (cachedLatestVersionCode) {
-            localStorage.setItem('secD_dismissed_update_code', String(cachedLatestVersionCode));
-          }
-          try {
-            NotificationLibrary.addNotification({
-              title: `✅ Qtimex Updated!`,
-              shortBody: 'Your app has been updated with the latest schedule & features.',
-              bigText: '🎉 Qtimex has been updated to the latest version!',
-              type: 'update'
-            });
-          } catch (e) { }
-          showToast(`🎉 App Updated to v${LOCAL_APP_VERSION_NAME}!`);
+          showToast('🎉 App Updated Successfully! Reloading...');
           setTimeout(() => {
             window.location.reload(true);
           }, 350);
@@ -7844,51 +7832,47 @@
         }
       };
 
+      const directServers = [
+        'https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main',
+        'https://krishnapanday4196-gif.github.io/sec-d-timetable'
+      ];
+
       // 1. Native Android Java OTA Downloader (Zero CORS restrictions!)
       if (window.AndroidUpdater && typeof window.AndroidUpdater.performNativeOtaUpdate === 'function') {
-        const candidates = [activeConnectedServer, ...UPDATE_SERVERS].filter((v, i, a) => v && a.indexOf(v) === i);
-        window.AndroidUpdater.performNativeOtaUpdate(candidates.join(','));
-        // Safety timeout fallback: if Java doesn't finish within 6s, attempt JS fallback
+        window.AndroidUpdater.performNativeOtaUpdate(directServers.join(','));
         setTimeout(() => {
           if (updateBtn && updateBtn.disabled) {
-            runJsOtaFallback();
+            runJsOtaFallbackDirect(directServers);
           }
-        }, 6000);
+        }, 5000);
         return;
       }
 
-      runJsOtaFallback();
+      runJsOtaFallbackDirect(directServers);
     }
 
-    async function runJsOtaFallback() {
-      const candidates = [activeConnectedServer, ...UPDATE_SERVERS].filter((v, i, a) => v && a.indexOf(v) === i);
-
-      for (const serverUrl of candidates) {
+    async function runJsOtaFallbackDirect(servers) {
+      for (const serverUrl of servers) {
         try {
-          const fetchOpts = serverUrl.includes('loca.lt') ? { headers: { 'bypass-tunnel-reminder': 'true' } } : {};
-          const res = await fetch(`${serverUrl}/index.html?t=${Date.now()}`, fetchOpts);
+          const res = await fetch(`${serverUrl}/index.html?t=${Date.now()}`);
           if (!res.ok) continue;
           const newHtml = await res.text();
-          if (newHtml.length < 1000 || (!newHtml.includes('Qtimex') && !newHtml.includes('CSE D Timetable'))) continue;
-
-          if (window.AndroidUpdater && typeof window.AndroidUpdater.applyOtaUpdate === 'function') {
-            window.AndroidUpdater.applyOtaUpdate(newHtml, cachedLatestHash || 'latest');
+          if (newHtml.length > 1000 && (newHtml.includes('Qtimex') || newHtml.includes('SEC-D Timetable') || newHtml.includes('CSE D Timetable'))) {
+            if (window.AndroidUpdater && typeof window.AndroidUpdater.applyOtaUpdate === 'function') {
+              window.AndroidUpdater.applyOtaUpdate(newHtml, 'latest');
+            }
+            showToast('🎉 App Updated to Latest Version!');
+            setTimeout(() => window.location.reload(true), 350);
+            return;
           }
-
-          localStorage.setItem('secD_local_hash', cachedLatestHash || 'latest');
-          localStorage.setItem('secD_dismissed_update_ver', cachedLatestHash || 'latest');
-          if (cachedLatestVersionCode) {
-            localStorage.setItem('secD_dismissed_update_code', String(cachedLatestVersionCode));
-          }
-          showToast(`🎉 App Updated to v${LOCAL_APP_VERSION_NAME}!`);
-          setTimeout(() => window.location.reload(true), 350);
-          return;
-        } catch (e) { }
+        } catch (e) {
+          console.warn('Fetch fallback error:', e);
+        }
       }
 
       const updateBtn = document.getElementById('inAppUpdateMainBtn') || document.querySelector('#updateModal .primary-btn');
       if (updateBtn) {
-        updateBtn.textContent = 'Check for Updates';
+        updateBtn.textContent = '⚡ Update App Now';
         updateBtn.disabled = false;
       }
       showToast('Opening Direct APK Download...');
@@ -7897,11 +7881,7 @@
 
     function downloadFullApk() {
       triggerHaptic(12);
-      let bestServer = activeConnectedServer || 'https://llc-displays-sec-information.trycloudflare.com';
-      if (!bestServer || bestServer.includes('sas-preston')) {
-        bestServer = 'https://llc-displays-sec-information.trycloudflare.com';
-      }
-      const directApkUrl = `${bestServer.replace(/\/$/, '')}/SecD_Timetable.apk`;
+      const directApkUrl = 'https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/SecD_Timetable.apk';
 
       if (window.AndroidUpdater && typeof window.AndroidUpdater.downloadApk === 'function') {
         showToast('⬇️ Downloading APK directly in app...');
