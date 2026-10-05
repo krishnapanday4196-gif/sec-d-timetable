@@ -5051,7 +5051,7 @@
         style="background:var(--card-surface-grad); border:1px solid var(--card-border); border-radius:14px; padding:12px; display:flex; flex-direction:column; gap:8px;">
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Installed Version:</span>
-          <strong style="color:var(--gold-accent);">v5.9.6 (Quantum Triple-Spectrum)</strong>
+          <strong style="color:var(--gold-accent);">v5.9.8 (Quantum Triple-Spectrum)</strong>
         </div>
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Notification:</span>
@@ -5259,21 +5259,6 @@
         </button>
       </div>
 
-      <!-- Interactive In-App Full Month Calendar -->
-      <div class="inapp-calendar-box">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-          <button type="button" class="cal-nav-btn" onclick="navCalMonth(-1)" title="Previous Month">‹</button>
-          <div id="calMonthYearLabel" style="font-weight:800; font-size:0.92rem; color:var(--text-main); letter-spacing:0.3px;">October 2026</div>
-          <button type="button" class="cal-nav-btn" onclick="navCalMonth(1)" title="Next Month">›</button>
-        </div>
-        <div class="inapp-cal-weekdays" style="display:grid; grid-template-columns:repeat(7, 1fr); text-align:center; font-size:0.68rem; font-weight:800; margin-bottom:6px; letter-spacing:0.5px;">
-          <div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div><div style="color:#ef4444;">S</div>
-        </div>
-        <div id="inappCalDaysGrid" style="display:grid; grid-template-columns:repeat(7, 1fr); gap:4px; text-align:center;">
-          <!-- Generated dynamically by renderInAppCalendar() -->
-        </div>
-      </div>
-
       <!-- Quick Weekday Chips (Mon to Sat) -->
       <div style="font-size:0.72rem; font-weight:800; color:var(--text-sub); margin-bottom:6px; letter-spacing:0.5px;">
         SELECT DAY OF THIS WEEK</div>
@@ -5286,11 +5271,12 @@
       <div class="form-group" style="margin-bottom:14px;">
         <label for="datePickerInput" style="font-weight:700;">Choose Specific Calendar Date:</label>
         <div style="display:flex; gap:8px; align-items:center;">
-          <input type="date" id="datePickerInput" class="modal-input" style="flex:1;" onclick="handleDatePickerInputClick(event)"
-            onchange="applySelectedDateFromPicker()">
+          <input type="text" id="datePickerInput" class="modal-input" style="flex:1; cursor:pointer;" readonly
+            onclick="openCustomDatePickerDialog()"
+            placeholder="Tap Pick to choose date...">
           <button class="secondary-btn"
             style="width:auto; padding:10px 14px; margin:0; display:flex; align-items:center; gap:4px;"
-            onclick="triggerNativeDatePicker()" title="Open Native Calendar">
+            onclick="openCustomDatePickerDialog()" title="Open Calendar">
             📅 <span>Pick</span>
           </button>
         </div>
@@ -5303,6 +5289,45 @@
         <button class="secondary-btn" style="width:auto;" onclick="closeModal('calendarModal')">
           Cancel
         </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: DEDICATED PURE WHITE DATE PICKER POPUP (OPENS ONLY ON 'PICK') -->
+  <div class="modal-overlay" id="customDatePickerModal" onclick="closeModalOnOverlay(event, 'customDatePickerModal')" style="z-index: 99999;">
+    <div class="picker-dialog-card" onclick="event.stopPropagation();">
+      <!-- Calendar Header (Selected Year & Full Date) -->
+      <div class="picker-dialog-header">
+        <div class="picker-header-year" id="pickerHeaderYear">2026</div>
+        <div class="picker-header-date" id="pickerHeaderDate">Mon, Oct 5</div>
+      </div>
+
+      <!-- Calendar Body -->
+      <div class="picker-dialog-body">
+        <!-- Month Navigation -->
+        <div class="picker-month-bar">
+          <button type="button" class="picker-nav-arrow" onclick="navPickerMonth(-1)">‹</button>
+          <div class="picker-month-title" id="pickerMonthTitle">October 2026</div>
+          <button type="button" class="picker-nav-arrow" onclick="navPickerMonth(1)">›</button>
+        </div>
+
+        <!-- Weekday Headers (S M T W T F S - Matches Android system layout) -->
+        <div class="picker-weekday-row">
+          <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+        </div>
+
+        <!-- Days Grid -->
+        <div class="picker-days-grid" id="pickerDaysGrid">
+          <!-- Populated dynamically by renderCustomPickerDays() -->
+        </div>
+
+        <!-- Action Buttons (CLEAR, CANCEL, SET) -->
+        <div class="picker-actions-row">
+          <button type="button" class="picker-action-btn" onclick="pickerActionClear()">CLEAR</button>
+          <div style="flex:1;"></div>
+          <button type="button" class="picker-action-btn" onclick="closeModal('customDatePickerModal')">CANCEL</button>
+          <button type="button" class="picker-action-btn primary" onclick="pickerActionSet()">SET</button>
+        </div>
       </div>
     </div>
   </div>
@@ -7287,9 +7312,9 @@
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '5.9.6';
-    const LOCAL_APP_VERSION_CODE = 66;
-    const LOCAL_APP_BUILD_HASH = '9055bcece00c';
+    const LOCAL_APP_VERSION_NAME = '5.9.8';
+    const LOCAL_APP_VERSION_CODE = 68;
+    const LOCAL_APP_BUILD_HASH = 'e8ce31d24978';
 
     let cachedLatestVersionCode = 29;
 
@@ -7966,9 +7991,6 @@
         const d = String(viewingDate.getDate()).padStart(2, '0');
         input.value = `${y}-${m}-${d}`;
       }
-      calDisplayYear = viewingDate.getFullYear();
-      calDisplayMonth = viewingDate.getMonth();
-      renderInAppCalendar();
       renderModalWeekdays();
       openModal('calendarModal');
     }
@@ -8006,164 +8028,30 @@
         container.appendChild(btn);
       }
     }
-
-    let calDisplayYear = new Date().getFullYear();
-    let calDisplayMonth = new Date().getMonth();
-
-    const monthNamesList = [
-      'January', 'February', 'March', 'April', 'May', 'June',
-      'July', 'August', 'September', 'October', 'November', 'December'
-    ];
-
-    function navCalMonth(delta) {
-      triggerHaptic(8);
-      calDisplayMonth += delta;
-      if (calDisplayMonth < 0) {
-        calDisplayMonth = 11;
-        calDisplayYear--;
-      } else if (calDisplayMonth > 11) {
-        calDisplayMonth = 0;
-        calDisplayYear++;
-      }
-      renderInAppCalendar();
-    }
-
-    function renderInAppCalendar() {
-      const label = document.getElementById('calMonthYearLabel');
-      const grid = document.getElementById('inappCalDaysGrid');
-      if (!grid) return;
-
-      if (label) {
-        label.textContent = `${monthNamesList[calDisplayMonth]} ${calDisplayYear}`;
-      }
-      grid.innerHTML = '';
-
-      const now = isSimulating ? getSimulatedDate() : new Date();
-      const firstDayOfMonth = new Date(calDisplayYear, calDisplayMonth, 1);
-      const daysInMonth = new Date(calDisplayYear, calDisplayMonth + 1, 0).getDate();
-
-      // Monday = 0, Sunday = 6
-      let startDay = firstDayOfMonth.getDay() - 1;
-      if (startDay < 0) startDay = 6;
-
-      // Previous month days to pad
-      const prevMonthLastDate = new Date(calDisplayYear, calDisplayMonth, 0).getDate();
-      for (let i = startDay - 1; i >= 0; i--) {
-        const d = prevMonthLastDate - i;
-        const cell = document.createElement('button');
-        cell.type = 'button';
-        cell.className = 'inapp-cal-day-cell other-month';
-        cell.textContent = d;
-        cell.onclick = () => {
-          navCalMonth(-1);
-        };
-        grid.appendChild(cell);
-      }
-
-      // Current month days
-      for (let day = 1; day <= daysInMonth; day++) {
-        const dObj = new Date(calDisplayYear, calDisplayMonth, day);
-        const dayOfWeek = dObj.getDay();
-        const isToday = (dObj.toDateString() === now.toDateString());
-        const isSelected = (dObj.toDateString() === viewingDate.toDateString());
-        const isSunday = (dayOfWeek === 0);
-
-        const cell = document.createElement('button');
-        cell.type = 'button';
-        let cls = 'inapp-cal-day-cell';
-        if (isSelected) cls += ' is-selected';
-        else if (isToday) cls += ' is-today';
-        if (isSunday) cls += ' is-sunday';
-        cell.className = cls;
-        cell.textContent = day;
-
-        const mStr = String(calDisplayMonth + 1).padStart(2, '0');
-        const dStr = String(day).padStart(2, '0');
-        const fullDateStr = `${calDisplayYear}-${mStr}-${dStr}`;
-
-        cell.onclick = () => {
-          triggerHaptic(10);
-          const input = document.getElementById('datePickerInput');
-          if (input) input.value = fullDateStr;
-          handleDatePickerChange(fullDateStr);
-        };
-        grid.appendChild(cell);
-      }
-
-      // Next month padding
-      const totalCells = startDay + daysInMonth;
-      const nextMonthPadding = (7 - (totalCells % 7)) % 7;
-      for (let day = 1; day <= nextMonthPadding; day++) {
-        const cell = document.createElement('button');
-        cell.type = 'button';
-        cell.className = 'inapp-cal-day-cell other-month';
-        cell.textContent = day;
-        cell.onclick = () => {
-          navCalMonth(1);
-        };
-        grid.appendChild(cell);
-      }
-    }
-
     function triggerNativeDatePicker() {
-      const input = document.getElementById('datePickerInput');
-      let y, m, d;
-      if (input && input.value) {
-        const parts = input.value.split('-');
-        y = parseInt(parts[0], 10);
-        m = parseInt(parts[1], 10) - 1;
-        d = parseInt(parts[2], 10);
-      } else {
-        const now = viewingDate || (isSimulating ? getSimulatedDate() : new Date());
-        y = now.getFullYear();
-        m = now.getMonth();
-        d = now.getDate();
-      }
-
-      // Check if native Android white DatePickerDialog bridge is available
-      if (window.AndroidUpdater && typeof window.AndroidUpdater.openNativeDatePicker === 'function') {
-        try {
-          window.AndroidUpdater.openNativeDatePicker(y, m, d);
-          return;
-        } catch (e) {
-          console.warn('Native picker error:', e);
-        }
-      }
-
-      // Fallback
-      if (input) {
-        try {
-          if (typeof input.showPicker === 'function') {
-            input.showPicker();
-          } else {
-            input.focus();
-          }
-        } catch (e) {
-          input.focus();
-        }
-      }
+      openCustomDatePickerDialog();
     }
 
     function handleDatePickerInputClick(e) {
-      if (window.AndroidUpdater && typeof window.AndroidUpdater.openNativeDatePicker === 'function') {
-        if (e) {
-          e.preventDefault();
-          e.stopPropagation();
-        }
-        triggerNativeDatePicker();
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
       }
+      openCustomDatePickerDialog();
     }
 
     window.onNativeDatePicked = function(dateStr) {
       const input = document.getElementById('datePickerInput');
       if (input) input.value = dateStr;
+      closeModal('customDatePickerModal');
+      closeModal('calendarModal');
       handleDatePickerChange(dateStr);
     };
 
     function applySelectedDateFromPicker() {
       const input = document.getElementById('datePickerInput');
       if (!input || !input.value) {
-        showToast('Please select a date first');
+        openCustomDatePickerDialog();
         return;
       }
       handleDatePickerChange(input.value);
@@ -9111,6 +8999,142 @@
       showToast('✅ Note saved!');
       closeModal('periodModal');
     }
+
+    
+    // DEDICATED POPUP DATE PICKER STATE (OPENS ON 'PICK' TAP)
+    let pickerCurrentYear = new Date().getFullYear();
+    let pickerCurrentMonth = new Date().getMonth(); // 0-11
+    let pickerSelectedDate = new Date();
+
+    const pickerMonthNames = [
+      'January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+    const pickerDayNamesShort = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const pickerMonthNamesShort = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+    function openCustomDatePickerDialog() {
+      triggerHaptic(10);
+      const input = document.getElementById('datePickerInput');
+      if (input && input.value && input.value.includes('-')) {
+        const parts = input.value.split('-').map(Number);
+        if (parts.length === 3 && !isNaN(parts[0])) {
+          pickerSelectedDate = new Date(parts[0], parts[1] - 1, parts[2]);
+        } else {
+          pickerSelectedDate = new Date(viewingDate || new Date());
+        }
+      } else {
+        pickerSelectedDate = new Date(viewingDate || new Date());
+      }
+
+      pickerCurrentYear = pickerSelectedDate.getFullYear();
+      pickerCurrentMonth = pickerSelectedDate.getMonth();
+
+      updatePickerHeaderDisplay();
+      renderCustomPickerDays();
+      openModal('customDatePickerModal');
+    }
+
+    function updatePickerHeaderDisplay() {
+      const yearEl = document.getElementById('pickerHeaderYear');
+      const dateEl = document.getElementById('pickerHeaderDate');
+      const titleEl = document.getElementById('pickerMonthTitle');
+
+      if (yearEl) yearEl.textContent = pickerSelectedDate.getFullYear();
+      if (dateEl) {
+        const dayName = pickerDayNamesShort[pickerSelectedDate.getDay()];
+        const monthName = pickerMonthNamesShort[pickerSelectedDate.getMonth()];
+        const dateNum = pickerSelectedDate.getDate();
+        dateEl.textContent = `${dayName}, ${monthName} ${dateNum}`;
+      }
+      if (titleEl) {
+        titleEl.textContent = `${pickerMonthNames[pickerCurrentMonth]} ${pickerCurrentYear}`;
+      }
+    }
+
+    function navPickerMonth(delta) {
+      triggerHaptic(8);
+      pickerCurrentMonth += delta;
+      if (pickerCurrentMonth < 0) {
+        pickerCurrentMonth = 11;
+        pickerCurrentYear--;
+      } else if (pickerCurrentMonth > 11) {
+        pickerCurrentMonth = 0;
+        pickerCurrentYear++;
+      }
+      const titleEl = document.getElementById('pickerMonthTitle');
+      if (titleEl) {
+        titleEl.textContent = `${pickerMonthNames[pickerCurrentMonth]} ${pickerCurrentYear}`;
+      }
+      renderCustomPickerDays();
+    }
+
+    function renderCustomPickerDays() {
+      const grid = document.getElementById('pickerDaysGrid');
+      if (!grid) return;
+      grid.innerHTML = '';
+
+      const now = isSimulating ? getSimulatedDate() : new Date();
+      const firstDayOfMonth = new Date(pickerCurrentYear, pickerCurrentMonth, 1);
+      const daysInMonth = new Date(pickerCurrentYear, pickerCurrentMonth + 1, 0).getDate();
+
+      // Sunday = 0, Saturday = 6 (standard Android DatePickerDialog format)
+      const startDay = firstDayOfMonth.getDay();
+
+      // Empty placeholders for previous days
+      for (let i = 0; i < startDay; i++) {
+        const emptyCell = document.createElement('div');
+        emptyCell.className = 'picker-day-btn empty';
+        grid.appendChild(emptyCell);
+      }
+
+      // Month days
+      for (let day = 1; day <= daysInMonth; day++) {
+        const cellDate = new Date(pickerCurrentYear, pickerCurrentMonth, day);
+        const isToday = (cellDate.toDateString() === now.toDateString());
+        const isSelected = (cellDate.toDateString() === pickerSelectedDate.toDateString());
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = `picker-day-btn ${isSelected ? 'is-selected' : ''} ${isToday ? 'is-today' : ''}`;
+        btn.textContent = day;
+
+        btn.onclick = () => {
+          triggerHaptic(10);
+          pickerSelectedDate = new Date(cellDate);
+          updatePickerHeaderDisplay();
+          renderCustomPickerDays();
+        };
+
+        grid.appendChild(btn);
+      }
+    }
+
+    function pickerActionSet() {
+      triggerHaptic(12);
+      const y = pickerSelectedDate.getFullYear();
+      const m = String(pickerSelectedDate.getMonth() + 1).padStart(2, '0');
+      const d = String(pickerSelectedDate.getDate()).padStart(2, '0');
+      const dateStr = `${y}-${m}-${d}`;
+
+      const input = document.getElementById('datePickerInput');
+      if (input) input.value = dateStr;
+
+      closeModal('customDatePickerModal');
+      closeModal('calendarModal');
+      handleDatePickerChange(dateStr);
+    }
+
+    function pickerActionClear() {
+      triggerHaptic(10);
+      const now = isSimulating ? getSimulatedDate() : new Date();
+      pickerSelectedDate = new Date(now);
+      pickerCurrentYear = now.getFullYear();
+      pickerCurrentMonth = now.getMonth();
+      updatePickerHeaderDisplay();
+      renderCustomPickerDays();
+    }
+
 
     function handleDatePickerChange(val) {
       if (!val) return;
