@@ -1,18 +1,18 @@
 {
-  "versionName": "5.9.8",
-  "versionCode": 68,
-  "apkVersionCode": 68,
-  "htmlHash": "e8ce31d24978",
+  "versionName": "5.9.9",
+  "versionCode": 69,
+  "apkVersionCode": 69,
+  "htmlHash": "5a0b832c6306",
   "apkHash": "b7d54ad464c8",
-  "apkSize": 2403192,
-  "updatedAt": 1791218138801,
+  "apkSize": 2404944,
+  "updatedAt": 1791218464348,
   "publicUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main",
   "githubUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main",
   "pagesUrl": "https://krishnapanday4196-gif.github.io/sec-d-timetable",
   "apkUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/SecD_Timetable.apk",
   "htmlUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/index.html",
   "downloadUrl": "https://krishnapanday4196-gif.github.io/sec-d-timetable",
-  "lastUpdated": "2026-10-05T16:35:38.801Z",
-  "apkMd5": "01c1ba52114ca973a5376d3e919a83b4",
-  "releaseNotes": "v5.9.8: Pure White Popup Date Calendar triggered only when tapping 'Pick' button in Aura Light theme."
+  "lastUpdated": "2026-10-05T16:41:04.348Z",
+  "apkMd5": "5ec65803c1413f12ae3002c134a458f0",
+  "releaseNotes": "v5.9.9: Next-Level Luxury Pure White Date Picker Dialog in Aura Light theme triggered on 'Pick' click."
 }
