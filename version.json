@@ -1,18 +1,18 @@
 {
-  "versionName": "5.9.9",
-  "versionCode": 69,
-  "apkVersionCode": 69,
-  "htmlHash": "5a0b832c6306",
+  "versionName": "5.9.10",
+  "versionCode": 70,
+  "apkVersionCode": 70,
+  "htmlHash": "5f6aa0a08b44",
   "apkHash": "b7d54ad464c8",
-  "apkSize": 2404944,
-  "updatedAt": 1791218464348,
+  "apkSize": 2405044,
+  "updatedAt": 1791219018540,
   "publicUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main",
   "githubUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main",
   "pagesUrl": "https://krishnapanday4196-gif.github.io/sec-d-timetable",
   "apkUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/SecD_Timetable.apk",
   "htmlUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/index.html",
   "downloadUrl": "https://krishnapanday4196-gif.github.io/sec-d-timetable",
-  "lastUpdated": "2026-10-05T16:41:04.348Z",
-  "apkMd5": "5ec65803c1413f12ae3002c134a458f0",
-  "releaseNotes": "v5.9.9: Next-Level Luxury Pure White Date Picker Dialog in Aura Light theme triggered on 'Pick' click."
+  "lastUpdated": "2026-10-05T16:50:18.540Z",
+  "apkMd5": "60fd3d81a1eff95ff258312a9c4749e8",
+  "releaseNotes": "v5.9.10: Fix Cancel and Set buttons in Next-Level Pure White Date Picker Dialog in Aura Light theme."
 }

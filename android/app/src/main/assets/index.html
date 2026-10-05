@@ -4605,11 +4605,8 @@
       justify-content: center !important;
       padding: 16px;
     }
-    #customDatePickerModal.active,
-    #customDatePickerModal[style*="display: flex"] {
+    #customDatePickerModal.active {
       display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
     }
 
     .picker-dialog-card {
@@ -4762,6 +4759,10 @@
       border-top: 1px solid rgba(255, 255, 255, 0.08);
     }
     .picker-action-btn {
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      -webkit-user-select: none;
       background: transparent;
       border: none;
       font-size: 0.82rem;
@@ -5326,7 +5327,7 @@
         style="background:var(--card-surface-grad); border:1px solid var(--card-border); border-radius:14px; padding:12px; display:flex; flex-direction:column; gap:8px;">
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Installed Version:</span>
-          <strong style="color:var(--gold-accent);">v5.9.9 (Quantum Triple-Spectrum)</strong>
+          <strong style="color:var(--gold-accent);">v5.9.10 (Quantum Triple-Spectrum)</strong>
         </div>
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Notification:</span>
@@ -5569,7 +5570,7 @@
   </div>
 
   <!-- MODAL: DEDICATED PURE WHITE DATE PICKER POPUP (OPENS ONLY ON 'PICK') -->
-  <div class="modal-overlay" id="customDatePickerModal" onclick="closeModalOnOverlay(event, 'customDatePickerModal')" style="z-index: 999999;">
+  <div class="modal-overlay" id="customDatePickerModal" onclick="closeCustomDatePickerModal()" style="z-index: 999999;">
     <div class="picker-dialog-card" onclick="event.stopPropagation();">
       <!-- Calendar Header (Selected Year & Full Date) -->
       <div class="picker-dialog-header">
@@ -5601,7 +5602,7 @@
         <div class="picker-actions-row">
           <button type="button" class="picker-action-btn" onclick="pickerActionClear()">CLEAR</button>
           <div style="flex:1;"></div>
-          <button type="button" class="picker-action-btn" onclick="closeModal('customDatePickerModal')">CANCEL</button>
+          <button type="button" class="picker-action-btn" onclick="closeCustomDatePickerModal()">CANCEL</button>
           <button type="button" class="picker-action-btn primary" onclick="pickerActionSet()">SET</button>
         </div>
       </div>
@@ -7588,9 +7589,9 @@
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '5.9.9';
-    const LOCAL_APP_VERSION_CODE = 69;
-    const LOCAL_APP_BUILD_HASH = '5a0b832c6306';
+    const LOCAL_APP_VERSION_NAME = '5.9.10';
+    const LOCAL_APP_VERSION_CODE = 70;
+    const LOCAL_APP_BUILD_HASH = '5f6aa0a08b44';
 
     let cachedLatestVersionCode = 29;
 
@@ -8104,7 +8105,8 @@
 
     function closeModal(id) {
       const m = document.getElementById(id);
-      if (m && m.style.display === 'flex') {
+      if (m) {
+        m.classList.remove('active');
         m.style.display = 'none';
         triggerHaptic(8);
         try {
@@ -9308,12 +9310,20 @@
 
       updatePickerHeaderDisplay();
       renderCustomPickerDays();
-      
+
       const modal = document.getElementById('customDatePickerModal');
       if (modal) {
-        modal.style.display = 'flex';
         modal.classList.add('active');
-        try { history.pushState({ modalOpen: 'customDatePickerModal' }, ''); } catch (e) { }
+        modal.style.display = 'flex';
+      }
+    }
+
+    function closeCustomDatePickerModal() {
+      triggerHaptic(8);
+      const modal = document.getElementById('customDatePickerModal');
+      if (modal) {
+        modal.classList.remove('active');
+        modal.style.display = 'none';
       }
     }
 
@@ -9402,8 +9412,17 @@
       const input = document.getElementById('datePickerInput');
       if (input) input.value = dateStr;
 
-      closeModal('customDatePickerModal');
-      closeModal('calendarModal');
+      // 1. Instantly close custom date picker modal
+      closeCustomDatePickerModal();
+
+      // 2. Instantly close calendar modal
+      const calModal = document.getElementById('calendarModal');
+      if (calModal) {
+        calModal.classList.remove('active');
+        calModal.style.display = 'none';
+      }
+
+      // 3. Immediately load and render the selected date routine
       handleDatePickerChange(dateStr);
     }
 
