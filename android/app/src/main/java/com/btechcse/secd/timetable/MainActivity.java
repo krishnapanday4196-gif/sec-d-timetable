@@ -562,23 +562,20 @@ public class MainActivity extends Activity {
                             String newHash = obj.optString("htmlHash", "");
                             final String verName = obj.optString("versionName", "Latest");
                             String newHtml = httpGetText(baseUrl + "/index.html?t=" + System.currentTimeMillis(), 10000);
-                            if (newHtml != null && newHtml.length() > 1000 && (newHtml.contains("SEC-D Timetable") || newHtml.contains("CSE D Timetable"))) {
-                                applyOtaUpdate(newHtml, newHash);
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Toast.makeText(mContext, "✅ App Updated to v" + verName + " Successfully!", Toast.LENGTH_LONG).show();
-                                        try {
-                                            File otaFile = new File(getFilesDir(), "index.html");
-                                            if (otaFile.exists() && otaFile.length() > 1000) {
-                                                mWebView.loadUrl("file://" + otaFile.getAbsolutePath());
-                                            } else {
-                                                mWebView.reload();
+                            if (newHtml != null && newHtml.length() > 1000 && (newHtml.contains("SEC-D Timetable") || newHtml.contains("CSE D Timetable") || newHtml.contains("Qtimex"))) {
+                                boolean ok = applyOtaUpdate(newHtml, newHash);
+                                if (ok) {
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Toast.makeText(mContext, "✅ App Updated to v" + verName + " Successfully!", Toast.LENGTH_LONG).show();
+                                            if (mWebView != null) {
+                                                mWebView.evaluateJavascript("if(window.onOtaUpdateComplete){window.onOtaUpdateComplete(true);}", null);
                                             }
-                                        } catch (Exception ignored) {}
-                                    }
-                                });
-                                return;
+                                        }
+                                    });
+                                    return;
+                                }
                             }
                         } catch (Exception ignored) {}
                     }
@@ -624,7 +621,6 @@ public class MainActivity extends Activity {
                         try {
                             mWebView.clearCache(true);
                             mWebView.loadUrl("file://" + otaFile.getAbsolutePath() + "?t=" + System.currentTimeMillis());
-                            mWebView.reload();
                         } catch (Exception ignored) {}
                     }
                 });
