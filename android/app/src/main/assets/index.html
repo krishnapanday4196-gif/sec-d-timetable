@@ -23,66 +23,19 @@
 
   <style>
     :root,
-    :root[data-theme="dark"] {
-      --bg-canvas: #02050b;
-      --bg-phone: transparent;
-      --bg-mesh: transparent;
-      --card-bg: rgba(10, 18, 38, 0.65);
-      --card-solid: #091326;
-      --card-surface-grad: linear-gradient(160deg, rgba(16, 28, 56, 0.70) 0%, rgba(8, 14, 30, 0.75) 100%);
-      --card-border: rgba(255, 255, 255, 0.14);
-      --card-rim: inset 0 1px 0 rgba(255, 255, 255, 0.22);
-      --card-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 14px 34px -8px rgba(0, 0, 0, 0.65);
-      --card-hover: rgba(26, 46, 84, 0.85);
-      --header-bg: linear-gradient(180deg, rgba(8, 16, 32, 0.88) 0%, rgba(4, 9, 20, 0.82) 100%);
-      --recessed-bg: rgba(3, 7, 16, 0.75);
-
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --text-sub: #64748b;
-
-      --accent: #38bdf8;
-      --accent-secondary: #6366f1;
-      --accent-glow: rgba(56, 189, 248, 0.42);
-      --accent-bg: rgba(56, 189, 248, 0.14);
-
-      --gold-accent: #fbbf24;
-      --gold-bg: linear-gradient(135deg, rgba(245, 158, 11, 0.20), rgba(217, 119, 6, 0.09));
-      --gold-border: rgba(251, 191, 36, 0.45);
-
-      --live-red: #f43f5e;
-      --live-glow: rgba(244, 63, 94, 0.52);
-      --live-bg: rgba(244, 63, 94, 0.16);
-
-      --set-a-color: #10b981;
-      --set-a-bg: rgba(16, 185, 129, 0.15);
-      --set-a-border: rgba(16, 185, 129, 0.45);
-
-      --set-b-color: #a855f7;
-      --set-b-bg: rgba(168, 85, 247, 0.15);
-      --set-b-border: rgba(168, 85, 247, 0.45);
-
-      --success: #10b981;
-      --warning: #f59e0b;
-
-      --orb-1-color: rgba(56, 189, 248, 0.22);
-      --orb-2-color: rgba(168, 85, 247, 0.18);
-      --orb-3-color: rgba(16, 185, 129, 0.14);
-    }
-
     :root[data-theme="campus"] {
       --bg-canvas: #020612;
-      --bg-phone: transparent;
+      --bg-phone: #020612;
       --bg-mesh: transparent;
-      --card-bg: rgba(10, 18, 38, 0.65);
+      --card-bg: rgba(10, 20, 44, 0.88);
       --card-solid: #091326;
-      --card-surface-grad: linear-gradient(160deg, rgba(16, 30, 60, 0.72) 0%, rgba(8, 15, 32, 0.78) 100%);
-      --card-border: rgba(56, 189, 248, 0.22);
+      --card-surface-grad: linear-gradient(160deg, rgba(16, 32, 68, 0.90) 0%, rgba(8, 16, 36, 0.94) 100%);
+      --card-border: rgba(56, 189, 248, 0.28);
       --card-rim: inset 0 1px 0 rgba(255, 255, 255, 0.24);
-      --card-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 14px 34px -8px rgba(0, 0, 0, 0.70);
-      --card-hover: rgba(26, 46, 84, 0.88);
-      --header-bg: linear-gradient(180deg, rgba(8, 16, 32, 0.88) 0%, rgba(4, 9, 20, 0.82) 100%);
-      --recessed-bg: rgba(3, 7, 16, 0.75);
+      --card-shadow: 0 10px 28px -6px rgba(0, 0, 0, 0.65), 0 0 14px -2px rgba(56, 189, 248, 0.12);
+      --card-hover: rgba(26, 46, 84, 0.95);
+      --header-bg: linear-gradient(180deg, rgba(8, 16, 34, 0.96) 0%, rgba(4, 9, 20, 0.94) 100%);
+      --recessed-bg: rgba(3, 7, 16, 0.85);
 
       --text-main: #f8fafc;
       --text-muted: #cbd5e1;
@@ -118,20 +71,19 @@
       --aurora-opacity: 0.85;
     }
 
-    
     :root[data-theme="cyber-neon"] {
       --bg-canvas: #050212;
-      --bg-phone: transparent;
+      --bg-phone: #050212;
       --bg-mesh: transparent;
-      --card-bg: rgba(14, 8, 38, 0.78);
+      --card-bg: rgba(18, 10, 46, 0.88);
       --card-solid: #0d0628;
-      --card-surface-grad: linear-gradient(160deg, rgba(28, 12, 60, 0.82) 0%, rgba(10, 4, 30, 0.85) 100%);
+      --card-surface-grad: linear-gradient(160deg, rgba(32, 14, 68, 0.90) 0%, rgba(12, 5, 34, 0.94) 100%);
       --card-border: rgba(0, 240, 255, 0.35);
       --card-rim: inset 0 1px 0 rgba(255, 0, 150, 0.45);
-      --card-shadow: inset 0 1px 0 rgba(0, 240, 255, 0.25), 0 14px 34px -8px rgba(0, 240, 255, 0.35);
-      --card-hover: rgba(38, 16, 75, 0.92);
-      --header-bg: linear-gradient(180deg, rgba(14, 7, 36, 0.94) 0%, rgba(8, 3, 22, 0.90) 100%);
-      --recessed-bg: rgba(6, 2, 18, 0.82);
+      --card-shadow: 0 10px 28px -6px rgba(0, 0, 0, 0.70), 0 0 16px -2px rgba(255, 0, 127, 0.18);
+      --card-hover: rgba(42, 18, 84, 0.95);
+      --header-bg: linear-gradient(180deg, rgba(14, 7, 36, 0.96) 0%, rgba(8, 3, 22, 0.94) 100%);
+      --recessed-bg: rgba(6, 2, 18, 0.85);
 
       --text-main: #f5f3ff;
       --text-muted: #c4b5fd;
@@ -165,250 +117,6 @@
       --orb-2-color: rgba(255, 0, 127, 0.35);
       --orb-3-color: rgba(157, 78, 221, 0.30);
       --aurora-opacity: 0.95;
-    }
-
-    :root[data-theme="sunset"] {
-      --bg-canvas: #0d0608;
-      --bg-phone: transparent;
-      --bg-mesh: transparent;
-      --card-bg: rgba(28, 12, 16, 0.78);
-      --card-solid: #1c080d;
-      --card-surface-grad: linear-gradient(160deg, rgba(46, 16, 22, 0.82) 0%, rgba(18, 5, 8, 0.85) 100%);
-      --card-border: rgba(255, 107, 107, 0.35);
-      --card-rim: inset 0 1px 0 rgba(255, 180, 50, 0.35);
-      --card-shadow: inset 0 1px 0 rgba(255, 107, 107, 0.22), 0 14px 34px -8px rgba(255, 75, 43, 0.4);
-      --card-hover: rgba(58, 20, 28, 0.92);
-      --header-bg: linear-gradient(180deg, rgba(28, 10, 14, 0.94) 0%, rgba(14, 4, 7, 0.90) 100%);
-      --recessed-bg: rgba(14, 4, 7, 0.82);
-
-      --text-main: #fff5f5;
-      --text-muted: #fecdd3;
-      --text-sub: #fda4af;
-
-      --accent: #ff6b6b;
-      --accent-secondary: #f59e0b;
-      --accent-glow: rgba(255, 107, 107, 0.65);
-      --accent-bg: rgba(255, 107, 107, 0.20);
-
-      --gold-accent: #fbbf24;
-      --gold-bg: linear-gradient(135deg, rgba(251, 191, 36, 0.25), rgba(249, 115, 22, 0.15));
-      --gold-border: rgba(251, 191, 36, 0.65);
-
-      --live-red: #ff3366;
-      --live-glow: rgba(255, 51, 102, 0.75);
-      --live-bg: rgba(255, 51, 102, 0.22);
-
-      --set-a-color: #34d399;
-      --set-a-bg: rgba(52, 211, 153, 0.20);
-      --set-a-border: rgba(52, 211, 153, 0.65);
-
-      --set-b-color: #f43f5e;
-      --set-b-bg: rgba(244, 63, 94, 0.20);
-      --set-b-border: rgba(244, 63, 94, 0.65);
-
-      --success: #10b981;
-      --warning: #f59e0b;
-
-      --orb-1-color: rgba(255, 107, 107, 0.38);
-      --orb-2-color: rgba(251, 191, 36, 0.30);
-      --orb-3-color: rgba(236, 72, 153, 0.25);
-      --aurora-opacity: 0.90;
-    }
-
-    :root[data-theme="emerald"] {
-      --bg-canvas: #020f09;
-      --bg-phone: transparent;
-      --bg-mesh: transparent;
-      --card-bg: rgba(6, 28, 18, 0.78);
-      --card-solid: #041d11;
-      --card-surface-grad: linear-gradient(160deg, rgba(10, 42, 28, 0.82) 0%, rgba(4, 20, 13, 0.85) 100%);
-      --card-border: rgba(16, 185, 129, 0.35);
-      --card-rim: inset 0 1px 0 rgba(52, 211, 153, 0.4);
-      --card-shadow: inset 0 1px 0 rgba(16, 185, 129, 0.25), 0 14px 34px -8px rgba(16, 185, 129, 0.35);
-      --card-hover: rgba(12, 54, 36, 0.92);
-      --header-bg: linear-gradient(180deg, rgba(6, 28, 18, 0.94) 0%, rgba(3, 15, 10, 0.90) 100%);
-      --recessed-bg: rgba(3, 15, 10, 0.82);
-
-      --text-main: #ecfdf5;
-      --text-muted: #a7f3d0;
-      --text-sub: #6ee7b7;
-
-      --accent: #10b981;
-      --accent-secondary: #06b6d4;
-      --accent-glow: rgba(16, 185, 129, 0.65);
-      --accent-bg: rgba(16, 185, 129, 0.20);
-
-      --gold-accent: #eab308;
-      --gold-bg: linear-gradient(135deg, rgba(234, 179, 8, 0.25), rgba(16, 185, 129, 0.15));
-      --gold-border: rgba(234, 179, 8, 0.65);
-
-      --live-red: #f43f5e;
-      --live-glow: rgba(244, 63, 94, 0.75);
-      --live-bg: rgba(244, 63, 94, 0.22);
-
-      --set-a-color: #34d399;
-      --set-a-bg: rgba(52, 211, 153, 0.20);
-      --set-a-border: rgba(52, 211, 153, 0.65);
-
-      --set-b-color: #38bdf8;
-      --set-b-bg: rgba(56, 189, 248, 0.20);
-      --set-b-border: rgba(56, 189, 248, 0.65);
-
-      --success: #10b981;
-      --warning: #f59e0b;
-
-      --orb-1-color: rgba(16, 185, 129, 0.40);
-      --orb-2-color: rgba(6, 182, 212, 0.32);
-      --orb-3-color: rgba(52, 211, 153, 0.25);
-      --aurora-opacity: 0.90;
-    }
-
-    :root[data-theme="cosmic"] {
-      --bg-canvas: #090218;
-      --bg-phone: transparent;
-      --bg-mesh: transparent;
-      --card-bg: rgba(22, 10, 42, 0.78);
-      --card-solid: #15062c;
-      --card-surface-grad: linear-gradient(160deg, rgba(38, 16, 72, 0.82) 0%, rgba(16, 6, 32, 0.85) 100%);
-      --card-border: rgba(168, 85, 247, 0.35);
-      --card-rim: inset 0 1px 0 rgba(217, 70, 239, 0.4);
-      --card-shadow: inset 0 1px 0 rgba(168, 85, 247, 0.25), 0 14px 34px -8px rgba(168, 85, 247, 0.38);
-      --card-hover: rgba(48, 20, 92, 0.92);
-      --header-bg: linear-gradient(180deg, rgba(22, 10, 42, 0.94) 0%, rgba(12, 4, 24, 0.90) 100%);
-      --recessed-bg: rgba(12, 4, 24, 0.82);
-
-      --text-main: #faf5ff;
-      --text-muted: #e9d5ff;
-      --text-sub: #d8b4fe;
-
-      --accent: #a855f7;
-      --accent-secondary: #ec4899;
-      --accent-glow: rgba(168, 85, 247, 0.65);
-      --accent-bg: rgba(168, 85, 247, 0.20);
-
-      --gold-accent: #fbbf24;
-      --gold-bg: linear-gradient(135deg, rgba(251, 191, 36, 0.25), rgba(168, 85, 247, 0.15));
-      --gold-border: rgba(251, 191, 36, 0.65);
-
-      --live-red: #f43f5e;
-      --live-glow: rgba(244, 63, 94, 0.75);
-      --live-bg: rgba(244, 63, 94, 0.22);
-
-      --set-a-color: #38bdf8;
-      --set-a-bg: rgba(56, 189, 248, 0.20);
-      --set-a-border: rgba(56, 189, 248, 0.65);
-
-      --set-b-color: #f472b6;
-      --set-b-bg: rgba(244, 114, 182, 0.20);
-      --set-b-border: rgba(244, 114, 182, 0.65);
-
-      --success: #10b981;
-      --warning: #f59e0b;
-
-      --orb-1-color: rgba(168, 85, 247, 0.40);
-      --orb-2-color: rgba(236, 72, 153, 0.35);
-      --orb-3-color: rgba(139, 92, 246, 0.28);
-      --aurora-opacity: 0.95;
-    }
-
-    :root[data-theme="gold"] {
-      --bg-canvas: #0c0903;
-      --bg-phone: transparent;
-      --bg-mesh: transparent;
-      --card-bg: rgba(28, 20, 6, 0.78);
-      --card-solid: #1f1604;
-      --card-surface-grad: linear-gradient(160deg, rgba(46, 32, 10, 0.82) 0%, rgba(18, 12, 4, 0.85) 100%);
-      --card-border: rgba(245, 158, 11, 0.38);
-      --card-rim: inset 0 1px 0 rgba(251, 191, 36, 0.45);
-      --card-shadow: inset 0 1px 0 rgba(245, 158, 11, 0.25), 0 14px 34px -8px rgba(245, 158, 11, 0.38);
-      --card-hover: rgba(58, 40, 12, 0.92);
-      --header-bg: linear-gradient(180deg, rgba(28, 20, 6, 0.94) 0%, rgba(14, 10, 3, 0.90) 100%);
-      --recessed-bg: rgba(14, 10, 3, 0.82);
-
-      --text-main: #fffbeb;
-      --text-muted: #fde68a;
-      --text-sub: #fcd34d;
-
-      --accent: #f59e0b;
-      --accent-secondary: #fbbf24;
-      --accent-glow: rgba(245, 158, 11, 0.65);
-      --accent-bg: rgba(245, 158, 11, 0.20);
-
-      --gold-accent: #f59e0b;
-      --gold-bg: linear-gradient(135deg, rgba(245, 158, 11, 0.30), rgba(217, 119, 6, 0.15));
-      --gold-border: rgba(245, 158, 11, 0.70);
-
-      --live-red: #ef4444;
-      --live-glow: rgba(239, 68, 68, 0.75);
-      --live-bg: rgba(239, 68, 68, 0.22);
-
-      --set-a-color: #10b981;
-      --set-a-bg: rgba(16, 185, 129, 0.20);
-      --set-a-border: rgba(16, 185, 129, 0.65);
-
-      --set-b-color: #fbbf24;
-      --set-b-bg: rgba(251, 191, 36, 0.20);
-      --set-b-border: rgba(251, 191, 36, 0.65);
-
-      --success: #10b981;
-      --warning: #f59e0b;
-
-      --orb-1-color: rgba(245, 158, 11, 0.40);
-      --orb-2-color: rgba(251, 191, 36, 0.35);
-      --orb-3-color: rgba(217, 119, 6, 0.28);
-      --aurora-opacity: 0.95;
-    }
-
-    :root[data-theme="light"] {
-      --bg-canvas: #f1f5f9;
-      --bg-phone: #f8fafc;
-      --bg-mesh:
-        radial-gradient(circle at 10% 0%, rgba(37, 99, 235, 0.06) 0%, transparent 45%),
-        radial-gradient(circle at 90% 10%, rgba(139, 92, 246, 0.05) 0%, transparent 45%),
-        radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.04) 0%, transparent 60%),
-        linear-gradient(180deg, #ffffff 0%, #f8fafc 40%, #f1f5f9 100%);
-      --card-bg: #ffffff;
-      --card-solid: #ffffff;
-      --card-surface-grad: linear-gradient(175deg, #ffffff 0%, #fbfcfe 100%);
-      --card-border: rgba(226, 232, 240, 0.85);
-      --card-rim: inset 0 1px 0 rgba(255, 255, 255, 0.95);
-      --card-shadow: 0 1px 3px rgba(15, 23, 42, 0.03), 0 8px 24px -4px rgba(15, 23, 42, 0.05);
-      --card-hover: #f8fafc;
-      --header-bg: rgba(255, 255, 255, 0.92);
-      --recessed-bg: #f1f5f9;
-
-      --text-main: #0f172a;
-      --text-muted: #475569;
-      --text-sub: #64748b;
-
-      --accent: #2563eb;
-      --accent-secondary: #6366f1;
-      --accent-glow: rgba(37, 99, 235, 0.20);
-      --accent-bg: rgba(37, 99, 235, 0.08);
-
-      --gold-accent: #b45309;
-      --gold-bg: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
-      --gold-border: #fde68a;
-
-      --live-red: #e11d48;
-      --live-glow: rgba(225, 29, 72, 0.20);
-      --live-bg: #fff1f2;
-
-      --set-a-color: #059669;
-      --set-a-bg: #ecfdf5;
-      --set-a-border: #a7f3d0;
-
-      --set-b-color: #7c3aed;
-      --set-b-bg: #f5f3ff;
-      --set-b-border: #ddd6fe;
-
-      --success: #059669;
-      --warning: #d97706;
-
-      --orb-1-color: rgba(37, 99, 235, 0.13);
-      --orb-2-color: rgba(139, 92, 246, 0.11);
-      --orb-3-color: rgba(16, 185, 129, 0.09);
-      --aurora-opacity: 0.55;
     }
 
     * {
@@ -865,12 +573,18 @@
       overflow: hidden;
       z-index: 0;
       pointer-events: none;
-      background: radial-gradient(circle at 18% 18%, rgba(56, 189, 248, 0.12) 0%, transparent 45%),
-                  radial-gradient(circle at 82% 82%, rgba(168, 85, 247, 0.10) 0%, transparent 48%),
-                  radial-gradient(circle at 50% 50%, rgba(251, 191, 36, 0.05) 0%, transparent 50%),
+      background: radial-gradient(circle at 18% 18%, rgba(56, 189, 248, 0.14) 0%, transparent 45%),
+                  radial-gradient(circle at 82% 82%, rgba(245, 158, 11, 0.10) 0%, transparent 48%),
+                  radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
                   linear-gradient(155deg, #020612 0%, #060e22 55%, #030816 100%);
       contain: strict;
       transform: translateZ(0);
+    }
+    :root[data-theme="cyber-neon"] .aurora-ambient-bg {
+      background: radial-gradient(circle at 18% 18%, rgba(0, 240, 255, 0.16) 0%, transparent 45%),
+                  radial-gradient(circle at 82% 82%, rgba(255, 0, 127, 0.14) 0%, transparent 48%),
+                  radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.12) 0%, transparent 50%),
+                  linear-gradient(155deg, #050212 0%, #120626 55%, #070318 100%);
     }
     .aurora-mesh-gradient { display: none !important; }
     .cosmic-canvas { display: none !important; }
@@ -972,16 +686,16 @@
     .quick-action-card,
     .notif-card,
     .time-sim-card {
-      background: rgba(9, 17, 36, 0.92) !important;
-      border: 1px solid rgba(255, 255, 255, 0.12) !important;
-      box-shadow: 0 4px 18px -2px rgba(0, 0, 0, 0.5) !important;
+      background: var(--card-surface-grad) !important;
+      border: 1px solid var(--card-border) !important;
+      box-shadow: var(--card-shadow) !important;
       backdrop-filter: none !important;
       -webkit-backdrop-filter: none !important;
     }
     .top-appbar,
     .modal-sheet {
-      backdrop-filter: blur(12px) !important;
-      -webkit-backdrop-filter: blur(12px) !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
     }
 
     /* ============================================================
@@ -1189,53 +903,21 @@
     .lite-device .aurora-orb.orb-rose {
       display: none !important;
     }
-    /* Lite-device mesh: dark/campus = dark bg, light = white bg */
-    :root[data-theme="dark"] .lite-device .aurora-mesh-gradient,
-    :root[data-theme="campus"] .lite-device .aurora-mesh-gradient {
+    /* Hardware-optimized rendering for cards and background */
+    .lite-device .aurora-mesh-gradient {
       animation: none !important;
       background-size: 100% 100% !important;
-      background: radial-gradient(circle at 20% 20%, rgba(0,240,255,0.15) 0%, transparent 55%),
-                  radial-gradient(circle at 80% 80%, rgba(168,85,247,0.15) 0%, transparent 55%),
-                  linear-gradient(145deg, #02040a 0%, #050a16 100%) !important;
     }
-    :root[data-theme="light"] .lite-device .aurora-mesh-gradient {
-      animation: none !important;
-      background-size: 100% 100% !important;
-      background:
-        radial-gradient(circle at 15% 15%, rgba(37,99,235,0.10) 0%, transparent 55%),
-        radial-gradient(circle at 85% 85%, rgba(139,92,246,0.08) 0%, transparent 55%),
-        linear-gradient(180deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%) !important;
-    }
-    /* Replace glass blur with solid semi-transparent (10x cheaper on dark themes) */
-    :root[data-theme="dark"] .lite-device .lecture-card,
-    :root[data-theme="campus"] .lite-device .lecture-card,
-    :root[data-theme="dark"] .lite-device .top-appbar,
-    :root[data-theme="campus"] .lite-device .top-appbar,
-    :root[data-theme="dark"] .lite-device .circular-gauge-container,
-    :root[data-theme="campus"] .lite-device .circular-gauge-container,
-    :root[data-theme="dark"] .lite-device .quick-action-card,
-    :root[data-theme="campus"] .lite-device .quick-action-card,
-    :root[data-theme="dark"] .lite-device .modal-sheet,
-    :root[data-theme="campus"] .lite-device .modal-sheet,
-    :root[data-theme="dark"] .lite-device .notif-card,
-    :root[data-theme="campus"] .lite-device .notif-card,
-    :root[data-theme="dark"] .lite-device .time-sim-card,
-    :root[data-theme="campus"] .lite-device .time-sim-card {
+    .lite-device .lecture-card,
+    .lite-device .top-appbar,
+    .lite-device .circular-gauge-container,
+    .lite-device .quick-action-card,
+    .lite-device .modal-sheet,
+    .lite-device .notif-card,
+    .lite-device .time-sim-card {
       backdrop-filter: none !important;
       -webkit-backdrop-filter: none !important;
-      background: rgba(10, 16, 32, 0.95) !important;
-    }
-    /* Light theme lite-device: keep white cards, just kill blur */
-    :root[data-theme="light"] .lite-device .lecture-card,
-    :root[data-theme="light"] .lite-device .top-appbar,
-    :root[data-theme="light"] .lite-device .circular-gauge-container,
-    :root[data-theme="light"] .lite-device .quick-action-card,
-    :root[data-theme="light"] .lite-device .modal-sheet,
-    :root[data-theme="light"] .lite-device .notif-card,
-    :root[data-theme="light"] .lite-device .time-sim-card {
-      backdrop-filter: none !important;
-      -webkit-backdrop-filter: none !important;
-      background: #ffffff !important;
+      background: var(--card-surface-grad) !important;
     }
     .lite-device .aurora-highlight-watermark,
     .lite-device .glow-highlight-ribbon {
@@ -1374,8 +1056,9 @@
       overflow: hidden;
     }
 
-    /* THEME-SPECIFIC HIGH-CONTRAST VIBRANT GRADIENTS FOR QTIMEX (NEVER DISAPPEARS!) */
-    :root[data-theme="campus"] .brand-name-text {
+    /* THEME-SPECIFIC HIGH-CONTRAST VIBRANT GRADIENTS FOR QTIMEX */
+    :root[data-theme="campus"] .brand-name-text,
+    :root[data-theme="campus"] .brand-name:not(:has(.brand-name-text)) {
       background: linear-gradient(95deg, #38bdf8 0%, #ffffff 18%, #fbbf24 38%, #38bdf8 58%, #c084fc 78%, #fbbf24 92%, #38bdf8 100%) !important;
       background-size: 250% auto !important;
       -webkit-background-clip: text !important;
@@ -1383,100 +1066,13 @@
       -webkit-text-fill-color: transparent !important;
     }
 
-    :root[data-theme="cyber-neon"] .brand-name-text {
-      background: linear-gradient(95deg, #00f0ff 0%, #ffffff 22%, #a855f7 48%, #00f0ff 72%, #38bdf8 88%, #ffffff 100%) !important;
+    :root[data-theme="cyber-neon"] .brand-name-text,
+    :root[data-theme="cyber-neon"] .brand-name:not(:has(.brand-name-text)) {
+      background: linear-gradient(95deg, #00f0ff 0%, #ffffff 22%, #ff007f 48%, #00f0ff 72%, #a855f7 88%, #ffffff 100%) !important;
       background-size: 250% auto !important;
       -webkit-background-clip: text !important;
       background-clip: text !important;
       -webkit-text-fill-color: transparent !important;
-    }
-
-    :root[data-theme="sunset"] .brand-name-text {
-      background: linear-gradient(95deg, #ff7e5f 0%, #ffffff 25%, #feb47b 48%, #f43f5e 72%, #fbbf24 90%, #ffffff 100%) !important;
-      background-size: 250% auto !important;
-      -webkit-background-clip: text !important;
-      background-clip: text !important;
-      -webkit-text-fill-color: transparent !important;
-    }
-
-    :root[data-theme="emerald"] .brand-name-text {
-      background: linear-gradient(95deg, #10b981 0%, #ffffff 24%, #34d399 48%, #06b6d4 72%, #6ee7b7 88%, #ffffff 100%) !important;
-      background-size: 250% auto !important;
-      -webkit-background-clip: text !important;
-      background-clip: text !important;
-      -webkit-text-fill-color: transparent !important;
-    }
-
-    :root[data-theme="cosmic"] .brand-name-text {
-      background: linear-gradient(95deg, #818cf8 0%, #ffffff 22%, #c084fc 48%, #f43f5e 70%, #a78bfa 88%, #ffffff 100%) !important;
-      background-size: 250% auto !important;
-      -webkit-background-clip: text !important;
-      background-clip: text !important;
-      -webkit-text-fill-color: transparent !important;
-    }
-
-    :root[data-theme="gold"] .brand-name-text {
-      background: linear-gradient(95deg, #f59e0b 0%, #ffffff 25%, #fbbf24 50%, #d97706 75%, #fef08a 90%, #ffffff 100%) !important;
-      background-size: 250% auto !important;
-      -webkit-background-clip: text !important;
-      background-clip: text !important;
-      -webkit-text-fill-color: transparent !important;
-    }
-
-    :root[data-theme="dark"] .brand-name-text {
-      background: linear-gradient(95deg, #ffffff 0%, #38bdf8 22%, #ffffff 45%, #a855f7 68%, #38bdf8 85%, #ffffff 100%) !important;
-      background-size: 250% auto !important;
-      -webkit-background-clip: text !important;
-      background-clip: text !important;
-      -webkit-text-fill-color: transparent !important;
-    }
-
-    :root[data-theme="light"] .brand-name-text {
-      background: linear-gradient(95deg, #0f172a 0%, #1e40af 24%, #0284c7 48%, #6d28d9 72%, #1e3a8a 88%, #0f172a 100%) !important;
-      background-size: 250% auto !important;
-      -webkit-background-clip: text !important;
-      background-clip: text !important;
-      -webkit-text-fill-color: transparent !important;
-      color: #0f172a !important;
-    }
-
-    .brand-name-text::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 45%;
-      height: 100%;
-      background: linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(255, 255, 255, 0.35) 42%,
-        rgba(255, 255, 255, 0.95) 50%,
-        rgba(255, 255, 255, 0.35) 58%,
-        transparent 100%
-      );
-      pointer-events: none;
-      mix-blend-mode: overlay;
-      animation: photonicGlintSweep 18s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-      will-change: transform, opacity;
-    }
-
-    :root[data-theme="dark"] .brand-name-text,
-    :root[data-theme="dark"] .brand-name:not(:has(.brand-name-text)) {
-      background: linear-gradient(95deg, #ffffff 0%, #38bdf8 22%, #ffffff 45%, #a855f7 68%, #38bdf8 85%, #ffffff 100%);
-      background-size: 250% auto;
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    :root[data-theme="campus"] .brand-name-text,
-    :root[data-theme="campus"] .brand-name:not(:has(.brand-name-text)) {
-      background: linear-gradient(95deg, #38bdf8 0%, #ffffff 18%, #fbbf24 38%, #38bdf8 58%, #c084fc 78%, #fbbf24 92%, #38bdf8 100%);
-      background-size: 250% auto;
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
     }
 
     .brand-subtitle {
@@ -1579,11 +1175,7 @@
       transition: transform 0.38s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.25s ease, box-shadow 0.25s ease;
     }
 
-    :root[data-theme="light"] .holo-menu-trigger {
-      background: #ffffff;
-      border: 1.5px solid #e2e8f0;
-      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
-    }
+
 
     .holo-menu-trigger:active {
       transform: scale(0.9);
@@ -1597,9 +1189,7 @@
       transition: transform 0.36s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.22s ease, background 0.25s ease;
     }
 
-    :root[data-theme="light"] .holo-menu-trigger .hbar {
-      background: linear-gradient(90deg, #0f172a, #2563eb);
-    }
+
 
     .holo-menu-trigger .hbar-2 {
       background: linear-gradient(90deg, #fbbf24, #f59e0b);
@@ -1689,11 +1279,7 @@
       overflow: hidden;
     }
 
-    :root[data-theme="light"] .holo-command-deck {
-      background: #ffffff;
-      border-color: rgba(226, 232, 240, 0.95);
-      box-shadow: 0 20px 48px -6px rgba(15, 23, 42, 0.16);
-    }
+
 
     .holo-command-deck.is-open,
     .holo-command-deck.show {
@@ -1762,10 +1348,7 @@
       padding: 7px 6px;
     }
 
-    :root[data-theme="light"] .holo-quick-dock {
-      background: #f1f5f9;
-      border-color: #e2e8f0;
-    }
+
 
     .holo-dock-btn {
       display: flex;
@@ -1790,9 +1373,9 @@
       border-color: rgba(56, 189, 248, 0.30);
     }
 
-    :root[data-theme="light"] .holo-dock-btn {
-      background: #ffffff;
-      border-color: rgba(15, 23, 42, 0.12);
+    :root[data-theme="cyber-neon"] .holo-dock-btn {
+      background: linear-gradient(145deg, #240d42, #110524);
+      border-color: rgba(0, 240, 255, 0.35);
     }
 
     .holo-dock-btn:active {
@@ -1844,10 +1427,10 @@
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
     }
 
-    :root[data-theme="light"] .holo-menu-item {
-      background: #ffffff;
-      border-color: rgba(15, 23, 42, 0.10);
-      box-shadow: 0 3px 10px rgba(15, 23, 42, 0.04);
+    :root[data-theme="cyber-neon"] .holo-menu-item {
+      background: rgba(28, 12, 54, 0.76);
+      border-color: rgba(0, 240, 255, 0.30);
+      box-shadow: inset 0 1px 0 rgba(255, 0, 127, 0.15);
     }
 
     .holo-menu-item:active {
@@ -3513,765 +3096,7 @@
       pointer-events: auto;
     }
 
-    /* ============================================================
-       PURE DAYLIGHT PEARL LIGHT THEME (PREMIUM AESTHETIC PERFECTION)
-       ============================================================ */
-    :root[data-theme="light"] {
-      color-scheme: light;
-    }
 
-    /* ============================================================
-       LIGHT THEME - AURORA BACKGROUND COMPLETE OVERRIDE
-       Without these, dark #02050e shows through in light mode
-       ============================================================ */
-    :root[data-theme="light"] .aurora-ambient-bg {
-      background-color: #f1f5f9 !important;
-    }
-
-    :root[data-theme="light"] .aurora-mesh-gradient {
-      background:
-        radial-gradient(circle at 10% 10%, rgba(37, 99, 235, 0.10) 0%, transparent 50%),
-        radial-gradient(circle at 88% 15%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.06) 0%, transparent 55%),
-        radial-gradient(circle at 80% 85%, rgba(59, 130, 246, 0.07) 0%, transparent 50%),
-        radial-gradient(circle at 18% 80%, rgba(245, 158, 11, 0.07) 0%, transparent 50%),
-        linear-gradient(180deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%) !important;
-      background-size: 100% 100% !important;
-      animation: none !important;
-    }
-
-    /* Light theme orbs - soft pastel colors on white */
-    :root[data-theme="light"] .aurora-orb {
-      mix-blend-mode: multiply !important;
-      opacity: 0.18 !important;
-      filter: blur(50px) !important;
-    }
-    :root[data-theme="light"] .aurora-orb.orb-cyan {
-      background: radial-gradient(circle, rgba(37,99,235,0.7) 0%, transparent 70%) !important;
-    }
-    :root[data-theme="light"] .aurora-orb.orb-purple {
-      background: radial-gradient(circle, rgba(139,92,246,0.6) 0%, transparent 70%) !important;
-    }
-    :root[data-theme="light"] .aurora-orb.orb-gold {
-      background: radial-gradient(circle, rgba(245,158,11,0.5) 0%, transparent 70%) !important;
-    }
-    :root[data-theme="light"] .aurora-orb.orb-emerald {
-      background: radial-gradient(circle, rgba(16,185,129,0.5) 0%, transparent 70%) !important;
-    }
-    :root[data-theme="light"] .aurora-orb.orb-rose {
-      background: radial-gradient(circle, rgba(244,63,94,0.45) 0%, transparent 70%) !important;
-    }
-
-    /* Light theme watermark - visible on white bg */
-    :root[data-theme="light"] .aurora-highlight-watermark {
-      opacity: 0.10 !important;
-    }
-    :root[data-theme="light"] .watermark-word {
-      background: linear-gradient(135deg, #2563eb 0%, #7c3aed 40%, #d97706 80%, #e11d48 100%) !important;
-      -webkit-background-clip: text !important;
-      background-clip: text !important;
-      -webkit-text-fill-color: transparent !important;
-      filter: none !important;
-    }
-
-    /* Light theme cards - remove dark glass blur */
-    :root[data-theme="light"] .lecture-card,
-    :root[data-theme="light"] .top-appbar,
-    :root[data-theme="light"] .circular-gauge-container,
-    :root[data-theme="light"] .quick-action-card,
-    :root[data-theme="light"] .notif-card,
-    :root[data-theme="light"] .time-sim-card {
-      backdrop-filter: none !important;
-      -webkit-backdrop-filter: none !important;
-    }
-
-
-
-    /* TOP BAR - LUXURY CRISP TYPOGRAPHY (GPU-ACCELERATED) */
-    :root[data-theme="light"] .top-appbar {
-      background: rgba(255, 255, 255, 0.96);
-      border-bottom: 1px solid rgba(226, 232, 240, 0.85);
-      box-shadow: 0 4px 16px -4px rgba(15, 23, 42, 0.05);
-      transform: translateZ(0);
-    }
-
-    :root[data-theme="light"] .brand-name-text,
-    :root[data-theme="light"] .brand-name:not(:has(.brand-name-text)) {
-      background: linear-gradient(95deg, #0f172a 0%, #2563eb 24%, #0284c7 48%, #7c3aed 72%, #1d4ed8 88%, #0f172a 100%);
-      background-size: 250% auto;
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: 800;
-    }
-
-    :root[data-theme="light"] .brand-badge {
-      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-      border: 1px solid #bfdbfe;
-      color: #1d4ed8;
-      box-shadow: 0 1px 3px rgba(37, 99, 235, 0.08);
-    }
-
-    :root[data-theme="light"] .brand-logo-img {
-      border: 2px solid #2563eb;
-      box-shadow: 0 0 14px rgba(37, 99, 235, 0.22), 0 2px 6px rgba(15, 23, 42, 0.06);
-    }
-
-    :root[data-theme="light"] .brand-subtitle {
-      color: #d97706;
-      font-weight: 800;
-    }
-
-    /* ZERO CONFUSION BATCH SWITCHER - SLEEK APPLE SEGMENTED CONTROL */
-    :root[data-theme="light"] .batch-segment {
-      background: #f1f5f9;
-      border: 1px solid rgba(226, 232, 240, 0.9);
-      box-shadow: inset 0 1.5px 4px rgba(15, 23, 42, 0.05);
-      padding: 4px;
-      border-radius: 14px;
-    }
-
-    :root[data-theme="light"] .batch-tab:not(.active-seta):not(.active-setb):not(.active-all) {
-      color: #64748b;
-      font-weight: 750;
-    }
-
-    :root[data-theme="light"] .batch-tab:not(.active-seta):not(.active-setb):not(.active-all):hover {
-      color: #1e293b;
-    }
-
-    :root[data-theme="light"] .batch-tab.active-seta {
-      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-      color: #ffffff;
-      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.35);
-    }
-
-    :root[data-theme="light"] .batch-tab.active-setb {
-      background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
-      color: #ffffff;
-      box-shadow: 0 4px 14px rgba(139, 92, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.35);
-    }
-
-    :root[data-theme="light"] .batch-tab.active-all {
-      background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-      color: #ffffff;
-      box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.35);
-    }
-
-    /* TRIGGER & UPPER-RIGHT COMMAND DECK */
-    :root[data-theme="light"] .holo-menu-trigger {
-      background: #ffffff;
-      border: 1.5px solid #e2e8f0;
-      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
-    }
-
-    :root[data-theme="light"] .holo-menu-trigger .hbar-1,
-    :root[data-theme="light"] .holo-menu-trigger .hbar-3 {
-      background: linear-gradient(90deg, #0f172a, #2563eb);
-    }
-
-    :root[data-theme="light"] .holo-menu-trigger .hbar-2 {
-      background: linear-gradient(90deg, #f59e0b, #d97706);
-    }
-
-    :root[data-theme="light"] .holo-menu-trigger.is-open {
-      background: #fff1f2;
-      border-color: #fda4af;
-      box-shadow: 0 4px 16px rgba(225, 29, 72, 0.16);
-    }
-
-    :root[data-theme="light"] .holo-menu-trigger.is-open .hbar-1 {
-      background: linear-gradient(90deg, #be123c, #f43f5e);
-    }
-
-    :root[data-theme="light"] .holo-menu-trigger.is-open .hbar-3 {
-      background: linear-gradient(90deg, #1d4ed8, #3b82f6);
-    }
-
-    :root[data-theme="light"] .holo-menu-backdrop {
-      background: rgba(15, 23, 42, 0.32);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-    }
-
-    :root[data-theme="light"] .holo-command-deck {
-      background: #ffffff;
-      border: 1px solid rgba(226, 232, 240, 0.95);
-      box-shadow: 0 24px 50px -6px rgba(15, 23, 42, 0.18), 0 4px 16px rgba(15, 23, 42, 0.06);
-      border-radius: 22px;
-    }
-
-    :root[data-theme="light"] .holo-deck-header {
-      border-bottom-color: #f1f5f9;
-    }
-
-    :root[data-theme="light"] .holo-deck-title {
-      color: #2563eb;
-    }
-
-    :root[data-theme="light"] .holo-deck-tag {
-      background: #fffbeb;
-      border-color: #fde68a;
-      color: #b45309;
-    }
-
-    :root[data-theme="light"] .holo-quick-dock {
-      background: #f1f5f9;
-      border-color: #e2e8f0;
-    }
-
-    :root[data-theme="light"] .holo-dock-btn {
-      background: #ffffff;
-      border-color: #e2e8f0;
-      color: #0f172a;
-      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
-    }
-
-    :root[data-theme="light"] .holo-dock-btn .dock-lbl {
-      color: #64748b;
-    }
-
-    :root[data-theme="light"] .holo-menu-item {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
-    }
-
-    :root[data-theme="light"] .holo-menu-item:hover,
-    :root[data-theme="light"] .holo-menu-item:active {
-      background: #f8fafc;
-      border-color: #cbd5e1;
-    }
-
-    :root[data-theme="light"] .holo-item-title {
-      color: #0f172a;
-    }
-
-    :root[data-theme="light"] .holo-item-sub {
-      color: #64748b;
-    }
-
-    :root[data-theme="light"] .holo-item-arrow {
-      color: #94a3b8;
-    }
-
-    :root[data-theme="light"] .holo-item-pill {
-      background: #eff6ff;
-      border-color: #bfdbfe;
-      color: #1d4ed8;
-    }
-
-    :root[data-theme="light"] .pill-on,
-    :root[data-theme="light"] .pill-emerald {
-      background: #ecfdf5;
-      border-color: #a7f3d0;
-      color: #059669;
-    }
-
-    :root[data-theme="light"] .pill-off,
-    :root[data-theme="light"] .pill-muted {
-      background: #fff1f2;
-      border-color: #fecdd3;
-      color: #e11d48;
-    }
-
-    :root[data-theme="light"] .pill-theme,
-    :root[data-theme="light"] .pill-gold {
-      background: #fffbeb;
-      border-color: #fde68a;
-      color: #b45309;
-    }
-
-    :root[data-theme="light"] .orb-gold {
-      background: linear-gradient(135deg, #fffbeb, #fef3c7);
-      border-color: #fde68a;
-    }
-
-    :root[data-theme="light"] .orb-cyan {
-      background: linear-gradient(135deg, #eff6ff, #dbeafe);
-      border-color: #bfdbfe;
-    }
-
-    :root[data-theme="light"] .orb-emerald {
-      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
-      border-color: #a7f3d0;
-    }
-
-    :root[data-theme="light"] .orb-rose {
-      background: linear-gradient(135deg, #fff1f2, #ffe4e6);
-      border-color: #fecdd3;
-    }
-
-    :root[data-theme="light"] .orb-violet {
-      background: linear-gradient(135deg, #f5f3ff, #ede9fe);
-      border-color: #ddd6fe;
-    }
-
-    /* CLOCK & LIVE STATUS RIBBON */
-    :root[data-theme="light"] .time-status-ribbon {
-      background: #ffffff;
-      border: 1px solid rgba(226, 232, 240, 0.95);
-      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
-      color: #64748b;
-      border-radius: 14px;
-    }
-
-    :root[data-theme="light"] .clock-ticker {
-      color: #0f172a;
-    }
-
-    :root[data-theme="light"] .live-radar-badge {
-      background: #fff1f2;
-      border-color: #fecdd3;
-      color: #e11d48;
-    }
-
-    :root[data-theme="light"] .radar-dot {
-      background: #e11d48;
-    }
-
-    :root[data-theme="light"] .radar-wave {
-      background: #e11d48;
-    }
-
-    :root[data-theme="light"] .date-header-chip {
-      background: #f8fafc;
-      border-color: #e2e8f0;
-      color: #1e293b;
-      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
-    }
-
-    :root[data-theme="light"] .date-header-chip:hover {
-      background: #f1f5f9;
-      border-color: #cbd5e1;
-    }
-
-    /* CIRCULAR HERO CARD & COUNTDOWN GAUGE */
-    :root[data-theme="light"] .circular-hero-card {
-      background:
-        radial-gradient(circle at 14% 50%, rgba(37, 99, 235, 0.06), transparent 55%),
-        radial-gradient(circle at 92% 15%, rgba(245, 158, 11, 0.06), transparent 45%),
-        linear-gradient(165deg, #ffffff 0%, #f8faff 100%);
-      border: 1px solid rgba(226, 232, 240, 0.95);
-      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03), 0 10px 28px -6px rgba(15, 23, 42, 0.06);
-      border-radius: 22px;
-    }
-
-    :root[data-theme="light"] .circular-hero-card.is-active-live {
-      border: 1.5px solid #fda4af;
-      background:
-        radial-gradient(circle at 14% 50%, rgba(225, 29, 72, 0.07), transparent 55%),
-        radial-gradient(circle at 90% 15%, rgba(245, 158, 11, 0.06), transparent 45%),
-        linear-gradient(165deg, #ffffff 0%, #fff5f5 100%);
-      box-shadow: 0 12px 32px -4px rgba(225, 29, 72, 0.16);
-    }
-
-    :root[data-theme="light"] .circular-gauge-container {
-      background: radial-gradient(circle, #ffffff 0%, #f0f7ff 68%, transparent 74%);
-      box-shadow: inset 0 2px 6px rgba(37, 99, 235, 0.05), 0 4px 12px rgba(37, 99, 235, 0.06);
-    }
-
-    :root[data-theme="light"] .circular-gauge-container::before {
-      border-color: rgba(37, 99, 235, 0.28);
-    }
-
-    :root[data-theme="light"] .circular-hero-card.is-active-live .circular-gauge-container::before {
-      border-color: rgba(225, 29, 72, 0.38);
-    }
-
-    :root[data-theme="light"] .circle-bg-track {
-      stroke: #e2e8f0;
-    }
-
-    :root[data-theme="light"] .circle-timer-val {
-      color: #0f172a;
-    }
-
-    :root[data-theme="light"] .circle-timer-sub {
-      color: #d97706;
-    }
-
-    :root[data-theme="light"] .hero-subject-name {
-      color: #0f172a;
-    }
-
-    :root[data-theme="light"] .hero-slot-badge,
-    :root[data-theme="light"] .slot-pill-name {
-      background: #eff6ff;
-      border-color: #bfdbfe;
-      color: #1d4ed8;
-    }
-
-    :root[data-theme="light"] .hero-room-badge {
-      background: #f1f5f9;
-      border-color: #e2e8f0;
-      color: #334155;
-    }
-
-    /* 8-PERIOD ORBIT STEPPER */
-    :root[data-theme="light"] .orbit-tracker-section {
-      background: #ffffff;
-      border: 1px solid rgba(226, 232, 240, 0.95);
-      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
-      border-radius: 18px;
-    }
-
-    :root[data-theme="light"] .orbit-header {
-      color: #64748b;
-    }
-
-    :root[data-theme="light"] .orbit-line-bg {
-      background: #e2e8f0;
-    }
-
-    :root[data-theme="light"] .orbit-dot {
-      background: #ffffff;
-      border: 1.5px solid #cbd5e1;
-      color: #475569;
-      box-shadow: 0 2px 4px rgba(15, 23, 42, 0.04);
-    }
-
-    :root[data-theme="light"] .orbit-dot.completed {
-      background: #ecfdf5;
-      border-color: #10b981;
-      color: #059669;
-    }
-
-    :root[data-theme="light"] .orbit-dot.active-spinning {
-      background: linear-gradient(135deg, #f43f5e, #e11d48);
-      border-color: #ffffff;
-      color: #ffffff;
-      box-shadow: 0 4px 14px rgba(244, 63, 94, 0.4);
-    }
-
-    /* QUICK DAY SWITCH BAR & DAY SELECTOR */
-    :root[data-theme="light"] .quick-view-btn {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      color: #334155;
-      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03);
-    }
-
-    :root[data-theme="light"] .quick-view-btn:hover {
-      background: #f8fafc;
-      border-color: #cbd5e1;
-    }
-
-    :root[data-theme="light"] .quick-view-btn.active {
-      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
-      color: #ffffff !important;
-      border-color: transparent !important;
-      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3) !important;
-    }
-
-    :root[data-theme="light"] .quick-view-btn#btnViewTomorrow.active {
-      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important;
-      color: #ffffff !important;
-      border-color: transparent !important;
-      box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3) !important;
-    }
-
-    :root[data-theme="light"] .day-pill {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      color: #334155;
-      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03);
-    }
-
-    :root[data-theme="light"] .day-pill:hover {
-      background: #f8fafc;
-      border-color: #cbd5e1;
-    }
-
-    :root[data-theme="light"] .day-pill.active {
-      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
-      color: #ffffff !important;
-      border-color: transparent !important;
-      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3) !important;
-    }
-
-    :root[data-theme="light"] .day-pill.today-highlight:not(.active) {
-      border-color: #3b82f6;
-      background: #eff6ff;
-    }
-
-    :root[data-theme="light"] .day-pill.tomorrow-highlight:not(.active) {
-      border-color: #f59e0b;
-      background: #fffbeb;
-    }
-
-    :root[data-theme="light"] .day-pill:not(.active) .day-pill-sub {
-      color: #64748b;
-    }
-
-    /* VIEWING DATE REMINDER BANNER */
-    :root[data-theme="light"] .viewing-date-banner {
-      background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
-      border: 1px solid #fde68a;
-      box-shadow: 0 2px 8px rgba(245, 158, 11, 0.08);
-    }
-
-    :root[data-theme="light"] .viewing-date-banner strong {
-      color: #92400e;
-    }
-
-    :root[data-theme="light"] .viewing-date-banner span {
-      color: #b45309;
-    }
-
-    :root[data-theme="light"] .return-today-pill {
-      background: linear-gradient(135deg, #2563eb, #1d4ed8);
-      color: #ffffff;
-      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
-    }
-
-    /* SECTION TITLE HEADER */
-    :root[data-theme="light"] .today-title-wrap h2 {
-      color: #0f172a;
-    }
-
-    :root[data-theme="light"] .today-subtext {
-      color: #64748b;
-    }
-
-    /* LECTURE CARDS (BENTO DAY TIMETABLE) */
-    :root[data-theme="light"] .lecture-card {
-      background: #ffffff;
-      border: 1px solid rgba(226, 232, 240, 0.95);
-      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03), 0 8px 24px -4px rgba(15, 23, 42, 0.05);
-      border-radius: 18px;
-    }
-
-    :root[data-theme="light"] .lecture-card:hover {
-      box-shadow: 0 4px 14px -2px rgba(15, 23, 42, 0.06), 0 12px 28px -4px rgba(15, 23, 42, 0.06);
-      border-color: #cbd5e1;
-    }
-
-    :root[data-theme="light"] .lecture-card.set-a-card {
-      border-left: 4.5px solid #10b981 !important;
-    }
-
-    :root[data-theme="light"] .lecture-card.set-b-card {
-      border-left: 4.5px solid #8b5cf6 !important;
-    }
-
-    :root[data-theme="light"] .lecture-card.all-card {
-      border-left: 4.5px solid #3b82f6 !important;
-    }
-
-    :root[data-theme="light"] .lecture-card.is-live {
-      border: 1.5px solid #f43f5e !important;
-      border-left: 5.5px solid #e11d48 !important;
-      background: linear-gradient(165deg, #ffffff 0%, #fff5f5 100%) !important;
-      box-shadow: 0 8px 26px -4px rgba(244, 63, 94, 0.22), 0 2px 6px rgba(244, 63, 94, 0.08) !important;
-      animation: liveCardAura 6s ease-in-out infinite alternate;
-      transform: translateZ(0);
-    }
-
-    :root[data-theme="light"] .lecture-card.is-completed {
-      background: #f8fafc;
-      border-color: #e2e8f0;
-      opacity: 0.82;
-    }
-
-    :root[data-theme="light"] .card-subject-title {
-      color: #0f172a;
-    }
-
-    :root[data-theme="light"] .slot-timing-str {
-      color: #64748b;
-    }
-
-    :root[data-theme="light"] .faculty-badge {
-      background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
-      border: 1px solid #fde68a;
-      color: #b45309;
-      box-shadow: 0 1px 3px rgba(245, 158, 11, 0.08);
-    }
-
-    :root[data-theme="light"] .status-done-pill {
-      background: #f1f5f9;
-      border: 1px solid #e2e8f0;
-      color: #64748b;
-    }
-
-    :root[data-theme="light"] .status-upcoming-pill {
-      background: #eff6ff;
-      border: 1px solid #bfdbfe;
-      color: #1d4ed8;
-    }
-
-    :root[data-theme="light"] .card-footer-info {
-      border-top-color: #f1f5f9;
-    }
-
-    :root[data-theme="light"] .att-toggle-btn:not(.attended):not(.missed) {
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      color: #475569;
-    }
-
-    :root[data-theme="light"] .att-toggle-btn:not(.attended):not(.missed):hover {
-      background: #f1f5f9;
-      border-color: #cbd5e1;
-    }
-
-    :root[data-theme="light"] .att-toggle-btn.attended {
-      background: #ecfdf5;
-      border-color: #a7f3d0;
-      color: #059669;
-    }
-
-    :root[data-theme="light"] .att-toggle-btn.missed {
-      background: #fff1f2;
-      border-color: #fecdd3;
-      color: #e11d48;
-    }
-
-    :root[data-theme="light"] .set-subcard.set-a-style {
-      background: #ecfdf5;
-      border: 1px solid #a7f3d0;
-      color: #064e3b;
-    }
-
-    :root[data-theme="light"] .set-subcard.set-b-style {
-      background: #f5f3ff;
-      border: 1px solid #ddd6fe;
-      color: #4c1d95;
-    }
-
-    :root[data-theme="light"] .set-subcard .faculty-badge {
-      background: #ffffff;
-      border: 1px solid #fde68a;
-    }
-
-    :root[data-theme="light"] .empty-holiday {
-      background: #ffffff;
-      border: 1px dashed #cbd5e1;
-      color: #64748b;
-      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
-    }
-
-    /* FLOATING BOTTOM NAVIGATION DOCK (GPU-ACCELERATED) */
-    :root[data-theme="light"] .bottom-nav {
-      background: rgba(255, 255, 255, 0.97);
-      border: 1px solid rgba(226, 232, 240, 0.95);
-      box-shadow: 0 8px 28px -4px rgba(15, 23, 42, 0.10);
-      border-radius: 22px;
-      transform: translateZ(0);
-    }
-
-    :root[data-theme="light"] .nav-item {
-      color: #64748b;
-    }
-
-    :root[data-theme="light"] .nav-item:hover {
-      color: #1e293b;
-    }
-
-    :root[data-theme="light"] .nav-item.active {
-      color: #1d4ed8;
-      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-      border: 1px solid #bfdbfe;
-      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.12);
-    }
-
-    /* MODALS & BOTTOM SHEETS */
-    :root[data-theme="light"] .modal-overlay {
-      background: rgba(15, 23, 42, 0.42);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-    }
-
-    :root[data-theme="light"] .modal-sheet {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      box-shadow: 0 -16px 48px rgba(15, 23, 42, 0.16);
-    }
-
-    :root[data-theme="light"] .modal-handle {
-      background: #cbd5e1;
-    }
-
-    :root[data-theme="light"] .modal-title {
-      color: #0f172a;
-    }
-
-    :root[data-theme="light"] .modal-close-btn {
-      background: #f1f5f9;
-      border: 1px solid #e2e8f0;
-      color: #334155;
-    }
-
-    :root[data-theme="light"] .modal-close-btn:hover {
-      background: #e2e8f0;
-    }
-
-    :root[data-theme="light"] .modal-input {
-      background: #f8fafc;
-      border: 1px solid #cbd5e1;
-      color: #0f172a;
-    }
-
-    :root[data-theme="light"] .modal-input:focus {
-      background: #ffffff;
-      border-color: #2563eb;
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
-    }
-
-    :root[data-theme="light"] .form-group label {
-      color: #475569;
-    }
-
-    :root[data-theme="light"] .secondary-btn,
-    :root[data-theme="light"] .sim-jump-btn,
-    :root[data-theme="light"] .quick-jump-pill,
-    :root[data-theme="light"] .modal-day-chip {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      color: #1e293b;
-      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
-    }
-
-    :root[data-theme="light"] .secondary-btn:hover,
-    :root[data-theme="light"] .sim-jump-btn:hover,
-    :root[data-theme="light"] .quick-jump-pill:hover,
-    :root[data-theme="light"] .modal-day-chip:hover {
-      background: #f8fafc;
-      border-color: #cbd5e1;
-    }
-
-    :root[data-theme="light"] .sim-jump-btn .sim-btn-sub {
-      color: #64748b;
-    }
-
-    :root[data-theme="light"] .modal-day-chip.active {
-      background: linear-gradient(135deg, #2563eb, #1d4ed8);
-      color: #ffffff;
-      border-color: transparent;
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.28);
-    }
-
-    :root[data-theme="light"] .modal-day-chip.is-today:not(.active) {
-      border-color: #3b82f6;
-      background: #eff6ff;
-    }
-
-    :root[data-theme="light"] .sim-banner {
-      background: linear-gradient(90deg, #f59e0b, #d97706);
-      color: #ffffff;
-    }
-
-    :root[data-theme="light"] .sim-banner button {
-      background: #0f172a;
-      color: #ffffff;
-    }
-
-    :root[data-theme="light"] .toast-msg {
-      background: #0f172a;
-      color: #ffffff;
-      box-shadow: 0 10px 25px -4px rgba(0, 0, 0, 0.25);
-    }
 
     /* ==========================================================================
        NOTIFICATION LIBRARY & NOTIFICATION CENTER STYLES
@@ -4415,9 +3240,7 @@
       color: #02050b;
     }
 
-    :root[data-theme="light"] .notif-tab.active .notif-tab-count {
-      color: #ffffff;
-    }
+
 
     .notif-quick-actions {
       display: flex;
@@ -4494,10 +3317,7 @@
       background: linear-gradient(160deg, rgba(56, 189, 248, 0.08) 0%, var(--card-solid) 100%);
     }
 
-    :root[data-theme="light"] .notif-card.unread {
-      border-left: 3.5px solid #0284c7;
-      background: linear-gradient(160deg, #f0f9ff 0%, #ffffff 100%);
-    }
+
 
     .notif-card-header {
       display: flex;
@@ -4613,11 +3433,7 @@
       word-break: break-word;
     }
 
-    :root[data-theme="light"] .notif-body-text {
-      background: rgba(241, 245, 249, 0.8);
-      border-color: rgba(203, 213, 225, 0.6);
-      color: #334155;
-    }
+
 
     .notif-card-actions {
       display: flex;
@@ -5244,9 +4060,9 @@
           </div>
         </div>
         <div class="appbar-actions" style="display:flex; align-items:center; gap:6px;">
-          <!-- 1-Tap Colorful Themes Studio -->
-          <button class="appbar-quick-btn" id="themeQuickBtn" onclick="openThemePickerModal()" title="Theme Studio (Vibrant Colors & Animations)" aria-label="Theme Studio">
-            🎨
+          <!-- 1-Tap Colorful Themes Studio / Quick Toggle -->
+          <button class="appbar-quick-btn" id="themeQuickBtn" onclick="toggleTheme()" title="Switch Theme (Quantum Campus ⇄ Cyberpunk Neon)" aria-label="Switch Theme">
+            <span id="appbarThemeIcon">🏛️</span>
           </button>
           <!-- 1-Tap Academic Calendar & Holidays -->
           <button class="appbar-quick-btn" id="calQuickBtn" onclick="openAcademicCalendarModal()" title="Academic Calendar & Holidays (Odd Sem 2026-27)" aria-label="Academic Calendar">
@@ -5659,7 +4475,7 @@
         style="background:var(--card-surface-grad); border:1px solid var(--card-border); border-radius:14px; padding:12px; display:flex; flex-direction:column; gap:8px;">
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Installed Version:</span>
-          <strong style="color:var(--gold-accent);">v4.7.0 (Daylight Pearl Pro)</strong>
+          <strong style="color:var(--gold-accent);">v5.8.0 (Quantum Dual-Vibrant)</strong>
         </div>
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Notification:</span>
@@ -6075,14 +4891,14 @@
       <div class="modal-handle"></div>
       <div class="modal-header">
         <div style="display:flex; align-items:center; gap:8px;">
-          <div class="modal-title">🎨 Colorful Themes Studio</div>
-          <span class="period-count-badge badge-set-all" style="font-size:0.65rem;">60 FPS Lag-Free</span>
+          <div class="modal-title">🎨 2 Vibrant Themes Studio</div>
+          <span class="period-count-badge badge-set-all" style="font-size:0.65rem;">120 FPS Lag-Free</span>
         </div>
         <button class="modal-close-btn" onclick="closeModal('themeModal')">✕</button>
       </div>
 
       <p style="font-size:0.75rem; color:var(--text-muted); line-height:1.4; margin-bottom:8px;">
-        Select from vibrant, hardware-accelerated color themes tailored for day and night study. Buttery-smooth with zero lag!
+        Ultra-vibrant colorful dark themes tailored for maximum contrast and zero lag. 1-tap instant switch!
       </p>
 
       <div class="theme-grid" id="themeGridContainer">
@@ -7666,64 +6482,22 @@
     }
 
     // ==========================================
-    // COLORFUL THEMES STUDIO (8 VIBRANT THEMES)
+    // 2 COLORFUL FLAGSHIP THEMES (ZERO-LAG 120FPS)
     // ==========================================
     const THEMES_LIST = [
       {
         id: 'campus',
         name: 'Quantum Campus',
         icon: '🏛️',
-        desc: 'Official Quantum Blue & Amber live campus backdrop',
+        desc: 'Official Quantum Sapphire Blue & Golden Amber with Emerald Glow',
         swatches: ['#020612', '#38bdf8', '#f59e0b', '#10b981']
       },
       {
         id: 'cyber-neon',
         name: 'Cyberpunk Neon',
-        icon: '🌌',
-        desc: 'Futuristic electric cyan, hot magenta & laser purple',
-        swatches: ['#050212', '#00f0ff', '#ff007f', '#00ffaa']
-      },
-      {
-        id: 'sunset',
-        name: 'Sunset Horizon',
-        icon: '🌅',
-        desc: 'Deep evening twilight, fiery rose & golden sunrise',
-        swatches: ['#0d0608', '#ff6b6b', '#f59e0b', '#ff3366']
-      },
-      {
-        id: 'emerald',
-        name: 'Emerald Matrix',
-        icon: '🌲',
-        desc: 'Cyber forest obsidian, radiant mint & bioluminescent teal',
-        swatches: ['#020f09', '#10b981', '#06b6d4', '#34d399']
-      },
-      {
-        id: 'cosmic',
-        name: 'Cosmic Nebula',
         icon: '⚡',
-        desc: 'Galactic ultraviolet, interstellar dark & fuchsia neon',
-        swatches: ['#090218', '#a855f7', '#ec4899', '#38bdf8']
-      },
-      {
-        id: 'gold',
-        name: 'Imperial Gold',
-        icon: '👑',
-        desc: 'Obsidian luxury, 24K radiant gold & warm brass sheen',
-        swatches: ['#0c0903', '#f59e0b', '#fbbf24', '#fde68a']
-      },
-      {
-        id: 'dark',
-        name: 'Obsidian Dark',
-        icon: '🌙',
-        desc: 'Pure minimal OLED pitch-black power saver',
-        swatches: ['#02050b', '#091326', '#38bdf8', '#94a3b8']
-      },
-      {
-        id: 'light',
-        name: 'Daylight Pearl',
-        icon: '☀️',
-        desc: 'Crisp daytime high-contrast clear study mode',
-        swatches: ['#f8fafc', '#ffffff', '#2563eb', '#059669']
+        desc: 'Futuristic Electric Laser Cyan, Hot Magenta Pink & Violet Glow',
+        swatches: ['#050212', '#00f0ff', '#ff007f', '#a855f7']
       }
     ];
 
@@ -7753,6 +6527,9 @@
     }
 
     function setTheme(themeKey) {
+      if (themeKey !== 'campus' && themeKey !== 'cyber-neon') {
+        themeKey = 'campus';
+      }
       triggerHaptic(14);
       applyThemeAppearance(themeKey);
       localStorage.setItem('secD_theme', themeKey);
@@ -7884,9 +6661,9 @@
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '5.7.2';
-    const LOCAL_APP_VERSION_CODE = 55;
-    const LOCAL_APP_BUILD_HASH = '99cc39ddc7c9';
+    const LOCAL_APP_VERSION_NAME = '5.8.0';
+    const LOCAL_APP_VERSION_CODE = 56;
+    const LOCAL_APP_BUILD_HASH = '05b08870bfb7';
 
     let cachedLatestVersionCode = 29;
 
@@ -8319,17 +7096,11 @@
     }
 
     function applyThemeAppearance(theme) {
+      if (theme !== 'campus' && theme !== 'cyber-neon') theme = 'campus';
       document.documentElement.setAttribute('data-theme', theme);
       const metaTheme = document.querySelector('meta[name="theme-color"]');
       if (metaTheme) {
-        let metaColor = '#020612';
-        if (theme === 'light') metaColor = '#f8fafc';
-        else if (theme === 'dark') metaColor = '#02050b';
-        else if (theme === 'cyber-neon') metaColor = '#050212';
-        else if (theme === 'sunset') metaColor = '#0d0608';
-        else if (theme === 'emerald') metaColor = '#020f09';
-        else if (theme === 'cosmic') metaColor = '#090218';
-        else if (theme === 'gold') metaColor = '#0c0903';
+        const metaColor = (theme === 'cyber-neon') ? '#050212' : '#020612';
         metaTheme.setAttribute('content', metaColor);
       }
       const appbarThemeIcon = document.getElementById('appbarThemeIcon');
@@ -8339,19 +7110,15 @@
       }
       if (window.AndroidUpdater && typeof window.AndroidUpdater.setSystemTheme === 'function') {
         try {
-          window.AndroidUpdater.setSystemTheme(theme === 'light');
+          window.AndroidUpdater.setSystemTheme(false);
         } catch (e) { }
       }
     }
 
     function toggleTheme() {
       triggerHaptic(14);
-      const html = document.documentElement;
-      const cur = html.getAttribute('data-theme') || 'campus';
-      const order = ['campus', 'cyber-neon', 'sunset', 'emerald', 'cosmic', 'gold', 'dark', 'light'];
-      const curIdx = order.indexOf(cur);
-      const next = order[(curIdx + 1) % order.length];
-
+      const cur = document.documentElement.getAttribute('data-theme') || 'campus';
+      const next = (cur === 'campus') ? 'cyber-neon' : 'campus';
       setTheme(next);
     }
 
@@ -10081,8 +8848,6 @@
         // ----- STAGE 3: DOM Surgery -----
         // CSS hide still causes paint. Removing from DOM = zero GPU cost.
         const doSurgery = () => {
-          const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-
           // Remove all 5 aurora orbs — biggest GPU offenders (blur+blend+animate)
           document.querySelectorAll('.aurora-orb').forEach(el => el.remove());
 
@@ -10094,28 +8859,10 @@
           const wm = document.querySelector('.aurora-highlight-watermark');
           if (wm) wm.remove();
 
-          // Fix aurora background & mesh for current theme
-          const auroraBg = document.getElementById('auroraBg');
-          if (auroraBg) {
-            auroraBg.style.backgroundColor = isLight ? '#f1f5f9' : '#02050e';
-          }
           const mesh = document.querySelector('.aurora-mesh-gradient');
           if (mesh) {
             mesh.style.animation = 'none';
             mesh.style.backgroundSize = '100% 100%';
-            if (isLight) {
-              mesh.style.background = [
-                'radial-gradient(circle at 15% 15%, rgba(37,99,235,0.10) 0%, transparent 55%)',
-                'radial-gradient(circle at 85% 85%, rgba(139,92,246,0.08) 0%, transparent 55%)',
-                'linear-gradient(180deg,#ffffff 0%,#f8fafc 50%,#f1f5f9 100%)'
-              ].join(',');
-            } else {
-              mesh.style.background = [
-                'radial-gradient(circle at 20% 20%,rgba(0,240,255,0.12) 0%,transparent 55%)',
-                'radial-gradient(circle at 80% 80%,rgba(168,85,247,0.12) 0%,transparent 55%)',
-                'linear-gradient(145deg,#02040a 0%,#050a16 100%)'
-              ].join(',');
-            }
           }
 
           // Kill all remaining will-change (too many compositor layers = lag)
@@ -10124,19 +8871,15 @@
             if (wc && wc !== 'auto') el.style.willChange = 'auto';
           });
 
-          // Remove backdrop-filter + set correct bg for glass cards
+          // Remove backdrop-filter without breaking theme gradient backgrounds
           document.querySelectorAll(
             '.lecture-card,.top-appbar,.modal-sheet,.notif-card,.quick-action-card,.time-sim-card,.circular-gauge-container,.glow-highlight-ribbon,.holo-menu-panel'
           ).forEach(el => {
             el.style.backdropFilter = 'none';
             el.style.webkitBackdropFilter = 'none';
-            // Only force dark bg on dark themes — light theme has white via CSS
-            if (!isLight) {
-              el.style.background = 'rgba(10,16,32,0.95)';
-            }
           });
 
-          console.info('[Qtimex Perf v2] Theme-aware DOM surgery done. Theme=' + (isLight ? 'light' : 'dark') + ' Reason=' + reason);
+          console.info('[Qtimex Perf v2] Lag-free DOM surgery done. Reason=' + reason);
         };
 
         if (typeof requestIdleCallback === 'function') {
@@ -10181,7 +8924,11 @@
 
     // INITIALIZATION
     function init() {
-      const savedTheme = localStorage.getItem('secD_theme') || 'campus';
+      let savedTheme = localStorage.getItem('secD_theme');
+      if (savedTheme !== 'campus' && savedTheme !== 'cyber-neon') {
+        savedTheme = 'campus';
+        localStorage.setItem('secD_theme', 'campus');
+      }
       applyThemeAppearance(savedTheme);
       const savedAnim = localStorage.getItem('secD_anim_theme') || 'on';
       document.documentElement.setAttribute('data-anim-theme', savedAnim);
