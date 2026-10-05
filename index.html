@@ -126,21 +126,21 @@
       --card-bg: #ffffff;
       --card-solid: #ffffff;
       --card-surface-grad: linear-gradient(165deg, #ffffff 0%, #f8fafc 100%);
-      --card-border: rgba(226, 232, 240, 0.90);
+      --card-border: rgba(226, 232, 240, 0.95);
       --card-rim: inset 0 1px 0 #ffffff;
       --card-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.03);
       --card-hover: #f1f5f9;
-      --header-bg: rgba(255, 255, 255, 0.96);
+      --header-bg: rgba(255, 255, 255, 0.97);
       --recessed-bg: #f1f5f9;
 
       --text-main: #0f172a;
-      --text-muted: #334155;
+      --text-muted: #475569;
       --text-sub: #64748b;
 
-      --accent: #2563eb;
+      --accent: #4f46e5;
       --accent-secondary: #7c3aed;
-      --accent-glow: rgba(37, 99, 235, 0.25);
-      --accent-bg: rgba(37, 99, 235, 0.08);
+      --accent-glow: rgba(79, 70, 229, 0.25);
+      --accent-bg: rgba(79, 70, 229, 0.08);
 
       --gold-accent: #b45309;
       --gold-bg: linear-gradient(135deg, rgba(245, 158, 11, 0.10), rgba(217, 119, 6, 0.05));
@@ -161,9 +161,9 @@
       --success: #059669;
       --warning: #b45309;
 
-      --orb-1-color: rgba(59, 130, 246, 0.20);
-      --orb-2-color: rgba(168, 85, 247, 0.16);
-      --orb-3-color: rgba(251, 191, 36, 0.12);
+      --orb-1-color: rgba(99, 102, 241, 0.16);
+      --orb-2-color: rgba(168, 85, 247, 0.14);
+      --orb-3-color: rgba(56, 189, 248, 0.12);
       --aurora-opacity: 0.85;
     }
 
@@ -4059,39 +4059,39 @@
 
   
     /* ============================================================
-       AURA LIGHT (CELESTIAL LUXURY PEARL) COMPONENT SYSTEM
+       AURA CELESTIAL (HARMONIC LUXURY LIGHT) COMPLETE SYSTEM
        ============================================================ */
     :root[data-theme="aura-light"] .aurora-ambient-bg {
       background:
-        radial-gradient(ellipse at 12% 12%, rgba(59, 130, 246, 0.12) 0%, transparent 48%),
-        radial-gradient(ellipse at 88% 88%, rgba(168, 85, 247, 0.10) 0%, transparent 48%),
-        radial-gradient(ellipse at 50% 50%, rgba(251, 191, 36, 0.08) 0%, transparent 45%),
+        radial-gradient(ellipse at 12% 12%, rgba(99, 102, 241, 0.10) 0%, transparent 48%),
+        radial-gradient(ellipse at 88% 88%, rgba(168, 85, 247, 0.08) 0%, transparent 48%),
+        radial-gradient(ellipse at 50% 50%, rgba(56, 189, 248, 0.06) 0%, transparent 45%),
         linear-gradient(165deg, #f8fafc 0%, #f1f5f9 50%, #edf2f7 100%);
     }
 
     :root[data-theme="aura-light"] .aurora-cyber-grid {
       background-image: 
-        linear-gradient(to right, rgba(148, 163, 184, 0.08) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+        linear-gradient(to right, rgba(99, 102, 241, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(99, 102, 241, 0.035) 1px, transparent 1px);
     }
 
     :root[data-theme="aura-light"] .aurora-orb.orb-primary {
-      background: radial-gradient(circle, rgba(59, 130, 246, 0.22) 0%, rgba(99, 102, 241, 0.10) 40%, transparent 72%);
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.18) 0%, rgba(129, 140, 248, 0.08) 40%, transparent 72%);
       animation: quantumOrbDrift1 25s ease-in-out infinite alternate;
     }
 
     :root[data-theme="aura-light"] .aurora-orb.orb-secondary {
-      background: radial-gradient(circle, rgba(168, 85, 247, 0.18) 0%, rgba(139, 92, 246, 0.08) 40%, transparent 72%);
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, rgba(192, 132, 252, 0.07) 40%, transparent 72%);
       animation: quantumOrbDrift2 28s ease-in-out infinite alternate;
     }
 
     :root[data-theme="aura-light"] .aurora-orb.orb-tertiary {
-      background: radial-gradient(circle, rgba(251, 191, 36, 0.14) 0%, rgba(244, 114, 182, 0.06) 40%, transparent 70%);
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.14) 0%, rgba(14, 165, 233, 0.05) 40%, transparent 70%);
       animation: quantumOrbDrift3 26s ease-in-out infinite alternate;
     }
 
     :root[data-theme="aura-light"] .watermark-word {
-      background: linear-gradient(135deg, rgba(30, 58, 138, 0.20) 0%, rgba(109, 40, 217, 0.16) 50%, rgba(180, 83, 9, 0.12) 100%);
+      background: linear-gradient(135deg, rgba(79, 70, 229, 0.20) 0%, rgba(124, 58, 237, 0.16) 50%, rgba(14, 165, 233, 0.12) 100%);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -4104,7 +4104,7 @@
 
     :root[data-theme="aura-light"] .brand-name-text,
     :root[data-theme="aura-light"] .brand-name:not(:has(.brand-name-text)) {
-      background: linear-gradient(95deg, #1e3a8a 0%, #2563eb 25%, #7c3aed 55%, #1e3a8a 80%, #0f172a 100%) !important;
+      background: linear-gradient(95deg, #312e81 0%, #4f46e5 25%, #7c3aed 55%, #4f46e5 80%, #0f172a 100%) !important;
       background-size: 250% auto !important;
       -webkit-background-clip: text !important;
       background-clip: text !important;
@@ -4113,69 +4113,214 @@
     }
 
     :root[data-theme="aura-light"] .top-appbar {
-      background: rgba(255, 255, 255, 0.96);
-      border-bottom: 1px solid rgba(226, 232, 240, 0.90);
+      background: rgba(255, 255, 255, 0.97);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.95);
       box-shadow: 0 2px 14px rgba(15, 23, 42, 0.04);
     }
 
-    :root[data-theme="aura-light"] .sec-pill-btn {
-      background: #ffffff;
-      border: 1px solid rgba(226, 232, 240, 0.95);
-      color: #334155;
-      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+    /* Header buttons in Aura Light */
+    :root[data-theme="aura-light"] .appbar-quick-btn {
+      background: #ffffff !important;
+      border: 1px solid rgba(226, 232, 240, 0.95) !important;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06) !important;
+      color: #0f172a !important;
     }
 
-    :root[data-theme="aura-light"] .sec-pill-btn:hover {
-      background: #f8fafc;
-      color: #0f172a;
-      border-color: rgba(37, 99, 235, 0.40);
+    :root[data-theme="aura-light"] .holo-menu-trigger {
+      background: #ffffff !important;
+      border: 1.5px solid rgba(226, 232, 240, 0.95) !important;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06) !important;
+    }
+    :root[data-theme="aura-light"] .holo-menu-trigger .hbar {
+      background: #334155 !important;
+    }
+    :root[data-theme="aura-light"] .holo-menu-trigger .hbar-2 {
+      background: #4f46e5 !important;
     }
 
-    :root[data-theme="aura-light"] .sec-pill-btn.active {
-      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-      border: 1.5px solid #1d4ed8;
-      color: #ffffff;
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    /* QUICK OPTIONS SIDE DRAWER IN AURA LIGHT */
+    :root[data-theme="aura-light"] .holo-command-deck {
+      background: #ffffff !important;
+      border: 1.5px solid rgba(226, 232, 240, 0.95) !important;
+      box-shadow: 0 20px 50px -8px rgba(15, 23, 42, 0.15), 0 0 24px rgba(99, 102, 241, 0.08) !important;
     }
-
-    :root[data-theme="aura-light"] .batch-segment {
-      background: #f1f5f9;
-      border: 1px solid rgba(226, 232, 240, 0.95);
-      box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.05);
+    :root[data-theme="aura-light"] .holo-deck-header {
+      border-bottom: 1px solid rgba(226, 232, 240, 0.90) !important;
     }
-
-    :root[data-theme="aura-light"] .day-pill {
-      background: #ffffff;
-      border: 1px solid rgba(226, 232, 240, 0.90);
-      color: #334155;
-      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+    :root[data-theme="aura-light"] .holo-deck-header::after {
+      background: linear-gradient(90deg, transparent, #4f46e5, #7c3aed, transparent) !important;
     }
-
-    :root[data-theme="aura-light"] .day-pill.active {
-      background: linear-gradient(145deg, #2563eb 0%, #1d4ed8 100%);
-      color: #ffffff;
-      border-color: transparent;
-      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.30), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    :root[data-theme="aura-light"] .holo-deck-title {
+      color: #4f46e5 !important;
     }
-
-    :root[data-theme="aura-light"] .circular-gauge-container {
-      background: radial-gradient(circle, #ffffff 0%, #f8fafc 70%, transparent 72%);
+    :root[data-theme="aura-light"] .holo-deck-dot {
+      background: #4f46e5 !important;
+      box-shadow: 0 0 8px rgba(79, 70, 229, 0.5) !important;
     }
-
+    :root[data-theme="aura-light"] .holo-deck-tag {
+      background: rgba(79, 70, 229, 0.08) !important;
+      border-color: rgba(79, 70, 229, 0.22) !important;
+      color: #4f46e5 !important;
+    }
+    :root[data-theme="aura-light"] .holo-quick-dock {
+      background: #f8fafc !important;
+      border-color: rgba(226, 232, 240, 0.95) !important;
+    }
     :root[data-theme="aura-light"] .holo-dock-btn {
-      background: #ffffff;
-      border-color: rgba(226, 232, 240, 0.95);
-      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
-      color: #0f172a;
+      background: #ffffff !important;
+      border-color: rgba(226, 232, 240, 0.95) !important;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05) !important;
+      color: #0f172a !important;
     }
-
+    :root[data-theme="aura-light"] .holo-dock-btn .dock-lbl {
+      color: #64748b !important;
+    }
     :root[data-theme="aura-light"] .holo-menu-item {
-      background: #ffffff;
-      border-color: rgba(226, 232, 240, 0.95);
-      box-shadow: inset 0 1px 0 #ffffff, 0 2px 8px rgba(15, 23, 42, 0.04);
-      color: #0f172a;
+      background: #ffffff !important;
+      border-color: rgba(226, 232, 240, 0.95) !important;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
+      color: #0f172a !important;
+    }
+    :root[data-theme="aura-light"] .holo-item-title {
+      color: #0f172a !important;
+    }
+    :root[data-theme="aura-light"] .holo-item-sub {
+      color: #64748b !important;
+    }
+    :root[data-theme="aura-light"] .holo-item-pill {
+      background: rgba(79, 70, 229, 0.08) !important;
+      border-color: rgba(79, 70, 229, 0.22) !important;
+      color: #4f46e5 !important;
     }
 
+    /* Section selector buttons */
+    :root[data-theme="aura-light"] .sec-pill-btn {
+      background: #ffffff !important;
+      border: 1px solid rgba(226, 232, 240, 0.95) !important;
+      color: #475569 !important;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
+    }
+    :root[data-theme="aura-light"] .sec-pill-btn:hover {
+      background: #f8fafc !important;
+      color: #0f172a !important;
+      border-color: rgba(79, 70, 229, 0.40) !important;
+    }
+    :root[data-theme="aura-light"] .sec-pill-btn.active {
+      background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%) !important;
+      border: 1.5px solid #4338ca !important;
+      color: #ffffff !important;
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.28) !important;
+    }
+    :root[data-theme="aura-light"] .active-sec-badge {
+      background: rgba(79, 70, 229, 0.08) !important;
+      border-color: rgba(79, 70, 229, 0.25) !important;
+      color: #4f46e5 !important;
+    }
+
+    /* Batch Segmented Controller in Aura Light */
+    :root[data-theme="aura-light"] .batch-segment {
+      background: #f1f5f9 !important;
+      border: 1px solid rgba(226, 232, 240, 0.95) !important;
+      box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.05) !important;
+    }
+    :root[data-theme="aura-light"] .batch-tab {
+      color: #64748b !important;
+    }
+    :root[data-theme="aura-light"] .batch-tab.active-seta {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+      color: #ffffff !important;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3) !important;
+    }
+    :root[data-theme="aura-light"] .batch-tab.active-setb {
+      background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%) !important;
+      color: #ffffff !important;
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3) !important;
+    }
+    :root[data-theme="aura-light"] .batch-tab.active-all {
+      background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%) !important;
+      color: #ffffff !important;
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3) !important;
+    }
+
+    /* Quick Date Switcher Buttons (Today, Tomorrow, Select Date) */
+    :root[data-theme="aura-light"] .quick-view-btn {
+      background: #ffffff !important;
+      border: 1px solid rgba(226, 232, 240, 0.95) !important;
+      color: #475569 !important;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
+    }
+    :root[data-theme="aura-light"] .quick-view-btn.active {
+      background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%) !important;
+      color: #ffffff !important;
+      border-color: transparent !important;
+      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.30) !important;
+    }
+    :root[data-theme="aura-light"] .quick-view-btn#btnViewTomorrow.active {
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important;
+      color: #ffffff !important;
+      border-color: transparent !important;
+      box-shadow: 0 4px 14px rgba(245, 158, 11, 0.30) !important;
+    }
+
+    /* 6-Column Day Pills in Aura Light */
+    :root[data-theme="aura-light"] .day-pill {
+      background: #ffffff !important;
+      border: 1px solid rgba(226, 232, 240, 0.90) !important;
+      color: #475569 !important;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
+    }
+    :root[data-theme="aura-light"] .day-pill.active {
+      background: linear-gradient(145deg, #6366f1 0%, #4f46e5 100%) !important;
+      color: #ffffff !important;
+      border-color: transparent !important;
+      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35) !important;
+    }
+    :root[data-theme="aura-light"] .day-pill.today-highlight:not(.active) {
+      border-color: rgba(99, 102, 241, 0.45) !important;
+      color: #4338ca !important;
+    }
+    :root[data-theme="aura-light"] .day-pill.tomorrow-highlight:not(.active) {
+      border-color: rgba(245, 158, 11, 0.50) !important;
+      color: #b45309 !important;
+    }
+    :root[data-theme="aura-light"] .day-pill-sub {
+      color: #64748b !important;
+    }
+    :root[data-theme="aura-light"] .day-pill.active .day-pill-sub {
+      color: rgba(255, 255, 255, 0.85) !important;
+    }
+
+    /* Gauge & Hero Card */
+    :root[data-theme="aura-light"] .circular-gauge-container {
+      background: radial-gradient(circle, #ffffff 0%, #f8fafc 70%, transparent 72%) !important;
+    }
+    :root[data-theme="aura-light"] .circular-hero-card {
+      background: linear-gradient(165deg, #ffffff 0%, #f8fafc 100%) !important;
+      border: 1px solid rgba(226, 232, 240, 0.95) !important;
+      box-shadow: 
+        inset 0 1.5px 0 #ffffff,
+        0 8px 25px -4px rgba(15, 23, 42, 0.06) !important;
+    }
+
+    /* Holiday & Exam Card in Aura Light */
+    :root[data-theme="aura-light"] .empty-holiday-card {
+      background: #ffffff !important;
+      border: 1px solid rgba(226, 232, 240, 0.95) !important;
+      box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.08) !important;
+    }
+    :root[data-theme="aura-light"] .holiday-title {
+      color: #0f172a !important;
+    }
+    :root[data-theme="aura-light"] .holiday-desc {
+      color: #475569 !important;
+    }
+    :root[data-theme="aura-light"] .holiday-quote {
+      background: #f8fafc !important;
+      border-color: rgba(226, 232, 240, 0.90) !important;
+      color: #334155 !important;
+    }
+
+    /* Lecture Cards in Aura Light */
     :root[data-theme="aura-light"] .lecture-card {
       background: #ffffff !important;
       border: 1px solid rgba(226, 232, 240, 0.92) !important;
@@ -4184,13 +4329,31 @@
         0 4px 20px -2px rgba(15, 23, 42, 0.05),
         0 1px 3px rgba(15, 23, 42, 0.03) !important;
     }
+    :root[data-theme="aura-light"] .lecture-card .slot-pill-name {
+      background: rgba(79, 70, 229, 0.08) !important;
+      border-color: rgba(79, 70, 229, 0.22) !important;
+      color: #4f46e5 !important;
+    }
+    :root[data-theme="aura-light"] .lecture-card .slot-timing-str {
+      color: #475569 !important;
+    }
 
-    :root[data-theme="aura-light"] .circular-hero-card {
-      background: linear-gradient(165deg, #ffffff 0%, #f8fafc 100%) !important;
+    /* Floating Dynamic Island Bottom Nav Dock in Aura Light */
+    :root[data-theme="aura-light"] .bottom-nav {
+      background: rgba(255, 255, 255, 0.97) !important;
       border: 1px solid rgba(226, 232, 240, 0.95) !important;
-      box-shadow: 
-        inset 0 1.5px 0 #ffffff,
-        0 8px 25px -4px rgba(15, 23, 42, 0.06) !important;
+      box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.10), 0 1px 3px rgba(15, 23, 42, 0.05), inset 0 1px 0 #ffffff !important;
+    }
+    :root[data-theme="aura-light"] .nav-item {
+      color: #64748b !important;
+    }
+    :root[data-theme="aura-light"] .nav-item.active {
+      color: #4f46e5 !important;
+      background: rgba(79, 70, 229, 0.08) !important;
+      border-color: rgba(79, 70, 229, 0.20) !important;
+    }
+    :root[data-theme="aura-light"] .nav-item.active .nav-icon {
+      color: #4f46e5 !important;
     }
 
     :root[data-theme="aura-light"] .modal-sheet {
@@ -4662,7 +4825,7 @@
         style="background:var(--card-surface-grad); border:1px solid var(--card-border); border-radius:14px; padding:12px; display:flex; flex-direction:column; gap:8px;">
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Installed Version:</span>
-          <strong style="color:var(--gold-accent);">v5.9.2 (Quantum Triple-Spectrum)</strong>
+          <strong style="color:var(--gold-accent);">v5.9.3 (Quantum Triple-Spectrum)</strong>
         </div>
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Notification:</span>
@@ -6716,10 +6879,10 @@
       },
       {
         id: 'aura-light',
-        name: 'Aura Pearl (Luxury Light)',
+        name: 'Aura Celestial (Light)',
         icon: '✨',
-        desc: 'Alpine Frosted Pearl, Royal Sapphire, Soft Amethyst & Platinum Glow',
-        swatches: ['#ffffff', '#2563eb', '#7c3aed', '#059669']
+        desc: 'Alpine Frosted Pearl, Royal Indigo, Celestial Violet & Ethereal Aura Glow',
+        swatches: ['#ffffff', '#4f46e5', '#8b5cf6', '#10b981']
       }
     ];
 
@@ -6883,9 +7046,9 @@
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '5.9.2';
-    const LOCAL_APP_VERSION_CODE = 62;
-    const LOCAL_APP_BUILD_HASH = '07125a69cb0b';
+    const LOCAL_APP_VERSION_NAME = '5.9.3';
+    const LOCAL_APP_VERSION_CODE = 63;
+    const LOCAL_APP_BUILD_HASH = '5c3aaf6f7635';
 
     let cachedLatestVersionCode = 29;
 
@@ -7681,7 +7844,7 @@
         container.innerHTML = `
           <div class="empty-holiday-card" style="margin-bottom:16px; ${isExamDay ? 'border-color: rgba(56, 189, 248, 0.4); box-shadow: 0 16px 40px -10px rgba(0,0,0,0.6), 0 0 25px rgba(56, 189, 248, 0.2);' : ''}">
             <div class="holiday-icon-glow">${holidayIcon}</div>
-            <div class="holiday-badge" style="${isExamDay ? 'background:linear-gradient(135deg, var(--accent), var(--accent-secondary)); color:#020612; border:none; font-weight:800;' : ''}">${badgeLabel}</div>
+            <div class="holiday-badge" style="${isExamDay ? 'background:linear-gradient(135deg, var(--accent), var(--accent-secondary)); color:#ffffff !important; border:none; font-weight:800;' : ''}">${badgeLabel}</div>
             <h3 class="holiday-title">${holidayTitle}</h3>
             <p class="holiday-desc">${holidaySub}</p>
             <div class="holiday-quote">${quoteText}</div>
