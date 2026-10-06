@@ -2,15 +2,15 @@ const fs = require('fs');
 const crypto = require('crypto');
 
 let ver = JSON.parse(fs.readFileSync('version.json', 'utf8'));
-ver.versionName = "5.9.13";
-ver.versionCode = 73;
-ver.apkVersionCode = 73;
+ver.versionName = "5.9.14";
+ver.versionCode = 74;
+ver.apkVersionCode = 74;
 ver.updatedAt = Date.now();
 ver.lastUpdated = new Date().toISOString();
-ver.releaseNotes = "v5.9.13: Ultra-clean luxury dark glassmorphism & fluid ambient aurora glow with zero distracting lines.";
+ver.releaseNotes = "v5.9.14: Fully responsive layout — auto full-width mobile view & 2-column wide executive desktop dashboard.";
 
 let html = fs.readFileSync('index.html', 'utf8');
-html = html.replace(/<strong style="color:var\(--gold-accent\);">v[^<]+<\/strong>/, '<strong style="color:var(--gold-accent);">v' + ver.versionName + ' (Clean Luxury Aurora)</strong>');
+html = html.replace(/<strong style="color:var\(--gold-accent\);">v[^<]+<\/strong>/, '<strong style="color:var(--gold-accent);">v' + ver.versionName + ' (Adaptive Responsive)</strong>');
 html = html.replace(/📲 Direct Download & Install APK \(v[^)]+\)/, '📲 Direct Download & Install APK (v' + ver.versionName + ')');
 html = html.replace(/const LOCAL_APP_VERSION_NAME = '[^']+';/, "const LOCAL_APP_VERSION_NAME = '" + ver.versionName + "';");
 html = html.replace(/const LOCAL_APP_VERSION_CODE = \d+;/, 'const LOCAL_APP_VERSION_CODE = ' + ver.versionCode + ';');

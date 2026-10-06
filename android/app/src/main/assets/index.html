@@ -1060,7 +1060,7 @@
     /* Instant responsive theme transition (Zero lag) */
     .app-viewport {
       width: 100%;
-      max-width: 480px;
+      max-width: 100%;
       min-height: 100vh;
       margin: 0 auto;
       background: transparent;
@@ -1069,6 +1069,7 @@
       padding-bottom: 112px;
       box-shadow: none;
       border: none;
+      transition: max-width 0.25s ease;
     }
 
     /* ============================================================
@@ -4842,6 +4843,127 @@
       box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35) !important;
     }
 
+    /* ============================================================
+       RESPONSIVE ADAPTIVE ENGINE (MOBILE & DESKTOP DUAL SIZING)
+       - Mobile (< 768px): Full-width native phone touch experience
+       - Tablet (768px - 1179px): Spacious balanced mid-screen view
+       - Desktop (>= 1180px): Luxury wide executive dashboard view with 2-Column Bento Grid
+       ============================================================ */
+    @media (max-width: 767px) {
+      .app-viewport {
+        max-width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .app-viewport {
+        max-width: 980px !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+      }
+      .top-appbar {
+        border-radius: 0 0 22px 22px !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        box-shadow: 0 14px 34px -10px rgba(0, 0, 0, 0.7) !important;
+      }
+      .holo-command-deck {
+        right: max(20px, calc((100vw - 980px) / 2 + 20px)) !important;
+      }
+      .glow-highlight-ribbon {
+        margin: 12px 0 4px 0 !important;
+      }
+      .time-status-ribbon {
+        margin: 8px 0 !important;
+        padding: 10px 16px !important;
+      }
+      .circular-hero-card {
+        margin: 14px 0 10px 0 !important;
+        padding: 20px 24px !important;
+        min-height: 136px !important;
+      }
+      .orbit-tracker-section {
+        margin: 6px 0 12px 0 !important;
+        padding: 14px 18px !important;
+      }
+      .schedule-quick-switch-bar {
+        padding: 8px 0 !important;
+      }
+      .day-pills-bar {
+        padding: 8px 0 !important;
+        gap: 10px !important;
+      }
+      .day-pill {
+        min-height: 54px !important;
+      }
+      .today-section-header {
+        padding: 14px 0 8px 0 !important;
+      }
+      .viewing-date-banner {
+        margin: 8px 0 !important;
+        padding: 12px 18px !important;
+      }
+      /* 2-Column Responsive Bento Grid for Lecture Cards on Desktop */
+      .lectures-container {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 16px !important;
+        padding: 10px 0 28px 0 !important;
+      }
+      .lecture-card {
+        margin: 0 !important;
+        height: 100% !important;
+      }
+      /* Centered Floating Island Navigation Dock */
+      .bottom-nav {
+        max-width: 520px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        bottom: 22px !important;
+      }
+      /* Centered Desktop Modals */
+      .modal-sheet {
+        max-width: 600px !important;
+        border-radius: 26px !important;
+        margin: auto !important;
+        margin-bottom: 40px !important;
+        border-bottom: 1px solid var(--card-border) !important;
+        box-shadow: 0 24px 70px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+      }
+      .heads-up-banner {
+        max-width: 600px !important;
+      }
+      /* Fluid Aurora Orbs expanded for Wide Monitors */
+      .aurora-orb.orb-primary {
+        width: 580px !important;
+        height: 580px !important;
+      }
+      .aurora-orb.orb-secondary {
+        width: 620px !important;
+        height: 620px !important;
+      }
+      .aurora-orb.orb-tertiary {
+        width: 480px !important;
+        height: 480px !important;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .app-viewport {
+        max-width: 1180px !important;
+        padding-left: 28px !important;
+        padding-right: 28px !important;
+      }
+      .holo-command-deck {
+        right: max(24px, calc((100vw - 1180px) / 2 + 28px)) !important;
+      }
+      .lectures-container {
+        gap: 20px !important;
+      }
+    }
+
   </style>
   <!-- Splash Screen Removed for Instant Direct Launch -->
 </head>
@@ -5304,7 +5426,7 @@
         style="background:var(--card-surface-grad); border:1px solid var(--card-border); border-radius:14px; padding:12px; display:flex; flex-direction:column; gap:8px;">
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Installed Version:</span>
-          <strong style="color:var(--gold-accent);">v5.9.13 (Clean Luxury Aurora)</strong>
+          <strong style="color:var(--gold-accent);">v5.9.14 (Adaptive Responsive)</strong>
         </div>
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Notification:</span>
@@ -5328,7 +5450,7 @@
 
       <button class="secondary-btn" style="background:rgba(79, 70, 229, 0.12); border:1.5px solid #4f46e5; color:#4f46e5; font-weight:800; justify-content:center;"
         onclick="downloadFullApk()">
-        📲 Direct Download & Install APK (v5.9.13)
+        📲 Direct Download & Install APK (v5.9.14)
       </button>
 
       <button class="secondary-btn" onclick="checkInAppUpdate(true)">
@@ -7571,9 +7693,9 @@
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '5.9.13';
-    const LOCAL_APP_VERSION_CODE = 73;
-    const LOCAL_APP_BUILD_HASH = 'e294c6f76953';
+    const LOCAL_APP_VERSION_NAME = '5.9.14';
+    const LOCAL_APP_VERSION_CODE = 74;
+    const LOCAL_APP_BUILD_HASH = 'e457967371d6';
 
     let cachedLatestVersionCode = 29;
 
