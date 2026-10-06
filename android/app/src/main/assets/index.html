@@ -733,235 +733,7 @@
         linear-gradient(160deg, #050212 0%, #120528 50%, #060216 100%);
     }
 
-    /* ============================================================
-       QUANTUM ARCHITECTURAL CYBER-GRID ENGINE (NEXT-LEVEL LUXURY)
-       - Layer 1: Fine Precision Micro-Grid (32px high-tech mesh)
-       - Layer 2: Macro Blueprint Coordinate Grid (128px structural frame)
-       - Layer 3: HUD Intersection Target Crosshairs '+' & Luminous Core Nodes
-       - Layer 4: Interactive Reactive Touch & Cursor Spotlight Proximity Aura
-       - Layer 5: Luminous Quantum Laser Beam Scanwave Sweep (120 FPS GPU)
-       - Layer 6: Pulsing Quantum Telemetry Circuit Nodes (Constellation Sparks)
-       - Layer 7: Cinematic Perspective Vignette Horizon
-       ============================================================ */
-    @keyframes cyberLaserScan {
-      0% {
-        transform: translateY(-130%) rotate(-14deg);
-        opacity: 0;
-      }
-      8% {
-        opacity: 0.85;
-      }
-      50% {
-        opacity: 0.85;
-      }
-      92% {
-        opacity: 0.85;
-      }
-      100% {
-        transform: translateY(280%) rotate(-14deg);
-        opacity: 0;
-      }
-    }
 
-    @keyframes gridNodePulse {
-      0%, 100% {
-        transform: scale(0.85);
-        opacity: 0.35;
-        box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.4);
-      }
-      50% {
-        transform: scale(1.35);
-        opacity: 0.95;
-        box-shadow: 0 0 14px 4px rgba(56, 189, 248, 0.85), 0 0 0 6px rgba(56, 189, 248, 0.15);
-      }
-    }
-
-    .aurora-cyber-grid {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      overflow: hidden;
-      contain: strict;
-      transform: translateZ(0);
-      backface-visibility: hidden;
-    }
-
-    .grid-sublayer {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      transform: translateZ(0);
-      backface-visibility: hidden;
-    }
-
-    /* 1. Fine Precision Micro-Grid (32px Blueprint Mesh) */
-    .grid-fine {
-      background-image: 
-        linear-gradient(to right, rgba(56, 189, 248, 0.05) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
-      background-size: 32px 32px;
-      mask-image: radial-gradient(ellipse at 50% 36%, black 25%, rgba(0,0,0,0.4) 75%, transparent 100%);
-      -webkit-mask-image: radial-gradient(ellipse at 50% 36%, black 25%, rgba(0,0,0,0.4) 75%, transparent 100%);
-    }
-
-    :root[data-theme="cyber-neon"] .grid-fine {
-      background-image: 
-        linear-gradient(to right, rgba(0, 240, 255, 0.065) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 0, 127, 0.055) 1px, transparent 1px);
-    }
-
-    /* 2. Major Coordinate Architecture Grid (128px Frame) */
-    .grid-major {
-      background-image: 
-        linear-gradient(to right, rgba(56, 189, 248, 0.13) 1.5px, transparent 1.5px),
-        linear-gradient(to bottom, rgba(56, 189, 248, 0.13) 1.5px, transparent 1.5px);
-      background-size: 128px 128px;
-      mask-image: radial-gradient(ellipse at 50% 36%, black 30%, rgba(0,0,0,0.3) 72%, transparent 96%);
-      -webkit-mask-image: radial-gradient(ellipse at 50% 36%, black 30%, rgba(0,0,0,0.3) 72%, transparent 96%);
-    }
-
-    :root[data-theme="cyber-neon"] .grid-major {
-      background-image: 
-        linear-gradient(to right, rgba(0, 240, 255, 0.18) 1.5px, transparent 1.5px),
-        linear-gradient(to bottom, rgba(255, 0, 127, 0.16) 1.5px, transparent 1.5px);
-    }
-
-    /* 3. HUD Intersection Target Crosshairs '+' & Luminous Core Nodes */
-    .grid-crosshairs {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128' viewBox='0 0 128 128'%3E%3Cpath d='M64 56v16M56 64h16' stroke='%2338bdf8' stroke-width='1.5' stroke-linecap='round' opacity='0.55'/%3E%3Ccircle cx='64' cy='64' r='1.5' fill='%2338bdf8' opacity='0.85'/%3E%3C/svg%3E");
-      background-size: 128px 128px;
-      background-position: -64px -64px;
-      mask-image: radial-gradient(ellipse at 50% 38%, black 35%, rgba(0,0,0,0.35) 75%, transparent 100%);
-      -webkit-mask-image: radial-gradient(ellipse at 50% 38%, black 35%, rgba(0,0,0,0.35) 75%, transparent 100%);
-    }
-
-    :root[data-theme="cyber-neon"] .grid-crosshairs {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128' viewBox='0 0 128 128'%3E%3Cpath d='M64 55v18M55 64h18' stroke='%2300f0ff' stroke-width='1.5' stroke-linecap='round' opacity='0.7'/%3E%3Ccircle cx='64' cy='64' r='2' fill='%23ff007f' opacity='0.9'/%3E%3C/svg%3E");
-    }
-
-    /* 4. Interactive Touch & Cursor Reactive Spotlight Proximity Aura */
-    .grid-spotlight {
-      background: radial-gradient(
-        circle 340px at var(--grid-spot-x, 50%) var(--grid-spot-y, 35%),
-        rgba(56, 189, 248, 0.22) 0%,
-        rgba(14, 165, 233, 0.08) 45%,
-        transparent 75%
-      );
-      mix-blend-mode: screen;
-      transition: opacity 0.3s ease;
-      will-change: background;
-    }
-
-    :root[data-theme="cyber-neon"] .grid-spotlight {
-      background: radial-gradient(
-        circle 360px at var(--grid-spot-x, 50%) var(--grid-spot-y, 35%),
-        rgba(0, 240, 255, 0.25) 0%,
-        rgba(255, 0, 127, 0.12) 45%,
-        transparent 75%
-      );
-    }
-
-    /* 5. Luminous Quantum Cyber Laser Scan Beam (120 FPS GPU Sweep) */
-    .grid-scan-beam {
-      position: absolute;
-      top: -30vh;
-      left: -30vw;
-      width: 160vw;
-      height: 180px;
-      pointer-events: none;
-      background: linear-gradient(
-        180deg,
-        transparent 0%,
-        rgba(56, 189, 248, 0.02) 20%,
-        rgba(56, 189, 248, 0.14) 65%,
-        rgba(56, 189, 248, 0.36) 92%,
-        rgba(255, 255, 255, 0.8) 98%,
-        rgba(56, 189, 248, 0.5) 100%
-      );
-      filter: blur(2px) drop-shadow(0 0 16px rgba(56, 189, 248, 0.7));
-      animation: cyberLaserScan 9.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-      mix-blend-mode: screen;
-      will-change: transform;
-    }
-
-    :root[data-theme="cyber-neon"] .grid-scan-beam {
-      background: linear-gradient(
-        180deg,
-        transparent 0%,
-        rgba(0, 240, 255, 0.03) 20%,
-        rgba(255, 0, 127, 0.18) 65%,
-        rgba(0, 240, 255, 0.45) 92%,
-        rgba(255, 255, 255, 0.88) 98%,
-        rgba(0, 240, 255, 0.65) 100%
-      );
-      filter: blur(2px) drop-shadow(0 0 20px rgba(0, 240, 255, 0.8));
-      animation-duration: 8s;
-    }
-
-    /* 6. Pulsing Quantum Telemetry Circuit Nodes */
-    .grid-nodes-layer {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-    }
-
-    .grid-pulse-node {
-      position: absolute;
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: #38bdf8;
-      animation: gridNodePulse 4.2s ease-in-out infinite;
-      will-change: transform, opacity;
-    }
-
-    .node-p1 { top: 16%; left: 24%; animation-delay: 0s; }
-    .node-p2 { top: 25%; left: 78%; animation-delay: 1.4s; }
-    .node-p3 { top: 52%; left: 16%; animation-delay: 2.8s; }
-    .node-p4 { top: 68%; left: 84%; animation-delay: 0.9s; }
-    .node-p5 { top: 84%; left: 42%; animation-delay: 2.1s; }
-
-    :root[data-theme="cyber-neon"] .grid-pulse-node.node-p1,
-    :root[data-theme="cyber-neon"] .grid-pulse-node.node-p3,
-    :root[data-theme="cyber-neon"] .grid-pulse-node.node-p5 {
-      background: #00f0ff;
-      box-shadow: 0 0 10px #00f0ff;
-    }
-    :root[data-theme="cyber-neon"] .grid-pulse-node.node-p2,
-    :root[data-theme="cyber-neon"] .grid-pulse-node.node-p4 {
-      background: #ff007f;
-      box-shadow: 0 0 10px #ff007f;
-    }
-
-    /* 7. Cinematic Perspective Vignette Horizon */
-    .grid-vignette {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      background: radial-gradient(
-        ellipse at 50% 38%,
-        transparent 35%,
-        rgba(2, 6, 18, 0.45) 75%,
-        rgba(2, 6, 18, 0.85) 100%
-      );
-    }
-
-    :root[data-theme="cyber-neon"] .grid-vignette {
-      background: radial-gradient(
-        ellipse at 50% 38%,
-        transparent 35%,
-        rgba(5, 2, 18, 0.45) 75%,
-        rgba(5, 2, 18, 0.88) 100%
-      );
-    }
 
     /* Hardware-Accelerated Floating Light Fields (Normal blend = Instant 1-pass GPU speed) */
     .aurora-orb {
@@ -1017,9 +789,7 @@
     }
 
     /* Pause during scroll for 100% butter-smooth 120 FPS touch response */
-    body.is-scrolling .aurora-orb,
-    body.is-scrolling .grid-scan-beam,
-    body.is-scrolling .grid-pulse-node {
+    body.is-scrolling .aurora-orb {
       animation-play-state: paused !important;
     }
 
@@ -1196,14 +966,9 @@
     :root[data-anim-theme="off"] .glow-highlight-ribbon,
     :root[data-anim-theme="off"] .brand-logo-img,
     :root[data-anim-theme="off"] .live-dot,
-    :root[data-anim-theme="off"] .live-radar-ring,
-    :root[data-anim-theme="off"] .grid-scan-beam,
-    :root[data-anim-theme="off"] .grid-pulse-node {
+    :root[data-anim-theme="off"] .live-radar-ring {
       animation: none !important;
       transition: none !important;
-    }
-    :root[data-anim-theme="off"] .grid-scan-beam {
-      display: none !important;
     }
     :root[data-anim-theme="off"] .aurora-orb {
       filter: none !important;
@@ -4410,60 +4175,7 @@
         linear-gradient(165deg, #f8fafc 0%, #f1f5f9 50%, #edf2f7 100%);
     }
 
-    :root[data-theme="aura-light"] .grid-fine {
-      background-image: 
-        linear-gradient(to right, rgba(99, 102, 241, 0.045) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(99, 102, 241, 0.045) 1px, transparent 1px);
-    }
 
-    :root[data-theme="aura-light"] .grid-major {
-      background-image: 
-        linear-gradient(to right, rgba(99, 102, 241, 0.09) 1.25px, transparent 1.25px),
-        linear-gradient(to bottom, rgba(168, 85, 247, 0.08) 1.25px, transparent 1.25px);
-    }
-
-    :root[data-theme="aura-light"] .grid-crosshairs {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128' viewBox='0 0 128 128'%3E%3Cpath d='M64 57v14M57 64h14' stroke='%236366f1' stroke-width='1.25' stroke-linecap='round' opacity='0.42'/%3E%3Ccircle cx='64' cy='64' r='1.5' fill='%238b5cf6' opacity='0.75'/%3E%3C/svg%3E");
-    }
-
-    :root[data-theme="aura-light"] .grid-spotlight {
-      background: radial-gradient(
-        circle 320px at var(--grid-spot-x, 50%) var(--grid-spot-y, 35%),
-        rgba(99, 102, 241, 0.10) 0%,
-        rgba(168, 85, 247, 0.05) 45%,
-        transparent 75%
-      );
-      mix-blend-mode: multiply;
-    }
-
-    :root[data-theme="aura-light"] .grid-scan-beam {
-      background: linear-gradient(
-        180deg,
-        transparent 0%,
-        rgba(99, 102, 241, 0.02) 20%,
-        rgba(168, 85, 247, 0.08) 65%,
-        rgba(99, 102, 241, 0.22) 92%,
-        rgba(255, 255, 255, 0.9) 98%,
-        rgba(99, 102, 241, 0.3) 100%
-      );
-      filter: blur(2px) drop-shadow(0 0 12px rgba(99, 102, 241, 0.35));
-      mix-blend-mode: multiply;
-      animation-duration: 11s;
-    }
-
-    :root[data-theme="aura-light"] .grid-pulse-node {
-      background: #6366f1;
-      box-shadow: 0 0 10px #6366f1;
-    }
-
-    :root[data-theme="aura-light"] .grid-vignette {
-      background: radial-gradient(
-        ellipse at 50% 38%,
-        transparent 40%,
-        rgba(248, 250, 252, 0.35) 75%,
-        rgba(248, 250, 252, 0.82) 100%
-      );
-    }
 
     :root[data-theme="aura-light"] .aurora-orb.orb-primary {
       background: radial-gradient(circle, rgba(99, 102, 241, 0.18) 0%, rgba(129, 140, 248, 0.08) 40%, transparent 72%);
@@ -5140,22 +4852,7 @@
 
   <!-- ZERO-LAG 120 FPS QUANTUM CYBER LUXURY CANVAS -->
   <div class="aurora-ambient-bg" id="auroraBg" aria-hidden="true">
-    <!-- Next-Level Quantum Cybernetic Grid System -->
-    <div class="aurora-cyber-grid" id="cyberGrid">
-      <div class="grid-sublayer grid-fine"></div>
-      <div class="grid-sublayer grid-major"></div>
-      <div class="grid-sublayer grid-crosshairs"></div>
-      <div class="grid-sublayer grid-spotlight"></div>
-      <div class="grid-sublayer grid-scan-beam"></div>
-      <div class="grid-nodes-layer">
-        <div class="grid-pulse-node node-p1"></div>
-        <div class="grid-pulse-node node-p2"></div>
-        <div class="grid-pulse-node node-p3"></div>
-        <div class="grid-pulse-node node-p4"></div>
-        <div class="grid-pulse-node node-p5"></div>
-      </div>
-      <div class="grid-vignette"></div>
-    </div>
+
     <div class="aurora-orb orb-primary"></div>
     <div class="aurora-orb orb-secondary"></div>
     <div class="aurora-orb orb-tertiary"></div>
@@ -5607,7 +5304,7 @@
         style="background:var(--card-surface-grad); border:1px solid var(--card-border); border-radius:14px; padding:12px; display:flex; flex-direction:column; gap:8px;">
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Installed Version:</span>
-          <strong style="color:var(--gold-accent);">v5.9.12 (Next-Gen Cyber Grid)</strong>
+          <strong style="color:var(--gold-accent);">v5.9.13 (Clean Luxury Aurora)</strong>
         </div>
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Notification:</span>
@@ -5631,7 +5328,7 @@
 
       <button class="secondary-btn" style="background:rgba(79, 70, 229, 0.12); border:1.5px solid #4f46e5; color:#4f46e5; font-weight:800; justify-content:center;"
         onclick="downloadFullApk()">
-        📲 Direct Download & Install APK (v5.9.12)
+        📲 Direct Download & Install APK (v5.9.13)
       </button>
 
       <button class="secondary-btn" onclick="checkInAppUpdate(true)">
@@ -7695,7 +7392,7 @@
         id: 'campus',
         name: 'Quantum Horizon',
         icon: '🏛️',
-        desc: 'Deep Space Sapphire, Electric Cyan, Solar Amber & Cybernetic Matrix Grid',
+        desc: 'Deep Space Sapphire, Electric Cyan, Solar Amber & Fluid Ambient Aurora',
         swatches: ['#020612', '#38bdf8', '#fbbf24', '#10b981']
       },
       {
@@ -7874,9 +7571,9 @@
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '5.9.12';
-    const LOCAL_APP_VERSION_CODE = 72;
-    const LOCAL_APP_BUILD_HASH = '0787be77f3c7';
+    const LOCAL_APP_VERSION_NAME = '5.9.13';
+    const LOCAL_APP_VERSION_CODE = 73;
+    const LOCAL_APP_BUILD_HASH = 'e294c6f76953';
 
     let cachedLatestVersionCode = 29;
 
@@ -10444,33 +10141,17 @@
         }, 120);
       }, { passive: true });
 
-      // Interactive Cyber Spotlight that follows touch / pointer
-      var bg = document.getElementById('auroraBg');
-      if (!bg) return;
-      var rafId = null;
-      var lastX = window.innerWidth / 2;
-      var lastY = window.innerHeight * 0.35;
-
-      function updateSpotlight(x, y) {
-        lastX = x;
-        lastY = y;
-        if (!rafId) {
-          rafId = requestAnimationFrame(function() {
-            bg.style.setProperty('--grid-spot-x', lastX + 'px');
-            bg.style.setProperty('--grid-spot-y', lastY + 'px');
-            rafId = null;
-          });
+    // ZERO-LAG SCROLL CONTROLLER
+    (function initZeroLagScroller() {
+      var isScrollingTimeout;
+      window.addEventListener('scroll', function() {
+        if (!document.body.classList.contains('is-scrolling')) {
+          document.body.classList.add('is-scrolling');
         }
-      }
-
-      window.addEventListener('pointermove', function(e) {
-        updateSpotlight(e.clientX, e.clientY);
-      }, { passive: true });
-
-      window.addEventListener('touchmove', function(e) {
-        if (e.touches && e.touches[0]) {
-          updateSpotlight(e.touches[0].clientX, e.touches[0].clientY);
-        }
+        clearTimeout(isScrollingTimeout);
+        isScrollingTimeout = setTimeout(function() {
+          document.body.classList.remove('is-scrolling');
+        }, 120);
       }, { passive: true });
     })();
   </script>

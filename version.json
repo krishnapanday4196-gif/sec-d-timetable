@@ -1,18 +1,18 @@
 {
-  "versionName": "5.9.12",
-  "versionCode": 72,
-  "apkVersionCode": 72,
-  "htmlHash": "0787be77f3c7",
-  "apkHash": "1656f3ad3f3f",
-  "apkSize": 2407468,
-  "updatedAt": 1791255302503,
+  "versionName": "5.9.13",
+  "versionCode": 73,
+  "apkVersionCode": 73,
+  "htmlHash": "e294c6f76953",
+  "apkHash": "1a513d948ce3",
+  "apkSize": 2404520,
+  "updatedAt": 1791258139769,
   "publicUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main",
   "githubUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main",
   "pagesUrl": "https://krishnapanday4196-gif.github.io/sec-d-timetable",
   "apkUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/SecD_Timetable.apk",
   "htmlUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/index.html",
   "downloadUrl": "https://krishnapanday4196-gif.github.io/sec-d-timetable",
-  "lastUpdated": "2026-10-06T02:55:02.503Z",
-  "apkMd5": "1656f3ad3f3fe9087add359862ff9d48",
-  "releaseNotes": "v5.9.12: Next-level cybernetic architectural background grid with HUD crosshairs, reactive touch spotlight, and laser scan beam."
+  "lastUpdated": "2026-10-06T03:42:19.769Z",
+  "apkMd5": "1a513d948ce3099cfcfd8982d4384d97",
+  "releaseNotes": "v5.9.13: Ultra-clean luxury dark glassmorphism & fluid ambient aurora glow with zero distracting lines."
 }
