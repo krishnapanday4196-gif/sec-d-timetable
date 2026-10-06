@@ -11,8 +11,20 @@ const ROOT_DIR = __dirname;
 const PRIMARY_SUBDOMAIN = 'cse-d-timetable-ota';
 const BACKUP_SUBDOMAIN = 'cse-d-timetable-live';
 
-const APP_VERSION_NAME = '4.7.1';
-const APP_VERSION_CODE = 21;
+function getAppVersionInfo() {
+  try {
+    const vPath = path.join(ROOT_DIR, 'version.json');
+    if (fs.existsSync(vPath)) {
+      const data = JSON.parse(fs.readFileSync(vPath, 'utf8'));
+      return {
+        versionName: data.versionName || '6.0.0',
+        versionCode: data.versionCode || 76,
+        releaseNotes: data.releaseNotes || 'Latest update'
+      };
+    }
+  } catch (e) {}
+  return { versionName: '6.0.0', versionCode: 76, releaseNotes: 'Latest update' };
+}
 const GITHUB_APK_SHARE_URL = 'https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/SecD_Timetable.apk';
 const GOOGLE_DRIVE_SHARE_URL = GITHUB_APK_SHARE_URL;
 
@@ -1089,6 +1101,62 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  const CANCELLED_FILE = path.join(ROOT_DIR, 'cancelled_classes.json');
+
+  if (urlPath === '/api/cancelled-classes') {
+    if (req.method === 'GET') {
+      try {
+        const data = fs.existsSync(CANCELLED_FILE) ? fs.readFileSync(CANCELLED_FILE, 'utf8') : '{"cancellations":[]}';
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(data);
+      } catch (e) {
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: e.message, cancellations: [] }));
+      }
+      return;
+    }
+    if (req.method === 'POST') {
+      let body = '';
+      req.on('data', chunk => { body += chunk; });
+      req.on('end', () => {
+        try {
+          const payload = JSON.parse(body);
+          let current = { cancellations: [] };
+          if (fs.existsSync(CANCELLED_FILE)) {
+            try { current = JSON.parse(fs.readFileSync(CANCELLED_FILE, 'utf8')); } catch (e) {}
+          }
+          if (!Array.isArray(current.cancellations)) current.cancellations = [];
+
+          if (payload.action === 'cancel' && payload.data) {
+            const d = payload.data;
+            // Remove existing duplicate for same section, date, period, batch
+            current.cancellations = current.cancellations.filter(c => 
+              !(c.section === d.section && c.date === d.date && c.period === d.period && (c.batch === d.batch || d.batch === 'ALL' || c.batch === 'ALL'))
+            );
+            current.cancellations.unshift(d);
+          } else if (payload.action === 'restore') {
+            const id = payload.id;
+            current.cancellations = current.cancellations.filter(c => 
+              c.id !== id && !(c.section === payload.section && c.date === payload.date && c.period === payload.period)
+            );
+          } else if (Array.isArray(payload.cancellations)) {
+            current.cancellations = payload.cancellations;
+          }
+
+          current.updatedAt = Date.now();
+          fs.writeFileSync(CANCELLED_FILE, JSON.stringify(current, null, 2), 'utf8');
+          console.log(` \x1b[32m✔\x1b[0m [CLASS CANCEL SYNC] Updated cancellations count: ${current.cancellations.length}`);
+          res.writeHead(200, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ success: true, cancellations: current.cancellations, updatedAt: current.updatedAt }));
+        } catch (e) {
+          res.writeHead(400, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ error: 'Invalid payload: ' + e.message }));
+        }
+      });
+      return;
+    }
+  }
+
   const htmlPath = path.join(ROOT_DIR, 'index.html');
   const apkPath = path.join(ROOT_DIR, 'CSE_D_Timetable.apk');
   const htmlHash = getFileHash(htmlPath);
@@ -1102,10 +1170,11 @@ const server = http.createServer((req, res) => {
       mtime = fs.statSync(htmlPath).mtimeMs;
     } catch (e) { }
 
+    const verInfo = getAppVersionInfo();
     const payload = {
-      versionName: APP_VERSION_NAME,
-      versionCode: APP_VERSION_CODE,
-      apkVersionCode: APP_VERSION_CODE,
+      versionName: verInfo.versionName,
+      versionCode: verInfo.versionCode,
+      apkVersionCode: verInfo.versionCode,
       htmlHash,
       apkHash,
       apkSize,
@@ -1115,7 +1184,8 @@ const server = http.createServer((req, res) => {
       localtunnelUrl: currentPublicUrl,
       apkUrl: '/CSE_D_Timetable.apk',
       htmlUrl: '/index.html',
-      downloadUrl: '/update'
+      downloadUrl: '/update',
+      releaseNotes: verInfo.releaseNotes
     };
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify(payload, null, 2));
@@ -1126,9 +1196,10 @@ const server = http.createServer((req, res) => {
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
     const directUrl = `${bestPublicUrl}/update`;
     const apkDirectUrl = `${bestPublicUrl}/CSE_D_Timetable.apk`;
+    const verInfo = getAppVersionInfo();
     res.end(generateUpdateHtml({
-      versionName: APP_VERSION_NAME,
-      versionCode: APP_VERSION_CODE,
+      versionName: verInfo.versionName,
+      versionCode: verInfo.versionCode,
       apkSize,
       lastUpdated: new Date().toLocaleDateString(),
       directUrl,

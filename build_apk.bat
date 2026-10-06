@@ -16,6 +16,7 @@ copy /Y "e:\sec d\icon-192.png" "e:\sec d\android\app\src\main\assets\icon-192.p
 copy /Y "e:\sec d\icon-512.png" "e:\sec d\android\app\src\main\assets\icon-512.png" >nul
 copy /Y "e:\sec d\campus.jpg" "e:\sec d\android\app\src\main\assets\campus.jpg" >nul
 copy /Y "e:\sec d\sections_data.json" "e:\sec d\android\app\src\main\assets\sections_data.json" >nul
+copy /Y "e:\sec d\cancelled_classes.json" "e:\sec d\android\app\src\main\assets\cancelled_classes.json" >nul
 
 echo [2/3] Compiling and packaging APK with Gradle...
 call "%GRADLE_BAT%" -p "e:\sec d\android" assembleDebug

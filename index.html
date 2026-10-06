@@ -5135,8 +5135,313 @@
         grid-template-columns: 420px 1fr !important;
         gap: 32px !important;
       }
+    /* ============================================================
+       🛡️ ADMIN & CLASS CANCELLATION LUXE STYLING
+       ============================================================ */
+    .admin-quick-btn {
+      position: relative;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      color: #10b981;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 10px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .admin-quick-btn:hover {
+      background: rgba(16, 185, 129, 0.22);
+      border-color: rgba(16, 185, 129, 0.6);
+      transform: translateY(-1px);
+    }
+    .admin-quick-btn.is-active {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(56, 189, 248, 0.2));
+      border-color: #10b981;
+      box-shadow: 0 0 14px rgba(16, 185, 129, 0.4);
+    }
+    .admin-header-pill {
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      background: #10b981;
+      color: #020612;
+      padding: 2px 5px;
+      border-radius: 6px;
+      line-height: 1;
     }
 
+    /* Top Cancellation Notice Banner */
+    .cancellation-notice-banner {
+      background: linear-gradient(135deg, rgba(244, 63, 94, 0.22) 0%, rgba(159, 18, 57, 0.28) 100%);
+      border: 1px solid rgba(244, 63, 94, 0.55);
+      border-radius: 16px;
+      padding: 10px 14px;
+      margin: 8px 12px 12px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      box-shadow: 0 8px 24px -6px rgba(244, 63, 94, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      animation: bannerSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+    }
+    @keyframes bannerSlideIn {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .cancel-banner-content {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+      min-width: 0;
+    }
+    .cancel-banner-icon {
+      font-size: 1.3rem;
+      animation: pulseGlow 1.8s infinite;
+      flex-shrink: 0;
+    }
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px #f43f5e); }
+      50% { transform: scale(1.15); filter: drop-shadow(0 0 8px #f43f5e); }
+    }
+    .cancel-banner-title {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: #fecdd3;
+      line-height: 1.25;
+    }
+    .cancel-banner-sub {
+      font-size: 0.7rem;
+      color: #fda4af;
+      opacity: 0.9;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .cancel-banner-close {
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: #fecdd3;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background 0.2s;
+    }
+    .cancel-banner-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Cancelled Lecture Card Styling */
+    .class-cancelled-card {
+      border: 1.5px solid rgba(244, 63, 94, 0.65) !important;
+      background: linear-gradient(160deg, rgba(38, 12, 24, 0.94) 0%, rgba(18, 5, 12, 0.96) 100%) !important;
+      box-shadow: 0 10px 30px -6px rgba(244, 63, 94, 0.32), inset 0 1px 0 rgba(244, 63, 94, 0.35) !important;
+      position: relative;
+    }
+    .class-cancelled-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: #f43f5e;
+      border-radius: 16px 0 0 16px;
+    }
+    .cancelled-subject {
+      text-decoration: line-through 2px rgba(244, 63, 94, 0.85) !important;
+      color: #fecdd3 !important;
+      opacity: 0.88;
+    }
+    .status-cancelled-pill {
+      background: rgba(244, 63, 94, 0.22) !important;
+      color: #fb7185 !important;
+      border: 1px solid rgba(244, 63, 94, 0.6) !important;
+      box-shadow: 0 0 12px rgba(244, 63, 94, 0.4) !important;
+      font-weight: 800;
+    }
+    .cancelled-notice-box {
+      background: rgba(244, 63, 94, 0.14);
+      border: 1px dashed rgba(244, 63, 94, 0.45);
+      border-radius: 10px;
+      padding: 7px 10px;
+      margin-top: 8px;
+      font-size: 0.72rem;
+      color: #ffe4e6;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      line-height: 1.3;
+    }
+    .cancelled-notice-box strong {
+      color: #fda4af;
+    }
+    .cancelled-att-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(244, 63, 94, 0.15);
+      color: #fda4af;
+      border: 1px solid rgba(244, 63, 94, 0.35);
+      border-radius: 8px;
+      padding: 4px 9px;
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+
+    /* Admin Action Button on Lecture Cards */
+    .card-admin-action-bar {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 6px;
+      margin-top: 8px;
+      padding-top: 6px;
+      border-top: 1px dashed rgba(255, 255, 255, 0.1);
+    }
+    .admin-card-btn {
+      padding: 4px 8px;
+      border-radius: 8px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s;
+    }
+    .admin-card-btn.btn-cancel {
+      background: rgba(244, 63, 94, 0.18);
+      color: #fda4af;
+      border-color: rgba(244, 63, 94, 0.4);
+    }
+    .admin-card-btn.btn-cancel:hover {
+      background: rgba(244, 63, 94, 0.32);
+      border-color: #f43f5e;
+    }
+    .admin-card-btn.btn-restore {
+      background: rgba(16, 185, 129, 0.18);
+      color: #6ee7b7;
+      border-color: rgba(16, 185, 129, 0.4);
+    }
+    .admin-card-btn.btn-restore:hover {
+      background: rgba(16, 185, 129, 0.32);
+      border-color: #10b981;
+    }
+
+    /* Admin Portal Tabs & Forms */
+    .admin-portal-tabs {
+      display: flex;
+      gap: 6px;
+      background: rgba(3, 7, 18, 0.6);
+      padding: 4px;
+      border-radius: 12px;
+      border: 1px solid var(--card-border);
+      margin-bottom: 14px;
+    }
+    .admin-tab-btn {
+      flex: 1;
+      padding: 8px 10px;
+      border-radius: 9px;
+      border: none;
+      background: transparent;
+      color: var(--text-sub);
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+    .admin-tab-btn.active {
+      background: var(--card-inner);
+      color: var(--text-main);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--card-border);
+    }
+    .admin-field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-bottom: 11px;
+    }
+    .admin-field-label {
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .admin-field-input, .admin-field-select {
+      background: rgba(6, 11, 24, 0.85);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 9px 12px;
+      color: var(--text-main);
+      font-size: 0.82rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .admin-field-input:focus, .admin-field-select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
+    .admin-banner-notice {
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 11px;
+      padding: 9px 12px;
+      font-size: 0.74rem;
+      color: var(--text-main);
+      line-height: 1.35;
+      margin-bottom: 12px;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+    .admin-banner-notice.warning {
+      background: rgba(245, 158, 11, 0.12);
+      border-color: rgba(245, 158, 11, 0.35);
+      color: #fef3c7;
+    }
+    .admin-banner-notice.danger {
+      background: rgba(244, 63, 94, 0.14);
+      border-color: rgba(244, 63, 94, 0.4);
+      color: #ffe4e6;
+    }
+    .admin-cancellation-item {
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid rgba(244, 63, 94, 0.35);
+      border-radius: 12px;
+      padding: 10px 12px;
+      margin-bottom: 9px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      position: relative;
+    }
+    .admin-cancellation-item.restored {
+      opacity: 0.6;
+      border-color: rgba(255, 255, 255, 0.1);
+    }
   </style>
   <!-- Splash Screen Removed for Instant Direct Launch -->
 </head>
@@ -5192,6 +5497,11 @@
           <button class="appbar-quick-btn" id="calQuickBtn" onclick="openAcademicCalendarModal()" title="Academic Calendar & Holidays (Odd Sem 2026-27)" aria-label="Academic Calendar">
             📅
           </button>
+          <!-- 1-Tap Admin Portal Button -->
+          <button class="appbar-quick-btn admin-quick-btn" id="adminPortalHeaderBtn" onclick="openAdminModal()" title="Admin Portal & Class Controls" aria-label="Admin Portal">
+            <span id="adminHeaderIcon">🛡️</span>
+            <span class="admin-header-pill" id="adminHeaderPill" style="display:none;">ADMIN</span>
+          </button>
           <!-- Holo Command Deck Menu Button -->
           <button class="holo-menu-trigger" id="holoMenuBtn" onclick="toggleHoloMenu()" title="Open Quick Menu"
             aria-label="Open Quick Menu">
@@ -5242,6 +5552,21 @@
       </div>
 
       <div class="holo-deck-grid">
+
+        <!-- 0. Admin Portal & Class Controls -->
+        <button class="holo-menu-item" id="adminHoloMenuItem" onclick="closeHoloMenu(); openAdminModal();">
+          <div class="holo-item-left">
+            <div class="holo-orb-icon orb-emerald" id="adminMenuOrb">🛡️</div>
+            <div class="holo-item-texts">
+              <span class="holo-item-title" id="adminMenuTitle">Admin Portal & Controls</span>
+              <span class="holo-item-sub" id="adminMenuSub">Cancel classes, broadcast alerts & manage timetable</span>
+            </div>
+          </div>
+          <div class="holo-item-right">
+            <span class="holo-item-pill" id="adminMenuPill">Login</span>
+            <span class="holo-item-arrow">›</span>
+          </div>
+        </button>
 
         <!-- 1. Faculty Directory (All Sections) -->
         <button class="holo-menu-item" id="facultyDirBtn" onclick="closeHoloMenu(); openFacultyModal();">
@@ -5521,6 +5846,18 @@
       <!-- RIGHT MAIN CONTENT PANE: Routine & Schedule Bento Grid -->
       <section class="desktop-main-pane">
 
+        <!-- ACTIVE CANCELLATION LIVE BANNER (Top Ticker when classes are cancelled) -->
+        <div id="cancellationNoticeBanner" class="cancellation-notice-banner" style="display:none;" onclick="openActiveCancellationsFromBanner()">
+          <div class="cancel-banner-content">
+            <span class="cancel-banner-icon">🚨</span>
+            <div class="cancel-banner-texts" style="display:flex; flex-direction:column; min-width:0;">
+              <div class="cancel-banner-title" id="cancelBannerTitle">Class Cancelled Notice</div>
+              <div class="cancel-banner-sub" id="cancelBannerSub">Tap to view full cancellation details & faculty note</div>
+            </div>
+          </div>
+          <button class="cancel-banner-close" onclick="event.stopPropagation(); dismissCancellationBanner();" title="Dismiss Notice">✕</button>
+        </div>
+
         <!-- VIEWING DATE REMINDER BANNER (Visible when viewing tomorrow or specific date) -->
         <div class="viewing-date-banner" id="viewingDateBanner" style="display:none;">
           <div class="banner-date-left">
@@ -5634,7 +5971,7 @@
         style="background:var(--card-surface-grad); border:1px solid var(--card-border); border-radius:14px; padding:12px; display:flex; flex-direction:column; gap:8px;">
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Installed Version:</span>
-          <strong style="color:var(--gold-accent);">v5.9.15 (Dual Mobile & Desktop Portal)</strong>
+          <strong style="color:var(--gold-accent);">v6.0.0 (Admin Portal & Class Cancellation)</strong>
         </div>
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Notification:</span>
@@ -5658,7 +5995,7 @@
 
       <button class="secondary-btn" style="background:rgba(79, 70, 229, 0.12); border:1.5px solid #4f46e5; color:#4f46e5; font-weight:800; justify-content:center;"
         onclick="downloadFullApk()">
-        📲 Direct Download & Install APK (v5.9.15)
+        📲 Direct Download & Install APK (v6.0.0)
       </button>
 
       <button class="secondary-btn" onclick="checkInAppUpdate(true)">
@@ -6653,6 +6990,960 @@
         requireFacultyAdmin(() => {
           showToast('🔓 Admin Mode Active');
         });
+      }
+    }
+
+    // ============================================================
+    // 🛡️ ADVANCED ADMIN AUTHENTICATION, REGISTRATION & CANCELLATION ENGINE
+    // ============================================================
+    let _isAdminLoggedIn = false;
+    let _activeAdminSession = null;
+    let _activeDeckTab = 'cancel'; // 'cancel', 'active', 'settings'
+    let _activeAuthTab = 'login'; // 'login', 'register'
+
+    // Supported Master Admin Passwords
+    const MASTER_KEY_ALT = 'CSE-D-ADMIN-2025';
+
+    function isMasterAdminKeyValid(enteredKey) {
+      if (!enteredKey) return false;
+      const trimmed = enteredKey.trim();
+      // 1. Check against salted hash of Krishna@SecD#2026
+      if (sha256(trimmed + PIN_SALT) === DEFAULT_PIN_HASH) return true;
+      // 2. Check plaintext alternate master key
+      if (trimmed === MASTER_KEY_ALT || trimmed === 'Krishna@SecD#2026') return true;
+      // 3. Check custom master key hash if changed by user
+      const customHash = localStorage.getItem('secD_master_key_hash');
+      if (customHash && sha256(trimmed + PIN_SALT) === customHash) return true;
+      return false;
+    }
+
+    function isUserAdminActive() {
+      return _isAdminLoggedIn === true;
+    }
+
+    function getAdminAccounts() {
+      try {
+        const raw = localStorage.getItem('secD_admin_accounts');
+        return raw ? JSON.parse(raw) : [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveAdminAccounts(accounts) {
+      try {
+        localStorage.setItem('secD_admin_accounts', JSON.stringify(accounts));
+      } catch (e) {}
+    }
+
+    function getActiveAdminSession() {
+      try {
+        const raw = localStorage.getItem('secD_admin_session');
+        return raw ? JSON.parse(raw) : null;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function initAdminSystem() {
+      const session = getActiveAdminSession();
+      if (session && session.isLoggedIn) {
+        _isAdminLoggedIn = true;
+        _activeAdminSession = session;
+        _isFacultyAdminUnlocked = true;
+      }
+      updateAdminUIState();
+      initCancelledClassesSync();
+      checkUrlForCancelSync();
+    }
+
+    function updateAdminUIState() {
+      const headerBtn = document.getElementById('adminPortalHeaderBtn');
+      const headerIcon = document.getElementById('adminHeaderIcon');
+      const headerPill = document.getElementById('adminHeaderPill');
+      const menuTitle = document.getElementById('adminMenuTitle');
+      const menuSub = document.getElementById('adminMenuSub');
+      const menuPill = document.getElementById('adminMenuPill');
+      const menuOrb = document.getElementById('adminMenuOrb');
+
+      if (_isAdminLoggedIn && _activeAdminSession) {
+        if (headerBtn) {
+          headerBtn.classList.add('is-active');
+          headerBtn.title = `Admin Active: ${_activeAdminSession.fullName} (Tap for controls)`;
+        }
+        if (headerIcon) headerIcon.textContent = '🛡️';
+        if (headerPill) {
+          headerPill.style.display = 'inline-block';
+          headerPill.textContent = 'ADMIN';
+        }
+        if (menuTitle) menuTitle.textContent = `Admin Deck (${_activeAdminSession.username})`;
+        if (menuSub) menuSub.textContent = 'Active Session: Cancel classes & broadcast';
+        if (menuPill) {
+          menuPill.textContent = 'Active';
+          menuPill.className = 'holo-item-pill pill-on';
+        }
+        if (menuOrb) menuOrb.className = 'holo-orb-icon orb-emerald';
+
+        const loggedInView = document.getElementById('adminLoggedInView');
+        const loggedOutView = document.getElementById('adminLoggedOutView');
+        if (loggedInView) loggedInView.style.display = 'block';
+        if (loggedOutView) loggedOutView.style.display = 'none';
+
+        const profName = document.getElementById('adminActiveProfileName');
+        const profRole = document.getElementById('adminActiveProfileRole');
+        if (profName) profName.textContent = _activeAdminSession.fullName || 'Administrator';
+        if (profRole) profRole.textContent = `● Active: @${_activeAdminSession.username}`;
+
+        updateFacultyAdminUI();
+      } else {
+        if (headerBtn) {
+          headerBtn.classList.remove('is-active');
+          headerBtn.title = 'Admin Portal & Class Controls';
+        }
+        if (headerIcon) headerIcon.textContent = '🛡️';
+        if (headerPill) headerPill.style.display = 'none';
+        if (menuTitle) menuTitle.textContent = 'Admin Portal & Controls';
+        if (menuSub) menuSub.textContent = 'Cancel classes, broadcast alerts & manage timetable';
+        if (menuPill) {
+          menuPill.textContent = 'Login';
+          menuPill.className = 'holo-item-pill';
+        }
+        if (menuOrb) menuOrb.className = 'holo-orb-icon orb-emerald';
+
+        const loggedInView = document.getElementById('adminLoggedInView');
+        const loggedOutView = document.getElementById('adminLoggedOutView');
+        if (loggedInView) loggedInView.style.display = 'none';
+        if (loggedOutView) loggedOutView.style.display = 'block';
+      }
+
+      updateActiveCancellationsCountBadge();
+    }
+
+    function openAdminModal() {
+      triggerHaptic(12);
+      populateCancelSectionOptions();
+      setDefaultCancelFormValues();
+      updateAdminUIState();
+      renderActiveCancellationsList();
+      renderRegisteredAccountsList();
+      openModal('adminModal');
+    }
+
+    function switchAdminAuthTab(tab) {
+      _activeAuthTab = tab;
+      const tabLogin = document.getElementById('tabAdminLogin');
+      const tabReg = document.getElementById('tabAdminRegister');
+      const secLogin = document.getElementById('adminLoginSection');
+      const secReg = document.getElementById('adminRegisterSection');
+
+      if (tab === 'login') {
+        if (tabLogin) tabLogin.classList.add('active');
+        if (tabReg) tabReg.classList.remove('active');
+        if (secLogin) secLogin.style.display = 'block';
+        if (secReg) secReg.style.display = 'none';
+      } else {
+        if (tabLogin) tabLogin.classList.remove('active');
+        if (tabReg) tabReg.classList.add('active');
+        if (secLogin) secLogin.style.display = 'none';
+        if (secReg) secReg.style.display = 'block';
+      }
+    }
+
+    function switchAdminDeckTab(tab) {
+      _activeDeckTab = tab;
+      const tabCancel = document.getElementById('tabDeckCancel');
+      const tabActive = document.getElementById('tabDeckActive');
+      const tabSettings = document.getElementById('tabDeckSettings');
+
+      const secCancel = document.getElementById('deckCancelSection');
+      const secActive = document.getElementById('deckActiveSection');
+      const secSettings = document.getElementById('deckSettingsSection');
+
+      [tabCancel, tabActive, tabSettings].forEach(t => t && t.classList.remove('active'));
+      [secCancel, secActive, secSettings].forEach(s => s && (s.style.display = 'none'));
+
+      if (tab === 'cancel') {
+        if (tabCancel) tabCancel.classList.add('active');
+        if (secCancel) secCancel.style.display = 'block';
+      } else if (tab === 'active') {
+        if (tabActive) tabActive.classList.add('active');
+        if (secActive) secActive.style.display = 'block';
+        renderActiveCancellationsList();
+      } else if (tab === 'settings') {
+        if (tabSettings) tabSettings.classList.add('active');
+        if (secSettings) secSettings.style.display = 'block';
+        renderRegisteredAccountsList();
+      }
+    }
+
+    // Submit Create Admin Account (Strict Master Key Check)
+    function submitCreateAdminAccount() {
+      const masterKey = (document.getElementById('regMasterKeyInput')?.value || '').trim();
+      const fullName = (document.getElementById('regFullNameInput')?.value || '').trim();
+      const username = (document.getElementById('regUsernameInput')?.value || '').trim().toLowerCase();
+      const password = (document.getElementById('regPasswordInput')?.value || '');
+      const confirmPass = (document.getElementById('regConfirmPasswordInput')?.value || '');
+      const errBox = document.getElementById('regErrorMsg');
+
+      const showError = (msg) => {
+        if (errBox) {
+          errBox.textContent = msg;
+          errBox.style.display = 'flex';
+        }
+        triggerHaptic(20);
+      };
+
+      if (!masterKey) {
+        showError('🔒 Master Admin Security Passcode is required to create an account!');
+        return;
+      }
+
+      if (!isMasterAdminKeyValid(masterKey)) {
+        showError('⛔ Galat Master Admin Password! Sirf authorized teachers / CR jinke paas Master Admin Key hai wahi account bana sakte hain.');
+        return;
+      }
+
+      if (!fullName) {
+        showError('⚠️ Please enter your Full Name & Role (e.g. Krishna Panday - CR).');
+        return;
+      }
+
+      if (!username || username.length < 3) {
+        showError('⚠️ Username must be at least 3 characters long.');
+        return;
+      }
+
+      if (!password || password.length < 4) {
+        showError('⚠️ Password must be at least 4 characters long.');
+        return;
+      }
+
+      if (password !== confirmPass) {
+        showError('⚠️ Passwords do not match. Please verify.');
+        return;
+      }
+
+      const accounts = getAdminAccounts();
+      if (accounts.some(a => a.username === username)) {
+        showError(`⚠️ Username "${username}" is already registered. Please choose another username or log in.`);
+        return;
+      }
+
+      // Hash password with salt
+      const passwordHash = sha256(password + PIN_SALT);
+      const newAccount = {
+        id: 'adm_' + Date.now().toString(36),
+        username,
+        fullName,
+        passwordHash,
+        createdAt: Date.now()
+      };
+
+      accounts.push(newAccount);
+      saveAdminAccounts(accounts);
+
+      // Auto login
+      _activeAdminSession = {
+        isLoggedIn: true,
+        username,
+        fullName,
+        role: 'Class Admin / Coordinator',
+        loginTime: Date.now()
+      };
+      localStorage.setItem('secD_admin_session', JSON.stringify(_activeAdminSession));
+      _isAdminLoggedIn = true;
+      _isFacultyAdminUnlocked = true;
+
+      if (errBox) errBox.style.display = 'none';
+      triggerHaptic(18);
+      showToast(`🎉 Admin Account Created! Welcome, ${fullName}.`);
+      updateAdminUIState();
+      renderTodayLectures(viewingDate);
+    }
+
+    // Submit Admin Login
+    function submitAdminLogin() {
+      const username = (document.getElementById('loginUsernameInput')?.value || '').trim().toLowerCase();
+      const password = (document.getElementById('loginPasswordInput')?.value || '');
+      const errBox = document.getElementById('loginErrorMsg');
+
+      const showError = (msg) => {
+        if (errBox) {
+          errBox.textContent = msg;
+          errBox.style.display = 'flex';
+        }
+        triggerHaptic(20);
+      };
+
+      if (!username || !password) {
+        showError('⚠️ Please enter both username and password.');
+        return;
+      }
+
+      const accounts = getAdminAccounts();
+      const account = accounts.find(a => a.username === username);
+
+      // Also allow super admin login if password is the master key
+      const isMasterKey = isMasterAdminKeyValid(password);
+
+      if (!account && !isMasterKey) {
+        showError('❌ Account not found. If this is your first time, click "Create Admin Account" with the Master Key.');
+        return;
+      }
+
+      if (account) {
+        const hash = sha256(password + PIN_SALT);
+        if (account.passwordHash !== hash && !isMasterKey) {
+          showError('❌ Incorrect password! Please check your credentials.');
+          return;
+        }
+      }
+
+      const fullName = account ? account.fullName : 'Master Administrator';
+      _activeAdminSession = {
+        isLoggedIn: true,
+        username: account ? account.username : 'super_admin',
+        fullName,
+        role: 'Class Admin',
+        loginTime: Date.now()
+      };
+      localStorage.setItem('secD_admin_session', JSON.stringify(_activeAdminSession));
+      _isAdminLoggedIn = true;
+      _isFacultyAdminUnlocked = true;
+
+      if (errBox) errBox.style.display = 'none';
+      triggerHaptic(14);
+      showToast(`🔓 Welcome back, ${fullName}!`);
+      updateAdminUIState();
+      renderTodayLectures(viewingDate);
+    }
+
+    function promptMasterKeyQuickLogin() {
+      const key = prompt('🔑 Enter Master Admin Passcode (Super Admin Instant Login):');
+      if (!key) return;
+      if (isMasterAdminKeyValid(key)) {
+        _activeAdminSession = {
+          isLoggedIn: true,
+          username: 'super_admin',
+          fullName: 'Master Coordinator (CR)',
+          role: 'Super Admin',
+          loginTime: Date.now()
+        };
+        localStorage.setItem('secD_admin_session', JSON.stringify(_activeAdminSession));
+        _isAdminLoggedIn = true;
+        _isFacultyAdminUnlocked = true;
+        triggerHaptic(15);
+        showToast('🔓 Super Admin Verified via Master Key!');
+        updateAdminUIState();
+        renderTodayLectures(viewingDate);
+      } else {
+        alert('⛔ Incorrect Master Admin Passcode! Access Denied.');
+      }
+    }
+
+    function adminLogout() {
+      _isAdminLoggedIn = false;
+      _activeAdminSession = null;
+      _isFacultyAdminUnlocked = false;
+      localStorage.removeItem('secD_admin_session');
+      triggerHaptic(10);
+      showToast('👋 Admin logged out. Student view restored.');
+      updateAdminUIState();
+      renderTodayLectures(viewingDate);
+    }
+
+    // ============================================================
+    // 🚫 CLASS CANCELLATION ENGINE & MULTI-DEVICE SYNC
+    // ============================================================
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[m]);
+    }
+
+    function getCancelledClassesList() {
+      try {
+        const raw = localStorage.getItem('secD_cancelled_classes');
+        return raw ? JSON.parse(raw) : [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveCancelledClassesList(list) {
+      try {
+        localStorage.setItem('secD_cancelled_classes', JSON.stringify(list));
+      } catch (e) {}
+    }
+
+    function populateCancelSectionOptions() {
+      const select = document.getElementById('cancelSectionSelect');
+      if (!select) return;
+      const keys = Object.keys(ALL_SECTIONS);
+      select.innerHTML = keys.map(k => {
+        const sec = ALL_SECTIONS[k];
+        return `<option value="${k}" ${k === currentSection ? 'selected' : ''}>${k} (${sec.room})</option>`;
+      }).join('');
+    }
+
+    function setDefaultCancelFormValues() {
+      const dInput = document.getElementById('cancelDatePicker');
+      if (dInput) {
+        const now = isSimulating ? getSimulatedDate() : new Date();
+        const yyyy = now.getFullYear();
+        const mm = String(now.getMonth() + 1).padStart(2, '0');
+        const dd = String(now.getDate()).padStart(2, '0');
+        dInput.value = `${yyyy}-${mm}-${dd}`;
+      }
+      onCancelFormContextChanged();
+    }
+
+    function onReasonPresetChange() {
+      const select = document.getElementById('cancelReasonSelect');
+      const customInput = document.getElementById('cancelReasonCustomInput');
+      if (!select || !customInput) return;
+      customInput.style.display = select.value === 'Custom' ? 'block' : 'none';
+      if (select.value === 'Custom') customInput.focus();
+    }
+
+    function onCancelFormContextChanged() {
+      const secSelect = document.getElementById('cancelSectionSelect');
+      const dateInput = document.getElementById('cancelDatePicker');
+      const periodSelect = document.getElementById('cancelPeriodSelect');
+      const subjInput = document.getElementById('cancelSubjectInput');
+      const facInput = document.getElementById('cancelFacultyInput');
+      const batchSelect = document.getElementById('cancelBatchSelect');
+
+      if (!secSelect || !periodSelect || !subjInput || !facInput) return;
+
+      const secKey = secSelect.value || currentSection;
+      const periodId = periodSelect.value || 'L1';
+      let targetDate = new Date();
+      if (dateInput && dateInput.value) {
+        const parts = dateInput.value.split('-');
+        if (parts.length === 3) targetDate = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
+      }
+
+      const dayIdx = targetDate.getDay();
+      const secData = ALL_SECTIONS[secKey] || ALL_SECTIONS['Sec-D'];
+      const schedule = (secData && secData.schedule) ? secData.schedule : {};
+      const slots = schedule[dayIdx] || schedule[1] || [];
+      const slot = slots.find(s => s.period === periodId);
+
+      if (slot) {
+        if (slot.isSplit) {
+          const bVal = batchSelect ? batchSelect.value : 'ALL';
+          if (bVal === 'Set-B') {
+            subjInput.value = slot.setB.subject || '';
+            facInput.value = slot.setB.faculty || getFacultyForSubject(slot.setB.subject);
+          } else {
+            subjInput.value = slot.setA.subject || '';
+            facInput.value = slot.setA.faculty || getFacultyForSubject(slot.setA.subject);
+          }
+        } else {
+          subjInput.value = slot.subject || '';
+          facInput.value = slot.faculty || getFacultyForSubject(slot.subject);
+        }
+      }
+    }
+
+    function openQuickCancelModal(secKey, dateIsoStr, periodId) {
+      if (!_isAdminLoggedIn) {
+        openAdminModal();
+        return;
+      }
+      openAdminModal();
+      switchAdminDeckTab('cancel');
+      const dateInp = document.getElementById('cancelDatePicker');
+      const secSelect = document.getElementById('cancelSectionSelect');
+      const periodSelect = document.getElementById('cancelPeriodSelect');
+      if (dateInp) dateInp.value = dateIsoStr;
+      if (secSelect) secSelect.value = secKey;
+      if (periodSelect) periodSelect.value = periodId;
+      onCancelFormContextChanged();
+    }
+
+    // Submit Cancellation
+    async function submitClassCancellation() {
+      if (!_isAdminLoggedIn) {
+        showToast('🔒 Please log in as Admin to cancel classes.');
+        openAdminModal();
+        return;
+      }
+
+      const dateInp = document.getElementById('cancelDatePicker');
+      const secSelect = document.getElementById('cancelSectionSelect');
+      const periodSelect = document.getElementById('cancelPeriodSelect');
+      const batchSelect = document.getElementById('cancelBatchSelect');
+      const subjInp = document.getElementById('cancelSubjectInput');
+      const facInp = document.getElementById('cancelFacultyInput');
+      const reasonSelect = document.getElementById('cancelReasonSelect');
+      const reasonCustom = document.getElementById('cancelReasonCustomInput');
+      const reschedInp = document.getElementById('cancelRescheduleInput');
+      const sendNotif = document.getElementById('cancelSendNotifCheckbox')?.checked !== false;
+
+      const section = secSelect ? secSelect.value : currentSection;
+      const dateStr = dateInp ? dateInp.value : '';
+      const period = periodSelect ? periodSelect.value : 'L1';
+      const batch = batchSelect ? batchSelect.value : 'ALL';
+      const subject = subjInp ? subjInp.value.trim() : 'Scheduled Lecture';
+      const faculty = facInp ? facInp.value.trim() : '';
+      let reason = reasonSelect ? reasonSelect.value : 'Faculty on Leave';
+      if (reason === 'Custom' && reasonCustom && reasonCustom.value.trim()) {
+        reason = reasonCustom.value.trim();
+      }
+      const rescheduledNote = reschedInp ? reschedInp.value.trim() : '';
+
+      if (!dateStr) {
+        showToast('⚠️ Please select a date for the cancellation.');
+        return;
+      }
+
+      const periodCfg = periods.find(p => p.id === period);
+      const timingStr = periodCfg ? periodCfg.timing : '';
+
+      const cancelRecord = {
+        id: `canc_${section}_${dateStr}_${period}_${batch}`,
+        section,
+        date: dateStr,
+        period,
+        timing: timingStr,
+        batch,
+        subject,
+        faculty,
+        reason,
+        rescheduledNote,
+        cancelledBy: _activeAdminSession ? _activeAdminSession.fullName : 'Admin',
+        timestamp: Date.now(),
+        status: 'cancelled'
+      };
+
+      // 1. Save Locally
+      let list = getCancelledClassesList();
+      list = list.filter(c => !(c.section === section && c.date === dateStr && c.period === period && (c.batch === batch || batch === 'ALL' || c.batch === 'ALL')));
+      list.unshift(cancelRecord);
+      saveCancelledClassesList(list);
+
+      // 2. Dispatch Local Notification if enabled
+      if (sendNotif) {
+        dispatchCancellationAlertNotification(cancelRecord);
+      }
+
+      // 3. Sync to Update Server / Remote Backend
+      broadcastCancellationToServer(cancelRecord, 'cancel');
+
+      // 4. Update UI
+      triggerHaptic(18);
+      showToast(`🚫 Class Cancelled: ${period} ${subject} (${section})! Notification sent.`);
+      updateActiveCancellationsCountBadge();
+      renderActiveCancellationsList();
+      renderTodayLectures(viewingDate);
+      updateCancellationNoticeBanner();
+      switchAdminDeckTab('active');
+    }
+
+    // Restore / Un-cancel Class
+    async function restoreCancelledClass(cancelId) {
+      if (!_isAdminLoggedIn) {
+        showToast('🔒 Admin verification required to restore classes.');
+        return;
+      }
+      let list = getCancelledClassesList();
+      const target = list.find(c => c.id === cancelId);
+      list = list.filter(c => c.id !== cancelId);
+      saveCancelledClassesList(list);
+
+      if (target) {
+        broadcastCancellationToServer(target, 'restore');
+        const notifTitle = `✅ [${target.section}] Class Restored: ${target.period} ${target.subject}`;
+        const notifBody = `Class routine has been restored for ${target.date}.`;
+        triggerNotificationToDevice(notifTitle, notifBody, notifBody, 'restored');
+      }
+
+      triggerHaptic(12);
+      showToast('↩️ Class restored to routine schedule!');
+      updateActiveCancellationsCountBadge();
+      renderActiveCancellationsList();
+      renderTodayLectures(viewingDate);
+      updateCancellationNoticeBanner();
+    }
+
+    function restoreClassFromCard(secKey, dateIsoStr, periodId) {
+      const list = getCancelledClassesList();
+      const match = list.find(c => c.section === secKey && c.date === dateIsoStr && c.period === periodId);
+      if (match) {
+        restoreCancelledClass(match.id);
+      }
+    }
+
+    // Dispatch Cancellation Notification across all channels
+    function dispatchCancellationAlertNotification(cancelRecord) {
+      const title = `🚨 [${cancelRecord.section}] Class CANCELLED: ${cancelRecord.period} (${cancelRecord.timing})`;
+      const shortBody = `⚠️ ${cancelRecord.subject} is cancelled today! Reason: ${cancelRecord.reason}`;
+      const bigText = `🚨 NOTICE: CLASS CANCELLED\n🏫 Section: ${cancelRecord.section} • Batch: ${cancelRecord.batch}\n⏰ Slot: ${cancelRecord.period} (${cancelRecord.timing})\n📚 Subject: ${cancelRecord.subject}\n👨‍🏫 Faculty: ${cancelRecord.faculty || 'Faculty'}\n⚠️ Reason: ${cancelRecord.reason}${cancelRecord.rescheduledNote ? '\n📍 Note: ' + cancelRecord.rescheduledNote : ''}\nAnnounced by: ${cancelRecord.cancelledBy}`;
+
+      triggerNotificationToDevice(title, shortBody, bigText, 'class_cancelled');
+    }
+
+    function triggerNotificationToDevice(title, shortBody, bigText, type = 'class_cancelled') {
+      playChime(true);
+      triggerHaptic(22);
+
+      // 1. Android Native Notification
+      if (window.AndroidUpdater && typeof window.AndroidUpdater.triggerInstantNotification === 'function') {
+        try {
+          window.AndroidUpdater.triggerInstantNotification(title, shortBody, bigText);
+        } catch (e) {}
+      }
+
+      // 2. Android Native Saved Notification
+      if (window.AndroidUpdater && typeof window.AndroidUpdater.saveNativeNotification === 'function') {
+        try {
+          window.AndroidUpdater.saveNativeNotification(title, shortBody, bigText, type);
+        } catch (e) {}
+      }
+
+      // 3. Web Notification API
+      if ('Notification' in window && Notification.permission === 'granted') {
+        try {
+          new Notification(title, { body: shortBody, icon: 'logo.png', badge: 'logo.png' });
+        } catch (e) {}
+      } else if ('Notification' in window && Notification.permission === 'default') {
+        try { Notification.requestPermission(); } catch (e) {}
+      }
+
+      // 4. Save to App's Notification Library
+      NotificationLibrary.saveRecord({
+        title,
+        shortBody,
+        bigText,
+        type: 'cancelled'
+      });
+      NotificationLibrary.updateBadges();
+    }
+
+    // Sync with Server & Cloud
+    async function broadcastCancellationToServer(record, action = 'cancel') {
+      const payload = { action, data: record, id: record.id };
+      const servers = [activeConnectedServer, ...UPDATE_SERVERS];
+
+      for (const sUrl of servers) {
+        if (!sUrl || sUrl.includes('github.com') || sUrl.includes('github.io')) continue;
+        try {
+          const res = await fetch(`${sUrl}/api/cancelled-classes`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'bypass-tunnel-reminder': 'true' },
+            body: JSON.stringify(payload)
+          });
+          if (res.ok) {
+            console.log(`[Sync] Cancellation broadcast to server: ${sUrl}`);
+            break;
+          }
+        } catch (e) {}
+      }
+    }
+
+    // Poll / Sync from Server on Student Phones
+    async function syncCancelledClassesFromServer(isManual = false) {
+      const syncStatusText = document.getElementById('deckSyncStatusText');
+      if (syncStatusText && isManual) syncStatusText.textContent = '🔄 Syncing cancellations with cloud server...';
+
+      const servers = [activeConnectedServer, ...UPDATE_SERVERS];
+      let fetchedList = null;
+
+      for (const sUrl of servers) {
+        if (!sUrl) continue;
+        try {
+          const fetchOpts = {};
+          if (sUrl.includes('loca.lt')) fetchOpts.headers = { 'bypass-tunnel-reminder': 'true' };
+          const res = await fetch(`${sUrl}/api/cancelled-classes?t=${Date.now()}`, fetchOpts);
+          if (res.ok) {
+            const json = await res.json();
+            if (json && Array.isArray(json.cancellations)) {
+              fetchedList = json.cancellations;
+              break;
+            }
+          }
+        } catch (e) {}
+      }
+
+      // Also try direct static file /cancelled_classes.json
+      if (!fetchedList) {
+        for (const sUrl of servers) {
+          if (!sUrl) continue;
+          try {
+            const res = await fetch(`${sUrl}/cancelled_classes.json?t=${Date.now()}`);
+            if (res.ok) {
+              const json = await res.json();
+              if (json && Array.isArray(json.cancellations)) {
+                fetchedList = json.cancellations;
+                break;
+              }
+            }
+          } catch (e) {}
+        }
+      }
+
+      if (fetchedList) {
+        const localList = getCancelledClassesList();
+        const localIds = new Set(localList.map(c => c.id));
+        const knownAckIds = new Set(JSON.parse(localStorage.getItem('secD_ack_cancelled_ids') || '[]'));
+
+        // Identify new cancellations that student hasn't been notified of yet
+        const now = isSimulating ? getSimulatedDate() : new Date();
+        const yyyy = now.getFullYear();
+        const mm = String(now.getMonth() + 1).padStart(2, '0');
+        const dd = String(now.getDate()).padStart(2, '0');
+        const todayStr = `${yyyy}-${mm}-${dd}`;
+
+        fetchedList.forEach(c => {
+          if (!knownAckIds.has(c.id)) {
+            knownAckIds.add(c.id);
+            // Trigger alert on student phone if affects today or tomorrow and matches their section
+            if (c.date === todayStr && (c.section === currentSection || c.section === 'Sec-D')) {
+              dispatchCancellationAlertNotification(c);
+            }
+          }
+        });
+
+        localStorage.setItem('secD_ack_cancelled_ids', JSON.stringify([...knownAckIds]));
+        saveCancelledClassesList(fetchedList);
+        updateActiveCancellationsCountBadge();
+        renderActiveCancellationsList();
+        renderTodayLectures(viewingDate);
+        updateCancellationNoticeBanner();
+
+        if (syncStatusText) syncStatusText.textContent = `✔ Connected & Synced (${fetchedList.length} total records)`;
+        if (isManual) showToast(`✔ Synced with Server! ${fetchedList.length} cancellation record(s) loaded.`);
+      } else {
+        if (syncStatusText) syncStatusText.textContent = 'Offline / Local Cache Active (0 live server response)';
+        if (isManual) showToast('Could not reach remote server. Using local offline cache.');
+      }
+    }
+
+    function initCancelledClassesSync() {
+      // Periodic background sync every 45 seconds (lightweight, non-blocking)
+      setInterval(() => {
+        if (!document.hidden) syncCancelledClassesFromServer(false);
+      }, 45000);
+    }
+
+    // Check URL parameter for 1-Click WhatsApp Sync Link
+    function checkUrlForCancelSync() {
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const encoded = urlParams.get('cancel_sync');
+        if (encoded) {
+          const jsonStr = decodeURIComponent(escape(atob(encoded)));
+          const cancelRecord = JSON.parse(jsonStr);
+          if (cancelRecord && cancelRecord.id && cancelRecord.period) {
+            let list = getCancelledClassesList();
+            list = list.filter(c => c.id !== cancelRecord.id);
+            list.unshift(cancelRecord);
+            saveCancelledClassesList(list);
+
+            dispatchCancellationAlertNotification(cancelRecord);
+            showToast(`🚨 Imported Class Cancellation: ${cancelRecord.period} ${cancelRecord.subject}!`);
+
+            // Clean URL query without refreshing
+            const cleanUrl = window.location.pathname;
+            history.replaceState(null, '', cleanUrl);
+
+            updateActiveCancellationsCountBadge();
+            renderTodayLectures(viewingDate);
+            updateCancellationNoticeBanner();
+          }
+        }
+      } catch (e) {}
+    }
+
+    // WhatsApp Broadcast Generator with 1-Click Auto-Sync Link
+    function generateWhatsAppCancelBroadcastMessage(record) {
+      let syncLink = `${window.location.origin}${window.location.pathname}`;
+      try {
+        const payloadBase64 = btoa(unescape(encodeURIComponent(JSON.stringify(record))));
+        syncLink += `?cancel_sync=${payloadBase64}`;
+      } catch (e) {}
+
+      return `🚨 *NOTICE: CLASS CANCELLED (${record.section})*
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📅 *Date:* ${record.date}
+⏰ *Period:* ${record.period} (${record.timing})
+📚 *Subject:* ${record.subject}
+👨‍🏫 *Faculty:* ${record.faculty || 'Course Teacher'}
+👥 *Batch:* ${record.batch}
+⚠️ *Reason:* ${record.reason}
+${record.rescheduledNote ? '📍 *Note:* ' + record.rescheduledNote + '\n' : ''}━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📲 *Tap to Auto-Sync Timetable on Your Phone:*
+${syncLink}
+
+🎓 _Quantum University • B.Tech CSE (${record.section})_`;
+    }
+
+    function shareCancellationToWhatsApp(cancelId) {
+      const list = getCancelledClassesList();
+      const record = list.find(c => c.id === cancelId);
+      if (!record) return;
+      const msg = generateWhatsAppCancelBroadcastMessage(record);
+
+      if (window.AndroidUpdater && typeof window.AndroidUpdater.shareOnWhatsApp === 'function') {
+        try { window.AndroidUpdater.shareOnWhatsApp(msg); return; } catch (e) {}
+      }
+      window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    function broadcastCurrentCancellationWhatsApp() {
+      const list = getCancelledClassesList();
+      if (list.length > 0) {
+        shareCancellationToWhatsApp(list[0].id);
+      } else {
+        showToast('No active cancellations found to broadcast.');
+      }
+    }
+
+    // Find if a slot is cancelled for a specific date and batch
+    function getCancelledSlot(sectionKey, dateIsoStr, periodId, activeBatch = 'ALL') {
+      const list = getCancelledClassesList();
+      return list.find(c => {
+        if (c.section !== sectionKey) return false;
+        if (c.date !== dateIsoStr) return false;
+        if (c.period !== periodId) return false;
+        if (c.status === 'restored') return false;
+        // Batch match
+        if (c.batch === 'ALL') return true;
+        if (activeBatch === 'ALL') return true;
+        return c.batch === activeBatch;
+      });
+    }
+
+    // Render Active Cancellations List inside Admin Deck
+    function renderActiveCancellationsList() {
+      const container = document.getElementById('activeCancellationsContainer');
+      if (!container) return;
+      const list = getCancelledClassesList();
+
+      if (list.length === 0) {
+        container.innerHTML = `
+          <div style="text-align:center; padding:24px 10px; color:var(--text-sub); font-size:0.8rem;">
+            <div style="font-size:2rem; margin-bottom:8px;">✨</div>
+            <strong>No active class cancellations!</strong><br>
+            All lectures are running according to standard routine.
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = list.map(c => `
+        <div class="admin-cancellation-item">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div style="display:flex; align-items:center; gap:6px;">
+              <span class="status-tag status-cancelled-pill" style="font-size:0.65rem; padding:2px 7px;">🔴 CANCELLED</span>
+              <span style="font-size:0.75rem; font-weight:800; color:var(--text-main);">${c.period} (${c.timing})</span>
+            </div>
+            <span style="font-size:0.7rem; color:var(--gold-accent); font-weight:700;">${c.date}</span>
+          </div>
+
+          <div style="font-size:0.82rem; font-weight:700; color:#fecdd3; line-height:1.3;">
+            <s>${c.subject}</s>
+          </div>
+
+          <div style="font-size:0.7rem; color:var(--text-muted); display:flex; justify-content:space-between; flex-wrap:wrap; gap:4px;">
+            <span>👨‍🏫 ${c.faculty || 'Faculty'} • 📍 ${c.section} (${c.batch})</span>
+            <span style="color:#f87171;">⚠️ ${c.reason}</span>
+          </div>
+
+          ${c.rescheduledNote ? `<div style="font-size:0.68rem; color:#67e8f9; background:rgba(6,182,212,0.12); border-radius:6px; padding:3px 7px;">📍 Note: ${c.rescheduledNote}</div>` : ''}
+
+          <div style="display:flex; gap:6px; margin-top:4px; justify-content:flex-end;">
+            <button class="secondary-btn" style="padding:4px 9px; font-size:0.72rem; color:#10b981; border-color:rgba(16,185,129,0.4);" onclick="restoreCancelledClass('${c.id}')">
+              ↩️ Restore
+            </button>
+            <button class="secondary-btn" style="padding:4px 9px; font-size:0.72rem; color:#38bdf8; border-color:rgba(56,189,248,0.4);" onclick="shareCancellationToWhatsApp('${c.id}')">
+              📲 WhatsApp
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function updateActiveCancellationsCountBadge() {
+      const badge = document.getElementById('tabActiveCountLabel');
+      const list = getCancelledClassesList();
+      if (badge) badge.textContent = `Active (${list.length})`;
+    }
+
+    function renderRegisteredAccountsList() {
+      const container = document.getElementById('registeredAccountsList');
+      if (!container) return;
+      const accounts = getAdminAccounts();
+      if (accounts.length === 0) {
+        container.innerHTML = '<span style="opacity:0.7;">No custom admin accounts registered yet. Use "Create Account" with Master Key.</span>';
+        return;
+      }
+      container.innerHTML = accounts.map(a => `
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:4px 0; border-bottom:1px solid rgba(255,255,255,0.06);">
+          <span><strong>${a.fullName}</strong> (@${a.username})</span>
+          <span style="font-size:0.65rem; color:var(--text-sub);">${new Date(a.createdAt).toLocaleDateString()}</span>
+        </div>
+      `).join('');
+    }
+
+    function triggerTestCancellationAlert() {
+      const testRecord = {
+        section: currentSection,
+        date: 'Today',
+        period: 'L2',
+        timing: '09:55 - 10:50',
+        batch: selectedBatch,
+        subject: 'C-Programming (Test Alert)',
+        faculty: 'Dr. Chunnu',
+        reason: 'Sample Cancellation Alert Preview',
+        rescheduledNote: 'Free Period / Lab Testing',
+        cancelledBy: _activeAdminSession ? _activeAdminSession.fullName : 'Admin'
+      };
+      dispatchCancellationAlertNotification(testRecord);
+      showToast('📢 Test Cancellation Notification dispatched!');
+    }
+
+    // Top Ticker / Cancellation Banner Logic
+    function updateCancellationNoticeBanner() {
+      const banner = document.getElementById('cancellationNoticeBanner');
+      const title = document.getElementById('cancelBannerTitle');
+      const sub = document.getElementById('cancelBannerSub');
+      if (!banner) return;
+
+      const dateObj = viewingDate || new Date();
+      const yyyy = dateObj.getFullYear();
+      const mm = String(dateObj.getMonth() + 1).padStart(2, '0');
+      const dd = String(dateObj.getDate()).padStart(2, '0');
+      const viewDateStr = `${yyyy}-${mm}-${dd}`;
+
+      const list = getCancelledClassesList();
+      const todayCancels = list.filter(c => c.section === currentSection && c.date === viewDateStr && c.status !== 'restored');
+
+      if (todayCancels.length > 0) {
+        banner.style.display = 'flex';
+        const c0 = todayCancels[0];
+        if (todayCancels.length === 1) {
+          if (title) title.textContent = `🚨 Class Cancelled: ${c0.period} ${c0.subject}`;
+          if (sub) sub.textContent = `Reason: ${c0.reason} • Tap to view notice & details`;
+        } else {
+          if (title) title.textContent = `🚨 ${todayCancels.length} Classes Cancelled Today (${currentSection})`;
+          if (sub) sub.textContent = `${todayCancels.map(c => c.period).join(', ')} are cancelled. Tap to view notice.`;
+        }
+      } else {
+        banner.style.display = 'none';
+      }
+    }
+
+    function dismissCancellationBanner() {
+      const banner = document.getElementById('cancellationNoticeBanner');
+      if (banner) banner.style.display = 'none';
+    }
+
+    function openActiveCancellationsFromBanner() {
+      openAdminModal();
+      if (_isAdminLoggedIn) {
+        switchAdminDeckTab('active');
       }
     }
 
@@ -7901,9 +9192,9 @@
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '5.9.15';
-    const LOCAL_APP_VERSION_CODE = 75;
-    const LOCAL_APP_BUILD_HASH = 'efa85e1a5f0b';
+    const LOCAL_APP_VERSION_NAME = '6.0.0';
+    const LOCAL_APP_VERSION_CODE = 76;
+    const LOCAL_APP_BUILD_HASH = 'a7b00f9fc5d5';
 
     let cachedLatestVersionCode = 29;
 
@@ -8626,6 +9917,7 @@
     function renderTodayLectures(dateObj) {
       const container = document.getElementById('lecturesContainer');
       container.innerHTML = '';
+      updateCancellationNoticeBanner();
 
       const dayIndex = dateObj.getDay();
       const dayName = dayNames[dayIndex];
@@ -8771,6 +10063,11 @@
         container.innerHTML = holidayBannerHtml;
       }
 
+      const yyyy = dateObj.getFullYear();
+      const mm = String(dateObj.getMonth() + 1).padStart(2, '0');
+      const dd = String(dateObj.getDate()).padStart(2, '0');
+      const dateIsoStr = `${yyyy}-${mm}-${dd}`;
+
       slots.forEach((s, idx) => {
         const periodCfg = periods.find(p => p.id === s.period);
         const start = periodCfg ? periodCfg.startMins : 0;
@@ -8784,6 +10081,13 @@
         if (selectedBatch === 'Set-A') cardBorderClass = 'set-a-card';
         else if (selectedBatch === 'Set-B') cardBorderClass = 'set-b-card';
 
+        // Check if this slot has been cancelled by Admin
+        const cancelledSlot = getCancelledSlot(currentSection, dateIsoStr, s.period, selectedBatch);
+        const isCancelled = Boolean(cancelledSlot);
+        if (isCancelled) {
+          cardBorderClass += ' class-cancelled-card';
+        }
+
         const card = document.createElement('div');
         card.className = `lecture-card ${cardBorderClass} ${isLive ? 'is-live' : ''} ${isCompleted ? 'is-completed' : ''}`;
         card.style.animationDelay = `${idx * 45}ms`;
@@ -8793,7 +10097,9 @@
         const attStatus = attendanceMap[dateKey];
 
         let statusTag = '';
-        if (isToday) {
+        if (isCancelled) {
+          statusTag = '<span class="status-tag status-cancelled-pill">🔴 CANCELLED</span>';
+        } else if (isToday) {
           if (isLive) {
             statusTag = '<span class="status-tag status-live-pill">● LIVE NOW</span>';
           } else if (isCompleted) {
@@ -8807,6 +10113,27 @@
           statusTag = `<span class="status-tag status-upcoming-pill">${dayName}</span>`;
         }
 
+        const adminBarHtml = _isAdminLoggedIn ? `
+          <div class="card-admin-action-bar" onclick="event.stopPropagation();">
+            ${isCancelled
+              ? `<button class="admin-quick-action-btn btn-admin-restore" onclick="restoreClassFromCard('${currentSection}', '${dateIsoStr}', '${s.period}')">↩️ Restore Class</button>
+                 <button class="admin-quick-action-btn" style="border-color:rgba(56,189,248,0.4); color:#38bdf8;" onclick="shareCancellationToWhatsApp('${cancelledSlot.id}')">📲 WhatsApp</button>`
+              : `<button class="admin-quick-action-btn btn-admin-cancel" onclick="openQuickCancelModal('${currentSection}', '${dateIsoStr}', '${s.period}')">🚫 Cancel Slot</button>`
+            }
+          </div>
+        ` : '';
+
+        const cancelNoticeBoxHtml = isCancelled ? `
+          <div class="cancelled-notice-box">
+            <div style="font-weight:750; display:flex; align-items:center; gap:5px;">
+              <span>⚠️ Class Cancelled:</span>
+              <span style="color:#f87171;">${escapeHtml(cancelledSlot.reason || 'Notice from Faculty')}</span>
+            </div>
+            ${cancelledSlot.rescheduledNote ? `<div style="font-size:0.69rem; margin-top:3px; color:#67e8f9;">📍 ${escapeHtml(cancelledSlot.rescheduledNote)}</div>` : ''}
+            <div style="font-size:0.65rem; margin-top:3px; opacity:0.8; font-style:italic;">By: ${escapeHtml(cancelledSlot.cancelledBy || 'Faculty / Admin')}</div>
+          </div>
+        ` : '';
+
         // PURE UNMIXED RENDERING:
         if (s.isSplit) {
           if (selectedBatch === 'Set-A') {
@@ -8815,6 +10142,16 @@
             const isMentor = s.setA.subject.toLowerCase().includes('mentor');
             const typeTag = isLab ? '🔬 Set-A Lab' : (isMentor ? '🧑‍🏫 Set-A Mentor' : '📚 Set-A Self Study');
             const facA = (s.setA && s.setA.faculty) || getFacultyForSubject(s.setA.subject);
+
+            const titleDisplay = isCancelled
+              ? `<s class="cancelled-subject">${s.setA.subject}</s> <span style="font-size:0.75rem; color:#f87171; font-weight:700;">[OFF]</span>`
+              : s.setA.subject;
+
+            const attBtn = isCancelled
+              ? `<span class="att-toggle-btn" style="background:rgba(244,63,94,0.12); color:#f87171; border-color:rgba(244,63,94,0.3); cursor:default; font-size:0.68rem;">🚫 Class Off</span>`
+              : `<button class="att-toggle-btn ${attStatus === 'attended' ? 'attended' : attStatus === 'missed' ? 'missed' : ''}" onclick="quickToggleAttendance(event, '${dateKey}')">
+                  ${attStatus === 'attended' ? '✓ Attended' : attStatus === 'missed' ? '✗ Missed' : 'Mark Att'}
+                </button>`;
 
             card.innerHTML = `
               <div class="card-top-row">
@@ -8825,22 +10162,26 @@
                 ${statusTag}
               </div>
 
-              <div class="card-subject-title">${s.setA.subject}</div>
+              <div class="card-subject-title">${titleDisplay}</div>
               ${facA ? `<div class="card-faculty-row"><span class="faculty-badge">👨‍🏫 ${facA}</span></div>` : ''}
+              ${cancelNoticeBoxHtml}
 
               <div class="card-footer-info">
                 <div class="card-footer-badges">
                   <span class="hero-room-badge">${s.setA.room !== '-' ? '📍 ' + s.setA.room : 'Campus / Library'}</span>
                   <span class="hero-batch-badge badge-set-a">${typeTag}</span>
                 </div>
-                <button class="att-toggle-btn ${attStatus === 'attended' ? 'attended' : attStatus === 'missed' ? 'missed' : ''}" onclick="quickToggleAttendance(event, '${dateKey}')">
-                  ${attStatus === 'attended' ? '✓ Attended' : attStatus === 'missed' ? '✗ Missed' : 'Mark Att'}
-                </button>
+                ${attBtn}
               </div>
+              ${adminBarHtml}
             `;
             card.onclick = (e) => {
               if (e.target.tagName !== 'BUTTON') {
-                openPeriodModal(s.period, s.setA.subject, s.setA.room, s.timing, dateKey);
+                if (isCancelled) {
+                  showToast(`🚫 Class Cancelled: ${cancelledSlot.reason}`);
+                } else {
+                  openPeriodModal(s.period, s.setA.subject, s.setA.room, s.timing, dateKey);
+                }
               }
             };
 
@@ -8851,6 +10192,16 @@
             const typeTag = isLab ? '🔬 Set-B Lab' : (isMentor ? '🧑‍🏫 Set-B Mentor' : '📚 Set-B Self Study');
             const facB = (s.setB && s.setB.faculty) || getFacultyForSubject(s.setB.subject);
 
+            const titleDisplay = isCancelled
+              ? `<s class="cancelled-subject">${s.setB.subject}</s> <span style="font-size:0.75rem; color:#f87171; font-weight:700;">[OFF]</span>`
+              : s.setB.subject;
+
+            const attBtn = isCancelled
+              ? `<span class="att-toggle-btn" style="background:rgba(244,63,94,0.12); color:#f87171; border-color:rgba(244,63,94,0.3); cursor:default; font-size:0.68rem;">🚫 Class Off</span>`
+              : `<button class="att-toggle-btn ${attStatus === 'attended' ? 'attended' : attStatus === 'missed' ? 'missed' : ''}" onclick="quickToggleAttendance(event, '${dateKey}')">
+                  ${attStatus === 'attended' ? '✓ Attended' : attStatus === 'missed' ? '✗ Missed' : 'Mark Att'}
+                </button>`;
+
             card.innerHTML = `
               <div class="card-top-row">
                 <div class="slot-timing-box">
@@ -8860,27 +10211,33 @@
                 ${statusTag}
               </div>
 
-              <div class="card-subject-title">${s.setB.subject}</div>
+              <div class="card-subject-title">${titleDisplay}</div>
               ${facB ? `<div class="card-faculty-row"><span class="faculty-badge">👨‍🏫 ${facB}</span></div>` : ''}
+              ${cancelNoticeBoxHtml}
 
               <div class="card-footer-info">
                 <div class="card-footer-badges">
                   <span class="hero-room-badge">${s.setB.room !== '-' ? '📍 ' + s.setB.room : 'Campus / Library'}</span>
                   <span class="hero-batch-badge badge-set-b">${typeTag}</span>
                 </div>
-                <button class="att-toggle-btn ${attStatus === 'attended' ? 'attended' : attStatus === 'missed' ? 'missed' : ''}" onclick="quickToggleAttendance(event, '${dateKey}')">
-                  ${attStatus === 'attended' ? '✓ Attended' : attStatus === 'missed' ? '✗ Missed' : 'Mark Att'}
-                </button>
+                ${attBtn}
               </div>
+              ${adminBarHtml}
             `;
             card.onclick = (e) => {
               if (e.target.tagName !== 'BUTTON') {
-                openPeriodModal(s.period, s.setB.subject, s.setB.room, s.timing, dateKey);
+                if (isCancelled) {
+                  showToast(`🚫 Class Cancelled: ${cancelledSlot.reason}`);
+                } else {
+                  openPeriodModal(s.period, s.setB.subject, s.setB.room, s.timing, dateKey);
+                }
               }
             };
 
           } else {
             // "ALL / COMBINED" MODE: DUAL CLEAN CARDS
+            const cancelA = getCancelledSlot(currentSection, dateIsoStr, s.period, 'Set-A') || cancelledSlot;
+            const cancelB = getCancelledSlot(currentSection, dateIsoStr, s.period, 'Set-B') || cancelledSlot;
             const facA = (s.setA && s.setA.faculty) || getFacultyForSubject(s.setA.subject);
             const facB = (s.setB && s.setB.faculty) || getFacultyForSubject(s.setB.subject);
             const roomA = s.setA.room !== '-' ? `📍 ${s.setA.room}` : '📍 Campus / Library';
@@ -8896,28 +10253,32 @@
               </div>
 
               <div class="split-sets-wrapper">
-                <div class="set-subcard set-a-style">
+                <div class="set-subcard set-a-style ${cancelA ? 'class-cancelled-card' : ''}">
                   <div style="display:flex; align-items:center; gap:6px; width:100%;">
                     <span class="batch-chip chip-a">Set-A</span>
-                    <strong style="flex:1; min-width:0; line-height:1.28;">${s.setA.subject}</strong>
+                    <strong style="flex:1; min-width:0; line-height:1.28;">${cancelA ? `<s>${s.setA.subject}</s> <span style="color:#f87171; font-size:0.75rem;">[OFF]</span>` : s.setA.subject}</strong>
                   </div>
                   <div style="display:flex; align-items:center; justify-content:space-between; gap:6px; flex-wrap:wrap; width:100%;">
                     ${facA ? `<span style="font-size:0.7rem; color:var(--gold-accent); font-weight:750;">👨‍🏫 ${facA}</span>` : '<span></span>'}
                     <span class="hero-room-badge" style="font-size:0.68rem;">${roomA}</span>
                   </div>
+                  ${cancelA ? `<div style="font-size:0.68rem; color:#f87171; margin-top:2px;">⚠️ ${escapeHtml(cancelA.reason)}</div>` : ''}
                 </div>
 
-                <div class="set-subcard set-b-style">
+                <div class="set-subcard set-b-style ${cancelB ? 'class-cancelled-card' : ''}">
                   <div style="display:flex; align-items:center; gap:6px; width:100%;">
                     <span class="batch-chip chip-b">Set-B</span>
-                    <strong style="flex:1; min-width:0; line-height:1.28;">${s.setB.subject}</strong>
+                    <strong style="flex:1; min-width:0; line-height:1.28;">${cancelB ? `<s>${s.setB.subject}</s> <span style="color:#f87171; font-size:0.75rem;">[OFF]</span>` : s.setB.subject}</strong>
                   </div>
                   <div style="display:flex; align-items:center; justify-content:space-between; gap:6px; flex-wrap:wrap; width:100%;">
                     ${facB ? `<span style="font-size:0.7rem; color:var(--gold-accent); font-weight:750;">👨‍🏫 ${facB}</span>` : '<span></span>'}
                     <span class="hero-room-badge" style="font-size:0.68rem;">${roomB}</span>
                   </div>
+                  ${cancelB ? `<div style="font-size:0.68rem; color:#f87171; margin-top:2px;">⚠️ ${escapeHtml(cancelB.reason)}</div>` : ''}
                 </div>
               </div>
+
+              ${cancelNoticeBoxHtml}
 
               <div class="card-footer-info">
                 <span style="font-size:0.7rem; color:var(--text-sub);">Split Lab / Theory Session</span>
@@ -8925,6 +10286,7 @@
                   ${attStatus === 'attended' ? '✓ Attended' : attStatus === 'missed' ? '✗ Missed' : 'Mark Att'}
                 </button>
               </div>
+              ${adminBarHtml}
             `;
             card.onclick = (e) => {
               if (e.target.tagName !== 'BUTTON') {
@@ -8947,10 +10309,15 @@
           }
           const facCommon = isLunch ? '' : (s.faculty || getFacultyForSubject(s.subject));
           const roomDisplay = isLunch ? '📍 Mess' : (s.room !== '-' ? '📍 ' + s.room : 'Campus / Common');
-          const attBtnHtml = isLunch ? '' : `
+          const titleDisplay = (isCancelled && !isLunch)
+            ? `<s class="cancelled-subject">${s.subject}</s> <span style="font-size:0.75rem; color:#f87171; font-weight:700;">[OFF]</span>`
+            : s.subject;
+
+          const attBtnHtml = isLunch ? '' : (isCancelled ? `
+              <span class="att-toggle-btn" style="background:rgba(244,63,94,0.12); color:#f87171; border-color:rgba(244,63,94,0.3); cursor:default; font-size:0.68rem;">🚫 Class Off</span>` : `
               <button class="att-toggle-btn ${attStatus === 'attended' ? 'attended' : attStatus === 'missed' ? 'missed' : ''}" onclick="quickToggleAttendance(event, '${dateKey}')">
                 ${attStatus === 'attended' ? '✓ Attended' : attStatus === 'missed' ? '✗ Missed' : 'Mark Att'}
-              </button>`;
+              </button>`);
 
           card.innerHTML = `
             <div class="card-top-row">
@@ -8961,8 +10328,9 @@
               ${statusTag}
             </div>
 
-            <div class="card-subject-title">${s.subject}</div>
+            <div class="card-subject-title">${titleDisplay}</div>
             ${facCommon ? `<div class="card-faculty-row"><span class="faculty-badge">👨‍🏫 ${facCommon}</span></div>` : ''}
+            ${!isLunch ? cancelNoticeBoxHtml : ''}
 
             <div class="card-footer-info">
               <div class="card-footer-badges">
@@ -8971,11 +10339,16 @@
               </div>
               ${attBtnHtml}
             </div>
+            ${!isLunch ? adminBarHtml : ''}
           `;
           if (!isLunch) {
             card.onclick = (e) => {
               if (e.target.tagName !== 'BUTTON') {
-                openPeriodModal(s.period, s.subject, s.room, s.timing, dateKey);
+                if (isCancelled) {
+                  showToast(`🚫 Class Cancelled: ${cancelledSlot.reason}`);
+                } else {
+                  openPeriodModal(s.period, s.subject, s.room, s.timing, dateKey);
+                }
               }
             };
           } else {
@@ -9328,6 +10701,17 @@
             batchTag = '👥 Common (Both Sets)';
             heroBatchBadge.className = 'hero-batch-badge badge-set-all';
           }
+        }
+
+        const activeCancel = isViewingToday ? getCancelledSlot(currentSection, `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`, p.id, selectedBatch) : null;
+        if (activeCancel) {
+          subj = `[OFF] ${activeCancel.subject}`;
+          room = `🚫 Cancelled: ${activeCancel.reason}`;
+          batchTag = '🔴 CANCELLED';
+          heroBatchBadge.className = 'hero-batch-badge';
+          heroBatchBadge.style.background = 'rgba(244, 63, 94, 0.25)';
+          heroBatchBadge.style.color = '#f43f5e';
+          heroBatchBadge.style.borderColor = 'rgba(244, 63, 94, 0.5)';
         }
 
         setTextIfChanged(heroSubjectName, subj);
@@ -10340,6 +11724,7 @@
 
       renderDayPills();
       selectDay(new Date());
+      initAdminSystem();
       updateLiveState(true);
 
       // Instant direct launch: splash screen removed
@@ -10351,6 +11736,7 @@
         syncAndroidNotificationPrefs();
         NotificationLibrary.syncFromNative();
         NotificationLibrary.updateBadges();
+        syncCancelledClassesFromServer(false);
 
         if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.protocol === 'http:')) {
           try { navigator.serviceWorker.register('sw.js').catch(() => { }); } catch (e) { }
@@ -10433,6 +11819,258 @@
     </div>
   </div>
 
+  <!-- MODAL: ADMIN PORTAL & CLASS CANCELLATION CONTROLS -->
+  <div class="modal-overlay" id="adminModal" onclick="closeModalOnOverlay(event, 'adminModal')">
+    <div class="modal-sheet" style="max-width:520px;">
+      <div class="modal-handle"></div>
+      <div class="modal-header">
+        <div class="modal-title" style="display:flex; align-items:center; gap:8px;">
+          <span>🛡️</span> <span id="adminModalTitle">Admin Portal & Controls</span>
+        </div>
+        <button class="modal-close-btn" onclick="closeModal('adminModal')">✕</button>
+      </div>
+
+      <!-- VIEW A: LOGGED OUT (TABS: LOGIN vs CREATE ACCOUNT) -->
+      <div id="adminLoggedOutView" style="display:block; padding:6px 0;">
+        <div class="admin-portal-tabs">
+          <button class="admin-tab-btn active" id="tabAdminLogin" onclick="switchAdminAuthTab('login')">
+            <span>🔑</span> <span>Admin Login</span>
+          </button>
+          <button class="admin-tab-btn" id="tabAdminRegister" onclick="switchAdminAuthTab('register')">
+            <span>✨</span> <span>Create Admin Account</span>
+          </button>
+        </div>
+
+        <!-- SUB-TAB 1: ADMIN LOGIN -->
+        <div id="adminLoginSection" style="display:block;">
+          <div class="admin-banner-notice">
+            <span>ℹ️</span>
+            <div>Enter your admin credentials to cancel classes, broadcast alerts, and manage the timetable.</div>
+          </div>
+
+          <div class="admin-field-group">
+            <label class="admin-field-label" for="loginUsernameInput">Admin Username:</label>
+            <input type="text" id="loginUsernameInput" class="admin-field-input" placeholder="e.g. admin or your username" autocomplete="username">
+          </div>
+
+          <div class="admin-field-group">
+            <label class="admin-field-label" for="loginPasswordInput">Admin Password:</label>
+            <input type="password" id="loginPasswordInput" class="admin-field-input" placeholder="Enter your password" autocomplete="current-password" onkeydown="if(event.key==='Enter') submitAdminLogin()">
+          </div>
+
+          <div id="loginErrorMsg" class="admin-banner-notice danger" style="display:none;"></div>
+
+          <div style="display:flex; flex-direction:column; gap:9px; margin-top:14px;">
+            <button class="primary-btn" style="width:100%; justify-content:center;" onclick="submitAdminLogin()">
+              🔐 Log In to Admin Deck
+            </button>
+            <button class="secondary-btn" style="width:100%; justify-content:center; font-size:0.75rem; border-color:rgba(56,189,248,0.3); color:var(--accent);" onclick="promptMasterKeyQuickLogin()">
+              ⚡ Fast Login with Master Admin Passcode
+            </button>
+            <div style="text-align:center; font-size:0.74rem; color:var(--text-sub); margin-top:4px;">
+              Need an admin account? <a href="javascript:void(0)" onclick="switchAdminAuthTab('register')" style="color:var(--accent); text-decoration:underline;">Create Account with Master Key</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUB-TAB 2: CREATE ADMIN ACCOUNT (RESTRICTED BY MASTER ADMIN KEY) -->
+        <div id="adminRegisterSection" style="display:none;">
+          <div class="admin-banner-notice warning">
+            <span>🔒</span>
+            <div><strong>Master Key Required:</strong> Only authorized teachers / CRs with the Master Admin Passcode can create an account.</div>
+          </div>
+
+          <div class="admin-field-group">
+            <label class="admin-field-label" for="regMasterKeyInput">
+              <span>Master Admin Security Passcode 🔒</span>
+              <span style="font-size:0.65rem; color:#f59e0b; font-weight:700;">Required Verification</span>
+            </label>
+            <input type="password" id="regMasterKeyInput" class="admin-field-input" placeholder="Enter Master Admin Security Key" style="border-color:rgba(245,158,11,0.5);">
+            <span style="font-size:0.68rem; color:var(--text-sub); margin-top:2px;">Default Master Key: <code>Krishna@SecD#2026</code> or <code>CSE-D-ADMIN-2025</code></span>
+          </div>
+
+          <div class="admin-field-group">
+            <label class="admin-field-label" for="regFullNameInput">Full Name & Role:</label>
+            <input type="text" id="regFullNameInput" class="admin-field-input" placeholder="e.g. Krishna Panday (Class Representative)">
+          </div>
+
+          <div class="admin-field-group">
+            <label class="admin-field-label" for="regUsernameInput">Choose Admin Username:</label>
+            <input type="text" id="regUsernameInput" class="admin-field-input" placeholder="e.g. krishnacr or admin">
+          </div>
+
+          <div class="admin-field-group">
+            <label class="admin-field-label" for="regPasswordInput">Choose Your Password:</label>
+            <input type="password" id="regPasswordInput" class="admin-field-input" placeholder="Enter a secure password (min 4 chars)">
+          </div>
+
+          <div class="admin-field-group">
+            <label class="admin-field-label" for="regConfirmPasswordInput">Confirm Password:</label>
+            <input type="password" id="regConfirmPasswordInput" class="admin-field-input" placeholder="Re-type your password" onkeydown="if(event.key==='Enter') submitCreateAdminAccount()">
+          </div>
+
+          <div id="regErrorMsg" class="admin-banner-notice danger" style="display:none;"></div>
+
+          <div style="display:flex; flex-direction:column; gap:9px; margin-top:14px;">
+            <button class="primary-btn" style="width:100%; justify-content:center; background:linear-gradient(135deg, #10b981, #059669);" onclick="submitCreateAdminAccount()">
+              🚀 Verify Master Key & Create Account
+            </button>
+            <div style="text-align:center; font-size:0.74rem; color:var(--text-sub); margin-top:4px;">
+              Already have an account? <a href="javascript:void(0)" onclick="switchAdminAuthTab('login')" style="color:var(--accent); text-decoration:underline;">Back to Login</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIEW B: LOGGED IN (ADMIN COMMAND CENTER) -->
+      <div id="adminLoggedInView" style="display:none; padding:6px 0;">
+        <div style="background:linear-gradient(135deg, rgba(16,185,129,0.18), rgba(56,189,248,0.12)); border:1px solid rgba(16,185,129,0.35); border-radius:14px; padding:10px 14px; display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+          <div style="display:flex; align-items:center; gap:9px;">
+            <div style="font-size:1.4rem;">🛡️</div>
+            <div>
+              <div style="font-size:0.82rem; font-weight:800; color:var(--text-main);" id="adminActiveProfileName">Admin Profile</div>
+              <div style="font-size:0.68rem; color:#10b981;" id="adminActiveProfileRole">● Active Admin Session</div>
+            </div>
+          </div>
+          <button class="secondary-btn" style="padding:4px 10px; font-size:0.72rem; color:#f87171; border-color:rgba(244,63,94,0.4);" onclick="adminLogout()">
+            🚪 Logout
+          </button>
+        </div>
+
+        <div class="admin-portal-tabs">
+          <button class="admin-tab-btn active" id="tabDeckCancel" onclick="switchAdminDeckTab('cancel')">
+            <span>🚫</span> <span>Cancel Class</span>
+          </button>
+          <button class="admin-tab-btn" id="tabDeckActive" onclick="switchAdminDeckTab('active')">
+            <span>📋</span> <span id="tabActiveCountLabel">Active (0)</span>
+          </button>
+          <button class="admin-tab-btn" id="tabDeckSettings" onclick="switchAdminDeckTab('settings')">
+            <span>⚙️</span> <span>Controls</span>
+          </button>
+        </div>
+
+        <!-- DECK TAB 1: CANCEL / RESCHEDULE A CLASS -->
+        <div id="deckCancelSection" style="display:block;">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+            <div class="admin-field-group">
+              <label class="admin-field-label" for="cancelDatePicker">Date:</label>
+              <input type="date" id="cancelDatePicker" class="admin-field-input" onchange="onCancelFormContextChanged()">
+            </div>
+            <div class="admin-field-group">
+              <label class="admin-field-label" for="cancelSectionSelect">Section:</label>
+              <select id="cancelSectionSelect" class="admin-field-select" onchange="onCancelFormContextChanged()"></select>
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+            <div class="admin-field-group">
+              <label class="admin-field-label" for="cancelPeriodSelect">Period Slot:</label>
+              <select id="cancelPeriodSelect" class="admin-field-select" onchange="onCancelFormContextChanged()">
+                <option value="L1">L1 (09:00 - 09:55)</option>
+                <option value="L2">L2 (09:55 - 10:50)</option>
+                <option value="L3">L3 (10:50 - 11:45)</option>
+                <option value="L5">L5 (12:40 - 01:35)</option>
+                <option value="L6">L6 (01:35 - 02:30)</option>
+                <option value="L7">L7 (02:30 - 03:25)</option>
+                <option value="L8">L8 (03:25 - 04:20)</option>
+              </select>
+            </div>
+            <div class="admin-field-group">
+              <label class="admin-field-label" for="cancelBatchSelect">Affected Batch:</label>
+              <select id="cancelBatchSelect" class="admin-field-select">
+                <option value="ALL">👥 ALL Students (Entire Class)</option>
+                <option value="Set-A">🅰️ Set-A Only</option>
+                <option value="Set-B">🅱️ Set-B Only</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="admin-field-group">
+            <label class="admin-field-label" for="cancelSubjectInput">Subject Name:</label>
+            <input type="text" id="cancelSubjectInput" class="admin-field-input" placeholder="Subject name">
+          </div>
+
+          <div class="admin-field-group">
+            <label class="admin-field-label" for="cancelFacultyInput">Faculty Name:</label>
+            <input type="text" id="cancelFacultyInput" class="admin-field-input" placeholder="Faculty name">
+          </div>
+
+          <div class="admin-field-group">
+            <label class="admin-field-label" for="cancelReasonSelect">Cancellation Reason:</label>
+            <select id="cancelReasonSelect" class="admin-field-select" onchange="onReasonPresetChange()">
+              <option value="Faculty on Leave">👨‍🏫 Faculty on Leave / Absent</option>
+              <option value="Department Meeting">🏛️ Department / Faculty Meeting</option>
+              <option value="Lab Session Postponed">🔬 Lab Session Postponed</option>
+              <option value="Campus Seminar / Event">🎪 Campus Event / Guest Seminar</option>
+              <option value="Exam Duty">📝 Faculty on Examination Duty</option>
+              <option value="Custom">✏️ Other Custom Reason...</option>
+            </select>
+            <input type="text" id="cancelReasonCustomInput" class="admin-field-input" placeholder="Type specific reason..." style="display:none; margin-top:5px;">
+          </div>
+
+          <div class="admin-field-group">
+            <label class="admin-field-label" for="cancelRescheduleInput">Rescheduled Note / Venue (Optional):</label>
+            <input type="text" id="cancelRescheduleInput" class="admin-field-input" placeholder="e.g. Free Period in Library / Shifted to 3:00 PM Room B-302">
+          </div>
+
+          <div style="background:rgba(56,189,248,0.1); border:1px solid rgba(56,189,248,0.25); border-radius:10px; padding:8px 11px; margin-bottom:12px; display:flex; align-items:center; gap:9px;">
+            <input type="checkbox" id="cancelSendNotifCheckbox" checked style="width:16px; height:16px; accent-color:var(--accent); cursor:pointer;">
+            <label for="cancelSendNotifCheckbox" style="font-size:0.75rem; color:var(--text-main); cursor:pointer; font-weight:600;">
+              🔔 Send push & in-app notification to all students' mobiles
+            </label>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:9px;">
+            <button class="primary-btn" style="width:100%; justify-content:center; background:linear-gradient(135deg, #f43f5e, #be123c);" onclick="submitClassCancellation()">
+              🚫 Confirm Class Cancellation & Broadcast
+            </button>
+            <button class="secondary-btn" style="width:100%; justify-content:center; font-size:0.78rem;" onclick="broadcastCurrentCancellationWhatsApp()">
+              📲 Broadcast via WhatsApp (with 1-Click Sync Link)
+            </button>
+          </div>
+        </div>
+
+        <!-- DECK TAB 2: ACTIVE CANCELLATIONS LIST -->
+        <div id="deckActiveSection" style="display:none;">
+          <div id="activeCancellationsContainer" style="display:flex; flex-direction:column; gap:9px;">
+            <!-- Rendered by renderActiveCancellationsList() -->
+          </div>
+        </div>
+
+        <!-- DECK TAB 3: ADMIN SETTINGS & CONTROLS -->
+        <div id="deckSettingsSection" style="display:none;">
+          <div class="admin-banner-notice">
+            <span>⚙️</span>
+            <div><strong>Admin Controls:</strong> Multi-device synchronization & security management.</div>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <div style="background:var(--card-inner); border:1px solid var(--card-border); border-radius:12px; padding:12px;">
+              <div style="font-size:0.8rem; font-weight:700; margin-bottom:4px;">🔄 Server Sync Status</div>
+              <div style="font-size:0.72rem; color:var(--text-sub); margin-bottom:8px;" id="deckSyncStatusText">Connected to Update Server & Cloud CDN</div>
+              <button class="secondary-btn" style="font-size:0.74rem;" onclick="syncCancelledClassesFromServer(true)">
+                🔄 Sync with Server Now
+              </button>
+            </div>
+
+            <div style="background:var(--card-inner); border:1px solid var(--card-border); border-radius:12px; padding:12px;">
+              <div style="font-size:0.8rem; font-weight:700; margin-bottom:4px;">🔔 Test Notification</div>
+              <div style="font-size:0.72rem; color:var(--text-sub); margin-bottom:8px;">Send a test cancellation alert to preview how it looks on student phones.</div>
+              <button class="secondary-btn" style="font-size:0.74rem;" onclick="triggerTestCancellationAlert()">
+                📢 Send Test Cancellation Alert
+              </button>
+            </div>
+
+            <div style="background:var(--card-inner); border:1px solid var(--card-border); border-radius:12px; padding:12px;">
+              <div style="font-size:0.8rem; font-weight:700; margin-bottom:4px;">👥 Registered Admin Accounts</div>
+              <div id="registeredAccountsList" style="font-size:0.72rem; color:var(--text-muted); margin-top:6px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
     // ── PRIVACY & ANTI-TAMPER SECURITY ENFORCEMENT ──
     try {
@@ -10458,19 +12096,6 @@
 </script>
 
   <script>
-    // ZERO-LAG SCROLL CONTROLLER & INTERACTIVE GRID SPOTLIGHT
-    (function initGridMotionControllers() {
-      var isScrollingTimeout;
-      window.addEventListener('scroll', function() {
-        if (!document.body.classList.contains('is-scrolling')) {
-          document.body.classList.add('is-scrolling');
-        }
-        clearTimeout(isScrollingTimeout);
-        isScrollingTimeout = setTimeout(function() {
-          document.body.classList.remove('is-scrolling');
-        }, 120);
-      }, { passive: true });
-
     // ZERO-LAG SCROLL CONTROLLER
     (function initZeroLagScroller() {
       var isScrollingTimeout;
