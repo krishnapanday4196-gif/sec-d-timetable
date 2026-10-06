@@ -1060,7 +1060,7 @@
     /* Instant responsive theme transition (Zero lag) */
     .app-viewport {
       width: 100%;
-      max-width: 100%;
+      max-width: 480px;
       min-height: 100vh;
       margin: 0 auto;
       background: transparent;
@@ -1070,6 +1070,18 @@
       box-shadow: none;
       border: none;
       transition: max-width 0.25s ease;
+    }
+
+    /* Zero-Impact wrappers on mobile (< 1024px) - renders exactly like original flat tree */
+    .desktop-dashboard-layout,
+    .desktop-sidebar-pane,
+    .desktop-main-pane {
+      display: contents !important;
+    }
+
+    /* Desktop-only quick tools hidden on mobile */
+    .desktop-quick-tools {
+      display: none !important;
     }
 
     /* ============================================================
@@ -1308,6 +1320,7 @@
 
     .holo-menu-trigger .hbar-2 {
       background: linear-gradient(90deg, #fbbf24, #f59e0b);
+
       animation: middleBarBreath 6s ease-in-out infinite;
     }
 
@@ -4844,86 +4857,246 @@
     }
 
     /* ============================================================
-       RESPONSIVE ADAPTIVE ENGINE (MOBILE & DESKTOP DUAL SIZING)
-       - Mobile (< 768px): Full-width native phone touch experience
-       - Tablet (768px - 1179px): Spacious balanced mid-screen view
-       - Desktop (>= 1180px): Luxury wide executive dashboard view with 2-Column Bento Grid
+       DESKTOP WEBSITE DASHBOARD ENGINE (>= 1024px)
+       - Mobile (< 1024px): 100% UNTOUCHED original native mobile experience
+       - Desktop (>= 1024px): Flagship executive Web App Portal & Bento Grid
        ============================================================ */
-    @media (max-width: 767px) {
+    @media (min-width: 1024px) {
       .app-viewport {
-        max-width: 100% !important;
-        padding-left: 0 !important;
-        padding-right: 0 !important;
+        max-width: 1380px !important;
+        margin: 0 auto !important;
+        padding-left: 32px !important;
+        padding-right: 32px !important;
+        padding-bottom: 48px !important;
       }
-    }
 
-    @media (min-width: 768px) {
-      .app-viewport {
-        max-width: 980px !important;
-        padding-left: 20px !important;
-        padding-right: 20px !important;
-      }
+      /* Desktop Top Navbar: Sleek, Floating Glass Navigation Bar */
       .top-appbar {
-        border-radius: 0 0 22px 22px !important;
-        padding-left: 20px !important;
-        padding-right: 20px !important;
-        box-shadow: 0 14px 34px -10px rgba(0, 0, 0, 0.7) !important;
+        position: sticky !important;
+        top: 12px !important;
+        border-radius: 20px !important;
+        margin-top: 12px !important;
+        margin-bottom: 20px !important;
+        padding: 16px 24px !important;
+        border: 1px solid var(--card-border) !important;
+        backdrop-filter: blur(28px) !important;
+        -webkit-backdrop-filter: blur(28px) !important;
+        box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.05) !important;
+        gap: 14px !important;
       }
-      .holo-command-deck {
-        right: max(20px, calc((100vw - 980px) / 2 + 20px)) !important;
+
+      .appbar-header {
+        align-items: center !important;
       }
+
+      .brand-logo-img {
+        width: 44px !important;
+        height: 44px !important;
+      }
+
+      .brand-name {
+        font-size: 1.25rem !important;
+      }
+
+      .brand-subtitle {
+        font-size: 0.76rem !important;
+      }
+
+      /* Section Pills Track: Spacious Desktop Horizontal Row */
+      .section-selector-container {
+        padding: 6px 0 !important;
+      }
+      .section-pills-track {
+        gap: 8px !important;
+        padding-bottom: 4px !important;
+      }
+      .sec-pill {
+        padding: 6px 14px !important;
+        font-size: 0.8rem !important;
+        border-radius: 12px !important;
+      }
+
+      /* Batch Switcher: Refined Segmented Control */
+      .batch-segment-container {
+        padding: 2px 0 0 0 !important;
+      }
+      .batch-segment {
+        max-width: 440px !important;
+        margin: 0 auto !important;
+        padding: 4px !important;
+        border-radius: 14px !important;
+      }
+      .batch-tab {
+        padding: 7px 16px !important;
+        font-size: 0.82rem !important;
+        border-radius: 10px !important;
+      }
+
+      /* Desktop 2-Column Split Dashboard Layout */
+      .desktop-dashboard-layout {
+        display: grid !important;
+        grid-template-columns: 390px 1fr !important;
+        gap: 28px !important;
+        align-items: start !important;
+        margin-top: 0 !important;
+      }
+
+      /* Left Sidebar Pane: Sticky Control & Live Status Deck */
+      .desktop-sidebar-pane {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 14px !important;
+        position: sticky !important;
+        top: 140px !important;
+        max-height: calc(100vh - 160px) !important;
+        overflow-y: auto !important;
+        padding-right: 6px !important;
+        scrollbar-width: thin !important;
+      }
+      .desktop-sidebar-pane::-webkit-scrollbar {
+        width: 4px;
+      }
+      .desktop-sidebar-pane::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 4px;
+      }
+
+      /* Glow & Time Ribbons */
       .glow-highlight-ribbon {
-        margin: 12px 0 4px 0 !important;
+        margin: 0 !important;
+        padding: 9px 14px !important;
+        border-radius: 12px !important;
       }
       .time-status-ribbon {
-        margin: 8px 0 !important;
+        margin: 0 !important;
         padding: 10px 16px !important;
+        border-radius: 14px !important;
       }
+
+      /* Advance Hero Card on Desktop Sidebar */
       .circular-hero-card {
-        margin: 14px 0 10px 0 !important;
-        padding: 20px 24px !important;
-        min-height: 136px !important;
+        margin: 0 !important;
+        padding: 20px !important;
+        border-radius: 20px !important;
+        min-height: 140px !important;
+        box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.6) !important;
       }
+
+      /* Orbit Tracker on Desktop Sidebar */
       .orbit-tracker-section {
-        margin: 6px 0 12px 0 !important;
-        padding: 14px 18px !important;
+        margin: 0 !important;
+        padding: 14px 16px !important;
+        border-radius: 16px !important;
       }
+
+      /* Day Switcher & Day Pills on Desktop Sidebar */
       .schedule-quick-switch-bar {
-        padding: 8px 0 !important;
+        padding: 0 !important;
+        gap: 8px !important;
+      }
+      .quick-view-btn {
+        padding: 8px 10px !important;
+        font-size: 0.78rem !important;
+        border-radius: 12px !important;
       }
       .day-pills-bar {
-        padding: 8px 0 !important;
-        gap: 10px !important;
+        padding: 2px 0 0 0 !important;
+        gap: 8px !important;
       }
       .day-pill {
-        min-height: 54px !important;
+        min-height: 52px !important;
+        border-radius: 14px !important;
       }
-      .today-section-header {
-        padding: 14px 0 8px 0 !important;
+
+      /* Desktop Quick Tools Widget */
+      .desktop-quick-tools {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        background: var(--card-surface);
+        border: 1px solid var(--card-border);
+        border-radius: 16px;
+        padding: 14px 16px;
+        box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.45);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
       }
+      .dtools-label {
+        font-size: 0.68rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        color: var(--accent);
+      }
+      .dtools-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+      }
+      .dtool-btn {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 11px;
+        padding: 9px 12px;
+        color: var(--text-main);
+        font-size: 0.78rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .dtool-btn:hover {
+        background: rgba(56, 189, 248, 0.12);
+        border-color: rgba(56, 189, 248, 0.35);
+        transform: translateY(-1.5px);
+        color: var(--accent);
+      }
+
+      /* Right Main Content Pane */
+      .desktop-main-pane {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 16px !important;
+        min-width: 0 !important;
+      }
+
       .viewing-date-banner {
-        margin: 8px 0 !important;
+        margin: 0 !important;
         padding: 12px 18px !important;
+        border-radius: 14px !important;
       }
-      /* 2-Column Responsive Bento Grid for Lecture Cards on Desktop */
+
+      .today-section-header {
+        padding: 4px 0 2px 0 !important;
+      }
+
+      /* 2-Column Bento Grid for Lecture Cards */
       .lectures-container {
         display: grid !important;
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 16px !important;
-        padding: 10px 0 28px 0 !important;
+        padding: 4px 0 24px 0 !important;
       }
+
       .lecture-card {
         margin: 0 !important;
         height: 100% !important;
+        border-radius: 18px !important;
+        transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s ease, border-color 0.22s ease !important;
       }
-      /* Centered Floating Island Navigation Dock */
+      .lecture-card:hover {
+        transform: translateY(-3px) scale(1.01) !important;
+        box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.7), 0 0 20px var(--accent-glow) !important;
+        border-color: rgba(56, 189, 248, 0.35) !important;
+      }
+
+      /* Hide Mobile Bottom Nav on Desktop Website */
       .bottom-nav {
-        max-width: 520px !important;
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-        bottom: 22px !important;
+        display: none !important;
       }
-      /* Centered Desktop Modals */
+
+      /* Center Modals on Desktop */
       .modal-sheet {
         max-width: 600px !important;
         border-radius: 26px !important;
@@ -4932,35 +5105,35 @@
         border-bottom: 1px solid var(--card-border) !important;
         box-shadow: 0 24px 70px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
       }
-      .heads-up-banner {
-        max-width: 600px !important;
+
+      .holo-command-deck {
+        right: max(28px, calc((100vw - 1380px) / 2 + 28px)) !important;
+        top: 90px !important;
       }
+
       /* Fluid Aurora Orbs expanded for Wide Monitors */
       .aurora-orb.orb-primary {
+        width: 680px !important;
+        height: 680px !important;
+      }
+      .aurora-orb.orb-secondary {
+        width: 720px !important;
+        height: 720px !important;
+      }
+      .aurora-orb.orb-tertiary {
         width: 580px !important;
         height: 580px !important;
       }
-      .aurora-orb.orb-secondary {
-        width: 620px !important;
-        height: 620px !important;
-      }
-      .aurora-orb.orb-tertiary {
-        width: 480px !important;
-        height: 480px !important;
-      }
     }
 
-    @media (min-width: 1200px) {
+    /* Extra Wide Ultra-Widescreen Optimization (>= 1520px) */
+    @media (min-width: 1520px) {
       .app-viewport {
-        max-width: 1180px !important;
-        padding-left: 28px !important;
-        padding-right: 28px !important;
+        max-width: 1480px !important;
       }
-      .holo-command-deck {
-        right: max(24px, calc((100vw - 1180px) / 2 + 28px)) !important;
-      }
-      .lectures-container {
-        gap: 20px !important;
+      .desktop-dashboard-layout {
+        grid-template-columns: 420px 1fr !important;
+        gap: 32px !important;
       }
     }
 
@@ -5216,134 +5389,169 @@
     </div>
 
     <!-- GLOWING HIGHLIGHTED STATUS RIBBON -->
-    <div class="glow-highlight-ribbon" id="glowHighlightRibbon">
-      <span class="ribbon-sparkle">✨</span>
-      <span class="ribbon-highlight-text"><mark class="neon-highlight-badge">QTIMEX</mark> Live Classes • Lab & Faculty Schedule</span>
-    </div>
+    <!-- DUAL-MODE LAYOUT CONTAINER (Mobile: contents / Desktop: 2-column web app) -->
+    <div class="desktop-dashboard-layout">
 
-    <!-- Clock Ribbon -->
-    <div class="time-status-ribbon">
-      <div style="display:flex; align-items:center; gap:6px; min-width:0;">
-        <div class="live-radar-badge">
-          <div class="radar-circle-outer">
-            <div class="radar-wave"></div>
-            <div class="radar-dot"></div>
+      <!-- LEFT SIDEBAR PANE: Sticky Status & Control Deck on Desktop -->
+      <aside class="desktop-sidebar-pane">
+
+        <!-- GLOWING HIGHLIGHTED STATUS RIBBON -->
+        <div class="glow-highlight-ribbon" id="glowHighlightRibbon">
+          <span class="ribbon-sparkle">✨</span>
+          <span class="ribbon-highlight-text"><mark class="neon-highlight-badge">QTIMEX</mark> Live Classes • Lab & Faculty Schedule</span>
+        </div>
+
+        <!-- Clock Ribbon -->
+        <div class="time-status-ribbon">
+          <div style="display:flex; align-items:center; gap:6px; min-width:0;">
+            <div class="live-radar-badge">
+              <div class="radar-circle-outer">
+                <div class="radar-wave"></div>
+                <div class="radar-dot"></div>
+              </div>
+              <span id="ribbonLiveText">LIVE</span>
+            </div>
+            <span id="liveClock" class="clock-ticker">00:00:00 AM</span>
           </div>
-          <span id="ribbonLiveText">LIVE</span>
+          <button class="date-header-chip" id="todayDateBtn" onclick="openCalendarPicker()"
+            title="Tap to select date or day">
+            <span id="todayDateLabel">📍 Today • Fri, 25 Sep</span>
+            <span style="font-size:0.55rem; opacity:0.7;">▼</span>
+          </button>
         </div>
-        <span id="liveClock" class="clock-ticker">00:00:00 AM</span>
-      </div>
-      <button class="date-header-chip" id="todayDateBtn" onclick="openCalendarPicker()"
-        title="Tap to select date or day">
-        <span id="todayDateLabel">📍 Today • Fri, 25 Sep</span>
-        <span style="font-size:0.55rem; opacity:0.7;">▼</span>
-      </button>
-    </div>
 
-    <!-- ADVANCE CIRCULAR HERO CARD -->
-    <section class="circular-hero-card" id="circularHeroCard">
-      <!-- Circular Progress Ring Gauge -->
-      <div class="circular-gauge-container">
-        <svg class="circular-svg" viewBox="0 0 100 100">
-          <defs>
-            <linearGradient id="liveGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#38bdf8" />
-              <stop offset="55%" stop-color="#f43f5e" />
-              <stop offset="100%" stop-color="#fbbf24" />
-            </linearGradient>
-          </defs>
-          <circle class="circle-bg-track" cx="50" cy="50" r="42" />
-          <circle class="circle-progress-bar" id="heroProgressRing" cx="50" cy="50" r="42" stroke-dasharray="263.89"
-            stroke-dashoffset="263.89" />
-        </svg>
+        <!-- ADVANCE CIRCULAR HERO CARD -->
+        <section class="circular-hero-card" id="circularHeroCard">
+          <!-- Circular Progress Ring Gauge -->
+          <div class="circular-gauge-container">
+            <svg class="circular-svg" viewBox="0 0 100 100">
+              <defs>
+                <linearGradient id="liveGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#38bdf8" />
+                  <stop offset="55%" stop-color="#f43f5e" />
+                  <stop offset="100%" stop-color="#fbbf24" />
+                </linearGradient>
+              </defs>
+              <circle class="circle-bg-track" cx="50" cy="50" r="42" />
+              <circle class="circle-progress-bar" id="heroProgressRing" cx="50" cy="50" r="42" stroke-dasharray="263.89"
+                stroke-dashoffset="263.89" />
+            </svg>
 
-        <div class="circle-content-center">
-          <div class="circle-timer-val" id="circleTimer">--:--</div>
-          <div class="circle-timer-sub" id="circleTimerSub">LEFT</div>
+            <div class="circle-content-center">
+              <div class="circle-timer-val" id="circleTimer">--:--</div>
+              <div class="circle-timer-sub" id="circleTimerSub">LEFT</div>
+            </div>
+          </div>
+
+          <!-- Lecture Details Column -->
+          <div class="hero-info-column">
+            <div class="hero-tag-row">
+              <span class="hero-slot-badge" id="heroSlotBadge">L1 • 09:00 AM</span>
+              <span class="hero-batch-badge badge-set-a" id="heroBatchBadge">🅰️ Set-A Live</span>
+            </div>
+            <div class="hero-subject-name" id="heroSubjectName">Checking live lecture...</div>
+            <div style="display:flex; gap:5px; flex-wrap:wrap; align-items:center; min-width:0;">
+              <div class="hero-room-badge" id="heroRoomBadge">📍 Physics Lab (E-106)</div>
+              <div class="faculty-badge" id="heroFacultyBadge" style="display:none;">👨‍🏫 Faculty</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CIRCULAR 8-PERIOD DAY ORBIT STEPPER -->
+        <div class="orbit-tracker-section" id="orbitTrackerSection">
+          <div class="orbit-header">
+            <span id="orbitTitleTxt">Today's 8-Period Orbit</span>
+            <span id="orbitStatusTxt" style="color:var(--accent);">Period 1 of 8</span>
+          </div>
+          <div class="orbit-circles-row">
+            <div class="orbit-line-bg"></div>
+            <div class="orbit-dot" data-slot="L1" onclick="scrollToPeriod('L1')">1</div>
+            <div class="orbit-dot" data-slot="L2" onclick="scrollToPeriod('L2')">2</div>
+            <div class="orbit-dot" data-slot="L3" onclick="scrollToPeriod('L3')">3</div>
+            <div class="orbit-dot" data-slot="L4" onclick="scrollToPeriod('L4')">🍱</div>
+            <div class="orbit-dot" data-slot="L5" onclick="scrollToPeriod('L5')">5</div>
+            <div class="orbit-dot" data-slot="L6" onclick="scrollToPeriod('L6')">6</div>
+            <div class="orbit-dot" data-slot="L7" onclick="scrollToPeriod('L7')">7</div>
+            <div class="orbit-dot" data-slot="L8" onclick="scrollToPeriod('L8')">8</div>
+          </div>
         </div>
-      </div>
 
-      <!-- Lecture Details Column -->
-      <div class="hero-info-column">
-        <div class="hero-tag-row">
-          <span class="hero-slot-badge" id="heroSlotBadge">L1 • 09:00 AM</span>
-          <span class="hero-batch-badge badge-set-a" id="heroBatchBadge">🅰️ Set-A Live</span>
+        <!-- QUICK DAY SWITCH BAR (TODAY / TOMORROW / DATE SELECTOR) -->
+        <div class="schedule-quick-switch-bar">
+          <button class="quick-view-btn active" id="btnViewToday" onclick="jumpToTodayLive()">
+            <span class="btn-icon">📍</span>
+            <span class="btn-label">Today</span>
+          </button>
+          <button class="quick-view-btn" id="btnViewTomorrow" onclick="jumpToTomorrow()">
+            <span class="btn-icon">🌅</span>
+            <span class="btn-label">Tomorrow</span>
+          </button>
+          <button class="quick-view-btn" id="btnOpenCalendar" onclick="openCalendarPicker()">
+            <span class="btn-icon">📅</span>
+            <span class="btn-label">Select Date</span>
+          </button>
         </div>
-        <div class="hero-subject-name" id="heroSubjectName">Checking live lecture...</div>
-        <div style="display:flex; gap:5px; flex-wrap:wrap; align-items:center; min-width:0;">
-          <div class="hero-room-badge" id="heroRoomBadge">📍 Physics Lab (E-106)</div>
-          <div class="faculty-badge" id="heroFacultyBadge" style="display:none;">👨‍🏫 Faculty</div>
+
+        <!-- DAY SELECTOR (MON - SAT) -->
+        <div class="day-pills-bar" id="dayPillsContainer">
+          <!-- Populated dynamically -->
         </div>
-      </div>
-    </section>
 
-    <!-- CIRCULAR 8-PERIOD DAY ORBIT STEPPER -->
-    <div class="orbit-tracker-section" id="orbitTrackerSection">
-      <div class="orbit-header">
-        <span id="orbitTitleTxt">Today's 8-Period Orbit</span>
-        <span id="orbitStatusTxt" style="color:var(--accent);">Period 1 of 8</span>
-      </div>
-      <div class="orbit-circles-row">
-        <div class="orbit-line-bg"></div>
-        <div class="orbit-dot" data-slot="L1" onclick="scrollToPeriod('L1')">1</div>
-        <div class="orbit-dot" data-slot="L2" onclick="scrollToPeriod('L2')">2</div>
-        <div class="orbit-dot" data-slot="L3" onclick="scrollToPeriod('L3')">3</div>
-        <div class="orbit-dot" data-slot="L4" onclick="scrollToPeriod('L4')">🍱</div>
-        <div class="orbit-dot" data-slot="L5" onclick="scrollToPeriod('L5')">5</div>
-        <div class="orbit-dot" data-slot="L6" onclick="scrollToPeriod('L6')">6</div>
-        <div class="orbit-dot" data-slot="L7" onclick="scrollToPeriod('L7')">7</div>
-        <div class="orbit-dot" data-slot="L8" onclick="scrollToPeriod('L8')">8</div>
-      </div>
-    </div>
-
-    <!-- QUICK DAY SWITCH BAR (TODAY / TOMORROW / DATE SELECTOR) -->
-    <div class="schedule-quick-switch-bar">
-      <button class="quick-view-btn active" id="btnViewToday" onclick="jumpToTodayLive()">
-        <span class="btn-icon">📍</span>
-        <span class="btn-label">Today</span>
-      </button>
-      <button class="quick-view-btn" id="btnViewTomorrow" onclick="jumpToTomorrow()">
-        <span class="btn-icon">🌅</span>
-        <span class="btn-label">Tomorrow</span>
-      </button>
-      <button class="quick-view-btn" id="btnOpenCalendar" onclick="openCalendarPicker()">
-        <span class="btn-icon">📅</span>
-        <span class="btn-label">Select Date</span>
-      </button>
-    </div>
-
-    <!-- DAY SELECTOR (MON - SAT) -->
-    <div class="day-pills-bar" id="dayPillsContainer">
-      <!-- Populated dynamically -->
-    </div>
-
-    <!-- VIEWING DATE REMINDER BANNER (Visible when viewing tomorrow or specific date) -->
-    <div class="viewing-date-banner" id="viewingDateBanner" style="display:none;">
-      <div class="banner-date-left">
-        <span id="bannerDateIcon" style="font-size:1.15rem;">🌅</span>
-        <div style="display:flex; flex-direction:column;">
-          <strong id="bannerDateTitle" style="font-size:0.78rem; color:var(--text-main);">Tomorrow's Schedule</strong>
-          <span id="bannerDateSub" style="font-size:0.68rem; color:var(--text-sub);">Saturday, 26 Sep • 8 Periods</span>
+        <!-- DESKTOP-ONLY QUICK UTILITY TOOLS (Hidden on Mobile) -->
+        <div class="desktop-quick-tools" id="desktopQuickTools">
+          <div class="dtools-label">⚡ QUICK TOOLS</div>
+          <div class="dtools-grid">
+            <button class="dtool-btn" onclick="openSimulatorModal()" title="Simulate time & period">
+              <span>⏱️</span> <span>Simulator</span>
+            </button>
+            <button class="dtool-btn" onclick="openModal('exportModal')" title="Export or print timetable">
+              <span>📥</span> <span>Export</span>
+            </button>
+            <button class="dtool-btn" onclick="openFacultyModal()" title="Faculty phone & room directory">
+              <span>👨‍🏫</span> <span>Faculty</span>
+            </button>
+            <button class="dtool-btn" onclick="openAcademicCalendarModal()" title="Academic & holiday calendar">
+              <span>📅</span> <span>Holidays</span>
+            </button>
+          </div>
         </div>
-      </div>
-      <button onclick="jumpToTodayLive()" class="return-today-pill">
-        📍 Today's Live
-      </button>
-    </div>
 
-    <!-- DYNAMIC SECTION TITLE: CLEAR SET-A / SET-B ROUTINE -->
-    <div class="today-section-header">
-      <div class="today-title-wrap">
-        <h2 id="headerDayTitle"><span>🅰️</span> <span>Set-A Routine</span></h2>
-        <div class="today-subtext" id="headerDaySub">Personalized Schedule for Set-A</div>
-      </div>
-      <span class="period-count-badge badge-set-a" id="periodCountBadge">Set-A Active</span>
-    </div>
+      </aside>
 
-    <!-- ALL LECTURES (L1 - L8) FULL LIST -->
-    <main class="lectures-container" id="lecturesContainer">
-      <!-- Populated dynamically -->
-    </main>
+      <!-- RIGHT MAIN CONTENT PANE: Routine & Schedule Bento Grid -->
+      <section class="desktop-main-pane">
+
+        <!-- VIEWING DATE REMINDER BANNER (Visible when viewing tomorrow or specific date) -->
+        <div class="viewing-date-banner" id="viewingDateBanner" style="display:none;">
+          <div class="banner-date-left">
+            <span id="bannerDateIcon" style="font-size:1.15rem;">🌅</span>
+            <div style="display:flex; flex-direction:column;">
+              <strong id="bannerDateTitle" style="font-size:0.78rem; color:var(--text-main);">Tomorrow's Schedule</strong>
+              <span id="bannerDateSub" style="font-size:0.68rem; color:var(--text-sub);">Saturday, 26 Sep • 8 Periods</span>
+            </div>
+          </div>
+          <button onclick="jumpToTodayLive()" class="return-today-pill">
+            📍 Today's Live
+          </button>
+        </div>
+
+        <!-- DYNAMIC SECTION TITLE: CLEAR SET-A / SET-B ROUTINE -->
+        <div class="today-section-header">
+          <div class="today-title-wrap">
+            <h2 id="headerDayTitle"><span>🅰️</span> <span>Set-A Routine</span></h2>
+            <div class="today-subtext" id="headerDaySub">Personalized Schedule for Set-A</div>
+          </div>
+          <span class="period-count-badge badge-set-a" id="periodCountBadge">Set-A Active</span>
+        </div>
+
+        <!-- ALL LECTURES (L1 - L8) FULL LIST -->
+        <main class="lectures-container" id="lecturesContainer">
+          <!-- Populated dynamically -->
+        </main>
+
+      </section>
+
+    </div>
 
     <!-- BOTTOM APP BAR -->
     <nav class="bottom-nav">
@@ -5426,7 +5634,7 @@
         style="background:var(--card-surface-grad); border:1px solid var(--card-border); border-radius:14px; padding:12px; display:flex; flex-direction:column; gap:8px;">
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Installed Version:</span>
-          <strong style="color:var(--gold-accent);">v5.9.14 (Adaptive Responsive)</strong>
+          <strong style="color:var(--gold-accent);">v5.9.15 (Dual Mobile & Desktop Portal)</strong>
         </div>
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Notification:</span>
@@ -5450,7 +5658,7 @@
 
       <button class="secondary-btn" style="background:rgba(79, 70, 229, 0.12); border:1.5px solid #4f46e5; color:#4f46e5; font-weight:800; justify-content:center;"
         onclick="downloadFullApk()">
-        📲 Direct Download & Install APK (v5.9.14)
+        📲 Direct Download & Install APK (v5.9.15)
       </button>
 
       <button class="secondary-btn" onclick="checkInAppUpdate(true)">
@@ -7693,9 +7901,9 @@
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '5.9.14';
-    const LOCAL_APP_VERSION_CODE = 74;
-    const LOCAL_APP_BUILD_HASH = 'e457967371d6';
+    const LOCAL_APP_VERSION_NAME = '5.9.15';
+    const LOCAL_APP_VERSION_CODE = 75;
+    const LOCAL_APP_BUILD_HASH = 'efa85e1a5f0b';
 
     let cachedLatestVersionCode = 29;
 

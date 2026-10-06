@@ -1,18 +1,20 @@
 {
-  "versionName": "5.9.14",
-  "versionCode": 74,
-  "apkVersionCode": 74,
-  "htmlHash": "e457967371d6",
+  "versionName": "5.9.15",
+  "versionCode": 75,
+  "apkVersionCode": 75,
+  "htmlHash": "efa85e1a5f0b",
   "apkHash": "094e9e3e409d",
   "apkSize": 2405492,
-  "updatedAt": 1791258735896,
+  "updatedAt": 1791262939504,
   "publicUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main",
   "githubUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main",
   "pagesUrl": "https://krishnapanday4196-gif.github.io/sec-d-timetable",
   "apkUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/SecD_Timetable.apk",
   "htmlUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/index.html",
   "downloadUrl": "https://krishnapanday4196-gif.github.io/sec-d-timetable",
-  "lastUpdated": "2026-10-06T03:52:15.896Z",
-  "apkMd5": "094e9e3e409d3212db50e0e78e4595de",
-  "releaseNotes": "v5.9.14: Fully responsive layout — auto full-width mobile view & 2-column wide executive desktop dashboard."
+  "lastUpdated": "2026-10-06T05:02:19.504Z",
+  "apkMd5": "da03e86c3eda9576c14801720090f441",
+  "releaseNotes": "v5.9.15: Dual-mode UI — 100% untouched native mobile phone layout & flagship executive 2-column desktop website dashboard.",
+  "apkSizeBytes": 2407216,
+  "apkSizeFormatted": "2.30 MB"
 }
