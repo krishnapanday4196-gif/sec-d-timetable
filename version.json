@@ -1,18 +1,18 @@
 {
-  "versionName": "5.9.11",
-  "versionCode": 71,
-  "apkVersionCode": 71,
-  "htmlHash": "18760860ef18",
-  "apkHash": "b7d54ad464c8",
-  "apkSize": 2404676,
-  "updatedAt": 1791219236366,
+  "versionName": "5.9.12",
+  "versionCode": 72,
+  "apkVersionCode": 72,
+  "htmlHash": "0787be77f3c7",
+  "apkHash": "1656f3ad3f3f",
+  "apkSize": 2407468,
+  "updatedAt": 1791255302503,
   "publicUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main",
   "githubUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main",
   "pagesUrl": "https://krishnapanday4196-gif.github.io/sec-d-timetable",
   "apkUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/SecD_Timetable.apk",
   "htmlUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/index.html",
   "downloadUrl": "https://krishnapanday4196-gif.github.io/sec-d-timetable",
-  "lastUpdated": "2026-10-05T16:53:56.366Z",
-  "apkMd5": "2e056ab20fa4153245b63b55fef6136d",
-  "releaseNotes": "v5.9.11: Fix in-app update engine with direct GitHub CDN fallback & direct APK download button."
+  "lastUpdated": "2026-10-06T02:55:02.503Z",
+  "apkMd5": "1656f3ad3f3fe9087add359862ff9d48",
+  "releaseNotes": "v5.9.12: Next-level cybernetic architectural background grid with HUD crosshairs, reactive touch spotlight, and laser scan beam."
 }
