@@ -5173,6 +5173,78 @@
       line-height: 1;
     }
 
+    /* 🎓 STUDENT PROFILE & SECTION ISOLATION STYLING */
+    .student-quick-btn {
+      position: relative;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: #38bdf8;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 10px;
+      border-radius: 12px;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .student-quick-btn:hover {
+      background: rgba(56, 189, 248, 0.22);
+      border-color: rgba(56, 189, 248, 0.6);
+      transform: translateY(-1px);
+    }
+    .student-quick-btn.is-active {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.25), rgba(99, 102, 241, 0.2));
+      border-color: #38bdf8;
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.35);
+    }
+    .student-header-pill {
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      background: #38bdf8;
+      color: #020612;
+      padding: 2px 6px;
+      border-radius: 6px;
+      line-height: 1;
+    }
+    .student-set-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 10px 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .student-set-option:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+    .student-locked-banner {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(99, 102, 241, 0.08));
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 14px;
+      padding: 8px 12px;
+      margin: 6px 12px 10px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 0.74rem;
+      color: var(--text-main);
+    }
+    .student-locked-chip {
+      background: rgba(56, 189, 248, 0.2);
+      color: #38bdf8;
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-weight: 750;
+      font-size: 0.68rem;
+    }
+
     /* Top Cancellation Notice Banner */
     .cancellation-notice-banner {
       background: linear-gradient(135deg, rgba(244, 63, 94, 0.22) 0%, rgba(159, 18, 57, 0.28) 100%);
@@ -5442,6 +5514,98 @@
       opacity: 0.6;
       border-color: rgba(255, 255, 255, 0.1);
     }
+
+    /* Student Profile & Lock Banner Styles */
+    .student-quick-btn {
+      position: relative;
+      background: rgba(56, 189, 248, 0.12);
+      border-color: rgba(56, 189, 248, 0.35);
+      color: #38bdf8;
+    }
+    .student-quick-btn.is-active {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.25), rgba(16, 185, 129, 0.2));
+      border-color: rgba(56, 189, 248, 0.6);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
+    }
+    .student-header-pill {
+      position: absolute;
+      bottom: -4px;
+      right: -2px;
+      font-size: 0.52rem;
+      font-weight: 800;
+      padding: 1px 4px;
+      border-radius: 6px;
+      background: #0284c7;
+      color: #fff;
+      line-height: 1;
+      letter-spacing: 0.3px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    .student-locked-banner {
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.14), rgba(16, 185, 129, 0.10));
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 12px;
+      padding: 8px 12px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      font-size: 0.78rem;
+      color: var(--text-main);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    }
+    .student-locked-chip {
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 6px;
+      background: rgba(56, 189, 248, 0.2);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      font-size: 0.72rem;
+    }
+    .student-set-option {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid var(--card-border);
+      background: rgba(6, 11, 24, 0.75);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .student-set-option:hover {
+      border-color: var(--accent);
+      background: rgba(14, 165, 233, 0.1);
+    }
+    .cancellation-notice-banner {
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.22), rgba(185, 28, 28, 0.14));
+      border: 1px solid rgba(239, 68, 68, 0.55);
+      border-radius: 12px;
+      padding: 9px 12px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      box-shadow: 0 4px 18px rgba(239, 68, 68, 0.25);
+      animation: pulseAlert 2.5s infinite;
+    }
+    @keyframes pulseAlert {
+      0%, 100% { box-shadow: 0 4px 18px rgba(239, 68, 68, 0.25); }
+      50% { box-shadow: 0 4px 24px rgba(239, 68, 68, 0.5); }
+    }
+    .cancel-banner-content {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+    .cancel-banner-icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
   </style>
   <!-- Splash Screen Removed for Instant Direct Launch -->
 </head>
@@ -5496,6 +5660,11 @@
           <!-- 1-Tap Academic Calendar & Holidays -->
           <button class="appbar-quick-btn" id="calQuickBtn" onclick="openAcademicCalendarModal()" title="Academic Calendar & Holidays (Odd Sem 2026-27)" aria-label="Academic Calendar">
             📅
+          </button>
+          <!-- 1-Tap Student Profile & Section-Set Lock Button -->
+          <button class="appbar-quick-btn student-quick-btn" id="studentProfileHeaderBtn" onclick="openStudentProfileModal()" title="Student Profile & Section Lock" aria-label="Student Profile">
+            <span id="studentHeaderIcon">👤</span>
+            <span class="student-header-pill" id="studentHeaderPill">PROFILE</span>
           </button>
           <!-- 1-Tap Admin Portal Button -->
           <button class="appbar-quick-btn admin-quick-btn" id="adminPortalHeaderBtn" onclick="openAdminModal()" title="Admin Portal & Class Controls" aria-label="Admin Portal">
@@ -5552,6 +5721,21 @@
       </div>
 
       <div class="holo-deck-grid">
+
+        <!-- 00. Student Profile & Section-Set Lock -->
+        <button class="holo-menu-item" id="studentHoloMenuItem" onclick="closeHoloMenu(); openStudentProfileModal();">
+          <div class="holo-item-left">
+            <div class="holo-orb-icon orb-cyan" id="studentMenuOrb">🎓</div>
+            <div class="holo-item-texts">
+              <span class="holo-item-title" id="studentMenuTitle">Student Profile & Section Lock</span>
+              <span class="holo-item-sub" id="studentMenuSub">Lock your Section & Set for personal timetable & alerts</span>
+            </div>
+          </div>
+          <div class="holo-item-right">
+            <span class="holo-item-pill" id="studentMenuPill">Setup</span>
+            <span class="holo-item-arrow">›</span>
+          </div>
+        </button>
 
         <!-- 0. Admin Portal & Class Controls -->
         <button class="holo-menu-item" id="adminHoloMenuItem" onclick="closeHoloMenu(); openAdminModal();">
@@ -5846,6 +6030,21 @@
       <!-- RIGHT MAIN CONTENT PANE: Routine & Schedule Bento Grid -->
       <section class="desktop-main-pane">
 
+        <!-- STUDENT PROFILE LOCKED STATUS BAR -->
+        <div id="studentLockedBanner" class="student-locked-banner" style="display:none;" onclick="openStudentProfileModal()">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span>🎓</span>
+            <div>
+              <strong id="studentLockName">Student Profile</strong>
+              <span style="opacity:0.75;"> • Locked to </span>
+              <span class="student-locked-chip" id="studentLockChip">SEC-D (SET-A)</span>
+            </div>
+          </div>
+          <button class="secondary-btn" style="padding:3px 8px; font-size:0.68rem; border-color:rgba(56,189,248,0.35); color:#38bdf8;" onclick="event.stopPropagation(); openStudentProfileModal();">
+            ✏️ Switch
+          </button>
+        </div>
+
         <!-- ACTIVE CANCELLATION LIVE BANNER (Top Ticker when classes are cancelled) -->
         <div id="cancellationNoticeBanner" class="cancellation-notice-banner" style="display:none;" onclick="openActiveCancellationsFromBanner()">
           <div class="cancel-banner-content">
@@ -5971,7 +6170,7 @@
         style="background:var(--card-surface-grad); border:1px solid var(--card-border); border-radius:14px; padding:12px; display:flex; flex-direction:column; gap:8px;">
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Installed Version:</span>
-          <strong style="color:var(--gold-accent);">v6.0.0 (Admin Portal & Class Cancellation)</strong>
+          <strong style="color:var(--gold-accent);">v6.1.0 (Student Profile & Multi-CR Alerts)</strong>
         </div>
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Notification:</span>
@@ -5995,7 +6194,7 @@
 
       <button class="secondary-btn" style="background:rgba(79, 70, 229, 0.12); border:1.5px solid #4f46e5; color:#4f46e5; font-weight:800; justify-content:center;"
         onclick="downloadFullApk()">
-        📲 Direct Download & Install APK (v6.0.0)
+        📲 Direct Download & Install APK (v6.1.0)
       </button>
 
       <button class="secondary-btn" onclick="checkInAppUpdate(true)">
@@ -6994,6 +7193,212 @@
     }
 
     // ============================================================
+    // 🎓 STUDENT PROFILE & SECTION/SET LOCK ENGINE (MULTI-TENANT ISOLATION)
+    // ============================================================
+    function getStudentProfile() {
+      try {
+        const raw = localStorage.getItem('secD_student_profile');
+        return raw ? JSON.parse(raw) : null;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function saveStudentProfileToStorage(profile) {
+      try {
+        if (profile) {
+          localStorage.setItem('secD_student_profile', JSON.stringify(profile));
+        } else {
+          localStorage.removeItem('secD_student_profile');
+        }
+      } catch (e) {}
+    }
+
+    function isStudentLoggedIn() {
+      const p = getStudentProfile();
+      return !!(p && p.isLoggedIn && p.section);
+    }
+
+    function initStudentProfile() {
+      const profile = getStudentProfile();
+      if (profile && profile.isLoggedIn && profile.section) {
+        // Automatically activate student's section and batch
+        if (profile.section !== currentSection) {
+          if (typeof _doSelectSection === 'function') {
+            _doSelectSection(profile.section);
+          } else {
+            currentSection = profile.section;
+          }
+        }
+        if (profile.batch && (profile.batch === 'Set-A' || profile.batch === 'Set-B')) {
+          if (typeof setBatchFilter === 'function') {
+            setBatchFilter(profile.batch);
+          }
+        }
+      }
+      updateStudentUIState();
+    }
+
+    function updateStudentUIState() {
+      const profile = getStudentProfile();
+      const banner = document.getElementById('studentLockedBanner');
+      const lockName = document.getElementById('studentLockName');
+      const lockChip = document.getElementById('studentLockChip');
+      const headerBtn = document.getElementById('studentProfileHeaderBtn');
+      const headerPill = document.getElementById('studentHeaderPill');
+      const menuTitle = document.getElementById('studentMenuTitle');
+      const menuSub = document.getElementById('studentMenuSub');
+      const menuPill = document.getElementById('studentMenuPill');
+      const activeNotice = document.getElementById('studentActiveNotice');
+      const logoutBtn = document.getElementById('studentLogoutBtn');
+
+      if (profile && profile.isLoggedIn && profile.section) {
+        if (banner) banner.style.display = 'flex';
+        if (lockName) lockName.textContent = profile.name || 'Student';
+        if (lockChip) lockChip.textContent = `${profile.section} (${profile.batch || 'Set-A'})`;
+        if (headerBtn) {
+          headerBtn.classList.add('is-active');
+          headerBtn.title = `Student: ${profile.name || 'Active'} • ${profile.section} (${profile.batch || 'Set-A'})`;
+        }
+        if (headerPill) {
+          headerPill.textContent = profile.section.replace('Sec-', '');
+          headerPill.style.display = 'inline-block';
+        }
+        if (menuTitle) menuTitle.textContent = `${profile.name || 'Student'} (${profile.section})`;
+        if (menuSub) menuSub.textContent = `Locked: ${profile.section} • ${profile.batch || 'Set-A'} (Alerts isolated)`;
+        if (menuPill) {
+          menuPill.textContent = 'Active';
+          menuPill.className = 'holo-item-pill pill-on';
+        }
+        if (activeNotice) activeNotice.style.display = 'block';
+        if (logoutBtn) logoutBtn.style.display = 'block';
+      } else {
+        if (banner) banner.style.display = 'none';
+        if (headerBtn) {
+          headerBtn.classList.remove('is-active');
+          headerBtn.title = 'Student Profile & Section Lock';
+        }
+        if (headerPill) {
+          headerPill.textContent = 'PROFILE';
+          headerPill.style.display = 'inline-block';
+        }
+        if (menuTitle) menuTitle.textContent = 'Student Profile & Section Lock';
+        if (menuSub) menuSub.textContent = 'Lock your Section & Set for personal timetable & alerts';
+        if (menuPill) {
+          menuPill.textContent = 'Setup';
+          menuPill.className = 'holo-item-pill';
+        }
+        if (activeNotice) activeNotice.style.display = 'none';
+        if (logoutBtn) logoutBtn.style.display = 'none';
+      }
+    }
+
+    function openStudentProfileModal() {
+      triggerHaptic(12);
+      const profile = getStudentProfile();
+      const nameInp = document.getElementById('studentNameInput');
+      const rollInp = document.getElementById('studentRollInput');
+      const secSelect = document.getElementById('studentSectionSelect');
+      const setRadios = document.getElementsByName('studentSetRadio');
+
+      if (profile && profile.isLoggedIn) {
+        if (nameInp) nameInp.value = profile.name || '';
+        if (rollInp) rollInp.value = profile.rollNo || '';
+        if (secSelect) secSelect.value = profile.section || currentSection;
+        if (setRadios) {
+          for (const r of setRadios) {
+            r.checked = (r.value === profile.batch);
+          }
+        }
+      } else {
+        if (nameInp && !nameInp.value) nameInp.value = '';
+        if (rollInp && !rollInp.value) rollInp.value = '';
+        if (secSelect) secSelect.value = currentSection || 'Sec-D';
+        if (setRadios) {
+          for (const r of setRadios) {
+            r.checked = (r.value === (selectedBatch === 'Set-B' ? 'Set-B' : 'Set-A'));
+          }
+        }
+      }
+
+      updateStudentUIState();
+      openModal('studentProfileModal');
+    }
+
+    function saveStudentProfile() {
+      const nameInp = document.getElementById('studentNameInput');
+      const rollInp = document.getElementById('studentRollInput');
+      const secSelect = document.getElementById('studentSectionSelect');
+      const setRadios = document.getElementsByName('studentSetRadio');
+
+      const name = (nameInp?.value || '').trim() || 'Student';
+      const rollNo = (rollInp?.value || '').trim();
+      const section = secSelect?.value || currentSection || 'Sec-D';
+      let batch = 'Set-A';
+      if (setRadios) {
+        for (const r of setRadios) {
+          if (r.checked) { batch = r.value; break; }
+        }
+      }
+
+      const profile = {
+        isLoggedIn: true,
+        name,
+        rollNo,
+        section,
+        batch,
+        savedAt: Date.now()
+      };
+
+      saveStudentProfileToStorage(profile);
+      triggerHaptic(18);
+      showToast(`🎓 Profile Saved! Locked to ${section} (${batch}).`);
+
+      // Switch Timetable view to locked section and set
+      selectSection(section);
+      setBatchFilter(batch);
+
+      updateStudentUIState();
+      updateCancellationNoticeBanner();
+      closeModal('studentProfileModal');
+    }
+
+    function clearStudentProfile() {
+      saveStudentProfileToStorage(null);
+      triggerHaptic(10);
+      showToast('🚪 Student Profile Reset! Section unlocked.');
+      updateStudentUIState();
+      updateCancellationNoticeBanner();
+      closeModal('studentProfileModal');
+    }
+
+    // Strict Multi-Tenant Notification Guard:
+    // Guarantees students only receive class cancellations & alerts belonging to their locked section and set!
+    function shouldDeliverNotificationToCurrentUser(record) {
+      if (!record) return false;
+      // If record has no section specified or is for ALL, allow
+      if (!record.section || record.section === 'ALL') return true;
+
+      const profile = getStudentProfile();
+      const userSec = (profile && profile.isLoggedIn && profile.section) ? profile.section : currentSection;
+      const userBatch = (profile && profile.isLoggedIn && profile.batch) ? profile.batch : selectedBatch;
+
+      // 1. Strict Section Isolation Check:
+      if (record.section !== userSec) {
+        return false; // Dropped: record belongs to a different section
+      }
+
+      // 2. Strict Set/Batch Isolation Check:
+      if (record.batch && record.batch !== 'ALL') {
+        if (userBatch && userBatch !== 'ALL' && record.batch !== userBatch) {
+          return false; // Dropped: record is for a different batch/set
+        }
+      }
+
+      return true;
+    }
+
+    // ============================================================
     // 🛡️ ADVANCED ADMIN AUTHENTICATION, REGISTRATION & CANCELLATION ENGINE
     // ============================================================
     let _isAdminLoggedIn = false;
@@ -7091,8 +7496,13 @@
 
         const profName = document.getElementById('adminActiveProfileName');
         const profRole = document.getElementById('adminActiveProfileRole');
+        const isSuper = !_activeAdminSession.assignedSection || _activeAdminSession.assignedSection === 'ALL';
         if (profName) profName.textContent = _activeAdminSession.fullName || 'Administrator';
-        if (profRole) profRole.textContent = `● Active: @${_activeAdminSession.username}`;
+        if (profRole) {
+          profRole.textContent = isSuper
+            ? `● Master Coordinator • @${_activeAdminSession.username}`
+            : `● CR (${_activeAdminSession.assignedSection}) • @${_activeAdminSession.username}`;
+        }
 
         updateFacultyAdminUI();
       } else {
@@ -7231,10 +7641,12 @@
 
       // Hash password with salt
       const passwordHash = sha256(password + PIN_SALT);
+      const assignedSection = (document.getElementById('regSectionSelect')?.value || 'ALL');
       const newAccount = {
         id: 'adm_' + Date.now().toString(36),
         username,
         fullName,
+        assignedSection,
         passwordHash,
         createdAt: Date.now()
       };
@@ -7247,7 +7659,8 @@
         isLoggedIn: true,
         username,
         fullName,
-        role: 'Class Admin / Coordinator',
+        assignedSection,
+        role: assignedSection === 'ALL' ? 'Master Coordinator (CR)' : `CR (${assignedSection})`,
         loginTime: Date.now()
       };
       localStorage.setItem('secD_admin_session', JSON.stringify(_activeAdminSession));
@@ -7256,8 +7669,9 @@
 
       if (errBox) errBox.style.display = 'none';
       triggerHaptic(18);
-      showToast(`🎉 Admin Account Created! Welcome, ${fullName}.`);
+      showToast(`🎉 Admin Account Created! Welcome, ${fullName} (${assignedSection === 'ALL' ? 'All Sections' : assignedSection}).`);
       updateAdminUIState();
+      populateCancelSectionOptions();
       renderTodayLectures(viewingDate);
     }
 
@@ -7300,11 +7714,13 @@
       }
 
       const fullName = account ? account.fullName : 'Master Administrator';
+      const assignedSection = account ? (account.assignedSection || 'ALL') : 'ALL';
       _activeAdminSession = {
         isLoggedIn: true,
         username: account ? account.username : 'super_admin',
         fullName,
-        role: 'Class Admin',
+        assignedSection,
+        role: assignedSection === 'ALL' ? 'Master Coordinator (CR)' : `CR (${assignedSection})`,
         loginTime: Date.now()
       };
       localStorage.setItem('secD_admin_session', JSON.stringify(_activeAdminSession));
@@ -7313,8 +7729,9 @@
 
       if (errBox) errBox.style.display = 'none';
       triggerHaptic(14);
-      showToast(`🔓 Welcome back, ${fullName}!`);
+      showToast(`🔓 Welcome back, ${fullName}! (${assignedSection === 'ALL' ? 'Master Admin' : 'CR ' + assignedSection})`);
       updateAdminUIState();
+      populateCancelSectionOptions();
       renderTodayLectures(viewingDate);
     }
 
@@ -7326,7 +7743,8 @@
           isLoggedIn: true,
           username: 'super_admin',
           fullName: 'Master Coordinator (CR)',
-          role: 'Super Admin',
+          assignedSection: 'ALL',
+          role: 'Master Coordinator (Super Admin)',
           loginTime: Date.now()
         };
         localStorage.setItem('secD_admin_session', JSON.stringify(_activeAdminSession));
@@ -7335,6 +7753,7 @@
         triggerHaptic(15);
         showToast('🔓 Super Admin Verified via Master Key!');
         updateAdminUIState();
+        populateCancelSectionOptions();
         renderTodayLectures(viewingDate);
       } else {
         alert('⛔ Incorrect Master Admin Passcode! Access Denied.');
@@ -7379,6 +7798,21 @@
       const select = document.getElementById('cancelSectionSelect');
       if (!select) return;
       const keys = Object.keys(ALL_SECTIONS);
+
+      // If active CR has an assigned section that is not 'ALL', strictly lock to their designated section
+      if (_isAdminLoggedIn && _activeAdminSession && _activeAdminSession.assignedSection && _activeAdminSession.assignedSection !== 'ALL') {
+        const mySec = _activeAdminSession.assignedSection;
+        const secObj = ALL_SECTIONS[mySec] || { room: 'Classroom' };
+        select.innerHTML = `<option value="${mySec}" selected>${mySec} (${secObj.room}) - Locked to Your Section</option>`;
+        select.disabled = true;
+        select.style.opacity = '0.9';
+        select.style.borderColor = 'rgba(16,185,129,0.6)';
+        return;
+      }
+
+      select.disabled = false;
+      select.style.opacity = '1';
+      select.style.borderColor = '';
       select.innerHTML = keys.map(k => {
         const sec = ALL_SECTIONS[k];
         return `<option value="${k}" ${k === currentSection ? 'selected' : ''}>${k} (${sec.room})</option>`;
@@ -7415,7 +7849,9 @@
 
       if (!secSelect || !periodSelect || !subjInput || !facInput) return;
 
-      const secKey = secSelect.value || currentSection;
+      const secKey = (_activeAdminSession && _activeAdminSession.assignedSection && _activeAdminSession.assignedSection !== 'ALL')
+        ? _activeAdminSession.assignedSection
+        : (secSelect.value || currentSection);
       const periodId = periodSelect.value || 'L1';
       let targetDate = new Date();
       if (dateInput && dateInput.value) {
@@ -7457,7 +7893,13 @@
       const secSelect = document.getElementById('cancelSectionSelect');
       const periodSelect = document.getElementById('cancelPeriodSelect');
       if (dateInp) dateInp.value = dateIsoStr;
-      if (secSelect) secSelect.value = secKey;
+      if (secSelect) {
+        if (_activeAdminSession && _activeAdminSession.assignedSection && _activeAdminSession.assignedSection !== 'ALL') {
+          secSelect.value = _activeAdminSession.assignedSection;
+        } else {
+          secSelect.value = secKey;
+        }
+      }
       if (periodSelect) periodSelect.value = periodId;
       onCancelFormContextChanged();
     }
@@ -7481,7 +7923,11 @@
       const reschedInp = document.getElementById('cancelRescheduleInput');
       const sendNotif = document.getElementById('cancelSendNotifCheckbox')?.checked !== false;
 
-      const section = secSelect ? secSelect.value : currentSection;
+      // Strictly lock to CR's designated section if not ALL
+      let section = secSelect ? secSelect.value : currentSection;
+      if (_activeAdminSession && _activeAdminSession.assignedSection && _activeAdminSession.assignedSection !== 'ALL') {
+        section = _activeAdminSession.assignedSection;
+      }
       const dateStr = dateInp ? dateInp.value : '';
       const period = periodSelect ? periodSelect.value : 'L1';
       const batch = batchSelect ? batchSelect.value : 'ALL';
@@ -7523,7 +7969,7 @@
       list.unshift(cancelRecord);
       saveCancelledClassesList(list);
 
-      // 2. Dispatch Local Notification if enabled
+      // 2. Dispatch Local Notification if enabled (and matching current user)
       if (sendNotif) {
         dispatchCancellationAlertNotification(cancelRecord);
       }
@@ -7554,9 +8000,11 @@
 
       if (target) {
         broadcastCancellationToServer(target, 'restore');
-        const notifTitle = `✅ [${target.section}] Class Restored: ${target.period} ${target.subject}`;
-        const notifBody = `Class routine has been restored for ${target.date}.`;
-        triggerNotificationToDevice(notifTitle, notifBody, notifBody, 'restored');
+        if (shouldDeliverNotificationToCurrentUser(target)) {
+          const notifTitle = `✅ [${target.section}] Class Restored: ${target.period} ${target.subject}`;
+          const notifBody = `Class routine has been restored for ${target.date}.`;
+          triggerNotificationToDevice(notifTitle, notifBody, notifBody, 'restored');
+        }
       }
 
       triggerHaptic(12);
@@ -7577,6 +8025,10 @@
 
     // Dispatch Cancellation Notification across all channels
     function dispatchCancellationAlertNotification(cancelRecord) {
+      if (!shouldDeliverNotificationToCurrentUser(cancelRecord)) {
+        console.log('[Notification Filter] Suppressed alert: record is for', cancelRecord.section, cancelRecord.batch);
+        return;
+      }
       const title = `🚨 [${cancelRecord.section}] Class CANCELLED: ${cancelRecord.period} (${cancelRecord.timing})`;
       const shortBody = `⚠️ ${cancelRecord.subject} is cancelled today! Reason: ${cancelRecord.reason}`;
       const bigText = `🚨 NOTICE: CLASS CANCELLED\n🏫 Section: ${cancelRecord.section} • Batch: ${cancelRecord.batch}\n⏰ Slot: ${cancelRecord.period} (${cancelRecord.timing})\n📚 Subject: ${cancelRecord.subject}\n👨‍🏫 Faculty: ${cancelRecord.faculty || 'Faculty'}\n⚠️ Reason: ${cancelRecord.reason}${cancelRecord.rescheduledNote ? '\n📍 Note: ' + cancelRecord.rescheduledNote : ''}\nAnnounced by: ${cancelRecord.cancelledBy}`;
@@ -7698,8 +8150,8 @@
         fetchedList.forEach(c => {
           if (!knownAckIds.has(c.id)) {
             knownAckIds.add(c.id);
-            // Trigger alert on student phone if affects today or tomorrow and matches their section
-            if (c.date === todayStr && (c.section === currentSection || c.section === 'Sec-D')) {
+            // Trigger alert on student phone if affects today and strictly matches their section & set!
+            if (c.date === todayStr && shouldDeliverNotificationToCurrentUser(c)) {
               dispatchCancellationAlertNotification(c);
             }
           }
@@ -7741,8 +8193,12 @@
             list.unshift(cancelRecord);
             saveCancelledClassesList(list);
 
-            dispatchCancellationAlertNotification(cancelRecord);
-            showToast(`🚨 Imported Class Cancellation: ${cancelRecord.period} ${cancelRecord.subject}!`);
+            if (shouldDeliverNotificationToCurrentUser(cancelRecord)) {
+              dispatchCancellationAlertNotification(cancelRecord);
+              showToast(`🚨 Imported Class Cancellation: ${cancelRecord.period} ${cancelRecord.subject}!`);
+            } else {
+              showToast(`ℹ️ Notice for ${cancelRecord.section} recorded.`);
+            }
 
             // Clean URL query without refreshing
             const cleanUrl = window.location.pathname;
@@ -7880,20 +8336,27 @@ ${syncLink}
         return;
       }
       container.innerHTML = accounts.map(a => `
-        <div style="display:flex; justify-content:space-between; align-items:center; padding:4px 0; border-bottom:1px solid rgba(255,255,255,0.06);">
-          <span><strong>${a.fullName}</strong> (@${a.username})</span>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.06);">
+          <div>
+            <strong>${escapeHtml(a.fullName)}</strong>
+            <span style="font-size:0.7rem; color:var(--text-sub);"> (@${escapeHtml(a.username)})</span>
+            <span class="student-locked-chip" style="font-size:0.62rem; padding:1px 6px; margin-left:4px;">${escapeHtml(a.assignedSection || 'ALL')}</span>
+          </div>
           <span style="font-size:0.65rem; color:var(--text-sub);">${new Date(a.createdAt).toLocaleDateString()}</span>
         </div>
       `).join('');
     }
 
     function triggerTestCancellationAlert() {
+      const profile = getStudentProfile();
+      const targetSec = (profile && profile.isLoggedIn && profile.section) ? profile.section : currentSection;
+      const targetBatch = (profile && profile.isLoggedIn && profile.batch) ? profile.batch : selectedBatch;
       const testRecord = {
-        section: currentSection,
+        section: targetSec,
         date: 'Today',
         period: 'L2',
         timing: '09:55 - 10:50',
-        batch: selectedBatch,
+        batch: targetBatch,
         subject: 'C-Programming (Test Alert)',
         faculty: 'Dr. Chunnu',
         reason: 'Sample Cancellation Alert Preview',
@@ -7917,17 +8380,25 @@ ${syncLink}
       const dd = String(dateObj.getDate()).padStart(2, '0');
       const viewDateStr = `${yyyy}-${mm}-${dd}`;
 
+      const profile = getStudentProfile();
+      const activeSec = (profile && profile.isLoggedIn && profile.section) ? profile.section : currentSection;
+      const activeBatch = (profile && profile.isLoggedIn && profile.batch) ? profile.batch : selectedBatch;
+
       const list = getCancelledClassesList();
-      const todayCancels = list.filter(c => c.section === currentSection && c.date === viewDateStr && c.status !== 'restored');
+      const todayCancels = list.filter(c => {
+        if (c.section !== activeSec || c.date !== viewDateStr || c.status !== 'restored') return false;
+        if (c.batch && c.batch !== 'ALL' && activeBatch !== 'ALL' && c.batch !== activeBatch) return false;
+        return true;
+      });
 
       if (todayCancels.length > 0) {
         banner.style.display = 'flex';
         const c0 = todayCancels[0];
         if (todayCancels.length === 1) {
-          if (title) title.textContent = `🚨 Class Cancelled: ${c0.period} ${c0.subject}`;
+          if (title) title.textContent = `🚨 [${c0.section}] Class Cancelled: ${c0.period} ${c0.subject}`;
           if (sub) sub.textContent = `Reason: ${c0.reason} • Tap to view notice & details`;
         } else {
-          if (title) title.textContent = `🚨 ${todayCancels.length} Classes Cancelled Today (${currentSection})`;
+          if (title) title.textContent = `🚨 [${activeSec}] ${todayCancels.length} Classes Cancelled Today`;
           if (sub) sub.textContent = `${todayCancels.map(c => c.period).join(', ')} are cancelled. Tap to view notice.`;
         }
       } else {
@@ -9138,6 +9609,19 @@ ${syncLink}
       const now = isSimulating ? getSimulatedDate() : new Date();
       if (isTodayHoliday(now)) return; // ABSOLUTELY ZERO NOTIFICATIONS ON SUNDAY OR UNIVERSITY HOLIDAYS!
 
+      const profile = getStudentProfile();
+      if (profile && profile.isLoggedIn && profile.section) {
+        if (sectionKey !== profile.section) return; // Drop notifications for other sections!
+      }
+
+      // Check if slot is cancelled today
+      const nowY = now.getFullYear();
+      const nowM = String(now.getMonth() + 1).padStart(2, '0');
+      const nowD = String(now.getDate()).padStart(2, '0');
+      const todayIso = `${nowY}-${nowM}-${nowD}`;
+      const cancelledSlot = getCancelledSlot(sectionKey, todayIso, periodObj.id, selectedBatch);
+      if (cancelledSlot) return; // Do not notify for cancelled class!
+
       const info = resolveSlotForBatch(slotObj, selectedBatch);
       if (!info || !info.subject) return;
       if (info.subject.includes('Lunch') || info.subject === 'Self Study' || info.subject === 'Free Period') return;
@@ -9192,9 +9676,9 @@ ${syncLink}
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '6.0.0';
-    const LOCAL_APP_VERSION_CODE = 76;
-    const LOCAL_APP_BUILD_HASH = 'a7b00f9fc5d5';
+    const LOCAL_APP_VERSION_NAME = '6.1.0';
+    const LOCAL_APP_VERSION_CODE = 77;
+    const LOCAL_APP_BUILD_HASH = '7dc2d944adfb';
 
     let cachedLatestVersionCode = 29;
 
@@ -11724,6 +12208,7 @@ ${syncLink}
 
       renderDayPills();
       selectDay(new Date());
+      initStudentProfile();
       initAdminSystem();
       updateLiveState(true);
 
@@ -11819,6 +12304,84 @@ ${syncLink}
     </div>
   </div>
 
+  <!-- MODAL: STUDENT PROFILE & SECTION-SET LOCK -->
+  <div class="modal-overlay" id="studentProfileModal" onclick="closeModalOnOverlay(event, 'studentProfileModal')">
+    <div class="modal-sheet" style="max-width:440px;">
+      <div class="modal-handle"></div>
+      <div class="modal-header">
+        <div class="modal-title" style="display:flex; align-items:center; gap:8px;">
+          <span>🎓</span> <span>Student Profile & Section Setup</span>
+        </div>
+        <button class="modal-close-btn" onclick="closeModal('studentProfileModal')">✕</button>
+      </div>
+
+      <div style="padding:6px 0;">
+        <div class="admin-banner-notice" style="margin-bottom:14px; background:rgba(56,189,248,0.12); border-color:rgba(56,189,248,0.35);">
+          <span>ℹ️</span>
+          <div>Apna <strong>Section</strong> aur <strong>Set</strong> select karein. Iske baad aapko <strong>sirf aapke section ka timetable</strong> dikhega aur <strong>sirf aapke section ke class alerts & cancellation notifications</strong> aayenge.</div>
+        </div>
+
+        <div class="admin-field-group">
+          <label class="admin-field-label" for="studentNameInput">Student Name:</label>
+          <input type="text" id="studentNameInput" class="admin-field-input" placeholder="e.g. Rahul Sharma">
+        </div>
+
+        <div class="admin-field-group">
+          <label class="admin-field-label" for="studentRollInput">Roll Number / Student ID (Optional):</label>
+          <input type="text" id="studentRollInput" class="admin-field-input" placeholder="e.g. 240101001">
+        </div>
+
+        <div class="admin-field-group">
+          <label class="admin-field-label" for="studentSectionSelect">Your Section (Class):</label>
+          <select id="studentSectionSelect" class="admin-field-select" style="font-weight:700;">
+            <option value="Sec-A">Section A (Room A-102)</option>
+            <option value="Sec-B">Section B (Room A-103)</option>
+            <option value="Sec-C">Section C (Room A-104)</option>
+            <option value="Sec-D" selected>Section D (Room A-108)</option>
+            <option value="Sec-E">Section E (Room E-204)</option>
+            <option value="Sec-H">Section H (Room A-302)</option>
+            <option value="Sec-I">Section I (Room A-303)</option>
+            <option value="Sec-J">Section J</option>
+            <option value="Sec-K">Section K</option>
+            <option value="Sec-L">Section L</option>
+          </select>
+        </div>
+
+        <div class="admin-field-group">
+          <label class="admin-field-label">Your Set / Batch:</label>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:4px;">
+            <label class="student-set-option" id="labelSetA">
+              <input type="radio" name="studentSetRadio" value="Set-A" checked style="accent-color:var(--accent);">
+              <div>
+                <strong style="color:#38bdf8;">🅰️ Set-A</strong>
+                <div style="font-size:0.68rem; color:var(--text-sub);">Roll 1 to 35</div>
+              </div>
+            </label>
+            <label class="student-set-option" id="labelSetB">
+              <input type="radio" name="studentSetRadio" value="Set-B" style="accent-color:#10b981;">
+              <div>
+                <strong style="color:#10b981;">🅱️ Set-B</strong>
+                <div style="font-size:0.68rem; color:var(--text-sub);">Roll 36 Onwards</div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:8px; margin-top:16px;">
+          <button class="primary-btn" style="width:100%; justify-content:center;" onclick="saveStudentProfile()">
+            💾 Save Profile & Lock Section
+          </button>
+          <div id="studentActiveNotice" style="display:none; text-align:center; font-size:0.75rem; color:#10b981; margin-top:4px;">
+            ✔ Profile is active. Notifications are locked to your section.
+          </div>
+          <button class="secondary-btn" id="studentLogoutBtn" style="display:none; width:100%; justify-content:center; color:#f87171; border-color:rgba(244,63,94,0.3); font-size:0.75rem;" onclick="clearStudentProfile()">
+            🚪 Reset Profile / Switch Section
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- MODAL: ADMIN PORTAL & CLASS CANCELLATION CONTROLS -->
   <div class="modal-overlay" id="adminModal" onclick="closeModalOnOverlay(event, 'adminModal')">
     <div class="modal-sheet" style="max-width:520px;">
@@ -11892,6 +12455,24 @@ ${syncLink}
           <div class="admin-field-group">
             <label class="admin-field-label" for="regFullNameInput">Full Name & Role:</label>
             <input type="text" id="regFullNameInput" class="admin-field-input" placeholder="e.g. Krishna Panday (Class Representative)">
+          </div>
+
+          <div class="admin-field-group">
+            <label class="admin-field-label" for="regSectionSelect">Designated Section (Your CR Section):</label>
+            <select id="regSectionSelect" class="admin-field-select" style="font-weight:700;">
+              <option value="Sec-A">Section A (Room A-102)</option>
+              <option value="Sec-B">Section B (Room A-103)</option>
+              <option value="Sec-C">Section C (Room A-104)</option>
+              <option value="Sec-D" selected>Section D (Room A-108)</option>
+              <option value="Sec-E">Section E (Room E-204)</option>
+              <option value="Sec-H">Section H (Room A-302)</option>
+              <option value="Sec-I">Section I (Room A-303)</option>
+              <option value="Sec-J">Section J</option>
+              <option value="Sec-K">Section K</option>
+              <option value="Sec-L">Section L</option>
+              <option value="ALL">👑 All Sections (Master Coordinator / Super CR)</option>
+            </select>
+            <span style="font-size:0.68rem; color:var(--text-sub); margin-top:2px;">Aapke dwara cancel kiye gaye classes ka alert sirf aapke section ke students ko jayega.</span>
           </div>
 
           <div class="admin-field-group">

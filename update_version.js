@@ -3,15 +3,15 @@ const crypto = require('crypto');
 const path = require('path');
 
 let ver = JSON.parse(fs.readFileSync('version.json', 'utf8'));
-ver.versionName = "6.0.0";
-ver.versionCode = 76;
-ver.apkVersionCode = 76;
+ver.versionName = "6.1.0";
+ver.versionCode = 77;
+ver.apkVersionCode = 77;
 ver.updatedAt = Date.now();
 ver.lastUpdated = new Date().toISOString();
-ver.releaseNotes = "v6.0.0: Admin Portal & Real-time Class Cancellation system — cancel classes with instant alerts, Master Key security, and multi-device sync.";
+ver.releaseNotes = "v6.1.0: Student Profile & Section-Set Lock + Multi-CR isolated alerts — each student gets only their section & set notifications; CRs manage classes by designated section.";
 
 let html = fs.readFileSync('index.html', 'utf8');
-html = html.replace(/<strong style="color:var\(--gold-accent\);">v[^<]+<\/strong>/, '<strong style="color:var(--gold-accent);">v' + ver.versionName + ' (Admin Portal & Class Cancellation)</strong>');
+html = html.replace(/<strong style="color:var\(--gold-accent\);">v[^<]+<\/strong>/, '<strong style="color:var(--gold-accent);">v' + ver.versionName + ' (Student Profile & Multi-CR Alerts)</strong>');
 html = html.replace(/📲 Direct Download & Install APK \(v[^)]+\)/, '📲 Direct Download & Install APK (v' + ver.versionName + ')');
 html = html.replace(/const LOCAL_APP_VERSION_NAME = '[^']+';/, "const LOCAL_APP_VERSION_NAME = '" + ver.versionName + "';");
 html = html.replace(/const LOCAL_APP_VERSION_CODE = \d+;/, 'const LOCAL_APP_VERSION_CODE = ' + ver.versionCode + ';');
