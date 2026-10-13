@@ -7491,7 +7491,7 @@
         style="background:var(--card-surface-grad); border:1px solid var(--card-border); border-radius:14px; padding:12px; display:flex; flex-direction:column; gap:8px;">
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Installed Version:</span>
-          <strong style="color:var(--gold-accent);">v6.2.3 (Student Profile & Multi-CR Alerts)</strong>
+          <strong style="color:var(--gold-accent);">v6.2.4 (Student Profile & Multi-CR Alerts)</strong>
         </div>
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Notification:</span>
@@ -7515,7 +7515,7 @@
 
       <button class="secondary-btn" style="background:rgba(79, 70, 229, 0.12); border:1.5px solid #4f46e5; color:#4f46e5; font-weight:800; justify-content:center;"
         onclick="downloadFullApk()">
-        📲 Direct Download & Install APK (v6.2.3)
+        📲 Direct Download & Install APK (v6.2.4)
       </button>
 
       <button class="secondary-btn" onclick="checkInAppUpdate(true)">
@@ -11398,9 +11398,9 @@ ${syncLink}
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '6.2.3';
-    const LOCAL_APP_VERSION_CODE = 82;
-    const LOCAL_APP_BUILD_HASH = '4e122a1ab6de';
+    const LOCAL_APP_VERSION_NAME = '6.2.4';
+    const LOCAL_APP_VERSION_CODE = 83;
+    const LOCAL_APP_BUILD_HASH = '6d660a605563';
 
     let cachedLatestVersionCode = 29;
 
@@ -11415,11 +11415,10 @@ ${syncLink}
     }
 
     const UPDATE_SERVERS = [
-      'https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main', // 24/7 GitHub Cloud CDN (Works even when PC is off!)
-      'https://krishnapanday4196-gif.github.io/sec-d-timetable',                     // 24/7 GitHub Pages CDN
-      'https://llc-displays-sec-information.trycloudflare.com',                      // Cloudflare Live Tunnel (When PC is ON)
-      'https://cse-d-timetable-ota.loca.lt',                                         // Localtunnel Discovery
-      'http://40.40.24.45:8080'                                                      // Local Wi-Fi Direct
+      'https://viii-monitoring-floral-corporations.trycloudflare.com',               // ⚡ Active Live Cloudflare Tunnel (Zero-lag)
+      'http://40.40.27.228:8080',                                                    // 📶 Local Wi-Fi Direct
+      'https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main', // 24/7 GitHub Cloud CDN
+      'https://cse-d-timetable-ota.loca.lt'                                          // Localtunnel Discovery
     ];
     let activeConnectedServer = UPDATE_SERVERS[0];
     const GITHUB_APK_SHARE_URL = Object.freeze('https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/SecD_Timetable.apk');
@@ -11504,7 +11503,7 @@ ${syncLink}
 
       const promises = candidateList.map(async (url) => {
         const controller = new AbortController();
-        const timeout = setTimeout(() => controller.abort(), 2200);
+        const timeout = setTimeout(() => controller.abort(), 6500);
         // Only send bypass-tunnel-reminder for loca.lt so trycloudflare & local IP skip CORS OPTIONS preflight
         const fetchOpts = { signal: controller.signal };
         if (url.includes('loca.lt')) {
@@ -11627,8 +11626,9 @@ ${syncLink}
       };
 
       const directServers = [
-        'https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main',
-        'https://krishnapanday4196-gif.github.io/sec-d-timetable'
+        'https://viii-monitoring-floral-corporations.trycloudflare.com',
+        'http://40.40.27.228:8080',
+        'https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main'
       ];
 
       // 1. Native Android Java OTA Downloader (Zero CORS restrictions!)
