@@ -1157,6 +1157,58 @@ const server = http.createServer((req, res) => {
     }
   }
 
+  const PYQS_FILE = path.join(ROOT_DIR, 'pyqs_data.json');
+
+  if (urlPath === '/api/pyqs') {
+    if (req.method === 'GET') {
+      try {
+        const data = fs.existsSync(PYQS_FILE) ? fs.readFileSync(PYQS_FILE, 'utf8') : '{"pyqs":[]}';
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(data);
+      } catch (e) {
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: e.message, pyqs: [] }));
+      }
+      return;
+    }
+    if (req.method === 'POST') {
+      let body = '';
+      req.on('data', chunk => { body += chunk; });
+      req.on('end', () => {
+        try {
+          const payload = JSON.parse(body);
+          let current = { pyqs: [] };
+          if (fs.existsSync(PYQS_FILE)) {
+            try { current = JSON.parse(fs.readFileSync(PYQS_FILE, 'utf8')); } catch (e) {}
+          }
+          if (!Array.isArray(current.pyqs)) current.pyqs = [];
+
+          if (payload.action === 'upload' && payload.data) {
+            const d = payload.data;
+            // Prevent duplicate by id
+            current.pyqs = current.pyqs.filter(p => p.id !== d.id);
+            current.pyqs.unshift(d);
+          } else if (payload.action === 'delete') {
+            const id = payload.id;
+            current.pyqs = current.pyqs.filter(p => p.id !== id);
+          } else if (Array.isArray(payload.pyqs)) {
+            current.pyqs = payload.pyqs;
+          }
+
+          current.updatedAt = Date.now();
+          fs.writeFileSync(PYQS_FILE, JSON.stringify(current, null, 2), 'utf8');
+          console.log(` \x1b[32m✔\x1b[0m [PYQ SYNC] Universal PYQs saved. Count: ${current.pyqs.length}`);
+          res.writeHead(200, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ success: true, pyqs: current.pyqs, updatedAt: current.updatedAt }));
+        } catch (e) {
+          res.writeHead(400, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ error: 'Invalid payload: ' + e.message }));
+        }
+      });
+      return;
+    }
+  }
+
   const htmlPath = path.join(ROOT_DIR, 'index.html');
   const apkPath = path.join(ROOT_DIR, 'CSE_D_Timetable.apk');
   const htmlHash = getFileHash(htmlPath);

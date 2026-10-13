@@ -3,15 +3,15 @@ const crypto = require('crypto');
 const path = require('path');
 
 let ver = JSON.parse(fs.readFileSync('version.json', 'utf8'));
-ver.versionName = "6.2.4";
-ver.versionCode = 83;
-ver.apkVersionCode = 83;
+ver.versionName = "6.3.0";
+ver.versionCode = 84;
+ver.apkVersionCode = 84;
 ver.updatedAt = Date.now();
 ver.lastUpdated = new Date().toISOString();
-ver.releaseNotes = "v6.2.4: Active Cloudflare Tunnel & Local Wi-Fi Direct OTA • Ultra-Fast Instant Update • Complete Mobile UI Fix";
+ver.releaseNotes = "v6.3.0: Strict Section & Set Lockdown Isolation • Universal PYQ Question Papers Vault with Admin Upload across all sections";
 
 let html = fs.readFileSync('index.html', 'utf8');
-html = html.replace(/<strong style="color:var\(--gold-accent\);">v[^<]+<\/strong>/, '<strong style="color:var(--gold-accent);">v' + ver.versionName + ' (Student Profile & Multi-CR Alerts)</strong>');
+html = html.replace(/<strong style="color:var\(--gold-accent\);">v[^<]+<\/strong>/, '<strong style="color:var(--gold-accent);">v' + ver.versionName + ' (Strict Isolation & PYQ Vault)</strong>');
 html = html.replace(/📲 Direct Download & Install APK \(v[^)]+\)/, '📲 Direct Download & Install APK (v' + ver.versionName + ')');
 html = html.replace(/const LOCAL_APP_VERSION_NAME = '[^']+';/, "const LOCAL_APP_VERSION_NAME = '" + ver.versionName + "';");
 html = html.replace(/const LOCAL_APP_VERSION_CODE = \d+;/, 'const LOCAL_APP_VERSION_CODE = ' + ver.versionCode + ';');
@@ -39,10 +39,13 @@ fs.writeFileSync('version.json', JSON.stringify(ver, null, 2), 'utf8');
 try { 
   fs.copyFileSync('index.html', 'android/app/src/main/assets/index.html'); 
   fs.copyFileSync('sections_data.json', 'android/app/src/main/assets/sections_data.json');
+  if (fs.existsSync('pyqs_data.json')) {
+    fs.copyFileSync('pyqs_data.json', 'android/app/src/main/assets/pyqs_data.json');
+  }
   if (fs.existsSync('cancelled_classes.json')) {
     fs.copyFileSync('cancelled_classes.json', 'android/app/src/main/assets/cancelled_classes.json');
   }
-  console.log('✅ Synced index.html, sections_data.json, and cancelled_classes.json to Android assets'); 
+  console.log('✅ Synced index.html, pyqs_data.json, sections_data.json, and cancelled_classes.json to Android assets'); 
 } catch(e) {
   console.error(e);
 }

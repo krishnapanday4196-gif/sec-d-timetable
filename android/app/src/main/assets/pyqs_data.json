@@ -1,0 +1,149 @@
+{
+  "updatedAt": 1740000000000,
+  "pyqs": [
+    {
+      "id": "pyq-bcs101-endsem-2024",
+      "subject": "Basics of Computer and C Programming",
+      "code": "BCS-101",
+      "semester": "Semester 1",
+      "examType": "End-Sem Exam",
+      "year": "2024-2025",
+      "marks": "100 Marks (3 Hours)",
+      "section": "ALL",
+      "uploadedBy": "Quantum COE / Admin",
+      "notes": "Official university paper with complete marking scheme and programming solutions.",
+      "questions": [
+        "Section A (20 Marks): Short answers - storage classes in C, ternary operator, structure vs union, dangling pointers.",
+        "Section B (30 Marks): Functions - call by value vs call by reference with swap program, recursion for Tower of Hanoi.",
+        "Section C (30 Marks): Dynamic memory allocation using malloc, calloc, realloc, free with linked list creation.",
+        "Section D (20 Marks): File handling in C - program to count vowels and consonants in text file."
+      ]
+    },
+    {
+      "id": "pyq-bph101-midsem-2024",
+      "subject": "Computational & Quantum Physics",
+      "code": "BPH-101",
+      "semester": "Semester 1",
+      "examType": "Mid-Sem Exam",
+      "year": "2024-2025",
+      "marks": "50 Marks (1.5 Hours)",
+      "section": "ALL",
+      "uploadedBy": "Physics Dept / Admin",
+      "notes": "Mid-semester question paper covering Wave Mechanics, Schrodinger Equation & Compton Effect.",
+      "questions": [
+        "Q1. Derive the time-independent Schrodinger wave equation for a 1D potential well.",
+        "Q2. Explain Compton Scattering and derive the formula for Compton shift Δλ.",
+        "Q3. State Heisenberg's Uncertainty Principle and show that electrons cannot reside in nucleus.",
+        "Q4. What are wave packets? Derive the relation between group velocity and phase velocity."
+      ]
+    },
+    {
+      "id": "pyq-bma101-endsem-2024",
+      "subject": "Computational Mathematics for Intelligent Systems",
+      "code": "BMA-101",
+      "semester": "Semester 1",
+      "examType": "End-Sem Exam",
+      "year": "2024-2025",
+      "marks": "100 Marks (3 Hours)",
+      "section": "ALL",
+      "uploadedBy": "Maths Dept / Admin",
+      "notes": "Linear Algebra, Calculus, Eigenvalues and Gradient Descent Foundations.",
+      "questions": [
+        "Q1. Find the eigenvalues and eigenvectors of matrix A = [[2, 2, 1], [1, 3, 1], [1, 2, 2]].",
+        "Q2. State and prove Cayley-Hamilton theorem and compute inverse of matrix.",
+        "Q3. Expand f(x, y) = e^x cos(y) in Taylor series around origin up to 3rd degree terms.",
+        "Q4. Formulate the gradient descent optimization equation used in Machine Learning backpropagation."
+      ]
+    },
+    {
+      "id": "pyq-bcs102-midsem-2024",
+      "subject": "Front-End Web Development",
+      "code": "BCS-102",
+      "semester": "Semester 1",
+      "examType": "Mid-Sem Exam",
+      "year": "2024-2025",
+      "marks": "50 Marks (1.5 Hours)",
+      "section": "ALL",
+      "uploadedBy": "CSE Dept / Admin",
+      "notes": "HTML5 Semantic Elements, CSS3 Flexbox/Grid, Responsive Media Queries & JS DOM.",
+      "questions": [
+        "Q1. Differentiate between CSS Flexbox and Grid. Create a responsive 3-column card layout.",
+        "Q2. Explain JavaScript Event Loop, Call Stack, Callback Queue and Microtask Queue.",
+        "Q3. Write JS code to dynamically fetch JSON data using fetch() API with error handling.",
+        "Q4. What is localStorage vs sessionStorage? Write code to persist user theme preference."
+      ]
+    },
+    {
+      "id": "pyq-bai101-endsem-2024",
+      "subject": "Fundamentals of Intelligent & Autonomous Systems",
+      "code": "BAI-101",
+      "semester": "Semester 1",
+      "examType": "End-Sem Exam",
+      "year": "2024-2025",
+      "marks": "100 Marks (3 Hours)",
+      "section": "ALL",
+      "uploadedBy": "AI & CSE / Admin",
+      "notes": "AI Agents, State Space Search, A* Algorithm, Heuristic Functions & Minimax.",
+      "questions": [
+        "Q1. Classify AI agents with examples (Reflex, Model-based, Goal-based, Utility-based).",
+        "Q2. Explain A* search algorithm. Prove its admissibility and optimality conditions.",
+        "Q3. Minimax algorithm with Alpha-Beta pruning: trace on a tree with branching factor 2 and depth 3.",
+        "Q4. Knowledge representation using First Order Predicate Logic (FOPL) and Resolution refutation."
+      ]
+    },
+    {
+      "id": "pyq-cadv201-midsem-2025",
+      "subject": "Technical Training - Advance Programming in C",
+      "code": "C-ADV-201",
+      "semester": "Semester 2",
+      "examType": "Mid-Sem Exam",
+      "year": "2025-2026",
+      "marks": "50 Marks (1.5 Hours)",
+      "section": "ALL",
+      "uploadedBy": "Training Cell / Admin",
+      "notes": "Bitwise Manipulation, Function Pointers, Memory Management & Data Structures.",
+      "questions": [
+        "Q1. Implement bitwise functions to: (a) Count set bits, (b) Swap nibbles, (c) Check power of 2.",
+        "Q2. What are function pointer arrays? Implement a calculator dispatch table.",
+        "Q3. Write C code for circular queue using dynamic memory allocation.",
+        "Q4. Explain memory alignment, structure padding and #pragma pack directives."
+      ]
+    },
+    {
+      "id": "pyq-evs101-endsem-2024",
+      "subject": "Environmental Studies-I",
+      "code": "EVS-101",
+      "semester": "Semester 1",
+      "examType": "End-Sem Exam",
+      "year": "2024-2025",
+      "marks": "100 Marks (3 Hours)",
+      "section": "ALL",
+      "uploadedBy": "EVS Dept / Admin",
+      "notes": "Ecosystem dynamics, Biodiversity conservation, Pollution control & Green Energy.",
+      "questions": [
+        "Q1. Describe the 10% energy transfer law in trophic levels of an ecosystem.",
+        "Q2. Distinguish between In-situ and Ex-situ biodiversity conservation methods.",
+        "Q3. Discuss the biochemical effects of particulate matter (PM2.5, PM10) on human health.",
+        "Q4. Explain the salient features of the Water (Prevention and Control of Pollution) Act 1974."
+      ]
+    },
+    {
+      "id": "pyq-eng101-midsem-2024",
+      "subject": "Communication & Professional Skills - I",
+      "code": "ENG-101",
+      "semester": "Semester 1",
+      "examType": "Mid-Sem Exam",
+      "year": "2024-2025",
+      "marks": "50 Marks (1.5 Hours)",
+      "section": "ALL",
+      "uploadedBy": "Humanities / Admin",
+      "notes": "Professional Etiquette, Business Correspondence, Verbal & Non-Verbal Skills.",
+      "questions": [
+        "Q1. Elaborate on the 7 Cs of Business Communication with contextual workplace examples.",
+        "Q2. Draft a formal email to Department Head requesting permission for technical symposium.",
+        "Q3. Analyze kinesics and proxemics in professional group discussions and job interviews.",
+        "Q4. Define psychological and semantic barriers to communication and methods to overcome them."
+      ]
+    }
+  ]
+}

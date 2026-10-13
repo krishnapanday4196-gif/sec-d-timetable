@@ -4157,6 +4157,100 @@
       font-size: 0.68rem;
       color: var(--text-muted);
     }
+
+    /* UNIVERSAL PYQ QUESTION PAPERS VAULT STYLES */
+    .pyq-chip {
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      border: 1px solid var(--card-border);
+      background: var(--card-solid);
+      color: var(--text-sub);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+      user-select: none;
+      flex-shrink: 0;
+    }
+    .pyq-chip:hover {
+      background: var(--card-hover);
+      color: var(--text-main);
+      border-color: var(--accent);
+    }
+    .pyq-chip.active {
+      background: var(--accent);
+      color: #020612;
+      border-color: var(--accent);
+      box-shadow: 0 0 12px var(--accent-glow);
+    }
+    .pyq-card-item {
+      background: var(--card-surface-grad);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+    .pyq-card-item:hover {
+      border-color: var(--accent);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45), 0 0 12px var(--accent-glow);
+      transform: translateY(-2px);
+    }
+    .pyq-card-title-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .pyq-card-title {
+      font-size: 0.86rem;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.3;
+    }
+    .pyq-card-code {
+      font-size: 0.68rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 6px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      white-space: nowrap;
+    }
+    .pyq-meta-badges {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .pyq-badge {
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .pyq-badge-sem { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.35); }
+    .pyq-badge-exam { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.35); }
+    .pyq-badge-year { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.35); }
+    .pyq-badge-univ { background: rgba(99, 102, 241, 0.15); color: #818cf8; border: 1px solid rgba(99, 102, 241, 0.35); }
+    .pyq-actions-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 4px;
+      padding-top: 6px;
+      border-top: 1px dashed rgba(255, 255, 255, 0.1);
+    }
     .appbar-quick-btn {
       width: 38px;
       height: 38px;
@@ -6997,6 +7091,21 @@
           </div>
         </button>
 
+        <!-- 0b. PYQ Question Papers Vault (Universal All Sections & Admin Upload) -->
+        <button class="holo-menu-item" id="pyqHoloMenuItem" onclick="closeHoloMenu(); openPyqModal();">
+          <div class="holo-item-left">
+            <div class="holo-orb-icon" style="background:rgba(99,102,241,0.22); color:#818cf8; border:1px solid rgba(99,102,241,0.45);">📚</div>
+            <div class="holo-item-texts">
+              <span class="holo-item-title" id="pyqMenuTitle">PYQ Question Papers</span>
+              <span class="holo-item-sub" id="pyqMenuSub">Mid &amp; End-Sem exam papers • Admin upload &amp; All Sections</span>
+            </div>
+          </div>
+          <div class="holo-item-right">
+            <span class="holo-item-pill pill-on" id="pyqMenuPill">All Secs</span>
+            <span class="holo-item-arrow">›</span>
+          </div>
+        </button>
+
         <!-- 1. Faculty Directory (All Sections) -->
         <button class="holo-menu-item" id="facultyDirBtn" onclick="closeHoloMenu(); openFacultyModal();">
           <div class="holo-item-left">
@@ -7267,6 +7376,9 @@
             <button class="dtool-btn" onclick="openAcademicCalendarModal()" title="Academic & holiday calendar">
               <span>📅</span> <span>Holidays</span>
             </button>
+            <button class="dtool-btn" onclick="openPyqModal()" title="Previous Year Question Papers vault (All Sections)">
+              <span>📚</span> <span>PYQ Papers</span>
+            </button>
           </div>
         </div>
 
@@ -7491,7 +7603,7 @@
         style="background:var(--card-surface-grad); border:1px solid var(--card-border); border-radius:14px; padding:12px; display:flex; flex-direction:column; gap:8px;">
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Installed Version:</span>
-          <strong style="color:var(--gold-accent);">v6.2.4 (Student Profile & Multi-CR Alerts)</strong>
+          <strong style="color:var(--gold-accent);">v6.3.0 (Strict Isolation & PYQ Vault)</strong>
         </div>
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Notification:</span>
@@ -7515,7 +7627,7 @@
 
       <button class="secondary-btn" style="background:rgba(79, 70, 229, 0.12); border:1.5px solid #4f46e5; color:#4f46e5; font-weight:800; justify-content:center;"
         onclick="downloadFullApk()">
-        📲 Direct Download & Install APK (v6.2.4)
+        📲 Direct Download & Install APK (v6.3.0)
       </button>
 
       <button class="secondary-btn" onclick="checkInAppUpdate(true)">
@@ -8145,8 +8257,185 @@
           </button>
           <button class="secondary-btn" style="width:auto;" onclick="closeModal('addFacultyModal')">
             Cancel
+    </div>
+  </div>
+
+  <!-- MODAL: UNIVERSAL PYQ QUESTION PAPERS VAULT (ALL SECTIONS) -->
+  <div class="modal-overlay" id="pyqModal" onclick="closeModalOnOverlay(event, 'pyqModal')">
+    <div class="modal-sheet" style="max-height:92vh; display:flex; flex-direction:column; padding:16px 14px 14px 14px; box-sizing:border-box;">
+      <div class="modal-handle"></div>
+
+      <!-- Header -->
+      <div class="modal-header" style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; flex-shrink:0;">
+        <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+          <div class="modal-title" style="font-size:1.05rem; font-weight:800; display:flex; align-items:center; gap:6px;">
+            <span>📚</span> <span>PYQ Question Papers</span>
+          </div>
+          <span class="period-count-badge badge-set-all" style="font-size:0.65rem; background:rgba(99,102,241,0.22); color:#818cf8; border:1px solid rgba(99,102,241,0.5);">🌐 All Sections</span>
+          <span id="pyqAdminModeBadge" class="period-count-badge" style="font-size:0.65rem; display:none; background:rgba(16,185,129,0.2); color:#34d399; border:1px solid rgba(16,185,129,0.45);">🛡️ Admin Upload Mode</span>
+        </div>
+        <button class="modal-close-btn" onclick="closeModal('pyqModal')">✕</button>
+      </div>
+
+      <!-- Admin Actions / Student Notice Banner -->
+      <div id="pyqBannerContainer" style="margin-bottom:8px; flex-shrink:0;">
+        <!-- Rendered by updatePyqUIState() -->
+      </div>
+
+      <!-- Admin Upload Card (Collapsible, shown for Admins or on Upload Click) -->
+      <div id="pyqUploadCard" style="display:none; margin-bottom:10px; flex-shrink:0; background:rgba(14,24,52,0.92); border:1px solid rgba(56,189,248,0.4); border-radius:14px; padding:12px; box-shadow:0 8px 24px rgba(0,0,0,0.4);">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
+          <div style="font-size:0.85rem; font-weight:800; color:#38bdf8; display:flex; align-items:center; gap:6px;">
+            <span>📤</span> <span>Upload New PYQ Paper (All Sections)</span>
+          </div>
+          <button type="button" onclick="togglePyqUploadCard(false)" style="background:transparent; border:none; color:#94a3b8; font-size:1rem; cursor:pointer;">✕</button>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:8px;">
+          <div>
+            <label style="font-size:0.7rem; color:#cbd5e1; font-weight:700; margin-bottom:2px; display:block;">Subject Name *</label>
+            <input type="text" id="newPyqSubject" class="modal-input" placeholder="e.g. Basics of Computer and C" style="width:100%; box-sizing:border-box; font-size:0.78rem; padding:8px 10px;" list="pyqSubjectSuggestions">
+            <datalist id="pyqSubjectSuggestions">
+              <option value="Basics of Computer and C Programming">
+              <option value="Computational & Quantum Physics">
+              <option value="Computational Mathematics for Intelligent Systems">
+              <option value="Front-End Web Development">
+              <option value="Fundamentals of Intelligent & Autonomous Systems">
+              <option value="Technical Training - Advance Programming in C">
+              <option value="Environmental Studies-I">
+              <option value="Communication & Professional Skills -I">
+              <option value="Operating System">
+              <option value="Data Structures & Algorithms">
+            </datalist>
+          </div>
+          <div>
+            <label style="font-size:0.7rem; color:#cbd5e1; font-weight:700; margin-bottom:2px; display:block;">Subject Code</label>
+            <input type="text" id="newPyqCode" class="modal-input" placeholder="e.g. BCS-101 / BPH-101" style="width:100%; box-sizing:border-box; font-size:0.78rem; padding:8px 10px;">
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px; margin-bottom:8px;">
+          <div>
+            <label style="font-size:0.7rem; color:#cbd5e1; font-weight:700; margin-bottom:2px; display:block;">Semester</label>
+            <select id="newPyqSemester" class="modal-input" style="width:100%; box-sizing:border-box; font-size:0.75rem; padding:7px 6px;">
+              <option value="Semester 1">Semester 1</option>
+              <option value="Semester 2">Semester 2</option>
+              <option value="Semester 3">Semester 3</option>
+              <option value="Semester 4">Semester 4</option>
+              <option value="Semester 5">Semester 5</option>
+              <option value="Semester 6">Semester 6</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size:0.7rem; color:#cbd5e1; font-weight:700; margin-bottom:2px; display:block;">Exam Type</label>
+            <select id="newPyqExamType" class="modal-input" style="width:100%; box-sizing:border-box; font-size:0.75rem; padding:7px 6px;">
+              <option value="Mid-Sem Exam">Mid-Sem Exam</option>
+              <option value="End-Sem Exam">End-Sem Exam</option>
+              <option value="Backlog / Special">Backlog / Special</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size:0.7rem; color:#cbd5e1; font-weight:700; margin-bottom:2px; display:block;">Academic Year</label>
+            <select id="newPyqYear" class="modal-input" style="width:100%; box-sizing:border-box; font-size:0.75rem; padding:7px 6px;">
+              <option value="2025-2026">2025-2026</option>
+              <option value="2024-2025" selected>2024-2025</option>
+              <option value="2023-2024">2023-2024</option>
+              <option value="2022-2023">2022-2023</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:8px;">
+          <div>
+            <label style="font-size:0.7rem; color:#cbd5e1; font-weight:700; margin-bottom:2px; display:block;">Total Marks / Time</label>
+            <input type="text" id="newPyqMarks" class="modal-input" placeholder="e.g. 100 Marks (3 Hours)" style="width:100%; box-sizing:border-box; font-size:0.78rem; padding:8px 10px;">
+          </div>
+          <div>
+            <label style="font-size:0.7rem; color:#cbd5e1; font-weight:700; margin-bottom:2px; display:block;">Section Visibility</label>
+            <select id="newPyqSection" class="modal-input" style="width:100%; box-sizing:border-box; font-size:0.75rem; padding:7px 8px; font-weight:700; color:#38bdf8;">
+              <option value="ALL" selected>🌐 All Sections (Sec A to L)</option>
+              <option value="Sec-A">Section A Only</option>
+              <option value="Sec-B">Section B Only</option>
+              <option value="Sec-C">Section C Only</option>
+              <option value="Sec-D">Section D Only</option>
+              <option value="Sec-E">Section E Only</option>
+              <option value="Sec-H">Section H Only</option>
+              <option value="Sec-I">Section I Only</option>
+              <option value="Sec-J">Section J Only</option>
+              <option value="Sec-K">Section K Only</option>
+              <option value="Sec-L">Section L Only</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="margin-bottom:8px;">
+          <label style="font-size:0.7rem; color:#cbd5e1; font-weight:700; margin-bottom:2px; display:block;">Upload File (PDF / Image) OR Online Link</label>
+          <div style="display:flex; flex-direction:column; gap:6px;">
+            <input type="file" id="newPyqFileInput" accept=".pdf,image/*" style="font-size:0.75rem; color:#cbd5e1; padding:6px 0;">
+            <input type="url" id="newPyqLinkInput" class="modal-input" placeholder="Or paste Google Drive / PDF web URL..." style="width:100%; box-sizing:border-box; font-size:0.75rem; padding:7px 10px;">
+          </div>
+        </div>
+
+        <div style="margin-bottom:10px;">
+          <label style="font-size:0.7rem; color:#cbd5e1; font-weight:700; margin-bottom:2px; display:block;">Key Questions / Notes (Optional)</label>
+          <textarea id="newPyqNotes" class="modal-input" rows="2" placeholder="e.g. Includes Section A, B & C questions with step-by-step marking scheme..." style="width:100%; box-sizing:border-box; font-size:0.75rem; padding:7px 10px; resize:none;"></textarea>
+        </div>
+
+        <div style="display:flex; gap:8px;">
+          <button class="primary-btn" style="flex:1; padding:9px 12px; font-size:0.8rem; font-weight:800;" onclick="submitPyqUpload()">
+            <span>🚀</span> <span>Publish Paper to All Sections</span>
+          </button>
+          <button class="secondary-btn" style="padding:9px 14px; font-size:0.8rem;" onclick="togglePyqUploadCard(false)">
+            Cancel
           </button>
         </div>
+      </div>
+
+      <!-- Search & Filter Controls -->
+      <div style="margin-bottom:8px; flex-shrink:0;">
+        <input type="text" id="pyqSearchInput" class="modal-input" placeholder="🔍 Search subject, paper code, exam type or year..." style="width:100%; box-sizing:border-box; padding:9px 12px; font-size:0.82rem; border-radius:10px;" oninput="onPyqSearchChanged()">
+      </div>
+
+      <!-- Filter Pills -->
+      <div style="display:flex; gap:6px; overflow-x:auto; padding-bottom:6px; margin-bottom:6px; flex-shrink:0;" id="pyqFilterPills">
+        <button class="pyq-chip active" onclick="setPyqFilter('ALL', this)">All (All Secs)</button>
+        <button class="pyq-chip" onclick="setPyqFilter('Mid-Sem', this)">Mid-Sem</button>
+        <button class="pyq-chip" onclick="setPyqFilter('End-Sem', this)">End-Sem</button>
+        <button class="pyq-chip" onclick="setPyqFilter('Semester 1', this)">Sem-1</button>
+        <button class="pyq-chip" onclick="setPyqFilter('Semester 2', this)">Sem-2</button>
+      </div>
+
+      <!-- PYQs List Container -->
+      <div id="pyqListContainer" style="display:flex; flex-direction:column; gap:8px; flex:1; min-height:220px; max-height:55vh; overflow-y:auto; padding-right:2px; box-sizing:border-box;">
+        <!-- Dynamically rendered by renderPyqList() -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: PYQ PAPER DETAILS & QUESTIONS VIEWER -->
+  <div class="modal-overlay" id="pyqViewerModal" onclick="closeModalOnOverlay(event, 'pyqViewerModal')">
+    <div class="modal-sheet" style="max-height:90vh; display:flex; flex-direction:column; padding:16px 14px 14px 14px; box-sizing:border-box;">
+      <div class="modal-handle"></div>
+
+      <div class="modal-header" style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; flex-shrink:0;">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div class="modal-title" id="pyqViewerTitle" style="font-size:1rem; font-weight:800;">📄 Question Paper</div>
+          <span id="pyqViewerCodeBadge" class="period-count-badge badge-set-a" style="font-size:0.65rem;">BCS-101</span>
+        </div>
+        <button class="modal-close-btn" onclick="closeModal('pyqViewerModal')">✕</button>
+      </div>
+
+      <div id="pyqViewerContent" style="flex:1; overflow-y:auto; padding:8px 4px; box-sizing:border-box;">
+        <!-- Rendered by openPyqViewer() -->
+      </div>
+
+      <div style="display:flex; gap:8px; margin-top:10px; flex-shrink:0;">
+        <button id="pyqViewerDownloadBtn" class="primary-btn" style="flex:1; padding:9px 12px; font-size:0.82rem;" onclick="triggerActivePyqDownload()">
+          <span>⬇️</span> <span>Download Question Paper</span>
+        </button>
+        <button class="secondary-btn" style="padding:9px 14px; font-size:0.82rem;" onclick="closeModal('pyqViewerModal')">
+          Close
+        </button>
       </div>
     </div>
   </div>
@@ -8222,32 +8511,110 @@
       showToast(`⚡ Switched to ${ALL_SECTIONS[secKey].name} (${ALL_SECTIONS[secKey].room})!`);
     }
 
+    function updateBatchTabsLock() {
+      const profile = getStudentProfile();
+      const tabA = document.getElementById('tabSetA');
+      const tabB = document.getElementById('tabSetB');
+      const tabAll = document.getElementById('tabAll');
+      if (!tabA || !tabB || !tabAll) return;
+
+      const isStudent = Boolean(profile && profile.isLoggedIn && profile.batch && !_isAdminLoggedIn);
+
+      if (isStudent) {
+        if (profile.batch === 'Set-A') {
+          tabA.style.display = 'flex';
+          tabA.style.flex = '1';
+          tabA.className = 'batch-tab active-seta';
+          tabA.innerHTML = '<span>🔒 🅰️</span> <span>Set-A (Your Locked Batch)</span>';
+          tabB.style.display = 'none';
+          tabAll.style.display = 'none';
+          selectedBatch = 'Set-A';
+        } else if (profile.batch === 'Set-B') {
+          tabB.style.display = 'flex';
+          tabB.style.flex = '1';
+          tabB.className = 'batch-tab active-setb';
+          tabB.innerHTML = '<span>🔒 🅱️</span> <span>Set-B (Your Locked Batch)</span>';
+          tabA.style.display = 'none';
+          tabAll.style.display = 'none';
+          selectedBatch = 'Set-B';
+        }
+      } else {
+        // CR (can view both sets), Admin, or Guest:
+        tabA.style.display = 'flex';
+        tabA.style.flex = '';
+        tabA.innerHTML = '<span>🅰️</span> <span>Set-A</span>';
+        tabB.style.display = 'flex';
+        tabB.style.flex = '';
+        tabB.innerHTML = '<span>🅱️</span> <span>Set-B</span>';
+        tabAll.style.display = 'flex';
+        tabAll.style.flex = '';
+        tabAll.innerHTML = '<span>👥</span> <span>Combined</span>';
+        tabA.className = `batch-tab ${selectedBatch === 'Set-A' ? 'active-seta' : ''}`;
+        tabB.className = `batch-tab ${selectedBatch === 'Set-B' ? 'active-setb' : ''}`;
+        tabAll.className = `batch-tab ${selectedBatch === 'ALL' ? 'active-all' : ''}`;
+      }
+    }
+
     function renderSectionPills() {
       // Lazy-load all sections data for pills display
       if (!_allSectionsLoaded) { _ensureAllSections(() => renderSectionPills()); }
       const track = document.getElementById('sectionPillsTrack');
-      if (track) {
-        const secKeys = Object.keys(ALL_SECTIONS);
-        track.innerHTML = secKeys.map(k => {
-          const isActive = (k === currentSection);
-          const sec = ALL_SECTIONS[k];
-          return `<button class="sec-pill-btn ${isActive ? 'active' : ''}" onclick="selectSection('${k}')" title="${sec.name} • Room ${sec.room}">
-            <span>${k}</span>
-            <span style="font-size:0.58rem; opacity:0.75;">(${sec.room})</span>
-          </button>`;
-        }).join('');
+      const profile = getStudentProfile();
+      const isStudent = Boolean(profile && profile.isLoggedIn && profile.section && !_isAdminLoggedIn);
+      const isCR = Boolean(_isAdminLoggedIn && _activeAdminSession && _activeAdminSession.role === 'cr' && _activeAdminSession.assignedSection && _activeAdminSession.assignedSection !== 'ALL');
+      const selectorLabel = document.querySelector('.section-selector-label span');
 
-        // Auto-scroll active pill horizontally into view WITHOUT vertical window scroll
-        const activeBtn = track.querySelector('.sec-pill-btn.active');
-        if (activeBtn && track) {
-          const leftPos = activeBtn.offsetLeft - (track.clientWidth - activeBtn.clientWidth) / 2;
-          track.scrollTo({ left: leftPos, behavior: 'smooth' });
+      if (track) {
+        if (isStudent) {
+          // STRICT SECTION ISOLATION: Student ONLY sees their locked section
+          const mySecKey = profile.section;
+          const sec = ALL_SECTIONS[mySecKey] || { name: mySecKey, room: '-' };
+          track.innerHTML = `
+            <button class="sec-pill-btn active" style="background:rgba(56,189,248,0.22); border-color:rgba(56,189,248,0.7); box-shadow:0 0 14px rgba(56,189,248,0.35); font-weight:800;" title="Locked to your profile: ${sec.name}">
+              <span>🔒 ${mySecKey}</span>
+              <span style="font-size:0.58rem; opacity:0.85;">(${sec.room} • Locked)</span>
+            </button>
+            <button class="sec-pill-btn" onclick="openStudentProfileModal()" style="border-style:dashed; opacity:0.85; font-size:0.72rem; padding:6px 12px;" title="Switch or edit student profile">
+              <span>✏️ Switch Profile</span>
+            </button>
+          `;
+          if (selectorLabel) selectorLabel.textContent = '🔒 YOUR LOCKED SECTION:';
+        } else if (isCR) {
+          // CR ISOLATION: CR sees their assigned section
+          const crSecKey = _activeAdminSession.assignedSection;
+          const sec = ALL_SECTIONS[crSecKey] || { name: crSecKey, room: '-' };
+          track.innerHTML = `
+            <button class="sec-pill-btn active" style="background:rgba(16,185,129,0.22); border-color:rgba(16,185,129,0.7); box-shadow:0 0 14px rgba(16,185,129,0.35); font-weight:800;" title="CR Assigned: ${sec.name}">
+              <span>🛡️ ${crSecKey}</span>
+              <span style="font-size:0.58rem; opacity:0.85;">(${sec.room} • CR Deck)</span>
+            </button>
+          `;
+          if (selectorLabel) selectorLabel.textContent = '🛡️ ASSIGNED CR SECTION:';
+        } else {
+          // SUPER ADMIN OR GUEST: Show all section pills
+          const secKeys = Object.keys(ALL_SECTIONS);
+          track.innerHTML = secKeys.map(k => {
+            const isActive = (k === currentSection);
+            const sec = ALL_SECTIONS[k];
+            return `<button class="sec-pill-btn ${isActive ? 'active' : ''}" onclick="selectSection('${k}')" title="${sec.name} • Room ${sec.room}">
+              <span>${k}</span>
+              <span style="font-size:0.58rem; opacity:0.75;">(${sec.room})</span>
+            </button>`;
+          }).join('');
+          if (selectorLabel) selectorLabel.textContent = '🏫 QUANTUM B.TECH SECTIONS:';
+
+          // Auto-scroll active pill horizontally into view WITHOUT vertical window scroll
+          const activeBtn = track.querySelector('.sec-pill-btn.active');
+          if (activeBtn && track) {
+            const leftPos = activeBtn.offsetLeft - (track.clientWidth - activeBtn.clientWidth) / 2;
+            track.scrollTo({ left: leftPos, behavior: 'smooth' });
+          }
         }
       }
 
       const badge = document.getElementById('activeSecBadge');
       if (badge && ALL_SECTIONS[currentSection]) {
-        badge.textContent = `${ALL_SECTIONS[currentSection].name} (${ALL_SECTIONS[currentSection].room})`;
+        badge.textContent = `${ALL_SECTIONS[currentSection].name} (${ALL_SECTIONS[currentSection].room})${isStudent ? ' 🔒' : ''}`;
       }
       const brandBadge = document.getElementById('brandSectionBadge');
       if (brandBadge) {
@@ -8262,6 +8629,9 @@
       if (ribbonBadge) {
         ribbonBadge.textContent = `${currentSection.toUpperCase()} TIMETABLE`;
       }
+
+      // Enforce batch tab lockdown
+      updateBatchTabsLock();
     }
 
 
@@ -8571,7 +8941,7 @@
         }
         if (profile.batch && (profile.batch === 'Set-A' || profile.batch === 'Set-B')) {
           if (typeof setBatchFilter === 'function') {
-            setBatchFilter(profile.batch);
+            setBatchFilter(profile.batch, true);
           }
         }
       }
@@ -8630,6 +9000,10 @@
         if (activeNotice) activeNotice.style.display = 'none';
         if (logoutBtn) logoutBtn.style.display = 'none';
       }
+
+      renderSectionPills();
+      updateBatchTabsLock();
+      if (typeof updatePyqUIState === 'function') updatePyqUIState();
     }
 
     function selectStudentSet(set) {
@@ -9103,6 +9477,9 @@
 
       updateActiveCancellationsCountBadge();
       updateRoleGatewayUI();
+      renderSectionPills();
+      updateBatchTabsLock();
+      if (typeof updatePyqUIState === 'function') updatePyqUIState();
     }
 
     function openCRLoginModal(section = 'Sec-D') {
@@ -11398,9 +11775,9 @@ ${syncLink}
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '6.2.4';
-    const LOCAL_APP_VERSION_CODE = 83;
-    const LOCAL_APP_BUILD_HASH = '6d660a605563';
+    const LOCAL_APP_VERSION_NAME = '6.3.0';
+    const LOCAL_APP_VERSION_CODE = 84;
+    const LOCAL_APP_BUILD_HASH = '97d1a9eae757';
 
     let cachedLatestVersionCode = 29;
 
@@ -11851,11 +12228,11 @@ ${syncLink}
     // SWITCH BETWEEN SET-A, SET-B, AND COMPARE BOTH
     function setBatchFilter(batch, isForced = false) {
       const profile = getStudentProfile();
-      // If student is logged in and not admin/CR, lock batch to student's set
+      // If student is logged in and not admin/CR, lock batch strictly to student's set
       if (!isForced && profile && profile.isLoggedIn && profile.batch && !_isAdminLoggedIn) {
-        if (batch !== profile.batch && batch !== 'ALL') {
+        if (batch !== profile.batch) {
           triggerHaptic(20);
-          showToast(`🔒 Aap ${profile.batch} me locked hain! ${batch} dekhne ke liye "Switch Profile" karein.`);
+          showToast(`🔒 Aap ${profile.batch} me locked hain! Dusra set dekhne ke liye "Switch Profile" karein.`);
           return;
         }
       }
@@ -11865,9 +12242,7 @@ ${syncLink}
       localStorage.setItem('secD_batch_pref', batch);
       syncAndroidNotificationPrefs();
 
-      document.getElementById('tabSetA').className = `batch-tab ${batch === 'Set-A' ? 'active-seta' : ''}`;
-      document.getElementById('tabSetB').className = `batch-tab ${batch === 'Set-B' ? 'active-setb' : ''}`;
-      document.getElementById('tabAll').className = `batch-tab ${batch === 'ALL' ? 'active-all' : ''}`;
+      updateBatchTabsLock();
 
       renderTodayLectures(viewingDate);
       updateLiveState(true);
@@ -13988,6 +14363,641 @@ ${syncLink}
        ============================================================ */
     function initCosmicStardust() {
       // Cosmic Stardust permanently disabled for ultra-smooth 120fps scrolling and zero lag
+    }
+
+    // ============================================================
+    // 📚 UNIVERSAL PYQ QUESTION PAPERS VAULT ENGINE (ALL SECTIONS)
+    // ============================================================
+    const DEFAULT_PYQS_SEED = [
+      {
+        id: "pyq-bcs101-endsem-2024",
+        subject: "Basics of Computer and C Programming",
+        code: "BCS-101",
+        semester: "Semester 1",
+        examType: "End-Sem Exam",
+        year: "2024-2025",
+        marks: "100 Marks (3 Hours)",
+        section: "ALL",
+        uploadedBy: "Admin / COE",
+        uploadedAt: 1735000000000,
+        notes: "Official university paper with complete marking scheme and programming solutions.",
+        questions: [
+          "Section A (20 Marks): Short questions - Storage classes (auto, static, extern, register), ternary operator, structure vs union, dangling pointers.",
+          "Section B (30 Marks): Functions & Pointers - Call by value vs reference with swap program, recursion for Tower of Hanoi, array pointer arithmetic.",
+          "Section C (30 Marks): Dynamic memory allocation using malloc, calloc, realloc, free. Create singly linked list insertion at beginning.",
+          "Section D (20 Marks): File handling in C - Write program to count vowels, consonants, and line count in text file."
+        ]
+      },
+      {
+        id: "pyq-bph101-midsem-2024",
+        subject: "Computational & Quantum Physics",
+        code: "BPH-101",
+        semester: "Semester 1",
+        examType: "Mid-Sem Exam",
+        year: "2024-2025",
+        marks: "50 Marks (1.5 Hours)",
+        section: "ALL",
+        uploadedBy: "Physics Dept / Admin",
+        uploadedAt: 1735000000000,
+        notes: "Mid-semester question paper covering Wave Mechanics, Schrodinger Equation & Compton Effect.",
+        questions: [
+          "Q1. Derive the time-independent Schrodinger wave equation for a 1D potential well of infinite depth.",
+          "Q2. Explain Compton Scattering and derive the formula for Compton shift Δλ = (h/m0c)(1 - cosθ).",
+          "Q3. State Heisenberg's Uncertainty Principle and demonstrate why electrons cannot reside inside nucleus.",
+          "Q4. What are wave packets? Derive the relation between group velocity vg and phase velocity vp."
+        ]
+      },
+      {
+        id: "pyq-bma101-endsem-2024",
+        subject: "Computational Mathematics for Intelligent Systems",
+        code: "BMA-101",
+        semester: "Semester 1",
+        examType: "End-Sem Exam",
+        year: "2024-2025",
+        marks: "100 Marks (3 Hours)",
+        section: "ALL",
+        uploadedBy: "Maths Dept / Admin",
+        uploadedAt: 1735000000000,
+        notes: "Linear Algebra, Calculus, Eigenvalues and Gradient Descent Foundations.",
+        questions: [
+          "Q1. Find the eigenvalues and eigenvectors of matrix A = [[2, 2, 1], [1, 3, 1], [1, 2, 2]].",
+          "Q2. State and prove Cayley-Hamilton theorem and compute inverse of 3x3 matrix using characteristic equation.",
+          "Q3. Expand f(x, y) = e^x cos(y) in Taylor series around origin up to 3rd degree terms.",
+          "Q4. Formulate the gradient descent optimization equation used in backpropagation neural networks."
+        ]
+      },
+      {
+        id: "pyq-bcs102-midsem-2024",
+        subject: "Front-End Web Development",
+        code: "BCS-102",
+        semester: "Semester 1",
+        examType: "Mid-Sem Exam",
+        year: "2024-2025",
+        marks: "50 Marks (1.5 Hours)",
+        section: "ALL",
+        uploadedBy: "CSE Dept / Admin",
+        uploadedAt: 1735000000000,
+        notes: "HTML5 Semantic Elements, CSS3 Flexbox/Grid, Responsive Media Queries & JS DOM.",
+        questions: [
+          "Q1. Differentiate between CSS Flexbox and Grid. Build a responsive 3-column card layout with media queries.",
+          "Q2. Explain JavaScript Event Loop, Call Stack, Web APIs, Callback Queue and Microtask Queue with a timeline diagram.",
+          "Q3. Write JS code to dynamically fetch JSON data using fetch() API with async/await and try/catch block.",
+          "Q4. What is localStorage vs sessionStorage? Write code to persist user theme and timetable section preference."
+        ]
+      },
+      {
+        id: "pyq-bai101-endsem-2024",
+        subject: "Fundamentals of Intelligent & Autonomous Systems",
+        code: "BAI-101",
+        semester: "Semester 1",
+        examType: "End-Sem Exam",
+        year: "2024-2025",
+        marks: "100 Marks (3 Hours)",
+        section: "ALL",
+        uploadedBy: "AI & CSE / Admin",
+        uploadedAt: 1735000000000,
+        notes: "AI Agents, State Space Search, A* Algorithm, Heuristic Functions & Minimax.",
+        questions: [
+          "Q1. Classify AI agents with examples (Reflex, Model-based, Goal-based, Utility-based).",
+          "Q2. Explain A* search algorithm. Prove its admissibility and optimality conditions.",
+          "Q3. Minimax algorithm with Alpha-Beta pruning: trace on a tree with branching factor 2 and depth 3.",
+          "Q4. Knowledge representation using First Order Predicate Logic (FOPL) and Resolution refutation."
+        ]
+      },
+      {
+        id: "pyq-cadv201-midsem-2025",
+        subject: "Technical Training - Advance Programming in C",
+        code: "C-ADV-201",
+        semester: "Semester 2",
+        examType: "Mid-Sem Exam",
+        year: "2025-2026",
+        marks: "50 Marks (1.5 Hours)",
+        section: "ALL",
+        uploadedBy: "Training Cell / Admin",
+        uploadedAt: 1735000000000,
+        notes: "Bitwise Manipulation, Function Pointers, Memory Management & Data Structures.",
+        questions: [
+          "Q1. Implement bitwise functions to: (a) Count set bits in integer, (b) Swap nibbles, (c) Check power of 2.",
+          "Q2. What are function pointer arrays? Implement a calculator operation dispatch table in C.",
+          "Q3. Write C code for circular queue using dynamic memory allocation and handle overflow/underflow.",
+          "Q4. Explain memory alignment, structure padding and #pragma pack directives."
+        ]
+      },
+      {
+        id: "pyq-evs101-endsem-2024",
+        subject: "Environmental Studies-I",
+        code: "EVS-101",
+        semester: "Semester 1",
+        examType: "End-Sem Exam",
+        year: "2024-2025",
+        marks: "100 Marks (3 Hours)",
+        section: "ALL",
+        uploadedBy: "EVS Dept / Admin",
+        uploadedAt: 1735000000000,
+        notes: "Ecosystem dynamics, Biodiversity conservation, Pollution control & Green Energy.",
+        questions: [
+          "Q1. Describe the 10% energy transfer law in trophic levels of an ecosystem.",
+          "Q2. Distinguish between In-situ and Ex-situ biodiversity conservation methods.",
+          "Q3. Discuss the biochemical effects of particulate matter (PM2.5, PM10) on human health.",
+          "Q4. Explain the salient features of the Water (Prevention and Control of Pollution) Act 1974."
+        ]
+      },
+      {
+        id: "pyq-eng101-midsem-2024",
+        subject: "Communication & Professional Skills - I",
+        code: "ENG-101",
+        semester: "Semester 1",
+        examType: "Mid-Sem Exam",
+        year: "2024-2025",
+        marks: "50 Marks (1.5 Hours)",
+        section: "ALL",
+        uploadedBy: "Humanities / Admin",
+        uploadedAt: 1735000000000,
+        notes: "Professional Etiquette, Business Correspondence, Verbal & Non-Verbal Skills.",
+        questions: [
+          "Q1. Elaborate on the 7 Cs of Business Communication with contextual workplace examples.",
+          "Q2. Draft a formal email to Department Head requesting permission for technical symposium.",
+          "Q3. Analyze kinesics and proxemics in professional group discussions and job interviews.",
+          "Q4. Define psychological and semantic barriers to communication and methods to overcome them."
+        ]
+      }
+    ];
+
+    let _activePyqFilter = 'ALL';
+    let _activeViewingPyq = null;
+
+    function getStoredPyqs() {
+      try {
+        const raw = localStorage.getItem('quantum_pyqs_data');
+        if (raw) {
+          const list = JSON.parse(raw);
+          if (Array.isArray(list) && list.length > 0) return list;
+        }
+      } catch (e) {}
+      return DEFAULT_PYQS_SEED;
+    }
+
+    function saveStoredPyqs(list) {
+      try {
+        localStorage.setItem('quantum_pyqs_data', JSON.stringify(list));
+      } catch (e) {}
+      // Sync to update server if reachable
+      try {
+        fetch('/api/pyqs', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ pyqs: list })
+        }).catch(() => {});
+      } catch (e) {}
+    }
+
+    function syncPyqsFromServer() {
+      fetch('/api/pyqs')
+        .then(res => res.json())
+        .then(data => {
+          if (data && Array.isArray(data.pyqs) && data.pyqs.length > 0) {
+            const local = getStoredPyqs();
+            const idMap = new Map();
+            data.pyqs.forEach(p => idMap.set(p.id, p));
+            local.forEach(p => { if (!idMap.has(p.id)) idMap.set(p.id, p); });
+            const merged = Array.from(idMap.values());
+            localStorage.setItem('quantum_pyqs_data', JSON.stringify(merged));
+            renderPyqList();
+          }
+        })
+        .catch(() => {});
+    }
+
+    function openPyqModal() {
+      triggerHaptic(12);
+      updatePyqUIState();
+      renderPyqList();
+      openModal('pyqModal');
+      syncPyqsFromServer();
+    }
+
+    function updatePyqUIState() {
+      const bannerContainer = document.getElementById('pyqBannerContainer');
+      const adminBadge = document.getElementById('pyqAdminModeBadge');
+      const uploadCard = document.getElementById('pyqUploadCard');
+
+      if (_isAdminLoggedIn && _activeAdminSession) {
+        if (adminBadge) adminBadge.style.display = 'inline-block';
+        if (bannerContainer) {
+          bannerContainer.innerHTML = `
+            <div style="background:rgba(16,185,129,0.12); border:1px solid rgba(16,185,129,0.35); border-radius:12px; padding:10px 12px; display:flex; align-items:center; justify-content:space-between; gap:8px;">
+              <div style="font-size:0.75rem; color:#f8fafc; line-height:1.3;">
+                <strong style="color:#34d399;">🛡️ Admin Upload Deck Active:</strong>
+                <span style="opacity:0.9;">Papers you upload will be accessible across <strong>ALL Sections</strong> immediately.</span>
+              </div>
+              <button class="primary-btn" style="padding:6px 12px; font-size:0.74rem; font-weight:800; white-space:nowrap; background:#10b981; border-color:#059669;" onclick="togglePyqUploadCard(true)">
+                <span>➕</span> <span>Upload Paper</span>
+              </button>
+            </div>
+          `;
+        }
+      } else {
+        if (adminBadge) adminBadge.style.display = 'none';
+        if (uploadCard) uploadCard.style.display = 'none';
+        if (bannerContainer) {
+          bannerContainer.innerHTML = `
+            <div style="background:rgba(56,189,248,0.10); border:1px solid rgba(56,189,248,0.28); border-radius:12px; padding:9px 12px; display:flex; align-items:center; justify-content:space-between; gap:8px;">
+              <div style="font-size:0.74rem; color:#f8fafc; line-height:1.3;">
+                <strong style="color:#38bdf8;">🌐 Universal Vault:</strong>
+                <span style="opacity:0.88;">Mid-Sem &amp; End-Sem question papers for all B.Tech CSE sections. Filter or search below.</span>
+              </div>
+              <button class="secondary-btn" style="padding:5px 9px; font-size:0.68rem; white-space:nowrap;" onclick="openAdminModal('cr')">
+                <span>🛡️</span> <span>Admin Login</span>
+              </button>
+            </div>
+          `;
+        }
+      }
+    }
+
+    function togglePyqUploadCard(show) {
+      const card = document.getElementById('pyqUploadCard');
+      if (!card) return;
+      if (typeof show === 'boolean') {
+        card.style.display = show ? 'block' : 'none';
+      } else {
+        card.style.display = card.style.display === 'none' ? 'block' : 'none';
+      }
+      if (card.style.display === 'block') {
+        card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+
+    function submitPyqUpload() {
+      if (!_isAdminLoggedIn) {
+        showToast('🔒 Only Admin or CR can upload question papers! Please log in as Admin.');
+        openAdminModal('cr');
+        return;
+      }
+
+      const subjInput = document.getElementById('newPyqSubject');
+      const codeInput = document.getElementById('newPyqCode');
+      const semSelect = document.getElementById('newPyqSemester');
+      const examSelect = document.getElementById('newPyqExamType');
+      const yearSelect = document.getElementById('newPyqYear');
+      const marksInput = document.getElementById('newPyqMarks');
+      const secSelect = document.getElementById('newPyqSection');
+      const fileInput = document.getElementById('newPyqFileInput');
+      const linkInput = document.getElementById('newPyqLinkInput');
+      const notesInput = document.getElementById('newPyqNotes');
+
+      const subject = (subjInput?.value || '').trim();
+      if (!subject) {
+        showToast('⚠️ Please enter Subject Name!');
+        subjInput?.focus();
+        return;
+      }
+
+      const code = (codeInput?.value || '').trim() || 'CSE-PYQ';
+      const semester = semSelect?.value || 'Semester 1';
+      const examType = examSelect?.value || 'End-Sem Exam';
+      const year = yearSelect?.value || '2024-2025';
+      const marks = (marksInput?.value || '').trim() || (examType.includes('Mid') ? '50 Marks (1.5 Hours)' : '100 Marks (3 Hours)');
+      const section = secSelect?.value || 'ALL';
+      const fileUrl = (linkInput?.value || '').trim();
+      const notes = (notesInput?.value || '').trim() || 'Official examination paper for B.Tech Computer Science.';
+
+      const uploaderName = (_activeAdminSession && _activeAdminSession.fullName) ? _activeAdminSession.fullName : 'Admin';
+
+      function completeSave(fileData, fileName, fileType) {
+        const newPaper = {
+          id: `pyq-${Date.now()}-${Math.floor(Math.random() * 1000)}`,
+          subject,
+          code,
+          semester,
+          examType,
+          year,
+          marks,
+          section,
+          uploadedBy: uploaderName,
+          uploadedAt: Date.now(),
+          fileData: fileData || null,
+          fileName: fileName || null,
+          fileType: fileType || null,
+          fileUrl: fileUrl || null,
+          notes,
+          questions: [
+            `Section A: 10 Objective / short answer concept questions for ${subject}.`,
+            `Section B: Core theoretical and practical application problems.`,
+            `Section C: Comprehensive analytical questions with step-by-step marking scheme.`
+          ]
+        };
+
+        const currentList = getStoredPyqs();
+        currentList.unshift(newPaper);
+        saveStoredPyqs(currentList);
+
+        triggerHaptic(18);
+        showToast(`📚 PYQ "${subject}" published successfully across All Sections!`);
+
+        // Reset form inputs
+        if (subjInput) subjInput.value = '';
+        if (codeInput) codeInput.value = '';
+        if (marksInput) marksInput.value = '';
+        if (fileInput) fileInput.value = '';
+        if (linkInput) linkInput.value = '';
+        if (notesInput) notesInput.value = '';
+
+        togglePyqUploadCard(false);
+        renderPyqList();
+      }
+
+      // Check if user uploaded a file
+      if (fileInput && fileInput.files && fileInput.files[0]) {
+        const file = fileInput.files[0];
+        if (file.size > 8 * 1024 * 1024) {
+          showToast('⚠️ File size exceeds 8MB! Please use a direct URL or smaller file.');
+          return;
+        }
+        showToast('⏳ Reading document file...');
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          completeSave(e.target.result, file.name, file.type.includes('pdf') ? 'pdf' : 'image');
+        };
+        reader.onerror = function() {
+          showToast('❌ Error reading file. Saving text paper instead.');
+          completeSave(null, null, null);
+        };
+        reader.readAsDataURL(file);
+      } else {
+        completeSave(null, null, null);
+      }
+    }
+
+    function setPyqFilter(filter, btn) {
+      triggerHaptic(10);
+      _activePyqFilter = filter;
+      const chips = document.querySelectorAll('#pyqFilterPills .pyq-chip');
+      chips.forEach(c => c.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      renderPyqList();
+    }
+
+    function onPyqSearchChanged() {
+      renderPyqList();
+    }
+
+    function renderPyqList() {
+      const container = document.getElementById('pyqListContainer');
+      if (!container) return;
+
+      const searchInput = document.getElementById('pyqSearchInput');
+      const query = (searchInput?.value || '').toLowerCase().trim();
+      const allPapers = getStoredPyqs();
+
+      let filtered = allPapers.filter(paper => {
+        // Filter chip check
+        if (_activePyqFilter !== 'ALL') {
+          if (_activePyqFilter === 'Mid-Sem' && !paper.examType.toLowerCase().includes('mid')) return false;
+          if (_activePyqFilter === 'End-Sem' && !paper.examType.toLowerCase().includes('end')) return false;
+          if (_activePyqFilter === 'Semester 1' && !paper.semester.includes('1')) return false;
+          if (_activePyqFilter === 'Semester 2' && !paper.semester.includes('2')) return false;
+        }
+
+        // Search query check
+        if (query) {
+          const matchSubj = paper.subject.toLowerCase().includes(query);
+          const matchCode = (paper.code || '').toLowerCase().includes(query);
+          const matchExam = (paper.examType || '').toLowerCase().includes(query);
+          const matchYear = (paper.year || '').toLowerCase().includes(query);
+          const matchNotes = (paper.notes || '').toLowerCase().includes(query);
+          return matchSubj || matchCode || matchExam || matchYear || matchNotes;
+        }
+
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div style="text-align:center; padding:32px 14px; background:rgba(14,24,52,0.5); border-radius:14px; border:1px dashed rgba(56,189,248,0.25);">
+            <div style="font-size:2rem; margin-bottom:8px;">🔍</div>
+            <div style="font-size:0.88rem; font-weight:700; color:#f8fafc; margin-bottom:4px;">No Question Papers Found</div>
+            <div style="font-size:0.74rem; color:#94a3b8;">Try adjusting your search terms or filters above.</div>
+          </div>
+        `;
+        return;
+      }
+
+      const isAdmin = Boolean(_isAdminLoggedIn && _activeAdminSession);
+
+      container.innerHTML = filtered.map(paper => {
+        const isExamMid = paper.examType.toLowerCase().includes('mid');
+        const examBadgeClass = isExamMid ? 'pyq-badge-exam' : 'pyq-badge-sem';
+        const hasAttachment = Boolean(paper.fileData || paper.fileUrl);
+
+        return `
+          <div class="pyq-card-item" id="card-${paper.id}">
+            <div class="pyq-card-title-row">
+              <div style="flex:1;">
+                <div class="pyq-card-title">${escapeHtml(paper.subject)}</div>
+                <div style="font-size:0.68rem; color:#94a3b8; margin-top:2px;">${escapeHtml(paper.marks || 'Full Question Paper')}</div>
+              </div>
+              <span class="pyq-card-code">${escapeHtml(paper.code || 'CSE')}</span>
+            </div>
+
+            <div class="pyq-meta-badges">
+              <span class="pyq-badge ${examBadgeClass}">${escapeHtml(paper.examType)}</span>
+              <span class="pyq-badge pyq-badge-year">📅 ${escapeHtml(paper.year)}</span>
+              <span class="pyq-badge pyq-badge-sem">📚 ${escapeHtml(paper.semester)}</span>
+              <span class="pyq-badge pyq-badge-univ">🌐 ${escapeHtml(paper.section === 'ALL' ? 'All Sections' : paper.section)}</span>
+              ${hasAttachment ? `<span class="pyq-badge" style="background:rgba(56,189,248,0.15); color:#38bdf8; border:1px solid rgba(56,189,248,0.3);">📎 Attached Doc</span>` : ''}
+            </div>
+
+            ${paper.notes ? `<div style="font-size:0.72rem; color:#cbd5e1; line-height:1.35; opacity:0.9;">📝 ${escapeHtml(paper.notes)}</div>` : ''}
+
+            <div class="pyq-actions-row">
+              <div style="display:flex; align-items:center; gap:6px;">
+                <button class="primary-btn" style="padding:6px 12px; font-size:0.74rem; font-weight:800;" onclick="viewPyqDetails('${paper.id}')">
+                  <span>👁️</span> <span>View Paper</span>
+                </button>
+                <button class="secondary-btn" style="padding:6px 10px; font-size:0.74rem;" onclick="downloadPyq('${paper.id}')" title="Download question paper">
+                  <span>⬇️</span> <span>Download</span>
+                </button>
+              </div>
+
+              ${isAdmin ? `
+                <button class="secondary-btn" style="padding:5px 8px; font-size:0.7rem; color:#f87171; border-color:rgba(244,63,94,0.3);" onclick="deletePyq('${paper.id}')" title="Delete paper (Admin Only)">
+                  <span>🗑️</span>
+                </button>
+              ` : `
+                <span style="font-size:0.64rem; color:#94a3b8;">Uploaded by ${escapeHtml(paper.uploadedBy || 'Admin')}</span>
+              `}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function viewPyqDetails(id) {
+      triggerHaptic(10);
+      const allPapers = getStoredPyqs();
+      const paper = allPapers.find(p => p.id === id);
+      if (!paper) { showToast('❌ Question paper not found'); return; }
+
+      _activeViewingPyq = paper;
+
+      const titleEl = document.getElementById('pyqViewerTitle');
+      const codeBadge = document.getElementById('pyqViewerCodeBadge');
+      const contentEl = document.getElementById('pyqViewerContent');
+
+      if (titleEl) titleEl.textContent = paper.subject;
+      if (codeBadge) codeBadge.textContent = paper.code || 'CSE';
+
+      let questionsHtml = '';
+      if (Array.isArray(paper.questions) && paper.questions.length > 0) {
+        questionsHtml = paper.questions.map((q, idx) => `
+          <div style="background:rgba(14,24,52,0.7); border:1px solid rgba(56,189,248,0.25); border-radius:10px; padding:10px 12px; margin-bottom:8px;">
+            <div style="font-size:0.78rem; font-weight:750; color:#f8fafc; line-height:1.4;">${escapeHtml(q)}</div>
+          </div>
+        `).join('');
+      } else {
+        questionsHtml = `
+          <div style="background:rgba(14,24,52,0.7); border:1px solid rgba(56,189,248,0.25); border-radius:10px; padding:12px; margin-bottom:8px;">
+            <div style="font-size:0.8rem; color:#cbd5e1; line-height:1.4;">${escapeHtml(paper.notes || 'Full PDF attached for download.')}</div>
+          </div>
+        `;
+      }
+
+      let attachmentHtml = '';
+      if (paper.fileData) {
+        if (paper.fileType === 'image') {
+          attachmentHtml = `
+            <div style="margin:12px 0; text-align:center;">
+              <img src="${paper.fileData}" alt="${escapeHtml(paper.subject)}" style="max-width:100%; max-height:400px; border-radius:10px; border:1px solid rgba(56,189,248,0.3);">
+            </div>
+          `;
+        } else {
+          attachmentHtml = `
+            <div style="margin:10px 0; background:rgba(56,189,248,0.12); border:1px solid rgba(56,189,248,0.3); border-radius:10px; padding:10px; display:flex; align-items:center; justify-content:space-between;">
+              <div style="font-size:0.76rem; color:#f8fafc;">
+                <strong>📄 ${escapeHtml(paper.fileName || 'Attached PDF Document')}</strong>
+              </div>
+              <a href="${paper.fileData}" download="${escapeHtml(paper.fileName || paper.code + '_Paper.pdf')}" class="primary-btn" style="text-decoration:none; padding:5px 10px; font-size:0.72rem;">⬇️ Open / Save PDF</a>
+            </div>
+          `;
+        }
+      } else if (paper.fileUrl) {
+        attachmentHtml = `
+          <div style="margin:10px 0; background:rgba(56,189,248,0.12); border:1px solid rgba(56,189,248,0.3); border-radius:10px; padding:10px; display:flex; align-items:center; justify-content:space-between;">
+            <div style="font-size:0.76rem; color:#f8fafc;">
+              <strong>🔗 Cloud Paper Link:</strong> ${escapeHtml(paper.fileUrl.substring(0, 40))}...
+            </div>
+            <a href="${paper.fileUrl}" target="_blank" rel="noopener" class="primary-btn" style="text-decoration:none; padding:5px 10px; font-size:0.72rem;">🌐 Open Link</a>
+          </div>
+        `;
+      }
+
+      if (contentEl) {
+        contentEl.innerHTML = `
+          <div style="background:rgba(3,7,16,0.9); border:1px solid rgba(56,189,248,0.35); border-radius:12px; padding:14px; margin-bottom:12px; text-align:center;">
+            <div style="font-size:0.7rem; font-weight:800; color:#38bdf8; letter-spacing:1px; margin-bottom:2px;">QUANTUM UNIVERSITY ROORKEE</div>
+            <div style="font-size:0.95rem; font-weight:800; color:#f8fafc; margin-bottom:2px;">DEPARTMENT OF COMPUTER SCIENCE &amp; ENGINEERING</div>
+            <div style="font-size:0.78rem; font-weight:700; color:#fbbf24; margin-bottom:6px;">${escapeHtml(paper.examType.toUpperCase())} • ACADEMIC SESSION ${escapeHtml(paper.year)}</div>
+            <div style="font-size:0.72rem; color:#cbd5e1; display:flex; justify-content:space-around; border-top:1px dashed rgba(255,255,255,0.15); padding-top:6px;">
+              <span><strong>Subject:</strong> ${escapeHtml(paper.subject)}</span>
+              <span><strong>Code:</strong> ${escapeHtml(paper.code)}</span>
+              <span><strong>Time &amp; Marks:</strong> ${escapeHtml(paper.marks)}</span>
+            </div>
+          </div>
+
+          ${attachmentHtml}
+
+          <div style="font-size:0.8rem; font-weight:800; color:#38bdf8; margin-bottom:6px;">
+            📝 Examination Questions &amp; Outline:
+          </div>
+          ${questionsHtml}
+
+          <div style="font-size:0.68rem; color:#94a3b8; text-align:center; margin-top:10px; font-style:italic;">
+            Universal Academic Resource • Accessible across All Sections (A to L)
+          </div>
+        `;
+      }
+
+      openModal('pyqViewerModal');
+    }
+
+    function triggerActivePyqDownload() {
+      if (_activeViewingPyq) {
+        downloadPyq(_activeViewingPyq.id);
+      }
+    }
+
+    function downloadPyq(id) {
+      triggerHaptic(12);
+      const allPapers = getStoredPyqs();
+      const paper = allPapers.find(p => p.id === id);
+      if (!paper) return;
+
+      if (paper.fileData) {
+        const a = document.createElement('a');
+        a.href = paper.fileData;
+        a.download = paper.fileName || `${paper.code}_${paper.year}_Exam.pdf`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        showToast('⬇️ Document download started!');
+        return;
+      }
+
+      if (paper.fileUrl) {
+        window.open(paper.fileUrl, '_blank');
+        showToast('🌐 Opening paper link...');
+        return;
+      }
+
+      // Generate formatted examination text document
+      let docText = `====================================================\n`;
+      docText += `QUANTUM UNIVERSITY, ROORKEE\n`;
+      docText += `DEPARTMENT OF COMPUTER SCIENCE & ENGINEERING\n`;
+      docText += `EXAMINATION: ${paper.examType.toUpperCase()} (${paper.year})\n`;
+      docText += `SUBJECT: ${paper.subject} (${paper.code})\n`;
+      docText += `SEMESTER: ${paper.semester} | APPLICABLE: ALL SECTIONS\n`;
+      docText += `MAX MARKS & TIME: ${paper.marks}\n`;
+      docText += `====================================================\n\n`;
+      docText += `INSTRUCTIONS & NOTES:\n${paper.notes || 'Attempt all questions as per marking scheme.'}\n\n`;
+      docText += `QUESTIONS:\n`;
+      if (Array.isArray(paper.questions)) {
+        paper.questions.forEach((q, i) => {
+          docText += `\n[${i + 1}] ${q}\n`;
+        });
+      }
+      docText += `\n====================================================\n`;
+      docText += `Downloaded via Qtimex Timetable & Academic Vault\n`;
+
+      const blob = new Blob([docText], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${paper.code || 'PYQ'}_${paper.examType.replace(/\s+/g, '_')}_${paper.year}.txt`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast(`⬇️ Downloaded ${paper.subject} question paper!`);
+    }
+
+    function deletePyq(id) {
+      if (!_isAdminLoggedIn) {
+        showToast('🔒 Only Admin can delete question papers!');
+        return;
+      }
+      if (!confirm('Are you sure you want to delete this question paper? It will be removed from all sections.')) {
+        return;
+      }
+      triggerHaptic(14);
+      let list = getStoredPyqs();
+      list = list.filter(p => p.id !== id);
+      saveStoredPyqs(list);
+      showToast('🗑️ Question paper removed.');
+      renderPyqList();
+      if (_activeViewingPyq && _activeViewingPyq.id === id) {
+        closeModal('pyqViewerModal');
+      }
     }
 
     if (document.readyState === 'loading') {
