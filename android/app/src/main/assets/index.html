@@ -7605,7 +7605,7 @@
         style="background:var(--card-surface-grad); border:1px solid var(--card-border); border-radius:14px; padding:12px; display:flex; flex-direction:column; gap:8px;">
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Installed Version:</span>
-          <strong style="color:var(--gold-accent);">v6.3.1 (Strict Isolation & PYQ Vault)</strong>
+          <strong style="color:var(--gold-accent);">v6.3.2 (Strict Isolation & PYQ Vault)</strong>
         </div>
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Notification:</span>
@@ -7629,7 +7629,7 @@
 
       <button class="secondary-btn" style="background:rgba(79, 70, 229, 0.12); border:1.5px solid #4f46e5; color:#4f46e5; font-weight:800; justify-content:center;"
         onclick="downloadFullApk()">
-        📲 Direct Download & Install APK (v6.3.1)
+        📲 Direct Download & Install APK (v6.3.2)
       </button>
 
       <button class="secondary-btn" onclick="checkInAppUpdate(true)">
@@ -8590,7 +8590,15 @@
             const activeBtn = track.querySelector('.sec-pill-btn.active');
             if (activeBtn && track) {
               const leftPos = activeBtn.offsetLeft - (track.clientWidth - activeBtn.clientWidth) / 2;
-              track.scrollTo({ left: leftPos, behavior: 'smooth' });
+              try {
+                if (typeof track.scrollTo === 'function') {
+                  track.scrollTo({ left: leftPos, behavior: 'smooth' });
+                } else {
+                  track.scrollLeft = leftPos;
+                }
+              } catch (e) {
+                try { track.scrollLeft = leftPos; } catch (err) {}
+              }
             }
           }
         }
@@ -10606,7 +10614,15 @@ ${syncLink}
         const activeBtn = track.querySelector('.fac-sec-pill.active');
         if (activeBtn && track) {
           const leftPos = activeBtn.offsetLeft - (track.clientWidth - activeBtn.clientWidth) / 2;
-          track.scrollTo({ left: leftPos, behavior: 'smooth' });
+          try {
+            if (typeof track.scrollTo === 'function') {
+              track.scrollTo({ left: leftPos, behavior: 'smooth' });
+            } else {
+              track.scrollLeft = leftPos;
+            }
+          } catch (e) {
+            try { track.scrollLeft = leftPos; } catch (err) {}
+          }
         }
       }, 50);
     }
@@ -11767,9 +11783,9 @@ ${syncLink}
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '6.3.1';
-    const LOCAL_APP_VERSION_CODE = 85;
-    const LOCAL_APP_BUILD_HASH = '83a8a92438d6';
+    const LOCAL_APP_VERSION_NAME = '6.3.2';
+    const LOCAL_APP_VERSION_CODE = 86;
+    const LOCAL_APP_BUILD_HASH = '88b0742e38ea';
 
     let cachedLatestVersionCode = 29;
 
@@ -14251,9 +14267,13 @@ ${syncLink}
           if (avg > 55) applyLiteMode('bench=' + avg.toFixed(1) + 'ms');
           return;
         }
+        if (typeof requestAnimationFrame === 'function') {
+          requestAnimationFrame(bench);
+        }
+      }
+      if (typeof requestAnimationFrame === 'function') {
         requestAnimationFrame(bench);
       }
-      requestAnimationFrame(bench);
 
       // Fallback: if rAF never fires fast enough, decide at 2s mark
       setTimeout(() => {
