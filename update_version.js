@@ -3,12 +3,12 @@ const crypto = require('crypto');
 const path = require('path');
 
 let ver = JSON.parse(fs.readFileSync('version.json', 'utf8'));
-ver.versionName = "6.3.0";
-ver.versionCode = 84;
-ver.apkVersionCode = 84;
+ver.versionName = "6.3.1";
+ver.versionCode = 85;
+ver.apkVersionCode = 85;
 ver.updatedAt = Date.now();
 ver.lastUpdated = new Date().toISOString();
-ver.releaseNotes = "v6.3.0: Strict Section & Set Lockdown Isolation • Universal PYQ Question Papers Vault with Admin Upload across all sections";
+ver.releaseNotes = "v6.3.1: Clean Mobile UI - Completely hidden section pills and batch switcher for logged-in students with 1-tap appbar profile toggle";
 
 let html = fs.readFileSync('index.html', 'utf8');
 html = html.replace(/<strong style="color:var\(--gold-accent\);">v[^<]+<\/strong>/, '<strong style="color:var(--gold-accent);">v' + ver.versionName + ' (Strict Isolation & PYQ Vault)</strong>');

@@ -1789,8 +1789,8 @@
     }
 
     .batch-segment {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      display: flex;
+      width: 100%;
       background: var(--recessed-bg);
       border: 1px solid var(--card-border);
       border-radius: 13px;
@@ -1800,6 +1800,8 @@
     }
 
     .batch-tab {
+      flex: 1 1 0;
+      min-width: 0;
       position: relative;
       overflow: hidden;
       display: flex;
@@ -7022,7 +7024,7 @@
       </div>
 
       <!-- MULTI-SECTION CAROUSEL SELECTOR (100% OFFLINE) -->
-      <div class="section-selector-container">
+      <div class="section-selector-container" id="sectionSelectorContainer">
         <div class="section-selector-label">
           <span>🏫 QUANTUM B.TECH SECTIONS:</span>
           <span class="active-sec-badge" id="activeSecBadge">Section D (A-108)</span>
@@ -7033,8 +7035,8 @@
       </div>
 
       <!-- ZERO CONFUSION BATCH SWITCHER -->
-      <div class="batch-segment-container">
-        <div class="batch-segment">
+      <div class="batch-segment-container" id="batchSegmentContainer">
+        <div class="batch-segment" id="batchSegment">
           <button class="batch-tab active-seta" id="tabSetA" onclick="setBatchFilter('Set-A')">
             <span>🅰️</span> <span>Set-A</span>
           </button>
@@ -7603,7 +7605,7 @@
         style="background:var(--card-surface-grad); border:1px solid var(--card-border); border-radius:14px; padding:12px; display:flex; flex-direction:column; gap:8px;">
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Installed Version:</span>
-          <strong style="color:var(--gold-accent);">v6.3.0 (Strict Isolation & PYQ Vault)</strong>
+          <strong style="color:var(--gold-accent);">v6.3.1 (Strict Isolation & PYQ Vault)</strong>
         </div>
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Notification:</span>
@@ -7627,7 +7629,7 @@
 
       <button class="secondary-btn" style="background:rgba(79, 70, 229, 0.12); border:1.5px solid #4f46e5; color:#4f46e5; font-weight:800; justify-content:center;"
         onclick="downloadFullApk()">
-        📲 Direct Download & Install APK (v6.3.0)
+        📲 Direct Download & Install APK (v6.3.1)
       </button>
 
       <button class="secondary-btn" onclick="checkInAppUpdate(true)">
@@ -8516,42 +8518,31 @@
       const tabA = document.getElementById('tabSetA');
       const tabB = document.getElementById('tabSetB');
       const tabAll = document.getElementById('tabAll');
-      if (!tabA || !tabB || !tabAll) return;
+      const batchContainer = document.getElementById('batchSegmentContainer');
 
       const isStudent = Boolean(profile && profile.isLoggedIn && profile.batch && !_isAdminLoggedIn);
 
       if (isStudent) {
-        if (profile.batch === 'Set-A') {
-          tabA.style.display = 'flex';
-          tabA.style.flex = '1';
-          tabA.className = 'batch-tab active-seta';
-          tabA.innerHTML = '<span>🔒 🅰️</span> <span>Set-A (Your Locked Batch)</span>';
-          tabB.style.display = 'none';
-          tabAll.style.display = 'none';
-          selectedBatch = 'Set-A';
-        } else if (profile.batch === 'Set-B') {
-          tabB.style.display = 'flex';
-          tabB.style.flex = '1';
-          tabB.className = 'batch-tab active-setb';
-          tabB.innerHTML = '<span>🔒 🅱️</span> <span>Set-B (Your Locked Batch)</span>';
-          tabA.style.display = 'none';
-          tabAll.style.display = 'none';
-          selectedBatch = 'Set-B';
-        }
+        // Completely HIDE batch switcher for logged-in student (already locked to their specific batch)
+        if (batchContainer) batchContainer.style.display = 'none';
+        selectedBatch = (profile.batch === 'Set-B' ? 'Set-B' : 'Set-A');
       } else {
         // CR (can view both sets), Admin, or Guest:
-        tabA.style.display = 'flex';
-        tabA.style.flex = '';
-        tabA.innerHTML = '<span>🅰️</span> <span>Set-A</span>';
-        tabB.style.display = 'flex';
-        tabB.style.flex = '';
-        tabB.innerHTML = '<span>🅱️</span> <span>Set-B</span>';
-        tabAll.style.display = 'flex';
-        tabAll.style.flex = '';
-        tabAll.innerHTML = '<span>👥</span> <span>Combined</span>';
-        tabA.className = `batch-tab ${selectedBatch === 'Set-A' ? 'active-seta' : ''}`;
-        tabB.className = `batch-tab ${selectedBatch === 'Set-B' ? 'active-setb' : ''}`;
-        tabAll.className = `batch-tab ${selectedBatch === 'ALL' ? 'active-all' : ''}`;
+        if (batchContainer) batchContainer.style.display = 'flex';
+        if (tabA && tabB && tabAll) {
+          tabA.style.display = 'flex';
+          tabA.style.flex = '1';
+          tabA.innerHTML = '<span>🅰️</span> <span>Set-A</span>';
+          tabB.style.display = 'flex';
+          tabB.style.flex = '1';
+          tabB.innerHTML = '<span>🅱️</span> <span>Set-B</span>';
+          tabAll.style.display = 'flex';
+          tabAll.style.flex = '1';
+          tabAll.innerHTML = '<span>👥</span> <span>Combined</span>';
+          tabA.className = `batch-tab ${selectedBatch === 'Set-A' ? 'active-seta' : ''}`;
+          tabB.className = `batch-tab ${selectedBatch === 'Set-B' ? 'active-setb' : ''}`;
+          tabAll.className = `batch-tab ${selectedBatch === 'ALL' ? 'active-all' : ''}`;
+        }
       }
     }
 
@@ -8559,55 +8550,48 @@
       // Lazy-load all sections data for pills display
       if (!_allSectionsLoaded) { _ensureAllSections(() => renderSectionPills()); }
       const track = document.getElementById('sectionPillsTrack');
+      const secContainer = document.getElementById('sectionSelectorContainer');
       const profile = getStudentProfile();
       const isStudent = Boolean(profile && profile.isLoggedIn && profile.section && !_isAdminLoggedIn);
       const isCR = Boolean(_isAdminLoggedIn && _activeAdminSession && _activeAdminSession.role === 'cr' && _activeAdminSession.assignedSection && _activeAdminSession.assignedSection !== 'ALL');
       const selectorLabel = document.querySelector('.section-selector-label span');
 
-      if (track) {
-        if (isStudent) {
-          // STRICT SECTION ISOLATION: Student ONLY sees their locked section
-          const mySecKey = profile.section;
-          const sec = ALL_SECTIONS[mySecKey] || { name: mySecKey, room: '-' };
-          track.innerHTML = `
-            <button class="sec-pill-btn active" style="background:rgba(56,189,248,0.22); border-color:rgba(56,189,248,0.7); box-shadow:0 0 14px rgba(56,189,248,0.35); font-weight:800;" title="Locked to your profile: ${sec.name}">
-              <span>🔒 ${mySecKey}</span>
-              <span style="font-size:0.58rem; opacity:0.85;">(${sec.room} • Locked)</span>
-            </button>
-            <button class="sec-pill-btn" onclick="openStudentProfileModal()" style="border-style:dashed; opacity:0.85; font-size:0.72rem; padding:6px 12px;" title="Switch or edit student profile">
-              <span>✏️ Switch Profile</span>
-            </button>
-          `;
-          if (selectorLabel) selectorLabel.textContent = '🔒 YOUR LOCKED SECTION:';
-        } else if (isCR) {
-          // CR ISOLATION: CR sees their assigned section
-          const crSecKey = _activeAdminSession.assignedSection;
-          const sec = ALL_SECTIONS[crSecKey] || { name: crSecKey, room: '-' };
-          track.innerHTML = `
-            <button class="sec-pill-btn active" style="background:rgba(16,185,129,0.22); border-color:rgba(16,185,129,0.7); box-shadow:0 0 14px rgba(16,185,129,0.35); font-weight:800;" title="CR Assigned: ${sec.name}">
-              <span>🛡️ ${crSecKey}</span>
-              <span style="font-size:0.58rem; opacity:0.85;">(${sec.room} • CR Deck)</span>
-            </button>
-          `;
-          if (selectorLabel) selectorLabel.textContent = '🛡️ ASSIGNED CR SECTION:';
-        } else {
-          // SUPER ADMIN OR GUEST: Show all section pills
-          const secKeys = Object.keys(ALL_SECTIONS);
-          track.innerHTML = secKeys.map(k => {
-            const isActive = (k === currentSection);
-            const sec = ALL_SECTIONS[k];
-            return `<button class="sec-pill-btn ${isActive ? 'active' : ''}" onclick="selectSection('${k}')" title="${sec.name} • Room ${sec.room}">
-              <span>${k}</span>
-              <span style="font-size:0.58rem; opacity:0.75;">(${sec.room})</span>
-            </button>`;
-          }).join('');
-          if (selectorLabel) selectorLabel.textContent = '🏫 QUANTUM B.TECH SECTIONS:';
+      if (isStudent) {
+        // STRICT ISOLATION: Completely HIDE section selector container for logged-in student
+        if (secContainer) secContainer.style.display = 'none';
+      } else {
+        if (secContainer) secContainer.style.display = 'flex';
+        if (track) {
+          if (isCR) {
+            // CR ISOLATION: CR sees their assigned section
+            const crSecKey = _activeAdminSession.assignedSection;
+            const sec = ALL_SECTIONS[crSecKey] || { name: crSecKey, room: '-' };
+            track.innerHTML = `
+              <button class="sec-pill-btn active" style="background:rgba(16,185,129,0.22); border-color:rgba(16,185,129,0.7); box-shadow:0 0 14px rgba(16,185,129,0.35); font-weight:800;" title="CR Assigned: ${sec.name}">
+                <span>🛡️ ${crSecKey}</span>
+                <span style="font-size:0.58rem; opacity:0.85;">(${sec.room} • CR Deck)</span>
+              </button>
+            `;
+            if (selectorLabel) selectorLabel.textContent = '🛡️ ASSIGNED CR SECTION:';
+          } else {
+            // SUPER ADMIN OR GUEST: Show all section pills
+            const secKeys = Object.keys(ALL_SECTIONS);
+            track.innerHTML = secKeys.map(k => {
+              const isActive = (k === currentSection);
+              const sec = ALL_SECTIONS[k];
+              return `<button class="sec-pill-btn ${isActive ? 'active' : ''}" onclick="selectSection('${k}')" title="${sec.name} • Room ${sec.room}">
+                <span>${k}</span>
+                <span style="font-size:0.58rem; opacity:0.75;">(${sec.room})</span>
+              </button>`;
+            }).join('');
+            if (selectorLabel) selectorLabel.textContent = '🏫 QUANTUM B.TECH SECTIONS:';
 
-          // Auto-scroll active pill horizontally into view WITHOUT vertical window scroll
-          const activeBtn = track.querySelector('.sec-pill-btn.active');
-          if (activeBtn && track) {
-            const leftPos = activeBtn.offsetLeft - (track.clientWidth - activeBtn.clientWidth) / 2;
-            track.scrollTo({ left: leftPos, behavior: 'smooth' });
+            // Auto-scroll active pill horizontally into view WITHOUT vertical window scroll
+            const activeBtn = track.querySelector('.sec-pill-btn.active');
+            if (activeBtn && track) {
+              const leftPos = activeBtn.offsetLeft - (track.clientWidth - activeBtn.clientWidth) / 2;
+              track.scrollTo({ left: leftPos, behavior: 'smooth' });
+            }
           }
         }
       }
@@ -8618,7 +8602,15 @@
       }
       const brandBadge = document.getElementById('brandSectionBadge');
       if (brandBadge) {
-        brandBadge.textContent = `${currentSection} ▾`;
+        if (isStudent && profile) {
+          brandBadge.textContent = `${profile.section} • ${profile.batch || 'Set-A'} 🔒`;
+          brandBadge.title = `Profile Locked: ${profile.section} (${profile.batch || 'Set-A'}). Tap to switch or edit profile.`;
+          brandBadge.onclick = openStudentProfileModal;
+        } else {
+          brandBadge.textContent = `${currentSection} ▾`;
+          brandBadge.title = 'Current Section. Tap any section pill below to switch!';
+          brandBadge.onclick = () => showToast('Select any section from the list below!');
+        }
       }
       // Brand name "Qtimex" fixed rahega — section badge alag hai
       const watermark = document.querySelector('.watermark-word');
@@ -11775,9 +11767,9 @@ ${syncLink}
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '6.3.0';
-    const LOCAL_APP_VERSION_CODE = 84;
-    const LOCAL_APP_BUILD_HASH = '97d1a9eae757';
+    const LOCAL_APP_VERSION_NAME = '6.3.1';
+    const LOCAL_APP_VERSION_CODE = 85;
+    const LOCAL_APP_BUILD_HASH = '83a8a92438d6';
 
     let cachedLatestVersionCode = 29;
 
