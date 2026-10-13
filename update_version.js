@@ -3,12 +3,12 @@ const crypto = require('crypto');
 const path = require('path');
 
 let ver = JSON.parse(fs.readFileSync('version.json', 'utf8'));
-ver.versionName = "6.1.0";
-ver.versionCode = 77;
-ver.apkVersionCode = 77;
+ver.versionName = "6.2.0";
+ver.versionCode = 79;
+ver.apkVersionCode = 79;
 ver.updatedAt = Date.now();
 ver.lastUpdated = new Date().toISOString();
-ver.releaseNotes = "v6.1.0: Student Profile & Section-Set Lock + Multi-CR isolated alerts — each student gets only their section & set notifications; CRs manage classes by designated section.";
+ver.releaseNotes = "v6.2.0: 3-Role Dashboard Gateway (Student, CR, Admin) • Strict Set-A / Set-B timetable filtering • CR targeted cancellation notifications with custom messages & WhatsApp broadcast.";
 
 let html = fs.readFileSync('index.html', 'utf8');
 html = html.replace(/<strong style="color:var\(--gold-accent\);">v[^<]+<\/strong>/, '<strong style="color:var(--gold-accent);">v' + ver.versionName + ' (Student Profile & Multi-CR Alerts)</strong>');

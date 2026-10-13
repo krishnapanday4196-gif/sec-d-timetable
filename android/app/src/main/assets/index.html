@@ -5173,32 +5173,80 @@
       line-height: 1;
     }
 
-    /* 🎓 STUDENT PROFILE & SECTION ISOLATION STYLING */
-    .student-quick-btn {
+    /* 🎓 STUDENT PROFILE & ADMIN APPBAR BUTTON STYLING */
+    .student-quick-btn,
+    .admin-quick-btn {
       position: relative;
       background: rgba(56, 189, 248, 0.12);
       border: 1px solid rgba(56, 189, 248, 0.35);
       color: #38bdf8;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 5px;
-      padding: 6px 10px;
+      padding: 0 10px;
+      height: 38px;
+      min-width: 38px;
       border-radius: 12px;
-      font-size: 0.82rem;
+      font-size: 0.84rem;
       cursor: pointer;
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      flex-shrink: 0;
     }
-    .student-quick-btn:hover {
+    .admin-quick-btn {
+      background: rgba(99, 102, 241, 0.12);
+      border-color: rgba(99, 102, 241, 0.35);
+      color: #818cf8;
+    }
+    .student-quick-btn:hover,
+    .admin-quick-btn:hover {
       background: rgba(56, 189, 248, 0.22);
       border-color: rgba(56, 189, 248, 0.6);
       transform: translateY(-1px);
     }
     .student-quick-btn.is-active {
-      background: linear-gradient(135deg, rgba(56, 189, 248, 0.25), rgba(99, 102, 241, 0.2));
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.25), rgba(16, 185, 129, 0.2));
       border-color: #38bdf8;
       box-shadow: 0 0 14px rgba(56, 189, 248, 0.35);
     }
-    .student-header-pill {
+    .admin-quick-btn.is-active {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.25), rgba(56, 189, 248, 0.2));
+      border-color: #818cf8;
+      box-shadow: 0 0 14px rgba(99, 102, 241, 0.35);
+    }
+    /* Dynamic active status glow dot */
+    .student-quick-btn.is-active::after {
+      content: '';
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10b981;
+      border: 1.5px solid #030712;
+      box-shadow: 0 0 8px #10b981;
+    }
+    :root[data-theme="aura-light"] .student-quick-btn.is-active::after {
+      border-color: #ffffff;
+    }
+    .admin-quick-btn.is-active::after {
+      content: '';
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #38bdf8;
+      border: 1.5px solid #030712;
+      box-shadow: 0 0 8px #38bdf8;
+    }
+    :root[data-theme="aura-light"] .admin-quick-btn.is-active::after {
+      border-color: #ffffff;
+    }
+    .student-header-pill,
+    .admin-header-pill {
       font-size: 0.62rem;
       font-weight: 800;
       letter-spacing: 0.05em;
@@ -5207,6 +5255,41 @@
       padding: 2px 6px;
       border-radius: 6px;
       line-height: 1;
+    }
+    .admin-header-pill {
+      background: #818cf8;
+    }
+    /* Mobile responsive header fit */
+    @media (max-width: 580px) {
+      .appbar-actions {
+        gap: 5px !important;
+        flex-shrink: 0 !important;
+      }
+      .appbar-quick-btn,
+      .student-quick-btn,
+      .admin-quick-btn,
+      .holo-menu-trigger {
+        width: 35px !important;
+        height: 35px !important;
+        min-width: 35px !important;
+        border-radius: 11px !important;
+        padding: 0 !important;
+        font-size: 0.98rem !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+      .student-header-pill,
+      .admin-header-pill {
+        display: none !important;
+      }
+      .brand-subtitle {
+        font-size: 0.54rem !important;
+        max-width: 130px !important;
+      }
+      .brand-badge {
+        display: none !important;
+      }
     }
     .student-set-option {
       display: flex;
@@ -5243,6 +5326,374 @@
       border-radius: 6px;
       font-weight: 750;
       font-size: 0.68rem;
+    }
+
+    /* ========================================================
+       ⚡ DASHBOARD 3-ROLE GATEWAY (STUDENT | CR | ADMIN)
+       ======================================================== */
+    .dashboard-role-gateway {
+      background: linear-gradient(145deg, rgba(10, 20, 46, 0.94) 0%, rgba(5, 12, 28, 0.98) 100%);
+      border: 1px solid rgba(56, 189, 248, 0.28);
+      border-radius: 18px;
+      margin: 6px 12px 14px 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.65), 0 0 16px -2px rgba(56, 189, 248, 0.14);
+      position: relative;
+      transition: all 0.25s ease;
+    }
+
+    .role-gateway-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      background: rgba(3, 7, 18, 0.55);
+      border-bottom: 1px solid rgba(56, 189, 248, 0.16);
+    }
+
+    .role-gateway-heading {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .role-gateway-glow-orb {
+      font-size: 1.15rem;
+      filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.7));
+    }
+
+    .role-gateway-title {
+      font-size: 0.73rem;
+      font-weight: 850;
+      letter-spacing: 0.8px;
+      color: #38bdf8;
+      text-transform: uppercase;
+      line-height: 1.2;
+    }
+
+    .role-gateway-sub {
+      font-size: 0.62rem;
+      color: #94a3b8;
+      font-weight: 500;
+    }
+
+    .role-status-badge {
+      font-size: 0.63rem;
+      font-weight: 750;
+      padding: 3px 8px;
+      border-radius: 999px;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+    }
+    .role-status-badge.unverified {
+      background: rgba(148, 163, 184, 0.15);
+      color: #cbd5e1;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+    }
+    .role-status-badge.active-student {
+      background: rgba(56, 189, 248, 0.18);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+    }
+    .role-status-badge.active-cr {
+      background: rgba(16, 185, 129, 0.18);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.45);
+    }
+    .role-status-badge.active-admin {
+      background: rgba(168, 85, 247, 0.18);
+      color: #c084fc;
+      border: 1px solid rgba(168, 85, 247, 0.45);
+    }
+
+    .role-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      padding: 12px 14px;
+    }
+    @media (max-width: 680px) {
+      .role-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 10px 12px;
+      }
+    }
+
+    .role-action-card {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      background: rgba(15, 28, 58, 0.7);
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      border-radius: 14px;
+      padding: 10px 12px;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      color: var(--text-main);
+      position: relative;
+      overflow: hidden;
+    }
+    .role-action-card:hover {
+      transform: translateY(-2px);
+      background: rgba(22, 40, 80, 0.85);
+      border-color: rgba(56, 189, 248, 0.5);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+    }
+    .role-action-card:active {
+      transform: scale(0.98);
+    }
+
+    .role-action-card.card-role-student:hover {
+      border-color: #38bdf8;
+      box-shadow: 0 6px 18px rgba(56, 189, 248, 0.25);
+    }
+    .role-action-card.card-role-cr:hover {
+      border-color: #10b981;
+      box-shadow: 0 6px 18px rgba(16, 185, 129, 0.25);
+    }
+    .role-action-card.card-role-admin:hover {
+      border-color: #a855f7;
+      box-shadow: 0 6px 18px rgba(168, 85, 247, 0.25);
+    }
+
+    .role-card-icon-wrap {
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+    .role-card-icon-wrap.student-grad {
+      background: linear-gradient(135deg, #0284c7, #06b6d4);
+    }
+    .role-card-icon-wrap.cr-grad {
+      background: linear-gradient(135deg, #059669, #10b981);
+    }
+    .role-card-icon-wrap.admin-grad {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    }
+
+    .role-card-body {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .role-card-name {
+      font-size: 0.84rem;
+      font-weight: 800;
+      color: #f8fafc;
+      line-height: 1.2;
+    }
+    .card-role-student .role-card-name { color: #38bdf8; }
+    .card-role-cr .role-card-name { color: #34d399; }
+    .card-role-admin .role-card-name { color: #c084fc; }
+
+    .role-card-desc {
+      font-size: 0.65rem;
+      color: #94a3b8;
+      line-height: 1.25;
+      white-space: normal;
+    }
+
+    .role-card-tags {
+      display: flex;
+      gap: 5px;
+      margin-top: 4px;
+      flex-wrap: wrap;
+    }
+
+    .role-mini-tag {
+      font-size: 0.58rem;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #cbd5e1;
+    }
+    .role-mini-tag.cyan {
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+    }
+    .role-mini-tag.emerald {
+      background: rgba(16, 185, 129, 0.18);
+      color: #34d399;
+    }
+    .role-mini-tag.gold {
+      background: rgba(245, 158, 11, 0.18);
+      color: #fbbf24;
+    }
+    .role-mini-tag.purple {
+      background: rgba(168, 85, 247, 0.18);
+      color: #c084fc;
+    }
+
+    .role-card-arrow {
+      font-size: 1.1rem;
+      color: #64748b;
+      font-weight: 700;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+    .role-action-card:hover .role-card-arrow {
+      transform: translateX(3px);
+      color: #f8fafc;
+    }
+
+    /* Active Session Card */
+    .role-gateway-active-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 16px;
+      flex-wrap: wrap;
+    }
+    .role-active-content {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      flex: 1;
+    }
+    .role-active-icon-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.45rem;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, #0ea5e9, #38bdf8);
+      box-shadow: 0 4px 14px rgba(56, 189, 248, 0.35);
+      color: #ffffff;
+      font-weight: 800;
+    }
+    .role-active-icon-badge.cr-badge {
+      background: linear-gradient(135deg, #059669, #10b981);
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+    }
+    .role-active-icon-badge.admin-badge {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      box-shadow: 0 4px 14px rgba(139, 92, 246, 0.35);
+    }
+
+    .role-active-info {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      gap: 2px;
+    }
+    .role-active-title-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .role-active-name {
+      font-size: 0.92rem;
+      font-weight: 850;
+      color: #f8fafc;
+    }
+    .role-active-pill {
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 6px;
+      background: rgba(56, 189, 248, 0.22);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+    }
+    .role-active-pill.emerald {
+      background: rgba(16, 185, 129, 0.22);
+      color: #34d399;
+      border-color: rgba(16, 185, 129, 0.4);
+    }
+    .role-active-pill.purple {
+      background: rgba(168, 85, 247, 0.22);
+      color: #c084fc;
+      border-color: rgba(168, 85, 247, 0.4);
+    }
+    .role-active-details {
+      font-size: 0.72rem;
+      color: #94a3b8;
+      line-height: 1.3;
+    }
+
+    .role-active-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .role-active-action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 9px;
+      font-size: 0.73rem;
+      font-weight: 750;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .role-active-action-btn.primary {
+      background: rgba(56, 189, 248, 0.16);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+    }
+    .role-active-action-btn.primary:hover {
+      background: rgba(56, 189, 248, 0.28);
+    }
+    .role-active-action-btn.danger {
+      background: rgba(244, 63, 94, 0.12);
+      color: #f87171;
+      border: 1px solid rgba(244, 63, 94, 0.35);
+    }
+    .role-active-action-btn.danger:hover {
+      background: rgba(244, 63, 94, 0.22);
+    }
+
+    /* Light Theme Overrides */
+    :root[data-theme="aura-light"] .dashboard-role-gateway {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(241, 245, 249, 0.98) 100%);
+      border-color: rgba(14, 165, 233, 0.3);
+      box-shadow: 0 10px 24px -6px rgba(0, 0, 0, 0.08), 0 0 14px -2px rgba(14, 165, 233, 0.1);
+    }
+    :root[data-theme="aura-light"] .role-gateway-top {
+      background: rgba(248, 250, 252, 0.8);
+      border-bottom-color: rgba(226, 232, 240, 0.9);
+    }
+    :root[data-theme="aura-light"] .role-gateway-title {
+      color: #0284c7;
+    }
+    :root[data-theme="aura-light"] .role-gateway-sub {
+      color: #64748b;
+    }
+    :root[data-theme="aura-light"] .role-action-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-color: rgba(203, 213, 225, 0.8);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+    :root[data-theme="aura-light"] .role-card-name {
+      color: #0f172a;
+    }
+    :root[data-theme="aura-light"] .role-card-desc {
+      color: #64748b;
+    }
+    :root[data-theme="aura-light"] .role-active-name {
+      color: #0f172a;
+    }
+    :root[data-theme="aura-light"] .role-active-details {
+      color: #64748b;
     }
 
     /* Top Cancellation Notice Banner */
@@ -5413,139 +5864,750 @@
       border-color: #10b981;
     }
 
-    /* Admin Portal Tabs & Forms */
-    .admin-portal-tabs {
-      display: flex;
-      gap: 6px;
-      background: rgba(3, 7, 18, 0.6);
-      padding: 4px;
-      border-radius: 12px;
-      border: 1px solid var(--card-border);
-      margin-bottom: 14px;
-    }
-    .admin-tab-btn {
-      flex: 1;
-      padding: 8px 10px;
-      border-radius: 9px;
-      border: none;
-      background: transparent;
-      color: var(--text-sub);
-      font-size: 0.78rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.2s;
-      display: flex;
-      align-items: center;
+    /* ============================================================
+       🚀 NEXT-LEVEL CYBER LUXURY MOBILE MODAL & FIELD DESIGN SYSTEM
+       ============================================================ */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 6, 18, 0.85) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+      z-index: 10000;
+      display: none;
       justify-content: center;
-      gap: 5px;
+      align-items: flex-end;
+      padding: 0;
+      animation: cyberOverlayFade 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .admin-tab-btn.active {
-      background: var(--card-inner);
-      color: var(--text-main);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
-      border: 1px solid var(--card-border);
+    .modal-overlay.active {
+      display: flex !important;
     }
-    .admin-field-group {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      margin-bottom: 11px;
+    @keyframes cyberOverlayFade {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
-    .admin-field-label {
-      font-size: 0.74rem;
-      font-weight: 700;
-      color: var(--text-muted);
+
+    /* Mobile-first Bottom Sheet with Deep Space Glassmorphism */
+    #adminModal .modal-sheet,
+    #studentProfileModal .modal-sheet,
+    .modal-sheet.cyber-modal {
+      width: 100% !important;
+      max-width: 480px !important;
+      margin: 0 auto !important;
+      background: linear-gradient(180deg, #0a142e 0%, #060e20 60%, #030713 100%) !important;
+      border: 1px solid rgba(56, 189, 248, 0.42) !important;
+      border-bottom: none !important;
+      border-radius: 28px 28px 0 0 !important;
+      box-shadow: 0 -16px 60px rgba(0, 0, 0, 0.95), inset 0 1px 0 rgba(255, 255, 255, 0.22) !important;
+      color: #f8fafc !important;
+      color-scheme: dark !important;
+      padding: 10px 14px max(20px, env(safe-area-inset-bottom, 16px)) 14px !important;
+      height: auto !important;
+      max-height: 88vh !important;
+      display: flex !important;
+      flex-direction: column !important;
+      overflow: hidden !important;
+      animation: cyberSheetSlide 0.32s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      box-sizing: border-box !important;
+    }
+    @keyframes cyberSheetSlide {
+      from { transform: translateY(100%); opacity: 0.5; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .cyber-modal-scroll {
+      overflow-y: auto !important;
+      overflow-x: hidden !important;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
+      padding: 2px 4px 20px 4px !important;
+      flex: 1 1 auto !important;
+      min-height: 0 !important;
+      box-sizing: border-box !important;
+    }
+    .cyber-modal-scroll::-webkit-scrollbar {
+      width: 4px;
+    }
+    .cyber-modal-scroll::-webkit-scrollbar-thumb {
+      background: rgba(56, 189, 248, 0.35);
+      border-radius: 99px;
+    }
+
+    /* Modal Top Drag Handle & Title */
+    .cyber-modal-handle {
+      width: 42px;
+      height: 4.5px;
+      background: rgba(148, 163, 184, 0.38);
+      border-radius: 99px;
+      margin: 3px auto 10px;
+      cursor: grab;
+      flex-shrink: 0;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .cyber-modal-handle:active {
+      background: #38bdf8;
+      transform: scaleX(1.2);
+    }
+    .cyber-modal-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      padding-bottom: 11px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 12px;
+      flex-shrink: 0;
     }
-    .admin-field-input, .admin-field-select {
-      background: rgba(6, 11, 24, 0.85);
-      border: 1px solid var(--card-border);
+    .cyber-modal-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.02rem;
+      font-weight: 800;
+      color: #f8fafc;
+      letter-spacing: -0.2px;
+    }
+    .cyber-title-orb {
+      width: 32px;
+      height: 32px;
       border-radius: 10px;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.25), rgba(16, 185, 129, 0.2));
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.25);
+      flex-shrink: 0;
+    }
+    .cyber-modal-close-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+    .cyber-modal-close-btn:hover,
+    .cyber-modal-close-btn:active {
+      background: rgba(244, 63, 94, 0.25);
+      border-color: rgba(244, 63, 94, 0.5);
+      color: #f43f5e;
+      transform: rotate(90deg);
+    }
+
+    /* Next-Level Form Field Cards */
+    .cyber-field-card {
+      background: rgba(13, 25, 52, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.26);
+      border-radius: 13px;
       padding: 9px 12px;
-      color: var(--text-main);
-      font-size: 0.82rem;
-      font-family: inherit;
-      outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
+      margin-bottom: 9px;
+      transition: all 0.22s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      box-sizing: border-box;
+      width: 100%;
+    }
+    .cyber-field-card:focus-within {
+      background: rgba(17, 34, 72, 0.95);
+      border-color: #38bdf8;
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      transform: translateY(-1px);
+    }
+    .cyber-field-label,
+    .admin-field-label {
+      font-size: 0.67rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: #38bdf8 !important;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+      margin-bottom: 2px;
+    }
+    .cyber-field-control,
+    .admin-field-input,
+    .admin-field-select {
+      appearance: none !important;
+      -webkit-appearance: none !important;
+      background: transparent !important;
+      border: none !important;
+      outline: none !important;
+      width: 100% !important;
+      color: #f8fafc !important;
+      font-size: 16px !important;
+      font-weight: 600 !important;
+      font-family: inherit !important;
+      padding: 4px 0 2px 0 !important;
+      box-sizing: border-box !important;
+      color-scheme: dark !important;
+    }
+    .cyber-field-control::placeholder,
+    .admin-field-input::placeholder {
+      color: rgba(148, 163, 184, 0.55) !important;
+      font-weight: 500;
+      font-size: 0.88rem;
+    }
+
+    /* Password Input Wrapper with Reveal Toggle */
+    .cyber-input-password-wrap {
+      display: flex;
+      align-items: center;
+      position: relative;
+      width: 100%;
+    }
+    .cyber-input-password-wrap .cyber-field-control {
+      padding-right: 40px !important;
+    }
+    .cyber-eye-toggle-btn {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      font-size: 1.15rem;
+      cursor: pointer;
+      padding: 6px 8px;
+      opacity: 0.7;
+      transition: all 0.2s;
+      border-radius: 8px;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      color: inherit;
+    }
+    .cyber-eye-toggle-btn:active {
+      transform: translateY(-50%) scale(0.9);
+      opacity: 1;
+    }
+
+    .cyber-field-select,
+    .admin-field-select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2338bdf8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
+      background-repeat: no-repeat !important;
+      background-position: right 2px center !important;
+      background-size: 14px 14px !important;
+      padding-right: 24px !important;
+      cursor: pointer !important;
+      font-size: 0.92rem !important;
+    }
+    .cyber-field-select option,
+    .admin-field-select option {
+      background: #091224 !important;
+      color: #f8fafc !important;
+      padding: 10px !important;
+    }
+    .cyber-field-control:disabled,
+    .cyber-field-select:disabled,
+    .admin-field-select:disabled {
+      opacity: 0.85 !important;
+      color: #38bdf8 !important;
+      cursor: not-allowed !important;
+    }
+
+    /* Date picker dark indicator */
+    input[type="date"].cyber-field-control::-webkit-calendar-picker-indicator,
+    input[type="date"].admin-field-input::-webkit-calendar-picker-indicator {
+      filter: invert(0.8) sepia(100%) saturate(300%) hue-rotate(160deg) !important;
+      cursor: pointer !important;
+      opacity: 0.85 !important;
+    }
+
+    /* Legacy field group bridge */
+    .admin-field-group {
+      margin-bottom: 9px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
       width: 100%;
       box-sizing: border-box;
     }
-    .admin-field-input:focus, .admin-field-select:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 10px var(--accent-glow);
+    .admin-field-group input.admin-field-input,
+    .admin-field-group select.admin-field-select {
+      background: rgba(13, 25, 52, 0.85) !important;
+      border: 1px solid rgba(56, 189, 248, 0.26) !important;
+      border-radius: 12px !important;
+      padding: 9px 12px !important;
+      font-size: 16px !important;
     }
-    .admin-banner-notice {
-      background: rgba(56, 189, 248, 0.1);
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      border-radius: 11px;
-      padding: 9px 12px;
-      font-size: 0.74rem;
-      color: var(--text-main);
-      line-height: 1.35;
-      margin-bottom: 12px;
-      display: flex;
+    .admin-field-group input.admin-field-input:focus,
+    .admin-field-group select.admin-field-select:focus {
+      border-color: #38bdf8 !important;
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.35) !important;
+      background: rgba(17, 34, 72, 0.95) !important;
+    }
+
+    /* 2-Column Responsive Form Row */
+    .cyber-field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 8px;
-      align-items: flex-start;
+      margin-bottom: 2px;
+      width: 100%;
+      box-sizing: border-box;
     }
+    .cyber-field-row > * {
+      min-width: 0 !important;
+    }
+    @media (max-width: 380px) {
+      .cyber-field-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+    }
+
+    /* Notice & Info Cards */
+    .cyber-notice-card,
+    .admin-banner-notice {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.14), rgba(99, 102, 241, 0.08)) !important;
+      border: 1px solid rgba(56, 189, 248, 0.35) !important;
+      border-radius: 13px !important;
+      padding: 9px 12px !important;
+      margin-bottom: 12px !important;
+      font-size: 0.74rem !important;
+      color: #e2e8f0 !important;
+      line-height: 1.4 !important;
+      display: flex !important;
+      align-items: flex-start !important;
+      gap: 9px !important;
+      box-sizing: border-box !important;
+    }
+    .cyber-notice-card.warning,
     .admin-banner-notice.warning {
-      background: rgba(245, 158, 11, 0.12);
-      border-color: rgba(245, 158, 11, 0.35);
-      color: #fef3c7;
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.16), rgba(217, 119, 6, 0.08)) !important;
+      border-color: rgba(245, 158, 11, 0.45) !important;
+      color: #fef3c7 !important;
     }
+    .cyber-notice-card.danger,
     .admin-banner-notice.danger {
-      background: rgba(244, 63, 94, 0.14);
-      border-color: rgba(244, 63, 94, 0.4);
-      color: #ffe4e6;
+      background: linear-gradient(135deg, rgba(244, 63, 94, 0.18), rgba(190, 18, 60, 0.08)) !important;
+      border-color: rgba(244, 63, 94, 0.45) !important;
+      color: #ffe4e6 !important;
     }
-    .admin-cancellation-item {
-      background: rgba(15, 23, 42, 0.65);
-      border: 1px solid rgba(244, 63, 94, 0.35);
+
+    /* Holographic Student ID Card Preview */
+    .cyber-student-hologram {
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.22), rgba(99, 102, 241, 0.16), rgba(16, 185, 129, 0.15));
+      border: 1.5px solid rgba(56, 189, 248, 0.45);
+      border-radius: 16px;
+      padding: 12px 14px;
+      margin-bottom: 13px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      position: relative;
+      overflow: hidden;
+      box-sizing: border-box;
+      width: 100%;
+    }
+    .cyber-student-hologram::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent 40%, rgba(56, 189, 248, 0.12) 50%, transparent 60%);
+      transform: rotate(25deg);
+      pointer-events: none;
+      animation: cyberHoloShine 5s infinite linear;
+    }
+    @keyframes cyberHoloShine {
+      0% { transform: translateX(-100%) rotate(25deg); }
+      100% { transform: translateX(100%) rotate(25deg); }
+    }
+    .cyber-hologram-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 13px;
+      background: linear-gradient(135deg, #0284c7, #10b981);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #ffffff;
+      box-shadow: 0 4px 16px rgba(2, 132, 199, 0.45);
+      flex-shrink: 0;
+      user-select: none;
+    }
+    .cyber-hologram-texts {
+      flex: 1;
+      min-width: 0;
+    }
+    .cyber-hologram-name {
+      font-size: 0.94rem;
+      font-weight: 800;
+      color: #f8fafc;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .cyber-hologram-sub {
+      font-size: 0.67rem;
+      color: #94a3b8;
+      margin-top: 1px;
+    }
+    .cyber-hologram-pills {
+      display: flex;
+      gap: 5px;
+      margin-top: 5px;
+      flex-wrap: wrap;
+    }
+    .cyber-hologram-chip {
+      font-size: 0.64rem;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 6px;
+      background: rgba(56, 189, 248, 0.22);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.45);
+    }
+    .cyber-hologram-chip.emerald {
+      background: rgba(16, 185, 129, 0.22);
+      color: #34d399;
+      border-color: rgba(16, 185, 129, 0.45);
+    }
+
+    /* Set-A vs Set-B Luxury Selector Cards */
+    .cyber-set-selector {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 4px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .cyber-set-card,
+    .student-set-option {
+      border: 1.5px solid rgba(255, 255, 255, 0.12) !important;
+      border-radius: 13px !important;
+      padding: 10px 12px !important;
+      background: rgba(11, 22, 46, 0.7) !important;
+      cursor: pointer !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 10px !important;
+      transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+      position: relative !important;
+      box-sizing: border-box !important;
+    }
+    .cyber-set-card.active-seta,
+    .student-set-option:has(input[value="Set-A"]:checked) {
+      border-color: #38bdf8 !important;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.24), rgba(14, 165, 233, 0.1)) !important;
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.35) !important;
+    }
+    .cyber-set-card.active-setb,
+    .student-set-option:has(input[value="Set-B"]:checked) {
+      border-color: #10b981 !important;
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.24), rgba(5, 150, 105, 0.1)) !important;
+      box-shadow: 0 0 16px rgba(16, 185, 129, 0.35) !important;
+    }
+
+    /* Segmented Tabs in Admin Portal */
+    .cyber-deck-tabs,
+    .admin-portal-tabs {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 5px !important;
+      background: rgba(4, 9, 22, 0.85) !important;
+      border: 1px solid rgba(56, 189, 248, 0.26) !important;
+      border-radius: 13px !important;
+      padding: 4px !important;
+      margin-bottom: 12px !important;
+      box-sizing: border-box !important;
+      width: 100% !important;
+    }
+    #adminLoggedOutView .cyber-deck-tabs,
+    #adminLoggedOutView .admin-portal-tabs {
+      grid-template-columns: 1fr 1fr !important;
+    }
+    .cyber-deck-tab,
+    .admin-tab-btn {
+      appearance: none !important;
+      -webkit-appearance: none !important;
+      background: transparent !important;
+      border: 1px solid transparent !important;
+      outline: none !important;
+      border-radius: 9px !important;
+      padding: 10px 4px !important;
+      font-size: 0.74rem !important;
+      font-weight: 700 !important;
+      color: #94a3b8 !important;
+      cursor: pointer !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 5px !important;
+      transition: all 0.2s !important;
+    }
+    .cyber-deck-tab.active,
+    .admin-tab-btn.active {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(99, 102, 241, 0.25)) !important;
+      color: #f8fafc !important;
+      border-color: rgba(56, 189, 248, 0.55) !important;
+      box-shadow: 0 4px 14px rgba(56, 189, 248, 0.25) !important;
+    }
+
+    /* Action Buttons */
+    .cyber-btn-primary {
+      appearance: none;
+      -webkit-appearance: none;
+      background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 50%, #06b6d4 100%);
+      color: #ffffff;
+      border: none;
+      border-radius: 13px;
+      padding: 13px 18px;
+      font-size: 0.88rem;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
+      transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+      width: 100%;
+      box-sizing: border-box;
+      min-height: 48px;
+    }
+    .cyber-btn-primary:active {
+      transform: scale(0.97);
+      box-shadow: 0 2px 8px rgba(14, 165, 233, 0.4);
+    }
+    .cyber-btn-danger {
+      background: linear-gradient(135deg, #f43f5e 0%, #e11d48 50%, #be123c 100%);
+      box-shadow: 0 6px 20px rgba(244, 63, 94, 0.4);
+    }
+    .cyber-btn-emerald {
+      background: linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%);
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+    }
+    .cyber-btn-secondary {
+      appearance: none;
+      -webkit-appearance: none;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: #94a3b8;
       border-radius: 12px;
-      padding: 10px 12px;
+      padding: 10px 14px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s;
+      width: 100%;
+      box-sizing: border-box;
+      min-height: 42px;
+    }
+    .cyber-btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #f8fafc;
+    }
+
+    /* Executive CR Identity Card in Admin Logged In */
+    .cyber-cr-profile-card {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(56, 189, 248, 0.14));
+      border: 1.5px solid rgba(16, 185, 129, 0.4);
+      border-radius: 15px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    /* ============================================================
+       AURA LIGHT THEME SPECIALIZATION FOR CYBER MODALS & CARDS
+       ============================================================ */
+    :root[data-theme="aura-light"] #adminModal .modal-sheet,
+    :root[data-theme="aura-light"] #studentProfileModal .modal-sheet,
+    :root[data-theme="aura-light"] .modal-sheet.cyber-modal {
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%) !important;
+      border: 1px solid rgba(203, 213, 225, 0.95) !important;
+      box-shadow: 0 -16px 50px rgba(15, 23, 42, 0.12), inset 0 1px 0 #ffffff !important;
+      color: #0f172a !important;
+      color-scheme: light !important;
+    }
+    :root[data-theme="aura-light"] .cyber-modal-handle {
+      background: rgba(148, 163, 184, 0.6) !important;
+    }
+    :root[data-theme="aura-light"] .cyber-modal-header {
+      border-bottom: 1px solid rgba(226, 232, 240, 0.95) !important;
+    }
+    :root[data-theme="aura-light"] .cyber-modal-title,
+    :root[data-theme="aura-light"] #adminModalTitle {
+      color: #0f172a !important;
+    }
+    :root[data-theme="aura-light"] .cyber-modal-title div:last-child {
+      color: #64748b !important;
+    }
+    :root[data-theme="aura-light"] .cyber-modal-close-btn {
+      background: #f1f5f9 !important;
+      border: 1px solid rgba(226, 232, 240, 0.95) !important;
+      color: #475569 !important;
+    }
+    :root[data-theme="aura-light"] .cyber-modal-close-btn:hover,
+    :root[data-theme="aura-light"] .cyber-modal-close-btn:active {
+      background: rgba(244, 63, 94, 0.15) !important;
+      border-color: rgba(244, 63, 94, 0.4) !important;
+      color: #e11d48 !important;
+    }
+    :root[data-theme="aura-light"] .cyber-field-card {
+      background: #ffffff !important;
+      border: 1.5px solid rgba(226, 232, 240, 0.95) !important;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
+    }
+    :root[data-theme="aura-light"] .cyber-field-card:focus-within {
+      background: #ffffff !important;
+      border-color: #4f46e5 !important;
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12) !important;
+    }
+    :root[data-theme="aura-light"] .cyber-field-label,
+    :root[data-theme="aura-light"] .admin-field-label {
+      color: #4f46e5 !important;
+    }
+    :root[data-theme="aura-light"] .cyber-field-control,
+    :root[data-theme="aura-light"] .admin-field-input,
+    :root[data-theme="aura-light"] .admin-field-select {
+      color: #0f172a !important;
+      color-scheme: light !important;
+    }
+    :root[data-theme="aura-light"] .cyber-field-control::placeholder,
+    :root[data-theme="aura-light"] .admin-field-input::placeholder {
+      color: #94a3b8 !important;
+    }
+    :root[data-theme="aura-light"] .cyber-field-select option,
+    :root[data-theme="aura-light"] .admin-field-select option {
+      background: #ffffff !important;
+      color: #0f172a !important;
+    }
+    :root[data-theme="aura-light"] input[type="date"].cyber-field-control::-webkit-calendar-picker-indicator {
+      filter: none !important;
+      opacity: 0.75 !important;
+    }
+    :root[data-theme="aura-light"] .cyber-notice-card,
+    :root[data-theme="aura-light"] .admin-banner-notice {
+      background: linear-gradient(135deg, rgba(79, 70, 229, 0.08), rgba(14, 165, 233, 0.06)) !important;
+      border: 1px solid rgba(79, 70, 229, 0.22) !important;
+      color: #334155 !important;
+    }
+    :root[data-theme="aura-light"] .cyber-notice-card.warning,
+    :root[data-theme="aura-light"] .admin-banner-notice.warning {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(217, 119, 6, 0.05)) !important;
+      border-color: rgba(245, 158, 11, 0.35) !important;
+      color: #78350f !important;
+    }
+    :root[data-theme="aura-light"] .cyber-notice-card.danger,
+    :root[data-theme="aura-light"] .admin-banner-notice.danger {
+      background: linear-gradient(135deg, rgba(244, 63, 94, 0.12), rgba(190, 18, 60, 0.05)) !important;
+      border-color: rgba(244, 63, 94, 0.35) !important;
+      color: #881337 !important;
+    }
+    :root[data-theme="aura-light"] .cyber-deck-tabs,
+    :root[data-theme="aura-light"] .admin-portal-tabs {
+      background: #f1f5f9 !important;
+      border: 1px solid rgba(226, 232, 240, 0.95) !important;
+    }
+    :root[data-theme="aura-light"] .cyber-deck-tab,
+    :root[data-theme="aura-light"] .admin-tab-btn {
+      color: #64748b !important;
+    }
+    :root[data-theme="aura-light"] .cyber-deck-tab.active,
+    :root[data-theme="aura-light"] .admin-tab-btn.active {
+      background: #ffffff !important;
+      color: #0f172a !important;
+      border-color: rgba(203, 213, 225, 0.95) !important;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08) !important;
+    }
+    :root[data-theme="aura-light"] .cyber-set-card,
+    :root[data-theme="aura-light"] .student-set-option {
+      background: #ffffff !important;
+      border: 1.5px solid rgba(226, 232, 240, 0.95) !important;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
+    }
+    :root[data-theme="aura-light"] .cyber-set-card.active-seta {
+      border-color: #0284c7 !important;
+      background: rgba(14, 165, 233, 0.08) !important;
+      box-shadow: 0 0 12px rgba(14, 165, 233, 0.2) !important;
+    }
+    :root[data-theme="aura-light"] .cyber-set-card.active-setb {
+      border-color: #059669 !important;
+      background: rgba(16, 185, 129, 0.08) !important;
+      box-shadow: 0 0 12px rgba(16, 185, 129, 0.2) !important;
+    }
+    :root[data-theme="aura-light"] .cyber-student-hologram {
+      background: linear-gradient(135deg, rgba(79, 70, 229, 0.08), rgba(14, 165, 233, 0.08), rgba(16, 185, 129, 0.08)) !important;
+      border: 1.5px solid rgba(79, 70, 229, 0.3) !important;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06) !important;
+    }
+    :root[data-theme="aura-light"] .cyber-hologram-name {
+      color: #0f172a !important;
+    }
+    :root[data-theme="aura-light"] .cyber-hologram-sub {
+      color: #64748b !important;
+    }
+    :root[data-theme="aura-light"] .cyber-btn-secondary {
+      background: #ffffff !important;
+      border: 1.5px solid rgba(226, 232, 240, 0.95) !important;
+      color: #475569 !important;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
+    }
+    :root[data-theme="aura-light"] .cyber-btn-secondary:hover,
+    :root[data-theme="aura-light"] .cyber-btn-secondary:active {
+      background: #f8fafc !important;
+      color: #0f172a !important;
+    }
+    :root[data-theme="aura-light"] .cyber-cr-profile-card {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(14, 165, 233, 0.1)) !important;
+      border: 1.5px solid rgba(16, 185, 129, 0.35) !important;
+    }
+    :root[data-theme="aura-light"] #adminActiveProfileName {
+      color: #0f172a !important;
+    }
+
+    /* Cancellation Cards in Active Deck */
+    .admin-cancellation-item {
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid rgba(244, 63, 94, 0.4);
+      border-radius: 13px;
+      padding: 11px 13px;
       margin-bottom: 9px;
       display: flex;
       flex-direction: column;
       gap: 6px;
       position: relative;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
     }
     .admin-cancellation-item.restored {
       opacity: 0.6;
       border-color: rgba(255, 255, 255, 0.1);
     }
 
-    /* Student Profile & Lock Banner Styles */
-    .student-quick-btn {
-      position: relative;
-      background: rgba(56, 189, 248, 0.12);
-      border-color: rgba(56, 189, 248, 0.35);
-      color: #38bdf8;
-    }
-    .student-quick-btn.is-active {
-      background: linear-gradient(135deg, rgba(56, 189, 248, 0.25), rgba(16, 185, 129, 0.2));
-      border-color: rgba(56, 189, 248, 0.6);
-      box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
-    }
-    .student-header-pill {
-      position: absolute;
-      bottom: -4px;
-      right: -2px;
-      font-size: 0.52rem;
-      font-weight: 800;
-      padding: 1px 4px;
-      border-radius: 6px;
-      background: #0284c7;
-      color: #fff;
-      line-height: 1;
-      letter-spacing: 0.3px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    }
+    /* Top Lock Banner & Cancellation Banner */
     .student-locked-banner {
-      background: linear-gradient(135deg, rgba(14, 165, 233, 0.14), rgba(16, 185, 129, 0.10));
-      border: 1px solid rgba(56, 189, 248, 0.35);
-      border-radius: 12px;
-      padding: 8px 12px;
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.18), rgba(16, 185, 129, 0.12));
+      border: 1px solid rgba(56, 189, 248, 0.38);
+      border-radius: 13px;
+      padding: 9px 13px;
       margin-bottom: 10px;
       display: flex;
       align-items: center;
@@ -5553,48 +6615,33 @@
       cursor: pointer;
       font-size: 0.78rem;
       color: var(--text-main);
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
     }
     .student-locked-chip {
       font-weight: 800;
       padding: 2px 7px;
       border-radius: 6px;
-      background: rgba(56, 189, 248, 0.2);
+      background: rgba(56, 189, 248, 0.22);
       color: #38bdf8;
-      border: 1px solid rgba(56, 189, 248, 0.4);
+      border: 1px solid rgba(56, 189, 248, 0.45);
       font-size: 0.72rem;
     }
-    .student-set-option {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 10px;
-      border-radius: 10px;
-      border: 1px solid var(--card-border);
-      background: rgba(6, 11, 24, 0.75);
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .student-set-option:hover {
-      border-color: var(--accent);
-      background: rgba(14, 165, 233, 0.1);
-    }
     .cancellation-notice-banner {
-      background: linear-gradient(135deg, rgba(239, 68, 68, 0.22), rgba(185, 28, 28, 0.14));
-      border: 1px solid rgba(239, 68, 68, 0.55);
-      border-radius: 12px;
-      padding: 9px 12px;
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.25), rgba(185, 28, 28, 0.16));
+      border: 1px solid rgba(239, 68, 68, 0.6);
+      border-radius: 13px;
+      padding: 10px 14px;
       margin-bottom: 12px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       cursor: pointer;
-      box-shadow: 0 4px 18px rgba(239, 68, 68, 0.25);
-      animation: pulseAlert 2.5s infinite;
+      box-shadow: 0 4px 20px rgba(239, 68, 68, 0.3);
+      animation: cyberPulseAlert 2.5s infinite;
     }
-    @keyframes pulseAlert {
-      0%, 100% { box-shadow: 0 4px 18px rgba(239, 68, 68, 0.25); }
-      50% { box-shadow: 0 4px 24px rgba(239, 68, 68, 0.5); }
+    @keyframes cyberPulseAlert {
+      0%, 100% { box-shadow: 0 4px 20px rgba(239, 68, 68, 0.3); }
+      50% { box-shadow: 0 4px 28px rgba(239, 68, 68, 0.6); }
     }
     .cancel-banner-content {
       display: flex;
@@ -6030,19 +7077,95 @@
       <!-- RIGHT MAIN CONTENT PANE: Routine & Schedule Bento Grid -->
       <section class="desktop-main-pane">
 
-        <!-- STUDENT PROFILE LOCKED STATUS BAR -->
-        <div id="studentLockedBanner" class="student-locked-banner" style="display:none;" onclick="openStudentProfileModal()">
-          <div style="display:flex; align-items:center; gap:8px;">
-            <span>🎓</span>
-            <div>
-              <strong id="studentLockName">Student Profile</strong>
-              <span style="opacity:0.75;"> • Locked to </span>
-              <span class="student-locked-chip" id="studentLockChip">SEC-D (SET-A)</span>
+        <!-- DASHBOARD ROLE GATEWAY (3 ROLES: STUDENT LOGIN | CR LOGIN | ADMIN LOGIN) -->
+        <div class="dashboard-role-gateway" id="dashboardRoleGateway">
+          <!-- State 1: When in Role Selection / Switcher View -->
+          <div id="roleGatewaySelector" class="role-gateway-selector">
+            <div class="role-gateway-top">
+              <div class="role-gateway-heading">
+                <span class="role-gateway-glow-orb">⚡</span>
+                <div>
+                  <div class="role-gateway-title">CHOOSE LOGIN ROLE / PORTAL</div>
+                  <div class="role-gateway-sub">Student • Class Representative (CR) • Master Admin</div>
+                </div>
+              </div>
+              <span class="role-status-badge unverified" id="roleGatewayStatusBadge">Guest Mode</span>
+            </div>
+
+            <div class="role-cards-grid">
+              <!-- ROLE 1: Student Login -->
+              <button type="button" class="role-action-card card-role-student" onclick="openStudentProfileModal()" id="btnGatewayStudent">
+                <div class="role-card-icon-wrap student-grad">🎓</div>
+                <div class="role-card-body">
+                  <div class="role-card-name">Student Login</div>
+                  <div class="role-card-desc">Lock your Section & Set (A/B) for personalized classes & targeted alerts</div>
+                  <div class="role-card-tags">
+                    <span class="role-mini-tag cyan">Personal Timetable</span>
+                    <span class="role-mini-tag">Set Locked</span>
+                  </div>
+                </div>
+                <span class="role-card-arrow">›</span>
+              </button>
+
+              <!-- ROLE 2: CR Login -->
+              <button type="button" class="role-action-card card-role-cr" onclick="openCRLoginModal()" id="btnGatewayCR">
+                <div class="role-card-icon-wrap cr-grad">⚡</div>
+                <div class="role-card-body">
+                  <div class="role-card-name">CR Login</div>
+                  <div class="role-card-desc">Class Representative: View both Set-A & Set-B + Broadcast cancellation notices</div>
+                  <div class="role-card-tags">
+                    <span class="role-mini-tag emerald">Both Sets (A & B)</span>
+                    <span class="role-mini-tag gold">Cancel Notice</span>
+                  </div>
+                </div>
+                <span class="role-card-arrow">›</span>
+              </button>
+
+              <!-- ROLE 3: Admin Login -->
+              <button type="button" class="role-action-card card-role-admin" onclick="openAdminModal('admin')" id="btnGatewayAdmin">
+                <div class="role-card-icon-wrap admin-grad">🛡️</div>
+                <div class="role-card-body">
+                  <div class="role-card-name">Admin Login</div>
+                  <div class="role-card-desc">Super Admin Portal: Full control over all sections, faculty, and schedules</div>
+                  <div class="role-card-tags">
+                    <span class="role-mini-tag purple">All Sections</span>
+                    <span class="role-mini-tag">Master Control</span>
+                  </div>
+                </div>
+                <span class="role-card-arrow">›</span>
+              </button>
             </div>
           </div>
-          <button class="secondary-btn" style="padding:3px 8px; font-size:0.68rem; border-color:rgba(56,189,248,0.35); color:#38bdf8;" onclick="event.stopPropagation(); openStudentProfileModal();">
-            ✏️ Switch
-          </button>
+
+          <!-- State 2: Active Role Session Card (When Student, CR, or Admin is logged in) -->
+          <div id="roleGatewayActiveCard" class="role-gateway-active-card" style="display:none;">
+            <div class="role-active-content">
+              <div class="role-active-icon-badge" id="roleActiveIconBadge">🎓</div>
+              <div class="role-active-info">
+                <div class="role-active-title-row">
+                  <strong class="role-active-name" id="roleActiveName">Student Name</strong>
+                  <span class="role-active-pill" id="roleActivePill">SET-A LOCKED</span>
+                </div>
+                <div class="role-active-details" id="roleActiveDetails">
+                  Section D • Set-A Routine Active • Strictly isolated alerts
+                </div>
+              </div>
+            </div>
+            <div class="role-active-actions">
+              <button type="button" class="role-active-action-btn primary" id="roleActivePrimaryActionBtn" onclick="handleRolePrimaryAction()">
+                <span id="roleActivePrimaryBtnIcon">✏️</span> <span id="roleActivePrimaryBtnText">Switch Profile</span>
+              </button>
+              <button type="button" class="role-active-action-btn danger" id="roleActiveLogoutBtn" onclick="handleRoleLogout()">
+                <span>🚪</span> <span>Logout</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hidden legacy hook for backward compatibility -->
+        <div id="studentLockedBanner" style="display:none;">
+          <strong id="studentLockName">Student Profile</strong>
+          <span id="studentLockChip">SEC-D (SET-A)</span>
         </div>
 
         <!-- ACTIVE CANCELLATION LIVE BANNER (Top Ticker when classes are cancelled) -->
@@ -6170,7 +7293,7 @@
         style="background:var(--card-surface-grad); border:1px solid var(--card-border); border-radius:14px; padding:12px; display:flex; flex-direction:column; gap:8px;">
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Installed Version:</span>
-          <strong style="color:var(--gold-accent);">v6.1.0 (Student Profile & Multi-CR Alerts)</strong>
+          <strong style="color:var(--gold-accent);">v6.2.0 (Student Profile & Multi-CR Alerts)</strong>
         </div>
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Notification:</span>
@@ -6194,7 +7317,7 @@
 
       <button class="secondary-btn" style="background:rgba(79, 70, 229, 0.12); border:1.5px solid #4f46e5; color:#4f46e5; font-weight:800; justify-content:center;"
         onclick="downloadFullApk()">
-        📲 Direct Download & Install APK (v6.1.0)
+        📲 Direct Download & Install APK (v6.2.0)
       </button>
 
       <button class="secondary-btn" onclick="checkInAppUpdate(true)">
@@ -6861,7 +7984,25 @@
 
     let weeklySchedule = getActiveSchedule();
 
-    function selectSection(secKey) {
+    function selectSection(secKey, isForced = false) {
+      const profile = getStudentProfile();
+      // If student is logged in, restrict switching sections:
+      if (!isForced && profile && profile.isLoggedIn && profile.section && !_isAdminLoggedIn) {
+        if (secKey !== profile.section) {
+          triggerHaptic(20);
+          showToast(`🔒 Aap ${profile.section} me logged in hain! Dusra section dekhne ke liye "Switch Profile" karein.`);
+          return;
+        }
+      }
+      // If CR is logged in and assigned to a specific section:
+      if (!isForced && _isAdminLoggedIn && _activeAdminSession && _activeAdminSession.assignedSection && _activeAdminSession.assignedSection !== 'ALL') {
+        if (secKey !== _activeAdminSession.assignedSection) {
+          triggerHaptic(20);
+          showToast(`🔒 CR Command Deck ${_activeAdminSession.assignedSection} ke liye active hai.`);
+          return;
+        }
+      }
+
       triggerHaptic(12);
       if (!ALL_SECTIONS[secKey]) {
         showToast('⏳ Loading section data...');
@@ -7293,35 +8434,109 @@
       }
     }
 
+    function selectStudentSet(set) {
+      const rA = document.getElementById('radioSetA');
+      const rB = document.getElementById('radioSetB');
+      const cA = document.getElementById('cardSetA');
+      const cB = document.getElementById('cardSetB');
+      if (set === 'Set-B') {
+        if (rB) rB.checked = true;
+        if (rA) rA.checked = false;
+        if (cB) cB.classList.add('active-setb');
+        if (cA) cA.classList.remove('active-seta');
+      } else {
+        if (rA) rA.checked = true;
+        if (rB) rB.checked = false;
+        if (cA) cA.classList.add('active-seta');
+        if (cB) cB.classList.remove('active-setb');
+      }
+      onStudentProfileFormChanged();
+    }
+
+    function onStudentProfileFormChanged() {
+      const nameInp = document.getElementById('studentNameInput');
+      const rollInp = document.getElementById('studentRollInput');
+      const secSelect = document.getElementById('studentSectionSelect');
+      const setRadios = document.getElementsByName('studentSetRadio');
+
+      const holoName = document.getElementById('studentHoloName');
+      const holoRoll = document.getElementById('studentHoloRoll');
+      const holoSec = document.getElementById('studentHoloSec');
+      const holoSet = document.getElementById('studentHoloSet');
+
+      const valName = (nameInp?.value || '').trim();
+      const valRoll = (rollInp?.value || '').trim();
+      const valSec = secSelect?.value || currentSection || 'Sec-D';
+      let valSet = 'Set-A';
+      if (setRadios) {
+        for (const r of setRadios) {
+          if (r.checked) { valSet = r.value; break; }
+        }
+      }
+
+      if (holoName) holoName.textContent = valName ? valName : 'Student Name';
+      if (holoRoll) holoRoll.textContent = valRoll ? `Roll: ${valRoll} • CSE` : 'Roll: Not Set • Computer Science';
+      const holoAvatar = document.getElementById('studentHoloAvatar');
+      if (holoAvatar) {
+        if (valName) {
+          const initials = valName.split(/\s+/).filter(Boolean).map(w => w[0]).join('').substring(0, 2).toUpperCase();
+          holoAvatar.textContent = initials || '🎓';
+        } else {
+          holoAvatar.textContent = '🎓';
+        }
+      }
+      if (holoSec) {
+        const secLabels = {
+          'Sec-A': 'Section A', 'Sec-B': 'Section B', 'Sec-C': 'Section C',
+          'Sec-D': 'Section D', 'Sec-E': 'Section E', 'Sec-H': 'Section H',
+          'Sec-I': 'Section I', 'Sec-J': 'Section J', 'Sec-K': 'Section K', 'Sec-L': 'Section L'
+        };
+        holoSec.textContent = secLabels[valSec] || valSec;
+      }
+      if (holoSet) {
+        if (valSet === 'Set-B') {
+          holoSet.textContent = 'Set-B (Roll 36+)';
+          holoSet.className = 'cyber-hologram-chip emerald';
+        } else {
+          holoSet.textContent = 'Set-A (Roll 1-35)';
+          holoSet.className = 'cyber-hologram-chip';
+        }
+      }
+
+      const cA = document.getElementById('cardSetA');
+      const cB = document.getElementById('cardSetB');
+      if (valSet === 'Set-B') {
+        if (cB) cB.classList.add('active-setb');
+        if (cA) cA.classList.remove('active-seta');
+      } else {
+        if (cA) cA.classList.add('active-seta');
+        if (cB) cB.classList.remove('active-setb');
+      }
+    }
+
     function openStudentProfileModal() {
       triggerHaptic(12);
       const profile = getStudentProfile();
       const nameInp = document.getElementById('studentNameInput');
       const rollInp = document.getElementById('studentRollInput');
       const secSelect = document.getElementById('studentSectionSelect');
-      const setRadios = document.getElementsByName('studentSetRadio');
 
+      let currentBatch = 'Set-A';
       if (profile && profile.isLoggedIn) {
         if (nameInp) nameInp.value = profile.name || '';
         if (rollInp) rollInp.value = profile.rollNo || '';
         if (secSelect) secSelect.value = profile.section || currentSection;
-        if (setRadios) {
-          for (const r of setRadios) {
-            r.checked = (r.value === profile.batch);
-          }
-        }
+        currentBatch = profile.batch || 'Set-A';
       } else {
         if (nameInp && !nameInp.value) nameInp.value = '';
         if (rollInp && !rollInp.value) rollInp.value = '';
         if (secSelect) secSelect.value = currentSection || 'Sec-D';
-        if (setRadios) {
-          for (const r of setRadios) {
-            r.checked = (r.value === (selectedBatch === 'Set-B' ? 'Set-B' : 'Set-A'));
-          }
-        }
+        currentBatch = (selectedBatch === 'Set-B' ? 'Set-B' : 'Set-A');
       }
 
+      selectStudentSet(currentBatch);
       updateStudentUIState();
+      onStudentProfileFormChanged();
       openModal('studentProfileModal');
     }
 
@@ -7341,6 +8556,11 @@
         }
       }
 
+      // Logging in as Student clears any admin/CR session so student profile rules are strictly active
+      _isAdminLoggedIn = false;
+      _activeAdminSession = null;
+      localStorage.removeItem('secD_admin_session');
+
       const profile = {
         isLoggedIn: true,
         name,
@@ -7355,20 +8575,28 @@
       showToast(`🎓 Profile Saved! Locked to ${section} (${batch}).`);
 
       // Switch Timetable view to locked section and set
-      selectSection(section);
-      setBatchFilter(batch);
+      selectSection(section, true);
+      setBatchFilter(batch, true);
 
       updateStudentUIState();
+      updateAdminUIState();
+      updateRoleGatewayUI();
       updateCancellationNoticeBanner();
       closeModal('studentProfileModal');
     }
 
     function clearStudentProfile() {
       saveStudentProfileToStorage(null);
+      _isAdminLoggedIn = false;
+      _activeAdminSession = null;
+      localStorage.removeItem('secD_admin_session');
       triggerHaptic(10);
-      showToast('🚪 Student Profile Reset! Section unlocked.');
+      showToast('🚪 Student Profile Reset! Section & Batch unlocked in Guest Mode.');
       updateStudentUIState();
+      updateAdminUIState();
+      updateRoleGatewayUI();
       updateCancellationNoticeBanner();
+      renderTodayLectures(viewingDate);
       closeModal('studentProfileModal');
     }
 
@@ -7376,19 +8604,30 @@
     // Guarantees students only receive class cancellations & alerts belonging to their locked section and set!
     function shouldDeliverNotificationToCurrentUser(record) {
       if (!record) return false;
-      // If record has no section specified or is for ALL, allow
-      if (!record.section || record.section === 'ALL') return true;
+
+      // 1. If active user is Admin or CR:
+      if (_isAdminLoggedIn && _activeAdminSession) {
+        if (!_activeAdminSession.assignedSection || _activeAdminSession.assignedSection === 'ALL') {
+          return true; // Super Admin sees all notifications
+        }
+        if (_activeAdminSession.assignedSection === record.section) {
+          return true; // CR sees all notifications for their assigned section
+        }
+      }
 
       const profile = getStudentProfile();
       const userSec = (profile && profile.isLoggedIn && profile.section) ? profile.section : currentSection;
       const userBatch = (profile && profile.isLoggedIn && profile.batch) ? profile.batch : selectedBatch;
 
-      // 1. Strict Section Isolation Check:
-      if (record.section !== userSec) {
+      // 2. Strict Section Isolation Check:
+      if (record.section && record.section !== 'ALL' && record.section !== userSec) {
         return false; // Dropped: record belongs to a different section
       }
 
-      // 2. Strict Set/Batch Isolation Check:
+      // 3. Strict Set/Batch Isolation Check:
+      // If student is Set-A and cancellation is for Set-B -> SUPPRESS!
+      // If student is Set-B and cancellation is for Set-A -> SUPPRESS!
+      // If cancellation is for ALL (Both Sets) -> DELIVER to both!
       if (record.batch && record.batch !== 'ALL') {
         if (userBatch && userBatch !== 'ALL' && record.batch !== userBatch) {
           return false; // Dropped: record is for a different batch/set
@@ -7404,7 +8643,7 @@
     let _isAdminLoggedIn = false;
     let _activeAdminSession = null;
     let _activeDeckTab = 'cancel'; // 'cancel', 'active', 'settings'
-    let _activeAuthTab = 'login'; // 'login', 'register'
+    let _activeAuthTab = 'cr'; // 'cr', 'admin', 'register'
 
     // Supported Master Admin Passwords
     const MASTER_KEY_ALT = 'CSE-D-ADMIN-2025';
@@ -7429,7 +8668,29 @@
     function getAdminAccounts() {
       try {
         const raw = localStorage.getItem('secD_admin_accounts');
-        return raw ? JSON.parse(raw) : [];
+        let accounts = raw ? JSON.parse(raw) : [];
+        if (!accounts || accounts.length === 0) {
+          accounts = [
+            {
+              id: 'cr_secd_default',
+              username: 'cr_secd',
+              fullName: 'Krishna Panday (CR)',
+              assignedSection: 'Sec-D',
+              passwordHash: sha256('1234' + PIN_SALT),
+              createdAt: 1700000000000
+            },
+            {
+              id: 'admin_default',
+              username: 'admin',
+              fullName: 'Master Administrator',
+              assignedSection: 'ALL',
+              passwordHash: sha256('Krishna@SecD#2026' + PIN_SALT),
+              createdAt: 1700000000000
+            }
+          ];
+          localStorage.setItem('secD_admin_accounts', JSON.stringify(accounts));
+        }
+        return accounts;
       } catch (e) {
         return [];
       }
@@ -7458,8 +8719,124 @@
         _isFacultyAdminUnlocked = true;
       }
       updateAdminUIState();
+      updateRoleGatewayUI();
       initCancelledClassesSync();
       checkUrlForCancelSync();
+    }
+
+    function updateRoleGatewayUI() {
+      const gatewaySelector = document.getElementById('roleGatewaySelector');
+      const gatewayActiveCard = document.getElementById('roleGatewayActiveCard');
+      const statusBadge = document.getElementById('roleGatewayStatusBadge');
+      const iconBadge = document.getElementById('roleActiveIconBadge');
+      const activeName = document.getElementById('roleActiveName');
+      const activePill = document.getElementById('roleActivePill');
+      const activeDetails = document.getElementById('roleActiveDetails');
+      const primaryBtnIcon = document.getElementById('roleActivePrimaryBtnIcon');
+      const primaryBtnText = document.getElementById('roleActivePrimaryBtnText');
+
+      if (!gatewaySelector || !gatewayActiveCard) return;
+
+      const profile = getStudentProfile();
+      const hasStudent = !!(profile && profile.isLoggedIn && profile.section);
+      const hasAdmin = !!(_isAdminLoggedIn && _activeAdminSession);
+
+      if (hasAdmin) {
+        gatewaySelector.style.display = 'none';
+        gatewayActiveCard.style.display = 'flex';
+
+        const isSuper = !_activeAdminSession.assignedSection || _activeAdminSession.assignedSection === 'ALL';
+        if (isSuper) {
+          if (iconBadge) {
+            iconBadge.textContent = '🛡️';
+            iconBadge.className = 'role-active-icon-badge admin-badge';
+          }
+          if (activeName) activeName.textContent = _activeAdminSession.fullName || 'Master Administrator';
+          if (activePill) {
+            activePill.textContent = 'MASTER ADMIN (ALL SECTIONS)';
+            activePill.className = 'role-active-pill purple';
+          }
+          if (activeDetails) activeDetails.textContent = 'Full Master Access across all sections (Sec-A to Sec-L) • Faculty controls active';
+          if (primaryBtnIcon) primaryBtnIcon.textContent = '⚙️';
+          if (primaryBtnText) primaryBtnText.textContent = 'Admin Deck';
+        } else {
+          // Class Representative (CR)
+          if (iconBadge) {
+            iconBadge.textContent = '⚡';
+            iconBadge.className = 'role-active-icon-badge cr-badge';
+          }
+          if (activeName) activeName.textContent = _activeAdminSession.fullName || 'Class Representative';
+          if (activePill) {
+            activePill.textContent = `CR • ${_activeAdminSession.assignedSection} (SET-A & SET-B)`;
+            activePill.className = 'role-active-pill emerald';
+          }
+          if (activeDetails) activeDetails.textContent = `Full CR Command over ${_activeAdminSession.assignedSection} • Set-A & Set-B unlocked • Class cancellation broadcaster`;
+          if (primaryBtnIcon) primaryBtnIcon.textContent = '🚫';
+          if (primaryBtnText) primaryBtnText.textContent = 'Cancel Class';
+        }
+        if (statusBadge) {
+          statusBadge.textContent = isSuper ? 'Master Admin' : 'CR Active';
+          statusBadge.className = isSuper ? 'role-status-badge active-admin' : 'role-status-badge active-cr';
+        }
+      } else if (hasStudent) {
+        gatewaySelector.style.display = 'none';
+        gatewayActiveCard.style.display = 'flex';
+
+        if (iconBadge) {
+          const initials = (profile.name || '').split(/\s+/).filter(Boolean).map(w => w[0]).join('').substring(0, 2).toUpperCase();
+          iconBadge.textContent = initials || '🎓';
+          iconBadge.className = 'role-active-icon-badge';
+        }
+        if (activeName) activeName.textContent = profile.name || 'Student Profile';
+        if (activePill) {
+          activePill.textContent = `${profile.section} (${profile.batch || 'Set-A'}) 🔒`;
+          activePill.className = 'role-active-pill';
+        }
+        if (activeDetails) {
+          activeDetails.textContent = `Viewing only ${profile.batch || 'Set-A'} & combined classes • Isolated notifications enabled`;
+        }
+        if (primaryBtnIcon) primaryBtnIcon.textContent = '✏️';
+        if (primaryBtnText) primaryBtnText.textContent = 'Switch Profile';
+
+        if (statusBadge) {
+          statusBadge.textContent = `${profile.section} Student`;
+          statusBadge.className = 'role-status-badge active-student';
+        }
+      } else {
+        // Guest / Unlogged Mode
+        gatewaySelector.style.display = 'block';
+        gatewayActiveCard.style.display = 'none';
+
+        if (statusBadge) {
+          statusBadge.textContent = 'Guest / Select Role';
+          statusBadge.className = 'role-status-badge unverified';
+        }
+      }
+    }
+
+    function handleRolePrimaryAction() {
+      triggerHaptic(12);
+      if (_isAdminLoggedIn && _activeAdminSession) {
+        openAdminModal();
+        const isSuper = !_activeAdminSession.assignedSection || _activeAdminSession.assignedSection === 'ALL';
+        if (!isSuper) {
+          switchAdminDeckTab('cancel');
+        }
+      } else {
+        openStudentProfileModal();
+      }
+    }
+
+    function handleRoleLogout() {
+      triggerHaptic(14);
+      if (_isAdminLoggedIn) {
+        adminLogout();
+      } else if (isStudentLoggedIn()) {
+        clearStudentProfile();
+      } else {
+        showToast('Already in Guest Mode.');
+      }
+      updateRoleGatewayUI();
     }
 
     function updateAdminUIState() {
@@ -7527,35 +8904,175 @@
       }
 
       updateActiveCancellationsCountBadge();
+      updateRoleGatewayUI();
     }
 
-    function openAdminModal() {
+    function openCRLoginModal(section = 'Sec-D') {
+      triggerHaptic(12);
+      openAdminModal('cr');
+      const secSelect = document.getElementById('crSectionSelect');
+      if (secSelect) secSelect.value = section || currentSection || 'Sec-D';
+    }
+
+    function openAdminModal(initialTab = 'cr') {
       triggerHaptic(12);
       populateCancelSectionOptions();
       setDefaultCancelFormValues();
       updateAdminUIState();
       renderActiveCancellationsList();
       renderRegisteredAccountsList();
+      if (!_isAdminLoggedIn) {
+        switchAdminAuthTab(initialTab);
+      }
       openModal('adminModal');
     }
 
     function switchAdminAuthTab(tab) {
       _activeAuthTab = tab;
-      const tabLogin = document.getElementById('tabAdminLogin');
+      const tabCR = document.getElementById('tabCRLogin');
+      const tabAdmin = document.getElementById('tabAdminLogin');
       const tabReg = document.getElementById('tabAdminRegister');
-      const secLogin = document.getElementById('adminLoginSection');
+      const secCR = document.getElementById('crLoginSection');
+      const secAdmin = document.getElementById('adminLoginSection');
       const secReg = document.getElementById('adminRegisterSection');
+      const modalTitle = document.getElementById('adminModalTitle');
 
-      if (tab === 'login') {
-        if (tabLogin) tabLogin.classList.add('active');
-        if (tabReg) tabReg.classList.remove('active');
-        if (secLogin) secLogin.style.display = 'block';
-        if (secReg) secReg.style.display = 'none';
+      [tabCR, tabAdmin, tabReg].forEach(t => t && t.classList.remove('active'));
+      [secCR, secAdmin, secReg].forEach(s => s && (s.style.display = 'none'));
+
+      if (tab === 'cr') {
+        if (tabCR) tabCR.classList.add('active');
+        if (secCR) secCR.style.display = 'block';
+        if (modalTitle) modalTitle.textContent = '⚡ CR Command Portal';
+      } else if (tab === 'admin') {
+        if (tabAdmin) tabAdmin.classList.add('active');
+        if (secAdmin) secAdmin.style.display = 'block';
+        if (modalTitle) modalTitle.textContent = '🛡️ Master Admin Portal';
       } else {
-        if (tabLogin) tabLogin.classList.remove('active');
         if (tabReg) tabReg.classList.add('active');
-        if (secLogin) secLogin.style.display = 'none';
         if (secReg) secReg.style.display = 'block';
+        if (modalTitle) modalTitle.textContent = '✨ Create CR Account';
+      }
+    }
+
+    function submitCRLogin() {
+      const secSelect = document.getElementById('crSectionSelect');
+      const userInp = document.getElementById('crUsernameInput');
+      const passInp = document.getElementById('crPasswordInput');
+      const errBox = document.getElementById('crLoginErrorMsg');
+
+      const section = secSelect ? secSelect.value : currentSection || 'Sec-D';
+      const username = (userInp?.value || '').trim().toLowerCase();
+      const password = (passInp?.value || '');
+
+      const showError = (msg) => {
+        if (errBox) {
+          errBox.textContent = msg;
+          errBox.style.display = 'flex';
+        }
+        triggerHaptic(20);
+      };
+
+      if (!username || !password) {
+        showError('⚠️ Please enter both CR username and password.');
+        return;
+      }
+
+      const accounts = getAdminAccounts();
+      const account = accounts.find(a => a.username === username);
+      const isMasterKey = isMasterAdminKeyValid(password);
+      const isDefaultQuickCr = (username === 'cr_secd' || username === 'cr') && (password === '1234' || password === 'cr123');
+
+      if (!account && !isMasterKey && !isDefaultQuickCr) {
+        showError('❌ CR account not found! Use "1-Tap Instant Sec-D CR Login" or create a CR account with Master Key.');
+        return;
+      }
+
+      if (account) {
+        const hash = sha256(password + PIN_SALT);
+        if (account.passwordHash !== hash && !isMasterKey && !isDefaultQuickCr) {
+          showError('❌ Incorrect CR password! Please check your credentials.');
+          return;
+        }
+      }
+
+      const fullName = account ? account.fullName : `CR (${section})`;
+      const assignedSection = account ? (account.assignedSection || section) : section;
+
+      // Clear conflicting student profile so CR command view is cleanly active
+      saveStudentProfileToStorage(null);
+
+      _activeAdminSession = {
+        isLoggedIn: true,
+        username: account ? account.username : username,
+        fullName,
+        assignedSection,
+        role: `CR (${assignedSection})`,
+        loginTime: Date.now()
+      };
+
+      localStorage.setItem('secD_admin_session', JSON.stringify(_activeAdminSession));
+      _isAdminLoggedIn = true;
+      _isFacultyAdminUnlocked = true;
+
+      if (errBox) errBox.style.display = 'none';
+      triggerHaptic(16);
+      showToast(`⚡ Welcome CR ${fullName}! Full visibility of ${assignedSection} (Set-A & Set-B) enabled.`);
+
+      // Switch to CR Section and unlock both sets
+      selectSection(assignedSection, true);
+      setBatchFilter('ALL', true);
+
+      updateAdminUIState();
+      updateRoleGatewayUI();
+      populateCancelSectionOptions();
+      renderTodayLectures(viewingDate);
+      closeModal('adminModal');
+    }
+
+    function quickLoginSecDCR() {
+      const accounts = getAdminAccounts();
+      const crAcc = accounts.find(a => a.assignedSection === 'Sec-D' || a.username === 'cr_secd');
+      const fullName = crAcc ? crAcc.fullName : 'Krishna Panday (CR)';
+
+      saveStudentProfileToStorage(null);
+
+      _activeAdminSession = {
+        isLoggedIn: true,
+        username: crAcc ? crAcc.username : 'cr_secd',
+        fullName,
+        assignedSection: 'Sec-D',
+        role: 'CR (Sec-D)',
+        loginTime: Date.now()
+      };
+
+      localStorage.setItem('secD_admin_session', JSON.stringify(_activeAdminSession));
+      _isAdminLoggedIn = true;
+      _isFacultyAdminUnlocked = true;
+
+      triggerHaptic(16);
+      showToast(`⚡ Verified Sec-D CR! Full visibility of Set-A & Set-B enabled.`);
+
+      selectSection('Sec-D', true);
+      setBatchFilter('ALL', true);
+
+      updateAdminUIState();
+      updateRoleGatewayUI();
+      populateCancelSectionOptions();
+      renderTodayLectures(viewingDate);
+      closeModal('adminModal');
+    }
+
+    function togglePasswordVisibility(inputId, btn) {
+      triggerHaptic(10);
+      const inp = document.getElementById(inputId);
+      if (!inp) return;
+      if (inp.type === 'password') {
+        inp.type = 'text';
+        if (btn) btn.textContent = '🙈';
+      } else {
+        inp.type = 'password';
+        if (btn) btn.textContent = '👁️';
       }
     }
 
@@ -7920,6 +9437,7 @@
       const facInp = document.getElementById('cancelFacultyInput');
       const reasonSelect = document.getElementById('cancelReasonSelect');
       const reasonCustom = document.getElementById('cancelReasonCustomInput');
+      const customMsgInp = document.getElementById('cancelCustomMessageInput');
       const reschedInp = document.getElementById('cancelRescheduleInput');
       const sendNotif = document.getElementById('cancelSendNotifCheckbox')?.checked !== false;
 
@@ -7937,6 +9455,7 @@
       if (reason === 'Custom' && reasonCustom && reasonCustom.value.trim()) {
         reason = reasonCustom.value.trim();
       }
+      const customMessage = customMsgInp ? customMsgInp.value.trim() : '';
       const rescheduledNote = reschedInp ? reschedInp.value.trim() : '';
 
       if (!dateStr) {
@@ -7957,8 +9476,9 @@
         subject,
         faculty,
         reason,
+        customMessage,
         rescheduledNote,
-        cancelledBy: _activeAdminSession ? _activeAdminSession.fullName : 'Admin',
+        cancelledBy: _activeAdminSession ? _activeAdminSession.fullName : 'CR / Admin',
         timestamp: Date.now(),
         status: 'cancelled'
       };
@@ -8030,8 +9550,9 @@
         return;
       }
       const title = `🚨 [${cancelRecord.section}] Class CANCELLED: ${cancelRecord.period} (${cancelRecord.timing})`;
-      const shortBody = `⚠️ ${cancelRecord.subject} is cancelled today! Reason: ${cancelRecord.reason}`;
-      const bigText = `🚨 NOTICE: CLASS CANCELLED\n🏫 Section: ${cancelRecord.section} • Batch: ${cancelRecord.batch}\n⏰ Slot: ${cancelRecord.period} (${cancelRecord.timing})\n📚 Subject: ${cancelRecord.subject}\n👨‍🏫 Faculty: ${cancelRecord.faculty || 'Faculty'}\n⚠️ Reason: ${cancelRecord.reason}${cancelRecord.rescheduledNote ? '\n📍 Note: ' + cancelRecord.rescheduledNote : ''}\nAnnounced by: ${cancelRecord.cancelledBy}`;
+      const msgPreview = cancelRecord.customMessage ? `💬 "${cancelRecord.customMessage}"` : `Reason: ${cancelRecord.reason}`;
+      const shortBody = `⚠️ ${cancelRecord.subject} (${cancelRecord.batch}) off! ${msgPreview}`;
+      const bigText = `🚨 NOTICE: CLASS CANCELLED\n🏫 Section: ${cancelRecord.section} • Affected Batch: ${cancelRecord.batch}\n⏰ Slot: ${cancelRecord.period} (${cancelRecord.timing})\n📚 Subject: ${cancelRecord.subject}\n👨‍🏫 Faculty: ${cancelRecord.faculty || 'Faculty'}\n⚠️ Reason: ${cancelRecord.reason}${cancelRecord.customMessage ? '\n💬 CR Message: ' + cancelRecord.customMessage : ''}${cancelRecord.rescheduledNote ? '\n📍 Rescheduled: ' + cancelRecord.rescheduledNote : ''}\nAnnounced by: ${cancelRecord.cancelledBy}`;
 
       triggerNotificationToDevice(title, shortBody, bigText, 'class_cancelled');
     }
@@ -8226,9 +9747,10 @@
 ⏰ *Period:* ${record.period} (${record.timing})
 📚 *Subject:* ${record.subject}
 👨‍🏫 *Faculty:* ${record.faculty || 'Course Teacher'}
-👥 *Batch:* ${record.batch}
+👥 *Affected Batch:* ${record.batch === 'ALL' ? 'Both Sets (Set-A & Set-B)' : record.batch}
 ⚠️ *Reason:* ${record.reason}
-${record.rescheduledNote ? '📍 *Note:* ' + record.rescheduledNote + '\n' : ''}━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+${record.customMessage ? '💬 *CR Announcement:* ' + record.customMessage + '\n' : ''}${record.rescheduledNote ? '📍 *Note:* ' + record.rescheduledNote + '\n' : ''}━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📢 *Announced by:* ${record.cancelledBy || 'CR'}
 📲 *Tap to Auto-Sync Timetable on Your Phone:*
 ${syncLink}
 
@@ -8386,7 +9908,7 @@ ${syncLink}
 
       const list = getCancelledClassesList();
       const todayCancels = list.filter(c => {
-        if (c.section !== activeSec || c.date !== viewDateStr || c.status !== 'restored') return false;
+        if (c.section !== activeSec || c.date !== viewDateStr || c.status === 'restored') return false;
         if (c.batch && c.batch !== 'ALL' && activeBatch !== 'ALL' && c.batch !== activeBatch) return false;
         return true;
       });
@@ -8395,11 +9917,13 @@ ${syncLink}
         banner.style.display = 'flex';
         const c0 = todayCancels[0];
         if (todayCancels.length === 1) {
-          if (title) title.textContent = `🚨 [${c0.section}] Class Cancelled: ${c0.period} ${c0.subject}`;
-          if (sub) sub.textContent = `Reason: ${c0.reason} • Tap to view notice & details`;
+          const batchStr = c0.batch && c0.batch !== 'ALL' ? ` (${c0.batch})` : '';
+          if (title) title.textContent = `🚨 [${c0.section}] Class Cancelled: ${c0.period} ${c0.subject}${batchStr}`;
+          const noteText = c0.customMessage ? `💬 "${c0.customMessage}"` : `Reason: ${c0.reason}`;
+          if (sub) sub.textContent = `${noteText} • Tap to view notice & details`;
         } else {
           if (title) title.textContent = `🚨 [${activeSec}] ${todayCancels.length} Classes Cancelled Today`;
-          if (sub) sub.textContent = `${todayCancels.map(c => c.period).join(', ')} are cancelled. Tap to view notice.`;
+          if (sub) sub.textContent = `${todayCancels.map(c => c.period + (c.batch !== 'ALL' ? ' ' + c.batch : '')).join(', ')} are cancelled. Tap to view notice.`;
         }
       } else {
         banner.style.display = 'none';
@@ -9676,9 +11200,9 @@ ${syncLink}
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '6.1.0';
-    const LOCAL_APP_VERSION_CODE = 77;
-    const LOCAL_APP_BUILD_HASH = '7dc2d944adfb';
+    const LOCAL_APP_VERSION_NAME = '6.2.0';
+    const LOCAL_APP_VERSION_CODE = 79;
+    const LOCAL_APP_BUILD_HASH = '46455ca41e73';
 
     let cachedLatestVersionCode = 29;
 
@@ -10137,7 +11661,17 @@ ${syncLink}
     }
 
     // SWITCH BETWEEN SET-A, SET-B, AND COMPARE BOTH
-    function setBatchFilter(batch) {
+    function setBatchFilter(batch, isForced = false) {
+      const profile = getStudentProfile();
+      // If student is logged in and not admin/CR, lock batch to student's set
+      if (!isForced && profile && profile.isLoggedIn && profile.batch && !_isAdminLoggedIn) {
+        if (batch !== profile.batch && batch !== 'ALL') {
+          triggerHaptic(20);
+          showToast(`🔒 Aap ${profile.batch} me locked hain! ${batch} dekhne ke liye "Switch Profile" karein.`);
+          return;
+        }
+      }
+
       triggerHaptic(14);
       selectedBatch = batch;
       localStorage.setItem('secD_batch_pref', batch);
@@ -10613,8 +12147,9 @@ ${syncLink}
               <span>⚠️ Class Cancelled:</span>
               <span style="color:#f87171;">${escapeHtml(cancelledSlot.reason || 'Notice from Faculty')}</span>
             </div>
+            ${cancelledSlot.customMessage ? `<div style="font-size:0.75rem; margin-top:4px; color:#38bdf8; font-weight:700;">💬 CR Message: "${escapeHtml(cancelledSlot.customMessage)}"</div>` : ''}
             ${cancelledSlot.rescheduledNote ? `<div style="font-size:0.69rem; margin-top:3px; color:#67e8f9;">📍 ${escapeHtml(cancelledSlot.rescheduledNote)}</div>` : ''}
-            <div style="font-size:0.65rem; margin-top:3px; opacity:0.8; font-style:italic;">By: ${escapeHtml(cancelledSlot.cancelledBy || 'Faculty / Admin')}</div>
+            <div style="font-size:0.65rem; margin-top:3px; opacity:0.8; font-style:italic;">By: ${escapeHtml(cancelledSlot.cancelledBy || 'CR / Admin')}</div>
           </div>
         ` : '';
 
@@ -10746,7 +12281,7 @@ ${syncLink}
                     ${facA ? `<span style="font-size:0.7rem; color:var(--gold-accent); font-weight:750;">👨‍🏫 ${facA}</span>` : '<span></span>'}
                     <span class="hero-room-badge" style="font-size:0.68rem;">${roomA}</span>
                   </div>
-                  ${cancelA ? `<div style="font-size:0.68rem; color:#f87171; margin-top:2px;">⚠️ ${escapeHtml(cancelA.reason)}</div>` : ''}
+                  ${cancelA ? `<div style="font-size:0.68rem; color:#f87171; margin-top:2px;">⚠️ ${escapeHtml(cancelA.customMessage ? '💬 ' + cancelA.customMessage : cancelA.reason)}</div>` : ''}
                 </div>
 
                 <div class="set-subcard set-b-style ${cancelB ? 'class-cancelled-card' : ''}">
@@ -10758,7 +12293,7 @@ ${syncLink}
                     ${facB ? `<span style="font-size:0.7rem; color:var(--gold-accent); font-weight:750;">👨‍🏫 ${facB}</span>` : '<span></span>'}
                     <span class="hero-room-badge" style="font-size:0.68rem;">${roomB}</span>
                   </div>
-                  ${cancelB ? `<div style="font-size:0.68rem; color:#f87171; margin-top:2px;">⚠️ ${escapeHtml(cancelB.reason)}</div>` : ''}
+                  ${cancelB ? `<div style="font-size:0.68rem; color:#f87171; margin-top:2px;">⚠️ ${escapeHtml(cancelB.customMessage ? '💬 ' + cancelB.customMessage : cancelB.reason)}</div>` : ''}
                 </div>
               </div>
 
@@ -12306,34 +13841,63 @@ ${syncLink}
 
   <!-- MODAL: STUDENT PROFILE & SECTION-SET LOCK -->
   <div class="modal-overlay" id="studentProfileModal" onclick="closeModalOnOverlay(event, 'studentProfileModal')">
-    <div class="modal-sheet" style="max-width:440px;">
-      <div class="modal-handle"></div>
-      <div class="modal-header">
-        <div class="modal-title" style="display:flex; align-items:center; gap:8px;">
-          <span>🎓</span> <span>Student Profile & Section Setup</span>
+    <div class="modal-sheet cyber-modal">
+      <div class="cyber-modal-handle"></div>
+      <div class="cyber-modal-header">
+        <div class="cyber-modal-title">
+          <div class="cyber-title-orb">🎓</div>
+          <div>
+            <div style="font-size:0.96rem; font-weight:800; color:#f8fafc;">Student Profile & Lock</div>
+            <div style="font-size:0.65rem; color:#94a3b8; font-weight:500;">Notifications & Timetable Section Guard</div>
+          </div>
         </div>
-        <button class="modal-close-btn" onclick="closeModal('studentProfileModal')">✕</button>
+        <button class="cyber-modal-close-btn" onclick="closeModal('studentProfileModal')" aria-label="Close">✕</button>
       </div>
 
-      <div style="padding:6px 0;">
-        <div class="admin-banner-notice" style="margin-bottom:14px; background:rgba(56,189,248,0.12); border-color:rgba(56,189,248,0.35);">
-          <span>ℹ️</span>
-          <div>Apna <strong>Section</strong> aur <strong>Set</strong> select karein. Iske baad aapko <strong>sirf aapke section ka timetable</strong> dikhega aur <strong>sirf aapke section ke class alerts & cancellation notifications</strong> aayenge.</div>
+      <div class="cyber-modal-scroll">
+        <!-- Live Holographic Student ID Card Preview -->
+        <div class="cyber-student-hologram" id="studentHoloPreview">
+          <div class="cyber-hologram-avatar" id="studentHoloAvatar">🎓</div>
+          <div class="cyber-hologram-texts">
+            <div class="cyber-hologram-name" id="studentHoloName">Student Name</div>
+            <div class="cyber-hologram-sub" id="studentHoloRoll">Roll: Not Set • Computer Science</div>
+            <div class="cyber-hologram-pills">
+              <span class="cyber-hologram-chip" id="studentHoloSec">Section D</span>
+              <span class="cyber-hologram-chip emerald" id="studentHoloSet">Set-A (Roll 1-35)</span>
+            </div>
+          </div>
         </div>
 
-        <div class="admin-field-group">
-          <label class="admin-field-label" for="studentNameInput">Student Name:</label>
-          <input type="text" id="studentNameInput" class="admin-field-input" placeholder="e.g. Rahul Sharma">
+        <div class="cyber-notice-card">
+          <span style="font-size:1.1rem; flex-shrink:0;">💡</span>
+          <div>Apna <strong>Section</strong> aur <strong>Set</strong> lock karein. Iske baad aapko <strong>sirf aapki class ka timetable</strong> dikhega aur <strong>sirf aapke section & batch ke cancellation alerts</strong> aayenge.</div>
         </div>
 
-        <div class="admin-field-group">
-          <label class="admin-field-label" for="studentRollInput">Roll Number / Student ID (Optional):</label>
-          <input type="text" id="studentRollInput" class="admin-field-input" placeholder="e.g. 240101001">
+        <!-- Student Name Card -->
+        <div class="cyber-field-card">
+          <div class="cyber-field-label">
+            <span>👤 Student Full Name</span>
+            <span style="font-size:0.6rem; color:#94a3b8; text-transform:none;">Required</span>
+          </div>
+          <input type="text" id="studentNameInput" class="cyber-field-control" placeholder="Enter your full name" oninput="onStudentProfileFormChanged()">
         </div>
 
-        <div class="admin-field-group">
-          <label class="admin-field-label" for="studentSectionSelect">Your Section (Class):</label>
-          <select id="studentSectionSelect" class="admin-field-select" style="font-weight:700;">
+        <!-- Student Roll No Card -->
+        <div class="cyber-field-card">
+          <div class="cyber-field-label">
+            <span>🆔 University Roll No / Student ID</span>
+            <span style="font-size:0.6rem; color:#94a3b8; text-transform:none;">Optional</span>
+          </div>
+          <input type="text" id="studentRollInput" class="cyber-field-control" placeholder="e.g. 240101001" oninput="onStudentProfileFormChanged()">
+        </div>
+
+        <!-- Section Dropdown Card -->
+        <div class="cyber-field-card">
+          <div class="cyber-field-label">
+            <span>🏫 Select Your Section (Class)</span>
+            <span style="font-size:0.6rem; color:#38bdf8; text-transform:none;">Auto-Filter</span>
+          </div>
+          <select id="studentSectionSelect" class="cyber-field-control cyber-field-select" onchange="onStudentProfileFormChanged()">
             <option value="Sec-A">Section A (Room A-102)</option>
             <option value="Sec-B">Section B (Room A-103)</option>
             <option value="Sec-C">Section C (Room A-104)</option>
@@ -12347,35 +13911,42 @@ ${syncLink}
           </select>
         </div>
 
-        <div class="admin-field-group">
-          <label class="admin-field-label">Your Set / Batch:</label>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:4px;">
-            <label class="student-set-option" id="labelSetA">
-              <input type="radio" name="studentSetRadio" value="Set-A" checked style="accent-color:var(--accent);">
+        <!-- Set A / Set B Selector Card -->
+        <div style="margin-bottom:12px;">
+          <div class="cyber-field-label" style="margin-bottom:6px;">
+            <span>🗂️ Practical Batch / Set</span>
+            <span style="font-size:0.6rem; color:#94a3b8; text-transform:none;">Select One</span>
+          </div>
+          <div class="cyber-set-selector">
+            <div class="cyber-set-card active-seta" id="cardSetA" onclick="selectStudentSet('Set-A')">
+              <input type="radio" name="studentSetRadio" value="Set-A" id="radioSetA" checked style="display:none;">
+              <span style="font-size:1.3rem;">🅰️</span>
               <div>
-                <strong style="color:#38bdf8;">🅰️ Set-A</strong>
-                <div style="font-size:0.68rem; color:var(--text-sub);">Roll 1 to 35</div>
+                <strong style="color:#38bdf8; font-size:0.86rem; display:block;">Set-A</strong>
+                <div style="font-size:0.66rem; color:#94a3b8;">Roll 1 to 35</div>
               </div>
-            </label>
-            <label class="student-set-option" id="labelSetB">
-              <input type="radio" name="studentSetRadio" value="Set-B" style="accent-color:#10b981;">
+            </div>
+            <div class="cyber-set-card" id="cardSetB" onclick="selectStudentSet('Set-B')">
+              <input type="radio" name="studentSetRadio" value="Set-B" id="radioSetB" style="display:none;">
+              <span style="font-size:1.3rem;">🅱️</span>
               <div>
-                <strong style="color:#10b981;">🅱️ Set-B</strong>
-                <div style="font-size:0.68rem; color:var(--text-sub);">Roll 36 Onwards</div>
+                <strong style="color:#34d399; font-size:0.86rem; display:block;">Set-B</strong>
+                <div style="font-size:0.66rem; color:#94a3b8;">Roll 36 Onwards</div>
               </div>
-            </label>
+            </div>
           </div>
         </div>
 
-        <div style="display:flex; flex-direction:column; gap:8px; margin-top:16px;">
-          <button class="primary-btn" style="width:100%; justify-content:center;" onclick="saveStudentProfile()">
-            💾 Save Profile & Lock Section
+        <!-- Buttons Container -->
+        <div style="display:flex; flex-direction:column; gap:9px; margin-top:16px;">
+          <button class="cyber-btn-primary" onclick="saveStudentProfile()">
+            <span>💾</span> <span>Save Profile & Lock Section</span>
           </button>
-          <div id="studentActiveNotice" style="display:none; text-align:center; font-size:0.75rem; color:#10b981; margin-top:4px;">
-            ✔ Profile is active. Notifications are locked to your section.
+          <div id="studentActiveNotice" style="display:none; text-align:center; font-size:0.75rem; color:#34d399; font-weight:700;">
+            ✔ Profile Active • Notifications locked to your section
           </div>
-          <button class="secondary-btn" id="studentLogoutBtn" style="display:none; width:100%; justify-content:center; color:#f87171; border-color:rgba(244,63,94,0.3); font-size:0.75rem;" onclick="clearStudentProfile()">
-            🚪 Reset Profile / Switch Section
+          <button class="cyber-btn-secondary" id="studentLogoutBtn" style="display:none; color:#f87171; border-color:rgba(244,63,94,0.35);" onclick="clearStudentProfile()">
+            <span>🚪</span> <span>Reset Profile / Switch Section</span>
           </button>
         </div>
       </div>
@@ -12384,267 +13955,374 @@ ${syncLink}
 
   <!-- MODAL: ADMIN PORTAL & CLASS CANCELLATION CONTROLS -->
   <div class="modal-overlay" id="adminModal" onclick="closeModalOnOverlay(event, 'adminModal')">
-    <div class="modal-sheet" style="max-width:520px;">
-      <div class="modal-handle"></div>
-      <div class="modal-header">
-        <div class="modal-title" style="display:flex; align-items:center; gap:8px;">
-          <span>🛡️</span> <span id="adminModalTitle">Admin Portal & Controls</span>
+    <div class="modal-sheet cyber-modal">
+      <div class="cyber-modal-handle"></div>
+      <div class="cyber-modal-header">
+        <div class="cyber-modal-title">
+          <div class="cyber-title-orb">🛡️</div>
+          <div>
+            <div style="font-size:0.96rem; font-weight:800; color:#f8fafc;" id="adminModalTitle">Admin Portal & Controls</div>
+            <div style="font-size:0.65rem; color:#94a3b8; font-weight:500;">Class Cancellation & Timetable Broadcast Deck</div>
+          </div>
         </div>
-        <button class="modal-close-btn" onclick="closeModal('adminModal')">✕</button>
+        <button class="cyber-modal-close-btn" onclick="closeModal('adminModal')" aria-label="Close">✕</button>
       </div>
 
-      <!-- VIEW A: LOGGED OUT (TABS: LOGIN vs CREATE ACCOUNT) -->
-      <div id="adminLoggedOutView" style="display:block; padding:6px 0;">
-        <div class="admin-portal-tabs">
-          <button class="admin-tab-btn active" id="tabAdminLogin" onclick="switchAdminAuthTab('login')">
-            <span>🔑</span> <span>Admin Login</span>
-          </button>
-          <button class="admin-tab-btn" id="tabAdminRegister" onclick="switchAdminAuthTab('register')">
-            <span>✨</span> <span>Create Admin Account</span>
-          </button>
-        </div>
-
-        <!-- SUB-TAB 1: ADMIN LOGIN -->
-        <div id="adminLoginSection" style="display:block;">
-          <div class="admin-banner-notice">
-            <span>ℹ️</span>
-            <div>Enter your admin credentials to cancel classes, broadcast alerts, and manage the timetable.</div>
-          </div>
-
-          <div class="admin-field-group">
-            <label class="admin-field-label" for="loginUsernameInput">Admin Username:</label>
-            <input type="text" id="loginUsernameInput" class="admin-field-input" placeholder="e.g. admin or your username" autocomplete="username">
-          </div>
-
-          <div class="admin-field-group">
-            <label class="admin-field-label" for="loginPasswordInput">Admin Password:</label>
-            <input type="password" id="loginPasswordInput" class="admin-field-input" placeholder="Enter your password" autocomplete="current-password" onkeydown="if(event.key==='Enter') submitAdminLogin()">
-          </div>
-
-          <div id="loginErrorMsg" class="admin-banner-notice danger" style="display:none;"></div>
-
-          <div style="display:flex; flex-direction:column; gap:9px; margin-top:14px;">
-            <button class="primary-btn" style="width:100%; justify-content:center;" onclick="submitAdminLogin()">
-              🔐 Log In to Admin Deck
+      <div class="cyber-modal-scroll">
+        <!-- VIEW A: LOGGED OUT (TABS: LOGIN vs CREATE ACCOUNT) -->
+        <div id="adminLoggedOutView" style="display:block;">
+          <div class="cyber-deck-tabs" style="grid-template-columns:1fr 1fr 1fr;">
+            <button class="cyber-deck-tab active" id="tabCRLogin" onclick="switchAdminAuthTab('cr')">
+              <span>⚡</span> <span>CR Login</span>
             </button>
-            <button class="secondary-btn" style="width:100%; justify-content:center; font-size:0.75rem; border-color:rgba(56,189,248,0.3); color:var(--accent);" onclick="promptMasterKeyQuickLogin()">
-              ⚡ Fast Login with Master Admin Passcode
+            <button class="cyber-deck-tab" id="tabAdminLogin" onclick="switchAdminAuthTab('admin')">
+              <span>🛡️</span> <span>Admin</span>
             </button>
-            <div style="text-align:center; font-size:0.74rem; color:var(--text-sub); margin-top:4px;">
-              Need an admin account? <a href="javascript:void(0)" onclick="switchAdminAuthTab('register')" style="color:var(--accent); text-decoration:underline;">Create Account with Master Key</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- SUB-TAB 2: CREATE ADMIN ACCOUNT (RESTRICTED BY MASTER ADMIN KEY) -->
-        <div id="adminRegisterSection" style="display:none;">
-          <div class="admin-banner-notice warning">
-            <span>🔒</span>
-            <div><strong>Master Key Required:</strong> Only authorized teachers / CRs with the Master Admin Passcode can create an account.</div>
-          </div>
-
-          <div class="admin-field-group">
-            <label class="admin-field-label" for="regMasterKeyInput">
-              <span>Master Admin Security Passcode 🔒</span>
-              <span style="font-size:0.65rem; color:#f59e0b; font-weight:700;">Required Verification</span>
-            </label>
-            <input type="password" id="regMasterKeyInput" class="admin-field-input" placeholder="Enter Master Admin Security Key" style="border-color:rgba(245,158,11,0.5);">
-            <span style="font-size:0.68rem; color:var(--text-sub); margin-top:2px;">Default Master Key: <code>Krishna@SecD#2026</code> or <code>CSE-D-ADMIN-2025</code></span>
-          </div>
-
-          <div class="admin-field-group">
-            <label class="admin-field-label" for="regFullNameInput">Full Name & Role:</label>
-            <input type="text" id="regFullNameInput" class="admin-field-input" placeholder="e.g. Krishna Panday (Class Representative)">
-          </div>
-
-          <div class="admin-field-group">
-            <label class="admin-field-label" for="regSectionSelect">Designated Section (Your CR Section):</label>
-            <select id="regSectionSelect" class="admin-field-select" style="font-weight:700;">
-              <option value="Sec-A">Section A (Room A-102)</option>
-              <option value="Sec-B">Section B (Room A-103)</option>
-              <option value="Sec-C">Section C (Room A-104)</option>
-              <option value="Sec-D" selected>Section D (Room A-108)</option>
-              <option value="Sec-E">Section E (Room E-204)</option>
-              <option value="Sec-H">Section H (Room A-302)</option>
-              <option value="Sec-I">Section I (Room A-303)</option>
-              <option value="Sec-J">Section J</option>
-              <option value="Sec-K">Section K</option>
-              <option value="Sec-L">Section L</option>
-              <option value="ALL">👑 All Sections (Master Coordinator / Super CR)</option>
-            </select>
-            <span style="font-size:0.68rem; color:var(--text-sub); margin-top:2px;">Aapke dwara cancel kiye gaye classes ka alert sirf aapke section ke students ko jayega.</span>
-          </div>
-
-          <div class="admin-field-group">
-            <label class="admin-field-label" for="regUsernameInput">Choose Admin Username:</label>
-            <input type="text" id="regUsernameInput" class="admin-field-input" placeholder="e.g. krishnacr or admin">
-          </div>
-
-          <div class="admin-field-group">
-            <label class="admin-field-label" for="regPasswordInput">Choose Your Password:</label>
-            <input type="password" id="regPasswordInput" class="admin-field-input" placeholder="Enter a secure password (min 4 chars)">
-          </div>
-
-          <div class="admin-field-group">
-            <label class="admin-field-label" for="regConfirmPasswordInput">Confirm Password:</label>
-            <input type="password" id="regConfirmPasswordInput" class="admin-field-input" placeholder="Re-type your password" onkeydown="if(event.key==='Enter') submitCreateAdminAccount()">
-          </div>
-
-          <div id="regErrorMsg" class="admin-banner-notice danger" style="display:none;"></div>
-
-          <div style="display:flex; flex-direction:column; gap:9px; margin-top:14px;">
-            <button class="primary-btn" style="width:100%; justify-content:center; background:linear-gradient(135deg, #10b981, #059669);" onclick="submitCreateAdminAccount()">
-              🚀 Verify Master Key & Create Account
+            <button class="cyber-deck-tab" id="tabAdminRegister" onclick="switchAdminAuthTab('register')">
+              <span>✨</span> <span>Create CR</span>
             </button>
-            <div style="text-align:center; font-size:0.74rem; color:var(--text-sub); margin-top:4px;">
-              Already have an account? <a href="javascript:void(0)" onclick="switchAdminAuthTab('login')" style="color:var(--accent); text-decoration:underline;">Back to Login</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- VIEW B: LOGGED IN (ADMIN COMMAND CENTER) -->
-      <div id="adminLoggedInView" style="display:none; padding:6px 0;">
-        <div style="background:linear-gradient(135deg, rgba(16,185,129,0.18), rgba(56,189,248,0.12)); border:1px solid rgba(16,185,129,0.35); border-radius:14px; padding:10px 14px; display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
-          <div style="display:flex; align-items:center; gap:9px;">
-            <div style="font-size:1.4rem;">🛡️</div>
-            <div>
-              <div style="font-size:0.82rem; font-weight:800; color:var(--text-main);" id="adminActiveProfileName">Admin Profile</div>
-              <div style="font-size:0.68rem; color:#10b981;" id="adminActiveProfileRole">● Active Admin Session</div>
-            </div>
-          </div>
-          <button class="secondary-btn" style="padding:4px 10px; font-size:0.72rem; color:#f87171; border-color:rgba(244,63,94,0.4);" onclick="adminLogout()">
-            🚪 Logout
-          </button>
-        </div>
-
-        <div class="admin-portal-tabs">
-          <button class="admin-tab-btn active" id="tabDeckCancel" onclick="switchAdminDeckTab('cancel')">
-            <span>🚫</span> <span>Cancel Class</span>
-          </button>
-          <button class="admin-tab-btn" id="tabDeckActive" onclick="switchAdminDeckTab('active')">
-            <span>📋</span> <span id="tabActiveCountLabel">Active (0)</span>
-          </button>
-          <button class="admin-tab-btn" id="tabDeckSettings" onclick="switchAdminDeckTab('settings')">
-            <span>⚙️</span> <span>Controls</span>
-          </button>
-        </div>
-
-        <!-- DECK TAB 1: CANCEL / RESCHEDULE A CLASS -->
-        <div id="deckCancelSection" style="display:block;">
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-            <div class="admin-field-group">
-              <label class="admin-field-label" for="cancelDatePicker">Date:</label>
-              <input type="date" id="cancelDatePicker" class="admin-field-input" onchange="onCancelFormContextChanged()">
-            </div>
-            <div class="admin-field-group">
-              <label class="admin-field-label" for="cancelSectionSelect">Section:</label>
-              <select id="cancelSectionSelect" class="admin-field-select" onchange="onCancelFormContextChanged()"></select>
-            </div>
           </div>
 
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-            <div class="admin-field-group">
-              <label class="admin-field-label" for="cancelPeriodSelect">Period Slot:</label>
-              <select id="cancelPeriodSelect" class="admin-field-select" onchange="onCancelFormContextChanged()">
-                <option value="L1">L1 (09:00 - 09:55)</option>
-                <option value="L2">L2 (09:55 - 10:50)</option>
-                <option value="L3">L3 (10:50 - 11:45)</option>
-                <option value="L5">L5 (12:40 - 01:35)</option>
-                <option value="L6">L6 (01:35 - 02:30)</option>
-                <option value="L7">L7 (02:30 - 03:25)</option>
-                <option value="L8">L8 (03:25 - 04:20)</option>
+          <!-- SUB-TAB 1: CR LOGIN (CLASS REPRESENTATIVE) -->
+          <div id="crLoginSection" style="display:block;">
+            <div class="cyber-notice-card" style="border-color:rgba(16,185,129,0.4); background:rgba(16,185,129,0.08);">
+              <span style="font-size:1.1rem; flex-shrink:0;">⚡</span>
+              <div><strong>CR Command Deck:</strong> Log in as Class Representative for your section. You get full visibility of <strong>both Set-A &amp; Set-B</strong> and authority to broadcast cancellation alerts.</div>
+            </div>
+
+            <div class="cyber-field-card">
+              <div class="cyber-field-label">
+                <span>🏫 Designated CR Section</span>
+                <span style="font-size:0.6rem; color:#10b981;">Both Sets Visible</span>
+              </div>
+              <select id="crSectionSelect" class="cyber-field-control cyber-field-select" style="font-weight:700;">
+                <option value="Sec-A">Section A (Room A-102)</option>
+                <option value="Sec-B">Section B (Room A-103)</option>
+                <option value="Sec-C">Section C (Room A-104)</option>
+                <option value="Sec-D" selected>Section D (Room A-108)</option>
+                <option value="Sec-E">Section E (Room E-204)</option>
+                <option value="Sec-H">Section H (Room A-302)</option>
+                <option value="Sec-I">Section I (Room A-303)</option>
+                <option value="Sec-J">Section J</option>
+                <option value="Sec-K">Section K</option>
+                <option value="Sec-L">Section L</option>
               </select>
             </div>
-            <div class="admin-field-group">
-              <label class="admin-field-label" for="cancelBatchSelect">Affected Batch:</label>
-              <select id="cancelBatchSelect" class="admin-field-select">
-                <option value="ALL">👥 ALL Students (Entire Class)</option>
-                <option value="Set-A">🅰️ Set-A Only</option>
-                <option value="Set-B">🅱️ Set-B Only</option>
+
+            <div class="cyber-field-card">
+              <div class="cyber-field-label">
+                <span>👤 CR Username</span>
+              </div>
+              <input type="text" id="crUsernameInput" class="cyber-field-control" placeholder="e.g. cr_secd or your username" autocomplete="username">
+            </div>
+
+            <div class="cyber-field-card">
+              <div class="cyber-field-label">
+                <span>🔑 CR Password</span>
+              </div>
+              <div class="cyber-input-password-wrap">
+                <input type="password" id="crPasswordInput" class="cyber-field-control" placeholder="Enter CR password (default: 1234)" autocomplete="current-password" onkeydown="if(event.key==='Enter') submitCRLogin()">
+                <button type="button" class="cyber-eye-toggle-btn" onclick="togglePasswordVisibility('crPasswordInput', this)" aria-label="Toggle password visibility">👁️</button>
+              </div>
+            </div>
+
+            <div id="crLoginErrorMsg" class="cyber-notice-card danger" style="display:none;"></div>
+
+            <div style="display:flex; flex-direction:column; gap:9px; margin-top:14px;">
+              <button class="cyber-btn-primary" style="background:linear-gradient(135deg,#059669,#10b981);" onclick="submitCRLogin()">
+                <span>⚡</span> <span>Log In as CR (Full Set-A &amp; Set-B Access)</span>
+              </button>
+              <button class="cyber-btn-secondary" style="color:#34d399; border-color:rgba(16,185,129,0.4);" onclick="quickLoginSecDCR()">
+                <span>🚀</span> <span>1-Tap Instant Sec-D CR Login</span>
+              </button>
+              <div style="text-align:center; font-size:0.74rem; color:#94a3b8; margin-top:4px;">
+                New Class Representative? <a href="javascript:void(0)" onclick="switchAdminAuthTab('register')" style="color:#38bdf8; text-decoration:underline;">Create CR Account with Master Key</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUB-TAB 2: MASTER ADMIN LOGIN -->
+          <div id="adminLoginSection" style="display:none;">
+            <div class="cyber-notice-card">
+              <span style="font-size:1.1rem; flex-shrink:0;">🛡️</span>
+              <div>Enter Super Admin credentials to manage all sections (Sec-A to Sec-L), faculty directories, and university schedules.</div>
+            </div>
+
+            <div class="cyber-field-card">
+              <div class="cyber-field-label">
+                <span>👤 Master Admin Username</span>
+              </div>
+              <input type="text" id="loginUsernameInput" class="cyber-field-control" placeholder="e.g. admin or super_admin" autocomplete="username">
+            </div>
+
+            <div class="cyber-field-card">
+              <div class="cyber-field-label">
+                <span>🔑 Admin Master Password</span>
+              </div>
+              <div class="cyber-input-password-wrap">
+                <input type="password" id="loginPasswordInput" class="cyber-field-control" placeholder="Enter master admin password" autocomplete="current-password" onkeydown="if(event.key==='Enter') submitAdminLogin()">
+                <button type="button" class="cyber-eye-toggle-btn" onclick="togglePasswordVisibility('loginPasswordInput', this)" aria-label="Toggle password visibility">👁️</button>
+              </div>
+            </div>
+
+            <div id="loginErrorMsg" class="cyber-notice-card danger" style="display:none;"></div>
+
+            <div style="display:flex; flex-direction:column; gap:9px; margin-top:14px;">
+              <button class="cyber-btn-primary" onclick="submitAdminLogin()">
+                <span>🔐</span> <span>Log In to Master Admin Deck</span>
+              </button>
+              <button class="cyber-btn-secondary" style="color:#38bdf8; border-color:rgba(56,189,248,0.35);" onclick="promptMasterKeyQuickLogin()">
+                <span>⚡</span> <span>Fast Login with Master Passcode</span>
+              </button>
+              <div style="text-align:center; font-size:0.74rem; color:#94a3b8; margin-top:4px;">
+                Authorized CR account needed? <a href="javascript:void(0)" onclick="switchAdminAuthTab('register')" style="color:#38bdf8; text-decoration:underline;">Create Account with Master Key</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUB-TAB 2: CREATE ADMIN ACCOUNT (RESTRICTED BY MASTER ADMIN KEY) -->
+          <div id="adminRegisterSection" style="display:none;">
+            <div class="cyber-notice-card warning">
+              <span style="font-size:1.1rem; flex-shrink:0;">🔒</span>
+              <div><strong>Master Key Required:</strong> Only authorized Class Representatives & Teachers with the Master Admin Passcode can create an account.</div>
+            </div>
+
+            <div class="cyber-field-card" style="border-color:rgba(245,158,11,0.5);">
+              <div class="cyber-field-label" style="color:#f59e0b;">
+                <span>🔒 Master Security Passcode</span>
+                <span style="font-size:0.6rem; color:#f59e0b;">Required</span>
+              </div>
+              <div class="cyber-input-password-wrap">
+                <input type="password" id="regMasterKeyInput" class="cyber-field-control" placeholder="Enter Master Admin Security Key">
+                <button type="button" class="cyber-eye-toggle-btn" onclick="togglePasswordVisibility('regMasterKeyInput', this)" aria-label="Toggle password visibility">👁️</button>
+              </div>
+              <div style="font-size:0.65rem; color:#94a3b8; margin-top:2px;">Default Master Key: <code>Krishna@SecD#2026</code> or <code>CSE-D-ADMIN-2025</code></div>
+            </div>
+
+            <div class="cyber-field-card">
+              <div class="cyber-field-label">
+                <span>👤 Full Name & Role</span>
+              </div>
+              <input type="text" id="regFullNameInput" class="cyber-field-control" placeholder="e.g. Krishna Panday (Class Representative)">
+            </div>
+
+            <div class="cyber-field-card">
+              <div class="cyber-field-label">
+                <span>🏫 Designated Section (Your CR Section)</span>
+              </div>
+              <select id="regSectionSelect" class="cyber-field-control cyber-field-select" style="font-weight:700;">
+                <option value="Sec-A">Section A (Room A-102)</option>
+                <option value="Sec-B">Section B (Room A-103)</option>
+                <option value="Sec-C">Section C (Room A-104)</option>
+                <option value="Sec-D" selected>Section D (Room A-108)</option>
+                <option value="Sec-E">Section E (Room E-204)</option>
+                <option value="Sec-H">Section H (Room A-302)</option>
+                <option value="Sec-I">Section I (Room A-303)</option>
+                <option value="Sec-J">Section J</option>
+                <option value="Sec-K">Section K</option>
+                <option value="Sec-L">Section L</option>
+                <option value="ALL">👑 All Sections (Master Coordinator / Super CR)</option>
               </select>
+              <div style="font-size:0.65rem; color:#94a3b8; margin-top:2px;">Aapke dwara cancel kiye gaye classes ka alert sirf aapke section ke students ko jayega.</div>
             </div>
-          </div>
 
-          <div class="admin-field-group">
-            <label class="admin-field-label" for="cancelSubjectInput">Subject Name:</label>
-            <input type="text" id="cancelSubjectInput" class="admin-field-input" placeholder="Subject name">
-          </div>
+            <div class="cyber-field-card">
+              <div class="cyber-field-label">
+                <span>🆔 Choose Admin Username</span>
+              </div>
+              <input type="text" id="regUsernameInput" class="cyber-field-control" placeholder="e.g. krishnacr or admin">
+            </div>
 
-          <div class="admin-field-group">
-            <label class="admin-field-label" for="cancelFacultyInput">Faculty Name:</label>
-            <input type="text" id="cancelFacultyInput" class="admin-field-input" placeholder="Faculty name">
-          </div>
+            <div class="cyber-field-card">
+              <div class="cyber-field-label">
+                <span>🔑 Choose Password (min 4 chars)</span>
+              </div>
+              <div class="cyber-input-password-wrap">
+                <input type="password" id="regPasswordInput" class="cyber-field-control" placeholder="Enter a secure password">
+                <button type="button" class="cyber-eye-toggle-btn" onclick="togglePasswordVisibility('regPasswordInput', this)" aria-label="Toggle password visibility">👁️</button>
+              </div>
+            </div>
 
-          <div class="admin-field-group">
-            <label class="admin-field-label" for="cancelReasonSelect">Cancellation Reason:</label>
-            <select id="cancelReasonSelect" class="admin-field-select" onchange="onReasonPresetChange()">
-              <option value="Faculty on Leave">👨‍🏫 Faculty on Leave / Absent</option>
-              <option value="Department Meeting">🏛️ Department / Faculty Meeting</option>
-              <option value="Lab Session Postponed">🔬 Lab Session Postponed</option>
-              <option value="Campus Seminar / Event">🎪 Campus Event / Guest Seminar</option>
-              <option value="Exam Duty">📝 Faculty on Examination Duty</option>
-              <option value="Custom">✏️ Other Custom Reason...</option>
-            </select>
-            <input type="text" id="cancelReasonCustomInput" class="admin-field-input" placeholder="Type specific reason..." style="display:none; margin-top:5px;">
-          </div>
+            <div class="cyber-field-card">
+              <div class="cyber-field-label">
+                <span>🔁 Confirm Password</span>
+              </div>
+              <div class="cyber-input-password-wrap">
+                <input type="password" id="regConfirmPasswordInput" class="cyber-field-control" placeholder="Re-type your password" onkeydown="if(event.key==='Enter') submitCreateAdminAccount()">
+                <button type="button" class="cyber-eye-toggle-btn" onclick="togglePasswordVisibility('regConfirmPasswordInput', this)" aria-label="Toggle password visibility">👁️</button>
+              </div>
+            </div>
 
-          <div class="admin-field-group">
-            <label class="admin-field-label" for="cancelRescheduleInput">Rescheduled Note / Venue (Optional):</label>
-            <input type="text" id="cancelRescheduleInput" class="admin-field-input" placeholder="e.g. Free Period in Library / Shifted to 3:00 PM Room B-302">
-          </div>
+            <div id="regErrorMsg" class="cyber-notice-card danger" style="display:none;"></div>
 
-          <div style="background:rgba(56,189,248,0.1); border:1px solid rgba(56,189,248,0.25); border-radius:10px; padding:8px 11px; margin-bottom:12px; display:flex; align-items:center; gap:9px;">
-            <input type="checkbox" id="cancelSendNotifCheckbox" checked style="width:16px; height:16px; accent-color:var(--accent); cursor:pointer;">
-            <label for="cancelSendNotifCheckbox" style="font-size:0.75rem; color:var(--text-main); cursor:pointer; font-weight:600;">
-              🔔 Send push & in-app notification to all students' mobiles
-            </label>
-          </div>
-
-          <div style="display:flex; flex-direction:column; gap:9px;">
-            <button class="primary-btn" style="width:100%; justify-content:center; background:linear-gradient(135deg, #f43f5e, #be123c);" onclick="submitClassCancellation()">
-              🚫 Confirm Class Cancellation & Broadcast
-            </button>
-            <button class="secondary-btn" style="width:100%; justify-content:center; font-size:0.78rem;" onclick="broadcastCurrentCancellationWhatsApp()">
-              📲 Broadcast via WhatsApp (with 1-Click Sync Link)
-            </button>
+            <div style="display:flex; flex-direction:column; gap:9px; margin-top:14px;">
+              <button class="cyber-btn-emerald" onclick="submitCreateAdminAccount()">
+                <span>🚀</span> <span>Verify Master Key & Create Account</span>
+              </button>
+              <div style="text-align:center; font-size:0.74rem; color:#94a3b8; margin-top:4px;">
+                Already have an account? <a href="javascript:void(0)" onclick="switchAdminAuthTab('login')" style="color:#38bdf8; text-decoration:underline;">Back to Login</a>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- DECK TAB 2: ACTIVE CANCELLATIONS LIST -->
-        <div id="deckActiveSection" style="display:none;">
-          <div id="activeCancellationsContainer" style="display:flex; flex-direction:column; gap:9px;">
-            <!-- Rendered by renderActiveCancellationsList() -->
+        <!-- VIEW B: LOGGED IN (ADMIN COMMAND CENTER) -->
+        <div id="adminLoggedInView" style="display:none;">
+          <!-- Executive CR Profile Card -->
+          <div class="cyber-cr-profile-card">
+            <div style="display:flex; align-items:center; gap:10px;">
+              <div style="width:38px; height:38px; border-radius:11px; background:linear-gradient(135deg,#0284c7,#10b981); display:flex; align-items:center; justify-content:center; font-size:1.3rem;">🛡️</div>
+              <div>
+                <div style="font-size:0.86rem; font-weight:800; color:#f8fafc;" id="adminActiveProfileName">Admin Profile</div>
+                <div style="font-size:0.67rem; color:#34d399; font-weight:600;" id="adminActiveProfileRole">● Active Admin Session</div>
+              </div>
+            </div>
+            <button class="cyber-btn-secondary" style="width:auto; padding:5px 10px; font-size:0.72rem; color:#f87171; border-color:rgba(244,63,94,0.4);" onclick="adminLogout()">
+              <span>🚪</span> <span>Logout</span>
+            </button>
           </div>
-        </div>
 
-        <!-- DECK TAB 3: ADMIN SETTINGS & CONTROLS -->
-        <div id="deckSettingsSection" style="display:none;">
-          <div class="admin-banner-notice">
-            <span>⚙️</span>
-            <div><strong>Admin Controls:</strong> Multi-device synchronization & security management.</div>
+          <!-- Segmented Tab Navigation -->
+          <div class="cyber-deck-tabs">
+            <button class="cyber-deck-tab active" id="tabDeckCancel" onclick="switchAdminDeckTab('cancel')">
+              <span>🚫</span> <span>Cancel Class</span>
+            </button>
+            <button class="cyber-deck-tab" id="tabDeckActive" onclick="switchAdminDeckTab('active')">
+              <span>📋</span> <span id="tabActiveCountLabel">Active (0)</span>
+            </button>
+            <button class="cyber-deck-tab" id="tabDeckSettings" onclick="switchAdminDeckTab('settings')">
+              <span>⚙️</span> <span>Controls</span>
+            </button>
           </div>
 
-          <div style="display:flex; flex-direction:column; gap:10px;">
-            <div style="background:var(--card-inner); border:1px solid var(--card-border); border-radius:12px; padding:12px;">
-              <div style="font-size:0.8rem; font-weight:700; margin-bottom:4px;">🔄 Server Sync Status</div>
-              <div style="font-size:0.72rem; color:var(--text-sub); margin-bottom:8px;" id="deckSyncStatusText">Connected to Update Server & Cloud CDN</div>
-              <button class="secondary-btn" style="font-size:0.74rem;" onclick="syncCancelledClassesFromServer(true)">
-                🔄 Sync with Server Now
-              </button>
+          <!-- DECK TAB 1: CANCEL / RESCHEDULE A CLASS -->
+          <div id="deckCancelSection" style="display:block;">
+            <div class="cyber-field-row">
+              <div class="cyber-field-card">
+                <div class="cyber-field-label"><span>📅 Date</span></div>
+                <input type="date" id="cancelDatePicker" class="cyber-field-control" onchange="onCancelFormContextChanged()">
+              </div>
+              <div class="cyber-field-card">
+                <div class="cyber-field-label"><span>🏫 Section</span></div>
+                <select id="cancelSectionSelect" class="cyber-field-control cyber-field-select" onchange="onCancelFormContextChanged()"></select>
+              </div>
             </div>
 
-            <div style="background:var(--card-inner); border:1px solid var(--card-border); border-radius:12px; padding:12px;">
-              <div style="font-size:0.8rem; font-weight:700; margin-bottom:4px;">🔔 Test Notification</div>
-              <div style="font-size:0.72rem; color:var(--text-sub); margin-bottom:8px;">Send a test cancellation alert to preview how it looks on student phones.</div>
-              <button class="secondary-btn" style="font-size:0.74rem;" onclick="triggerTestCancellationAlert()">
-                📢 Send Test Cancellation Alert
-              </button>
+            <div class="cyber-field-row">
+              <div class="cyber-field-card">
+                <div class="cyber-field-label"><span>⏰ Period Slot</span></div>
+                <select id="cancelPeriodSelect" class="cyber-field-control cyber-field-select" onchange="onCancelFormContextChanged()">
+                  <option value="L1">L1 (09:00 - 09:55)</option>
+                  <option value="L2">L2 (09:55 - 10:50)</option>
+                  <option value="L3">L3 (10:50 - 11:45)</option>
+                  <option value="L5">L5 (12:40 - 01:35)</option>
+                  <option value="L6">L6 (01:35 - 02:30)</option>
+                  <option value="L7">L7 (02:30 - 03:25)</option>
+                  <option value="L8">L8 (03:25 - 04:20)</option>
+                </select>
+              </div>
+              <div class="cyber-field-card">
+                <div class="cyber-field-label"><span>👥 Batch Affected</span></div>
+                <select id="cancelBatchSelect" class="cyber-field-control cyber-field-select" style="font-weight:700;">
+                  <option value="ALL">👥 Both Sets (Set-A &amp; Set-B / Entire Section)</option>
+                  <option value="Set-A">🅰️ Set-A Only (Roll 1-35)</option>
+                  <option value="Set-B">🅱️ Set-B Only (Roll 36 Onwards)</option>
+                </select>
+              </div>
             </div>
 
-            <div style="background:var(--card-inner); border:1px solid var(--card-border); border-radius:12px; padding:12px;">
-              <div style="font-size:0.8rem; font-weight:700; margin-bottom:4px;">👥 Registered Admin Accounts</div>
-              <div id="registeredAccountsList" style="font-size:0.72rem; color:var(--text-muted); margin-top:6px;"></div>
+            <div class="cyber-field-card">
+              <div class="cyber-field-label"><span>📚 Subject Name</span></div>
+              <input type="text" id="cancelSubjectInput" class="cyber-field-control" placeholder="Enter subject name">
+            </div>
+
+            <div class="cyber-field-card">
+              <div class="cyber-field-label"><span>👨‍🏫 Faculty Name</span></div>
+              <input type="text" id="cancelFacultyInput" class="cyber-field-control" placeholder="Enter faculty name">
+            </div>
+
+            <div class="cyber-field-card">
+              <div class="cyber-field-label"><span>📝 Cancellation Reason</span></div>
+              <select id="cancelReasonSelect" class="cyber-field-control cyber-field-select" onchange="onReasonPresetChange()">
+                <option value="Faculty on Leave">👨‍🏫 Faculty on Leave / Absent</option>
+                <option value="Department Meeting">🏛️ Department / Faculty Meeting</option>
+                <option value="Lab Session Postponed">🔬 Lab Session Postponed</option>
+                <option value="Campus Seminar / Event">🎪 Campus Event / Guest Seminar</option>
+                <option value="Exam Duty">📝 Faculty on Examination Duty</option>
+                <option value="Custom">✏️ Other Custom Reason...</option>
+              </select>
+              <input type="text" id="cancelReasonCustomInput" class="cyber-field-control" placeholder="Type specific reason..." style="display:none; margin-top:5px; border-top:1px dashed rgba(56,189,248,0.3); padding-top:6px;">
+            </div>
+
+            <!-- CR Custom Message to Affected Students -->
+            <div class="cyber-field-card" style="border-color:rgba(56,189,248,0.5); background:rgba(56,189,248,0.06);">
+              <div class="cyber-field-label" style="color:#38bdf8;">
+                <span>💬 CR Message / Announcement for Students</span>
+                <span style="font-size:0.6rem; color:#38bdf8;">Delivered via Notification</span>
+              </div>
+              <textarea id="cancelCustomMessageInput" class="cyber-field-control" rows="2" placeholder="e.g. Aaj ki Lab class cancel hai, sir leave par hain. Sabhi library me self study karein." style="resize:none; font-size:0.82rem; line-height:1.4; padding:8px 10px;"></textarea>
+            </div>
+
+            <div class="cyber-field-card">
+              <div class="cyber-field-label"><span>📌 Rescheduled Note / Venue (Optional)</span></div>
+              <input type="text" id="cancelRescheduleInput" class="cyber-field-control" placeholder="e.g. Free Period in Library / Shifted to 3:00 PM Room B-302">
+            </div>
+
+            <div style="background:rgba(56,189,248,0.08); border:1px solid rgba(56,189,248,0.25); border-radius:12px; padding:9px 12px; margin-bottom:12px; display:flex; align-items:center; gap:10px;">
+              <input type="checkbox" id="cancelSendNotifCheckbox" checked style="width:18px; height:18px; accent-color:#0ea5e9; cursor:pointer;">
+              <label for="cancelSendNotifCheckbox" style="font-size:0.75rem; color:#f8fafc; cursor:pointer; font-weight:600; line-height:1.3;">
+                🔔 Send push notification strictly to affected set students' mobiles
+              </label>
+            </div>
+
+            <div style="display:flex; flex-direction:column; gap:9px; margin-top:8px;">
+              <button class="cyber-btn-primary cyber-btn-danger" onclick="submitClassCancellation()">
+                <span>🚫</span> <span>Confirm Class Cancellation & Broadcast</span>
+              </button>
+              <button class="cyber-btn-emerald" onclick="broadcastCurrentCancellationWhatsApp()">
+                <span>📲</span> <span>Broadcast via WhatsApp (1-Click Sync Link)</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- DECK TAB 2: ACTIVE CANCELLATIONS LIST -->
+          <div id="deckActiveSection" style="display:none;">
+            <div id="activeCancellationsContainer" style="display:flex; flex-direction:column; gap:9px;">
+              <!-- Rendered by renderActiveCancellationsList() -->
+            </div>
+          </div>
+
+          <!-- DECK TAB 3: ADMIN SETTINGS & CONTROLS -->
+          <div id="deckSettingsSection" style="display:none;">
+            <div class="cyber-notice-card">
+              <span style="font-size:1.1rem; flex-shrink:0;">⚙️</span>
+              <div><strong>Admin Controls:</strong> Multi-device synchronization & security management.</div>
+            </div>
+
+            <div style="display:flex; flex-direction:column; gap:10px;">
+              <div style="background:rgba(13,25,52,0.8); border:1px solid rgba(56,189,248,0.25); border-radius:13px; padding:12px;">
+                <div style="font-size:0.8rem; font-weight:800; color:#38bdf8; margin-bottom:4px;">🔄 Server Sync Status</div>
+                <div style="font-size:0.72rem; color:#94a3b8; margin-bottom:10px;" id="deckSyncStatusText">Connected to Update Server & Cloud CDN</div>
+                <button class="cyber-btn-secondary" style="font-size:0.76rem;" onclick="syncCancelledClassesFromServer(true)">
+                  <span>🔄</span> <span>Force Pull from Server Now</span>
+                </button>
+              </div>
+
+              <div style="background:rgba(13,25,52,0.8); border:1px solid rgba(56,189,248,0.25); border-radius:13px; padding:12px;">
+                <div style="font-size:0.8rem; font-weight:800; color:#38bdf8; margin-bottom:4px;">🔔 Test Notification</div>
+                <div style="font-size:0.72rem; color:#94a3b8; margin-bottom:8px;">Send a test cancellation alert to preview how it looks on student phones.</div>
+                <button class="cyber-btn-secondary" style="font-size:0.76rem;" onclick="triggerTestCancellationAlert()">
+                  <span>📢</span> <span>Send Test Cancellation Alert</span>
+                </button>
+              </div>
+
+              <div style="background:rgba(13,25,52,0.8); border:1px solid rgba(56,189,248,0.25); border-radius:13px; padding:12px;">
+                <div style="font-size:0.8rem; font-weight:800; color:#38bdf8; margin-bottom:4px;">👥 Registered Admin & CR Accounts</div>
+                <div style="font-size:0.7rem; color:#94a3b8; margin-bottom:8px;">Authorized users who can cancel classes on this device.</div>
+                <div id="registeredAccountsList" style="display:flex; flex-direction:column; gap:6px; max-height:160px; overflow-y:auto;">
+                  <!-- Rendered by renderRegisteredAccountsList() -->
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -12695,6 +14373,5 @@ ${syncLink}
 </body>
 
 </html>
-
 
 
