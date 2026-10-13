@@ -247,18 +247,28 @@ public class MainActivity extends Activity {
         }
     }
 
+    private int getAppVersionCode() {
+        try {
+            return getPackageManager().getPackageInfo(getPackageName(), 0).versionCode;
+        } catch (Exception e) {
+            return 80;
+        }
+    }
+
     private boolean isUsingOtaFile() {
+        int currentVer = getAppVersionCode();
         SharedPreferences prefs = getSharedPreferences("ota_prefs", Context.MODE_PRIVATE);
         int savedApkVer = prefs.getInt("apk_ver", 0);
         File otaHtml = new File(getFilesDir(), "index.html");
-        return (savedApkVer == CURRENT_APK_VERSION && otaHtml.exists() && otaHtml.length() > 1000);
+        return (savedApkVer >= currentVer && otaHtml.exists() && otaHtml.length() > 1000);
     }
 
     private void loadBestAvailablePage() {
+        int currentVer = getAppVersionCode();
         SharedPreferences prefs = getSharedPreferences("ota_prefs", Context.MODE_PRIVATE);
         int savedApkVer = prefs.getInt("apk_ver", 0);
         File otaHtml = new File(getFilesDir(), "index.html");
-        if (savedApkVer != CURRENT_APK_VERSION && otaHtml.exists()) {
+        if (savedApkVer < currentVer && otaHtml.exists()) {
             try { otaHtml.delete(); } catch (Exception ignored) {}
         }
         if (isUsingOtaFile()) {
@@ -557,11 +567,11 @@ public class MainActivity extends Activity {
                         String baseUrl = rawUrl.trim();
                         if (baseUrl.isEmpty()) continue;
                         try {
-                            String verJson = httpGetText(baseUrl + "/version.json?t=" + System.currentTimeMillis(), 7000);
+                            String verJson = httpGetText(baseUrl + "/version.json?t=" + System.currentTimeMillis(), 15000);
                             JSONObject obj = new JSONObject(verJson);
                             String newHash = obj.optString("htmlHash", "");
                             final String verName = obj.optString("versionName", "Latest");
-                            String newHtml = httpGetText(baseUrl + "/index.html?t=" + System.currentTimeMillis(), 10000);
+                            String newHtml = httpGetText(baseUrl + "/index.html?t=" + System.currentTimeMillis(), 30000);
                             if (newHtml != null && newHtml.length() > 1000 && (newHtml.contains("SEC-D Timetable") || newHtml.contains("CSE D Timetable") || newHtml.contains("Qtimex"))) {
                                 boolean ok = applyOtaUpdate(newHtml, newHash);
                                 if (ok) {
@@ -611,7 +621,7 @@ public class MainActivity extends Activity {
 
                 SharedPreferences prefs = mContext.getSharedPreferences("ota_prefs", Context.MODE_PRIVATE);
                 prefs.edit()
-                        .putInt("apk_ver", CURRENT_APK_VERSION)
+                        .putInt("apk_ver", getAppVersionCode())
                         .putString("ota_hash", newHash)
                         .apply();
 

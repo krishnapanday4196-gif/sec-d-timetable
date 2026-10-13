@@ -3,12 +3,12 @@ const crypto = require('crypto');
 const path = require('path');
 
 let ver = JSON.parse(fs.readFileSync('version.json', 'utf8'));
-ver.versionName = "6.2.1";
-ver.versionCode = 80;
-ver.apkVersionCode = 80;
+ver.versionName = "6.2.2";
+ver.versionCode = 81;
+ver.apkVersionCode = 81;
 ver.updatedAt = Date.now();
 ver.lastUpdated = new Date().toISOString();
-ver.releaseNotes = "v6.2.1: Mobile UI Perfection • 3-Column Touch Dock Role Gateway • Adaptive header fit & 3-tab portal layout";
+ver.releaseNotes = "v6.2.2: Instant OTA Auto-Sync Fix • Fresh APK Cache Purge • 3-Column Role Gateway Mobile Dock & 3-Tab Portal";
 
 let html = fs.readFileSync('index.html', 'utf8');
 html = html.replace(/<strong style="color:var\(--gold-accent\);">v[^<]+<\/strong>/, '<strong style="color:var(--gold-accent);">v' + ver.versionName + ' (Student Profile & Multi-CR Alerts)</strong>');

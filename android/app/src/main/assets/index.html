@@ -7489,7 +7489,7 @@
         style="background:var(--card-surface-grad); border:1px solid var(--card-border); border-radius:14px; padding:12px; display:flex; flex-direction:column; gap:8px;">
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Installed Version:</span>
-          <strong style="color:var(--gold-accent);">v6.2.1 (Student Profile & Multi-CR Alerts)</strong>
+          <strong style="color:var(--gold-accent);">v6.2.2 (Student Profile & Multi-CR Alerts)</strong>
         </div>
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Notification:</span>
@@ -7513,7 +7513,7 @@
 
       <button class="secondary-btn" style="background:rgba(79, 70, 229, 0.12); border:1.5px solid #4f46e5; color:#4f46e5; font-weight:800; justify-content:center;"
         onclick="downloadFullApk()">
-        📲 Direct Download & Install APK (v6.2.1)
+        📲 Direct Download & Install APK (v6.2.2)
       </button>
 
       <button class="secondary-btn" onclick="checkInAppUpdate(true)">
@@ -11396,9 +11396,9 @@ ${syncLink}
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '6.2.1';
-    const LOCAL_APP_VERSION_CODE = 80;
-    const LOCAL_APP_BUILD_HASH = '280a7dd25ef0';
+    const LOCAL_APP_VERSION_NAME = '6.2.2';
+    const LOCAL_APP_VERSION_CODE = 81;
+    const LOCAL_APP_BUILD_HASH = '6c726cd3ac42';
 
     let cachedLatestVersionCode = 29;
 
@@ -11449,17 +11449,7 @@ ${syncLink}
     function isNewUpdateAvailable(serverVersionName, serverVersionCode, isManual = false) {
       const sCode = parseInt(serverVersionCode, 10) || 0;
       const currentCode = LOCAL_APP_VERSION_CODE;
-
-      if (sCode > currentCode) {
-        if (!isManual) {
-          const dismissed = parseInt(localStorage.getItem('secD_dismissed_update_code'), 10) || 0;
-          if (dismissed >= sCode) {
-            return false;
-          }
-        }
-        return true;
-      }
-      return false;
+      return (sCode > currentCode);
     }
 
     // Callback from Native Android Java OTA Checker (zero CORS issues!)
@@ -11646,7 +11636,7 @@ ${syncLink}
           if (updateBtn && updateBtn.disabled) {
             runJsOtaFallbackDirect(directServers);
           }
-        }, 5000);
+        }, 18000);
         return;
       }
 
