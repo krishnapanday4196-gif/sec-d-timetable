@@ -152,8 +152,38 @@ public class MainActivity extends Activity {
                 }
                 return false;
             }
+
+            @Override
+            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+                super.onReceivedError(view, errorCode, description, failingUrl);
+                if (failingUrl != null && failingUrl.contains("files/index.html")) {
+                    try {
+                        new File(getFilesDir(), "index.html").delete();
+                        getSharedPreferences("ota_prefs", Context.MODE_PRIVATE).edit().clear().apply();
+                    } catch (Exception ignored) {}
+                    mWebView.loadUrl("file:///android_asset/index.html");
+                }
+            }
+
+            @Override
+            public void onReceivedError(WebView view, android.webkit.WebResourceRequest request, android.webkit.WebResourceError error) {
+                super.onReceivedError(view, request, error);
+                if (request != null && request.isForMainFrame() && request.getUrl() != null && request.getUrl().toString().contains("files/index.html")) {
+                    try {
+                        new File(getFilesDir(), "index.html").delete();
+                        getSharedPreferences("ota_prefs", Context.MODE_PRIVATE).edit().clear().apply();
+                    } catch (Exception ignored) {}
+                    mWebView.loadUrl("file:///android_asset/index.html");
+                }
+            }
         });
         mWebView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public boolean onConsoleMessage(android.webkit.ConsoleMessage consoleMessage) {
+                android.util.Log.d("TimetableWebView", consoleMessage.message() + " -- Line " + consoleMessage.lineNumber() + " of " + consoleMessage.sourceId());
+                return true;
+            }
+
             @Override
             public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> filePathCallback, FileChooserParams fileChooserParams) {
                 if (mFilePathCallback != null) {
@@ -258,18 +288,29 @@ public class MainActivity extends Activity {
     private boolean isUsingOtaFile() {
         int currentVer = getAppVersionCode();
         SharedPreferences prefs = getSharedPreferences("ota_prefs", Context.MODE_PRIVATE);
-        int savedApkVer = prefs.getInt("apk_ver", 0);
+        int savedOtaVer = prefs.getInt("ota_version_code", 0);
+        if (savedOtaVer == 0) {
+            savedOtaVer = prefs.getInt("apk_ver", 0);
+        }
         File otaHtml = new File(getFilesDir(), "index.html");
-        return (savedApkVer >= currentVer && otaHtml.exists() && otaHtml.length() > 1000);
+        // Only use an OTA file if it has a strictly higher version code than the installed APK!
+        return (savedOtaVer > currentVer && otaHtml.exists() && otaHtml.length() > 1000);
     }
 
     private void loadBestAvailablePage() {
         int currentVer = getAppVersionCode();
         SharedPreferences prefs = getSharedPreferences("ota_prefs", Context.MODE_PRIVATE);
-        int savedApkVer = prefs.getInt("apk_ver", 0);
+        int savedOtaVer = prefs.getInt("ota_version_code", 0);
+        if (savedOtaVer == 0) {
+            savedOtaVer = prefs.getInt("apk_ver", 0);
+        }
         File otaHtml = new File(getFilesDir(), "index.html");
-        if (savedApkVer < currentVer && otaHtml.exists()) {
-            try { otaHtml.delete(); } catch (Exception ignored) {}
+        // If the installed APK is equal to or newer than the saved OTA file, purge stale disk cache!
+        if (savedOtaVer <= currentVer && otaHtml.exists()) {
+            try {
+                otaHtml.delete();
+                prefs.edit().remove("apk_ver").remove("ota_version_code").remove("ota_hash").apply();
+            } catch (Exception ignored) {}
         }
         if (isUsingOtaFile()) {
             mWebView.loadUrl("file://" + otaHtml.getAbsolutePath());
@@ -573,7 +614,8 @@ public class MainActivity extends Activity {
                             final String verName = obj.optString("versionName", "Latest");
                             String newHtml = httpGetText(baseUrl + "/index.html?t=" + System.currentTimeMillis(), 30000);
                             if (newHtml != null && newHtml.length() > 1000 && (newHtml.contains("SEC-D Timetable") || newHtml.contains("CSE D Timetable") || newHtml.contains("Qtimex"))) {
-                                boolean ok = applyOtaUpdate(newHtml, newHash);
+                                int newVerCode = obj.optInt("versionCode", getAppVersionCode() + 1);
+                                boolean ok = applyOtaUpdateWithVersion(newHtml, newHash, newVerCode);
                                 if (ok) {
                                     runOnUiThread(new Runnable() {
                                         @Override
@@ -604,6 +646,11 @@ public class MainActivity extends Activity {
 
         @JavascriptInterface
         public boolean applyOtaUpdate(String newHtmlContent, String newHash) {
+            return applyOtaUpdateWithVersion(newHtmlContent, newHash, getAppVersionCode() + 1);
+        }
+
+        @JavascriptInterface
+        public boolean applyOtaUpdateWithVersion(String newHtmlContent, String newHash, int newVerCode) {
             try {
                 if (newHtmlContent == null || newHtmlContent.length() < 1000) return false;
 
@@ -621,7 +668,8 @@ public class MainActivity extends Activity {
 
                 SharedPreferences prefs = mContext.getSharedPreferences("ota_prefs", Context.MODE_PRIVATE);
                 prefs.edit()
-                        .putInt("apk_ver", getAppVersionCode())
+                        .putInt("apk_ver", newVerCode)
+                        .putInt("ota_version_code", newVerCode)
                         .putString("ota_hash", newHash)
                         .apply();
 

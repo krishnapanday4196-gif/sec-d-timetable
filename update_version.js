@@ -3,12 +3,12 @@ const crypto = require('crypto');
 const path = require('path');
 
 let ver = JSON.parse(fs.readFileSync('version.json', 'utf8'));
-ver.versionName = "6.3.2";
-ver.versionCode = 86;
-ver.apkVersionCode = 86;
+ver.versionName = "6.3.3";
+ver.versionCode = 87;
+ver.apkVersionCode = 87;
 ver.updatedAt = Date.now();
 ver.lastUpdated = new Date().toISOString();
-ver.releaseNotes = "v6.3.2: Critical fix for mobile WebView track.scrollTo crash and requestAnimationFrame compatibility - Full functionality and login restored";
+ver.releaseNotes = "v6.3.3: Complete recovery and cache purge update - fixed storage guards, mobile WebView scrolling compatibility, and instant cloud update sync";
 
 let html = fs.readFileSync('index.html', 'utf8');
 html = html.replace(/<strong style="color:var\(--gold-accent\);">v[^<]+<\/strong>/, '<strong style="color:var(--gold-accent);">v' + ver.versionName + ' (Strict Isolation & PYQ Vault)</strong>');

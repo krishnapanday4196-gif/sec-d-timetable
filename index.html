@@ -7605,7 +7605,7 @@
         style="background:var(--card-surface-grad); border:1px solid var(--card-border); border-radius:14px; padding:12px; display:flex; flex-direction:column; gap:8px;">
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Installed Version:</span>
-          <strong style="color:var(--gold-accent);">v6.3.2 (Strict Isolation & PYQ Vault)</strong>
+          <strong style="color:var(--gold-accent);">v6.3.3 (Strict Isolation & PYQ Vault)</strong>
         </div>
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Notification:</span>
@@ -7629,7 +7629,7 @@
 
       <button class="secondary-btn" style="background:rgba(79, 70, 229, 0.12); border:1.5px solid #4f46e5; color:#4f46e5; font-weight:800; justify-content:center;"
         onclick="downloadFullApk()">
-        📲 Direct Download & Install APK (v6.3.2)
+        📲 Direct Download & Install APK (v6.3.3)
       </button>
 
       <button class="secondary-btn" onclick="checkInAppUpdate(true)">
@@ -8465,7 +8465,11 @@
     function _ensureAllSections(callback) {
       if (callback) callback();
     }
-    let currentSection = localStorage.getItem('quantum_section_pref') || 'Sec-D';
+    let currentSection = 'Sec-D';
+    try {
+      const savedSec = localStorage.getItem('quantum_section_pref');
+      if (savedSec && ALL_SECTIONS[savedSec]) currentSection = savedSec;
+    } catch (_) {}
 
     function getActiveSchedule() {
       return (ALL_SECTIONS[currentSection] && ALL_SECTIONS[currentSection].schedule) || ALL_SECTIONS['Sec-D'].schedule;
@@ -8590,15 +8594,7 @@
             const activeBtn = track.querySelector('.sec-pill-btn.active');
             if (activeBtn && track) {
               const leftPos = activeBtn.offsetLeft - (track.clientWidth - activeBtn.clientWidth) / 2;
-              try {
-                if (typeof track.scrollTo === 'function') {
-                  track.scrollTo({ left: leftPos, behavior: 'smooth' });
-                } else {
-                  track.scrollLeft = leftPos;
-                }
-              } catch (e) {
-                try { track.scrollLeft = leftPos; } catch (err) {}
-              }
+              try { track.scrollLeft = leftPos; } catch (_) {}
             }
           }
         }
@@ -10614,15 +10610,7 @@ ${syncLink}
         const activeBtn = track.querySelector('.fac-sec-pill.active');
         if (activeBtn && track) {
           const leftPos = activeBtn.offsetLeft - (track.clientWidth - activeBtn.clientWidth) / 2;
-          try {
-            if (typeof track.scrollTo === 'function') {
-              track.scrollTo({ left: leftPos, behavior: 'smooth' });
-            } else {
-              track.scrollLeft = leftPos;
-            }
-          } catch (e) {
-            try { track.scrollLeft = leftPos; } catch (err) {}
-          }
+          try { track.scrollLeft = leftPos; } catch (_) {}
         }
       }, 50);
     }
@@ -10817,7 +10805,12 @@ ${syncLink}
     
 
     // State Variables
-    let selectedBatch = localStorage.getItem('secD_batch_pref') || 'Set-A';
+    let selectedBatch = 'Set-A';
+    try {
+      selectedBatch = localStorage.getItem('secD_batch_pref') || 'Set-A';
+    } catch (e) {
+      selectedBatch = 'Set-A';
+    }
     let viewingDate = new Date();
 
     // Live Ticking Simulator State
@@ -10827,18 +10820,42 @@ ${syncLink}
     let simDay = null;
 
     // Ensure 5-Minute Class Notification is ON by default for all users!
-    if (!localStorage.getItem('secD_notif_v43_enabled')) {
-      localStorage.setItem('secD_sound', 'true');
-      localStorage.setItem('secD_notif_v43_enabled', '1');
+    try {
+      if (!localStorage.getItem('secD_notif_v43_enabled')) {
+        localStorage.setItem('secD_sound', 'true');
+        localStorage.setItem('secD_notif_v43_enabled', '1');
+      }
+    } catch (e) { }
+    let chimeEnabled = true;
+    try {
+      chimeEnabled = localStorage.getItem('secD_sound') !== 'false';
+    } catch (e) {
+      chimeEnabled = true;
     }
-    let chimeEnabled = localStorage.getItem('secD_sound') !== 'false';
     let lastNotifiedPeriod = null;
-    let lastFiveMinNotifiedKey = localStorage.getItem('secD_last_5m_notif') || '';
+    let lastFiveMinNotifiedKey = '';
+    try {
+      lastFiveMinNotifiedKey = localStorage.getItem('secD_last_5m_notif') || '';
+    } catch (e) {
+      lastFiveMinNotifiedKey = '';
+    }
     let lastRenderedMinuteKey = '';
     let activeModalSlotData = null;
 
-    let attendanceMap = JSON.parse(localStorage.getItem('secD_attendance') || '{}');
-    let classNotesMap = JSON.parse(localStorage.getItem('secD_notes') || '{}');
+    let attendanceMap = {};
+    try {
+      attendanceMap = JSON.parse(localStorage.getItem('secD_attendance') || '{}');
+      if (!attendanceMap || typeof attendanceMap !== 'object') attendanceMap = {};
+    } catch (e) {
+      attendanceMap = {};
+    }
+    let classNotesMap = {};
+    try {
+      classNotesMap = JSON.parse(localStorage.getItem('secD_notes') || '{}');
+      if (!classNotesMap || typeof classNotesMap !== 'object') classNotesMap = {};
+    } catch (e) {
+      classNotesMap = {};
+    }
 
     const CIRCLE_CIRCUMFERENCE = 263.89; // 2 * PI * 42
 
@@ -11783,9 +11800,9 @@ ${syncLink}
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '6.3.2';
-    const LOCAL_APP_VERSION_CODE = 86;
-    const LOCAL_APP_BUILD_HASH = '3ac15fc8bc54';
+    const LOCAL_APP_VERSION_NAME = '6.3.3';
+    const LOCAL_APP_VERSION_CODE = 87;
+    const LOCAL_APP_BUILD_HASH = '0613e82e6034';
 
     let cachedLatestVersionCode = 29;
 
@@ -11800,9 +11817,8 @@ ${syncLink}
     }
 
     const UPDATE_SERVERS = [
-      'https://sheet-probability-volt-cure.trycloudflare.com',                      // ⚡ Active Live Cloudflare Tunnel (Zero-lag)
-      'http://40.40.27.228:8080',                                                    // 📶 Local Wi-Fi Direct
-      'https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main', // 24/7 GitHub Cloud CDN
+      'https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main', // 24/7 GitHub Cloud CDN (Always Up & Fast)
+      'http://40.40.7.206:8080',                                                     // 📶 Local Wi-Fi Direct
       'https://cse-d-timetable-ota.loca.lt'                                          // Localtunnel Discovery
     ];
     let activeConnectedServer = UPDATE_SERVERS[0];
@@ -12010,11 +12026,7 @@ ${syncLink}
         }
       };
 
-      const directServers = [
-        'https://sheet-probability-volt-cure.trycloudflare.com',
-        'http://40.40.27.228:8080',
-        'https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main'
-      ];
+      const directServers = UPDATE_SERVERS;
 
       // 1. Native Android Java OTA Downloader (Zero CORS restrictions!)
       if (window.AndroidUpdater && typeof window.AndroidUpdater.performNativeOtaUpdate === 'function') {
