@@ -3,12 +3,12 @@ const crypto = require('crypto');
 const path = require('path');
 
 let ver = JSON.parse(fs.readFileSync('version.json', 'utf8'));
-ver.versionName = "5.5.0";
-ver.versionCode = 91;
-ver.apkVersionCode = 91;
+ver.versionName = "5.9.12";
+ver.versionCode = 92;
+ver.apkVersionCode = 92;
 ver.updatedAt = Date.now();
 ver.lastUpdated = new Date().toISOString();
-ver.releaseNotes = "v5.5.0: Restored official clean version - Multi-section offline support for all 10 sections A to L, instant Set-A / Set-B switching, and zero login barriers";
+ver.releaseNotes = "v5.9.12: Next-level cybernetic architectural background grid with HUD crosshairs, reactive touch spotlight, laser scan beam, and official faculty directory";
 
 let html = fs.readFileSync('index.html', 'utf8');
 html = html.replace(/const LOCAL_APP_VERSION_NAME = '[^']+';/, "const LOCAL_APP_VERSION_NAME = '" + ver.versionName + "';");
