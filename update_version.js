@@ -3,16 +3,14 @@ const crypto = require('crypto');
 const path = require('path');
 
 let ver = JSON.parse(fs.readFileSync('version.json', 'utf8'));
-ver.versionName = "6.3.6";
-ver.versionCode = 90;
-ver.apkVersionCode = 90;
+ver.versionName = "5.5.0";
+ver.versionCode = 91;
+ver.apkVersionCode = 91;
 ver.updatedAt = Date.now();
 ver.lastUpdated = new Date().toISOString();
-ver.releaseNotes = "v6.3.6: Fixed Android WebView URL routing, modal overlay active display binding, and OTA hot-reload file path handler";
+ver.releaseNotes = "v5.5.0: Restored official clean version - Multi-section offline support for all 10 sections A to L, instant Set-A / Set-B switching, and zero login barriers";
 
 let html = fs.readFileSync('index.html', 'utf8');
-html = html.replace(/<strong style="color:var\(--gold-accent\);">v[^<]+<\/strong>/, '<strong style="color:var(--gold-accent);">v' + ver.versionName + ' (Strict Isolation & PYQ Vault)</strong>');
-html = html.replace(/📲 Direct Download & Install APK \(v[^)]+\)/, '📲 Direct Download & Install APK (v' + ver.versionName + ')');
 html = html.replace(/const LOCAL_APP_VERSION_NAME = '[^']+';/, "const LOCAL_APP_VERSION_NAME = '" + ver.versionName + "';");
 html = html.replace(/const LOCAL_APP_VERSION_CODE = \d+;/, 'const LOCAL_APP_VERSION_CODE = ' + ver.versionCode + ';');
 

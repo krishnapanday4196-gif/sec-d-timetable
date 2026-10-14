@@ -1,11 +1,11 @@
 {
-  "versionName": "6.3.6",
-  "versionCode": 90,
-  "apkVersionCode": 90,
-  "htmlHash": "cc1f4bbd8a83",
-  "apkHash": "e4fb9d81286f",
+  "versionName": "5.5.0",
+  "versionCode": 91,
+  "apkVersionCode": 91,
+  "htmlHash": "65cd6517da55",
+  "apkHash": "82e8c9691f7b",
   "apkSize": 2405492,
-  "updatedAt": 1791997278271,
+  "updatedAt": 1792002613211,
   "publicUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main",
   "cloudflareUrl": "",
   "githubUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main",
@@ -13,9 +13,9 @@
   "apkUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/SecD_Timetable.apk",
   "htmlUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/index.html",
   "downloadUrl": "https://krishnapanday4196-gif.github.io/sec-d-timetable",
-  "lastUpdated": "2026-10-14T17:01:18.271Z",
-  "apkMd5": "e4fb9d81286fc5b5849f04ac55ad57b3",
-  "releaseNotes": "v6.3.6: Fixed Android WebView URL routing, modal overlay active display binding, and OTA hot-reload file path handler",
-  "apkSizeBytes": 2631453,
-  "apkSizeFormatted": "2.51 MB"
+  "lastUpdated": "2026-10-14T18:30:13.212Z",
+  "apkMd5": "82e8c9691f7bff328fb4d81e76e5240c",
+  "releaseNotes": "v5.5.0: Restored official clean version - Multi-section offline support for all 10 sections A to L, instant Set-A / Set-B switching, and zero login barriers",
+  "apkSizeBytes": 2464270,
+  "apkSizeFormatted": "2.35 MB"
 }
