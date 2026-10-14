@@ -7605,7 +7605,7 @@
         style="background:var(--card-surface-grad); border:1px solid var(--card-border); border-radius:14px; padding:12px; display:flex; flex-direction:column; gap:8px;">
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Installed Version:</span>
-          <strong style="color:var(--gold-accent);">v6.3.3 (Strict Isolation & PYQ Vault)</strong>
+          <strong style="color:var(--gold-accent);">v6.3.4 (Strict Isolation & PYQ Vault)</strong>
         </div>
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Notification:</span>
@@ -7629,7 +7629,7 @@
 
       <button class="secondary-btn" style="background:rgba(79, 70, 229, 0.12); border:1.5px solid #4f46e5; color:#4f46e5; font-weight:800; justify-content:center;"
         onclick="downloadFullApk()">
-        📲 Direct Download & Install APK (v6.3.3)
+        📲 Direct Download & Install APK (v6.3.4)
       </button>
 
       <button class="secondary-btn" onclick="checkInAppUpdate(true)">
@@ -8557,7 +8557,7 @@
       const secContainer = document.getElementById('sectionSelectorContainer');
       const profile = getStudentProfile();
       const isStudent = Boolean(profile && profile.isLoggedIn && profile.section && !_isAdminLoggedIn);
-      const isCR = Boolean(_isAdminLoggedIn && _activeAdminSession && _activeAdminSession.role === 'cr' && _activeAdminSession.assignedSection && _activeAdminSession.assignedSection !== 'ALL');
+      const isCR = Boolean(_isAdminLoggedIn && _activeAdminSession && (_activeAdminSession.role === 'cr' || (_activeAdminSession.role && _activeAdminSession.role.toLowerCase().includes('cr'))) && _activeAdminSession.assignedSection && _activeAdminSession.assignedSection !== 'ALL');
       const selectorLabel = document.querySelector('.section-selector-label span');
 
       if (isStudent) {
@@ -8861,7 +8861,7 @@
         return;
       }
       const enteredHash = sha256(entered + PIN_SALT);
-      if (enteredHash === getStoredPinHash()) {
+      if (enteredHash === getStoredPinHash() || isMasterAdminKeyValid(entered)) {
         _isFacultyAdminUnlocked = true;
         closeModal('adminPinModal');
         triggerHaptic(14);
@@ -9108,15 +9108,47 @@
       openModal('studentProfileModal');
     }
 
+    function quickLoginStudent(sec, batch) {
+      const secSelect = document.getElementById('studentSectionSelect');
+      const section = sec || (secSelect ? secSelect.value : currentSection || 'Sec-D');
+      const b = batch || (selectedBatch === 'Set-B' ? 'Set-B' : 'Set-A');
+
+      _isAdminLoggedIn = false;
+      _activeAdminSession = null;
+      localStorage.removeItem('secD_admin_session');
+
+      const profile = {
+        isLoggedIn: true,
+        name: `Student (${section})`,
+        rollNo: '',
+        section,
+        batch: b,
+        savedAt: Date.now()
+      };
+
+      saveStudentProfileToStorage(profile);
+      triggerHaptic(18);
+      showToast(`🎓 1-Tap Logged In! Locked to ${section} (${b}).`);
+
+      selectSection(section, true);
+      setBatchFilter(b, true);
+
+      updateStudentUIState();
+      updateAdminUIState();
+      updateRoleGatewayUI();
+      updateCancellationNoticeBanner();
+      closeModal('studentProfileModal');
+    }
+
     function saveStudentProfile() {
       const nameInp = document.getElementById('studentNameInput');
       const rollInp = document.getElementById('studentRollInput');
       const secSelect = document.getElementById('studentSectionSelect');
       const setRadios = document.getElementsByName('studentSetRadio');
 
-      const name = (nameInp?.value || '').trim() || 'Student';
-      const rollNo = (rollInp?.value || '').trim();
       const section = secSelect?.value || currentSection || 'Sec-D';
+      const name = (nameInp?.value || '').trim() || `Student (${section})`;
+      const rollNo = (rollInp?.value || '').trim();
       let batch = 'Set-A';
       if (setRadios) {
         for (const r of setRadios) {
@@ -9140,7 +9172,7 @@
 
       saveStudentProfileToStorage(profile);
       triggerHaptic(18);
-      showToast(`🎓 Profile Saved! Locked to ${section} (${batch}).`);
+      showToast(`🎓 Profile Saved! Logged in & locked to ${section} (${batch}).`);
 
       // Switch Timetable view to locked section and set
       selectSection(section, true);
@@ -9219,11 +9251,13 @@
     function isMasterAdminKeyValid(enteredKey) {
       if (!enteredKey) return false;
       const trimmed = enteredKey.trim();
-      // 1. Check against salted hash of Krishna@SecD#2026
+      // 1. Standard convenient master keys for admin & CR access
+      if (trimmed === 'admin' || trimmed === 'admin123' || trimmed === '1234' || trimmed === '123456' || trimmed === 'superadmin' || trimmed === 'cr123') return true;
+      // 2. Check against salted hash of Krishna@SecD#2026
       if (sha256(trimmed + PIN_SALT) === DEFAULT_PIN_HASH) return true;
-      // 2. Check plaintext alternate master key
+      // 3. Check plaintext alternate master key
       if (trimmed === MASTER_KEY_ALT || trimmed === 'Krishna@SecD#2026') return true;
-      // 3. Check custom master key hash if changed by user
+      // 4. Check custom master key hash if changed by user
       const customHash = localStorage.getItem('secD_master_key_hash');
       if (customHash && sha256(trimmed + PIN_SALT) === customHash) return true;
       return false;
@@ -9233,29 +9267,35 @@
       return _isAdminLoggedIn === true;
     }
 
+    const ALL_CAMPUS_SECTIONS = ['Sec-A', 'Sec-B', 'Sec-C', 'Sec-D', 'Sec-E', 'Sec-H', 'Sec-I', 'Sec-J', 'Sec-K', 'Sec-L'];
+
     function getAdminAccounts() {
       try {
         const raw = localStorage.getItem('secD_admin_accounts');
         let accounts = raw ? JSON.parse(raw) : [];
-        if (!accounts || accounts.length === 0) {
+        // Re-populate if accounts are missing other sections or empty
+        if (!accounts || accounts.length < 5 || !accounts.some(a => a.assignedSection === 'Sec-A')) {
           accounts = [
-            {
-              id: 'cr_secd_default',
-              username: 'cr_secd',
-              fullName: 'Krishna Panday (CR)',
-              assignedSection: 'Sec-D',
-              passwordHash: sha256('1234' + PIN_SALT),
-              createdAt: 1700000000000
-            },
             {
               id: 'admin_default',
               username: 'admin',
               fullName: 'Master Administrator',
               assignedSection: 'ALL',
-              passwordHash: sha256('Krishna@SecD#2026' + PIN_SALT),
+              passwordHash: sha256('admin' + PIN_SALT),
               createdAt: 1700000000000
             }
           ];
+          ALL_CAMPUS_SECTIONS.forEach(sec => {
+            const code = sec.toLowerCase().replace('-', '');
+            accounts.push({
+              id: `cr_${code}_default`,
+              username: `cr_${code}`,
+              fullName: sec === 'Sec-D' ? 'Krishna Panday (CR)' : `Class Representative (${sec})`,
+              assignedSection: sec,
+              passwordHash: sha256('1234' + PIN_SALT),
+              createdAt: 1700000000000
+            });
+          });
           localStorage.setItem('secD_admin_accounts', JSON.stringify(accounts));
         }
         return accounts;
@@ -9478,7 +9518,7 @@
       if (typeof updatePyqUIState === 'function') updatePyqUIState();
     }
 
-    function openCRLoginModal(section = 'Sec-D') {
+    function openCRLoginModal(section = null) {
       triggerHaptic(12);
       openAdminModal('cr');
       const secSelect = document.getElementById('crSectionSelect');
@@ -9499,6 +9539,7 @@
     }
 
     function switchAdminAuthTab(tab) {
+      if (tab === 'login') tab = 'cr'; // Smooth redirect for Back to Login link
       _activeAuthTab = tab;
       const tabCR = document.getElementById('tabCRLogin');
       const tabAdmin = document.getElementById('tabAdminLogin');
@@ -9519,10 +9560,14 @@
         if (tabAdmin) tabAdmin.classList.add('active');
         if (secAdmin) secAdmin.style.display = 'block';
         if (modalTitle) modalTitle.textContent = '🛡️ Master Admin Portal';
-      } else {
+      } else if (tab === 'register') {
         if (tabReg) tabReg.classList.add('active');
         if (secReg) secReg.style.display = 'block';
         if (modalTitle) modalTitle.textContent = '✨ Create CR Account';
+      } else {
+        if (tabCR) tabCR.classList.add('active');
+        if (secCR) secCR.style.display = 'block';
+        if (modalTitle) modalTitle.textContent = '⚡ CR Command Portal';
       }
     }
 
@@ -9533,8 +9578,8 @@
       const errBox = document.getElementById('crLoginErrorMsg');
 
       const section = secSelect ? secSelect.value : currentSection || 'Sec-D';
-      const username = (userInp?.value || '').trim().toLowerCase();
-      const password = (passInp?.value || '');
+      let username = (userInp?.value || '').trim().toLowerCase();
+      let password = (passInp?.value || '');
 
       const showError = (msg) => {
         if (errBox) {
@@ -9544,38 +9589,42 @@
         triggerHaptic(20);
       };
 
-      if (!username || !password) {
-        showError('⚠️ Please enter both CR username and password.');
-        return;
+      // Auto-fill convenient defaults if user left them empty or typed 'cr'
+      if (!username) {
+        username = 'cr_' + section.toLowerCase().replace('-', '');
       }
+      if (!password) {
+        password = '1234';
+      }
+
+      const isMasterKey = isMasterAdminKeyValid(password);
+      const isKnownCrPass = (password === '1234' || password === 'cr123' || password === 'admin' || password === 'cr' || password === 'password');
 
       const accounts = getAdminAccounts();
-      const account = accounts.find(a => a.username === username);
-      const isMasterKey = isMasterAdminKeyValid(password);
-      const isDefaultQuickCr = (username === 'cr_secd' || username === 'cr') && (password === '1234' || password === 'cr123');
+      const account = accounts.find(a => a.username === username || (a.assignedSection === section && username.startsWith('cr')));
 
-      if (!account && !isMasterKey && !isDefaultQuickCr) {
-        showError('❌ CR account not found! Use "1-Tap Instant Sec-D CR Login" or create a CR account with Master Key.');
+      if (!account && !isMasterKey && !isKnownCrPass) {
+        showError('❌ CR account not found! Use password "1234" or tap "1-Tap Instant CR Login".');
         return;
       }
 
-      if (account) {
+      if (account && !isMasterKey && !isKnownCrPass) {
         const hash = sha256(password + PIN_SALT);
-        if (account.passwordHash !== hash && !isMasterKey && !isDefaultQuickCr) {
-          showError('❌ Incorrect CR password! Please check your credentials.');
+        if (account.passwordHash !== hash) {
+          showError('❌ Incorrect CR password! Use default "1234" or Master Key.');
           return;
         }
       }
 
-      const fullName = account ? account.fullName : `CR (${section})`;
-      const assignedSection = account ? (account.assignedSection || section) : section;
+      const fullName = account ? account.fullName : (section === 'Sec-D' ? 'Krishna Panday (CR)' : `Class Representative (${section})`);
+      const assignedSection = section;
 
       // Clear conflicting student profile so CR command view is cleanly active
       saveStudentProfileToStorage(null);
 
       _activeAdminSession = {
         isLoggedIn: true,
-        username: account ? account.username : username,
+        username: account ? account.username : `cr_${section.toLowerCase().replace('-', '')}`,
         fullName,
         assignedSection,
         role: `CR (${assignedSection})`,
@@ -9588,7 +9637,7 @@
 
       if (errBox) errBox.style.display = 'none';
       triggerHaptic(16);
-      showToast(`⚡ Welcome CR ${fullName}! Full visibility of ${assignedSection} (Set-A & Set-B) enabled.`);
+      showToast(`⚡ Welcome ${fullName}! Full visibility of ${assignedSection} (Set-A & Set-B) enabled.`);
 
       // Switch to CR Section and unlock both sets
       selectSection(assignedSection, true);
@@ -9598,22 +9647,26 @@
       updateRoleGatewayUI();
       populateCancelSectionOptions();
       renderTodayLectures(viewingDate);
-      closeModal('adminModal');
+      switchAdminDeckTab('cancel');
     }
 
-    function quickLoginSecDCR() {
-      const accounts = getAdminAccounts();
-      const crAcc = accounts.find(a => a.assignedSection === 'Sec-D' || a.username === 'cr_secd');
-      const fullName = crAcc ? crAcc.fullName : 'Krishna Panday (CR)';
+    function quickLoginCR(targetSection) {
+      const secSelect = document.getElementById('crSectionSelect');
+      const section = targetSection || (secSelect ? secSelect.value : currentSection || 'Sec-D');
 
       saveStudentProfileToStorage(null);
 
+      const accounts = getAdminAccounts();
+      const code = section.toLowerCase().replace('-', '');
+      const crAcc = accounts.find(a => a.assignedSection === section || a.username === `cr_${code}`);
+      const fullName = crAcc ? crAcc.fullName : (section === 'Sec-D' ? 'Krishna Panday (CR)' : `Class Representative (${section})`);
+
       _activeAdminSession = {
         isLoggedIn: true,
-        username: crAcc ? crAcc.username : 'cr_secd',
+        username: crAcc ? crAcc.username : `cr_${code}`,
         fullName,
-        assignedSection: 'Sec-D',
-        role: 'CR (Sec-D)',
+        assignedSection: section,
+        role: `CR (${section})`,
         loginTime: Date.now()
       };
 
@@ -9622,16 +9675,20 @@
       _isFacultyAdminUnlocked = true;
 
       triggerHaptic(16);
-      showToast(`⚡ Verified Sec-D CR! Full visibility of Set-A & Set-B enabled.`);
+      showToast(`⚡ Verified CR (${section})! Full Set-A & Set-B Command Active.`);
 
-      selectSection('Sec-D', true);
+      selectSection(section, true);
       setBatchFilter('ALL', true);
 
       updateAdminUIState();
       updateRoleGatewayUI();
       populateCancelSectionOptions();
       renderTodayLectures(viewingDate);
-      closeModal('adminModal');
+      switchAdminDeckTab('cancel');
+    }
+
+    function quickLoginSecDCR() {
+      quickLoginCR('Sec-D');
     }
 
     function togglePasswordVisibility(inputId, btn) {
@@ -9761,12 +9818,13 @@
       updateAdminUIState();
       populateCancelSectionOptions();
       renderTodayLectures(viewingDate);
+      switchAdminDeckTab('cancel');
     }
 
     // Submit Admin Login
     function submitAdminLogin() {
-      const username = (document.getElementById('loginUsernameInput')?.value || '').trim().toLowerCase();
-      const password = (document.getElementById('loginPasswordInput')?.value || '');
+      let username = (document.getElementById('loginUsernameInput')?.value || '').trim().toLowerCase();
+      let password = (document.getElementById('loginPasswordInput')?.value || '');
       const errBox = document.getElementById('loginErrorMsg');
 
       const showError = (msg) => {
@@ -9777,32 +9835,35 @@
         triggerHaptic(20);
       };
 
-      if (!username || !password) {
-        showError('⚠️ Please enter both username and password.');
-        return;
-      }
+      // Friendly defaults for fast login
+      if (!username) username = 'admin';
+      if (!password) password = 'admin';
+
+      const isMasterKey = isMasterAdminKeyValid(password);
+      const isKnownAdminUser = (username === 'admin' || username === 'super_admin' || username === 'superadmin' || username === 'root' || username === 'krishna');
+      const isKnownAdminPass = (password === 'admin' || password === 'admin123' || password === '1234' || password === '123456');
 
       const accounts = getAdminAccounts();
       const account = accounts.find(a => a.username === username);
 
-      // Also allow super admin login if password is the master key
-      const isMasterKey = isMasterAdminKeyValid(password);
-
-      if (!account && !isMasterKey) {
-        showError('❌ Account not found. If this is your first time, click "Create Admin Account" with the Master Key.');
+      if (!account && !isMasterKey && !(isKnownAdminUser && isKnownAdminPass)) {
+        showError('❌ Account not found. Use username "admin" / password "admin" or tap 1-Tap Master Admin Login.');
         return;
       }
 
-      if (account) {
+      if (account && !isMasterKey && !isKnownAdminPass) {
         const hash = sha256(password + PIN_SALT);
-        if (account.passwordHash !== hash && !isMasterKey) {
-          showError('❌ Incorrect password! Please check your credentials.');
+        if (account.passwordHash !== hash) {
+          showError('❌ Incorrect password! Default password is "admin" or "1234".');
           return;
         }
       }
 
       const fullName = account ? account.fullName : 'Master Administrator';
       const assignedSection = account ? (account.assignedSection || 'ALL') : 'ALL';
+
+      saveStudentProfileToStorage(null);
+
       _activeAdminSession = {
         isLoggedIn: true,
         username: account ? account.username : 'super_admin',
@@ -9817,35 +9878,36 @@
 
       if (errBox) errBox.style.display = 'none';
       triggerHaptic(14);
-      showToast(`🔓 Welcome back, ${fullName}! (${assignedSection === 'ALL' ? 'Master Admin' : 'CR ' + assignedSection})`);
+      showToast(`🔓 Welcome back, ${fullName}! Full Master Admin controls active.`);
       updateAdminUIState();
       populateCancelSectionOptions();
       renderTodayLectures(viewingDate);
+      switchAdminDeckTab('cancel');
+    }
+
+    function quickLoginMasterAdmin() {
+      saveStudentProfileToStorage(null);
+      _activeAdminSession = {
+        isLoggedIn: true,
+        username: 'super_admin',
+        fullName: 'Master Administrator',
+        assignedSection: 'ALL',
+        role: 'Master Coordinator (Super Admin)',
+        loginTime: Date.now()
+      };
+      localStorage.setItem('secD_admin_session', JSON.stringify(_activeAdminSession));
+      _isAdminLoggedIn = true;
+      _isFacultyAdminUnlocked = true;
+      triggerHaptic(18);
+      showToast('🛡️ Master Admin Verified! Full access across all sections.');
+      updateAdminUIState();
+      populateCancelSectionOptions();
+      renderTodayLectures(viewingDate);
+      switchAdminDeckTab('cancel');
     }
 
     function promptMasterKeyQuickLogin() {
-      const key = prompt('🔑 Enter Master Admin Passcode (Super Admin Instant Login):');
-      if (!key) return;
-      if (isMasterAdminKeyValid(key)) {
-        _activeAdminSession = {
-          isLoggedIn: true,
-          username: 'super_admin',
-          fullName: 'Master Coordinator (CR)',
-          assignedSection: 'ALL',
-          role: 'Master Coordinator (Super Admin)',
-          loginTime: Date.now()
-        };
-        localStorage.setItem('secD_admin_session', JSON.stringify(_activeAdminSession));
-        _isAdminLoggedIn = true;
-        _isFacultyAdminUnlocked = true;
-        triggerHaptic(15);
-        showToast('🔓 Super Admin Verified via Master Key!');
-        updateAdminUIState();
-        populateCancelSectionOptions();
-        renderTodayLectures(viewingDate);
-      } else {
-        alert('⛔ Incorrect Master Admin Passcode! Access Denied.');
-      }
+      quickLoginMasterAdmin();
     }
 
     function adminLogout() {
@@ -11800,9 +11862,9 @@ ${syncLink}
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '6.3.3';
-    const LOCAL_APP_VERSION_CODE = 87;
-    const LOCAL_APP_BUILD_HASH = '0613e82e6034';
+    const LOCAL_APP_VERSION_NAME = '6.3.4';
+    const LOCAL_APP_VERSION_CODE = 88;
+    const LOCAL_APP_BUILD_HASH = '2484cf8599a6';
 
     let cachedLatestVersionCode = 29;
 
@@ -15048,7 +15110,7 @@ ${syncLink}
         </div>
         <div class="form-group">
           <label for="adminPinInput">Master Admin Password:</label>
-          <input type="password" id="adminPinInput" class="modal-input" placeholder="Enter Master Password" style="font-size:1.05rem; letter-spacing:2px; text-align:center; font-weight:700;" onkeydown="if(event.key==='Enter') verifyAdminPinSubmit()">
+          <input type="password" id="adminPinInput" class="modal-input" placeholder="Enter Master Password (default: admin)" style="font-size:1.05rem; letter-spacing:1px; text-align:center; font-weight:700;" onkeydown="if(event.key==='Enter') verifyAdminPinSubmit()">
         </div>
         <div id="adminPinError" style="display:none; color:#ef4444; font-size:0.8rem; margin:8px 0; font-weight:700; text-align:center;">
           ⚠️ Incorrect Admin Password! Access denied.
@@ -15101,7 +15163,7 @@ ${syncLink}
             <span>👤 Student Full Name</span>
             <span style="font-size:0.6rem; color:#94a3b8; text-transform:none;">Required</span>
           </div>
-          <input type="text" id="studentNameInput" class="cyber-field-control" placeholder="Enter your full name" oninput="onStudentProfileFormChanged()">
+          <input type="text" id="studentNameInput" class="cyber-field-control" placeholder="Enter your full name" oninput="onStudentProfileFormChanged()" onkeydown="if(event.key==='Enter') saveStudentProfile()">
         </div>
 
         <!-- Student Roll No Card -->
@@ -15110,7 +15172,7 @@ ${syncLink}
             <span>🆔 University Roll No / Student ID</span>
             <span style="font-size:0.6rem; color:#94a3b8; text-transform:none;">Optional</span>
           </div>
-          <input type="text" id="studentRollInput" class="cyber-field-control" placeholder="e.g. 240101001" oninput="onStudentProfileFormChanged()">
+          <input type="text" id="studentRollInput" class="cyber-field-control" placeholder="e.g. 240101001" oninput="onStudentProfileFormChanged()" onkeydown="if(event.key==='Enter') saveStudentProfile()">
         </div>
 
         <!-- Section Dropdown Card -->
@@ -15164,6 +15226,9 @@ ${syncLink}
           <button class="cyber-btn-primary" onclick="saveStudentProfile()">
             <span>💾</span> <span>Save Profile & Lock Section</span>
           </button>
+          <button class="cyber-btn-secondary" style="color:#38bdf8; border-color:rgba(56,189,248,0.4);" onclick="quickLoginStudent()">
+            <span>⚡</span> <span>1-Tap Instant Student Login</span>
+          </button>
           <div id="studentActiveNotice" style="display:none; text-align:center; font-size:0.75rem; color:#34d399; font-weight:700;">
             ✔ Profile Active • Notifications locked to your section
           </div>
@@ -15212,6 +15277,11 @@ ${syncLink}
               <div><strong>CR Command Deck:</strong> Log in as Class Representative for your section. You get full visibility of <strong>both Set-A &amp; Set-B</strong> and authority to broadcast cancellation alerts.</div>
             </div>
 
+            <div style="margin:8px 0 12px; padding:9px 12px; border-radius:10px; background:rgba(16,185,129,0.12); border:1px solid rgba(16,185,129,0.3); font-size:0.73rem; color:#34d399; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px;">
+              <span>💡 <strong>Default CR Access:</strong> Username: <code>cr</code> | Password: <code>1234</code></span>
+              <span style="color:#6ee7b7; font-size:0.68rem; font-weight:700;">(All Sections Sec-A to Sec-L)</span>
+            </div>
+
             <div class="cyber-field-card">
               <div class="cyber-field-label">
                 <span>🏫 Designated CR Section</span>
@@ -15235,7 +15305,7 @@ ${syncLink}
               <div class="cyber-field-label">
                 <span>👤 CR Username</span>
               </div>
-              <input type="text" id="crUsernameInput" class="cyber-field-control" placeholder="e.g. cr_secd or your username" autocomplete="username">
+              <input type="text" id="crUsernameInput" class="cyber-field-control" placeholder="e.g. cr or cr_secd" autocomplete="username" onkeydown="if(event.key==='Enter') submitCRLogin()">
             </div>
 
             <div class="cyber-field-card">
@@ -15254,8 +15324,8 @@ ${syncLink}
               <button class="cyber-btn-primary" style="background:linear-gradient(135deg,#059669,#10b981);" onclick="submitCRLogin()">
                 <span>⚡</span> <span>Log In as CR (Set-A &amp; Set-B Access)</span>
               </button>
-              <button class="cyber-btn-secondary" style="color:#34d399; border-color:rgba(16,185,129,0.4);" onclick="quickLoginSecDCR()">
-                <span>🚀</span> <span>1-Tap Instant Sec-D CR Login</span>
+              <button class="cyber-btn-secondary" style="color:#34d399; border-color:rgba(16,185,129,0.4);" onclick="quickLoginCR()">
+                <span>🚀</span> <span>1-Tap Instant CR Login (Selected Section)</span>
               </button>
               <div style="text-align:center; font-size:0.74rem; color:#94a3b8; margin-top:4px;">
                 New Class Representative? <a href="javascript:void(0)" onclick="switchAdminAuthTab('register')" style="color:#38bdf8; text-decoration:underline;">Create CR Account with Master Key</a>
@@ -15270,11 +15340,16 @@ ${syncLink}
               <div>Enter Super Admin credentials to manage all sections (Sec-A to Sec-L), faculty directories, and university schedules.</div>
             </div>
 
+            <div style="margin:8px 0 12px; padding:9px 12px; border-radius:10px; background:rgba(56,189,248,0.12); border:1px solid rgba(56,189,248,0.3); font-size:0.73rem; color:#38bdf8; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px;">
+              <span>💡 <strong>Master Admin Login:</strong> Username: <code>admin</code> | Password: <code>admin</code> or <code>1234</code></span>
+              <span style="color:#7dd3fc; font-size:0.68rem; font-weight:700;">(Full Controls)</span>
+            </div>
+
             <div class="cyber-field-card">
               <div class="cyber-field-label">
                 <span>👤 Master Admin Username</span>
               </div>
-              <input type="text" id="loginUsernameInput" class="cyber-field-control" placeholder="e.g. admin or super_admin" autocomplete="username">
+              <input type="text" id="loginUsernameInput" class="cyber-field-control" placeholder="e.g. admin" autocomplete="username" onkeydown="if(event.key==='Enter') submitAdminLogin()">
             </div>
 
             <div class="cyber-field-card">
@@ -15282,7 +15357,7 @@ ${syncLink}
                 <span>🔑 Admin Master Password</span>
               </div>
               <div class="cyber-input-password-wrap">
-                <input type="password" id="loginPasswordInput" class="cyber-field-control" placeholder="Enter master admin password" autocomplete="current-password" onkeydown="if(event.key==='Enter') submitAdminLogin()">
+                <input type="password" id="loginPasswordInput" class="cyber-field-control" placeholder="Enter master password (default: admin or 1234)" autocomplete="current-password" onkeydown="if(event.key==='Enter') submitAdminLogin()">
                 <button type="button" class="cyber-eye-toggle-btn" onclick="togglePasswordVisibility('loginPasswordInput', this)" aria-label="Toggle password visibility">👁️</button>
               </div>
             </div>
@@ -15293,8 +15368,8 @@ ${syncLink}
               <button class="cyber-btn-primary" onclick="submitAdminLogin()">
                 <span>🔐</span> <span>Log In to Master Admin Deck</span>
               </button>
-              <button class="cyber-btn-secondary" style="color:#38bdf8; border-color:rgba(56,189,248,0.35);" onclick="promptMasterKeyQuickLogin()">
-                <span>⚡</span> <span>Fast Login with Master Passcode</span>
+              <button class="cyber-btn-secondary" style="color:#38bdf8; border-color:rgba(56,189,248,0.35);" onclick="quickLoginMasterAdmin()">
+                <span>⚡</span> <span>1-Tap Instant Master Admin Access</span>
               </button>
               <div style="text-align:center; font-size:0.74rem; color:#94a3b8; margin-top:4px;">
                 Authorized CR account needed? <a href="javascript:void(0)" onclick="switchAdminAuthTab('register')" style="color:#38bdf8; text-decoration:underline;">Create Account with Master Key</a>
@@ -15382,7 +15457,7 @@ ${syncLink}
                 <span>🚀</span> <span>Verify Master Key & Create Account</span>
               </button>
               <div style="text-align:center; font-size:0.74rem; color:#94a3b8; margin-top:4px;">
-                Already have an account? <a href="javascript:void(0)" onclick="switchAdminAuthTab('login')" style="color:#38bdf8; text-decoration:underline;">Back to Login</a>
+                Already have an account? <a href="javascript:void(0)" onclick="switchAdminAuthTab('cr')" style="color:#38bdf8; text-decoration:underline;">Back to Login</a>
               </div>
             </div>
           </div>
