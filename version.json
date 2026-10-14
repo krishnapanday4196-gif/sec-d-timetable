@@ -1,11 +1,11 @@
 {
-  "versionName": "6.3.4",
-  "versionCode": 88,
-  "apkVersionCode": 88,
-  "htmlHash": "2484cf8599a6",
-  "apkHash": "ccc788798035",
+  "versionName": "6.3.5",
+  "versionCode": 89,
+  "apkVersionCode": 89,
+  "htmlHash": "ad0a961ba3ae",
+  "apkHash": "3eff6b2bf089",
   "apkSize": 2405492,
-  "updatedAt": 1791979361876,
+  "updatedAt": 1791995091348,
   "publicUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main",
   "cloudflareUrl": "",
   "githubUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main",
@@ -13,9 +13,9 @@
   "apkUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/SecD_Timetable.apk",
   "htmlUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/index.html",
   "downloadUrl": "https://krishnapanday4196-gif.github.io/sec-d-timetable",
-  "lastUpdated": "2026-10-14T12:02:41.876Z",
-  "apkMd5": "ccc788798035944907e77a5dfb0bd64e",
-  "releaseNotes": "v6.3.4: Complete Fix for all Login Portals - 1-Tap Student Login, 1-Tap CR Login (All Sections Sec-A to Sec-L), 1-Tap Master Admin Access, and Android WebView compatibility",
-  "apkSizeBytes": 2464270,
-  "apkSizeFormatted": "2.35 MB"
+  "lastUpdated": "2026-10-14T16:24:51.348Z",
+  "apkMd5": "3eff6b2bf0897b4920dadde5908b5b83",
+  "releaseNotes": "v6.3.5: Next-Level Universal Login Portal - Unmissable Header Login Button, Mobile First Role Gateway, 1-Tap Student Instant Login, 1-Tap CR Login (Sec-A to Sec-L), 1-Tap Master Admin, and Instant Role Switcher",
+  "apkSizeBytes": 2631310,
+  "apkSizeFormatted": "2.51 MB"
 }

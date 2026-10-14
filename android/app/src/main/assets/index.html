@@ -5271,7 +5271,7 @@
       line-height: 1;
     }
 
-    /* 🎓 STUDENT PROFILE & ADMIN APPBAR BUTTON STYLING */
+    /* 🎓 STUDENT PROFILE & ADMIN APPBAR BUTTON STYLING (Compatibility) */
     .student-quick-btn,
     .admin-quick-btn {
       position: relative;
@@ -5311,6 +5311,215 @@
       background: linear-gradient(135deg, rgba(99, 102, 241, 0.25), rgba(56, 189, 248, 0.2));
       border-color: #818cf8;
       box-shadow: 0 0 14px rgba(99, 102, 241, 0.35);
+    }
+
+    /* ========================================================
+       🔑 NEXT-LEVEL UNIVERSAL LOGIN & ROLE BUTTON (APPBAR)
+       ======================================================== */
+    .universal-login-btn {
+      position: relative;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 5px !important;
+      padding: 0 12px !important;
+      height: 34px !important;
+      min-width: unset !important;
+      width: auto !important;
+      border-radius: 10px !important;
+      font-size: 0.74rem !important;
+      font-weight: 850 !important;
+      letter-spacing: 0.4px !important;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      flex-shrink: 0 !important;
+      user-select: none;
+      white-space: nowrap;
+    }
+    .universal-login-btn.role-guest {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.22), rgba(16, 185, 129, 0.18)) !important;
+      border: 1.5px solid rgba(56, 189, 248, 0.65) !important;
+      color: #38bdf8 !important;
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.35);
+      animation: pulseLoginGlow 2.8s infinite ease-in-out;
+    }
+    @keyframes pulseLoginGlow {
+      0%, 100% {
+        box-shadow: 0 0 10px rgba(56, 189, 248, 0.3), inset 0 0 6px rgba(56, 189, 248, 0.15);
+        border-color: rgba(56, 189, 248, 0.6);
+      }
+      50% {
+        box-shadow: 0 0 18px rgba(56, 189, 248, 0.65), inset 0 0 10px rgba(56, 189, 248, 0.3);
+        border-color: rgba(56, 189, 248, 0.95);
+      }
+    }
+    .universal-login-btn.role-guest:hover {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.35), rgba(16, 185, 129, 0.3)) !important;
+      transform: translateY(-1px);
+    }
+    .universal-login-btn.role-student {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.22), rgba(14, 165, 233, 0.15)) !important;
+      border: 1.5px solid rgba(56, 189, 248, 0.55) !important;
+      color: #38bdf8 !important;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
+    }
+    .universal-login-btn.role-cr {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(5, 150, 105, 0.18)) !important;
+      border: 1.5px solid rgba(16, 185, 129, 0.6) !important;
+      color: #34d399 !important;
+      box-shadow: 0 0 14px rgba(16, 185, 129, 0.35);
+    }
+    .universal-login-btn.role-admin {
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.25), rgba(147, 51, 234, 0.18)) !important;
+      border: 1.5px solid rgba(168, 85, 247, 0.6) !important;
+      color: #c084fc !important;
+      box-shadow: 0 0 14px rgba(168, 85, 247, 0.35);
+    }
+    .universal-login-text {
+      display: inline-block !important;
+      font-weight: 850;
+      line-height: 1;
+    }
+    @media (max-width: 480px) {
+      .universal-login-btn {
+        height: 31px !important;
+        padding: 0 8px !important;
+        font-size: 0.70rem !important;
+        gap: 4px !important;
+      }
+      .universal-login-text {
+        font-size: 0.69rem !important;
+      }
+    }
+    @media (max-width: 380px) {
+      .universal-login-btn {
+        height: 29px !important;
+        padding: 0 6px !important;
+        font-size: 0.66rem !important;
+      }
+      .universal-login-text {
+        font-size: 0.65rem !important;
+      }
+    }
+    :root[data-theme="aura-light"] .universal-login-btn.role-guest {
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.12), rgba(16, 185, 129, 0.1)) !important;
+      border-color: #0284c7 !important;
+      color: #0369a1 !important;
+      box-shadow: 0 0 10px rgba(14, 165, 233, 0.25);
+    }
+    :root[data-theme="aura-light"] .universal-login-btn.role-student {
+      background: #f0f9ff !important;
+      border-color: #0284c7 !important;
+      color: #0369a1 !important;
+    }
+    :root[data-theme="aura-light"] .universal-login-btn.role-cr {
+      background: #ecfdf5 !important;
+      border-color: #059669 !important;
+      color: #047857 !important;
+    }
+    :root[data-theme="aura-light"] .universal-login-btn.role-admin {
+      background: #faf5ff !important;
+      border-color: #7c3aed !important;
+      color: #6d28d9 !important;
+    }
+
+    /* Active session strip in universal login modal */
+    .univ-active-session-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(3, 7, 18, 0.6);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      margin-bottom: 12px;
+    }
+    .univ-session-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+    .univ-session-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: rgba(56, 189, 248, 0.2);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      flex-shrink: 0;
+    }
+    .univ-session-texts {
+      min-width: 0;
+    }
+    .univ-session-title {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: #f8fafc;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .univ-session-sub {
+      font-size: 0.64rem;
+      color: #94a3b8;
+    }
+    .univ-session-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .univ-session-btn {
+      padding: 5px 9px;
+      border-radius: 8px;
+      font-size: 0.68rem;
+      font-weight: 750;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s;
+    }
+    .univ-session-btn.switch-btn {
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: #38bdf8;
+    }
+    .univ-session-btn.switch-btn:hover {
+      background: rgba(56, 189, 248, 0.28);
+    }
+    .univ-session-btn.logout-btn {
+      background: rgba(244, 63, 94, 0.15);
+      border: 1px solid rgba(244, 63, 94, 0.35);
+      color: #f87171;
+    }
+    .univ-session-btn.logout-btn:hover {
+      background: rgba(244, 63, 94, 0.28);
+    }
+    :root[data-theme="aura-light"] .univ-active-session-strip {
+      background: #f8fafc;
+      border-color: #cbd5e1;
+    }
+    :root[data-theme="aura-light"] .univ-session-title {
+      color: #0f172a;
+    }
+    .univ-deck-tabs {
+      display: grid !important;
+      grid-template-columns: repeat(4, 1fr) !important;
+      gap: 6px !important;
+      margin-bottom: 12px !important;
+    }
+    @media (max-width: 420px) {
+      .univ-deck-tabs button {
+        padding: 8px 3px !important;
+        font-size: 0.68rem !important;
+        gap: 3px !important;
+      }
     }
     /* Dynamic active status glow dot */
     .student-quick-btn.is-active::after {
@@ -5411,6 +5620,12 @@
       .admin-header-pill {
         display: none !important;
       }
+      .universal-login-btn {
+        width: auto !important;
+        min-width: unset !important;
+        height: 33px !important;
+        padding: 0 9px !important;
+      }
     }
     @media (max-width: 380px) {
       #calQuickBtn {
@@ -5431,6 +5646,12 @@
         min-width: 30px !important;
         border-radius: 9px !important;
         font-size: 0.85rem !important;
+      }
+      .universal-login-btn {
+        width: auto !important;
+        min-width: unset !important;
+        height: 30px !important;
+        padding: 0 7px !important;
       }
     }
     .student-set-option {
@@ -7002,15 +7223,19 @@
           <button class="appbar-quick-btn" id="calQuickBtn" onclick="openAcademicCalendarModal()" title="Academic Calendar & Holidays (Odd Sem 2026-27)" aria-label="Academic Calendar">
             📅
           </button>
-          <!-- 1-Tap Student Profile & Section-Set Lock Button -->
-          <button class="appbar-quick-btn student-quick-btn" id="studentProfileHeaderBtn" onclick="openStudentProfileModal()" title="Student Profile & Section Lock" aria-label="Student Profile">
+          <!-- 1-Tap Universal Login & Role Hub (Student | CR | Admin) -->
+          <button class="universal-login-btn role-guest" id="universalLoginBtn" onclick="openUniversalLoginModal()" title="Login & Role Portal (Student | CR | Admin)" aria-label="Login & Role Portal">
+            <span id="universalLoginIcon">🔑</span>
+            <span class="universal-login-text" id="universalLoginText">LOGIN</span>
+          </button>
+          <!-- Backward-compatible hidden anchors for studentProfileHeaderBtn & adminPortalHeaderBtn -->
+          <button class="appbar-quick-btn student-quick-btn" id="studentProfileHeaderBtn" style="display:none;" onclick="openUniversalLoginModal('student')">
             <span id="studentHeaderIcon">👤</span>
             <span class="student-header-pill" id="studentHeaderPill">PROFILE</span>
           </button>
-          <!-- 1-Tap Admin Portal Button -->
-          <button class="appbar-quick-btn admin-quick-btn" id="adminPortalHeaderBtn" onclick="openAdminModal()" title="Admin Portal & Class Controls" aria-label="Admin Portal">
+          <button class="appbar-quick-btn admin-quick-btn" id="adminPortalHeaderBtn" style="display:none;" onclick="openUniversalLoginModal('cr')">
             <span id="adminHeaderIcon">🛡️</span>
-            <span class="admin-header-pill" id="adminHeaderPill" style="display:none;">ADMIN</span>
+            <span class="admin-header-pill" id="adminHeaderPill">ADMIN</span>
           </button>
           <!-- Holo Command Deck Menu Button -->
           <button class="holo-menu-trigger" id="holoMenuBtn" onclick="toggleHoloMenu()" title="Open Quick Menu"
@@ -7062,6 +7287,21 @@
       </div>
 
       <div class="holo-deck-grid">
+
+        <!-- 000. Universal Login & Role Switcher Hub -->
+        <button class="holo-menu-item universal-holo-item" id="universalHoloMenuItem" onclick="closeHoloMenu(); openUniversalLoginModal();">
+          <div class="holo-item-left">
+            <div class="holo-orb-icon orb-cyan" id="universalHoloOrb">🔑</div>
+            <div class="holo-item-texts">
+              <span class="holo-item-title" id="universalHoloTitle">Universal Login Portal</span>
+              <span class="holo-item-sub" id="universalHoloSub">Student Login • CR Login • Master Admin</span>
+            </div>
+          </div>
+          <div class="holo-item-right">
+            <span class="holo-item-pill pill-on" id="universalHoloPill">Login</span>
+            <span class="holo-item-arrow">›</span>
+          </div>
+        </button>
 
         <!-- 00. Student Profile & Section-Set Lock -->
         <button class="holo-menu-item" id="studentHoloMenuItem" onclick="closeHoloMenu(); openStudentProfileModal();">
@@ -7257,6 +7497,94 @@
     <!-- DUAL-MODE LAYOUT CONTAINER (Mobile: contents / Desktop: 2-column web app) -->
     <div class="desktop-dashboard-layout">
 
+      <!-- DASHBOARD ROLE GATEWAY (TOP PRIORITY: ALWAYS VISIBLE ON MOBILE & DESKTOP) -->
+      <div class="dashboard-role-gateway" id="dashboardRoleGateway" style="grid-column: 1 / -1;">
+        <!-- State 1: When in Role Selection / Switcher View -->
+        <div id="roleGatewaySelector" class="role-gateway-selector">
+          <div class="role-gateway-top">
+            <div class="role-gateway-heading">
+              <span class="role-gateway-glow-orb">⚡</span>
+              <div>
+                <div class="role-gateway-title">CHOOSE LOGIN ROLE / PORTAL</div>
+                <div class="role-gateway-sub">Student • Class Representative (CR) • Master Admin</div>
+              </div>
+            </div>
+            <span class="role-status-badge unverified" id="roleGatewayStatusBadge">Guest Mode</span>
+          </div>
+
+          <div class="role-cards-grid">
+            <!-- ROLE 1: Student Login -->
+            <button type="button" class="role-action-card card-role-student" onclick="openUniversalLoginModal('student')" id="btnGatewayStudent">
+              <div class="role-card-icon-wrap student-grad">🎓</div>
+              <div class="role-card-body">
+                <div class="role-card-name">Student Login</div>
+                <div class="role-card-desc">Lock your Section & Set (A/B) for personalized classes & targeted alerts</div>
+                <div class="role-card-tags">
+                  <span class="role-mini-tag cyan">Personal Timetable</span>
+                  <span class="role-mini-tag">Set Locked</span>
+                </div>
+              </div>
+              <span class="role-card-arrow">›</span>
+            </button>
+
+            <!-- ROLE 2: CR Login -->
+            <button type="button" class="role-action-card card-role-cr" onclick="openUniversalLoginModal('cr')" id="btnGatewayCR">
+              <div class="role-card-icon-wrap cr-grad">⚡</div>
+              <div class="role-card-body">
+                <div class="role-card-name">CR Login</div>
+                <div class="role-card-desc">Class Representative: View both Set-A & Set-B + Broadcast cancellation notices</div>
+                <div class="role-card-tags">
+                  <span class="role-mini-tag emerald">Both Sets (A & B)</span>
+                  <span class="role-mini-tag gold">Cancel Notice</span>
+                </div>
+              </div>
+              <span class="role-card-arrow">›</span>
+            </button>
+
+            <!-- ROLE 3: Admin Login -->
+            <button type="button" class="role-action-card card-role-admin" onclick="openUniversalLoginModal('admin')" id="btnGatewayAdmin">
+              <div class="role-card-icon-wrap admin-grad">🛡️</div>
+              <div class="role-card-body">
+                <div class="role-card-name">Admin Login</div>
+                <div class="role-card-desc">Super Admin Portal: Full control over all sections, faculty, and schedules</div>
+                <div class="role-card-tags">
+                  <span class="role-mini-tag purple">All Sections</span>
+                  <span class="role-mini-tag">Master Control</span>
+                </div>
+              </div>
+              <span class="role-card-arrow">›</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- State 2: Active Role Session Card (When Student, CR, or Admin is logged in) -->
+        <div id="roleGatewayActiveCard" class="role-gateway-active-card" style="display:none;">
+          <div class="role-active-content">
+            <div class="role-active-icon-badge" id="roleActiveIconBadge">🎓</div>
+            <div class="role-active-info">
+              <div class="role-active-title-row">
+                <strong class="role-active-name" id="roleActiveName">Student Name</strong>
+                <span class="role-active-pill" id="roleActivePill">SET-A LOCKED</span>
+              </div>
+              <div class="role-active-details" id="roleActiveDetails">
+                Section D • Set-A Routine Active • Strictly isolated alerts
+              </div>
+            </div>
+          </div>
+          <div class="role-active-actions">
+            <button type="button" class="role-active-action-btn primary" id="roleActivePrimaryActionBtn" onclick="handleRolePrimaryAction()">
+              <span id="roleActivePrimaryBtnIcon">✏️</span> <span id="roleActivePrimaryBtnText">Switch Profile</span>
+            </button>
+            <button type="button" class="role-active-action-btn" style="background:rgba(56,189,248,0.18); color:#38bdf8; border:1px solid rgba(56,189,248,0.4);" onclick="openUniversalLoginModal()" title="Switch Role or Portal">
+              <span>⚡</span> <span>Switch Role</span>
+            </button>
+            <button type="button" class="role-active-action-btn danger" id="roleActiveLogoutBtn" onclick="handleRoleLogout()">
+              <span>🚪</span> <span>Logout</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
       <!-- LEFT SIDEBAR PANE: Sticky Status & Control Deck on Desktop -->
       <aside class="desktop-sidebar-pane">
 
@@ -7389,91 +7717,6 @@
       <!-- RIGHT MAIN CONTENT PANE: Routine & Schedule Bento Grid -->
       <section class="desktop-main-pane">
 
-        <!-- DASHBOARD ROLE GATEWAY (3 ROLES: STUDENT LOGIN | CR LOGIN | ADMIN LOGIN) -->
-        <div class="dashboard-role-gateway" id="dashboardRoleGateway">
-          <!-- State 1: When in Role Selection / Switcher View -->
-          <div id="roleGatewaySelector" class="role-gateway-selector">
-            <div class="role-gateway-top">
-              <div class="role-gateway-heading">
-                <span class="role-gateway-glow-orb">⚡</span>
-                <div>
-                  <div class="role-gateway-title">CHOOSE LOGIN ROLE / PORTAL</div>
-                  <div class="role-gateway-sub">Student • Class Representative (CR) • Master Admin</div>
-                </div>
-              </div>
-              <span class="role-status-badge unverified" id="roleGatewayStatusBadge">Guest Mode</span>
-            </div>
-
-            <div class="role-cards-grid">
-              <!-- ROLE 1: Student Login -->
-              <button type="button" class="role-action-card card-role-student" onclick="openStudentProfileModal()" id="btnGatewayStudent">
-                <div class="role-card-icon-wrap student-grad">🎓</div>
-                <div class="role-card-body">
-                  <div class="role-card-name">Student Login</div>
-                  <div class="role-card-desc">Lock your Section & Set (A/B) for personalized classes & targeted alerts</div>
-                  <div class="role-card-tags">
-                    <span class="role-mini-tag cyan">Personal Timetable</span>
-                    <span class="role-mini-tag">Set Locked</span>
-                  </div>
-                </div>
-                <span class="role-card-arrow">›</span>
-              </button>
-
-              <!-- ROLE 2: CR Login -->
-              <button type="button" class="role-action-card card-role-cr" onclick="openCRLoginModal()" id="btnGatewayCR">
-                <div class="role-card-icon-wrap cr-grad">⚡</div>
-                <div class="role-card-body">
-                  <div class="role-card-name">CR Login</div>
-                  <div class="role-card-desc">Class Representative: View both Set-A & Set-B + Broadcast cancellation notices</div>
-                  <div class="role-card-tags">
-                    <span class="role-mini-tag emerald">Both Sets (A & B)</span>
-                    <span class="role-mini-tag gold">Cancel Notice</span>
-                  </div>
-                </div>
-                <span class="role-card-arrow">›</span>
-              </button>
-
-              <!-- ROLE 3: Admin Login -->
-              <button type="button" class="role-action-card card-role-admin" onclick="openAdminModal('admin')" id="btnGatewayAdmin">
-                <div class="role-card-icon-wrap admin-grad">🛡️</div>
-                <div class="role-card-body">
-                  <div class="role-card-name">Admin Login</div>
-                  <div class="role-card-desc">Super Admin Portal: Full control over all sections, faculty, and schedules</div>
-                  <div class="role-card-tags">
-                    <span class="role-mini-tag purple">All Sections</span>
-                    <span class="role-mini-tag">Master Control</span>
-                  </div>
-                </div>
-                <span class="role-card-arrow">›</span>
-              </button>
-            </div>
-          </div>
-
-          <!-- State 2: Active Role Session Card (When Student, CR, or Admin is logged in) -->
-          <div id="roleGatewayActiveCard" class="role-gateway-active-card" style="display:none;">
-            <div class="role-active-content">
-              <div class="role-active-icon-badge" id="roleActiveIconBadge">🎓</div>
-              <div class="role-active-info">
-                <div class="role-active-title-row">
-                  <strong class="role-active-name" id="roleActiveName">Student Name</strong>
-                  <span class="role-active-pill" id="roleActivePill">SET-A LOCKED</span>
-                </div>
-                <div class="role-active-details" id="roleActiveDetails">
-                  Section D • Set-A Routine Active • Strictly isolated alerts
-                </div>
-              </div>
-            </div>
-            <div class="role-active-actions">
-              <button type="button" class="role-active-action-btn primary" id="roleActivePrimaryActionBtn" onclick="handleRolePrimaryAction()">
-                <span id="roleActivePrimaryBtnIcon">✏️</span> <span id="roleActivePrimaryBtnText">Switch Profile</span>
-              </button>
-              <button type="button" class="role-active-action-btn danger" id="roleActiveLogoutBtn" onclick="handleRoleLogout()">
-                <span>🚪</span> <span>Logout</span>
-              </button>
-            </div>
-          </div>
-        </div>
-
         <!-- Hidden legacy hook for backward compatibility -->
         <div id="studentLockedBanner" style="display:none;">
           <strong id="studentLockName">Student Profile</strong>
@@ -7605,7 +7848,7 @@
         style="background:var(--card-surface-grad); border:1px solid var(--card-border); border-radius:14px; padding:12px; display:flex; flex-direction:column; gap:8px;">
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Installed Version:</span>
-          <strong style="color:var(--gold-accent);">v6.3.4 (Strict Isolation & PYQ Vault)</strong>
+          <strong style="color:var(--gold-accent);">v6.3.5 (Strict Isolation & PYQ Vault)</strong>
         </div>
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Notification:</span>
@@ -7629,7 +7872,7 @@
 
       <button class="secondary-btn" style="background:rgba(79, 70, 229, 0.12); border:1.5px solid #4f46e5; color:#4f46e5; font-weight:800; justify-content:center;"
         onclick="downloadFullApk()">
-        📲 Direct Download & Install APK (v6.3.4)
+        📲 Direct Download & Install APK (v6.3.5)
       </button>
 
       <button class="secondary-btn" onclick="checkInAppUpdate(true)">
@@ -9082,34 +9325,510 @@
       }
     }
 
-    function openStudentProfileModal() {
+    // ========================================================
+    // ⚡ UNIVERSAL LOGIN & ROLE MANAGEMENT ENGINE (NEXT-LEVEL)
+    // ========================================================
+    let _activeUnivTab = 'student';
+
+    function updateUniversalLoginBtn() {
+      const btn = document.getElementById('universalLoginBtn');
+      const icon = document.getElementById('universalLoginIcon');
+      const text = document.getElementById('universalLoginText');
+      if (!btn || !icon || !text) return;
+
+      const profile = getStudentProfile();
+      const hasStudent = !!(profile && profile.isLoggedIn && profile.section);
+      const hasAdmin = !!(_isAdminLoggedIn && _activeAdminSession);
+
+      btn.classList.remove('role-student', 'role-cr', 'role-admin', 'role-guest');
+
+      if (hasAdmin) {
+        const isSuper = !_activeAdminSession.assignedSection || _activeAdminSession.assignedSection === 'ALL';
+        if (isSuper) {
+          btn.classList.add('role-admin');
+          icon.textContent = '🛡️';
+          text.textContent = 'ADMIN';
+          btn.title = `Master Admin Active: ${_activeAdminSession.fullName || 'Admin'} (Tap to manage)`;
+        } else {
+          btn.classList.add('role-cr');
+          icon.textContent = '⚡';
+          const secCode = (_activeAdminSession.assignedSection || 'Sec-D').replace('Sec-', '');
+          text.textContent = `CR ${secCode}`;
+          btn.title = `CR Active: ${_activeAdminSession.assignedSection} (Tap to manage)`;
+        }
+      } else if (hasStudent) {
+        btn.classList.add('role-student');
+        icon.textContent = '🎓';
+        const secCode = (profile.section || 'Sec-D').replace('Sec-', '');
+        const batchCode = (profile.batch || 'Set-A').replace('Set-', '');
+        text.textContent = `${secCode} (${batchCode})`;
+        btn.title = `Student Active: ${profile.name || 'Student'} - ${profile.section} (${profile.batch || 'Set-A'})`;
+      } else {
+        btn.classList.add('role-guest');
+        icon.textContent = '🔑';
+        text.textContent = 'LOGIN';
+        btn.title = 'Universal Login & Role Portal (Student | CR | Admin)';
+      }
+    }
+
+    function openUniversalLoginModal(initialTab = null) {
       triggerHaptic(12);
       const profile = getStudentProfile();
-      const nameInp = document.getElementById('studentNameInput');
-      const rollInp = document.getElementById('studentRollInput');
-      const secSelect = document.getElementById('studentSectionSelect');
+      const hasStudent = !!(profile && profile.isLoggedIn && profile.section);
+      const hasAdmin = !!(_isAdminLoggedIn && _activeAdminSession);
 
-      let currentBatch = 'Set-A';
-      if (profile && profile.isLoggedIn) {
-        if (nameInp) nameInp.value = profile.name || '';
-        if (rollInp) rollInp.value = profile.rollNo || '';
-        if (secSelect) secSelect.value = profile.section || currentSection;
-        currentBatch = profile.batch || 'Set-A';
-      } else {
-        if (nameInp && !nameInp.value) nameInp.value = '';
-        if (rollInp && !rollInp.value) rollInp.value = '';
-        if (secSelect) secSelect.value = currentSection || 'Sec-D';
-        currentBatch = (selectedBatch === 'Set-B' ? 'Set-B' : 'Set-A');
+      // 1. Update Active Session Strip inside modal
+      const strip = document.getElementById('univActiveSessionStrip');
+      const avatar = document.getElementById('univSessionAvatar');
+      const title = document.getElementById('univSessionTitle');
+      const sub = document.getElementById('univSessionSub');
+
+      if (strip) {
+        if (hasAdmin) {
+          strip.style.display = 'flex';
+          const isSuper = !_activeAdminSession.assignedSection || _activeAdminSession.assignedSection === 'ALL';
+          if (avatar) avatar.textContent = isSuper ? '🛡️' : '⚡';
+          if (title) title.textContent = `Active: ${_activeAdminSession.fullName || (isSuper ? 'Master Admin' : 'CR')}`;
+          if (sub) sub.textContent = isSuper ? 'Master Coordinator (All Sections)' : `CR • ${_activeAdminSession.assignedSection} (Set-A & Set-B)`;
+        } else if (hasStudent) {
+          strip.style.display = 'flex';
+          if (avatar) avatar.textContent = '🎓';
+          if (title) title.textContent = `Active: ${profile.name || 'Student'}`;
+          if (sub) sub.textContent = `${profile.section} • ${profile.batch || 'Set-A'} Locked`;
+        } else {
+          strip.style.display = 'none';
+        }
       }
 
-      selectStudentSet(currentBatch);
+      // 2. Populate Student Form
+      const secSelect = document.getElementById('univStudentSectionSelect');
+      const nameInp = document.getElementById('univStudentNameInput');
+      const rollInp = document.getElementById('univStudentRollInput');
+      if (secSelect) secSelect.value = (profile && profile.section) ? profile.section : (currentSection || 'Sec-D');
+      if (nameInp) nameInp.value = (profile && profile.name && !profile.name.startsWith('Student (')) ? profile.name : '';
+      if (rollInp) rollInp.value = (profile && profile.rollNo) ? profile.rollNo : '';
+      selectUnivStudentSet((profile && profile.batch) ? profile.batch : (selectedBatch === 'Set-B' ? 'Set-B' : 'Set-A'));
+
+      // 3. Populate CR Form
+      const crSecSelect = document.getElementById('univCrSectionSelect');
+      if (crSecSelect) crSecSelect.value = (_activeAdminSession && _activeAdminSession.assignedSection && _activeAdminSession.assignedSection !== 'ALL') ? _activeAdminSession.assignedSection : (currentSection || 'Sec-D');
+
+      // 4. Determine initial tab
+      let targetTab = initialTab;
+      if (!targetTab) {
+        if (hasAdmin) {
+          const isSuper = !_activeAdminSession.assignedSection || _activeAdminSession.assignedSection === 'ALL';
+          targetTab = isSuper ? 'admin' : 'cr';
+        } else if (hasStudent) {
+          targetTab = 'student';
+        } else {
+          targetTab = 'student';
+        }
+      }
+
+      switchUnivAuthTab(targetTab);
+      openModal('universalLoginModal');
+    }
+
+    function switchUnivAuthTab(tab) {
+      _activeUnivTab = tab;
+      const tabStudent = document.getElementById('univTabStudent');
+      const tabCR = document.getElementById('univTabCR');
+      const tabAdmin = document.getElementById('univTabAdmin');
+      const tabReg = document.getElementById('univTabRegister');
+
+      const secStudent = document.getElementById('univSecStudent');
+      const secCR = document.getElementById('univSecCR');
+      const secAdmin = document.getElementById('univSecAdmin');
+      const secReg = document.getElementById('univSecRegister');
+
+      const modalOrb = document.getElementById('univModalOrb');
+      const modalTitle = document.getElementById('univModalTitle');
+      const modalSub = document.getElementById('univModalSub');
+
+      [tabStudent, tabCR, tabAdmin, tabReg].forEach(t => t && t.classList.remove('active'));
+      [secStudent, secCR, secAdmin, secReg].forEach(s => s && (s.style.display = 'none'));
+
+      if (tab === 'cr') {
+        if (tabCR) tabCR.classList.add('active');
+        if (secCR) secCR.style.display = 'block';
+        if (modalOrb) modalOrb.textContent = '⚡';
+        if (modalTitle) modalTitle.textContent = '⚡ CR Command Portal';
+        if (modalSub) modalSub.textContent = 'Class Representative: View Set-A & Set-B + Broadcast cancellation alerts';
+      } else if (tab === 'admin') {
+        if (tabAdmin) tabAdmin.classList.add('active');
+        if (secAdmin) secAdmin.style.display = 'block';
+        if (modalOrb) modalOrb.textContent = '🛡️';
+        if (modalTitle) modalTitle.textContent = '🛡️ Master Admin Portal';
+        if (modalSub) modalSub.textContent = 'Super Administrator: Full command across all sections (Sec-A to Sec-L)';
+      } else if (tab === 'register') {
+        if (tabReg) tabReg.classList.add('active');
+        if (secReg) secReg.style.display = 'block';
+        if (modalOrb) modalOrb.textContent = '✨';
+        if (modalTitle) modalTitle.textContent = '✨ Create CR Account';
+        if (modalSub) modalSub.textContent = 'Authorized Class Representatives registration with Master Key';
+      } else {
+        // Default: student
+        if (tabStudent) tabStudent.classList.add('active');
+        if (secStudent) secStudent.style.display = 'block';
+        if (modalOrb) modalOrb.textContent = '🎓';
+        if (modalTitle) modalTitle.textContent = '🎓 Student Login Portal';
+        if (modalSub) modalSub.textContent = 'Lock your Section & Set for personal timetable & targeted alerts';
+      }
+    }
+
+    function selectUnivStudentSet(set) {
+      const rA = document.getElementById('univRadioSetA');
+      const rB = document.getElementById('univRadioSetB');
+      const cA = document.getElementById('univCardSetA');
+      const cB = document.getElementById('univCardSetB');
+      if (set === 'Set-B') {
+        if (rB) rB.checked = true;
+        if (rA) rA.checked = false;
+        if (cB) cB.classList.add('active-setb');
+        if (cA) cA.classList.remove('active-seta');
+      } else {
+        if (rA) rA.checked = true;
+        if (rB) rB.checked = false;
+        if (cA) cA.classList.add('active-seta');
+        if (cB) cB.classList.remove('active-setb');
+      }
+      onUnivStudentFormChanged();
+    }
+
+    function onUnivStudentFormChanged() {
+      const nameInp = document.getElementById('univStudentNameInput');
+      const rollInp = document.getElementById('univStudentRollInput');
+      const secSelect = document.getElementById('univStudentSectionSelect');
+      const rB = document.getElementById('univRadioSetB');
+
+      const holoAvatar = document.getElementById('univHoloAvatar');
+      const holoName = document.getElementById('univHoloName');
+      const holoRoll = document.getElementById('univHoloRoll');
+      const holoSec = document.getElementById('univHoloSec');
+      const holoSet = document.getElementById('univHoloSet');
+
+      const valName = (nameInp?.value || '').trim();
+      const valRoll = (rollInp?.value || '').trim();
+      const valSec = secSelect?.value || currentSection || 'Sec-D';
+      const isSetB = !!(rB && rB.checked);
+
+      if (holoName) holoName.textContent = valName ? valName : 'Student Name';
+      if (holoRoll) holoRoll.textContent = valRoll ? `Roll: ${valRoll} • CSE` : 'Roll: Not Set • Computer Science';
+      if (holoAvatar) {
+        if (valName) {
+          const initials = valName.split(/\s+/).filter(Boolean).map(w => w[0]).join('').substring(0, 2).toUpperCase();
+          holoAvatar.textContent = initials || '🎓';
+        } else {
+          holoAvatar.textContent = '🎓';
+        }
+      }
+      if (holoSec) {
+        const secLabels = {
+          'Sec-A': 'Section A', 'Sec-B': 'Section B', 'Sec-C': 'Section C',
+          'Sec-D': 'Section D', 'Sec-E': 'Section E', 'Sec-H': 'Section H',
+          'Sec-I': 'Section I', 'Sec-J': 'Section J', 'Sec-K': 'Section K', 'Sec-L': 'Section L'
+        };
+        holoSec.textContent = secLabels[valSec] || valSec;
+      }
+      if (holoSet) {
+        if (isSetB) {
+          holoSet.textContent = 'Set-B (Roll 36+)';
+          holoSet.className = 'cyber-hologram-chip emerald';
+        } else {
+          holoSet.textContent = 'Set-A (Roll 1-35)';
+          holoSet.className = 'cyber-hologram-chip';
+        }
+      }
+    }
+
+    function quickUnivStudentLogin() {
+      const secSelect = document.getElementById('univStudentSectionSelect');
+      const section = secSelect ? secSelect.value : (currentSection || 'Sec-D');
+      let batch = 'Set-A';
+      const rB = document.getElementById('univRadioSetB');
+      if (rB && rB.checked) batch = 'Set-B';
+
+      quickLoginStudent(section, batch);
+      closeModal('universalLoginModal');
+    }
+
+    function submitUnivStudentLogin() {
+      const secSelect = document.getElementById('univStudentSectionSelect');
+      const nameInp = document.getElementById('univStudentNameInput');
+      const rollInp = document.getElementById('univStudentRollInput');
+      const section = secSelect ? secSelect.value : (currentSection || 'Sec-D');
+      const name = (nameInp?.value || '').trim() || `Student (${section})`;
+      const rollNo = (rollInp?.value || '').trim();
+      let batch = 'Set-A';
+      const rB = document.getElementById('univRadioSetB');
+      if (rB && rB.checked) batch = 'Set-B';
+
+      _isAdminLoggedIn = false;
+      _activeAdminSession = null;
+      localStorage.removeItem('secD_admin_session');
+
+      const profile = {
+        isLoggedIn: true,
+        name,
+        rollNo,
+        section,
+        batch,
+        savedAt: Date.now()
+      };
+
+      saveStudentProfileToStorage(profile);
+      triggerHaptic(18);
+      showToast(`🎉 Welcome ${name}! Logged in as Student (${section} - ${batch}).`);
+
+      selectSection(section, true);
+      setBatchFilter(batch, true);
+
       updateStudentUIState();
-      onStudentProfileFormChanged();
-      openModal('studentProfileModal');
+      updateAdminUIState();
+      updateRoleGatewayUI();
+      updateUniversalLoginBtn();
+      updateCancellationNoticeBanner();
+      renderTodayLectures(viewingDate);
+      closeModal('universalLoginModal');
+      closeModal('studentProfileModal');
+    }
+
+    function quickUnivCRLogin() {
+      const secSelect = document.getElementById('univCrSectionSelect');
+      const section = secSelect ? secSelect.value : (currentSection || 'Sec-D');
+      quickLoginCR(section);
+      closeModal('universalLoginModal');
+    }
+
+    function submitUnivCRLogin() {
+      const secSelect = document.getElementById('univCrSectionSelect');
+      const userInp = document.getElementById('univCrUsernameInput');
+      const passInp = document.getElementById('univCrPasswordInput');
+      const errBox = document.getElementById('univCrLoginErrorMsg');
+
+      const section = secSelect ? secSelect.value : (currentSection || 'Sec-D');
+      let username = (userInp?.value || '').trim().toLowerCase();
+      let password = (passInp?.value || '').trim();
+
+      const showError = (msg) => {
+        if (errBox) {
+          errBox.textContent = msg;
+          errBox.style.display = 'flex';
+        }
+        triggerHaptic(20);
+      };
+
+      if (!username) username = 'cr_' + section.toLowerCase().replace('-', '');
+      if (!password) password = '1234';
+
+      const isMasterKey = isMasterAdminKeyValid(password);
+      const isKnownCrPass = (password === '1234' || password === 'cr123' || password === 'admin' || password === 'cr' || password === 'password');
+
+      const accounts = getAdminAccounts();
+      const account = accounts.find(a => a.username === username || (a.assignedSection === section && username.startsWith('cr')));
+
+      if (!account && !isMasterKey && !isKnownCrPass) {
+        showError('❌ Account not found. Use password "1234" or tap "1-Tap Instant CR Login".');
+        return;
+      }
+
+      if (account && !isMasterKey && !isKnownCrPass) {
+        const hash = sha256(password + PIN_SALT);
+        if (account.passwordHash !== hash) {
+          showError('❌ Incorrect password! Use default "1234" or tap "1-Tap Instant CR Login".');
+          return;
+        }
+      }
+
+      const fullName = account ? account.fullName : (section === 'Sec-D' ? 'Krishna Panday (CR)' : `Class Representative (${section})`);
+
+      saveStudentProfileToStorage(null);
+
+      _activeAdminSession = {
+        isLoggedIn: true,
+        username: account ? account.username : `cr_${section.toLowerCase().replace('-', '')}`,
+        fullName,
+        assignedSection: section,
+        role: `CR (${section})`,
+        loginTime: Date.now()
+      };
+
+      localStorage.setItem('secD_admin_session', JSON.stringify(_activeAdminSession));
+      _isAdminLoggedIn = true;
+      _isFacultyAdminUnlocked = true;
+
+      if (errBox) errBox.style.display = 'none';
+      triggerHaptic(16);
+      showToast(`⚡ Welcome ${fullName}! Logged in as CR (${section}). Full Set-A & Set-B visibility active.`);
+
+      selectSection(section, true);
+      setBatchFilter('ALL', true);
+
+      updateAdminUIState();
+      updateRoleGatewayUI();
+      updateUniversalLoginBtn();
+      populateCancelSectionOptions();
+      renderTodayLectures(viewingDate);
+      closeModal('universalLoginModal');
+    }
+
+    function quickUnivMasterAdminLogin() {
+      quickLoginMasterAdmin();
+      closeModal('universalLoginModal');
+    }
+
+    function submitUnivAdminLogin() {
+      let username = (document.getElementById('univAdminUsernameInput')?.value || '').trim().toLowerCase();
+      let password = (document.getElementById('univAdminPasswordInput')?.value || '').trim();
+      const errBox = document.getElementById('univAdminLoginErrorMsg');
+
+      const showError = (msg) => {
+        if (errBox) {
+          errBox.textContent = msg;
+          errBox.style.display = 'flex';
+        }
+        triggerHaptic(20);
+      };
+
+      if (!username) username = 'admin';
+      if (!password) password = 'admin';
+
+      const isMasterKey = isMasterAdminKeyValid(password);
+      const isKnownAdmin = (username === 'admin' || username === 'superadmin' || username === 'super_admin' || username === 'krishna');
+      const isKnownPass = (password === 'admin' || password === '1234' || password === 'admin123' || password === '123456');
+
+      const accounts = getAdminAccounts();
+      const account = accounts.find(a => a.username === username);
+
+      if (!account && !isMasterKey && !(isKnownAdmin && isKnownPass)) {
+        showError('❌ Account not found. Use username "admin" / password "admin" or tap 1-Tap Instant Master Admin.');
+        return;
+      }
+
+      if (account && !isMasterKey && !isKnownPass) {
+        const hash = sha256(password + PIN_SALT);
+        if (account.passwordHash !== hash) {
+          showError('❌ Incorrect password! Use default "admin" or "1234".');
+          return;
+        }
+      }
+
+      const fullName = account ? account.fullName : 'Master Administrator';
+
+      saveStudentProfileToStorage(null);
+
+      _activeAdminSession = {
+        isLoggedIn: true,
+        username: account ? account.username : 'super_admin',
+        fullName,
+        assignedSection: 'ALL',
+        role: 'Master Coordinator (Super Admin)',
+        loginTime: Date.now()
+      };
+
+      localStorage.setItem('secD_admin_session', JSON.stringify(_activeAdminSession));
+      _isAdminLoggedIn = true;
+      _isFacultyAdminUnlocked = true;
+
+      if (errBox) errBox.style.display = 'none';
+      triggerHaptic(18);
+      showToast(`🛡️ Welcome ${fullName}! Full Master Admin access enabled.`);
+
+      updateAdminUIState();
+      updateRoleGatewayUI();
+      updateUniversalLoginBtn();
+      populateCancelSectionOptions();
+      renderTodayLectures(viewingDate);
+      closeModal('universalLoginModal');
+    }
+
+    function submitUnivRegister() {
+      const masterKey = (document.getElementById('univRegMasterKeyInput')?.value || '').trim();
+      const fullName = (document.getElementById('univRegFullNameInput')?.value || '').trim();
+      const username = (document.getElementById('univRegUsernameInput')?.value || '').trim().toLowerCase();
+      const password = (document.getElementById('univRegPasswordInput')?.value || '').trim();
+      const assignedSection = (document.getElementById('univRegSectionSelect')?.value || 'ALL');
+      const errBox = document.getElementById('univRegErrorMsg');
+
+      const showError = (msg) => {
+        if (errBox) {
+          errBox.textContent = msg;
+          errBox.style.display = 'flex';
+        }
+        triggerHaptic(20);
+      };
+
+      if (!masterKey || !isMasterAdminKeyValid(masterKey)) {
+        showError('🔒 Master Admin Security Key required (default: 1234 or admin)!');
+        return;
+      }
+      if (!fullName) {
+        showError('⚠️ Please enter your Full Name & Role.');
+        return;
+      }
+      if (!username || username.length < 3) {
+        showError('⚠️ Username must be at least 3 characters.');
+        return;
+      }
+      if (!password || password.length < 4) {
+        showError('⚠️ Password must be at least 4 characters.');
+        return;
+      }
+
+      const accounts = getAdminAccounts();
+      if (accounts.some(a => a.username === username)) {
+        showError(`⚠️ Username "${username}" is already registered. Please log in.`);
+        return;
+      }
+
+      const newAccount = {
+        id: 'adm_' + Date.now().toString(36),
+        username,
+        fullName,
+        assignedSection,
+        passwordHash: sha256(password + PIN_SALT),
+        createdAt: Date.now()
+      };
+      accounts.push(newAccount);
+      saveAdminAccounts(accounts);
+
+      saveStudentProfileToStorage(null);
+
+      _activeAdminSession = {
+        isLoggedIn: true,
+        username,
+        fullName,
+        assignedSection,
+        role: assignedSection === 'ALL' ? 'Master Coordinator (Super Admin)' : `CR (${assignedSection})`,
+        loginTime: Date.now()
+      };
+
+      localStorage.setItem('secD_admin_session', JSON.stringify(_activeAdminSession));
+      _isAdminLoggedIn = true;
+      _isFacultyAdminUnlocked = true;
+
+      if (errBox) errBox.style.display = 'none';
+      triggerHaptic(18);
+      showToast(`🎉 CR Account Created & Verified! Welcome, ${fullName}.`);
+
+      selectSection(assignedSection === 'ALL' ? currentSection : assignedSection, true);
+      setBatchFilter('ALL', true);
+
+      updateAdminUIState();
+      updateRoleGatewayUI();
+      updateUniversalLoginBtn();
+      populateCancelSectionOptions();
+      renderTodayLectures(viewingDate);
+      closeModal('universalLoginModal');
+    }
+
+    function openStudentProfileModal() {
+      openUniversalLoginModal('student');
     }
 
     function quickLoginStudent(sec, batch) {
-      const secSelect = document.getElementById('studentSectionSelect');
+      const secSelect = document.getElementById('studentSectionSelect') || document.getElementById('univStudentSectionSelect');
       const section = sec || (secSelect ? secSelect.value : currentSection || 'Sec-D');
       const b = batch || (selectedBatch === 'Set-B' ? 'Set-B' : 'Set-A');
 
@@ -9136,14 +9855,17 @@
       updateStudentUIState();
       updateAdminUIState();
       updateRoleGatewayUI();
+      updateUniversalLoginBtn();
       updateCancellationNoticeBanner();
+      renderTodayLectures(viewingDate);
       closeModal('studentProfileModal');
+      closeModal('universalLoginModal');
     }
 
     function saveStudentProfile() {
-      const nameInp = document.getElementById('studentNameInput');
-      const rollInp = document.getElementById('studentRollInput');
-      const secSelect = document.getElementById('studentSectionSelect');
+      const nameInp = document.getElementById('studentNameInput') || document.getElementById('univStudentNameInput');
+      const rollInp = document.getElementById('studentRollInput') || document.getElementById('univStudentRollInput');
+      const secSelect = document.getElementById('studentSectionSelect') || document.getElementById('univStudentSectionSelect');
       const setRadios = document.getElementsByName('studentSetRadio');
 
       const section = secSelect?.value || currentSection || 'Sec-D';
@@ -9155,6 +9877,8 @@
           if (r.checked) { batch = r.value; break; }
         }
       }
+      const rB = document.getElementById('univRadioSetB');
+      if (rB && rB.checked) batch = 'Set-B';
 
       // Logging in as Student clears any admin/CR session so student profile rules are strictly active
       _isAdminLoggedIn = false;
@@ -9181,8 +9905,11 @@
       updateStudentUIState();
       updateAdminUIState();
       updateRoleGatewayUI();
+      updateUniversalLoginBtn();
       updateCancellationNoticeBanner();
+      renderTodayLectures(viewingDate);
       closeModal('studentProfileModal');
+      closeModal('universalLoginModal');
     }
 
     function clearStudentProfile() {
@@ -9191,13 +9918,15 @@
       _activeAdminSession = null;
       localStorage.removeItem('secD_admin_session');
       triggerHaptic(10);
-      showToast('🚪 Student Profile Reset! Section & Batch unlocked in Guest Mode.');
+      showToast('🚪 Logged out to Guest Mode. Section & Batch unlocked.');
       updateStudentUIState();
       updateAdminUIState();
       updateRoleGatewayUI();
+      updateUniversalLoginBtn();
       updateCancellationNoticeBanner();
       renderTodayLectures(viewingDate);
       closeModal('studentProfileModal');
+      closeModal('universalLoginModal');
     }
 
     // Strict Multi-Tenant Notification Guard:
@@ -9328,6 +10057,7 @@
       }
       updateAdminUIState();
       updateRoleGatewayUI();
+      updateUniversalLoginBtn();
       initCancelledClassesSync();
       checkUrlForCancelSync();
     }
@@ -9420,6 +10150,7 @@
           statusBadge.className = 'role-status-badge unverified';
         }
       }
+      updateUniversalLoginBtn();
     }
 
     function handleRolePrimaryAction() {
@@ -9431,7 +10162,7 @@
           switchAdminDeckTab('cancel');
         }
       } else {
-        openStudentProfileModal();
+        openUniversalLoginModal('student');
       }
     }
 
@@ -9445,6 +10176,7 @@
         showToast('Already in Guest Mode.');
       }
       updateRoleGatewayUI();
+      updateUniversalLoginBtn();
     }
 
     function updateAdminUIState() {
@@ -9513,6 +10245,7 @@
 
       updateActiveCancellationsCountBadge();
       updateRoleGatewayUI();
+      updateUniversalLoginBtn();
       renderSectionPills();
       updateBatchTabsLock();
       if (typeof updatePyqUIState === 'function') updatePyqUIState();
@@ -9520,22 +10253,23 @@
 
     function openCRLoginModal(section = null) {
       triggerHaptic(12);
-      openAdminModal('cr');
-      const secSelect = document.getElementById('crSectionSelect');
-      if (secSelect) secSelect.value = section || currentSection || 'Sec-D';
+      openUniversalLoginModal('cr');
+      const secSelect = document.getElementById('univCrSectionSelect') || document.getElementById('crSectionSelect');
+      if (secSelect && section) secSelect.value = section;
     }
 
     function openAdminModal(initialTab = 'cr') {
       triggerHaptic(12);
-      populateCancelSectionOptions();
-      setDefaultCancelFormValues();
-      updateAdminUIState();
-      renderActiveCancellationsList();
-      renderRegisteredAccountsList();
-      if (!_isAdminLoggedIn) {
-        switchAdminAuthTab(initialTab);
+      if (_isAdminLoggedIn) {
+        populateCancelSectionOptions();
+        setDefaultCancelFormValues();
+        updateAdminUIState();
+        renderActiveCancellationsList();
+        renderRegisteredAccountsList();
+        openModal('adminModal');
+      } else {
+        openUniversalLoginModal(initialTab === 'cr' ? 'cr' : 'admin');
       }
-      openModal('adminModal');
     }
 
     function switchAdminAuthTab(tab) {
@@ -9901,6 +10635,8 @@
       triggerHaptic(18);
       showToast('🛡️ Master Admin Verified! Full access across all sections.');
       updateAdminUIState();
+      if (typeof updateRoleGatewayUI === 'function') updateRoleGatewayUI();
+      if (typeof updateUniversalLoginBtn === 'function') updateUniversalLoginBtn();
       populateCancelSectionOptions();
       renderTodayLectures(viewingDate);
       switchAdminDeckTab('cancel');
@@ -9918,7 +10654,13 @@
       triggerHaptic(10);
       showToast('👋 Admin logged out. Student view restored.');
       updateAdminUIState();
+      if (typeof updateRoleGatewayUI === 'function') updateRoleGatewayUI();
+      if (typeof updateUniversalLoginBtn === 'function') updateUniversalLoginBtn();
       renderTodayLectures(viewingDate);
+      if (typeof closeModal === 'function') {
+        closeModal('adminModal');
+        closeModal('universalLoginModal');
+      }
     }
 
     // ============================================================
@@ -11862,9 +12604,9 @@ ${syncLink}
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '6.3.4';
-    const LOCAL_APP_VERSION_CODE = 88;
-    const LOCAL_APP_BUILD_HASH = '2484cf8599a6';
+    const LOCAL_APP_VERSION_NAME = '6.3.5';
+    const LOCAL_APP_VERSION_CODE = 89;
+    const LOCAL_APP_BUILD_HASH = 'ad0a961ba3ae';
 
     let cachedLatestVersionCode = 29;
 
@@ -15119,6 +15861,351 @@ ${syncLink}
           <button class="secondary-btn" style="flex:1;" onclick="closeModal('adminPinModal')">Cancel</button>
           <button class="primary-btn" style="flex:2;" onclick="verifyAdminPinSubmit()">🔓 Verify Admin</button>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       ⚡ NEXT-LEVEL UNIVERSAL LOGIN & ROLE GATEWAY MODAL
+       ======================================================== -->
+  <div class="modal-overlay" id="universalLoginModal" onclick="closeModalOnOverlay(event, 'universalLoginModal')">
+    <div class="modal-sheet cyber-modal universal-auth-sheet">
+      <div class="cyber-modal-handle"></div>
+      
+      <!-- Modal Header -->
+      <div class="cyber-modal-header">
+        <div class="cyber-modal-title">
+          <div class="cyber-title-orb" id="univModalOrb">⚡</div>
+          <div>
+            <div style="font-size:0.98rem; font-weight:850; color:#f8fafc; letter-spacing:0.3px;" id="univModalTitle">Universal Login Portal</div>
+            <div style="font-size:0.66rem; color:#94a3b8; font-weight:500;" id="univModalSub">Choose Role: Student • CR (Class Rep) • Master Admin</div>
+          </div>
+        </div>
+        <button class="cyber-modal-close-btn" onclick="closeModal('universalLoginModal')" aria-label="Close">✕</button>
+      </div>
+
+      <div class="cyber-modal-scroll">
+
+        <!-- ACTIVE ROLE SESSION STRIP (If already logged in) -->
+        <div id="univActiveSessionStrip" class="univ-active-session-strip" style="display:none;">
+          <div class="univ-session-left">
+            <div class="univ-session-avatar" id="univSessionAvatar">🎓</div>
+            <div class="univ-session-texts">
+              <div class="univ-session-title" id="univSessionTitle">Active: Student</div>
+              <div class="univ-session-sub" id="univSessionSub">Section D (Set-A Locked)</div>
+            </div>
+          </div>
+          <div class="univ-session-actions">
+            <button type="button" class="univ-session-btn switch-btn" onclick="switchUnivAuthTab('cr')" title="Switch to CR / Admin">
+              <span>🔄</span> <span>Switch Role</span>
+            </button>
+            <button type="button" class="univ-session-btn logout-btn" onclick="handleRoleLogout()" title="Logout to Guest Mode">
+              <span>🚪</span> <span>Logout</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 4-TAB NAVIGATION BAR -->
+        <div class="cyber-deck-tabs univ-deck-tabs">
+          <button type="button" class="cyber-deck-tab active" id="univTabStudent" onclick="switchUnivAuthTab('student')">
+            <span>🎓</span> <span>Student</span>
+          </button>
+          <button type="button" class="cyber-deck-tab" id="univTabCR" onclick="switchUnivAuthTab('cr')">
+            <span>⚡</span> <span>CR Portal</span>
+          </button>
+          <button type="button" class="cyber-deck-tab" id="univTabAdmin" onclick="switchUnivAuthTab('admin')">
+            <span>🛡️</span> <span>Admin</span>
+          </button>
+          <button type="button" class="cyber-deck-tab" id="univTabRegister" onclick="switchUnivAuthTab('register')">
+            <span>✨</span> <span>Create CR</span>
+          </button>
+        </div>
+
+        <!-- ==============================================
+             ROLE TAB 1: 🎓 STUDENT LOGIN PORTAL
+             ============================================== -->
+        <div id="univSecStudent" class="univ-tab-section" style="display:block;">
+          <!-- Live Holographic Preview -->
+          <div class="cyber-student-hologram" id="univHoloPreview" style="margin-bottom:12px;">
+            <div class="cyber-hologram-avatar" id="univHoloAvatar">🎓</div>
+            <div class="cyber-hologram-texts">
+              <div class="cyber-hologram-name" id="univHoloName">Student Name</div>
+              <div class="cyber-hologram-sub" id="univHoloRoll">Roll: Not Set • Computer Science</div>
+              <div class="cyber-hologram-pills">
+                <span class="cyber-hologram-chip" id="univHoloSec">Section D</span>
+                <span class="cyber-hologram-chip emerald" id="univHoloSet">Set-A (Roll 1-35)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cyber-notice-card" style="border-color:rgba(56,189,248,0.35); background:rgba(56,189,248,0.08); margin-bottom:10px;">
+            <span style="font-size:1.1rem; flex-shrink:0;">🎓</span>
+            <div><strong>Student Login &amp; Section Lock:</strong> Apna Section aur Set (A/B) choose karein. Iske baad aapko <strong>sirf aapki class ka timetable</strong> dikhega aur targeted cancellation alerts milenge.</div>
+          </div>
+
+          <!-- Section Dropdown Card -->
+          <div class="cyber-field-card">
+            <div class="cyber-field-label">
+              <span>🏫 Select Your Section (Class)</span>
+              <span style="font-size:0.6rem; color:#38bdf8;">Auto-Filter</span>
+            </div>
+            <select id="univStudentSectionSelect" class="cyber-field-control cyber-field-select" onchange="onUnivStudentFormChanged()">
+              <option value="Sec-A">Section A (Room A-102)</option>
+              <option value="Sec-B">Section B (Room A-103)</option>
+              <option value="Sec-C">Section C (Room A-104)</option>
+              <option value="Sec-D" selected>Section D (Room A-108)</option>
+              <option value="Sec-E">Section E (Room E-204)</option>
+              <option value="Sec-H">Section H (Room A-302)</option>
+              <option value="Sec-I">Section I (Room A-303)</option>
+              <option value="Sec-J">Section J</option>
+              <option value="Sec-K">Section K</option>
+              <option value="Sec-L">Section L</option>
+            </select>
+          </div>
+
+          <!-- Practical Batch Set Card -->
+          <div style="margin-bottom:12px;">
+            <div class="cyber-field-label" style="margin-bottom:6px;">
+              <span>🗂️ Practical Batch / Set</span>
+              <span style="font-size:0.6rem; color:#94a3b8;">Select One</span>
+            </div>
+            <div class="cyber-set-selector">
+              <div class="cyber-set-card active-seta" id="univCardSetA" onclick="selectUnivStudentSet('Set-A')">
+                <input type="radio" name="univStudentSetRadio" value="Set-A" id="univRadioSetA" checked style="display:none;">
+                <span style="font-size:1.3rem;">🅰️</span>
+                <div>
+                  <strong style="color:#38bdf8; font-size:0.86rem; display:block;">Set-A</strong>
+                  <div style="font-size:0.66rem; color:#94a3b8;">Roll 1 to 35</div>
+                </div>
+              </div>
+              <div class="cyber-set-card" id="univCardSetB" onclick="selectUnivStudentSet('Set-B')">
+                <input type="radio" name="univStudentSetRadio" value="Set-B" id="univRadioSetB" style="display:none;">
+                <span style="font-size:1.3rem;">🅱️</span>
+                <div>
+                  <strong style="color:#34d399; font-size:0.86rem; display:block;">Set-B</strong>
+                  <div style="font-size:0.66rem; color:#94a3b8;">Roll 36 Onwards</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Student Name Input (Optional) -->
+          <div class="cyber-field-card">
+            <div class="cyber-field-label">
+              <span>👤 Student Full Name</span>
+              <span style="font-size:0.6rem; color:#94a3b8;">Optional</span>
+            </div>
+            <input type="text" id="univStudentNameInput" class="cyber-field-control" placeholder="Enter name (e.g. Rahul Sharma)" oninput="onUnivStudentFormChanged()" onkeydown="if(event.key==='Enter') submitUnivStudentLogin()">
+          </div>
+
+          <!-- Student Roll Number Input (Optional) -->
+          <div class="cyber-field-card">
+            <div class="cyber-field-label">
+              <span>🆔 University Roll No / Student ID</span>
+              <span style="font-size:0.6rem; color:#94a3b8;">Optional</span>
+            </div>
+            <input type="text" id="univStudentRollInput" class="cyber-field-control" placeholder="e.g. 240101001" oninput="onUnivStudentFormChanged()" onkeydown="if(event.key==='Enter') submitUnivStudentLogin()">
+          </div>
+
+          <!-- Action Buttons -->
+          <div style="display:flex; flex-direction:column; gap:9px; margin-top:14px;">
+            <button type="button" class="cyber-btn-primary" style="background:linear-gradient(135deg,#0284c7,#0ea5e9);" onclick="submitUnivStudentLogin()">
+              <span>🎓</span> <span>Log In as Student (Selected Section &amp; Set)</span>
+            </button>
+            <button type="button" class="cyber-btn-secondary" style="color:#38bdf8; border-color:rgba(56,189,248,0.5); background:rgba(56,189,248,0.1);" onclick="quickUnivStudentLogin()">
+              <span>⚡</span> <span>1-Tap Instant Student Login (No typing needed)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ==============================================
+             ROLE TAB 2: ⚡ CR LOGIN PORTAL (CLASS REP)
+             ============================================== -->
+        <div id="univSecCR" class="univ-tab-section" style="display:none;">
+          <div class="cyber-notice-card" style="border-color:rgba(16,185,129,0.4); background:rgba(16,185,129,0.08);">
+            <span style="font-size:1.1rem; flex-shrink:0;">⚡</span>
+            <div><strong>CR Command Deck:</strong> Class Representatives get full visibility of <strong>both Set-A &amp; Set-B</strong> and authority to broadcast cancellation alerts.</div>
+          </div>
+
+          <div style="margin:8px 0 12px; padding:9px 12px; border-radius:10px; background:rgba(16,185,129,0.12); border:1px solid rgba(16,185,129,0.3); font-size:0.73rem; color:#34d399; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px;">
+            <span>💡 <strong>Default CR Access:</strong> Password: <code>1234</code></span>
+            <span style="color:#6ee7b7; font-size:0.68rem; font-weight:700;">(All Sections Sec-A to Sec-L)</span>
+          </div>
+
+          <!-- Section Dropdown Card -->
+          <div class="cyber-field-card">
+            <div class="cyber-field-label">
+              <span>🏫 Designated CR Section</span>
+              <span style="font-size:0.6rem; color:#10b981;">Both Sets Visible</span>
+            </div>
+            <select id="univCrSectionSelect" class="cyber-field-control cyber-field-select" style="font-weight:700;">
+              <option value="Sec-A">Section A (Room A-102)</option>
+              <option value="Sec-B">Section B (Room A-103)</option>
+              <option value="Sec-C">Section C (Room A-104)</option>
+              <option value="Sec-D" selected>Section D (Room A-108)</option>
+              <option value="Sec-E">Section E (Room E-204)</option>
+              <option value="Sec-H">Section H (Room A-302)</option>
+              <option value="Sec-I">Section I (Room A-303)</option>
+              <option value="Sec-J">Section J</option>
+              <option value="Sec-K">Section K</option>
+              <option value="Sec-L">Section L</option>
+            </select>
+          </div>
+
+          <!-- Username Input -->
+          <div class="cyber-field-card">
+            <div class="cyber-field-label">
+              <span>👤 CR Username</span>
+              <span style="font-size:0.6rem; color:#94a3b8;">Default: cr</span>
+            </div>
+            <input type="text" id="univCrUsernameInput" class="cyber-field-control" placeholder="e.g. cr or cr_secd" autocomplete="username" onkeydown="if(event.key==='Enter') submitUnivCRLogin()">
+          </div>
+
+          <!-- Password Input -->
+          <div class="cyber-field-card">
+            <div class="cyber-field-label">
+              <span>🔑 CR Password</span>
+              <span style="font-size:0.6rem; color:#10b981;">Default: 1234</span>
+            </div>
+            <div class="cyber-input-password-wrap">
+              <input type="password" id="univCrPasswordInput" class="cyber-field-control" placeholder="Enter CR password (default: 1234)" autocomplete="current-password" onkeydown="if(event.key==='Enter') submitUnivCRLogin()">
+              <button type="button" class="cyber-eye-toggle-btn" onclick="togglePasswordVisibility('univCrPasswordInput', this)" aria-label="Toggle password visibility">👁️</button>
+            </div>
+          </div>
+
+          <div id="univCrLoginErrorMsg" class="cyber-notice-card danger" style="display:none;"></div>
+
+          <!-- CR Action Buttons -->
+          <div style="display:flex; flex-direction:column; gap:9px; margin-top:14px;">
+            <button type="button" class="cyber-btn-primary" style="background:linear-gradient(135deg,#059669,#10b981);" onclick="submitUnivCRLogin()">
+              <span>⚡</span> <span>Log In as CR (Set-A &amp; Set-B Access)</span>
+            </button>
+            <button type="button" class="cyber-btn-secondary" style="color:#34d399; border-color:rgba(16,185,129,0.5); background:rgba(16,185,129,0.1);" onclick="quickUnivCRLogin()">
+              <span>🚀</span> <span>1-Tap Instant CR Login (Selected Section)</span>
+            </button>
+            <div style="text-align:center; font-size:0.74rem; color:#94a3b8; margin-top:4px;">
+              New CR? <a href="javascript:void(0)" onclick="switchUnivAuthTab('register')" style="color:#38bdf8; text-decoration:underline;">Create CR Account with Master Key</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==============================================
+             ROLE TAB 3: 🛡️ MASTER ADMIN PORTAL
+             ============================================== -->
+        <div id="univSecAdmin" class="univ-tab-section" style="display:none;">
+          <div class="cyber-notice-card" style="border-color:rgba(168,85,247,0.4); background:rgba(168,85,247,0.08);">
+            <span style="font-size:1.1rem; flex-shrink:0;">🛡️</span>
+            <div><strong>Master Administrator:</strong> Full control over all 10 campus sections (Sec-A to Sec-L), timetable modifications, faculty directories, and push broadcasts.</div>
+          </div>
+
+          <div style="margin:8px 0 12px; padding:9px 12px; border-radius:10px; background:rgba(168,85,247,0.12); border:1px solid rgba(168,85,247,0.3); font-size:0.73rem; color:#c084fc; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px;">
+            <span>💡 <strong>Master Admin Login:</strong> Username: <code>admin</code> | Password: <code>admin</code> or <code>1234</code></span>
+          </div>
+
+          <!-- Admin Username -->
+          <div class="cyber-field-card">
+            <div class="cyber-field-label">
+              <span>👤 Master Admin Username</span>
+            </div>
+            <input type="text" id="univAdminUsernameInput" class="cyber-field-control" placeholder="e.g. admin" autocomplete="username" onkeydown="if(event.key==='Enter') submitUnivAdminLogin()">
+          </div>
+
+          <!-- Admin Password -->
+          <div class="cyber-field-card">
+            <div class="cyber-field-label">
+              <span>🔑 Master Admin Password</span>
+            </div>
+            <div class="cyber-input-password-wrap">
+              <input type="password" id="univAdminPasswordInput" class="cyber-field-control" placeholder="Enter master password (default: admin or 1234)" autocomplete="current-password" onkeydown="if(event.key==='Enter') submitUnivAdminLogin()">
+              <button type="button" class="cyber-eye-toggle-btn" onclick="togglePasswordVisibility('univAdminPasswordInput', this)" aria-label="Toggle password visibility">👁️</button>
+            </div>
+          </div>
+
+          <div id="univAdminLoginErrorMsg" class="cyber-notice-card danger" style="display:none;"></div>
+
+          <!-- Admin Action Buttons -->
+          <div style="display:flex; flex-direction:column; gap:9px; margin-top:14px;">
+            <button type="button" class="cyber-btn-primary" style="background:linear-gradient(135deg,#7c3aed,#9333ea);" onclick="submitUnivAdminLogin()">
+              <span>🔐</span> <span>Log In to Master Admin Deck</span>
+            </button>
+            <button type="button" class="cyber-btn-secondary" style="color:#c084fc; border-color:rgba(168,85,247,0.45); background:rgba(168,85,247,0.1);" onclick="quickUnivMasterAdminLogin()">
+              <span>⚡</span> <span>1-Tap Instant Master Admin Access</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ==============================================
+             ROLE TAB 4: ✨ CREATE CR ACCOUNT
+             ============================================== -->
+        <div id="univSecRegister" class="univ-tab-section" style="display:none;">
+          <div class="cyber-notice-card warning">
+            <span style="font-size:1.1rem; flex-shrink:0;">🔒</span>
+            <div><strong>Master Key Required:</strong> Authorized Class Representatives and Faculty with Master Security Passcode can register.</div>
+          </div>
+
+          <div class="cyber-field-card" style="border-color:rgba(245,158,11,0.5);">
+            <div class="cyber-field-label" style="color:#f59e0b;">
+              <span>🔒 Master Security Passcode</span>
+              <span style="font-size:0.6rem; color:#f59e0b;">Default: 1234 or admin</span>
+            </div>
+            <div class="cyber-input-password-wrap">
+              <input type="password" id="univRegMasterKeyInput" class="cyber-field-control" placeholder="Enter Master Admin Security Key (default: 1234)">
+              <button type="button" class="cyber-eye-toggle-btn" onclick="togglePasswordVisibility('univRegMasterKeyInput', this)" aria-label="Toggle password visibility">👁️</button>
+            </div>
+          </div>
+
+          <div class="cyber-field-card">
+            <div class="cyber-field-label">
+              <span>👤 Full Name &amp; Role</span>
+            </div>
+            <input type="text" id="univRegFullNameInput" class="cyber-field-control" placeholder="e.g. Krishna Panday (CR)">
+          </div>
+
+          <div class="cyber-field-card">
+            <div class="cyber-field-label">
+              <span>🏫 Designated Section</span>
+            </div>
+            <select id="univRegSectionSelect" class="cyber-field-control cyber-field-select" style="font-weight:700;">
+              <option value="Sec-A">Section A (Room A-102)</option>
+              <option value="Sec-B">Section B (Room A-103)</option>
+              <option value="Sec-C">Section C (Room A-104)</option>
+              <option value="Sec-D" selected>Section D (Room A-108)</option>
+              <option value="Sec-E">Section E (Room E-204)</option>
+              <option value="Sec-H">Section H (Room A-302)</option>
+              <option value="Sec-I">Section I (Room A-303)</option>
+              <option value="Sec-J">Section J</option>
+              <option value="Sec-K">Section K</option>
+              <option value="Sec-L">Section L</option>
+              <option value="ALL">👑 All Sections (Master Coordinator)</option>
+            </select>
+          </div>
+
+          <div class="cyber-field-card">
+            <div class="cyber-field-label">
+              <span>🆔 Choose Username</span>
+            </div>
+            <input type="text" id="univRegUsernameInput" class="cyber-field-control" placeholder="e.g. krishnacr">
+          </div>
+
+          <div class="cyber-field-card">
+            <div class="cyber-field-label">
+              <span>🔑 Choose Password</span>
+            </div>
+            <div class="cyber-input-password-wrap">
+              <input type="password" id="univRegPasswordInput" class="cyber-field-control" placeholder="Enter password (min 4 chars)">
+              <button type="button" class="cyber-eye-toggle-btn" onclick="togglePasswordVisibility('univRegPasswordInput', this)" aria-label="Toggle password visibility">👁️</button>
+            </div>
+          </div>
+
+          <div id="univRegErrorMsg" class="cyber-notice-card danger" style="display:none;"></div>
+
+          <div style="display:flex; flex-direction:column; gap:9px; margin-top:14px;">
+            <button type="button" class="cyber-btn-primary" style="background:linear-gradient(135deg,#059669,#10b981);" onclick="submitUnivRegister()">
+              <span>✨</span> <span>Create Account &amp; Log In</span>
+            </button>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>

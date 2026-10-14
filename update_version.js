@@ -3,12 +3,12 @@ const crypto = require('crypto');
 const path = require('path');
 
 let ver = JSON.parse(fs.readFileSync('version.json', 'utf8'));
-ver.versionName = "6.3.4";
-ver.versionCode = 88;
-ver.apkVersionCode = 88;
+ver.versionName = "6.3.5";
+ver.versionCode = 89;
+ver.apkVersionCode = 89;
 ver.updatedAt = Date.now();
 ver.lastUpdated = new Date().toISOString();
-ver.releaseNotes = "v6.3.4: Complete Fix for all Login Portals - 1-Tap Student Login, 1-Tap CR Login (All Sections Sec-A to Sec-L), 1-Tap Master Admin Access, and Android WebView compatibility";
+ver.releaseNotes = "v6.3.5: Next-Level Universal Login Portal - Unmissable Header Login Button, Mobile First Role Gateway, 1-Tap Student Instant Login, 1-Tap CR Login (Sec-A to Sec-L), 1-Tap Master Admin, and Instant Role Switcher";
 
 let html = fs.readFileSync('index.html', 'utf8');
 html = html.replace(/<strong style="color:var\(--gold-accent\);">v[^<]+<\/strong>/, '<strong style="color:var(--gold-accent);">v' + ver.versionName + ' (Strict Isolation & PYQ Vault)</strong>');
