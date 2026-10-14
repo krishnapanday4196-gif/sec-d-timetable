@@ -3,12 +3,12 @@ const crypto = require('crypto');
 const path = require('path');
 
 let ver = JSON.parse(fs.readFileSync('version.json', 'utf8'));
-ver.versionName = "6.3.5";
-ver.versionCode = 89;
-ver.apkVersionCode = 89;
+ver.versionName = "6.3.6";
+ver.versionCode = 90;
+ver.apkVersionCode = 90;
 ver.updatedAt = Date.now();
 ver.lastUpdated = new Date().toISOString();
-ver.releaseNotes = "v6.3.5: Next-Level Universal Login Portal - Unmissable Header Login Button, Mobile First Role Gateway, 1-Tap Student Instant Login, 1-Tap CR Login (Sec-A to Sec-L), 1-Tap Master Admin, and Instant Role Switcher";
+ver.releaseNotes = "v6.3.6: Fixed Android WebView URL routing, modal overlay active display binding, and OTA hot-reload file path handler";
 
 let html = fs.readFileSync('index.html', 'utf8');
 html = html.replace(/<strong style="color:var\(--gold-accent\);">v[^<]+<\/strong>/, '<strong style="color:var(--gold-accent);">v' + ver.versionName + ' (Strict Isolation & PYQ Vault)</strong>');

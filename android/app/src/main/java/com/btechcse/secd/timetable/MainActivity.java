@@ -143,7 +143,7 @@ public class MainActivity extends Activity {
                 if (url.startsWith("file://") || url.startsWith("data:")) {
                     return false;
                 }
-                if (url.startsWith("whatsapp://") || url.startsWith("intent:") || url.contains("wa.me") || url.endsWith(".apk") || url.contains("/update") || url.contains("/download-export")) {
+                if (url.startsWith("whatsapp://") || url.startsWith("intent:") || url.contains("wa.me") || url.endsWith(".apk") || url.contains("/update") || url.contains("/download-export") || url.startsWith("http://") || url.startsWith("https://")) {
                     try {
                         Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                         startActivity(i);
@@ -678,7 +678,7 @@ public class MainActivity extends Activity {
                     public void run() {
                         try {
                             mWebView.clearCache(true);
-                            mWebView.loadUrl("file://" + otaFile.getAbsolutePath() + "?t=" + System.currentTimeMillis());
+                            mWebView.loadUrl("file://" + otaFile.getAbsolutePath());
                         } catch (Exception ignored) {}
                     }
                 });

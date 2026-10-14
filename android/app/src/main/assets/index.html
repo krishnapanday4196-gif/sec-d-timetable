@@ -7848,7 +7848,7 @@
         style="background:var(--card-surface-grad); border:1px solid var(--card-border); border-radius:14px; padding:12px; display:flex; flex-direction:column; gap:8px;">
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Installed Version:</span>
-          <strong style="color:var(--gold-accent);">v6.3.5 (Strict Isolation & PYQ Vault)</strong>
+          <strong style="color:var(--gold-accent);">v6.3.6 (Strict Isolation & PYQ Vault)</strong>
         </div>
         <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
           <span style="color:var(--text-muted);">Notification:</span>
@@ -7872,7 +7872,7 @@
 
       <button class="secondary-btn" style="background:rgba(79, 70, 229, 0.12); border:1.5px solid #4f46e5; color:#4f46e5; font-weight:800; justify-content:center;"
         onclick="downloadFullApk()">
-        📲 Direct Download & Install APK (v6.3.5)
+        📲 Direct Download & Install APK (v6.3.6)
       </button>
 
       <button class="secondary-btn" onclick="checkInAppUpdate(true)">
@@ -9372,61 +9372,67 @@
     }
 
     function openUniversalLoginModal(initialTab = null) {
-      triggerHaptic(12);
-      const profile = getStudentProfile();
-      const hasStudent = !!(profile && profile.isLoggedIn && profile.section);
-      const hasAdmin = !!(_isAdminLoggedIn && _activeAdminSession);
+      try {
+        triggerHaptic(12);
+        const profile = (typeof getStudentProfile === 'function') ? getStudentProfile() : null;
+        const hasStudent = !!(profile && profile.isLoggedIn && profile.section);
+        const hasAdmin = !!(_isAdminLoggedIn && _activeAdminSession);
 
-      // 1. Update Active Session Strip inside modal
-      const strip = document.getElementById('univActiveSessionStrip');
-      const avatar = document.getElementById('univSessionAvatar');
-      const title = document.getElementById('univSessionTitle');
-      const sub = document.getElementById('univSessionSub');
+        // 1. Update Active Session Strip inside modal
+        const strip = document.getElementById('univActiveSessionStrip');
+        const avatar = document.getElementById('univSessionAvatar');
+        const title = document.getElementById('univSessionTitle');
+        const sub = document.getElementById('univSessionSub');
 
-      if (strip) {
-        if (hasAdmin) {
-          strip.style.display = 'flex';
-          const isSuper = !_activeAdminSession.assignedSection || _activeAdminSession.assignedSection === 'ALL';
-          if (avatar) avatar.textContent = isSuper ? '🛡️' : '⚡';
-          if (title) title.textContent = `Active: ${_activeAdminSession.fullName || (isSuper ? 'Master Admin' : 'CR')}`;
-          if (sub) sub.textContent = isSuper ? 'Master Coordinator (All Sections)' : `CR • ${_activeAdminSession.assignedSection} (Set-A & Set-B)`;
-        } else if (hasStudent) {
-          strip.style.display = 'flex';
-          if (avatar) avatar.textContent = '🎓';
-          if (title) title.textContent = `Active: ${profile.name || 'Student'}`;
-          if (sub) sub.textContent = `${profile.section} • ${profile.batch || 'Set-A'} Locked`;
-        } else {
-          strip.style.display = 'none';
+        if (strip) {
+          if (hasAdmin) {
+            strip.style.display = 'flex';
+            const isSuper = !_activeAdminSession.assignedSection || _activeAdminSession.assignedSection === 'ALL';
+            if (avatar) avatar.textContent = isSuper ? '🛡️' : '⚡';
+            if (title) title.textContent = `Active: ${_activeAdminSession.fullName || (isSuper ? 'Master Admin' : 'CR')}`;
+            if (sub) sub.textContent = isSuper ? 'Master Coordinator (All Sections)' : `CR • ${_activeAdminSession.assignedSection} (Set-A & Set-B)`;
+          } else if (hasStudent) {
+            strip.style.display = 'flex';
+            if (avatar) avatar.textContent = '🎓';
+            if (title) title.textContent = `Active: ${profile.name || 'Student'}`;
+            if (sub) sub.textContent = `${profile.section} • ${profile.batch || 'Set-A'} Locked`;
+          } else {
+            strip.style.display = 'none';
+          }
         }
-      }
 
-      // 2. Populate Student Form
-      const secSelect = document.getElementById('univStudentSectionSelect');
-      const nameInp = document.getElementById('univStudentNameInput');
-      const rollInp = document.getElementById('univStudentRollInput');
-      if (secSelect) secSelect.value = (profile && profile.section) ? profile.section : (currentSection || 'Sec-D');
-      if (nameInp) nameInp.value = (profile && profile.name && !profile.name.startsWith('Student (')) ? profile.name : '';
-      if (rollInp) rollInp.value = (profile && profile.rollNo) ? profile.rollNo : '';
-      selectUnivStudentSet((profile && profile.batch) ? profile.batch : (selectedBatch === 'Set-B' ? 'Set-B' : 'Set-A'));
-
-      // 3. Populate CR Form
-      const crSecSelect = document.getElementById('univCrSectionSelect');
-      if (crSecSelect) crSecSelect.value = (_activeAdminSession && _activeAdminSession.assignedSection && _activeAdminSession.assignedSection !== 'ALL') ? _activeAdminSession.assignedSection : (currentSection || 'Sec-D');
-
-      // 4. Determine initial tab
-      let targetTab = initialTab;
-      if (!targetTab) {
-        if (hasAdmin) {
-          const isSuper = !_activeAdminSession.assignedSection || _activeAdminSession.assignedSection === 'ALL';
-          targetTab = isSuper ? 'admin' : 'cr';
-        } else if (hasStudent) {
-          targetTab = 'student';
-        } else {
-          targetTab = 'student';
+        // 2. Populate Student Form
+        const secSelect = document.getElementById('univStudentSectionSelect');
+        const nameInp = document.getElementById('univStudentNameInput');
+        const rollInp = document.getElementById('univStudentRollInput');
+        if (secSelect) secSelect.value = (profile && profile.section) ? profile.section : (currentSection || 'Sec-D');
+        if (nameInp) nameInp.value = (profile && typeof profile.name === 'string' && !profile.name.startsWith('Student (')) ? profile.name : '';
+        if (rollInp) rollInp.value = (profile && profile.rollNo) ? profile.rollNo : '';
+        if (typeof selectUnivStudentSet === 'function') {
+          selectUnivStudentSet((profile && profile.batch) ? profile.batch : (selectedBatch === 'Set-B' ? 'Set-B' : 'Set-A'));
         }
-      }
 
-      switchUnivAuthTab(targetTab);
+        // 3. Populate CR Form
+        const crSecSelect = document.getElementById('univCrSectionSelect');
+        if (crSecSelect) crSecSelect.value = (_activeAdminSession && _activeAdminSession.assignedSection && _activeAdminSession.assignedSection !== 'ALL') ? _activeAdminSession.assignedSection : (currentSection || 'Sec-D');
+
+        // 4. Determine initial tab
+        let targetTab = initialTab;
+        if (!targetTab) {
+          if (hasAdmin) {
+            const isSuper = !_activeAdminSession.assignedSection || _activeAdminSession.assignedSection === 'ALL';
+            targetTab = isSuper ? 'admin' : 'cr';
+          } else if (hasStudent) {
+            targetTab = 'student';
+          } else {
+            targetTab = 'student';
+          }
+        }
+
+        switchUnivAuthTab(targetTab);
+      } catch (err) {
+        console.warn('[UnivLogin] setup error:', err);
+      }
       openModal('universalLoginModal');
     }
 
@@ -12604,9 +12610,9 @@ ${syncLink}
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '6.3.5';
-    const LOCAL_APP_VERSION_CODE = 89;
-    const LOCAL_APP_BUILD_HASH = 'ad0a961ba3ae';
+    const LOCAL_APP_VERSION_NAME = '6.3.6';
+    const LOCAL_APP_VERSION_CODE = 90;
+    const LOCAL_APP_BUILD_HASH = 'cc1f4bbd8a83';
 
     let cachedLatestVersionCode = 29;
 
@@ -13080,6 +13086,7 @@ ${syncLink}
     function openModal(id) {
       const m = document.getElementById(id);
       if (m) {
+        m.classList.add('active');
         m.style.display = 'flex';
         triggerHaptic(10);
         try { history.pushState({ modalOpen: id }, ''); } catch (e) { }

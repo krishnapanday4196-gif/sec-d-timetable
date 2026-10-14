@@ -934,6 +934,10 @@ function generateUpdateHtml(meta) {
   </div>
 
   <script>
+    function handleDownloadClick() {
+      showToast('⬇️ Starting direct APK download...');
+    }
+
     // Theme Management
     function initTheme() {
       const saved = localStorage.getItem('secD_update_theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
