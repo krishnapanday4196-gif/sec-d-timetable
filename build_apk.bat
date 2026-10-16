@@ -18,6 +18,7 @@ copy /Y "e:\sec d\campus.jpg" "e:\sec d\android\app\src\main\assets\campus.jpg" 
 copy /Y "e:\sec d\sections_data.json" "e:\sec d\android\app\src\main\assets\sections_data.json" >nul
 copy /Y "e:\sec d\cancelled_classes.json" "e:\sec d\android\app\src\main\assets\cancelled_classes.json" >nul
 copy /Y "e:\sec d\pyqs_data.json" "e:\sec d\android\app\src\main\assets\pyqs_data.json" >nul
+copy /Y "e:\sec d\registered_users.json" "e:\sec d\android\app\src\main\assets\registered_users.json" >nul
 
 echo [2/3] Compiling and packaging APK with Gradle...
 call "%GRADLE_BAT%" -p "e:\sec d\android" assembleDebug

@@ -3,12 +3,12 @@ const crypto = require('crypto');
 const path = require('path');
 
 let ver = JSON.parse(fs.readFileSync('version.json', 'utf8'));
-ver.versionName = "5.9.12";
-ver.versionCode = 92;
-ver.apkVersionCode = 92;
+ver.versionName = "6.4.0";
+ver.versionCode = 93;
+ver.apkVersionCode = 93;
 ver.updatedAt = Date.now();
 ver.lastUpdated = new Date().toISOString();
-ver.releaseNotes = "v5.9.12: Next-level cybernetic architectural background grid with HUD crosshairs, reactive touch spotlight, laser scan beam, and official faculty directory";
+ver.releaseNotes = "v6.4.0: Official Dark Neon Glassmorphism Authentication Portal, Student Section/Set Lock, CR & Admin Cancellation Hub, and Student Records Directory";
 
 let html = fs.readFileSync('index.html', 'utf8');
 html = html.replace(/const LOCAL_APP_VERSION_NAME = '[^']+';/, "const LOCAL_APP_VERSION_NAME = '" + ver.versionName + "';");
@@ -43,7 +43,10 @@ try {
   if (fs.existsSync('cancelled_classes.json')) {
     fs.copyFileSync('cancelled_classes.json', 'android/app/src/main/assets/cancelled_classes.json');
   }
-  console.log('✅ Synced index.html, pyqs_data.json, sections_data.json, and cancelled_classes.json to Android assets'); 
+  if (fs.existsSync('registered_users.json')) {
+    fs.copyFileSync('registered_users.json', 'android/app/src/main/assets/registered_users.json');
+  }
+  console.log('✅ Synced index.html, pyqs_data.json, sections_data.json, cancelled_classes.json, and registered_users.json to Android assets'); 
 } catch(e) {
   console.error(e);
 }

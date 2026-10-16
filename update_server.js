@@ -1145,6 +1145,8 @@ const server = http.createServer((req, res) => {
             );
           } else if (Array.isArray(payload.cancellations)) {
             current.cancellations = payload.cancellations;
+          } else if (Array.isArray(payload)) {
+            current.cancellations = payload;
           }
 
           current.updatedAt = Date.now();
@@ -1152,6 +1154,79 @@ const server = http.createServer((req, res) => {
           console.log(` \x1b[32m✔\x1b[0m [CLASS CANCEL SYNC] Updated cancellations count: ${current.cancellations.length}`);
           res.writeHead(200, { 'Content-Type': 'application/json' });
           res.end(JSON.stringify({ success: true, cancellations: current.cancellations, updatedAt: current.updatedAt }));
+        } catch (e) {
+          res.writeHead(400, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ error: 'Invalid payload: ' + e.message }));
+        }
+      });
+      return;
+    }
+  }
+
+  const USERS_FILE = path.join(ROOT_DIR, 'registered_users.json');
+
+  if (urlPath === '/api/users') {
+    if (req.method === 'GET') {
+      try {
+        const data = fs.existsSync(USERS_FILE) ? fs.readFileSync(USERS_FILE, 'utf8') : '{"users":[]}';
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(data);
+      } catch (e) {
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: e.message, users: [] }));
+      }
+      return;
+    }
+    if (req.method === 'POST') {
+      let body = '';
+      req.on('data', chunk => { body += chunk; });
+      req.on('end', () => {
+        try {
+          const payload = JSON.parse(body);
+          let current = { users: [] };
+          if (fs.existsSync(USERS_FILE)) {
+            try { current = JSON.parse(fs.readFileSync(USERS_FILE, 'utf8')); } catch (e) {}
+          }
+          if (!Array.isArray(current.users)) current.users = [];
+
+          if (payload.action === 'register' && payload.user) {
+            const u = payload.user;
+            const idx = current.users.findIndex(x => x.email.toLowerCase() === u.email.toLowerCase());
+            if (idx >= 0) {
+              current.users[idx] = { ...current.users[idx], ...u, updatedAt: Date.now() };
+            } else {
+              current.users.unshift({ ...u, registeredAt: Date.now(), updatedAt: Date.now() });
+            }
+          } else if (payload.action === 'login' && payload.email) {
+            const u = current.users.find(x => x.email.toLowerCase() === payload.email.toLowerCase());
+            if (u) {
+              u.lastLoginAt = Date.now();
+            }
+          } else if (payload.action === 'delete' && payload.id) {
+            current.users = current.users.filter(x => x.id !== payload.id && x.email !== payload.email);
+          } else if (payload.action === 'sync' && Array.isArray(payload.users)) {
+            const map = new Map();
+            current.users.forEach(u => map.set(u.email.toLowerCase(), u));
+            payload.users.forEach(u => {
+              const existing = map.get(u.email.toLowerCase()) || {};
+              map.set(u.email.toLowerCase(), { ...existing, ...u });
+            });
+            current.users = Array.from(map.values());
+          } else if (Array.isArray(payload)) {
+            const map = new Map();
+            current.users.forEach(u => map.set(u.email.toLowerCase(), u));
+            payload.forEach(u => {
+              const existing = map.get(u.email.toLowerCase()) || {};
+              map.set(u.email.toLowerCase(), { ...existing, ...u });
+            });
+            current.users = Array.from(map.values());
+          }
+
+          current.updatedAt = Date.now();
+          fs.writeFileSync(USERS_FILE, JSON.stringify(current, null, 2), 'utf8');
+          console.log(` \x1b[32m✔\x1b[0m [AUTH SYNC] Updated registered users count: ${current.users.length}`);
+          res.writeHead(200, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ success: true, users: current.users, updatedAt: current.updatedAt }));
         } catch (e) {
           res.writeHead(400, { 'Content-Type': 'application/json' });
           res.end(JSON.stringify({ error: 'Invalid payload: ' + e.message }));

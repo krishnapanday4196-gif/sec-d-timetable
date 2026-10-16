@@ -5130,13 +5130,1000 @@
       box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35) !important;
     }
 
+    /* ============================================================
+       QUANTUM NEON GLASSMORPHIC AUTHENTICATION PORTAL (OFFICIAL UI)
+       Matches the exact aesthetic from the UI design screenshot
+       ============================================================ */
+    .auth-overlay {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 999999;
+      background: radial-gradient(circle at 15% 15%, rgba(124, 58, 237, 0.35) 0%, transparent 45%),
+                  radial-gradient(circle at 85% 85%, rgba(6, 182, 212, 0.30) 0%, transparent 48%),
+                  radial-gradient(circle at 50% 50%, #060a22 0%, #030614 100%);
+      overflow-y: auto;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 24px 16px 40px;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Ambient Background Art & Leaves Silhouette */
+    .auth-bg-art {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .auth-art-left {
+      position: absolute;
+      bottom: -40px;
+      left: -40px;
+      width: 320px;
+      height: 380px;
+      opacity: 0.85;
+      filter: drop-shadow(0 0 25px rgba(56, 189, 248, 0.35));
+    }
+
+    .auth-art-right {
+      position: absolute;
+      bottom: -60px;
+      right: -50px;
+      width: 340px;
+      height: 360px;
+      opacity: 0.85;
+      filter: drop-shadow(0 0 30px rgba(168, 85, 247, 0.35));
+    }
+
+    /* Top-Right Header Tagline */
+    .auth-top-header {
+      width: 100%;
+      max-width: 440px;
+      display: flex;
+      justify-content: flex-end;
+      position: relative;
+      z-index: 10;
+      margin-bottom: 8px;
+    }
+
+    .auth-tagline-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      text-align: right;
+    }
+
+    .auth-tagline-text {
+      font-size: 0.72rem;
+      letter-spacing: 0.4px;
+      color: #94a3b8;
+      font-weight: 500;
+      line-height: 1.35;
+    }
+
+    .auth-tagline-bar {
+      width: 34px;
+      height: 2.5px;
+      background: linear-gradient(90deg, #a855f7, #00f0ff);
+      border-radius: 99px;
+      margin-top: 5px;
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.65);
+    }
+
+    /* Center Header & Emblem */
+    .auth-header-center {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-top: 2px;
+      margin-bottom: 18px;
+    }
+
+    .auth-emblem-wrap {
+      width: 78px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .auth-emblem-svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 0 16px rgba(0, 240, 255, 0.55)) drop-shadow(0 0 30px rgba(168, 85, 247, 0.4));
+      animation: authEmblemGlow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes authEmblemGlow {
+      0% { filter: drop-shadow(0 0 12px rgba(0, 240, 255, 0.45)) drop-shadow(0 0 22px rgba(168, 85, 247, 0.35)); }
+      100% { filter: drop-shadow(0 0 20px rgba(0, 240, 255, 0.75)) drop-shadow(0 0 36px rgba(168, 85, 247, 0.6)); }
+    }
+
+    .auth-main-title {
+      font-size: 1.95rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin: 0;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+    }
+
+    .auth-title-gradient {
+      background: linear-gradient(135deg, #a855f7 0%, #38bdf8 50%, #00f0ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      text-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+    }
+
+    .auth-main-sub {
+      font-size: 0.88rem;
+      color: #8fa0bc;
+      margin: 4px 0 0;
+      font-weight: 500;
+    }
+
+    /* Main Glowing Glassmorphic Card */
+    .auth-card {
+      width: 100%;
+      max-width: 410px;
+      background: rgba(8, 14, 38, 0.82);
+      backdrop-filter: blur(28px) saturate(190%);
+      -webkit-backdrop-filter: blur(28px) saturate(190%);
+      border-radius: 26px;
+      border: 1.5px solid rgba(56, 189, 248, 0.36);
+      box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.85),
+                  0 0 40px -5px rgba(56, 189, 248, 0.22),
+                  0 0 20px -2px rgba(168, 85, 247, 0.25),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.18);
+      padding: 22px 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      position: relative;
+      z-index: 10;
+      box-sizing: border-box;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Role Switcher Tabs inside the Card */
+    .auth-role-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 2px;
+    }
+
+    .auth-role-tab {
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 10px 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      color: #94a3b8;
+      font-size: 0.80rem;
+      font-weight: 650;
+      cursor: pointer;
+      transition: all 0.22s ease;
+      font-family: inherit;
+      outline: none;
+    }
+
+    .auth-role-tab:hover {
+      background: rgba(255, 255, 255, 0.07);
+      color: #e2e8f0;
+      border-color: rgba(56, 189, 248, 0.3);
+    }
+
+    .auth-role-tab.active {
+      background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 50%, #2563eb 100%);
+      border: 1.5px solid #00f0ff;
+      color: #ffffff;
+      box-shadow: 0 0 18px rgba(0, 240, 255, 0.48), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+      transform: translateY(-1.5px);
+    }
+
+    .role-tab-icon {
+      font-size: 1.15rem;
+      line-height: 1;
+    }
+
+    /* Input Field Container */
+    .auth-field {
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: rgba(11, 18, 48, 0.72);
+      border: 1.2px solid rgba(56, 189, 248, 0.22);
+      border-radius: 14px;
+      padding: 0 14px;
+      transition: all 0.2s ease;
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    .auth-field:focus-within {
+      border-color: #00f0ff;
+      background: rgba(12, 22, 58, 0.90);
+      box-shadow: 0 0 16px rgba(0, 240, 255, 0.32);
+    }
+
+    .auth-field-icon {
+      font-size: 0.95rem;
+      color: #38bdf8;
+      margin-right: 11px;
+      opacity: 0.85;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .auth-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #f8fafc;
+      font-size: 0.88rem;
+      padding: 12px 0;
+      font-family: inherit;
+      width: 100%;
+    }
+
+    .auth-input::placeholder {
+      color: #64748b;
+      font-size: 0.86rem;
+    }
+
+    .auth-input-select {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #f8fafc;
+      font-size: 0.88rem;
+      padding: 12px 0;
+      font-family: inherit;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .auth-input-select option {
+      background: #0b122e;
+      color: #f8fafc;
+    }
+
+    .auth-eye-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+      opacity: 0.7;
+      color: #94a3b8;
+      padding: 6px;
+      margin-right: -4px;
+      transition: opacity 0.2s;
+      outline: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .auth-eye-btn:hover {
+      opacity: 1;
+      color: #00f0ff;
+    }
+
+    /* Options Row: Remember Me & Forgot Password */
+    .auth-options-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.80rem;
+      color: #94a3b8;
+      padding: 0 2px;
+    }
+
+    .auth-checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .auth-checkbox-label input {
+      display: none;
+    }
+
+    .auth-custom-check {
+      width: 17px;
+      height: 17px;
+      border-radius: 5px;
+      border: 1.5px solid rgba(168, 85, 247, 0.6);
+      background: rgba(168, 85, 247, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      color: #ffffff;
+      font-weight: 800;
+      transition: all 0.2s ease;
+    }
+
+    .auth-checkbox-label input:checked + .auth-custom-check {
+      background: #9333ea;
+      border-color: #c084fc;
+      box-shadow: 0 0 10px rgba(168, 85, 247, 0.6);
+    }
+
+    .auth-link-btn {
+      background: none;
+      border: none;
+      color: #a855f7;
+      font-size: 0.80rem;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 0;
+      transition: color 0.2s;
+      font-family: inherit;
+    }
+
+    .auth-link-btn:hover {
+      color: #38bdf8;
+      text-decoration: underline;
+    }
+
+    /* Primary CTA Button (➔ Login) */
+    .auth-cta-btn {
+      width: 100%;
+      border-radius: 9999px;
+      background: linear-gradient(90deg, #b026ff 0%, #7c3aed 45%, #00d2ff 100%);
+      border: none;
+      padding: 13px 20px;
+      font-size: 0.98rem;
+      font-weight: 750;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(176, 38, 255, 0.45), 0 0 15px rgba(0, 210, 255, 0.3);
+      transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+      margin-top: 2px;
+      font-family: inherit;
+      outline: none;
+    }
+
+    .auth-cta-btn:hover {
+      box-shadow: 0 10px 30px rgba(0, 210, 255, 0.6), 0 0 25px rgba(176, 38, 255, 0.5);
+      transform: translateY(-1.5px);
+    }
+
+    .auth-cta-btn:active {
+      transform: scale(0.985);
+    }
+
+    /* OR Divider */
+    .auth-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #64748b;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      margin: 1px 0;
+    }
+
+    .auth-divider::before,
+    .auth-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    /* Switch Mode (New here? Create an account) */
+    .auth-switch-box {
+      text-align: center;
+      font-size: 0.83rem;
+      color: #94a3b8;
+    }
+
+    .auth-switch-link {
+      background: none;
+      border: none;
+      color: #a855f7;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 0;
+      margin-left: 4px;
+      font-size: 0.83rem;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .auth-switch-link:hover {
+      color: #00f0ff;
+      text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+      text-decoration: underline;
+    }
+
+    /* Quick Demo Helper Bar on Login Screen */
+    .auth-quick-fill-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+      margin-top: 4px;
+      padding-top: 8px;
+      border-top: 1px dashed rgba(255, 255, 255, 0.08);
+    }
+
+    .auth-fill-pill {
+      background: rgba(56, 189, 248, 0.10);
+      border: 1px solid rgba(56, 189, 248, 0.28);
+      color: #38bdf8;
+      border-radius: 99px;
+      padding: 4px 10px;
+      font-size: 0.71rem;
+      font-weight: 650;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .auth-fill-pill:hover {
+      background: rgba(56, 189, 248, 0.22);
+      border-color: #00f0ff;
+      color: #ffffff;
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.35);
+    }
+
+    /* Registration Form Dynamic Additions */
+    .auth-reg-extra {
+      display: none;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .auth-reg-extra.show {
+      display: flex;
+    }
+
+    .auth-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .auth-role-desc {
+      font-size: 0.74rem;
+      padding: 8px 12px;
+      border-radius: 10px;
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      color: #bae6fd;
+      line-height: 1.35;
+    }
+
+    /* Bottom Features Footer (Learn / Achieve / Build) */
+    .auth-features-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      width: 100%;
+      max-width: 410px;
+      margin-top: 24px;
+      position: relative;
+      z-index: 10;
+      padding: 6px 12px;
+    }
+
+    .auth-feature-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 4px;
+    }
+
+    .auth-feature-icon {
+      font-size: 1.25rem;
+      color: #38bdf8;
+      opacity: 0.9;
+    }
+
+    .auth-feature-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #f1f5f9;
+      line-height: 1.2;
+    }
+
+    .auth-feature-sub {
+      font-size: 0.68rem;
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    .auth-feature-divider {
+      width: 1px;
+      height: 32px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    /* TOP BAR USER PROFILE PILL */
+    .appbar-user-pill {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.16) 0%, rgba(168, 85, 247, 0.16) 100%);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      border-radius: 99px;
+      padding: 4px 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #f8fafc;
+      font-size: 0.74rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .appbar-user-pill:hover {
+      border-color: #00f0ff;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.28) 0%, rgba(168, 85, 247, 0.28) 100%);
+      box-shadow: 0 0 12px rgba(0, 240, 255, 0.35);
+    }
+
+    /* CLASS CANCELLATION BADGES ON TIMETABLE CARDS */
+    .lecture-card.is-cancelled {
+      border-color: rgba(244, 63, 94, 0.85) !important;
+      background: linear-gradient(160deg, rgba(45, 10, 22, 0.92) 0%, rgba(20, 5, 12, 0.95) 100%) !important;
+      box-shadow: 0 0 24px rgba(244, 63, 94, 0.35) !important;
+      position: relative;
+    }
+
+    .cancelled-alert-banner {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(244, 63, 94, 0.22);
+      border: 1px solid rgba(244, 63, 94, 0.65);
+      border-radius: 8px;
+      padding: 5px 9px;
+      margin-bottom: 8px;
+      color: #fecdd3;
+      font-size: 0.74rem;
+      font-weight: 750;
+    }
+
+    .cancelled-pulse-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #f43f5e;
+      box-shadow: 0 0 8px #f43f5e;
+      animation: cancelPulse 1.2s infinite alternate;
+    }
+
+    @keyframes cancelPulse {
+      0% { opacity: 0.4; transform: scale(0.85); }
+      100% { opacity: 1; transform: scale(1.15); }
+    }
+
+    .lecture-card.is-cancelled .card-subject-title {
+      text-decoration: line-through;
+      color: #94a3b8 !important;
+    }
+
+    .cancelled-reason-tag {
+      font-size: 0.71rem;
+      color: #fda4af;
+      margin-top: 2px;
+      font-style: italic;
+    }
+
+    .cancelled-by-tag {
+      font-size: 0.65rem;
+      color: #cbd5e1;
+      opacity: 0.85;
+      margin-top: 3px;
+    }
+
+    /* STUDENT RECORDS PORTAL & DIRECTORY STYLES */
+    .stu-stats-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .stu-stat-card {
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 9px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .stu-stat-val {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #38bdf8;
+    }
+
+    .stu-stat-label {
+      font-size: 0.68rem;
+      color: #94a3b8;
+      font-weight: 600;
+    }
+
+    .stu-search-bar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .stu-search-input {
+      flex: 1;
+      background: rgba(13, 20, 48, 0.65);
+      border: 1.2px solid rgba(56, 189, 248, 0.25);
+      border-radius: 10px;
+      padding: 8px 12px;
+      color: #f8fafc;
+      font-size: 0.82rem;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .stu-search-input:focus {
+      border-color: #00f0ff;
+      box-shadow: 0 0 12px rgba(0, 240, 255, 0.25);
+    }
+
+    .stu-record-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 14px;
+      padding: 11px 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+      transition: background 0.2s ease;
+    }
+
+    .stu-record-item:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(56, 189, 248, 0.3);
+    }
+
+    .stu-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7c3aed, #0284c7);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 750;
+      font-size: 0.88rem;
+      flex-shrink: 0;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+    }
+
+    .stu-info {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .stu-name-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .stu-name {
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: #f8fafc;
+    }
+
+    .stu-roll {
+      font-size: 0.72rem;
+      color: #94a3b8;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .stu-sub-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.72rem;
+      color: #64748b;
+      flex-wrap: wrap;
+    }
+
+    .stu-badge-sec {
+      background: rgba(56, 189, 248, 0.14);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 6px;
+      padding: 2px 6px;
+      font-size: 0.68rem;
+      font-weight: 700;
+    }
+
+    .stu-badge-role {
+      background: rgba(168, 85, 247, 0.16);
+      color: #c084fc;
+      border: 1px solid rgba(168, 85, 247, 0.35);
+      border-radius: 6px;
+      padding: 2px 6px;
+      font-size: 0.68rem;
+      font-weight: 700;
+    }
+
   </style>
   <!-- Splash Screen Removed for Instant Direct Launch -->
 </head>
 
 <body>
 
-  <!-- Instant direct launch: zero splash screen -->
+  <!-- ============================================================
+       QUANTUM NEON GLASSMORPHIC AUTHENTICATION PORTAL (OFFICIAL UI)
+       Shown FIRST when user opens the app or logs out
+       ============================================================ -->
+  <div class="auth-overlay" id="authOverlay" style="display:none;">
+    <!-- Background Botanical / Wave Vector Silhouettes matching screenshot -->
+    <svg class="auth-bg-art" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="neonBlueWave" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.85"/>
+          <stop offset="50%" stop-color="#0284c7" stop-opacity="0.7"/>
+          <stop offset="100%" stop-color="#1e1b4b" stop-opacity="0.2"/>
+        </linearGradient>
+        <linearGradient id="neonPurpleWave" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#d946ef" stop-opacity="0.85"/>
+          <stop offset="60%" stop-color="#7c3aed" stop-opacity="0.6"/>
+          <stop offset="100%" stop-color="#0f172a" stop-opacity="0.2"/>
+        </linearGradient>
+      </defs>
+      <!-- Bottom Left Leaf / Curved Waves -->
+      <path d="M-50,1050 C120,950 180,820 160,700 C140,580 80,500 -50,450 Z" fill="url(#neonBlueWave)" opacity="0.65"/>
+      <path d="M-50,1050 C80,980 260,890 280,740 C300,590 220,530 60,620 Z" fill="url(#neonBlueWave)" opacity="0.45"/>
+      <path d="M-50,1050 C50,880 140,780 200,690 C260,600 240,480 180,520 Z" fill="url(#neonPurpleWave)" opacity="0.35"/>
+      <!-- Bottom Right Purple / Violet Wave -->
+      <path d="M1050,1050 C900,920 850,820 880,680 C910,540 980,480 1050,450 Z" fill="url(#neonPurpleWave)" opacity="0.6"/>
+      <path d="M1050,1050 C820,960 760,860 810,720 C860,580 940,540 1050,560 Z" fill="url(#neonPurpleWave)" opacity="0.4"/>
+    </svg>
+
+    <!-- Top Right Header Tagline -->
+    <div class="auth-top-header">
+      <div class="auth-tagline-box">
+        <span class="auth-tagline-text">Better Learning</span>
+        <span class="auth-tagline-text">Brighter Future</span>
+        <div class="auth-tagline-bar"></div>
+      </div>
+    </div>
+
+    <!-- Center Header & 3D Graduation Cap / Book Emblem -->
+    <div class="auth-header-center">
+      <div class="auth-emblem-wrap">
+        <svg class="auth-emblem-svg" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="capGrad" x1="10" y1="20" x2="110" y2="45" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#9333ea"/>
+              <stop offset="50%" stop-color="#3b82f6"/>
+              <stop offset="100%" stop-color="#00f0ff"/>
+            </linearGradient>
+            <linearGradient id="bookLeft" x1="20" y1="60" x2="55" y2="90" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#00f0ff"/>
+              <stop offset="100%" stop-color="#4f46e5"/>
+            </linearGradient>
+            <linearGradient id="bookRight" x1="100" y1="60" x2="65" y2="90" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#00f0ff"/>
+              <stop offset="100%" stop-color="#4f46e5"/>
+            </linearGradient>
+            <linearGradient id="tasselGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#c084fc"/>
+              <stop offset="100%" stop-color="#38bdf8"/>
+            </linearGradient>
+          </defs>
+          <!-- 3D Mortarboard Top Cap -->
+          <polygon points="60,12 110,32 60,52 10,32" fill="url(#capGrad)" stroke="#00f0ff" stroke-width="1.5" stroke-linejoin="round"/>
+          <!-- Cap Bottom Skull Base -->
+          <path d="M30,42 L30,58 C30,68 90,68 90,58 L90,42" fill="none" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round"/>
+          <!-- Tassel and button -->
+          <circle cx="60" cy="32" r="3.5" fill="#ffffff" filter="drop-shadow(0 0 6px #00f0ff)"/>
+          <path d="M60,32 C78,35 88,45 88,58" fill="none" stroke="url(#tasselGrad)" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="88" cy="58" r="2.5" fill="#00f0ff"/>
+          <!-- Open Glowing Book Beneath -->
+          <path d="M22,76 C38,68 54,71 58,78 C54,84 38,82 22,90 Z" fill="url(#bookLeft)" opacity="0.95"/>
+          <path d="M98,76 C82,68 66,71 62,78 C66,84 82,82 98,90 Z" fill="url(#bookRight)" opacity="0.95"/>
+          <path d="M58,78 L62,78 L62,88 L58,88 Z" fill="#38bdf8"/>
+          <!-- Radiant bottom curves -->
+          <path d="M12,85 C36,75 56,77 60,82 C64,77 84,75 108,85" stroke="#00f0ff" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.8"/>
+        </svg>
+      </div>
+
+      <h1 class="auth-main-title" id="authHeaderTitle">Welcome <span class="auth-title-gradient">Back</span></h1>
+      <p class="auth-main-sub" id="authHeaderSub">Login to your account</p>
+    </div>
+
+    <!-- Glowing Glassmorphic Card -->
+    <div class="auth-card">
+
+      <!-- Role Selector Tabs inside Card (Admin | CR | Student) -->
+      <div class="auth-role-tabs">
+        <button type="button" class="auth-role-tab" id="roleTabAdmin" onclick="setAuthRole('admin')">
+          <span class="role-tab-icon">🛡️</span>
+          <span>Admin</span>
+        </button>
+        <button type="button" class="auth-role-tab" id="roleTabCR" onclick="setAuthRole('cr')">
+          <span class="role-tab-icon">👥</span>
+          <span>CR</span>
+        </button>
+        <button type="button" class="auth-role-tab active" id="roleTabStudent" onclick="setAuthRole('student')">
+          <span class="role-tab-icon">🎓</span>
+          <span>Student</span>
+        </button>
+      </div>
+
+      <!-- Role Info Banner (dynamic description) -->
+      <div class="auth-role-desc" id="authRoleDesc">
+        🎓 <strong>Student Portal</strong>: Timetable & alerts locked to your Section & Set.
+      </div>
+
+      <!-- Full Name (Only visible in Register mode) -->
+      <div class="auth-field auth-reg-field" id="regNameField" style="display:none;">
+        <span class="auth-field-icon">👤</span>
+        <input type="text" id="authFullName" class="auth-input" placeholder="Full Name (e.g. Rahul Sharma)">
+      </div>
+
+      <!-- Roll Number (Only visible in Register mode for Student/CR) -->
+      <div class="auth-field auth-reg-field" id="regRollField" style="display:none;">
+        <span class="auth-field-icon">🆔</span>
+        <input type="text" id="authRollNo" class="auth-input" placeholder="Roll No / Student ID (e.g. 230101042)">
+      </div>
+
+      <!-- Email Address (Always visible) -->
+      <div class="auth-field">
+        <span class="auth-field-icon">✉️</span>
+        <input type="email" id="authEmail" class="auth-input" placeholder="Email Address" autocomplete="email">
+      </div>
+
+      <!-- Password (Always visible) -->
+      <div class="auth-field">
+        <span class="auth-field-icon">🔒</span>
+        <input type="password" id="authPassword" class="auth-input" placeholder="Password" autocomplete="current-password">
+        <button type="button" class="auth-eye-btn" onclick="toggleAuthPassword()" title="Show/Hide Password" id="authEyeBtn">👁️</button>
+      </div>
+
+      <!-- Section and Set Selection (Visible in Register mode) -->
+      <div class="auth-reg-extra" id="regScopeFields">
+        <div class="auth-grid-2">
+          <!-- Section Selector -->
+          <div class="auth-field">
+            <span class="auth-field-icon">🏫</span>
+            <select id="authSection" class="auth-input-select" onchange="onAuthSectionChanged()">
+              <option value="Sec-A">Section A (A-102)</option>
+              <option value="Sec-B">Section B (A-103)</option>
+              <option value="Sec-C">Section C (A-104)</option>
+              <option value="Sec-D" selected>Section D (A-108)</option>
+              <option value="Sec-E">Section E (E-204)</option>
+              <option value="Sec-H">Section H (A-302)</option>
+              <option value="Sec-I">Section I (A-201)</option>
+              <option value="Sec-J">Section J (A-309)</option>
+              <option value="Sec-K">Section K (A-310)</option>
+              <option value="Sec-L">Section L (A-311)</option>
+            </select>
+          </div>
+
+          <!-- Set Selector -->
+          <div class="auth-field">
+            <span class="auth-field-icon">🅰️</span>
+            <select id="authBatch" class="auth-input-select">
+              <option value="Set-A" selected>Set-A (Alpha)</option>
+              <option value="Set-B">Set-B (Beta)</option>
+              <option value="ALL" id="authBatchAllOpt" style="display:none;">All Sets (Admin)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Role Passcode (Only needed if registering as CR or Admin) -->
+        <div class="auth-field" id="regSecurityKeyField" style="display:none;">
+          <span class="auth-field-icon">🔑</span>
+          <input type="password" id="authSecretKey" class="auth-input" placeholder="Verification Code (CR: CR2026 | Admin: ADMIN2026)">
+        </div>
+      </div>
+
+      <!-- Remember Me & Forgot Password (In Login Mode) -->
+      <div class="auth-options-row" id="loginOptionsRow">
+        <label class="auth-checkbox-label">
+          <input type="checkbox" id="authRememberMe" checked>
+          <span class="auth-custom-check">✓</span>
+          <span>Remember me</span>
+        </label>
+        <button type="button" class="auth-link-btn" onclick="openForgotPasswordHelp()">Forgot Password?</button>
+      </div>
+
+      <!-- Main Action CTA Button (➔ Login / 🚀 Create Account) -->
+      <button type="button" class="auth-cta-btn" id="authSubmitBtn" onclick="handleAuthSubmit()">
+        <span id="authBtnIcon">➔</span>
+        <span id="authBtnText">Login</span>
+      </button>
+
+      <!-- OR Divider -->
+      <div class="auth-divider">
+        <span>OR</span>
+      </div>
+
+      <!-- Toggle Login ⇄ Register Mode -->
+      <div class="auth-switch-box">
+        <span id="authSwitchPrompt">New here?</span>
+        <button type="button" class="auth-switch-link" id="authSwitchBtn" onclick="toggleAuthMode()">Create an account</button>
+      </div>
+
+      <!-- Quick 1-Tap Demo Logins for Instant Testing -->
+      <div class="auth-quick-fill-bar" id="authQuickFillBar">
+        <button type="button" class="auth-fill-pill" onclick="quickFillCredentials('student')">🎓 Student Demo</button>
+        <button type="button" class="auth-fill-pill" onclick="quickFillCredentials('cr')">👥 CR Demo (Sec-D)</button>
+        <button type="button" class="auth-fill-pill" onclick="quickFillCredentials('admin')">🛡️ Admin Demo</button>
+      </div>
+
+    </div>
+
+    <!-- Bottom Features Footer (Learn Anytime | Achieve More | Build Together) -->
+    <div class="auth-features-footer">
+      <div class="auth-feature-col">
+        <span class="auth-feature-icon">📖</span>
+        <span class="auth-feature-title">Learn</span>
+        <span class="auth-feature-sub">Anytime</span>
+      </div>
+      <div class="auth-feature-divider"></div>
+      <div class="auth-feature-col">
+        <span class="auth-feature-icon">🎯</span>
+        <span class="auth-feature-title">Achieve</span>
+        <span class="auth-feature-sub">More</span>
+      </div>
+      <div class="auth-feature-divider"></div>
+      <div class="auth-feature-col">
+        <span class="auth-feature-icon">👥</span>
+        <span class="auth-feature-title">Build</span>
+        <span class="auth-feature-sub">Together</span>
+      </div>
+    </div>
+  </div>
 
   <!-- ZERO-LAG 120 FPS QUANTUM CYBER LUXURY CANVAS -->
   <div class="aurora-ambient-bg" id="auroraBg" aria-hidden="true">
@@ -5192,6 +6179,12 @@
           </div>
         </div>
         <div class="appbar-actions" style="display:flex; align-items:center; gap:6px;">
+          <!-- Active Authenticated User Profile Pill -->
+          <button class="appbar-user-pill" id="authUserPill" onclick="openUserProfileModal()" title="View Account & Profile" style="display:none;">
+            <span id="userPillIcon">🎓</span>
+            <span id="userPillName" style="max-width:85px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">Student</span>
+            <span id="userPillBadge" style="font-size:0.64rem; opacity:0.85; font-weight:800; background:rgba(255,255,255,0.12); padding:1px 5px; border-radius:4px;">Sec-D</span>
+          </button>
           <!-- 1-Tap Colorful Themes Studio / Quick Toggle -->
           <button class="appbar-quick-btn" id="themeQuickBtn" onclick="toggleTheme()" title="Switch Theme (Quantum Campus ⇄ Cyberpunk Neon)" aria-label="Switch Theme">
             <span id="appbarThemeIcon">🏛️</span>
@@ -5365,6 +6358,51 @@
           </div>
           <div class="holo-item-right">
             <span class="holo-item-pill pill-on" id="menuAnimPill">✨ ON</span>
+          </div>
+        </button>
+
+        <!-- 6. CR & Admin Class Cancellation Hub -->
+        <button class="holo-menu-item" id="menuCancelHubBtn" onclick="closeHoloMenu(); openClassCancelModal();" style="display:none;">
+          <div class="holo-item-left">
+            <div class="holo-orb-icon orb-rose">📢</div>
+            <div class="holo-item-texts">
+              <span class="holo-item-title">Class Cancellation Hub</span>
+              <span class="holo-item-sub">Cancel lecture & send notification</span>
+            </div>
+          </div>
+          <div class="holo-item-right">
+            <span class="holo-item-pill pill-on" style="background:rgba(244,63,94,0.2); color:#f43f5e; border-color:rgba(244,63,94,0.4);">CR / Admin</span>
+            <span class="holo-item-arrow">›</span>
+          </div>
+        </button>
+
+        <!-- 7. CR & Admin Student Records Directory -->
+        <button class="holo-menu-item" id="menuStudentRecBtn" onclick="closeHoloMenu(); openStudentRecordsModal();" style="display:none;">
+          <div class="holo-item-left">
+            <div class="holo-orb-icon orb-cyan">👥</div>
+            <div class="holo-item-texts">
+              <span class="holo-item-title">Student Records & Directory</span>
+              <span class="holo-item-sub">View registered students & export CSV</span>
+            </div>
+          </div>
+          <div class="holo-item-right">
+            <span class="holo-item-pill" id="menuStudentCountPill">Portal</span>
+            <span class="holo-item-arrow">›</span>
+          </div>
+        </button>
+
+        <!-- 8. User Account & Logout -->
+        <button class="holo-menu-item" id="menuLogoutBtn" onclick="closeHoloMenu(); openUserProfileModal();">
+          <div class="holo-item-left">
+            <div class="holo-orb-icon orb-amber">👤</div>
+            <div class="holo-item-texts">
+              <span class="holo-item-title">My Account & Profile</span>
+              <span class="holo-item-sub" id="menuAccountSub">Logged in</span>
+            </div>
+          </div>
+          <div class="holo-item-right">
+            <span class="holo-item-pill" style="color:#38bdf8;">Profile / Exit</span>
+            <span class="holo-item-arrow">›</span>
           </div>
         </button>
 
@@ -6267,7 +7305,1276 @@
     </div>
   </div>
 
+  <!-- ============================================================
+       MODAL 1: STUDENT DIRECTORY & RECORDS (CR & ADMIN PORTAL)
+       Lists all registered students, search, filters & CSV export
+       ============================================================ -->
+  <div class="modal-overlay" id="studentRecordsModal" onclick="closeModalOnOverlay(event, 'studentRecordsModal')">
+    <div class="modal-sheet" style="max-width:520px; max-height:88vh; display:flex; flex-direction:column;">
+      <div class="modal-handle"></div>
+      <div class="modal-header">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div class="modal-title">👥 Student Records & Directory</div>
+          <span class="stu-badge-role" id="recordsPortalScopeBadge">CR / Admin</span>
+        </div>
+        <button class="modal-close-btn" onclick="closeModal('studentRecordsModal')">✕</button>
+      </div>
+
+      <!-- Stats Summary Strip -->
+      <div class="stu-stats-strip" id="stuStatsStrip">
+        <div class="stu-stat-card">
+          <span class="stu-stat-val" id="statTotalStudents">0</span>
+          <span class="stu-stat-label">Total Registered</span>
+        </div>
+        <div class="stu-stat-card">
+          <span class="stu-stat-val" id="statMySectionStudents">0</span>
+          <span class="stu-stat-label" id="statMySecLabel">Sec-D Students</span>
+        </div>
+        <div class="stu-stat-card">
+          <span class="stu-stat-val" id="statBatchBreakdown">0 / 0</span>
+          <span class="stu-stat-label">Set-A / Set-B</span>
+        </div>
+      </div>
+
+      <!-- Search & Filter Controls -->
+      <div class="stu-search-bar">
+        <input type="text" id="stuSearchInput" class="stu-search-input" placeholder="🔍 Search student name, roll no, email..." oninput="filterStudentRecords()">
+        <select id="stuFilterSection" class="stu-search-input" style="flex:0.6; min-width:85px; cursor:pointer;" onchange="filterStudentRecords()">
+          <option value="ALL">All Secs</option>
+          <option value="Sec-A">Sec-A</option>
+          <option value="Sec-B">Sec-B</option>
+          <option value="Sec-C">Sec-C</option>
+          <option value="Sec-D" selected>Sec-D</option>
+          <option value="Sec-E">Sec-E</option>
+          <option value="Sec-H">Sec-H</option>
+          <option value="Sec-I">Sec-I</option>
+          <option value="Sec-J">Sec-J</option>
+          <option value="Sec-K">Sec-K</option>
+          <option value="Sec-L">Sec-L</option>
+        </select>
+        <select id="stuFilterBatch" class="stu-search-input" style="flex:0.5; min-width:75px; cursor:pointer;" onchange="filterStudentRecords()">
+          <option value="ALL">All Sets</option>
+          <option value="Set-A">Set-A</option>
+          <option value="Set-B">Set-B</option>
+        </select>
+      </div>
+
+      <!-- Student Records Scrollable List -->
+      <div id="studentRecordsList" style="flex:1; overflow-y:auto; max-height:48vh; padding-right:4px;">
+        <!-- Populated dynamically by StudentRecordsEngine.render() -->
+      </div>
+
+      <!-- Bottom Actions (Export CSV | Refresh | Close) -->
+      <div style="display:flex; gap:8px; margin-top:12px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.08);">
+        <button class="primary-btn" style="flex:1; justify-content:center; font-size:0.80rem;" onclick="exportStudentsCSV()">
+          📥 Export CSV
+        </button>
+        <button class="secondary-btn" style="flex:1; justify-content:center; font-size:0.80rem;" onclick="copyStudentsSummary()">
+          📋 Copy List
+        </button>
+        <button class="secondary-btn" style="width:auto; justify-content:center; font-size:0.80rem;" onclick="closeModal('studentRecordsModal')">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL 2: CLASS CANCELLATION HUB (CR & ADMIN ONLY)
+       CR can cancel only their own section & set. Admin can cancel any.
+       Broadcasts instant in-app alerts and marks timetable.
+       ============================================================ -->
+  <div class="modal-overlay" id="classCancelModal" onclick="closeModalOnOverlay(event, 'classCancelModal')">
+    <div class="modal-sheet" style="max-width:480px; max-height:90vh; display:flex; flex-direction:column;">
+      <div class="modal-handle"></div>
+      <div class="modal-header">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div class="modal-title">📢 Class Cancellation Hub</div>
+          <span class="stu-badge-role" style="background:rgba(244,63,94,0.18); color:#f43f5e; border-color:rgba(244,63,94,0.4);" id="cancelPortalBadge">CR / Admin</span>
+        </div>
+        <button class="modal-close-btn" onclick="closeModal('classCancelModal')">✕</button>
+      </div>
+
+      <div style="flex:1; overflow-y:auto; padding-right:4px; display:flex; flex-direction:column; gap:12px;">
+
+        <!-- Scope & Permissions Info Banner -->
+        <div id="cancelScopeBanner" style="padding:9px 12px; border-radius:12px; background:rgba(56,189,248,0.10); border:1px solid rgba(56,189,248,0.25); font-size:0.77rem; color:#bae6fd; line-height:1.4;">
+          <!-- Populated by CancelEngine.initModal() -->
+        </div>
+
+        <!-- Cancellation Form Fields -->
+        <div class="auth-grid-2">
+          <div class="form-group">
+            <label for="cancelSecSelect">Target Section:</label>
+            <select id="cancelSecSelect" class="modal-input" onchange="onCancelFormPeriodChanged()">
+              <option value="Sec-A">Section A</option>
+              <option value="Sec-B">Section B</option>
+              <option value="Sec-C">Section C</option>
+              <option value="Sec-D" selected>Section D</option>
+              <option value="Sec-E">Section E</option>
+              <option value="Sec-H">Section H</option>
+              <option value="Sec-I">Section I</option>
+              <option value="Sec-J">Section J</option>
+              <option value="Sec-K">Section K</option>
+              <option value="Sec-L">Section L</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="cancelBatchSelect">Affected Set / Batch:</label>
+            <select id="cancelBatchSelect" class="modal-input" onchange="onCancelFormPeriodChanged()">
+              <option value="ALL">All Sets (Entire Class)</option>
+              <option value="Set-A">Set-A (Alpha Only)</option>
+              <option value="Set-B">Set-B (Beta Only)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="auth-grid-2">
+          <div class="form-group">
+            <label for="cancelDateInput">Date of Cancellation:</label>
+            <input type="date" id="cancelDateInput" class="modal-input" onchange="onCancelFormPeriodChanged()">
+          </div>
+
+          <div class="form-group">
+            <label for="cancelPeriodSelect">Class / Period (L1-L8):</label>
+            <select id="cancelPeriodSelect" class="modal-input" onchange="onCancelFormPeriodChanged()">
+              <option value="L1">L1 (09:00 - 09:55)</option>
+              <option value="L2">L2 (09:55 - 10:50)</option>
+              <option value="L3">L3 (10:50 - 11:45)</option>
+              <option value="L5">L5 (12:40 - 01:35)</option>
+              <option value="L6">L6 (01:35 - 02:30)</option>
+              <option value="L7">L7 (02:30 - 03:25)</option>
+              <option value="L8">L8 (03:25 - 04:20)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Auto-detected Subject & Faculty Box -->
+        <div style="background:rgba(255,255,255,0.035); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:10px 12px; font-size:0.80rem;">
+          <div style="color:#94a3b8; font-size:0.70rem; margin-bottom:3px;">SELECTED LECTURE PREVIEW:</div>
+          <div id="cancelLecturePreviewTitle" style="font-weight:750; color:#f8fafc; font-size:0.88rem;">--</div>
+          <div id="cancelLecturePreviewFac" style="color:var(--gold-accent); font-size:0.75rem; margin-top:2px;">👨‍🏫 --</div>
+        </div>
+
+        <!-- Cancellation Reason -->
+        <div class="form-group">
+          <label for="cancelReasonPreset">Reason for Cancellation:</label>
+          <select id="cancelReasonPreset" class="modal-input" onchange="onCancelPresetChanged()">
+            <option value="Teacher on Leave">Faculty / Teacher on Leave</option>
+            <option value="Department Meeting">Department / Faculty Urgent Meeting</option>
+            <option value="University Sports / Cultural Fest">University Sports / Annual Fest</option>
+            <option value="Computer Lab System Maintenance">Computer Lab System Maintenance</option>
+            <option value="Exam Preparation / Study Leave">Exam Preparation / Study Leave</option>
+            <option value="Special Guest Seminar in Auditorium">Special Guest Seminar in Auditorium</option>
+            <option value="Custom">Other (Type custom reason below)</option>
+          </select>
+        </div>
+
+        <div class="form-group" id="cancelCustomReasonGroup" style="display:none;">
+          <label for="cancelCustomReasonText">Specify Custom Reason:</label>
+          <input type="text" id="cancelCustomReasonText" class="modal-input" placeholder="e.g. Teacher unwell, rescheduled to tomorrow">
+        </div>
+
+        <button class="primary-btn" style="width:100%; justify-content:center; padding:11px; font-size:0.88rem; background:linear-gradient(135deg, #f43f5e, #e11d48); border:none; box-shadow:0 6px 20px rgba(244,63,94,0.4);" onclick="submitClassCancellation()">
+          🚨 Broadcast Class Cancellation
+        </button>
+
+        <!-- List of Currently Cancelled Classes -->
+        <div style="margin-top:14px; border-top:1px solid rgba(255,255,255,0.08); padding-top:12px;">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
+            <span style="font-size:0.78rem; font-weight:750; color:#cbd5e1;">ACTIVE CANCELLATIONS</span>
+            <span class="stu-badge-sec" id="cancelActiveCountBadge">0 active</span>
+          </div>
+          <div id="activeCancellationsList" style="display:flex; flex-direction:column; gap:8px;">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL 3: ACTIVE USER PROFILE & LOGOUT
+       Shows logged-in details, scope, and logout button
+       ============================================================ -->
+  <div class="modal-overlay" id="userProfileModal" onclick="closeModalOnOverlay(event, 'userProfileModal')">
+    <div class="modal-sheet" style="max-width:390px;">
+      <div class="modal-handle"></div>
+      <div class="modal-header">
+        <div class="modal-title">👤 My Account & Session</div>
+        <button class="modal-close-btn" onclick="closeModal('userProfileModal')">✕</button>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:14px; padding:6px 0;">
+        <div style="display:flex; align-items:center; gap:14px; background:rgba(255,255,255,0.035); border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:14px;">
+          <div class="stu-avatar" id="profileAvatar" style="width:50px; height:50px; font-size:1.25rem;">
+            🎓
+          </div>
+          <div style="display:flex; flex-direction:column; gap:2px; flex:1; min-width:0;">
+            <div style="display:flex; align-items:center; gap:6px;">
+              <strong id="profileName" style="font-size:1rem; color:#f8fafc; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">Student Name</strong>
+              <span class="stu-badge-role" id="profileRoleBadge">STUDENT</span>
+            </div>
+            <div id="profileRoll" style="font-size:0.75rem; color:#94a3b8; font-family:'JetBrains Mono', monospace;">Roll: 230101042</div>
+            <div id="profileEmail" style="font-size:0.73rem; color:#64748b; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">student@quantum.edu.in</div>
+          </div>
+        </div>
+
+        <div style="background:rgba(56,189,248,0.08); border:1px solid rgba(56,189,248,0.22); border-radius:12px; padding:10px 12px; font-size:0.77rem; color:#bae6fd; line-height:1.4;">
+          <span style="font-weight:700;">📌 Assigned Scope:</span>
+          <div id="profileScopeDesc" style="margin-top:2px;">Section D • Set-A (Timetable & alerts personalized for this class)</div>
+        </div>
+
+        <!-- Quick Admin & CR Actions -->
+        <div id="profileManagerActions" style="display:none; flex-direction:column; gap:8px;">
+          <button class="secondary-btn" style="width:100%; justify-content:center; padding:10px; font-size:0.80rem;" onclick="closeModal('userProfileModal'); openClassCancelModal();">
+            📢 Open Class Cancellation Hub
+          </button>
+          <button class="secondary-btn" style="width:100%; justify-content:center; padding:10px; font-size:0.80rem;" onclick="closeModal('userProfileModal'); openStudentRecordsModal();">
+            👥 View Student Records & Directory
+          </button>
+        </div>
+
+        <!-- Logout Button -->
+        <button class="secondary-btn" style="width:100%; justify-content:center; padding:11px; font-size:0.85rem; color:#f43f5e; border-color:rgba(244,63,94,0.45); background:rgba(244,63,94,0.08); margin-top:4px;" onclick="handleLogout()">
+          🚪 Log Out of Account
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL 4: FORGOT PASSWORD & QUICK DEMO HINTS
+       ============================================================ -->
+  <div class="modal-overlay" id="forgotPasswordHelpModal" onclick="closeModalOnOverlay(event, 'forgotPasswordHelpModal')">
+    <div class="modal-sheet" style="max-width:380px;">
+      <div class="modal-handle"></div>
+      <div class="modal-header">
+        <div class="modal-title">🔑 Account Access Assistance</div>
+        <button class="modal-close-btn" onclick="closeModal('forgotPasswordHelpModal')">✕</button>
+      </div>
+      <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.45; padding:8px 0;">
+        <p style="margin-bottom:10px;">For the official Qtimex campus build, default accounts are pre-configured for instant access:</p>
+        <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:10px 12px; font-family:'JetBrains Mono', monospace; font-size:0.75rem; margin-bottom:12px; display:flex; flex-direction:column; gap:6px;">
+          <div>🎓 <strong>Student:</strong> student@quantum.edu.in / student123</div>
+          <div>👥 <strong>CR:</strong> cr@quantum.edu.in / cr123</div>
+          <div>🛡️ <strong>Admin:</strong> admin@quantum.edu.in / admin</div>
+        </div>
+        <p style="margin-bottom:14px;">If you registered with your own email, your account is stored locally and on the server. You can also create a new account anytime with "Create an account"!</p>
+        <button class="primary-btn" style="width:100%; justify-content:center;" onclick="closeModal('forgotPasswordHelpModal')">
+          ✓ Understood
+        </button>
+      </div>
+    </div>
+  </div>
+
   <script>
+    // ══════════════════════════════════════════════════════════════════════
+    // QUANTUM AUTHENTICATION, ROLE PERMISSIONS & CLASS CANCELLATION ENGINE
+    // ══════════════════════════════════════════════════════════════════════
+    let CURRENT_USER = null;
+    let currentAuthRole = 'student';
+    let isAuthRegisterMode = false;
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    // ── AUTH ENGINE ──
+    const AuthEngine = {
+      USERS_KEY: 'quantum_auth_users',
+      SESSION_KEY: 'quantum_auth_session',
+
+      DEFAULT_USERS: [
+        {
+          id: 'usr_admin',
+          role: 'admin',
+          name: 'System Administrator',
+          email: 'admin@quantum.edu.in',
+          password: 'admin',
+          section: 'ALL',
+          set: 'ALL',
+          rollNo: 'ADM-001',
+          createdAt: '2026-10-16T00:00:00.000Z',
+          lastLogin: null
+        },
+        {
+          id: 'usr_crd',
+          role: 'cr',
+          name: 'Sec-D Representative',
+          email: 'cr@quantum.edu.in',
+          password: 'cr123',
+          section: 'Sec-D',
+          set: 'Set-A',
+          rollNo: '230101001',
+          createdAt: '2026-10-16T00:00:00.000Z',
+          lastLogin: null
+        },
+        {
+          id: 'usr_studentd',
+          role: 'student',
+          name: 'Rahul Sharma',
+          email: 'student@quantum.edu.in',
+          password: 'student123',
+          section: 'Sec-D',
+          set: 'Set-A',
+          rollNo: '230101042',
+          createdAt: '2026-10-16T00:00:00.000Z',
+          lastLogin: null
+        }
+      ],
+
+      getUsers() {
+        try {
+          const raw = localStorage.getItem(this.USERS_KEY);
+          if (raw) {
+            const parsed = JSON.parse(raw);
+            if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+          }
+        } catch (_) {}
+        return [...this.DEFAULT_USERS];
+      },
+
+      saveUsers(users) {
+        try {
+          localStorage.setItem(this.USERS_KEY, JSON.stringify(users));
+        } catch (_) {}
+        try {
+          if (window.fetch) {
+            fetch('/api/users', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(users)
+            }).catch(() => {});
+          }
+        } catch (_) {}
+      },
+
+      fetchRemoteUsers() {
+        if (!window.fetch) return;
+        fetch('/api/users')
+          .then(res => res.json())
+          .then(data => {
+            const remoteList = Array.isArray(data) ? data : (data && Array.isArray(data.users) ? data.users : []);
+            if (remoteList.length > 0) {
+              const localList = this.getUsers();
+              const map = new Map();
+              localList.forEach(u => map.set(u.email.toLowerCase(), u));
+              remoteList.forEach(u => map.set(u.email.toLowerCase(), { ...map.get(u.email.toLowerCase()), ...u }));
+              this.saveUsers(Array.from(map.values()));
+            }
+          })
+          .catch(() => {
+            fetch('registered_users.json')
+              .then(res => res.json())
+              .then(data => {
+                const remoteList = Array.isArray(data) ? data : (data && Array.isArray(data.users) ? data.users : []);
+                if (remoteList.length > 0) {
+                  const localList = this.getUsers();
+                  const map = new Map();
+                  localList.forEach(u => map.set(u.email.toLowerCase(), u));
+                  remoteList.forEach(u => {
+                    if (!map.has(u.email.toLowerCase())) map.set(u.email.toLowerCase(), u);
+                  });
+                  this.saveUsers(Array.from(map.values()));
+                }
+              })
+              .catch(() => {});
+          });
+      },
+
+      getCurrentSession() {
+        try {
+          const stored = localStorage.getItem(this.SESSION_KEY) || sessionStorage.getItem(this.SESSION_KEY);
+          if (stored) return JSON.parse(stored);
+        } catch (_) {}
+        return null;
+      },
+
+      setSession(user, remember = true) {
+        const json = JSON.stringify(user);
+        if (remember) {
+          localStorage.setItem(this.SESSION_KEY, json);
+          try { sessionStorage.removeItem(this.SESSION_KEY); } catch (_) {}
+        } else {
+          sessionStorage.setItem(this.SESSION_KEY, json);
+          try { localStorage.removeItem(this.SESSION_KEY); } catch (_) {}
+        }
+      },
+
+      clearSession() {
+        try { localStorage.removeItem(this.SESSION_KEY); } catch (_) {}
+        try { sessionStorage.removeItem(this.SESSION_KEY); } catch (_) {}
+      },
+
+      registerUser({ role, name, email, password, section, set, rollNo }) {
+        const users = this.getUsers();
+        const cleanEmail = (email || '').trim().toLowerCase();
+        if (!cleanEmail || !cleanEmail.includes('@')) {
+          throw new Error('Please enter a valid university or personal email address.');
+        }
+        if (!password || password.length < 4) {
+          throw new Error('Password must be at least 4 characters.');
+        }
+        if (users.some(u => u.email.toLowerCase() === cleanEmail)) {
+          throw new Error('An account with this email already exists. Please log in.');
+        }
+
+        const newUser = {
+          id: 'usr_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
+          role: role || 'student',
+          name: (name || '').trim() || cleanEmail.split('@')[0],
+          email: cleanEmail,
+          password: password,
+          section: section || 'Sec-D',
+          set: set || 'Set-A',
+          rollNo: (rollNo || '').trim() || ('230' + Math.floor(100000 + Math.random() * 900000)),
+          createdAt: new Date().toISOString(),
+          lastLogin: new Date().toISOString()
+        };
+
+        users.push(newUser);
+        this.saveUsers(users);
+        return newUser;
+      },
+
+      loginUser(email, password) {
+        const users = this.getUsers();
+        const cleanEmail = (email || '').trim().toLowerCase();
+        const cleanPass = (password || '').trim();
+
+        const user = users.find(u => u.email.toLowerCase() === cleanEmail);
+        if (!user) {
+          throw new Error('No account found for this email. Tap "Create an account" below.');
+        }
+        if (user.password !== cleanPass) {
+          throw new Error('Incorrect password. Please verify your credentials.');
+        }
+
+        user.lastLogin = new Date().toISOString();
+        this.saveUsers(users);
+        return user;
+      }
+    };
+
+    // ── CLASS CANCELLATION ENGINE ──
+    const CancelEngine = {
+      STORAGE_KEY: 'quantum_cancellations',
+
+      init() {
+        this.fetchRemoteCancellations();
+      },
+
+      getAll() {
+        try {
+          const raw = localStorage.getItem(this.STORAGE_KEY);
+          if (raw) return JSON.parse(raw);
+        } catch (_) {}
+        return [];
+      },
+
+      saveAll(list) {
+        try {
+          localStorage.setItem(this.STORAGE_KEY, JSON.stringify(list));
+        } catch (_) {}
+        try {
+          if (window.fetch) {
+            fetch('/api/cancelled-classes', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(list)
+            }).catch(() => {});
+          }
+        } catch (_) {}
+      },
+
+      fetchRemoteCancellations() {
+        if (!window.fetch) return;
+        fetch('/api/cancelled-classes')
+          .then(res => res.json())
+          .then(data => {
+            const list = Array.isArray(data) ? data : (data && Array.isArray(data.cancellations) ? data.cancellations : []);
+            if (list.length >= 0) {
+              const local = this.getAll();
+              const map = new Map();
+              local.forEach(c => map.set(c.id, c));
+              list.forEach(c => map.set(c.id, c));
+              this.saveAll(Array.from(map.values()));
+              if (typeof renderTodayLectures === 'function' && typeof viewingDate !== 'undefined') {
+                renderTodayLectures(viewingDate);
+              }
+            }
+          })
+          .catch(() => {
+            fetch('cancelled_classes.json')
+              .then(res => res.json())
+              .then(data => {
+                const list = Array.isArray(data) ? data : (data && Array.isArray(data.cancellations) ? data.cancellations : []);
+                if (list.length >= 0) {
+                  const local = this.getAll();
+                  const map = new Map();
+                  local.forEach(c => map.set(c.id, c));
+                  list.forEach(c => map.set(c.id, c));
+                  this.saveAll(Array.from(map.values()));
+                }
+              })
+              .catch(() => {});
+          });
+      },
+
+      getCancellation(section, batch, dateObj, period) {
+        if (!dateObj || !section || !period) return null;
+        const y = dateObj.getFullYear();
+        const m = String(dateObj.getMonth() + 1).padStart(2, '0');
+        const d = String(dateObj.getDate()).padStart(2, '0');
+        const dateStr = `${y}-${m}-${d}`;
+
+        const list = this.getAll();
+        return list.find(c => {
+          if (c.section !== section) return false;
+          if (c.date !== dateStr) return false;
+          if (c.period !== period) return false;
+          if (c.batch === 'ALL' || batch === 'ALL' || c.batch === batch) return true;
+          return false;
+        }) || null;
+      },
+
+      cancelClass(entry) {
+        const list = this.getAll();
+        const newEntry = {
+          id: 'cnc_' + Date.now() + '_' + Math.random().toString(36).substr(2, 4),
+          section: entry.section,
+          batch: entry.batch || 'ALL',
+          date: entry.date,
+          period: entry.period,
+          subject: entry.subject || 'Class',
+          faculty: entry.faculty || '',
+          reason: entry.reason || 'Faculty on leave',
+          author: entry.author || (CURRENT_USER ? CURRENT_USER.name : 'CR'),
+          role: entry.role || (CURRENT_USER ? CURRENT_USER.role : 'cr'),
+          timestamp: Date.now()
+        };
+
+        const filtered = list.filter(c => !(c.section === newEntry.section && c.date === newEntry.date && c.period === newEntry.period && c.batch === newEntry.batch));
+        filtered.unshift(newEntry);
+        this.saveAll(filtered);
+
+        try {
+          if (typeof NotificationLibrary !== 'undefined') {
+            NotificationLibrary.addNotification({
+              title: `❌ Class Cancelled: ${newEntry.subject} (${newEntry.period})`,
+              shortBody: `${newEntry.section} (${newEntry.batch}): ${newEntry.reason}`,
+              bigText: `Notice for ${newEntry.section} [${newEntry.batch}]:\nToday's ${newEntry.period} class (${newEntry.subject}) has been CANCELLED.\nReason: ${newEntry.reason}\nCancelled by: ${newEntry.author} (${newEntry.role.toUpperCase()})`,
+              type: 'class_reminder',
+              timestamp: Date.now()
+            });
+          }
+        } catch (_) {}
+
+        return newEntry;
+      },
+
+      restoreClass(id) {
+        const list = this.getAll();
+        const target = list.find(c => c.id === id);
+        const updated = list.filter(c => c.id !== id);
+        this.saveAll(updated);
+
+        if (target && typeof NotificationLibrary !== 'undefined') {
+          NotificationLibrary.addNotification({
+            title: `↩ Class Restored: ${target.subject} (${target.period})`,
+            shortBody: `${target.section} (${target.batch}): Class restored to normal schedule.`,
+            bigText: `Update for ${target.section} [${target.batch}]:\nThe cancellation for ${target.period} (${target.subject}) was removed by ${CURRENT_USER ? CURRENT_USER.name : 'Authorized Admin'}.`,
+            type: 'system',
+            timestamp: Date.now()
+          });
+        }
+        return target;
+      }
+    };
+
+    // ── STUDENT RECORDS ENGINE ──
+    const StudentRecordsEngine = {
+      render() {
+        const container = document.getElementById('studentRecordsList');
+        if (!container) return;
+
+        const query = (document.getElementById('stuSearchInput')?.value || '').trim().toLowerCase();
+        const filterSec = document.getElementById('stuFilterSec')?.value || 'ALL';
+        const filterBatch = document.getElementById('stuFilterBatch')?.value || 'ALL';
+
+        const allUsers = AuthEngine.getUsers();
+        const studentsOnly = allUsers.filter(u => u.role === 'student');
+
+        const countTotal = document.getElementById('stuCountTotal');
+        const countSecD = document.getElementById('stuCountSecD');
+        const countSetA = document.getElementById('stuCountSetA');
+        const countSetB = document.getElementById('stuCountSetB');
+
+        if (countTotal) countTotal.textContent = studentsOnly.length;
+        if (countSecD) countSecD.textContent = studentsOnly.filter(s => s.section === 'Sec-D').length;
+        if (countSetA) countSetA.textContent = studentsOnly.filter(s => s.set === 'Set-A').length;
+        if (countSetB) countSetB.textContent = studentsOnly.filter(s => s.set === 'Set-B').length;
+
+        let filtered = studentsOnly.filter(s => {
+          if (filterSec !== 'ALL' && s.section !== filterSec) return false;
+          if (filterBatch !== 'ALL' && s.set !== filterBatch) return false;
+          if (query) {
+            const hay = `${s.name || ''} ${s.rollNo || ''} ${s.email || ''} ${s.section || ''}`.toLowerCase();
+            if (!hay.includes(query)) return false;
+          }
+          return true;
+        });
+
+        if (filtered.length === 0) {
+          container.innerHTML = `
+            <div style="text-align:center; padding:32px 16px; color:#64748b;">
+              <div style="font-size:2rem; margin-bottom:8px;">🔍</div>
+              <div style="font-size:0.85rem; font-weight:700; color:#94a3b8;">No Student Records Found</div>
+              <div style="font-size:0.75rem; margin-top:4px;">Try clearing your search query or filters.</div>
+            </div>
+          `;
+          return;
+        }
+
+        container.innerHTML = filtered.map(s => {
+          const dateStr = s.createdAt ? new Date(s.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : 'Registered';
+          const batchChip = s.set === 'Set-A' ? '<span class="batch-chip chip-a">Set-A</span>' : '<span class="batch-chip chip-b">Set-B</span>';
+
+          return `
+            <div class="stu-record-card">
+              <div class="stu-avatar">🎓</div>
+              <div class="stu-details">
+                <div class="stu-header-line">
+                  <strong class="stu-name">${escapeHtml(s.name || 'Student')}</strong>
+                  <span class="stu-badge-role">STUDENT</span>
+                </div>
+                <div class="stu-sub-line">
+                  <span class="stu-roll">Roll: ${escapeHtml(s.rollNo || 'N/A')}</span>
+                  <span class="stu-email">${escapeHtml(s.email)}</span>
+                </div>
+                <div style="display:flex; align-items:center; gap:6px; margin-top:4px; font-size:0.68rem; color:#64748b;">
+                  <span>Enrolled: ${dateStr}</span>
+                </div>
+              </div>
+              <div class="stu-scope-pill">
+                <span class="stu-badge-sec">${escapeHtml(s.section || 'Sec-D')}</span>
+                ${batchChip}
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+    };
+
+    // ── AUTH UI CONTROLLERS ──
+    function setAuthRole(role) {
+      currentAuthRole = role;
+      const tabAdm = document.getElementById('roleTabAdmin');
+      const tabCr = document.getElementById('roleTabCR');
+      const tabStu = document.getElementById('roleTabStudent');
+      if (tabAdm) tabAdm.classList.toggle('active', role === 'admin');
+      if (tabCr) tabCr.classList.toggle('active', role === 'cr');
+      if (tabStu) tabStu.classList.toggle('active', role === 'student');
+
+      const desc = document.getElementById('authRoleDesc');
+      const regRoll = document.getElementById('regRollField');
+      const secKeyField = document.getElementById('regSecurityKeyField');
+      const scopeFields = document.getElementById('regScopeFields');
+
+      if (role === 'admin') {
+        if (desc) desc.innerHTML = '🛡️ <strong>Master Admin Portal</strong>: Full multi-section authority, cancellations & student directory.';
+        if (secKeyField) secKeyField.style.display = isAuthRegisterMode ? 'flex' : 'none';
+        if (regRoll) regRoll.style.display = 'none';
+        if (scopeFields) scopeFields.style.display = 'none';
+      } else if (role === 'cr') {
+        if (desc) desc.innerHTML = '👥 <strong>Class Representative (CR)</strong>: Manage class cancellations for your enrolled Section & Set.';
+        if (secKeyField) secKeyField.style.display = isAuthRegisterMode ? 'flex' : 'none';
+        if (regRoll) regRoll.style.display = isAuthRegisterMode ? 'flex' : 'none';
+        if (scopeFields) scopeFields.style.display = isAuthRegisterMode ? 'block' : 'none';
+      } else {
+        if (desc) desc.innerHTML = '🎓 <strong>Student Portal</strong>: Timetable & alerts locked to your Section & Set.';
+        if (secKeyField) secKeyField.style.display = 'none';
+        if (regRoll) regRoll.style.display = isAuthRegisterMode ? 'flex' : 'none';
+        if (scopeFields) scopeFields.style.display = isAuthRegisterMode ? 'block' : 'none';
+      }
+      triggerHaptic(8);
+    }
+
+    function toggleAuthMode() {
+      isAuthRegisterMode = !isAuthRegisterMode;
+      const title = document.getElementById('authHeaderTitle');
+      const sub = document.getElementById('authHeaderSub');
+      const btnText = document.getElementById('authBtnText');
+      const btnIcon = document.getElementById('authBtnIcon');
+      const switchPrompt = document.getElementById('authSwitchPrompt');
+      const switchBtn = document.getElementById('authSwitchBtn');
+      const regName = document.getElementById('regNameField');
+      const loginOpts = document.getElementById('loginOptionsRow');
+      const quickBar = document.getElementById('authQuickFillBar');
+
+      if (isAuthRegisterMode) {
+        if (title) title.innerHTML = 'Create <span class="auth-title-gradient">Account</span>';
+        if (sub) sub.textContent = 'Register with your section and set';
+        if (btnText) btnText.textContent = 'Create Account';
+        if (btnIcon) btnIcon.textContent = '🚀';
+        if (switchPrompt) switchPrompt.textContent = 'Already have an account?';
+        if (switchBtn) switchBtn.textContent = 'Login here';
+        if (regName) regName.style.display = 'flex';
+        if (loginOpts) loginOpts.style.display = 'none';
+        if (quickBar) quickBar.style.display = 'none';
+      } else {
+        if (title) title.innerHTML = 'Welcome <span class="auth-title-gradient">Back</span>';
+        if (sub) sub.textContent = 'Login to your account';
+        if (btnText) btnText.textContent = 'Login';
+        if (btnIcon) btnIcon.textContent = '➔';
+        if (switchPrompt) switchPrompt.textContent = 'New here?';
+        if (switchBtn) switchBtn.textContent = 'Create an account';
+        if (regName) regName.style.display = 'none';
+        if (loginOpts) loginOpts.style.display = 'flex';
+        if (quickBar) quickBar.style.display = 'flex';
+      }
+      setAuthRole(currentAuthRole);
+      triggerHaptic(10);
+    }
+
+    function toggleAuthPassword() {
+      const pass = document.getElementById('authPassword');
+      const eye = document.getElementById('authEyeBtn');
+      if (!pass) return;
+      if (pass.type === 'password') {
+        pass.type = 'text';
+        if (eye) eye.textContent = '🙈';
+      } else {
+        pass.type = 'password';
+        if (eye) eye.textContent = '👁️';
+      }
+    }
+
+    function quickFillCredentials(role) {
+      setAuthRole(role);
+      const email = document.getElementById('authEmail');
+      const pass = document.getElementById('authPassword');
+      if (role === 'admin') {
+        if (email) email.value = 'admin@quantum.edu.in';
+        if (pass) pass.value = 'admin';
+      } else if (role === 'cr') {
+        if (email) email.value = 'cr@quantum.edu.in';
+        if (pass) pass.value = 'cr123';
+      } else {
+        if (email) email.value = 'student@quantum.edu.in';
+        if (pass) pass.value = 'student123';
+      }
+      showToast(`⚡ Filled ${role.toUpperCase()} demo credentials`);
+      triggerHaptic(10);
+    }
+
+    function openForgotPasswordHelp() {
+      openModal('forgotPasswordHelpModal');
+    }
+
+    function onAuthSectionChanged() {
+      // Picked from select value directly
+    }
+
+    function handleAuthSubmit() {
+      const email = (document.getElementById('authEmail')?.value || '').trim();
+      const password = (document.getElementById('authPassword')?.value || '').trim();
+      const rememberMe = document.getElementById('authRememberMe')?.checked ?? true;
+
+      try {
+        if (!email) throw new Error('Please enter your email address.');
+        if (!password) throw new Error('Please enter your password.');
+
+        let user = null;
+
+        if (isAuthRegisterMode) {
+          const name = (document.getElementById('authFullName')?.value || '').trim();
+          const rollNo = (document.getElementById('authRollNo')?.value || '').trim();
+          const section = document.getElementById('authSection')?.value || 'Sec-D';
+          const set = document.getElementById('authBatch')?.value || 'Set-A';
+          const secretKey = (document.getElementById('authSecretKey')?.value || '').trim();
+
+          if (currentAuthRole === 'admin' && secretKey !== 'ADMIN2026' && secretKey !== 'admin') {
+            throw new Error('Invalid Admin Secret Passcode. Contact IT administrator.');
+          }
+          if (currentAuthRole === 'cr' && secretKey !== 'CR2026' && secretKey !== 'cr') {
+            throw new Error('Invalid CR Secret Passcode. Contact Section Coordinator.');
+          }
+
+          user = AuthEngine.registerUser({
+            role: currentAuthRole,
+            name: name,
+            email: email,
+            password: password,
+            section: (currentAuthRole === 'admin') ? 'ALL' : section,
+            set: (currentAuthRole === 'admin') ? 'ALL' : set,
+            rollNo: rollNo
+          });
+
+          showToast(`🎉 Account created for ${user.name}!`);
+        } else {
+          user = AuthEngine.loginUser(email, password);
+          showToast(`👋 Welcome back, ${user.name}!`);
+        }
+
+        AuthEngine.setSession(user, rememberMe);
+        applyAuthenticatedUser(user);
+
+        // Transition from Auth Screen to App
+        const overlay = document.getElementById('authOverlay');
+        if (overlay) overlay.style.display = 'none';
+        const vp = document.getElementById('appViewport');
+        if (vp) vp.style.display = 'block';
+
+      } catch (err) {
+        showToast(`⚠️ ${err.message}`);
+        triggerHaptic(20);
+      }
+    }
+
+    function applyAuthenticatedUser(user) {
+      if (!user) return;
+      window.CURRENT_USER = user;
+
+      // Update Top Appbar User Pill
+      const pill = document.getElementById('authUserPill');
+      const pillIcon = document.getElementById('userPillIcon');
+      const pillName = document.getElementById('userPillName');
+      const pillBadge = document.getElementById('userPillBadge');
+
+      if (pill) pill.style.display = 'inline-flex';
+      if (pillIcon) {
+        pillIcon.textContent = user.role === 'admin' ? '🛡️' : (user.role === 'cr' ? '👥' : '🎓');
+      }
+      if (pillName) pillName.textContent = user.name.split(' ')[0] || user.name;
+      if (pillBadge) pillBadge.textContent = user.role === 'admin' ? 'ADMIN' : `${user.section} (${user.set})`;
+
+      // Profile Modal details
+      const pAvatar = document.getElementById('profileAvatar');
+      const pName = document.getElementById('profileName');
+      const pRole = document.getElementById('profileRoleBadge');
+      const pRoll = document.getElementById('profileRoll');
+      const pEmail = document.getElementById('profileEmail');
+      const pScope = document.getElementById('profileScopeDesc');
+      const pActions = document.getElementById('profileManagerActions');
+
+      if (pAvatar) pAvatar.textContent = user.role === 'admin' ? '🛡️' : (user.role === 'cr' ? '👥' : '🎓');
+      if (pName) pName.textContent = user.name;
+      if (pRole) {
+        pRole.textContent = user.role.toUpperCase();
+        pRole.style.background = user.role === 'admin' ? 'rgba(168,85,247,0.2)' : (user.role === 'cr' ? 'rgba(56,189,248,0.2)' : 'rgba(16,185,129,0.2)');
+        pRole.style.color = user.role === 'admin' ? '#c084fc' : (user.role === 'cr' ? '#38bdf8' : '#34d399');
+      }
+      if (pRoll) pRoll.textContent = `Roll No: ${user.rollNo || 'N/A'}`;
+      if (pEmail) pEmail.textContent = user.email;
+      if (pScope) {
+        if (user.role === 'admin') {
+          pScope.textContent = 'All Sections & Sets • Universal Master Administrative Authority';
+        } else if (user.role === 'cr') {
+          pScope.textContent = `${user.section} • ${user.set} • Class Representative Cancellation Authority`;
+        } else {
+          pScope.textContent = `${user.section} • ${user.set} • Schedule and alerts locked to enrolled class`;
+        }
+      }
+      if (pActions) {
+        pActions.style.display = (user.role === 'admin' || user.role === 'cr') ? 'flex' : 'none';
+      }
+
+      // Holo Menu items visibility
+      const menuCancel = document.getElementById('menuCancelHubBtn');
+      const menuStu = document.getElementById('menuStudentRecBtn');
+      if (menuCancel) menuCancel.style.display = (user.role === 'admin' || user.role === 'cr') ? 'flex' : 'none';
+      if (menuStu) menuStu.style.display = (user.role === 'admin' || user.role === 'cr') ? 'flex' : 'none';
+
+      // ENFORCE PERSONALIZED ROLE SCOPE
+      if (user.role === 'student') {
+        currentSection = user.section || 'Sec-D';
+        selectedBatch = user.set || 'Set-A';
+        localStorage.setItem('quantum_section_pref', currentSection);
+        localStorage.setItem('secD_batch_pref', selectedBatch);
+      } else if (user.role === 'cr') {
+        if (!localStorage.getItem('quantum_section_pref')) {
+          currentSection = user.section || 'Sec-D';
+          selectedBatch = user.set || 'Set-A';
+        }
+      }
+
+      weeklySchedule = getActiveSchedule();
+      renderSectionPills();
+      syncStudentBatchTabs();
+      renderTodayLectures(viewingDate);
+      updateLiveState(true);
+    }
+
+    function syncStudentBatchTabs() {
+      const tabA = document.getElementById('tabSetA');
+      const tabB = document.getElementById('tabSetB');
+      const tabAll = document.getElementById('tabAll');
+      if (!tabA || !tabB || !tabAll) return;
+
+      if (window.CURRENT_USER && window.CURRENT_USER.role === 'student') {
+        const userSet = window.CURRENT_USER.set || 'Set-A';
+        tabA.style.display = (userSet === 'Set-A') ? 'inline-flex' : 'none';
+        tabB.style.display = (userSet === 'Set-B') ? 'inline-flex' : 'none';
+        tabAll.style.display = 'none';
+        tabA.className = `batch-tab ${userSet === 'Set-A' ? 'active-seta' : ''}`;
+        tabB.className = `batch-tab ${userSet === 'Set-B' ? 'active-setb' : ''}`;
+      } else {
+        tabA.style.display = 'inline-flex';
+        tabB.style.display = 'inline-flex';
+        tabAll.style.display = 'inline-flex';
+      }
+    }
+
+    function openUserProfileModal() {
+      if (!window.CURRENT_USER) {
+        document.getElementById('authOverlay').style.display = 'flex';
+        return;
+      }
+      openModal('userProfileModal');
+    }
+
+    function handleLogout() {
+      AuthEngine.clearSession();
+      window.CURRENT_USER = null;
+
+      closeModal('userProfileModal');
+      closeModal('studentRecordsModal');
+      closeModal('classCancelModal');
+
+      const pill = document.getElementById('authUserPill');
+      if (pill) pill.style.display = 'none';
+
+      const vp = document.getElementById('appViewport');
+      if (vp) vp.style.display = 'none';
+
+      const overlay = document.getElementById('authOverlay');
+      if (overlay) overlay.style.display = 'flex';
+
+      showToast('👋 Logged out successfully');
+      triggerHaptic(15);
+    }
+
+    // ── CLASS CANCELLATION HUB CONTROLLERS ──
+    function openClassCancelModal() {
+      if (!window.CURRENT_USER || (window.CURRENT_USER.role !== 'admin' && window.CURRENT_USER.role !== 'cr')) {
+        showToast('🔒 Access restricted to CR and Admin portals');
+        return;
+      }
+
+      const banner = document.getElementById('cancelScopeBanner');
+      const badge = document.getElementById('cancelPortalBadge');
+      const secSel = document.getElementById('cancelSecSelect');
+      const batchSel = document.getElementById('cancelBatchSelect');
+      const dateInp = document.getElementById('cancelDateInput');
+
+      if (badge) badge.textContent = window.CURRENT_USER.role === 'admin' ? '🛡️ Master Admin' : '👥 Class Representative';
+
+      const today = new Date();
+      const yyyy = today.getFullYear();
+      const mm = String(today.getMonth() + 1).padStart(2, '0');
+      const dd = String(today.getDate()).padStart(2, '0');
+      if (dateInp) dateInp.value = `${yyyy}-${mm}-${dd}`;
+
+      if (window.CURRENT_USER.role === 'cr') {
+        const crSec = window.CURRENT_USER.section || 'Sec-D';
+        const crSet = window.CURRENT_USER.set || 'Set-A';
+
+        if (secSel) {
+          secSel.value = crSec;
+          secSel.disabled = true;
+        }
+        if (batchSel) {
+          batchSel.value = crSet;
+          batchSel.innerHTML = `
+            <option value="${crSet}">${crSet} Only</option>
+            <option value="ALL">All Sets (${crSec} Entire Class)</option>
+          `;
+        }
+        if (banner) {
+          banner.innerHTML = `📌 <strong>CR Scope Locked:</strong> You are authorized to manage cancellations exclusively for <strong>${crSec} (${crSet})</strong>.`;
+        }
+      } else {
+        if (secSel) {
+          secSel.disabled = false;
+          secSel.value = currentSection || 'Sec-D';
+        }
+        if (batchSel) {
+          batchSel.disabled = false;
+          batchSel.innerHTML = `
+            <option value="ALL">All Sets (Entire Class)</option>
+            <option value="Set-A">Set-A (Alpha Only)</option>
+            <option value="Set-B">Set-B (Beta Only)</option>
+          `;
+          batchSel.value = 'ALL';
+        }
+        if (banner) {
+          banner.innerHTML = `🛡️ <strong>Master Admin:</strong> Universal authorization across all 10 Quantum sections.`;
+        }
+      }
+
+      onCancelFormPeriodChanged();
+      renderActiveCancellationsList();
+      openModal('classCancelModal');
+    }
+
+    function onCancelFormPeriodChanged() {
+      const sec = document.getElementById('cancelSecSelect')?.value || currentSection;
+      const batch = document.getElementById('cancelBatchSelect')?.value || selectedBatch;
+      const periodId = document.getElementById('cancelPeriodSelect')?.value || 'L1';
+      const dateVal = document.getElementById('cancelDateInput')?.value;
+
+      const titleEl = document.getElementById('cancelLecturePreviewTitle');
+      const facEl = document.getElementById('cancelLecturePreviewFac');
+
+      let dateObj = new Date();
+      if (dateVal) {
+        const parts = dateVal.split('-');
+        if (parts.length === 3) dateObj = new Date(parts[0], parts[1] - 1, parts[2]);
+      }
+      const dayIdx = dateObj.getDay();
+
+      let targetSlot = null;
+      const secData = ALL_SECTIONS[sec];
+      if (secData && secData.schedule && secData.schedule[dayIdx]) {
+        targetSlot = secData.schedule[dayIdx].find(s => s.period === periodId);
+      }
+
+      if (!targetSlot) {
+        if (titleEl) titleEl.textContent = 'No class scheduled for this period/day';
+        if (facEl) facEl.textContent = '--';
+        return;
+      }
+
+      let subj = targetSlot.subject;
+      let fac = targetSlot.faculty || getFacultyForSubject(subj);
+
+      if (targetSlot.isSplit) {
+        if (batch === 'Set-A') {
+          subj = `[Set-A] ${targetSlot.setA.subject}`;
+          fac = targetSlot.setA.faculty || getFacultyForSubject(targetSlot.setA.subject);
+        } else if (batch === 'Set-B') {
+          subj = `[Set-B] ${targetSlot.setB.subject}`;
+          fac = targetSlot.setB.faculty || getFacultyForSubject(targetSlot.setB.subject);
+        } else {
+          subj = `[Split] Set-A: ${targetSlot.setA.subject} | Set-B: ${targetSlot.setB.subject}`;
+          fac = `${targetSlot.setA.faculty || 'Faculty A'} / ${targetSlot.setB.faculty || 'Faculty B'}`;
+        }
+      }
+
+      if (titleEl) titleEl.textContent = subj;
+      if (facEl) facEl.textContent = fac ? `👨‍🏫 ${fac}` : '👨‍🏫 Faculty';
+    }
+
+    function onCancelPresetChanged() {
+      const preset = document.getElementById('cancelReasonPreset')?.value;
+      const customGroup = document.getElementById('cancelCustomReasonGroup');
+      if (customGroup) {
+        customGroup.style.display = (preset === 'Custom') ? 'block' : 'none';
+      }
+    }
+
+    function submitClassCancellation() {
+      if (!window.CURRENT_USER) {
+        showToast('🔒 Please log in first');
+        return;
+      }
+
+      const sec = document.getElementById('cancelSecSelect')?.value;
+      const batch = document.getElementById('cancelBatchSelect')?.value;
+      const dateVal = document.getElementById('cancelDateInput')?.value;
+      const periodId = document.getElementById('cancelPeriodSelect')?.value;
+      const preset = document.getElementById('cancelReasonPreset')?.value;
+      const customReason = (document.getElementById('cancelCustomReasonText')?.value || '').trim();
+
+      const reason = (preset === 'Custom') ? (customReason || 'Class Cancelled') : preset;
+
+      if (window.CURRENT_USER.role === 'cr') {
+        const crSec = window.CURRENT_USER.section || 'Sec-D';
+        const crSet = window.CURRENT_USER.set || 'Set-A';
+        if (sec !== crSec) {
+          showToast(`⛔ Permission Denied: CR can only cancel classes for ${crSec}!`);
+          return;
+        }
+        if (batch !== crSet && batch !== 'ALL') {
+          showToast(`⛔ Permission Denied: CR can only cancel for ${crSet} or entire class!`);
+          return;
+        }
+      }
+
+      if (!dateVal) {
+        showToast('⚠️ Please select a cancellation date');
+        return;
+      }
+
+      const titleEl = document.getElementById('cancelLecturePreviewTitle');
+      const facEl = document.getElementById('cancelLecturePreviewFac');
+      const subject = titleEl ? titleEl.textContent : 'Class';
+      const faculty = facEl ? facEl.textContent.replace('👨‍🏫 ', '') : '';
+
+      CancelEngine.cancelClass({
+        section: sec,
+        batch: batch,
+        date: dateVal,
+        period: periodId,
+        subject: subject,
+        faculty: faculty,
+        reason: reason,
+        author: window.CURRENT_USER.name,
+        role: window.CURRENT_USER.role
+      });
+
+      showToast(`📢 Cancellation broadcasted for ${sec} (${periodId})!`);
+      triggerHaptic(20);
+
+      renderActiveCancellationsList();
+      renderTodayLectures(viewingDate);
+      updateLiveState(true);
+    }
+
+    function renderActiveCancellationsList() {
+      const container = document.getElementById('activeCancellationsList');
+      const badge = document.getElementById('cancelActiveCountBadge');
+      if (!container) return;
+
+      const list = CancelEngine.getAll();
+      if (badge) badge.textContent = `${list.length} active`;
+
+      if (list.length === 0) {
+        container.innerHTML = `
+          <div style="text-align:center; padding:16px; font-size:0.75rem; color:#64748b;">
+            No active cancellations recorded. All classes running on schedule!
+          </div>
+        `;
+        return;
+      }
+
+      const canRestoreAll = window.CURRENT_USER && window.CURRENT_USER.role === 'admin';
+      const crSec = window.CURRENT_USER ? window.CURRENT_USER.section : '';
+
+      container.innerHTML = list.map(c => {
+        const canRestore = canRestoreAll || (window.CURRENT_USER && window.CURRENT_USER.role === 'cr' && c.section === crSec);
+        return `
+          <div style="background:rgba(239,68,68,0.08); border:1px solid rgba(239,68,68,0.25); border-radius:10px; padding:10px 12px; display:flex; align-items:center; justify-content:space-between; gap:8px;">
+            <div style="flex:1; min-width:0;">
+              <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
+                <span class="stu-badge-sec" style="background:#ef4444; color:#fff; font-size:0.65rem;">${escapeHtml(c.section)}</span>
+                <span style="font-weight:750; font-size:0.80rem; color:#f8fafc;">${escapeHtml(c.period)} • ${escapeHtml(c.subject)}</span>
+                <span style="font-size:0.68rem; color:#94a3b8;">(${escapeHtml(c.batch)})</span>
+              </div>
+              <div style="font-size:0.72rem; color:#fca5a5; margin-top:3px;">
+                <strong>Reason:</strong> ${escapeHtml(c.reason)}
+              </div>
+              <div style="font-size:0.65rem; color:#64748b; margin-top:2px;">
+                📅 ${c.date} • By: ${escapeHtml(c.author)} (${c.role.toUpperCase()})
+              </div>
+            </div>
+            ${canRestore ? `
+              <button type="button" class="restore-mini-btn" onclick="restoreCancellationItem('${c.id}', event)">
+                ↩ Restore
+              </button>
+            ` : ''}
+          </div>
+        `;
+      }).join('');
+    }
+
+    function restoreCancellationItem(id, event) {
+      if (event) event.stopPropagation();
+      const target = CancelEngine.restoreClass(id);
+      if (target) {
+        showToast(`✓ Restored ${target.subject} (${target.period}) to schedule!`);
+        triggerHaptic(12);
+      }
+      renderActiveCancellationsList();
+      renderTodayLectures(viewingDate);
+      updateLiveState(true);
+    }
+
+    // ── STUDENT RECORDS DIRECTORY CONTROLLERS ──
+    function openStudentRecordsModal() {
+      if (!window.CURRENT_USER || (window.CURRENT_USER.role !== 'admin' && window.CURRENT_USER.role !== 'cr')) {
+        showToast('🔒 Access restricted to CR and Admin portals');
+        return;
+      }
+      StudentRecordsEngine.render();
+      openModal('studentRecordsModal');
+    }
+
+    function filterStudentRecords() {
+      StudentRecordsEngine.render();
+    }
+
+    function exportStudentsCSV() {
+      const allUsers = AuthEngine.getUsers();
+      const students = allUsers.filter(u => u.role === 'student');
+
+      if (students.length === 0) {
+        showToast('⚠️ No student records to export');
+        return;
+      }
+
+      let csvContent = '\uFEFF';
+      csvContent += 'Name,Roll No,Email,Section,Set,Registered Date\n';
+
+      students.forEach(s => {
+        const cleanName = `"${(s.name || '').replace(/"/g, '""')}"`;
+        const roll = `"${(s.rollNo || '').replace(/"/g, '""')}"`;
+        const email = `"${(s.email || '').replace(/"/g, '""')}"`;
+        const sec = `"${(s.section || '').replace(/"/g, '""')}"`;
+        const set = `"${(s.set || '').replace(/"/g, '""')}"`;
+        const date = `"${s.createdAt || ''}"`;
+        csvContent += `${cleanName},${roll},${email},${sec},${set},${date}\n`;
+      });
+
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.setAttribute('href', url);
+      link.setAttribute('download', `Quantum_Students_Directory_${new Date().toISOString().split('T')[0]}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+
+      showToast(`📥 Exported ${students.length} student records to CSV!`);
+      triggerHaptic(15);
+    }
+
+    function copyStudentsSummary() {
+      const allUsers = AuthEngine.getUsers();
+      const students = allUsers.filter(u => u.role === 'student');
+
+      if (students.length === 0) {
+        showToast('⚠️ No student records to copy');
+        return;
+      }
+
+      let text = `📋 Quantum University — Registered Students (${students.length})\n\n`;
+      students.forEach((s, idx) => {
+        text += `${idx + 1}. ${s.name} | Roll: ${s.rollNo || 'N/A'} | ${s.section} (${s.set}) | ${s.email}\n`;
+      });
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast(`📋 Copied ${students.length} students to clipboard!`);
+        }).catch(() => {
+          showToast('⚠️ Clipboard write failed');
+        });
+      } else {
+        showToast('⚠️ Clipboard not supported on this browser');
+      }
+    }
+
     // Periods Configuration (8 Periods)
     const periods = [
       { id: 'L1', name: 'L1', startMins: 9 * 60, endMins: 9 * 60 + 55, timing: '09:00 - 09:55', simMid: { h: 9, m: 20 } },
@@ -6299,6 +8606,11 @@
     let weeklySchedule = getActiveSchedule();
 
     function selectSection(secKey) {
+      if (window.CURRENT_USER && window.CURRENT_USER.role === 'student' && secKey !== window.CURRENT_USER.section) {
+        showToast(`🔒 Enrolled in ${window.CURRENT_USER.section}. Section switching is locked for students.`);
+        triggerHaptic(15);
+        return;
+      }
       triggerHaptic(12);
       if (!ALL_SECTIONS[secKey]) {
         showToast('⏳ Loading section data...');
@@ -6325,21 +8637,30 @@
       if (!_allSectionsLoaded) { _ensureAllSections(() => renderSectionPills()); }
       const track = document.getElementById('sectionPillsTrack');
       if (track) {
-        const secKeys = Object.keys(ALL_SECTIONS);
-        track.innerHTML = secKeys.map(k => {
-          const isActive = (k === currentSection);
-          const sec = ALL_SECTIONS[k];
-          return `<button class="sec-pill-btn ${isActive ? 'active' : ''}" onclick="selectSection('${k}')" title="${sec.name} • Room ${sec.room}">
-            <span>${k}</span>
-            <span style="font-size:0.58rem; opacity:0.75;">(${sec.room})</span>
+        if (window.CURRENT_USER && window.CURRENT_USER.role === 'student') {
+          const k = window.CURRENT_USER.section || 'Sec-D';
+          const sec = ALL_SECTIONS[k] || { name: k, room: 'A-108' };
+          track.innerHTML = `<button class="sec-pill-btn active" style="cursor:default;" title="Locked to your enrolled section">
+            <span>🔒 ${k} (My Section)</span>
+            <span style="font-size:0.58rem; opacity:0.85;">• ${window.CURRENT_USER.set || 'Set-A'}</span>
           </button>`;
-        }).join('');
+        } else {
+          const secKeys = Object.keys(ALL_SECTIONS);
+          track.innerHTML = secKeys.map(k => {
+            const isActive = (k === currentSection);
+            const sec = ALL_SECTIONS[k];
+            return `<button class="sec-pill-btn ${isActive ? 'active' : ''}" onclick="selectSection('${k}')" title="${sec.name} • Room ${sec.room}">
+              <span>${k}</span>
+              <span style="font-size:0.58rem; opacity:0.75;">(${sec.room})</span>
+            </button>`;
+          }).join('');
 
-        // Auto-scroll active pill horizontally into view WITHOUT vertical window scroll
-        const activeBtn = track.querySelector('.sec-pill-btn.active');
-        if (activeBtn && track) {
-          const leftPos = activeBtn.offsetLeft - (track.clientWidth - activeBtn.clientWidth) / 2;
-          track.scrollTo({ left: leftPos, behavior: 'smooth' });
+          // Auto-scroll active pill horizontally into view WITHOUT vertical window scroll
+          const activeBtn = track.querySelector('.sec-pill-btn.active');
+          if (activeBtn && track) {
+            const leftPos = activeBtn.offsetLeft - (track.clientWidth - activeBtn.clientWidth) / 2;
+            track.scrollTo({ left: leftPos, behavior: 'smooth' });
+          }
         }
       }
 
@@ -7874,9 +10195,9 @@
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '5.9.12';
-    const LOCAL_APP_VERSION_CODE = 92;
-    const LOCAL_APP_BUILD_HASH = '1c5cbb63757c';
+    const LOCAL_APP_VERSION_NAME = '6.4.0';
+    const LOCAL_APP_VERSION_CODE = 93;
+    const LOCAL_APP_BUILD_HASH = '661fd505a49b';
 
     let cachedLatestVersionCode = 29;
 
@@ -8336,6 +10657,11 @@
 
     // SWITCH BETWEEN SET-A, SET-B, AND COMPARE BOTH
     function setBatchFilter(batch) {
+      if (window.CURRENT_USER && window.CURRENT_USER.role === 'student' && batch !== window.CURRENT_USER.set) {
+        showToast(`🔒 Enrolled in ${window.CURRENT_USER.set}. Batch switching is locked for students.`);
+        triggerHaptic(15);
+        return;
+      }
       triggerHaptic(14);
       selectedBatch = batch;
       localStorage.setItem('secD_batch_pref', batch);
@@ -8753,12 +11079,16 @@
         const isCompleted = isToday && (currentMinutes >= end);
         const isUpcoming = isToday && (currentMinutes < start);
 
+        // Cancellation Detection
+        const cancelInfo = CancelEngine.getCancellation(currentSection, selectedBatch, dateObj, s.period);
+        const isCancelled = Boolean(cancelInfo);
+
         let cardBorderClass = 'all-card';
         if (selectedBatch === 'Set-A') cardBorderClass = 'set-a-card';
         else if (selectedBatch === 'Set-B') cardBorderClass = 'set-b-card';
 
         const card = document.createElement('div');
-        card.className = `lecture-card ${cardBorderClass} ${isLive ? 'is-live' : ''} ${isCompleted ? 'is-completed' : ''}`;
+        card.className = `lecture-card ${cardBorderClass} ${isLive && !isCancelled ? 'is-live' : ''} ${isCompleted && !isCancelled ? 'is-completed' : ''} ${isCancelled ? 'is-cancelled' : ''}`;
         card.style.animationDelay = `${idx * 45}ms`;
         card.dataset.periodId = s.period;
 
@@ -8766,7 +11096,9 @@
         const attStatus = attendanceMap[dateKey];
 
         let statusTag = '';
-        if (isToday) {
+        if (isCancelled) {
+          statusTag = '<span class="status-tag" style="background:rgba(239,68,68,0.22); color:#ef4444; border-color:rgba(239,68,68,0.45); font-weight:800;">❌ CANCELLED</span>';
+        } else if (isToday) {
           if (isLive) {
             statusTag = '<span class="status-tag status-live-pill">● LIVE NOW</span>';
           } else if (isCompleted) {
@@ -8780,10 +11112,21 @@
           statusTag = `<span class="status-tag status-upcoming-pill">${dayName}</span>`;
         }
 
+        const canRestore = window.CURRENT_USER && (window.CURRENT_USER.role === 'admin' || (window.CURRENT_USER.role === 'cr' && cancelInfo && cancelInfo.section === window.CURRENT_USER.section));
+        const cancelBannerHtml = isCancelled ? `
+          <div class="cancelled-banner">
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:6px; flex-wrap:wrap;">
+              <span class="cancelled-badge">❌ CLASS CANCELLED</span>
+              ${canRestore ? `<button type="button" class="restore-mini-btn" onclick="restoreCancellationItem('${cancelInfo.id}', event)">↩ Restore</button>` : ''}
+            </div>
+            <div class="cancelled-reason"><strong>Reason:</strong> ${escapeHtml(cancelInfo.reason || 'Faculty on leave')}</div>
+            <div class="cancelled-author">👤 Cancelled by: ${escapeHtml(cancelInfo.author || 'CR')} • ${new Date(cancelInfo.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
+          </div>
+        ` : '';
+
         // PURE UNMIXED RENDERING:
         if (s.isSplit) {
           if (selectedBatch === 'Set-A') {
-            // STRICTLY SET-A CLASS ONLY (ZERO SET-B MENTION)
             const isLab = s.setA.subject.toLowerCase().includes('lab');
             const isMentor = s.setA.subject.toLowerCase().includes('mentor');
             const typeTag = isLab ? '🔬 Set-A Lab' : (isMentor ? '🧑‍🏫 Set-A Mentor' : '📚 Set-A Self Study');
@@ -8798,7 +11141,9 @@
                 ${statusTag}
               </div>
 
-              <div class="card-subject-title">${s.setA.subject}</div>
+              ${cancelBannerHtml}
+
+              <div class="card-subject-title" style="${isCancelled ? 'text-decoration:line-through; opacity:0.65;' : ''}">${s.setA.subject}</div>
               ${facA ? `<div class="card-faculty-row"><span class="faculty-badge">👨‍🏫 ${facA}</span></div>` : ''}
 
               <div class="card-footer-info">
@@ -8806,19 +11151,20 @@
                   <span class="hero-room-badge">${s.setA.room !== '-' ? '📍 ' + s.setA.room : 'Campus / Library'}</span>
                   <span class="hero-batch-badge badge-set-a">${typeTag}</span>
                 </div>
-                <button class="att-toggle-btn ${attStatus === 'attended' ? 'attended' : attStatus === 'missed' ? 'missed' : ''}" onclick="quickToggleAttendance(event, '${dateKey}')">
-                  ${attStatus === 'attended' ? '✓ Attended' : attStatus === 'missed' ? '✗ Missed' : 'Mark Att'}
-                </button>
+                ${isCancelled ? '<span style="font-size:0.68rem; color:#ef4444; font-weight:700;">No Attendance (Cancelled)</span>' : `
+                  <button class="att-toggle-btn ${attStatus === 'attended' ? 'attended' : attStatus === 'missed' ? 'missed' : ''}" onclick="quickToggleAttendance(event, '${dateKey}')">
+                    ${attStatus === 'attended' ? '✓ Attended' : attStatus === 'missed' ? '✗ Missed' : 'Mark Att'}
+                  </button>
+                `}
               </div>
             `;
             card.onclick = (e) => {
-              if (e.target.tagName !== 'BUTTON') {
+              if (e.target.tagName !== 'BUTTON' && !isCancelled) {
                 openPeriodModal(s.period, s.setA.subject, s.setA.room, s.timing, dateKey);
               }
             };
 
           } else if (selectedBatch === 'Set-B') {
-            // STRICTLY SET-B CLASS ONLY (ZERO SET-A MENTION)
             const isLab = s.setB.subject.toLowerCase().includes('lab');
             const isMentor = s.setB.subject.toLowerCase().includes('mentor');
             const typeTag = isLab ? '🔬 Set-B Lab' : (isMentor ? '🧑‍🏫 Set-B Mentor' : '📚 Set-B Self Study');
@@ -8833,7 +11179,9 @@
                 ${statusTag}
               </div>
 
-              <div class="card-subject-title">${s.setB.subject}</div>
+              ${cancelBannerHtml}
+
+              <div class="card-subject-title" style="${isCancelled ? 'text-decoration:line-through; opacity:0.65;' : ''}">${s.setB.subject}</div>
               ${facB ? `<div class="card-faculty-row"><span class="faculty-badge">👨‍🏫 ${facB}</span></div>` : ''}
 
               <div class="card-footer-info">
@@ -8841,13 +11189,15 @@
                   <span class="hero-room-badge">${s.setB.room !== '-' ? '📍 ' + s.setB.room : 'Campus / Library'}</span>
                   <span class="hero-batch-badge badge-set-b">${typeTag}</span>
                 </div>
-                <button class="att-toggle-btn ${attStatus === 'attended' ? 'attended' : attStatus === 'missed' ? 'missed' : ''}" onclick="quickToggleAttendance(event, '${dateKey}')">
-                  ${attStatus === 'attended' ? '✓ Attended' : attStatus === 'missed' ? '✗ Missed' : 'Mark Att'}
-                </button>
+                ${isCancelled ? '<span style="font-size:0.68rem; color:#ef4444; font-weight:700;">No Attendance (Cancelled)</span>' : `
+                  <button class="att-toggle-btn ${attStatus === 'attended' ? 'attended' : attStatus === 'missed' ? 'missed' : ''}" onclick="quickToggleAttendance(event, '${dateKey}')">
+                    ${attStatus === 'attended' ? '✓ Attended' : attStatus === 'missed' ? '✗ Missed' : 'Mark Att'}
+                  </button>
+                `}
               </div>
             `;
             card.onclick = (e) => {
-              if (e.target.tagName !== 'BUTTON') {
+              if (e.target.tagName !== 'BUTTON' && !isCancelled) {
                 openPeriodModal(s.period, s.setB.subject, s.setB.room, s.timing, dateKey);
               }
             };
@@ -8868,11 +11218,13 @@
                 ${statusTag}
               </div>
 
-              <div class="split-sets-wrapper">
+              ${cancelBannerHtml}
+
+              <div class="split-sets-wrapper" style="${isCancelled ? 'opacity:0.65;' : ''}">
                 <div class="set-subcard set-a-style">
                   <div style="display:flex; align-items:center; gap:6px; width:100%;">
                     <span class="batch-chip chip-a">Set-A</span>
-                    <strong style="flex:1; min-width:0; line-height:1.28;">${s.setA.subject}</strong>
+                    <strong style="flex:1; min-width:0; line-height:1.28; ${isCancelled ? 'text-decoration:line-through;' : ''}">${s.setA.subject}</strong>
                   </div>
                   <div style="display:flex; align-items:center; justify-content:space-between; gap:6px; flex-wrap:wrap; width:100%;">
                     ${facA ? `<span style="font-size:0.7rem; color:var(--gold-accent); font-weight:750;">👨‍🏫 ${facA}</span>` : '<span></span>'}
@@ -8883,7 +11235,7 @@
                 <div class="set-subcard set-b-style">
                   <div style="display:flex; align-items:center; gap:6px; width:100%;">
                     <span class="batch-chip chip-b">Set-B</span>
-                    <strong style="flex:1; min-width:0; line-height:1.28;">${s.setB.subject}</strong>
+                    <strong style="flex:1; min-width:0; line-height:1.28; ${isCancelled ? 'text-decoration:line-through;' : ''}">${s.setB.subject}</strong>
                   </div>
                   <div style="display:flex; align-items:center; justify-content:space-between; gap:6px; flex-wrap:wrap; width:100%;">
                     ${facB ? `<span style="font-size:0.7rem; color:var(--gold-accent); font-weight:750;">👨‍🏫 ${facB}</span>` : '<span></span>'}
@@ -8894,13 +11246,15 @@
 
               <div class="card-footer-info">
                 <span style="font-size:0.7rem; color:var(--text-sub);">Split Lab / Theory Session</span>
-                <button class="att-toggle-btn ${attStatus === 'attended' ? 'attended' : attStatus === 'missed' ? 'missed' : ''}" onclick="quickToggleAttendance(event, '${dateKey}')">
-                  ${attStatus === 'attended' ? '✓ Attended' : attStatus === 'missed' ? '✗ Missed' : 'Mark Att'}
-                </button>
+                ${isCancelled ? '<span style="font-size:0.68rem; color:#ef4444; font-weight:700;">No Attendance (Cancelled)</span>' : `
+                  <button class="att-toggle-btn ${attStatus === 'attended' ? 'attended' : attStatus === 'missed' ? 'missed' : ''}" onclick="quickToggleAttendance(event, '${dateKey}')">
+                    ${attStatus === 'attended' ? '✓ Attended' : attStatus === 'missed' ? '✗ Missed' : 'Mark Att'}
+                  </button>
+                `}
               </div>
             `;
             card.onclick = (e) => {
-              if (e.target.tagName !== 'BUTTON') {
+              if (e.target.tagName !== 'BUTTON' && !isCancelled) {
                 openPeriodModal(s.period, s.setA.subject, s.setA.room, s.timing, dateKey);
               }
             };
@@ -8920,7 +11274,7 @@
           }
           const facCommon = isLunch ? '' : (s.faculty || getFacultyForSubject(s.subject));
           const roomDisplay = isLunch ? '📍 Mess' : (s.room !== '-' ? '📍 ' + s.room : 'Campus / Common');
-          const attBtnHtml = isLunch ? '' : `
+          const attBtnHtml = (isLunch || isCancelled) ? (isCancelled ? '<span style="font-size:0.68rem; color:#ef4444; font-weight:700;">No Attendance (Cancelled)</span>' : '') : `
               <button class="att-toggle-btn ${attStatus === 'attended' ? 'attended' : attStatus === 'missed' ? 'missed' : ''}" onclick="quickToggleAttendance(event, '${dateKey}')">
                 ${attStatus === 'attended' ? '✓ Attended' : attStatus === 'missed' ? '✗ Missed' : 'Mark Att'}
               </button>`;
@@ -8934,7 +11288,9 @@
               ${statusTag}
             </div>
 
-            <div class="card-subject-title">${s.subject}</div>
+            ${cancelBannerHtml}
+
+            <div class="card-subject-title" style="${isCancelled ? 'text-decoration:line-through; opacity:0.65;' : ''}">${s.subject}</div>
             ${facCommon ? `<div class="card-faculty-row"><span class="faculty-badge">👨‍🏫 ${facCommon}</span></div>` : ''}
 
             <div class="card-footer-info">
@@ -8945,7 +11301,7 @@
               ${attBtnHtml}
             </div>
           `;
-          if (!isLunch) {
+          if (!isLunch && !isCancelled) {
             card.onclick = (e) => {
               if (e.target.tagName !== 'BUTTON') {
                 openPeriodModal(s.period, s.subject, s.room, s.timing, dateKey);
@@ -9225,6 +11581,9 @@
         const pStartSecs = periods[i].startMins * 60;
         const secsUntilStart = pStartSecs - totalSecs;
         if (secsUntilStart > 0 && secsUntilStart <= 300) {
+          const cancelInfo = CancelEngine.getCancellation(currentSection, selectedBatch, now, periods[i].id);
+          if (cancelInfo) continue; // Skip alarm when class is cancelled
+
           const notifKey = `${now.toDateString()}_${periods[i].id}_${selectedBatch}`;
           if (lastFiveMinNotifiedKey !== notifKey) {
             lastFiveMinNotifiedKey = notifKey;
@@ -10280,6 +12639,28 @@
 
     // INITIALIZATION
     function init() {
+      // ── QUANTUM AUTHENTICATION GATEKEEPER ──
+      AuthEngine.fetchRemoteUsers();
+      CancelEngine.init();
+
+      const existingSession = AuthEngine.getCurrentSession();
+      if (!existingSession) {
+        // App is locked: Show Futuristic Neon Login Portal FIRST
+        const authOverlay = document.getElementById('authOverlay');
+        if (authOverlay) authOverlay.style.display = 'flex';
+        const vp = document.getElementById('appViewport');
+        if (vp) vp.style.display = 'none';
+        const pill = document.getElementById('authUserPill');
+        if (pill) pill.style.display = 'none';
+      } else {
+        // Authenticated Session exists: unlock app and personalize
+        const authOverlay = document.getElementById('authOverlay');
+        if (authOverlay) authOverlay.style.display = 'none';
+        const vp = document.getElementById('appViewport');
+        if (vp) vp.style.display = 'block';
+        applyAuthenticatedUser(existingSession);
+      }
+
       let savedTheme = localStorage.getItem('secD_theme');
       if (savedTheme !== 'campus' && savedTheme !== 'cyber-neon' && savedTheme !== 'aura-light') {
         savedTheme = 'campus';

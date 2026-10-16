@@ -1,11 +1,11 @@
 {
-  "versionName": "5.9.12",
-  "versionCode": 92,
-  "apkVersionCode": 92,
-  "htmlHash": "1c5cbb63757c",
-  "apkHash": "a347dd7d2b1d",
+  "versionName": "6.4.0",
+  "versionCode": 93,
+  "apkVersionCode": 93,
+  "htmlHash": "661fd505a49b",
+  "apkHash": "37ae37871437",
   "apkSize": 2405492,
-  "updatedAt": 1792003007481,
+  "updatedAt": 1792173642011,
   "publicUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main",
   "cloudflareUrl": "",
   "githubUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main",
@@ -13,9 +13,9 @@
   "apkUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/SecD_Timetable.apk",
   "htmlUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/index.html",
   "downloadUrl": "https://krishnapanday4196-gif.github.io/sec-d-timetable",
-  "lastUpdated": "2026-10-14T18:36:47.481Z",
-  "apkMd5": "a347dd7d2b1d8e7bb1aca1a1b5ce79c7",
-  "releaseNotes": "v5.9.12: Next-level cybernetic architectural background grid with HUD crosshairs, reactive touch spotlight, laser scan beam, and official faculty directory",
-  "apkSizeBytes": 2464270,
-  "apkSizeFormatted": "2.35 MB"
+  "lastUpdated": "2026-10-16T18:00:42.011Z",
+  "apkMd5": "37ae37871437e6829a57319d63bac4ec",
+  "releaseNotes": "v6.4.0: Official Dark Neon Glassmorphism Authentication Portal, Student Section/Set Lock, CR & Admin Cancellation Hub, and Student Records Directory",
+  "apkSizeBytes": 2436372,
+  "apkSizeFormatted": "2.32 MB"
 }

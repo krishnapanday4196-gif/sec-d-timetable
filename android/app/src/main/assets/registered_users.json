@@ -1,0 +1,65 @@
+{
+  "users": [
+    {
+      "id": "usr_admin_1",
+      "name": "System Administrator",
+      "email": "admin@quantum.edu.in",
+      "password": "admin",
+      "role": "admin",
+      "section": "Sec-D",
+      "set": "ALL",
+      "rollNo": "ADMIN-01",
+      "registeredAt": 1773000000000,
+      "lastLoginAt": 1773000000000
+    },
+    {
+      "id": "usr_cr_1",
+      "name": "Aman Verma (CR)",
+      "email": "cr@quantum.edu.in",
+      "password": "cr123",
+      "role": "cr",
+      "section": "Sec-D",
+      "set": "Set-A",
+      "rollNo": "230101042",
+      "registeredAt": 1773000000000,
+      "lastLoginAt": 1773000000000
+    },
+    {
+      "id": "usr_stu_1",
+      "name": "Krishna Pandey",
+      "email": "student@quantum.edu.in",
+      "password": "student123",
+      "role": "student",
+      "section": "Sec-D",
+      "set": "Set-A",
+      "rollNo": "230101088",
+      "registeredAt": 1773000000000,
+      "lastLoginAt": 1773000000000
+    },
+    {
+      "id": "usr_stu_2",
+      "name": "Rohan Gupta",
+      "email": "rohan@quantum.edu.in",
+      "password": "student123",
+      "role": "student",
+      "section": "Sec-D",
+      "set": "Set-B",
+      "rollNo": "230101095",
+      "registeredAt": 1773000000000,
+      "lastLoginAt": 1773000000000
+    },
+    {
+      "id": "usr_stu_3",
+      "name": "Priya Sharma",
+      "email": "priya@quantum.edu.in",
+      "password": "student123",
+      "role": "student",
+      "section": "Sec-A",
+      "set": "Set-A",
+      "rollNo": "230101012",
+      "registeredAt": 1773000000000,
+      "lastLoginAt": 1773000000000
+    }
+  ],
+  "updatedAt": 1773000000000
+}
