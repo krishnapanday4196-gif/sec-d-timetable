@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Non-render-blocking font load: media="print" prevents blocking, onload swaps to "all" -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;700;800&family=Caveat:wght@600;700&display=swap"
     rel="stylesheet" media="print" onload="this.media='all'">
 
   <style>
@@ -5134,170 +5134,254 @@
        QUANTUM NEON GLASSMORPHIC AUTHENTICATION PORTAL (OFFICIAL UI)
        Matches the exact aesthetic from the UI design screenshot
        ============================================================ */
+    /* ============================================================
+       QUANTUM OFFICIAL AUTHENTICATION PORTAL (EXACT DESIGN MATCH)
+       Matches Image 1: Dusk Campus Header, QTIMEX Brand, Glowing Neon Card
+       ============================================================ */
     .auth-overlay {
       position: fixed;
       inset: 0;
       width: 100vw;
       height: 100vh;
       z-index: 999999;
-      background: radial-gradient(circle at 15% 15%, rgba(124, 58, 237, 0.35) 0%, transparent 45%),
-                  radial-gradient(circle at 85% 85%, rgba(6, 182, 212, 0.30) 0%, transparent 48%),
-                  radial-gradient(circle at 50% 50%, #060a22 0%, #030614 100%);
+      background: radial-gradient(circle at 10% 10%, rgba(56, 189, 248, 0.15) 0%, transparent 40%),
+                  radial-gradient(circle at 90% 15%, rgba(168, 85, 247, 0.20) 0%, transparent 45%),
+                  #020617;
       overflow-y: auto;
       overflow-x: hidden;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      padding: 24px 16px 40px;
+      padding: 0 14px 40px;
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       box-sizing: border-box;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Ambient Background Art & Leaves Silhouette */
-    .auth-bg-art {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 1;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-    }
-
-    .auth-art-left {
-      position: absolute;
-      bottom: -40px;
-      left: -40px;
-      width: 320px;
-      height: 380px;
-      opacity: 0.85;
-      filter: drop-shadow(0 0 25px rgba(56, 189, 248, 0.35));
-    }
-
-    .auth-art-right {
-      position: absolute;
-      bottom: -60px;
-      right: -50px;
-      width: 340px;
-      height: 360px;
-      opacity: 0.85;
-      filter: drop-shadow(0 0 30px rgba(168, 85, 247, 0.35));
-    }
-
-    /* Top-Right Header Tagline */
-    .auth-top-header {
+    /* Panoramic Campus Building Header with Dusk Lighting */
+    .auth-campus-header-card {
+      position: relative;
       width: 100%;
       max-width: 440px;
-      display: flex;
-      justify-content: flex-end;
-      position: relative;
-      z-index: 10;
-      margin-bottom: 8px;
-    }
-
-    .auth-tagline-box {
+      height: 200px;
+      overflow: hidden;
+      border-radius: 0 0 26px 26px;
       display: flex;
       flex-direction: column;
-      align-items: flex-end;
-      text-align: right;
+      justify-content: flex-start;
+      padding: 16px 14px;
+      box-sizing: border-box;
+      margin-bottom: -32px;
+      z-index: 5;
     }
 
-    .auth-tagline-text {
-      font-size: 0.72rem;
-      letter-spacing: 0.4px;
-      color: #94a3b8;
-      font-weight: 500;
-      line-height: 1.35;
+    .auth-campus-photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 25%;
+      filter: brightness(0.9) contrast(1.15) saturate(1.25);
+      z-index: 1;
     }
 
-    .auth-tagline-bar {
-      width: 34px;
-      height: 2.5px;
-      background: linear-gradient(90deg, #a855f7, #00f0ff);
-      border-radius: 99px;
-      margin-top: 5px;
-      box-shadow: 0 0 10px rgba(0, 240, 255, 0.65);
+    .auth-campus-mask {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(2, 6, 23, 0.18) 0%,
+        rgba(2, 6, 23, 0.45) 48%,
+        #020617 100%
+      );
+      z-index: 2;
+      pointer-events: none;
     }
 
-    /* Center Header & Emblem */
-    .auth-header-center {
+    .auth-header-content {
       position: relative;
-      z-index: 10;
+      z-index: 3;
       display: flex;
-      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .auth-brand-badge-group {
+      display: flex;
       align-items: center;
-      text-align: center;
-      margin-top: 2px;
-      margin-bottom: 18px;
+      gap: 11px;
     }
 
-    .auth-emblem-wrap {
-      width: 78px;
-      height: 68px;
+    .auth-logo-neon-circle {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      padding: 2.5px;
+      background: linear-gradient(135deg, #00f0ff 0%, #a855f7 55%, #ec4899 100%);
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.7), 0 0 35px rgba(168, 85, 247, 0.4);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 10px;
-      position: relative;
+      flex-shrink: 0;
     }
 
-    .auth-emblem-svg {
+    .auth-brand-logo-img {
       width: 100%;
       height: 100%;
-      filter: drop-shadow(0 0 14px rgba(0, 240, 255, 0.55)) drop-shadow(0 0 24px rgba(168, 85, 247, 0.35));
+      border-radius: 50%;
+      object-fit: cover;
+      background: #060c24;
     }
 
-    .auth-main-title {
-      font-size: 1.95rem;
-      font-weight: 800;
+    .auth-brand-col {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .auth-brand-title-line {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .auth-qtimex-text {
+      font-size: 1.5rem;
+      font-weight: 900;
+      letter-spacing: -0.4px;
+      background: linear-gradient(90deg, #00f0ff 0%, #38bdf8 30%, #ec4899 70%, #f59e0b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.1;
+      text-shadow: 0 0 16px rgba(0, 240, 255, 0.35);
+    }
+
+    .auth-secd-pill {
+      background: rgba(2, 132, 199, 0.4);
+      border: 1.4px solid #00f0ff;
       color: #ffffff;
-      margin: 0;
-      letter-spacing: -0.5px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      border-radius: 9999px;
+      padding: 2px 9px;
+      letter-spacing: 0.3px;
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+    }
+
+    .auth-univ-line {
+      color: #ffffff;
+      font-size: 0.94rem;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
       line-height: 1.2;
     }
 
-    .auth-title-gradient {
-      background: linear-gradient(135deg, #a855f7 0%, #38bdf8 50%, #00f0ff 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      display: inline-block;
-      text-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+    .auth-motto-line {
+      color: #38bdf8;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-top: 1px;
     }
 
-    .auth-main-sub {
-      font-size: 0.88rem;
-      color: #8fa0bc;
-      margin: 4px 0 0;
-      font-weight: 500;
+    .auth-script-motto {
+      font-family: 'Caveat', cursive;
+      color: #facc15;
+      font-size: 1.35rem;
+      font-weight: 700;
+      line-height: 1.12;
+      text-align: right;
+      text-shadow: 0 0 12px rgba(250, 204, 21, 0.65), 0 2px 4px rgba(0,0,0,0.85);
+      transform: rotate(-3deg);
+      white-space: nowrap;
+      margin-top: 2px;
     }
 
-    /* Main High-Performance Glassmorphic Card (Zero GPU Lag) */
+    /* Main Glowing Glassmorphic Card matching Image 1 */
     .auth-card {
       width: 100%;
-      max-width: 410px;
-      background: #090e26;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border-radius: 26px;
-      border: 1.5px solid rgba(56, 189, 248, 0.36);
-      box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.85),
-                  0 0 35px -5px rgba(56, 189, 248, 0.22),
-                  0 0 20px -2px rgba(168, 85, 247, 0.25),
-                  inset 0 1px 0 rgba(255, 255, 255, 0.18);
-      padding: 20px 18px 24px;
+      max-width: 420px;
+      background: #070f30;
+      border: 2px solid #00d2ff;
+      border-radius: 28px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9),
+                  0 0 35px rgba(0, 210, 255, 0.45),
+                  0 0 60px rgba(168, 85, 247, 0.30),
+                  inset 0 0 20px rgba(0, 210, 255, 0.12);
+      padding: 24px 20px 24px;
       display: flex;
       flex-direction: column;
       gap: 13px;
       position: relative;
       z-index: 10;
       box-sizing: border-box;
-      contain: content;
       transform: translateZ(0);
     }
 
-    /* Top Prominent Auth Mode Switcher (Login ⇄ Create Account) */
+    /* Corner neon curved accents matching Image 1 */
+    .auth-corner-arc {
+      position: absolute;
+      width: 52px;
+      height: 16px;
+      pointer-events: none;
+      opacity: 0.9;
+    }
+
+    .auth-corner-arc.arc-tl {
+      top: 10px;
+      left: 14px;
+      border-top: 2.5px solid #00f0ff;
+      border-left: 2.5px solid #00f0ff;
+      border-top-left-radius: 20px;
+      filter: drop-shadow(0 0 8px #00f0ff);
+    }
+
+    .auth-corner-arc.arc-tr {
+      top: 10px;
+      right: 14px;
+      border-top: 2.5px solid #d946ef;
+      border-right: 2.5px solid #d946ef;
+      border-top-right-radius: 20px;
+      filter: drop-shadow(0 0 8px #d946ef);
+    }
+
+    .auth-card-title-box {
+      text-align: center;
+      margin-top: 2px;
+      margin-bottom: 2px;
+    }
+
+    .auth-card-title {
+      font-size: 2.05rem;
+      font-weight: 850;
+      margin: 0;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+    }
+
+    .title-cyan {
+      color: #00f0ff;
+      text-shadow: 0 0 20px rgba(0, 240, 255, 0.6);
+    }
+
+    .title-purple {
+      color: #d946ef;
+      text-shadow: 0 0 20px rgba(217, 70, 239, 0.6);
+    }
+
+    .auth-card-subtitle {
+      color: #94a3b8;
+      font-size: 0.88rem;
+      font-weight: 500;
+      margin: 6px 0 0;
+    }
+
+    /* Mode Switcher (Login ⇄ Create Account) */
     .auth-mode-switch-tabs {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -5337,7 +5421,210 @@
       box-shadow: 0 4px 14px rgba(59, 130, 246, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.3);
     }
 
-    /* Inline Visual Feedback Alert for Errors & Success */
+    /* Role Switcher Tabs (In Register Mode) */
+    .auth-role-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 2px;
+    }
+
+    .auth-role-tab {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 9px 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      color: #94a3b8;
+      font-size: 0.78rem;
+      font-weight: 650;
+      cursor: pointer;
+      transition: all 0.22s ease;
+      font-family: inherit;
+      outline: none;
+    }
+
+    .auth-role-tab.active {
+      background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 50%, #2563eb 100%);
+      border: 1.5px solid #00f0ff;
+      color: #ffffff;
+      box-shadow: 0 0 16px rgba(0, 240, 255, 0.45);
+    }
+
+    .auth-role-desc {
+      font-size: 0.74rem;
+      padding: 8px 12px;
+      border-radius: 10px;
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      color: #bae6fd;
+      line-height: 1.35;
+    }
+
+    /* Sleek Pill Inputs matching Image 1 */
+    .auth-input-pill {
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: #071333;
+      border: 1.5px solid rgba(56, 189, 248, 0.45);
+      border-radius: 18px;
+      padding: 0 16px;
+      height: 52px;
+      box-sizing: border-box;
+      transition: all 0.22s ease;
+      width: 100%;
+    }
+
+    .auth-input-pill:focus-within {
+      border-color: #00f0ff;
+      background: #091a45;
+      box-shadow: 0 0 18px rgba(0, 240, 255, 0.4);
+    }
+
+    .auth-pill-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+
+    .auth-pill-icon.user-icon {
+      color: #00f0ff;
+      filter: drop-shadow(0 0 6px rgba(0, 240, 255, 0.5));
+    }
+
+    .auth-pill-icon.lock-badge {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba(168, 85, 247, 0.18);
+      border: 1.2px solid rgba(168, 85, 247, 0.5);
+      color: #c084fc;
+      box-shadow: 0 0 10px rgba(168, 85, 247, 0.35);
+    }
+
+    .auth-pill-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #ffffff;
+      font-size: 0.92rem;
+      font-weight: 550;
+      font-family: inherit;
+      width: 100%;
+    }
+
+    .auth-pill-input::placeholder {
+      color: #71839f;
+      font-weight: 500;
+      font-size: 0.88rem;
+    }
+
+    .auth-pill-select {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #ffffff;
+      font-size: 0.88rem;
+      font-family: inherit;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .auth-pill-select option {
+      background: #071333;
+      color: #ffffff;
+    }
+
+    .auth-eye-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #94a3b8;
+      padding: 6px;
+      margin-right: -4px;
+      display: flex;
+      align-items: center;
+      transition: color 0.2s;
+      outline: none;
+    }
+
+    .auth-eye-btn:hover {
+      color: #00f0ff;
+    }
+
+    /* Options row: Remember Me & Forgot Password */
+    .auth-options-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      color: #94a3b8;
+      padding: 0 4px;
+      margin-top: 2px;
+    }
+
+    .auth-checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      user-select: none;
+      font-weight: 600;
+    }
+
+    .auth-checkbox-label input {
+      display: none;
+    }
+
+    .auth-custom-check {
+      width: 18px;
+      height: 18px;
+      border-radius: 5px;
+      border: 1.5px solid #00f0ff;
+      background: rgba(0, 240, 255, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.74rem;
+      color: #ffffff;
+      font-weight: 850;
+      transition: all 0.2s;
+    }
+
+    .auth-checkbox-label input:checked + .auth-custom-check {
+      background: #0284c7;
+      border-color: #00f0ff;
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
+    }
+
+    .auth-forgot-link {
+      background: none;
+      border: none;
+      color: #00d2ff;
+      font-size: 0.82rem;
+      font-weight: 650;
+      cursor: pointer;
+      padding: 0;
+      font-family: inherit;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .auth-forgot-link:hover {
+      text-decoration: underline;
+      color: #38bdf8;
+    }
+
+    /* Inline Feedback */
     .auth-inline-msg {
       border-radius: 12px;
       padding: 10px 13px;
@@ -5365,313 +5652,154 @@
       box-shadow: 0 0 14px rgba(16, 185, 129, 0.2);
     }
 
-    /* Role Switcher Tabs inside the Card */
-    .auth-role-tabs {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 8px;
-      margin-bottom: 2px;
-    }
-
-    .auth-role-tab {
-      background: rgba(255, 255, 255, 0.035);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 14px;
-      padding: 10px 4px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 5px;
-      color: #94a3b8;
-      font-size: 0.80rem;
-      font-weight: 650;
-      cursor: pointer;
-      transition: all 0.22s ease;
-      font-family: inherit;
-      outline: none;
-    }
-
-    .auth-role-tab:hover {
-      background: rgba(255, 255, 255, 0.07);
-      color: #e2e8f0;
-      border-color: rgba(56, 189, 248, 0.3);
-    }
-
-    .auth-role-tab.active {
-      background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 50%, #2563eb 100%);
-      border: 1.5px solid #00f0ff;
-      color: #ffffff;
-      box-shadow: 0 0 18px rgba(0, 240, 255, 0.48), inset 0 1px 0 rgba(255, 255, 255, 0.35);
-      transform: translateY(-1.5px);
-    }
-
-    .role-tab-icon {
-      font-size: 1.15rem;
-      line-height: 1;
-    }
-
-    /* Input Field Container */
-    .auth-field {
-      position: relative;
-      display: flex;
-      align-items: center;
-      background: rgba(11, 18, 48, 0.72);
-      border: 1.2px solid rgba(56, 189, 248, 0.22);
-      border-radius: 14px;
-      padding: 0 14px;
-      transition: all 0.2s ease;
-      box-sizing: border-box;
+    /* Primary CTA Button: Vibrant Gradient Pill matching Image 1 */
+    .auth-submit-btn {
       width: 100%;
-    }
-
-    .auth-field:focus-within {
-      border-color: #00f0ff;
-      background: rgba(12, 22, 58, 0.90);
-      box-shadow: 0 0 16px rgba(0, 240, 255, 0.32);
-    }
-
-    .auth-field-icon {
-      font-size: 0.95rem;
-      color: #38bdf8;
-      margin-right: 11px;
-      opacity: 0.85;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-    }
-
-    .auth-input {
-      flex: 1;
-      background: transparent;
-      border: none;
-      outline: none;
-      color: #f8fafc;
-      font-size: 0.88rem;
-      padding: 12px 0;
-      font-family: inherit;
-      width: 100%;
-    }
-
-    .auth-input::placeholder {
-      color: #64748b;
-      font-size: 0.86rem;
-    }
-
-    .auth-input-select {
-      flex: 1;
-      background: transparent;
-      border: none;
-      outline: none;
-      color: #f8fafc;
-      font-size: 0.88rem;
-      padding: 12px 0;
-      font-family: inherit;
-      cursor: pointer;
-      width: 100%;
-    }
-
-    .auth-input-select option {
-      background: #0b122e;
-      color: #f8fafc;
-    }
-
-    .auth-eye-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 0.95rem;
-      opacity: 0.7;
-      color: #94a3b8;
-      padding: 6px;
-      margin-right: -4px;
-      transition: opacity 0.2s;
-      outline: none;
-      display: flex;
-      align-items: center;
-    }
-
-    .auth-eye-btn:hover {
-      opacity: 1;
-      color: #00f0ff;
-    }
-
-    /* Options Row: Remember Me & Forgot Password */
-    .auth-options-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 0.80rem;
-      color: #94a3b8;
-      padding: 0 2px;
-    }
-
-    .auth-checkbox-label {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .auth-checkbox-label input {
-      display: none;
-    }
-
-    .auth-custom-check {
-      width: 17px;
-      height: 17px;
-      border-radius: 5px;
-      border: 1.5px solid rgba(168, 85, 247, 0.6);
-      background: rgba(168, 85, 247, 0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.72rem;
-      color: #ffffff;
-      font-weight: 800;
-      transition: all 0.2s ease;
-    }
-
-    .auth-checkbox-label input:checked + .auth-custom-check {
-      background: #9333ea;
-      border-color: #c084fc;
-      box-shadow: 0 0 10px rgba(168, 85, 247, 0.6);
-    }
-
-    .auth-link-btn {
-      background: none;
-      border: none;
-      color: #a855f7;
-      font-size: 0.80rem;
-      font-weight: 600;
-      cursor: pointer;
-      padding: 0;
-      transition: color 0.2s;
-      font-family: inherit;
-    }
-
-    .auth-link-btn:hover {
-      color: #38bdf8;
-      text-decoration: underline;
-    }
-
-    /* Primary CTA Button (➔ Login) */
-    .auth-cta-btn {
-      width: 100%;
+      height: 52px;
       border-radius: 9999px;
-      background: linear-gradient(90deg, #b026ff 0%, #7c3aed 45%, #00d2ff 100%);
+      background: linear-gradient(90deg, #00d2ff 0%, #3b82f6 38%, #8b5cf6 72%, #d946ef 100%);
       border: none;
-      padding: 13px 20px;
-      font-size: 0.98rem;
-      font-weight: 750;
-      color: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 9px;
+      padding: 0 18px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #ffffff;
       cursor: pointer;
-      box-shadow: 0 8px 24px rgba(176, 38, 255, 0.45), 0 0 15px rgba(0, 210, 255, 0.3);
-      transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
-      margin-top: 2px;
+      box-shadow: 0 8px 25px rgba(0, 210, 255, 0.45), 0 0 25px rgba(217, 70, 239, 0.35);
+      transition: all 0.24s ease;
       font-family: inherit;
       outline: none;
+      position: relative;
+      margin-top: 4px;
     }
 
-    .auth-cta-btn:hover {
-      box-shadow: 0 10px 30px rgba(0, 210, 255, 0.6), 0 0 25px rgba(176, 38, 255, 0.5);
+    .auth-submit-btn:hover {
       transform: translateY(-1.5px);
+      box-shadow: 0 10px 32px rgba(0, 210, 255, 0.6), 0 0 32px rgba(217, 70, 239, 0.5);
     }
 
-    .auth-cta-btn:active {
+    .auth-submit-btn:active {
       transform: scale(0.985);
     }
 
-    /* OR Divider */
-    .auth-divider {
+    .auth-btn-label {
+      flex: 1;
+      text-align: center;
+      letter-spacing: 0.3px;
+    }
+
+    .auth-btn-arrow-circle {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(11, 20, 58, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      color: #ffffff;
+      flex-shrink: 0;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    }
+
+    /* Divider: ── OR ── */
+    .auth-or-divider {
       display: flex;
       align-items: center;
       gap: 12px;
-      color: #64748b;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      margin: 1px 0;
+      margin: 4px 0;
     }
 
-    .auth-divider::before,
-    .auth-divider::after {
-      content: '';
+    .auth-or-line {
       flex: 1;
       height: 1px;
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(148, 163, 184, 0.25);
     }
 
-    /* Switch Mode (New here? Create an account) */
-    .auth-switch-box {
-      text-align: center;
-      font-size: 0.83rem;
+    .auth-or-text {
       color: #94a3b8;
+      font-size: 0.78rem;
+      font-weight: 750;
+      letter-spacing: 0.5px;
     }
 
-    .auth-switch-link {
+    /* Social Buttons Row matching Image 1 */
+    .auth-social-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .auth-social-btn {
+      background: #081335;
+      border-radius: 9999px;
+      padding: 11px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: #e2e8f0;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s ease;
+      outline: none;
+      white-space: nowrap;
+    }
+
+    .auth-social-btn.btn-google {
+      border: 1.5px solid rgba(0, 240, 255, 0.5);
+      box-shadow: 0 0 12px rgba(0, 240, 255, 0.18);
+    }
+
+    .auth-social-btn.btn-google:hover {
+      border-color: #00f0ff;
+      box-shadow: 0 0 18px rgba(0, 240, 255, 0.4);
+      transform: translateY(-1px);
+    }
+
+    .auth-social-btn.btn-univ {
+      border: 1.5px solid rgba(217, 70, 239, 0.5);
+      box-shadow: 0 0 12px rgba(217, 70, 239, 0.18);
+    }
+
+    .auth-social-btn.btn-univ:hover {
+      border-color: #d946ef;
+      box-shadow: 0 0 18px rgba(217, 70, 239, 0.4);
+      transform: translateY(-1px);
+    }
+
+    /* Bottom switch prompt */
+    .auth-bottom-switch {
+      text-align: center;
+      font-size: 0.82rem;
+      color: #94a3b8;
+      margin-top: 4px;
+    }
+
+    .auth-bottom-link {
       background: none;
       border: none;
-      color: #a855f7;
-      font-weight: 700;
+      color: #00d2ff;
+      font-weight: 750;
       cursor: pointer;
-      padding: 0;
-      margin-left: 4px;
-      font-size: 0.83rem;
-      transition: all 0.2s ease;
+      padding: 0 4px;
       font-family: inherit;
+      font-size: inherit;
     }
 
-    .auth-switch-link:hover {
-      color: #00f0ff;
-      text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+    .auth-bottom-link:hover {
       text-decoration: underline;
-    }
-
-    /* Quick Demo Helper Bar on Login Screen */
-    .auth-quick-fill-bar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      justify-content: center;
-      margin-top: 4px;
-      padding-top: 8px;
-      border-top: 1px dashed rgba(255, 255, 255, 0.08);
-    }
-
-    .auth-fill-pill {
-      background: rgba(56, 189, 248, 0.10);
-      border: 1px solid rgba(56, 189, 248, 0.28);
       color: #38bdf8;
-      border-radius: 99px;
-      padding: 4px 10px;
-      font-size: 0.71rem;
-      font-weight: 650;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      font-family: inherit;
     }
 
-    .auth-fill-pill:hover {
-      background: rgba(56, 189, 248, 0.22);
-      border-color: #00f0ff;
-      color: #ffffff;
-      box-shadow: 0 0 10px rgba(0, 240, 255, 0.35);
-    }
-
-    /* Registration Form Dynamic Additions */
     .auth-reg-extra {
       display: none;
       flex-direction: column;
-      gap: 12px;
-    }
-
-    .auth-reg-extra.show {
-      display: flex;
+      gap: 11px;
     }
 
     .auth-grid-2 {
@@ -5680,84 +5808,804 @@
       gap: 10px;
     }
 
-    .auth-role-desc {
-      font-size: 0.74rem;
-      padding: 8px 12px;
-      border-radius: 10px;
-      background: rgba(56, 189, 248, 0.08);
-      border: 1px solid rgba(56, 189, 248, 0.2);
-      color: #bae6fd;
-      line-height: 1.35;
-    }
-
-    /* Bottom Features Footer (Learn / Achieve / Build) */
-    .auth-features-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      width: 100%;
-      max-width: 410px;
-      margin-top: 24px;
-      position: relative;
-      z-index: 10;
-      padding: 6px 12px;
-    }
-
-    .auth-feature-col {
+    /* ============================================================
+       QUANTUM LUXURY DASHBOARD UI SYSTEM (EXACT IMAGE 2 MATCH)
+       Top Appbar, Neon Badges, Orbit Stepper, Done Status Hero Card
+       ============================================================ */
+    .top-appbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(0, 240, 255, 0.14) 0%, transparent 45%),
+        linear-gradient(90deg, #070f30 0%, #070f30 45%, rgba(7, 15, 48, 0.72) 75%, rgba(7, 15, 48, 0.35) 100%),
+        url('campus.jpg') right center / 50% 100% no-repeat,
+        #070f30 !important;
+      border-bottom: 1.5px solid rgba(0, 240, 255, 0.35) !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 240, 255, 0.15) !important;
+      padding: max(10px, env(safe-area-inset-top)) 12px 10px 12px;
       display: flex;
       flex-direction: column;
+      gap: 8px;
+    }
+
+    .brand-logo-neon-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      padding: 2.2px;
+      background: linear-gradient(135deg, #00f0ff 0%, #a855f7 50%, #ec4899 100%);
+      box-shadow: 0 0 16px rgba(0, 240, 255, 0.7), 0 0 28px rgba(168, 85, 247, 0.4);
+      display: flex;
       align-items: center;
-      text-align: center;
-      gap: 4px;
+      justify-content: center;
+      flex-shrink: 0;
     }
 
-    .auth-feature-icon {
-      font-size: 1.25rem;
-      color: #38bdf8;
-      opacity: 0.9;
+    .brand-logo-neon-circle .brand-logo-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #060c24;
+      border: none;
+      box-shadow: none;
     }
 
-    .auth-feature-title {
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: #f1f5f9;
+    .brand-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .brand-title-wrap .brand-name-text {
+      font-size: 1.3rem;
+      font-weight: 900;
+      letter-spacing: -0.4px;
+      color: #ffffff;
+      background: linear-gradient(90deg, #00f0ff 0%, #e0f2fe 55%, #ffffff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.1;
+      text-shadow: 0 0 14px rgba(0, 240, 255, 0.4);
+    }
+
+    .brand-secd-pill {
+      background: #0284c7;
+      border: 1.2px solid #00f0ff;
+      color: #ffffff;
+      font-size: 0.7rem;
+      font-weight: 800;
+      border-radius: 9999px;
+      padding: 1.5px 8px;
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+      letter-spacing: 0.3px;
       line-height: 1.2;
     }
 
-    .auth-feature-sub {
-      font-size: 0.68rem;
-      color: #64748b;
-      font-weight: 500;
+    .brand-univ-title {
+      color: #ffffff;
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      line-height: 1.15;
+      margin-top: 1px;
     }
 
-    .auth-feature-divider {
-      width: 1px;
-      height: 32px;
-      background: rgba(255, 255, 255, 0.08);
+    .brand-univ-motto {
+      color: #38bdf8;
+      font-size: 0.54rem;
+      font-weight: 700;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-top: 1px;
     }
 
-    /* TOP BAR USER PROFILE PILL */
+    /* TOP BAR USER PROFILE PILL & ACTION BUTTONS */
     .appbar-user-pill {
-      background: linear-gradient(135deg, rgba(56, 189, 248, 0.16) 0%, rgba(168, 85, 247, 0.16) 100%);
-      border: 1px solid rgba(56, 189, 248, 0.4);
-      border-radius: 99px;
+      background: rgba(11, 20, 52, 0.92);
+      border: 1.4px solid rgba(56, 189, 248, 0.45);
+      border-radius: 9999px;
       padding: 4px 10px;
       display: flex;
       align-items: center;
-      gap: 6px;
-      color: #f8fafc;
+      gap: 5px;
+      color: #ffffff;
       font-size: 0.74rem;
-      font-weight: 700;
+      font-weight: 750;
       cursor: pointer;
-      transition: all 0.2s ease;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
       outline: none;
       font-family: inherit;
     }
 
     .appbar-user-pill:hover {
       border-color: #00f0ff;
-      background: linear-gradient(135deg, rgba(56, 189, 248, 0.28) 0%, rgba(168, 85, 247, 0.28) 100%);
-      box-shadow: 0 0 12px rgba(0, 240, 255, 0.35);
+      box-shadow: 0 0 12px rgba(0, 240, 255, 0.45);
+    }
+
+    .user-pill-sub-badge {
+      font-size: 0.62rem;
+      color: #94a3b8;
+      font-weight: 600;
+      margin-left: 2px;
+    }
+
+    .appbar-quick-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(11, 20, 52, 0.88);
+      border: 1.4px solid rgba(56, 189, 248, 0.38);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      outline: none;
+    }
+
+    .appbar-quick-btn:hover {
+      border-color: #00f0ff;
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+    }
+
+    /* SECTION ROW ("QUANTUM B.TECH SECTIONS:") */
+    .section-selector-container {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      width: 100%;
+      margin-top: 2px;
+    }
+
+    .section-selector-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      font-weight: 850;
+      color: #ffffff;
+      letter-spacing: 0.4px;
+      padding: 0 2px;
+    }
+
+    .active-sec-badge {
+      background: #0284c7;
+      border: 1.2px solid #00f0ff;
+      color: #ffffff;
+      border-radius: 9999px;
+      padding: 2px 10px;
+      font-size: 0.65rem;
+      font-weight: 800;
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+      letter-spacing: 0.3px;
+    }
+
+    .sec-locked-hero-pill {
+      width: 100%;
+      height: 44px;
+      border-radius: 9999px;
+      background: linear-gradient(90deg, #0284c7 0%, #0369a1 40%, #0c4a6e 100%);
+      border: 1.6px solid #00f0ff;
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      gap: 8px;
+      color: #ffffff;
+      font-size: 0.88rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .sec-locked-hero-pill:active {
+      transform: scale(0.985);
+    }
+
+    .pill-lock-icon {
+      font-size: 1.05rem;
+    }
+
+    .pill-chevron {
+      margin-left: auto;
+      font-size: 1.2rem;
+      color: #bae6fd;
+      font-weight: 600;
+    }
+
+    /* SET SWITCHER & GOLDEN SLOGAN ROW (Image 2) */
+    .set-slogan-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      width: 100%;
+      margin: 2px 0;
+    }
+
+    .set-active-green-btn {
+      height: 42px;
+      padding: 0 16px 0 10px;
+      border-radius: 9999px;
+      background: #061a14;
+      border: 2px solid #22c55e;
+      box-shadow: 0 0 20px rgba(34, 197, 94, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #ffffff;
+      font-size: 0.95rem;
+      font-weight: 850;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .set-active-green-btn:active {
+      transform: scale(0.96);
+    }
+
+    .set-letter-badge {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      background: #ef4444;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 900;
+    }
+
+    .set-chevron {
+      font-size: 1.15rem;
+      color: #86efac;
+    }
+
+    .brand-cursive-slogan {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .brand-cursive-slogan span,
+    .brand-cursive-quote {
+      font-family: 'Caveat', cursive;
+      color: #93c5fd;
+      font-size: 1.35rem;
+      font-weight: 700;
+      line-height: 1.1;
+      white-space: nowrap;
+      text-shadow: 0 0 12px rgba(147, 197, 253, 0.45);
+    }
+
+    .cursive-underline-flourish {
+      width: 70px;
+      height: 2.5px;
+      border-radius: 99px;
+      background: linear-gradient(90deg, #00f0ff, transparent);
+      margin-right: 28px;
+      margin-top: 1px;
+    }
+
+    /* GLOWING HIGHLIGHTED STATUS RIBBON (Image 2) */
+    .glow-highlight-ribbon {
+      margin: 6px 12px;
+      height: 44px;
+      border-radius: 9999px;
+      background: #070e28;
+      border: 1.6px solid #d946ef;
+      box-shadow: 0 0 22px rgba(217, 70, 239, 0.35);
+      display: flex;
+      align-items: center;
+      padding: 0 14px 0 6px;
+      gap: 8px;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .ribbon-live-badge {
+      background: #ef4444;
+      border: 1px solid #f87171;
+      color: #ffffff;
+      font-size: 0.68rem;
+      font-weight: 900;
+      border-radius: 9999px;
+      padding: 4px 10px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 0 12px rgba(239, 68, 68, 0.6);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .ribbon-sec-badge {
+      background: #3b82f6;
+      color: #ffffff;
+      font-size: 0.65rem;
+      font-weight: 850;
+      border-radius: 9999px;
+      padding: 4px 10px;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+    }
+
+    .ribbon-highlight-text {
+      color: #ffffff;
+      font-size: 0.78rem;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .ribbon-chevron {
+      margin-left: auto;
+      color: #00f0ff;
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    /* CLOCK & DATE ROW (Image 2) */
+    .time-status-ribbon {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 10px;
+      margin: 6px 12px;
+      padding: 0;
+      background: transparent;
+      border: none;
+    }
+
+    .time-ribbon-card {
+      background: #071333;
+      border: 1.5px solid rgba(0, 240, 255, 0.4);
+      border-radius: 18px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 0 18px rgba(0, 240, 255, 0.15);
+      box-sizing: border-box;
+    }
+
+    .ribbon-clock-texts {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .clock-ticker {
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: #ffffff;
+      font-family: inherit;
+      letter-spacing: -0.3px;
+      line-height: 1.1;
+    }
+
+    .live-status-indicator {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: #22c55e;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .green-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 6px #22c55e;
+    }
+
+    .date-card {
+      cursor: pointer;
+      justify-content: space-between;
+      background: #071333;
+      border: 1.5px solid rgba(56, 189, 248, 0.4);
+      color: #ffffff;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .date-card-text {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .date-dropdown-arrow {
+      font-size: 0.75rem;
+      color: #94a3b8;
+    }
+
+    /* STATUS / HERO CARD (Image 2) */
+    .circular-hero-card {
+      background: #071333 !important;
+      border: 2px solid #00d2ff !important;
+      border-radius: 24px !important;
+      padding: 16px 18px !important;
+      margin: 6px 12px !important;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 30px rgba(0, 210, 255, 0.35), inset 0 0 20px rgba(0, 210, 255, 0.1) !important;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .done-laurel-badge-wrap {
+      position: relative;
+      width: 86px;
+      height: 86px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .done-outer-gold-ring {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      border: 3.5px solid #eab308;
+      box-shadow: 0 0 16px rgba(234, 179, 8, 0.7);
+      background: #070e28;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .done-check-circle {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1.5px solid #00f0ff;
+      color: #00f0ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.82rem;
+      font-weight: 900;
+      margin-bottom: 2px;
+    }
+
+    .done-word {
+      font-size: 0.95rem;
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: 0.5px;
+      line-height: 1;
+    }
+
+    .done-subtext {
+      font-size: 0.52rem;
+      font-weight: 800;
+      color: #eab308;
+      letter-spacing: 0.5px;
+      margin-top: 1px;
+    }
+
+    .done-laurel-wreath {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.35rem;
+      pointer-events: none;
+    }
+
+    .done-laurel-wreath.laurel-left {
+      left: -6px;
+    }
+
+    .done-laurel-wreath.laurel-right {
+      right: -6px;
+      transform: translateY(-50%) scaleX(-1);
+    }
+
+    .hero-tags-top {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-dismissed-badge {
+      background: #0b1938;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      color: #94a3b8;
+      font-size: 0.68rem;
+      font-weight: 750;
+      padding: 2.5px 8px;
+      border-radius: 9999px;
+    }
+
+    .hero-setdone-badge {
+      background: #07261a;
+      border: 1.2px solid #22c55e;
+      color: #86efac;
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 2.5px 8px;
+      border-radius: 9999px;
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.4);
+    }
+
+    .hero-see-tomorrow-btn {
+      background: #0284c7;
+      border: 1.2px solid #00f0ff;
+      color: #ffffff;
+      font-size: 0.76rem;
+      font-weight: 800;
+      padding: 5px 14px;
+      border-radius: 9999px;
+      cursor: pointer;
+      align-self: flex-start;
+      box-shadow: 0 0 12px rgba(0, 240, 255, 0.4);
+      margin-top: 2px;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .hero-great-work-script {
+      position: absolute;
+      right: 14px;
+      bottom: 8px;
+      font-family: 'Caveat', cursive;
+      color: #facc15;
+      font-size: 1.25rem;
+      font-weight: 700;
+      text-shadow: 0 0 10px rgba(250, 204, 21, 0.6);
+      transform: rotate(-6deg);
+    }
+
+    /* ORBIT TRACKER SECTION (Image 2) */
+    .orbit-tracker-section {
+      margin: 6px 12px;
+      padding: 12px 14px;
+      background: #071333 !important;
+      border: 1.6px solid rgba(0, 240, 255, 0.45) !important;
+      border-radius: 22px !important;
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.15) !important;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .orbit-header-left {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #ffffff;
+      font-weight: 850;
+      font-size: 0.72rem;
+    }
+
+    .orbit-header-right {
+      color: #00f0ff;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.4px;
+    }
+
+    .orbit-dot {
+      width: 34px !important;
+      height: 34px !important;
+      border-radius: 50% !important;
+      background: #060e24 !important;
+      border: 1.6px solid #00f0ff !important;
+      color: #ffffff !important;
+      font-size: 0.85rem !important;
+      font-weight: 850 !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+      transition: all 0.2s ease;
+    }
+
+    .orbit-lunch-dot {
+      border-color: #f59e0b !important;
+      box-shadow: 0 0 14px rgba(245, 158, 11, 0.65) !important;
+      background: #181206 !important;
+    }
+
+    .orbit-final-dot {
+      border-color: #d946ef !important;
+      box-shadow: 0 0 14px rgba(217, 70, 239, 0.65) !important;
+      background: #180620 !important;
+    }
+
+    /* QUICK DAY SWITCH BAR (Image 2) */
+    .schedule-quick-switch-bar {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr 1.15fr !important;
+      gap: 8px !important;
+      margin: 6px 12px !important;
+      padding: 0 !important;
+    }
+
+    .quick-view-btn {
+      background: #0a112c !important;
+      border: 1.2px solid rgba(168, 85, 247, 0.35) !important;
+      border-radius: 9999px !important;
+      height: 40px !important;
+      padding: 0 10px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 6px !important;
+      color: #ffffff !important;
+      font-size: 0.82rem !important;
+      font-weight: 750 !important;
+      cursor: pointer;
+    }
+
+    .quick-view-btn.active {
+      background: linear-gradient(135deg, #7c3aed, #0284c7) !important;
+      border-color: #00f0ff !important;
+      box-shadow: 0 0 14px rgba(0, 240, 255, 0.45) !important;
+    }
+
+    /* DAY PILLS BAR (Image 2) */
+    .day-pills-bar {
+      display: grid !important;
+      grid-template-columns: repeat(6, 1fr) !important;
+      gap: 6px !important;
+      margin: 6px 12px !important;
+      padding: 0 !important;
+    }
+
+    .day-pill {
+      background: #071333 !important;
+      border: 1.2px solid rgba(56, 189, 248, 0.3) !important;
+      border-radius: 14px !important;
+      padding: 6px 2px !important;
+      min-height: 52px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 2px !important;
+      cursor: pointer;
+      color: #ffffff !important;
+    }
+
+    .day-pill.active {
+      background: #0284c7 !important;
+      border: 1.8px solid #00f0ff !important;
+      box-shadow: 0 0 18px rgba(0, 240, 255, 0.7) !important;
+    }
+
+    /* SCHEDULE SUMMARY BANNER (Image 2) */
+    .schedule-summary-banner {
+      margin: 6px 12px 10px 12px;
+      background: linear-gradient(90deg, #071a48 0%, #0c2d6b 50%, #0369a1 100%);
+      border: 1.5px solid #00f0ff;
+      border-radius: 18px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.35);
+      cursor: pointer;
+    }
+
+    .sched-banner-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sched-cal-badge {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(0, 240, 255, 0.15);
+      border: 1.2px solid #00f0ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+    }
+
+    .sched-banner-texts {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .sched-banner-texts strong {
+      font-size: 0.86rem;
+      font-weight: 850;
+      color: #ffffff;
+    }
+
+    .sched-banner-texts span {
+      font-size: 0.7rem;
+      color: #94a3b8;
+    }
+
+    .sched-live-pill-btn {
+      background: #0284c7;
+      border: 1.2px solid #00f0ff;
+      color: #ffffff;
+      font-size: 0.76rem;
+      font-weight: 850;
+      border-radius: 9999px;
+      padding: 6px 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 0 12px rgba(0, 240, 255, 0.5);
+      outline: none;
+      font-family: inherit;
+    }
+
+    /* BOTTOM APP BAR (Image 2) */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      height: 64px;
+      background: #070e28 !important;
+      border-top: 1.5px solid rgba(0, 240, 255, 0.35) !important;
+      box-shadow: 0 -10px 25px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 240, 255, 0.15) !important;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      align-items: center;
+      padding: 0 8px max(6px, env(safe-area-inset-bottom));
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      background: none;
+      border: none;
+      color: #94a3b8;
+      font-size: 0.65rem;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 6px 0;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .nav-item.active {
+      color: #00f0ff !important;
+      font-weight: 850 !important;
+    }
+
+    .nav-item.active::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      width: 20px;
+      height: 3px;
+      background: #00f0ff;
+      border-radius: 99px;
+      box-shadow: 0 0 10px #00f0ff;
     }
 
     /* CLASS CANCELLATION BADGES ON TIMETABLE CARDS */
@@ -5967,86 +6815,45 @@
        Shown FIRST when user opens the app or logs out
        ============================================================ -->
   <div class="auth-overlay" id="authOverlay" style="display:none;">
-    <!-- Background Botanical / Wave Vector Silhouettes matching screenshot -->
-    <svg class="auth-bg-art" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true">
-      <defs>
-        <linearGradient id="neonBlueWave" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.85"/>
-          <stop offset="50%" stop-color="#0284c7" stop-opacity="0.7"/>
-          <stop offset="100%" stop-color="#1e1b4b" stop-opacity="0.2"/>
-        </linearGradient>
-        <linearGradient id="neonPurpleWave" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#d946ef" stop-opacity="0.85"/>
-          <stop offset="60%" stop-color="#7c3aed" stop-opacity="0.6"/>
-          <stop offset="100%" stop-color="#0f172a" stop-opacity="0.2"/>
-        </linearGradient>
-      </defs>
-      <!-- Bottom Left Leaf / Curved Waves -->
-      <path d="M-50,1050 C120,950 180,820 160,700 C140,580 80,500 -50,450 Z" fill="url(#neonBlueWave)" opacity="0.65"/>
-      <path d="M-50,1050 C80,980 260,890 280,740 C300,590 220,530 60,620 Z" fill="url(#neonBlueWave)" opacity="0.45"/>
-      <path d="M-50,1050 C50,880 140,780 200,690 C260,600 240,480 180,520 Z" fill="url(#neonPurpleWave)" opacity="0.35"/>
-      <!-- Bottom Right Purple / Violet Wave -->
-      <path d="M1050,1050 C900,920 850,820 880,680 C910,540 980,480 1050,450 Z" fill="url(#neonPurpleWave)" opacity="0.6"/>
-      <path d="M1050,1050 C820,960 760,860 810,720 C860,580 940,540 1050,560 Z" fill="url(#neonPurpleWave)" opacity="0.4"/>
-    </svg>
-
-    <!-- Top Right Header Tagline -->
-    <div class="auth-top-header">
-      <div class="auth-tagline-box">
-        <span class="auth-tagline-text">Better Learning</span>
-        <span class="auth-tagline-text">Brighter Future</span>
-        <div class="auth-tagline-bar"></div>
+    <!-- Panoramic Campus Building Header with Dusk Lighting matching Image 1 -->
+    <div class="auth-campus-header-card">
+      <img src="campus.jpg" alt="Quantum University Campus" class="auth-campus-photo" />
+      <div class="auth-campus-mask"></div>
+      <div class="auth-header-content">
+        <div class="auth-brand-badge-group">
+          <div class="auth-logo-neon-circle">
+            <img src="logo.png" alt="Qtimex Logo" class="auth-brand-logo-img" />
+          </div>
+          <div class="auth-brand-col">
+            <div class="auth-brand-title-line">
+              <span class="auth-qtimex-text">QTIMEX</span>
+              <span class="auth-secd-pill">Sec-D</span>
+            </div>
+            <span class="auth-univ-line">QUANTUM UNIVERSITY</span>
+            <span class="auth-motto-line">LEARN &bull; GROW &bull; BUILD YOUR FUTURE</span>
+          </div>
+        </div>
+        <div class="auth-script-motto">
+          Your Learning Journey<br>Starts Here ✨
+        </div>
       </div>
     </div>
 
-    <!-- Center Header & 3D Graduation Cap / Book Emblem -->
-    <div class="auth-header-center">
-      <div class="auth-emblem-wrap">
-        <svg class="auth-emblem-svg" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="capGrad" x1="10" y1="20" x2="110" y2="45" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#9333ea"/>
-              <stop offset="50%" stop-color="#3b82f6"/>
-              <stop offset="100%" stop-color="#00f0ff"/>
-            </linearGradient>
-            <linearGradient id="bookLeft" x1="20" y1="60" x2="55" y2="90" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#00f0ff"/>
-              <stop offset="100%" stop-color="#4f46e5"/>
-            </linearGradient>
-            <linearGradient id="bookRight" x1="100" y1="60" x2="65" y2="90" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#00f0ff"/>
-              <stop offset="100%" stop-color="#4f46e5"/>
-            </linearGradient>
-            <linearGradient id="tasselGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#c084fc"/>
-              <stop offset="100%" stop-color="#38bdf8"/>
-            </linearGradient>
-          </defs>
-          <!-- 3D Mortarboard Top Cap -->
-          <polygon points="60,12 110,32 60,52 10,32" fill="url(#capGrad)" stroke="#00f0ff" stroke-width="1.5" stroke-linejoin="round"/>
-          <!-- Cap Bottom Skull Base -->
-          <path d="M30,42 L30,58 C30,68 90,68 90,58 L90,42" fill="none" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round"/>
-          <!-- Tassel and button -->
-          <circle cx="60" cy="32" r="3.5" fill="#ffffff" filter="drop-shadow(0 0 6px #00f0ff)"/>
-          <path d="M60,32 C78,35 88,45 88,58" fill="none" stroke="url(#tasselGrad)" stroke-width="2" stroke-linecap="round"/>
-          <circle cx="88" cy="58" r="2.5" fill="#00f0ff"/>
-          <!-- Open Glowing Book Beneath -->
-          <path d="M22,76 C38,68 54,71 58,78 C54,84 38,82 22,90 Z" fill="url(#bookLeft)" opacity="0.95"/>
-          <path d="M98,76 C82,68 66,71 62,78 C66,84 82,82 98,90 Z" fill="url(#bookRight)" opacity="0.95"/>
-          <path d="M58,78 L62,78 L62,88 L58,88 Z" fill="#38bdf8"/>
-          <!-- Radiant bottom curves -->
-          <path d="M12,85 C36,75 56,77 60,82 C64,77 84,75 108,85" stroke="#00f0ff" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.8"/>
-        </svg>
-      </div>
-
-      <h1 class="auth-main-title" id="authHeaderTitle">Welcome <span class="auth-title-gradient">Back</span></h1>
-      <p class="auth-main-sub" id="authHeaderSub">Login to your account</p>
-    </div>
-
-    <!-- Glowing Glassmorphic Card -->
+    <!-- Main Glowing Glassmorphic Card matching Image 1 -->
     <div class="auth-card">
+      <!-- Neon corner highlights matching Image 1 -->
+      <div class="auth-corner-arc arc-tl"></div>
+      <div class="auth-corner-arc arc-tr"></div>
 
-      <!-- Prominent Mode Switcher Tabs (Login ⇄ Create Account) -->
+      <!-- Welcome Back Title & Subtitle matching Image 1 -->
+      <div class="auth-card-title-box">
+        <h1 class="auth-card-title" id="authHeaderTitle">
+          <span class="title-cyan">Welcome</span> <span class="title-purple" id="authTitlePurple">Back!</span>
+        </h1>
+        <p class="auth-card-subtitle" id="authHeaderSub">Sign in to continue your learning journey</p>
+      </div>
+
+      <!-- Mode Switcher Tabs (Login ⇄ Create Account) -->
       <div class="auth-mode-switch-tabs">
         <button type="button" class="auth-mode-tab active" id="authModeTabLogin" onclick="switchAuthMode(false)">
           <span>🔑</span>
@@ -6058,8 +6865,8 @@
         </button>
       </div>
 
-      <!-- Role Selector Tabs inside Card (Admin | CR | Student) -->
-      <div class="auth-role-tabs">
+      <!-- Role Selector Tabs (Visible in Register Mode) -->
+      <div class="auth-role-tabs" id="authRoleTabs" style="display:none;">
         <button type="button" class="auth-role-tab" id="roleTabAdmin" onclick="setAuthRole('admin')">
           <span class="role-tab-icon">🛡️</span>
           <span>Admin</span>
@@ -6075,131 +6882,157 @@
       </div>
 
       <!-- Role Info Banner (dynamic description) -->
-      <div class="auth-role-desc" id="authRoleDesc">
+      <div class="auth-role-desc" id="authRoleDesc" style="display:none;">
         🎓 <strong>Student Portal</strong>: Timetable & alerts locked to your Section & Set.
       </div>
 
       <!-- Full Name (Only visible in Register mode) -->
-      <div class="auth-field auth-reg-field" id="regNameField" style="display:none;">
-        <span class="auth-field-icon">👤</span>
-        <input type="text" id="authFullName" class="auth-input" placeholder="Full Name (e.g. Rahul Sharma)">
+      <div class="auth-input-pill auth-reg-field" id="regNameField" style="display:none;">
+        <div class="auth-pill-icon user-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </div>
+        <input type="text" id="authFullName" class="auth-pill-input" placeholder="Full Name (e.g. Rahul Sharma)">
       </div>
 
       <!-- Roll Number (Only visible in Register mode for Student/CR) -->
-      <div class="auth-field auth-reg-field" id="regRollField" style="display:none;">
-        <span class="auth-field-icon">🆔</span>
-        <input type="text" id="authRollNo" class="auth-input" placeholder="Roll No / Student ID (e.g. 230101042)">
+      <div class="auth-input-pill auth-reg-field" id="regRollField" style="display:none;">
+        <div class="auth-pill-icon user-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="16" rx="3"></rect>
+            <circle cx="9" cy="10" r="2"></circle>
+            <line x1="15" y1="8" x2="17" y2="8"></line>
+            <line x1="15" y1="12" x2="17" y2="12"></line>
+            <line x1="7" y1="16" x2="17" y2="16"></line>
+          </svg>
+        </div>
+        <input type="text" id="authRollNo" class="auth-pill-input" placeholder="Roll No / Student ID (e.g. 230101042)">
       </div>
 
-      <!-- Email Address / Roll Number (Always visible) -->
-      <div class="auth-field">
-        <span class="auth-field-icon">✉️</span>
-        <input type="text" id="authEmail" class="auth-input" placeholder="Email or Roll No (e.g. 230101042)" autocomplete="username">
+      <!-- Roll Number / Username Input Pill (Image 1 Primary Input) -->
+      <div class="auth-input-pill" id="authEmailWrapper">
+        <div class="auth-pill-icon user-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </div>
+        <input type="text" id="authEmail" class="auth-pill-input" placeholder="Roll Number / Username" autocomplete="username">
       </div>
 
-      <!-- Password (Always visible) -->
-      <div class="auth-field">
-        <span class="auth-field-icon">🔒</span>
-        <input type="password" id="authPassword" class="auth-input" placeholder="Password" autocomplete="current-password">
-        <button type="button" class="auth-eye-btn" onclick="toggleAuthPassword()" title="Show/Hide Password" id="authEyeBtn">👁️</button>
+      <!-- Password Input Pill (Image 1 Password Input with Lock Badge and Eye Toggle) -->
+      <div class="auth-input-pill" id="authPassWrapper">
+        <div class="auth-pill-icon lock-badge">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+        </div>
+        <input type="password" id="authPassword" class="auth-pill-input" placeholder="Password" autocomplete="current-password">
+        <button type="button" class="auth-eye-btn" onclick="toggleAuthPassword()" title="Show/Hide Password" id="authEyeBtn">
+          <svg id="authEyeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+            <line x1="1" y1="1" x2="23" y2="23"></line>
+          </svg>
+        </button>
       </div>
 
       <!-- Section and Set Selection (Visible in Register mode) -->
-      <div class="auth-reg-extra" id="regScopeFields">
-        <div class="auth-grid-2">
+      <div class="auth-reg-extra" id="regScopeFields" style="display:none; flex-direction:column; gap:10px;">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:8px;">
           <!-- Section Selector -->
-          <div class="auth-field">
-            <span class="auth-field-icon">🏫</span>
-            <select id="authSection" class="auth-input-select" onchange="onAuthSectionChanged()">
-              <option value="Sec-A">Section A (A-102)</option>
-              <option value="Sec-B">Section B (A-103)</option>
-              <option value="Sec-C">Section C (A-104)</option>
-              <option value="Sec-D" selected>Section D (A-108)</option>
-              <option value="Sec-E">Section E (E-204)</option>
-              <option value="Sec-H">Section H (A-302)</option>
-              <option value="Sec-I">Section I (A-201)</option>
-              <option value="Sec-J">Section J (A-309)</option>
-              <option value="Sec-K">Section K (A-310)</option>
-              <option value="Sec-L">Section L (A-311)</option>
+          <div class="auth-input-pill" style="height:46px;">
+            <span style="margin-right:8px; font-size:1.05rem;">🏫</span>
+            <select id="authSection" class="auth-pill-select" onchange="onAuthSectionChanged()">
+              <option value="Sec-A">Sec-A (A-102)</option>
+              <option value="Sec-B">Sec-B (A-103)</option>
+              <option value="Sec-C">Sec-C (A-104)</option>
+              <option value="Sec-D" selected>Sec-D (A-108)</option>
+              <option value="Sec-E">Sec-E (E-204)</option>
+              <option value="Sec-H">Sec-H (A-302)</option>
+              <option value="Sec-I">Sec-I (A-201)</option>
+              <option value="Sec-J">Sec-J (A-309)</option>
+              <option value="Sec-K">Sec-K (A-310)</option>
+              <option value="Sec-L">Sec-L (A-311)</option>
             </select>
           </div>
 
           <!-- Set Selector -->
-          <div class="auth-field">
-            <span class="auth-field-icon">🅰️</span>
-            <select id="authBatch" class="auth-input-select">
+          <div class="auth-input-pill" style="height:46px;">
+            <span style="margin-right:8px; font-size:1.05rem;">🅰️</span>
+            <select id="authBatch" class="auth-pill-select">
               <option value="Set-A" selected>Set-A (Alpha)</option>
               <option value="Set-B">Set-B (Beta)</option>
-              <option value="ALL" id="authBatchAllOpt" style="display:none;">All Sets (Admin)</option>
+              <option value="ALL" id="authBatchAllOpt" style="display:none;">All Sets</option>
             </select>
           </div>
         </div>
 
         <!-- Role Passcode (Only needed if registering as CR or Admin) -->
-        <div class="auth-field" id="regSecurityKeyField" style="display:none;">
-          <span class="auth-field-icon">🔑</span>
-          <input type="password" id="authSecretKey" class="auth-input" placeholder="Verification Code (CR: CR2026 | Admin: ADMIN2026)">
+        <div class="auth-input-pill" id="regSecurityKeyField" style="display:none; height:46px;">
+          <span style="margin-right:8px; font-size:1.05rem;">🔑</span>
+          <input type="password" id="authSecretKey" class="auth-pill-input" placeholder="Verification Code (CR: CR2026 | Admin: ADMIN2026)">
         </div>
       </div>
 
-      <!-- Remember Me & Forgot Password (In Login Mode) -->
+      <!-- Remember Me & Forgot Password Row matching Image 1 -->
       <div class="auth-options-row" id="loginOptionsRow">
         <label class="auth-checkbox-label">
           <input type="checkbox" id="authRememberMe" checked>
           <span class="auth-custom-check">✓</span>
-          <span>Remember me</span>
+          <span>Remember Me</span>
         </label>
-        <button type="button" class="auth-link-btn" onclick="openForgotPasswordHelp()">Forgot Password?</button>
+        <button type="button" class="auth-forgot-link" onclick="openForgotPasswordHelp()">
+          <span>Forgot Password?</span>
+          <span>&rarr;</span>
+        </button>
       </div>
 
       <!-- Inline Visual Feedback Alert for Errors & Success -->
       <div id="authInlineMsg" class="auth-inline-msg" style="display:none;"></div>
 
-      <!-- Main Action CTA Button (➔ Login / 🚀 Create Account) -->
-      <button type="button" class="auth-cta-btn" id="authSubmitBtn" onclick="handleAuthSubmit()">
-        <span id="authBtnIcon">➔</span>
-        <span id="authBtnText">Login</span>
+      <!-- Main Action CTA Button with circular arrow badge matching Image 1 -->
+      <button type="button" class="auth-submit-btn" id="authSubmitBtn" onclick="handleAuthSubmit()">
+        <span class="auth-btn-label" id="authBtnText">Login</span>
+        <div class="auth-btn-arrow-circle">
+          <span id="authBtnIcon">&rarr;</span>
+        </div>
       </button>
 
-      <!-- OR Divider -->
-      <div class="auth-divider">
-        <span>OR</span>
+      <!-- OR Divider matching Image 1 -->
+      <div class="auth-or-divider">
+        <div class="auth-or-line"></div>
+        <span class="auth-or-text">OR</span>
+        <div class="auth-or-line"></div>
       </div>
 
-      <!-- Toggle Login ⇄ Register Mode -->
-      <div class="auth-switch-box">
-        <span id="authSwitchPrompt">New here?</span>
-        <button type="button" class="auth-switch-link" id="authSwitchBtn" onclick="toggleAuthMode()">Create an account</button>
+      <!-- Social Buttons Row matching Image 1 -->
+      <div class="auth-social-row">
+        <button type="button" class="auth-social-btn btn-google" onclick="quickFillCredentials('student'); showToast('Google sign-in connected as Student! Tap Login.');">
+          <svg class="auth-social-icon" viewBox="0 0 24 24" width="18" height="18">
+            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+          </svg>
+          <span class="auth-social-text">Continue with Google</span>
+        </button>
+
+        <button type="button" class="auth-social-btn btn-univ" onclick="quickFillCredentials('cr'); showToast('University Portal synced for CR! Tap Login.');">
+          <span class="auth-social-icon" style="font-size:1.15rem; line-height:1;">🎓</span>
+          <span class="auth-social-text">Login with University</span>
+        </button>
       </div>
 
       <!-- Quick 1-Tap Demo Logins for Instant Testing -->
-      <div class="auth-quick-fill-bar" id="authQuickFillBar">
-        <button type="button" class="auth-fill-pill" onclick="quickFillCredentials('student')">🎓 Student Demo</button>
-        <button type="button" class="auth-fill-pill" onclick="quickFillCredentials('cr')">👥 CR Demo (Sec-D)</button>
-        <button type="button" class="auth-fill-pill" onclick="quickFillCredentials('admin')">🛡️ Admin Demo</button>
+      <div class="auth-quick-fill-bar" id="authQuickFillBar" style="display:flex; justify-content:center; gap:6px; margin-top:4px;">
+        <button type="button" class="auth-fill-pill" onclick="quickFillCredentials('student')">🎓 Student</button>
+        <button type="button" class="auth-fill-pill" onclick="quickFillCredentials('cr')">👥 CR (Sec-D)</button>
+        <button type="button" class="auth-fill-pill" onclick="quickFillCredentials('admin')">🛡️ Admin</button>
       </div>
 
-    </div>
-
-    <!-- Bottom Features Footer (Learn Anytime | Achieve More | Build Together) -->
-    <div class="auth-features-footer">
-      <div class="auth-feature-col">
-        <span class="auth-feature-icon">📖</span>
-        <span class="auth-feature-title">Learn</span>
-        <span class="auth-feature-sub">Anytime</span>
-      </div>
-      <div class="auth-feature-divider"></div>
-      <div class="auth-feature-col">
-        <span class="auth-feature-icon">🎯</span>
-        <span class="auth-feature-title">Achieve</span>
-        <span class="auth-feature-sub">More</span>
-      </div>
-      <div class="auth-feature-divider"></div>
-      <div class="auth-feature-col">
-        <span class="auth-feature-icon">👥</span>
-        <span class="auth-feature-title">Build</span>
-        <span class="auth-feature-sub">Together</span>
-      </div>
     </div>
   </div>
 
@@ -6243,25 +7076,28 @@
 
   <div class="app-viewport" id="appViewport">
 
-    <!-- Top Glass Bar -->
+    <!-- Top Glass Bar matching Image 2 -->
     <header class="top-appbar">
       <div class="appbar-header">
         <div class="brand-title">
-          <img src="logo.png" alt="Qtimex Logo" class="brand-logo-img">
+          <div class="brand-logo-neon-circle">
+            <img src="logo.png" alt="Qtimex Logo" class="brand-logo-img">
+          </div>
           <div class="brand-text-stack">
             <div class="brand-title-wrap">
-              <span class="brand-name" id="brandTitle" onclick="triggerQuantumBrandSurge()" title="Qtimex"><span class="brand-name-text">Qtimex</span></span>
-              <span class="brand-badge" id="brandSectionBadge" onclick="showToast('Tap any section pill below to switch!')" style="cursor:pointer;" title="Current Section">SEC-D ▾</span>
+              <span class="brand-name" id="brandTitle" onclick="triggerQuantumBrandSurge()" title="Qtimex"><span class="brand-name-text">QTIMEX</span></span>
+              <span class="brand-secd-pill" id="brandSectionBadge" onclick="showToast('Tap any section pill below to switch!')" style="cursor:pointer;" title="Current Section">Sec-D</span>
             </div>
-            <span class="brand-subtitle">Quantum University • B.Tech CSE</span>
+            <span class="brand-univ-title">QUANTUM UNIVERSITY</span>
+            <span class="brand-univ-motto">LEARN &bull; GROW &bull; BUILD YOUR FUTURE</span>
           </div>
         </div>
         <div class="appbar-actions" style="display:flex; align-items:center; gap:6px;">
           <!-- Active Authenticated User Profile Pill -->
-          <button class="appbar-user-pill" id="authUserPill" onclick="openUserProfileModal()" title="View Account & Profile" style="display:none;">
+          <button class="appbar-user-pill" id="authUserPill" onclick="openUserProfileModal()" title="View Account & Profile" style="display:flex;">
             <span id="userPillIcon">🎓</span>
-            <span id="userPillName" style="max-width:85px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">Student</span>
-            <span id="userPillBadge" style="font-size:0.64rem; opacity:0.85; font-weight:800; background:rgba(255,255,255,0.12); padding:1px 5px; border-radius:4px;">Sec-D</span>
+            <span id="userPillName" style="max-width:85px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">Rahul ▾</span>
+            <span id="userPillBadge" class="user-pill-sub-badge">Sec-D (Set-A)</span>
           </button>
           <!-- 1-Tap Colorful Themes Studio / Quick Toggle -->
           <button class="appbar-quick-btn" id="themeQuickBtn" onclick="toggleTheme()" title="Switch Theme (Quantum Campus ⇄ Cyberpunk Neon)" aria-label="Switch Theme">
@@ -6286,25 +7122,31 @@
       <div class="section-selector-container">
         <div class="section-selector-label">
           <span>🏫 QUANTUM B.TECH SECTIONS:</span>
-          <span class="active-sec-badge" id="activeSecBadge">Section D (A-108)</span>
+          <span class="active-sec-badge" id="activeSecBadge">📍 SECTION D (A-108)</span>
         </div>
         <div class="section-pills-track" id="sectionPillsTrack">
           <!-- Rendered dynamically by renderSectionPills() -->
         </div>
       </div>
 
-      <!-- ZERO CONFUSION BATCH SWITCHER -->
+      <!-- SET SWITCHER & GOLDEN SLOGAN ROW (Image 2) -->
       <div class="batch-segment-container">
-        <div class="batch-segment">
-          <button class="batch-tab active-seta" id="tabSetA" onclick="setBatchFilter('Set-A')">
-            <span>🅰️</span> <span>Set-A</span>
+        <div class="set-slogan-row">
+          <button class="set-active-green-btn" id="tabSetGreen" onclick="cycleBatchFilter()" title="Tap to switch Set-A / Set-B">
+            <span class="set-letter-badge" id="setLetterBadge">A</span>
+            <span class="set-label-text" id="setLabelText">Set-A</span>
+            <span class="set-chevron">&rsaquo;</span>
           </button>
-          <button class="batch-tab" id="tabSetB" onclick="setBatchFilter('Set-B')">
-            <span>🅱️</span> <span>Set-B</span>
-          </button>
-          <button class="batch-tab" id="tabAll" onclick="setBatchFilter('ALL')">
-            <span>👥</span> <span>Combined</span>
-          </button>
+          <div class="brand-cursive-slogan">
+            <span>Dream &bull; Code &bull; Build &bull; Grow 👑</span>
+            <div class="cursive-underline-flourish"></div>
+          </div>
+        </div>
+        <!-- Programmatic compatibility tab triggers -->
+        <div style="display:none;">
+          <button id="tabSetA" onclick="setBatchFilter('Set-A')"></button>
+          <button id="tabSetB" onclick="setBatchFilter('Set-B')"></button>
+          <button id="tabAll" onclick="setBatchFilter('ALL')"></button>
         </div>
       </div>
     </header>
@@ -6512,35 +7354,47 @@
       <button onclick="stopSimulation()">Reset to Real Clock ↺</button>
     </div>
 
-    <!-- GLOWING HIGHLIGHTED STATUS RIBBON -->
-    <div class="glow-highlight-ribbon" id="glowHighlightRibbon">
-      <span class="ribbon-sparkle">✨</span>
-      <span class="ribbon-highlight-text"><mark class="neon-highlight-badge">QTIMEX</mark> Live Classes • Lab & Faculty Schedule</span>
+    <!-- GLOWING HIGHLIGHTED STATUS RIBBON (Image 2) -->
+    <div class="glow-highlight-ribbon" id="glowHighlightRibbon" onclick="jumpToTodayLive()">
+      <span class="ribbon-live-badge"><span class="live-dot-ping"></span> LIVE</span>
+      <span class="ribbon-sec-badge" id="ribbonSecBadge">SEC-D TIMETABLE</span>
+      <span class="ribbon-highlight-text">Live Classes &bull; Lab & Faculty Schedule</span>
+      <span class="ribbon-chevron">&rsaquo;</span>
     </div>
 
-    <!-- Clock Ribbon -->
+    <!-- Clock & Date Row matching Image 2 -->
     <div class="time-status-ribbon">
-      <div style="display:flex; align-items:center; gap:6px; min-width:0;">
-        <div class="live-radar-badge">
-          <div class="radar-circle-outer">
-            <div class="radar-wave"></div>
-            <div class="radar-dot"></div>
-          </div>
-          <span id="ribbonLiveText">LIVE</span>
+      <div class="time-ribbon-card clock-card">
+        <div class="ribbon-icon-clock">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00f0ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
         </div>
-        <span id="liveClock" class="clock-ticker">00:00:00 AM</span>
+        <div class="ribbon-clock-texts">
+          <span id="liveClock" class="clock-ticker">11:45:01 PM</span>
+          <span class="live-status-indicator"><span class="green-dot"></span> Live Now</span>
+        </div>
       </div>
-      <button class="date-header-chip" id="todayDateBtn" onclick="openCalendarPicker()"
-        title="Tap to select date or day">
-        <span id="todayDateLabel">📍 Today • Fri, 25 Sep</span>
-        <span style="font-size:0.55rem; opacity:0.7;">▼</span>
+
+      <button class="time-ribbon-card date-card" id="todayDateBtn" onclick="openCalendarPicker()" title="Tap to select date or day">
+        <div class="ribbon-icon-cal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="3"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+        </div>
+        <span id="todayDateLabel" class="date-card-text">Thu 15 Oct</span>
+        <span class="date-dropdown-arrow">▾</span>
       </button>
     </div>
 
-    <!-- ADVANCE CIRCULAR HERO CARD -->
+    <!-- ADVANCE CIRCULAR HERO CARD (Image 2) -->
     <section class="circular-hero-card" id="circularHeroCard">
-      <!-- Circular Progress Ring Gauge -->
-      <div class="circular-gauge-container">
+      <!-- Circular Progress Ring Gauge (When Live) -->
+      <div class="circular-gauge-container" id="heroGaugeWrap">
         <svg class="circular-svg" viewBox="0 0 100 100">
           <defs>
             <linearGradient id="liveGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -6555,63 +7409,102 @@
         </svg>
 
         <div class="circle-content-center">
-          <div class="circle-timer-val" id="circleTimer">--:--</div>
-          <div class="circle-timer-sub" id="circleTimerSub">LEFT</div>
+          <div class="circle-timer-val" id="circleTimer">DONE</div>
+          <div class="circle-timer-sub" id="circleTimerSub">8/8 OVER</div>
         </div>
+      </div>
+
+      <!-- Golden Laurel Badge (When 8/8 Lectures Completed matching Image 2) -->
+      <div class="done-laurel-badge-wrap" id="heroDoneBadgeWrap" style="display:none;">
+        <span class="done-laurel-wreath laurel-left">🌿</span>
+        <div class="done-outer-gold-ring">
+          <div class="done-check-circle">✓</div>
+          <span class="done-word">DONE</span>
+          <span class="done-subtext">8/8 OVER</span>
+        </div>
+        <span class="done-laurel-wreath laurel-right">🌿</span>
       </div>
 
       <!-- Lecture Details Column -->
       <div class="hero-info-column">
-        <div class="hero-tag-row">
-          <span class="hero-slot-badge" id="heroSlotBadge">L1 • 09:00 AM</span>
-          <span class="hero-batch-badge badge-set-a" id="heroBatchBadge">🅰️ Set-A Live</span>
+        <div class="hero-tags-top">
+          <span class="hero-dismissed-badge" id="heroSlotBadge">✓ Dismissed</span>
+          <span class="hero-setdone-badge" id="heroBatchBadge">✓ Set-A Done</span>
         </div>
-        <div class="hero-subject-name" id="heroSubjectName">Checking live lecture...</div>
+        <div class="hero-subject-name" id="heroSubjectName">🎉 All 8 lectures completed for today!</div>
         <div style="display:flex; gap:5px; flex-wrap:wrap; align-items:center; min-width:0;">
-          <div class="hero-room-badge" id="heroRoomBadge">📍 Physics Lab (E-106)</div>
+          <div class="hero-room-badge" id="heroRoomBadge" style="display:none;">📍 Campus</div>
           <div class="faculty-badge" id="heroFacultyBadge" style="display:none;">👨‍🏫 Faculty</div>
         </div>
+        <button class="hero-see-tomorrow-btn" id="heroSeeTomorrowBtn" onclick="jumpToTomorrow()">
+          See you tomorrow! &rsaquo;
+        </button>
+      </div>
+
+      <!-- Golden handwriting script matching Image 2 -->
+      <div class="hero-great-work-script" id="heroGreatWorkScript">
+        Great Work! ✨
       </div>
     </section>
 
-    <!-- CIRCULAR 8-PERIOD DAY ORBIT STEPPER -->
+    <!-- CIRCULAR 8-PERIOD DAY ORBIT STEPPER (Image 2) -->
     <div class="orbit-tracker-section" id="orbitTrackerSection">
       <div class="orbit-header">
-        <span id="orbitTitleTxt">Today's 8-Period Orbit</span>
-        <span id="orbitStatusTxt" style="color:var(--accent);">Period 1 of 8</span>
+        <div class="orbit-header-left">
+          <span class="orbit-planet-icon">🪐</span>
+          <span id="orbitTitleTxt">THURSDAY'S 8-PERIOD ORBIT</span>
+        </div>
+        <span id="orbitStatusTxt" class="orbit-header-right">THURSDAY'S 8 PERIODS</span>
       </div>
       <div class="orbit-circles-row">
         <div class="orbit-line-bg"></div>
         <div class="orbit-dot" data-slot="L1" onclick="scrollToPeriod('L1')">1</div>
         <div class="orbit-dot" data-slot="L2" onclick="scrollToPeriod('L2')">2</div>
         <div class="orbit-dot" data-slot="L3" onclick="scrollToPeriod('L3')">3</div>
-        <div class="orbit-dot" data-slot="L4" onclick="scrollToPeriod('L4')">🍱</div>
+        <div class="orbit-dot orbit-lunch-dot" data-slot="L4" onclick="scrollToPeriod('L4')" title="Lunch / Break">
+          <span class="lunch-dot-icon">📚</span>
+        </div>
         <div class="orbit-dot" data-slot="L5" onclick="scrollToPeriod('L5')">5</div>
         <div class="orbit-dot" data-slot="L6" onclick="scrollToPeriod('L6')">6</div>
         <div class="orbit-dot" data-slot="L7" onclick="scrollToPeriod('L7')">7</div>
-        <div class="orbit-dot" data-slot="L8" onclick="scrollToPeriod('L8')">8</div>
+        <div class="orbit-dot orbit-final-dot" data-slot="L8" onclick="scrollToPeriod('L8')">8</div>
       </div>
     </div>
 
-    <!-- QUICK DAY SWITCH BAR (TODAY / TOMORROW / DATE SELECTOR) -->
+    <!-- QUICK DAY SWITCH BAR (Image 2) -->
     <div class="schedule-quick-switch-bar">
       <button class="quick-view-btn active" id="btnViewToday" onclick="jumpToTodayLive()">
         <span class="btn-icon">📍</span>
         <span class="btn-label">Today</span>
       </button>
       <button class="quick-view-btn" id="btnViewTomorrow" onclick="jumpToTomorrow()">
-        <span class="btn-icon">🌅</span>
+        <span class="btn-icon">📅</span>
         <span class="btn-label">Tomorrow</span>
       </button>
       <button class="quick-view-btn" id="btnOpenCalendar" onclick="openCalendarPicker()">
-        <span class="btn-icon">📅</span>
-        <span class="btn-label">Select Date</span>
+        <span class="btn-icon">🗓️</span>
+        <span class="btn-label">Select Date &rsaquo;</span>
       </button>
     </div>
 
     <!-- DAY SELECTOR (MON - SAT) -->
     <div class="day-pills-bar" id="dayPillsContainer">
       <!-- Populated dynamically -->
+    </div>
+
+    <!-- SCHEDULE SUMMARY BANNER (Image 2) -->
+    <div class="schedule-summary-banner" id="scheduleSummaryBanner" onclick="jumpToTodayLive()">
+      <div class="sched-banner-left">
+        <div class="sched-cal-badge">📅</div>
+        <div class="sched-banner-texts">
+          <strong id="schedBannerTitle">Schedule for Thursday</strong>
+          <span id="schedBannerSub">15 Oct &bull; 8 Lectures Scheduled</span>
+        </div>
+      </div>
+      <button class="sched-live-pill-btn" onclick="event.stopPropagation(); jumpToTodayLive();">
+        <span class="sched-live-pulse"></span>
+        <span>Today's Live &rsaquo;</span>
+      </button>
     </div>
 
     <!-- VIEWING DATE REMINDER BANNER (Visible when viewing tomorrow or specific date) -->
@@ -8829,9 +9722,12 @@
         if (window.CURRENT_USER && window.CURRENT_USER.role === 'student') {
           const k = window.CURRENT_USER.section || 'Sec-D';
           const sec = ALL_SECTIONS[k] || { name: k, room: 'A-108' };
-          track.innerHTML = `<button class="sec-pill-btn active" style="cursor:default;" title="Locked to your enrolled section">
-            <span>🔒 ${k} (My Section)</span>
-            <span style="font-size:0.58rem; opacity:0.85;">• ${window.CURRENT_USER.set || 'Set-A'}</span>
+          track.innerHTML = `<button class="sec-locked-hero-pill" style="cursor:default;" title="Locked to your enrolled section">
+            <span class="pill-lock-icon">🔒</span>
+            <span class="pill-title">${k} (My Section)</span>
+            <span class="pill-bullet">&bull;</span>
+            <span class="pill-batch-text">${window.CURRENT_USER.set || 'Set-A'}</span>
+            <span class="pill-chevron">&rsaquo;</span>
           </button>`;
         } else {
           const secKeys = Object.keys(ALL_SECTIONS);
@@ -8855,11 +9751,11 @@
 
       const badge = document.getElementById('activeSecBadge');
       if (badge && ALL_SECTIONS[currentSection]) {
-        badge.textContent = `${ALL_SECTIONS[currentSection].name} (${ALL_SECTIONS[currentSection].room})`;
+        badge.textContent = `📍 ${ALL_SECTIONS[currentSection].name.toUpperCase()} (${ALL_SECTIONS[currentSection].room})`;
       }
       const brandBadge = document.getElementById('brandSectionBadge');
       if (brandBadge) {
-        brandBadge.textContent = `${currentSection} ▾`;
+        brandBadge.textContent = `${currentSection}`;
       }
       // Brand name "Qtimex" fixed rahega — section badge alag hai
       const watermark = document.querySelector('.watermark-word');
@@ -10384,9 +11280,9 @@
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '6.4.1';
-    const LOCAL_APP_VERSION_CODE = 94;
-    const LOCAL_APP_BUILD_HASH = 'c4d0ca672a26';
+    const LOCAL_APP_VERSION_NAME = '6.4.2';
+    const LOCAL_APP_VERSION_CODE = 95;
+    const LOCAL_APP_BUILD_HASH = 'b0188f704c32';
 
     let cachedLatestVersionCode = 29;
 
@@ -10844,6 +11740,16 @@
       showToast(isExp ? 'Wide desktop view' : 'Mobile phone view');
     }
 
+    function cycleBatchFilter() {
+      if (window.CURRENT_USER && window.CURRENT_USER.role === 'student') {
+        showToast(`🔒 Enrolled in ${window.CURRENT_USER.set}. Batch switching is locked for students.`);
+        return;
+      }
+      if (selectedBatch === 'Set-A') setBatchFilter('Set-B');
+      else if (selectedBatch === 'Set-B') setBatchFilter('Set-A');
+      else setBatchFilter('Set-A');
+    }
+
     // SWITCH BETWEEN SET-A, SET-B, AND COMPARE BOTH
     function setBatchFilter(batch) {
       if (window.CURRENT_USER && window.CURRENT_USER.role === 'student' && batch !== window.CURRENT_USER.set) {
@@ -10856,9 +11762,30 @@
       localStorage.setItem('secD_batch_pref', batch);
       syncAndroidNotificationPrefs();
 
-      document.getElementById('tabSetA').className = `batch-tab ${batch === 'Set-A' ? 'active-seta' : ''}`;
-      document.getElementById('tabSetB').className = `batch-tab ${batch === 'Set-B' ? 'active-setb' : ''}`;
-      document.getElementById('tabAll').className = `batch-tab ${batch === 'ALL' ? 'active-all' : ''}`;
+      const tabA = document.getElementById('tabSetA');
+      const tabB = document.getElementById('tabSetB');
+      const tabAll = document.getElementById('tabAll');
+      if (tabA) tabA.className = `batch-tab ${batch === 'Set-A' ? 'active-seta' : ''}`;
+      if (tabB) tabB.className = `batch-tab ${batch === 'Set-B' ? 'active-setb' : ''}`;
+      if (tabAll) tabAll.className = `batch-tab ${batch === 'ALL' ? 'active-all' : ''}`;
+
+      const letterBadge = document.getElementById('setLetterBadge');
+      const labelText = document.getElementById('setLabelText');
+      if (letterBadge && labelText) {
+        if (batch === 'Set-B') {
+          letterBadge.textContent = 'B';
+          letterBadge.style.background = '#3b82f6';
+          labelText.textContent = 'Set-B';
+        } else if (batch === 'ALL') {
+          letterBadge.textContent = '👥';
+          letterBadge.style.background = '#8b5cf6';
+          labelText.textContent = 'Combined';
+        } else {
+          letterBadge.textContent = 'A';
+          letterBadge.style.background = '#ef4444';
+          labelText.textContent = 'Set-A';
+        }
+      }
 
       renderTodayLectures(viewingDate);
       updateLiveState(true);
@@ -10923,13 +11850,16 @@
 
       const dateLabel = document.getElementById('todayDateLabel');
       if (dateLabel) {
-        if (isToday) {
-          dateLabel.textContent = `📍 Today • ${now.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' })}`;
-        } else if (isTomorrow) {
-          dateLabel.textContent = `🌅 Tomorrow • ${tomorrow.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' })}`;
-        } else {
-          dateLabel.textContent = `📅 ${viewingDate.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' })}`;
-        }
+        dateLabel.textContent = viewingDate.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+      }
+
+      const schedTitle = document.getElementById('schedBannerTitle');
+      const schedSub = document.getElementById('schedBannerSub');
+      if (schedTitle && schedSub) {
+        const dName = dayNames[viewingDate.getDay()];
+        const dDate = viewingDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+        schedTitle.textContent = `Schedule for ${dName}`;
+        schedSub.textContent = `${dDate} • 8 Lectures Scheduled`;
       }
 
       const btnToday = document.getElementById('btnViewToday');
@@ -10961,6 +11891,8 @@
       const monday = new Date(refDate);
       monday.setDate(refDate.getDate() + mondayOffset);
 
+      const dayColors = ['', '#38bdf8', '#22c55e', '#a855f7', '#00f0ff', '#f59e0b', '#ec4899'];
+
       for (let i = 1; i <= 6; i++) {
         const d = new Date(monday);
         d.setDate(monday.getDate() + (i - 1));
@@ -10977,8 +11909,9 @@
         if (isToday) subText = 'Today';
         else if (isTomorrow) subText = 'Tomorrow';
 
+        const color = dayColors[i] || '#38bdf8';
         btn.innerHTML = `
-          <span class="day-pill-name">${shortDayNames[i]}</span>
+          <span class="day-pill-name" style="color:${isSelected ? '#ffffff' : color};">📅 ${shortDayNames[i]}</span>
           <span class="day-pill-sub">${subText}</span>
         `;
         container.appendChild(btn);
@@ -11797,6 +12730,16 @@
         const p = periods[activeIndex];
         const s = todaysSlots[activeIndex];
 
+        const gaugeWrap = document.getElementById('heroGaugeWrap');
+        const doneBadgeWrap = document.getElementById('heroDoneBadgeWrap');
+        const seeTomorrowBtn = document.getElementById('heroSeeTomorrowBtn');
+        const greatWorkScript = document.getElementById('heroGreatWorkScript');
+        if (gaugeWrap) gaugeWrap.style.display = 'flex';
+        if (doneBadgeWrap) doneBadgeWrap.style.display = 'none';
+        if (seeTomorrowBtn) seeTomorrowBtn.style.display = 'none';
+        if (greatWorkScript) greatWorkScript.style.display = 'none';
+        if (heroRoomBadge) heroRoomBadge.style.display = 'inline-flex';
+
         hero.classList.add('is-active-live');
         setTextIfChanged(heroSlotBadge, `${p.id} • ${p.timing}`);
         if (isViewingToday) setTextIfChanged(orbitStatusTxt, `Period ${activeIndex + 1} of 8 (Live)`);
@@ -11887,6 +12830,15 @@
         // BREAK / BEFORE / AFTER
         hero.classList.remove('is-active-live');
         heroBatchBadge.style.display = 'inline-flex';
+        const gaugeWrap = document.getElementById('heroGaugeWrap');
+        const doneBadgeWrap = document.getElementById('heroDoneBadgeWrap');
+        const seeTomorrowBtn = document.getElementById('heroSeeTomorrowBtn');
+        const greatWorkScript = document.getElementById('heroGreatWorkScript');
+        if (gaugeWrap) gaugeWrap.style.display = 'flex';
+        if (doneBadgeWrap) doneBadgeWrap.style.display = 'none';
+        if (seeTomorrowBtn) seeTomorrowBtn.style.display = 'none';
+        if (greatWorkScript) greatWorkScript.style.display = 'none';
+        if (heroRoomBadge) heroRoomBadge.style.display = 'inline-flex';
 
         if (currentMinutes < periods[0].startMins) {
           const secsToFirst = periods[0].startMins * 60 - totalSecs;
@@ -11935,22 +12887,31 @@
 
         } else if (currentMinutes >= periods[periods.length - 1].endMins) {
           if (heroFacultyBadge) heroFacultyBadge.style.display = 'none';
+          const gaugeWrap = document.getElementById('heroGaugeWrap');
+          const doneBadgeWrap = document.getElementById('heroDoneBadgeWrap');
+          const seeTomorrowBtn = document.getElementById('heroSeeTomorrowBtn');
+          const greatWorkScript = document.getElementById('heroGreatWorkScript');
+          if (gaugeWrap) gaugeWrap.style.display = 'none';
+          if (doneBadgeWrap) doneBadgeWrap.style.display = 'flex';
+          if (seeTomorrowBtn) seeTomorrowBtn.style.display = 'inline-flex';
+          if (greatWorkScript) greatWorkScript.style.display = 'block';
+
           heroRing.style.strokeDashoffset = 0; // 100% full
           setTextIfChanged(circleTimer, 'DONE');
           setTextIfChanged(circleTimerSub, '8/8 OVER');
-          setTextIfChanged(heroSlotBadge, 'Dismissed');
+          setTextIfChanged(heroSlotBadge, '✓ Dismissed');
           if (selectedBatch === 'ALL' || selectedBatch === 'Combined' || selectedBatch === 'Combine') {
-            setTextIfChanged(heroBatchBadge, 'Set A+B');
-            heroBatchBadge.className = 'hero-batch-badge badge-set-all';
+            setTextIfChanged(heroBatchBadge, '✓ Set A+B Done');
+            heroBatchBadge.className = 'hero-setdone-badge';
           } else if (selectedBatch === 'Set-B') {
-            setTextIfChanged(heroBatchBadge, 'Set-B Done');
-            heroBatchBadge.className = 'hero-batch-badge badge-set-b';
+            setTextIfChanged(heroBatchBadge, '✓ Set-B Done');
+            heroBatchBadge.className = 'hero-setdone-badge';
           } else {
-            setTextIfChanged(heroBatchBadge, 'Set-A Done');
-            heroBatchBadge.className = 'hero-batch-badge badge-set-a';
+            setTextIfChanged(heroBatchBadge, '✓ Set-A Done');
+            heroBatchBadge.className = 'hero-setdone-badge';
           }
           setTextIfChanged(heroSubjectName, '🎉 All 8 lectures completed for today!');
-          setTextIfChanged(heroRoomBadge, 'See you tomorrow!');
+          if (heroRoomBadge) heroRoomBadge.style.display = 'none';
           if (isViewingToday) setTextIfChanged(orbitStatusTxt, 'All 8 Periods Over');
 
         } else {

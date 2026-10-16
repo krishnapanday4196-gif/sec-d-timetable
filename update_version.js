@@ -3,12 +3,12 @@ const crypto = require('crypto');
 const path = require('path');
 
 let ver = JSON.parse(fs.readFileSync('version.json', 'utf8'));
-ver.versionName = "6.4.1";
-ver.versionCode = 94;
-ver.apkVersionCode = 94;
+ver.versionName = "6.4.2";
+ver.versionCode = 95;
+ver.apkVersionCode = 95;
 ver.updatedAt = Date.now();
 ver.lastUpdated = new Date().toISOString();
-ver.releaseNotes = "v6.4.1: Instant Account Creation Fix, Forgiving Student ID/Roll Registration, Zero-Lag 120 FPS Mobile Optimization, Segmented Login Tabs, and Inline Alerts";
+ver.releaseNotes = "v6.4.2: Pixel-Perfect Redesign Matching Screenshot - Twilight Campus Header, Glowing Logo Rings, Custom Gold Cursive Accents, Laurel Wreath Completion Gauge, 8-Period Connected Orbit Tracker & Rapid Responsive Switching";
 
 let html = fs.readFileSync('index.html', 'utf8');
 html = html.replace(/const LOCAL_APP_VERSION_NAME = '[^']+';/, "const LOCAL_APP_VERSION_NAME = '" + ver.versionName + "';");
@@ -37,6 +37,12 @@ fs.writeFileSync('version.json', JSON.stringify(ver, null, 2), 'utf8');
 try { 
   fs.copyFileSync('index.html', 'android/app/src/main/assets/index.html'); 
   fs.copyFileSync('sections_data.json', 'android/app/src/main/assets/sections_data.json');
+  if (fs.existsSync('campus.jpg')) {
+    fs.copyFileSync('campus.jpg', 'android/app/src/main/assets/campus.jpg');
+  }
+  if (fs.existsSync('logo.png')) {
+    fs.copyFileSync('logo.png', 'android/app/src/main/assets/logo.png');
+  }
   if (fs.existsSync('pyqs_data.json')) {
     fs.copyFileSync('pyqs_data.json', 'android/app/src/main/assets/pyqs_data.json');
   }
@@ -46,7 +52,7 @@ try {
   if (fs.existsSync('registered_users.json')) {
     fs.copyFileSync('registered_users.json', 'android/app/src/main/assets/registered_users.json');
   }
-  console.log('✅ Synced index.html, pyqs_data.json, sections_data.json, cancelled_classes.json, and registered_users.json to Android assets'); 
+  console.log('✅ Synced web assets, images, and data to Android assets'); 
 } catch(e) {
   console.error(e);
 }
