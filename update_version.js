@@ -3,12 +3,12 @@ const crypto = require('crypto');
 const path = require('path');
 
 let ver = JSON.parse(fs.readFileSync('version.json', 'utf8'));
-ver.versionName = "6.4.6";
-ver.versionCode = 99;
-ver.apkVersionCode = 99;
+ver.versionName = "6.4.8";
+ver.versionCode = 101;
+ver.apkVersionCode = 101;
 ver.updatedAt = Date.now();
 ver.lastUpdated = new Date().toISOString();
-ver.releaseNotes = "v6.4.6: Exact pixel-perfect alignment with cyberpunk neon reference UI (QTIMEX gold X, Sec-D pill, locked hero section pill, hot pink set badge, gold slogan & crown, red live pill clock, rainbow completed ring with trophy, and bottom dock active dots)";
+ver.releaseNotes = "v6.4.8: Next-level mobile responsive layout (zero text truncation, stacked Quantum University title, fluid user pill) and luxury high-contrast White Theme (Aura Celestial) color combination";
 
 let html = fs.readFileSync('index.html', 'utf8');
 html = html.replace(/const LOCAL_APP_VERSION_NAME = '[^']+';/, "const LOCAL_APP_VERSION_NAME = '" + ver.versionName + "';");

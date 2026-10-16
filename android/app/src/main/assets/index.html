@@ -1300,9 +1300,11 @@
       background: transparent;
       display: block;
       position: relative;
-      padding-bottom: 112px;
+      padding-bottom: calc(76px + env(safe-area-inset-bottom));
       box-shadow: none;
       border: none;
+      overflow-x: hidden !important;
+      box-sizing: border-box;
     }
 
     /* ============================================================
@@ -2884,10 +2886,12 @@
        HOLO-BENTO LECTURE CARDS WITH STAGGERED CASCADE ANIMATIONS
        ============================================================ */
     .lectures-container {
-      padding: 6px 12px 14px 12px;
+      padding: 6px 10px calc(80px + env(safe-area-inset-bottom)) 10px;
       display: flex;
       flex-direction: column;
-      gap: 11px;
+      gap: 10px;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .lecture-card {
@@ -5801,19 +5805,21 @@
         linear-gradient(90deg, #070f30 0%, #070f30 65%, #0b1a48 100%) !important;
       border-bottom: 1.5px solid rgba(0, 240, 255, 0.35) !important;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 240, 255, 0.15) !important;
-      padding: max(8px, env(safe-area-inset-top)) 10px 8px 10px;
+      padding: max(6px, env(safe-area-inset-top)) 10px 6px 10px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 5px;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .brand-logo-neon-circle {
-      width: 42px;
-      height: 42px;
+      width: clamp(34px, 10vw, 40px);
+      height: clamp(34px, 10vw, 40px);
       border-radius: 50%;
       padding: 2px;
       background: linear-gradient(135deg, #00f0ff 0%, #a855f7 50%, #ec4899 100%);
-      box-shadow: 0 0 14px rgba(0, 240, 255, 0.7), 0 0 24px rgba(168, 85, 247, 0.4);
+      box-shadow: 0 0 12px rgba(0, 240, 255, 0.7), 0 0 20px rgba(168, 85, 247, 0.4);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -5833,13 +5839,13 @@
     .brand-title-wrap {
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 4px;
       flex-shrink: 0;
       white-space: nowrap;
     }
 
     .brand-title-wrap .brand-name-text {
-      font-size: 1.25rem;
+      font-size: clamp(1.05rem, 3.6vw, 1.25rem);
       font-weight: 900;
       letter-spacing: -0.3px;
       line-height: 1.1;
@@ -5867,10 +5873,10 @@
       background: #0284c7;
       border: 1.2px solid #00f0ff;
       color: #ffffff;
-      font-size: 0.68rem;
+      font-size: clamp(0.56rem, 1.8vw, 0.66rem);
       font-weight: 850;
       border-radius: 9999px;
-      padding: 1.5px 8px;
+      padding: 1.5px 6px;
       box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
       letter-spacing: 0.3px;
       line-height: 1.2;
@@ -5879,14 +5885,21 @@
     }
 
     .brand-univ-title {
-      color: #facc15 !important;
-      font-size: 0.74rem;
+      color: #facc15;
+      font-size: clamp(0.50rem, 1.8vw, 0.62rem);
       font-weight: 850;
       letter-spacing: 0.5px;
       text-transform: uppercase;
-      line-height: 1.15;
+      line-height: 1.05;
       margin-top: 1px;
       text-shadow: 0 0 10px rgba(250, 204, 21, 0.35);
+      display: flex;
+      flex-direction: column;
+      gap: 0px;
+    }
+
+    .brand-univ-title .univ-word-q,
+    .brand-univ-title .univ-word-u {
       white-space: nowrap;
     }
 
@@ -5895,23 +5908,32 @@
     }
 
     /* TOP BAR USER PROFILE PILL & ACTION BUTTONS */
+    .appbar-actions {
+      display: flex;
+      align-items: center;
+      gap: clamp(3px, 1vw, 4px);
+      flex-shrink: 0;
+      margin-left: auto;
+    }
+
     .appbar-user-pill {
       background: #070e28;
       border: 1.4px solid rgba(168, 85, 247, 0.55);
       border-radius: 9999px;
-      padding: 3px 8px;
+      padding: 2px 7px;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 3.5px;
       color: #ffffff;
-      font-size: 0.74rem;
+      font-size: clamp(0.62rem, 2.0vw, 0.72rem);
       font-weight: 800;
       cursor: pointer;
-      box-shadow: 0 0 14px rgba(168, 85, 247, 0.3);
+      box-shadow: 0 0 12px rgba(168, 85, 247, 0.3);
       outline: none;
       font-family: inherit;
       white-space: nowrap;
       flex-shrink: 0;
+      height: clamp(28px, 7.5vw, 32px);
     }
 
     .appbar-user-pill:hover {
@@ -5919,34 +5941,42 @@
       box-shadow: 0 0 14px rgba(0, 240, 255, 0.5);
     }
 
+    #userPillName {
+      max-width: clamp(45px, 12vw, 68px);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
     .user-pill-sub-badge {
       display: inline-flex !important;
       align-items: center;
-      font-size: 0.62rem;
+      font-size: clamp(0.50rem, 1.6vw, 0.58rem);
       font-weight: 700;
       background: rgba(2, 132, 199, 0.35);
       border: 1px solid rgba(0, 240, 255, 0.45);
       border-radius: 9999px;
-      padding: 1px 7px;
+      padding: 1px 5px;
       color: #bae6fd;
       white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .appbar-quick-btn {
-      width: 34px;
-      height: 34px;
-      border-radius: 10px;
+      width: clamp(28px, 7.5vw, 32px);
+      height: clamp(28px, 7.5vw, 32px);
+      border-radius: 8px;
       background: #070e28;
       border: 1.2px solid rgba(0, 240, 255, 0.35);
       color: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.95rem;
+      font-size: clamp(0.78rem, 2.2vw, 0.88rem);
       cursor: pointer;
       transition: all 0.2s ease;
       outline: none;
-      box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+      box-shadow: 0 0 8px rgba(0, 240, 255, 0.2);
       flex-shrink: 0;
     }
 
@@ -5956,12 +5986,12 @@
     }
 
     .holo-menu-trigger {
-      width: 34px;
-      height: 34px;
-      border-radius: 10px;
+      width: clamp(28px, 7.5vw, 32px);
+      height: clamp(28px, 7.5vw, 32px);
+      border-radius: 8px;
       background: #070e28;
       border: 1.2px solid rgba(0, 240, 255, 0.35);
-      box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+      box-shadow: 0 0 8px rgba(0, 240, 255, 0.2);
       flex-shrink: 0;
     }
 
@@ -5969,7 +5999,7 @@
     .section-selector-container {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 5px;
       width: 100%;
       margin-top: 2px;
     }
@@ -5978,7 +6008,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 0.72rem;
+      font-size: clamp(0.66rem, 2.2vw, 0.72rem);
       font-weight: 850;
       color: #ffffff;
       letter-spacing: 0.4px;
@@ -5990,8 +6020,8 @@
       border: 1.2px solid #00f0ff;
       color: #ffffff;
       border-radius: 9999px;
-      padding: 2px 10px;
-      font-size: 0.65rem;
+      padding: 2px 8px;
+      font-size: clamp(0.60rem, 2vw, 0.65rem);
       font-weight: 800;
       box-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
       letter-spacing: 0.3px;
@@ -5999,17 +6029,17 @@
 
     .sec-locked-hero-pill {
       width: 100%;
-      height: 44px;
+      height: 42px;
       border-radius: 9999px;
       background: linear-gradient(90deg, #0284c7 0%, #0369a1 40%, #0c4a6e 100%);
       border: 1.8px solid #00f0ff;
       box-shadow: 0 0 20px rgba(0, 240, 255, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.35);
       display: flex;
       align-items: center;
-      padding: 0 14px;
+      padding: 0 12px;
       gap: 8px;
       color: #ffffff;
-      font-size: 0.90rem;
+      font-size: clamp(0.82rem, 2.8vw, 0.90rem);
       font-weight: 850;
       cursor: pointer;
       transition: all 0.2s ease;
@@ -6021,8 +6051,18 @@
       transform: scale(0.985);
     }
 
-    .pill-lock-icon {
-      font-size: 1.05rem;
+    .lock-icon-box {
+      width: 26px;
+      height: 26px;
+      border-radius: 7px;
+      background: rgba(234, 179, 8, 0.2);
+      border: 1.2px solid #eab308;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.88rem;
+      box-shadow: 0 0 10px rgba(234, 179, 8, 0.4);
+      flex-shrink: 0;
     }
 
     .pill-chevron {
@@ -6037,28 +6077,29 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 8px;
       width: 100%;
       margin: 2px 0;
     }
 
     .set-active-green-btn {
-      height: 40px;
-      padding: 0 16px 0 8px;
+      height: 38px;
+      padding: 0 14px 0 6px;
       border-radius: 9999px;
       background: #061a14;
       border: 1.8px solid #22c55e;
       box-shadow: 0 0 16px rgba(34, 197, 94, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.2);
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
       color: #ffffff;
-      font-size: 0.92rem;
+      font-size: clamp(0.82rem, 2.8vw, 0.92rem);
       font-weight: 850;
       cursor: pointer;
       transition: all 0.2s ease;
       outline: none;
       font-family: inherit;
+      flex-shrink: 0;
     }
 
     .set-active-green-btn:active {
@@ -6074,8 +6115,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 900;
+      flex-shrink: 0;
     }
 
     .set-chevron {
@@ -6087,77 +6129,85 @@
       display: flex;
       flex-direction: column;
       align-items: flex-end;
+      min-width: 0;
+      flex-shrink: 1;
     }
 
     .brand-cursive-slogan span,
     .brand-cursive-quote {
       font-family: 'Caveat', cursive;
       color: #93c5fd;
-      font-size: 1.35rem;
+      font-size: clamp(0.95rem, 3.6vw, 1.35rem);
       font-weight: 700;
       line-height: 1.1;
       white-space: nowrap;
       text-shadow: 0 0 12px rgba(147, 197, 253, 0.45);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
     }
 
     .cursive-underline-flourish {
-      width: 70px;
-      height: 2.5px;
+      width: clamp(45px, 16vw, 65px);
+      height: 2px;
       border-radius: 99px;
       background: linear-gradient(90deg, #00f0ff, transparent);
-      margin-right: 28px;
+      margin-right: 20px;
       margin-top: 1px;
     }
 
     /* GLOWING HIGHLIGHTED STATUS RIBBON (Exact Match) */
     .glow-highlight-ribbon {
-      margin: 6px 12px;
-      height: 44px;
+      margin: 5px 10px;
+      height: 42px;
       border-radius: 9999px;
       background: #070e28;
       border: 1.8px solid #d946ef;
-      box-shadow: 0 0 22px rgba(217, 70, 239, 0.4), 0 0 18px rgba(0, 240, 255, 0.25);
+      box-shadow: 0 0 20px rgba(217, 70, 239, 0.4), 0 0 16px rgba(0, 240, 255, 0.25);
       display: flex;
       align-items: center;
-      padding: 0 14px 0 10px;
-      gap: 10px;
+      padding: 0 12px 0 10px;
+      gap: 8px;
       cursor: pointer;
       overflow: hidden;
     }
 
     .ribbon-star-icon {
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       flex-shrink: 0;
     }
 
     .ribbon-sec-badge {
       background: linear-gradient(90deg, #00f0ff 0%, #d946ef 100%);
       color: #070e28;
-      font-size: 0.70rem;
+      font-size: clamp(0.64rem, 2.1vw, 0.70rem);
       font-weight: 900;
       border-radius: 9999px;
-      padding: 3.5px 12px;
-      letter-spacing: 0.4px;
+      padding: 3px 10px;
+      letter-spacing: 0.3px;
       white-space: nowrap;
       box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+      flex-shrink: 0;
     }
 
     .ribbon-highlight-text {
       color: #ffffff;
-      font-size: 0.82rem;
+      font-size: clamp(0.70rem, 2.5vw, 0.82rem);
       font-weight: 800;
       font-style: italic;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      min-width: 0;
+      flex: 1;
     }
 
     /* CLOCK & DATE ROW (Image 2) */
     .time-status-ribbon {
       display: grid;
-      grid-template-columns: 1.25fr 1fr;
-      gap: 10px;
-      margin: 6px 12px;
+      grid-template-columns: 1.22fr 1fr;
+      gap: 8px;
+      margin: 5px 10px;
       padding: 0;
       background: transparent;
       border: none;
@@ -6167,26 +6217,28 @@
       background: #070e28;
       border: 1.5px solid rgba(168, 85, 247, 0.65);
       box-shadow: 0 0 16px rgba(168, 85, 247, 0.25);
-      border-radius: 18px;
-      padding: 10px 14px;
+      border-radius: 16px;
+      padding: 8px 10px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
+      min-height: 44px;
+      min-width: 0;
     }
 
     .ribbon-live-pill-red {
       background: #ef4444;
       border: 1px solid #f87171;
       color: #ffffff;
-      font-size: 0.65rem;
+      font-size: clamp(0.58rem, 2vw, 0.65rem);
       font-weight: 900;
       border-radius: 9999px;
-      padding: 3px 8px;
-      letter-spacing: 0.4px;
+      padding: 2.5px 7px;
+      letter-spacing: 0.3px;
       box-shadow: 0 0 10px rgba(239, 68, 68, 0.65);
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 3px;
       flex-shrink: 0;
     }
 
@@ -6201,12 +6253,13 @@
     }
 
     .clock-ticker {
-      font-size: 1.15rem;
+      font-size: clamp(0.92rem, 3.2vw, 1.15rem);
       font-weight: 900;
       color: #ffffff;
       font-family: inherit;
       letter-spacing: -0.3px;
       line-height: 1.1;
+      white-space: nowrap;
     }
 
     .date-card {
@@ -6215,49 +6268,54 @@
       background: #070e28;
       border: 1.5px solid rgba(56, 189, 248, 0.65);
       box-shadow: 0 0 16px rgba(56, 189, 248, 0.25);
-      border-radius: 18px;
-      padding: 10px 14px;
+      border-radius: 16px;
+      padding: 8px 10px;
       display: flex;
       align-items: center;
       color: #ffffff;
       outline: none;
       font-family: inherit;
+      min-height: 44px;
+      min-width: 0;
     }
 
     .cal-icon-blue {
-      font-size: 1.05rem;
+      font-size: 0.95rem;
+      flex-shrink: 0;
     }
 
     .date-card-text {
-      font-size: 0.95rem;
+      font-size: clamp(0.80rem, 2.8vw, 0.95rem);
       font-weight: 800;
       color: #ffffff;
+      white-space: nowrap;
     }
 
     .date-dropdown-arrow {
-      font-size: 0.75rem;
+      font-size: 0.70rem;
       color: #94a3b8;
+      flex-shrink: 0;
     }
 
     /* STATUS / HERO CARD (Image 2) */
     .circular-hero-card {
       background: #071333 !important;
       border: 2px solid #00d2ff !important;
-      border-radius: 22px !important;
-      padding: 14px 16px !important;
-      margin: 6px 12px !important;
+      border-radius: 20px !important;
+      padding: 12px 14px !important;
+      margin: 5px 10px !important;
       position: relative;
       overflow: hidden;
       box-shadow: 0 0 30px rgba(0, 210, 255, 0.4), inset 0 0 20px rgba(0, 210, 255, 0.12) !important;
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
     }
 
     .done-laurel-badge-wrap {
       position: relative;
-      width: 90px;
-      height: 90px;
+      width: clamp(74px, 22vw, 86px);
+      height: clamp(74px, 22vw, 86px);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -6265,12 +6323,12 @@
     }
 
     .done-outer-gold-ring {
-      width: 80px;
-      height: 80px;
+      width: clamp(66px, 19vw, 78px);
+      height: clamp(66px, 19vw, 78px);
       border-radius: 50%;
       background: conic-gradient(#00f0ff 0deg, #facc15 120deg, #ec4899 240deg, #00f0ff 360deg);
-      padding: 3.5px;
-      box-shadow: 0 0 18px rgba(0, 240, 255, 0.6), 0 0 24px rgba(250, 204, 21, 0.4);
+      padding: 3px;
+      box-shadow: 0 0 16px rgba(0, 240, 255, 0.6), 0 0 22px rgba(250, 204, 21, 0.4);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -6288,21 +6346,21 @@
     }
 
     .done-check-circle {
-      width: 22px;
-      height: 22px;
+      width: 18px;
+      height: 18px;
       border-radius: 50%;
-      border: 1.5px solid #00f0ff;
+      border: 1.4px solid #00f0ff;
       color: #00f0ff;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.82rem;
+      font-size: 0.70rem;
       font-weight: 900;
-      margin-bottom: 2px;
+      margin-bottom: 1px;
     }
 
     .done-word {
-      font-size: 0.95rem;
+      font-size: clamp(0.75rem, 2.4vw, 0.90rem);
       font-weight: 900;
       color: #ffffff;
       letter-spacing: 0.5px;
@@ -6310,17 +6368,17 @@
     }
 
     .done-subtext {
-      font-size: 0.54rem;
+      font-size: clamp(0.46rem, 1.5vw, 0.52rem);
       font-weight: 850;
       color: #facc15;
       letter-spacing: 0.5px;
-      margin-top: 2px;
+      margin-top: 1px;
     }
 
     .done-stars-row {
-      font-size: 0.50rem;
+      font-size: 0.45rem;
       color: #facc15;
-      letter-spacing: 2px;
+      letter-spacing: 1.5px;
       margin-top: 1px;
     }
 
@@ -6328,7 +6386,7 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      font-size: 1.35rem;
+      font-size: clamp(1.1rem, 3.5vw, 1.35rem);
       pointer-events: none;
     }
 
@@ -6341,48 +6399,73 @@
       transform: translateY(-50%) scaleX(-1);
     }
 
+    .circular-gauge-container {
+      width: clamp(74px, 22vw, 86px);
+      height: clamp(74px, 22vw, 86px);
+      flex-shrink: 0;
+    }
+
+    .hero-info-column {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      flex: 1;
+      min-width: 0;
+    }
+
     .hero-tags-top {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 5px;
+      flex-wrap: wrap;
     }
 
     .hero-dismissed-badge {
       background: rgba(0, 240, 255, 0.15);
       border: 1.2px solid #00f0ff;
       color: #00f0ff;
-      font-size: 0.68rem;
+      font-size: clamp(0.60rem, 2vw, 0.68rem);
       font-weight: 850;
-      padding: 2.5px 10px;
+      padding: 2px 8px;
       border-radius: 9999px;
       box-shadow: 0 0 8px rgba(0, 240, 255, 0.3);
+      white-space: nowrap;
     }
 
     .hero-setdone-badge {
       background: rgba(16, 185, 129, 0.15);
       border: 1.2px solid #10b981;
       color: #34d399;
-      font-size: 0.68rem;
+      font-size: clamp(0.60rem, 2vw, 0.68rem);
       font-weight: 850;
-      padding: 2.5px 10px;
+      padding: 2px 8px;
       border-radius: 9999px;
       box-shadow: 0 0 8px rgba(16, 185, 129, 0.35);
+      white-space: nowrap;
+    }
+
+    .hero-subject-name {
+      font-size: clamp(0.82rem, 2.8vw, 0.95rem);
+      font-weight: 850;
+      line-height: 1.25;
+      color: #ffffff;
     }
 
     .hero-see-tomorrow-btn {
       background: rgba(2, 132, 199, 0.4);
       border: 1.4px solid #00f0ff;
       color: #ffffff;
-      font-size: 0.78rem;
+      font-size: clamp(0.70rem, 2.4vw, 0.78rem);
       font-weight: 850;
-      padding: 6px 14px;
+      padding: 5px 12px;
       border-radius: 9999px;
       cursor: pointer;
       align-self: flex-start;
       box-shadow: 0 0 14px rgba(0, 240, 255, 0.45);
-      margin-top: 4px;
+      margin-top: 2px;
       outline: none;
       font-family: inherit;
+      white-space: nowrap;
     }
 
     .hero-celebrate-col {
@@ -6391,13 +6474,14 @@
       align-items: center;
       justify-content: center;
       position: absolute;
-      right: 14px;
+      right: 12px;
       top: 50%;
       transform: translateY(-50%);
+      pointer-events: none;
     }
 
     .hero-trophy-icon {
-      font-size: 2rem;
+      font-size: clamp(1.6rem, 5vw, 2rem);
       filter: drop-shadow(0 0 10px rgba(250, 204, 21, 0.7));
       animation: trophyFloat 3s ease-in-out infinite alternate;
     }
@@ -6413,12 +6497,12 @@
 
     /* ORBIT TRACKER SECTION (Image 2) */
     .orbit-tracker-section {
-      margin: 6px 12px;
-      padding: 12px 14px;
+      margin: 5px 10px;
+      padding: 10px 12px;
       background: #070e28;
       border: 1.8px solid #00d2ff;
-      border-radius: 20px;
-      box-shadow: 0 0 24px rgba(0, 210, 255, 0.35);
+      border-radius: 18px;
+      box-shadow: 0 0 20px rgba(0, 210, 255, 0.35);
       position: relative;
     }
 
@@ -6426,21 +6510,21 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
 
     .orbit-header-left {
-      font-size: 0.76rem;
+      font-size: clamp(0.68rem, 2.2vw, 0.74rem);
       font-weight: 900;
       color: #ffffff;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       letter-spacing: 0.3px;
     }
 
     .orbit-header-right {
-      font-size: 0.68rem;
+      font-size: clamp(0.60rem, 2vw, 0.68rem);
       font-weight: 900;
       color: #00f0ff;
       letter-spacing: 0.4px;
@@ -6452,15 +6536,16 @@
       align-items: center;
       justify-content: space-between;
       position: relative;
-      padding: 4px 0;
+      padding: 2px 0;
+      width: 100%;
     }
 
     .orbit-line-bg {
       position: absolute;
-      left: 14px;
-      right: 14px;
+      left: 10px;
+      right: 10px;
       top: 50%;
-      height: 3px;
+      height: 2.5px;
       background: #00f0ff;
       box-shadow: 0 0 10px #00f0ff;
       transform: translateY(-50%);
@@ -6470,20 +6555,21 @@
     .orbit-dot {
       position: relative;
       z-index: 2;
-      width: 34px !important;
-      height: 34px !important;
+      width: clamp(28px, 8.2vw, 34px) !important;
+      height: clamp(28px, 8.2vw, 34px) !important;
       border-radius: 50% !important;
       background: #060e24 !important;
       border: 1.8px solid #00f0ff !important;
       color: #ffffff !important;
-      font-size: 0.88rem !important;
+      font-size: clamp(0.74rem, 2.4vw, 0.88rem) !important;
       font-weight: 850 !important;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      box-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
       transition: all 0.2s ease;
+      flex-shrink: 0;
     }
 
     .orbit-lunch-dot {
@@ -6501,9 +6587,9 @@
     /* QUICK DAY SWITCH BAR (Image 2) */
     .schedule-quick-switch-bar {
       display: grid !important;
-      grid-template-columns: 1fr 1fr 1.15fr !important;
-      gap: 6px !important;
-      margin: 4px 12px !important;
+      grid-template-columns: 1fr 1fr 1.12fr !important;
+      gap: 5px !important;
+      margin: 4px 10px !important;
       padding: 0 !important;
     }
 
@@ -6512,15 +6598,16 @@
       border: 1.2px solid rgba(168, 85, 247, 0.35) !important;
       border-radius: 9999px !important;
       height: 36px !important;
-      padding: 0 10px !important;
+      padding: 0 6px !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
-      gap: 5px !important;
+      gap: 4px !important;
       color: #ffffff !important;
-      font-size: 0.80rem !important;
+      font-size: clamp(0.72rem, 2.5vw, 0.80rem) !important;
       font-weight: 750 !important;
       cursor: pointer;
+      white-space: nowrap !important;
     }
 
     .quick-view-btn.active {
@@ -6534,7 +6621,7 @@
       display: grid !important;
       grid-template-columns: repeat(6, 1fr) !important;
       gap: 4px !important;
-      margin: 4px 12px !important;
+      margin: 4px 10px !important;
       padding: 0 !important;
     }
 
@@ -6542,34 +6629,35 @@
       background: #071333 !important;
       border: 1.2px solid rgba(56, 189, 248, 0.3) !important;
       border-radius: 12px !important;
-      padding: 4px 2px !important;
-      min-height: 44px !important;
+      padding: 4px 1px !important;
+      min-height: 42px !important;
       display: flex !important;
       flex-direction: column !important;
       align-items: center !important;
       justify-content: center !important;
-      gap: 2px !important;
+      gap: 1px !important;
       cursor: pointer;
       color: #ffffff !important;
     }
 
     .day-pill.active {
-      background: #0284c7 !important;
-      border: 1.8px solid #00f0ff !important;
-      box-shadow: 0 0 18px rgba(0, 240, 255, 0.7) !important;
+      background: linear-gradient(135deg, #0284c7 0%, #00f0ff 100%) !important;
+      border: 1.8px solid #ffffff !important;
+      box-shadow: 0 0 18px rgba(0, 240, 255, 0.8) !important;
+      color: #ffffff !important;
     }
 
     /* SCHEDULE SUMMARY BANNER (Image 2) */
     .schedule-summary-banner {
-      margin: 4px 12px 8px 12px;
+      margin: 4px 10px 8px 10px;
       background: linear-gradient(90deg, #07102e 0%, #0a1b42 60%, #07173b 100%);
       border: 1.8px solid #f59e0b;
-      border-radius: 18px;
-      padding: 9px 12px;
+      border-radius: 16px;
+      padding: 8px 10px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
+      gap: 8px;
       box-shadow: 0 0 20px rgba(245, 158, 11, 0.35), 0 0 20px rgba(0, 240, 255, 0.25);
       cursor: pointer;
     }
@@ -6577,54 +6665,67 @@
     .sched-banner-left {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
+      min-width: 0;
+      flex: 1;
     }
 
     .sched-cal-badge {
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
       background: #0284c7;
       border: 1.2px solid #00f0ff;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.15rem;
+      font-size: 1.10rem;
       box-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+      flex-shrink: 0;
     }
 
     .sched-banner-texts {
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: 1px;
+      min-width: 0;
+      flex: 1;
     }
 
     .sched-banner-texts strong {
-      font-size: 0.88rem;
+      font-size: clamp(0.78rem, 2.7vw, 0.88rem);
       font-weight: 850;
       color: #ffffff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .sched-banner-texts span {
-      font-size: 0.72rem;
+      font-size: clamp(0.62rem, 2.1vw, 0.70rem);
       color: #94a3b8;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .sched-live-pill-btn {
       background: #0284c7;
       border: 1.4px solid #00f0ff;
       color: #ffffff;
-      font-size: 0.78rem;
+      font-size: clamp(0.70rem, 2.3vw, 0.78rem);
       font-weight: 850;
       border-radius: 9999px;
-      padding: 6px 14px;
+      padding: 5px 11px;
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       box-shadow: 0 0 14px rgba(0, 240, 255, 0.6);
       outline: none;
       font-family: inherit;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     /* BOTTOM APP BAR (Image 2) */
@@ -6634,14 +6735,15 @@
       left: 0;
       right: 0;
       z-index: 1000;
-      height: 64px;
+      height: 60px;
       background: #070e28 !important;
       border-top: 1.5px solid rgba(0, 240, 255, 0.35) !important;
       box-shadow: 0 -10px 25px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 240, 255, 0.15) !important;
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       align-items: center;
-      padding: 0 8px max(6px, env(safe-area-inset-bottom));
+      padding: 0 4px max(6px, env(safe-area-inset-bottom));
+      box-sizing: border-box;
     }
 
     .nav-item {
@@ -6649,14 +6751,14 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 3px;
+      gap: 2px;
       background: none;
       border: none;
       color: #94a3b8;
-      font-size: 0.65rem;
+      font-size: clamp(0.60rem, 2vw, 0.66rem);
       font-weight: 700;
       cursor: pointer;
-      padding: 6px 0;
+      padding: 4px 0;
       transition: all 0.2s ease;
       position: relative;
     }
@@ -6669,12 +6771,120 @@
     .nav-item.active::after {
       content: '••';
       position: absolute;
-      bottom: 1px;
-      font-size: 0.85rem;
+      bottom: 0px;
+      font-size: 0.82rem;
       line-height: 1;
       letter-spacing: 2px;
       color: #00f0ff;
       text-shadow: 0 0 8px #00f0ff;
+    }
+
+    /* STANDARD MOBILE ADAPTATION (<= 480px: Redmi, Galaxy, iPhone 12/13/14/15, Pixel) */
+    @media (max-width: 480px) {
+      .badge-sec-prefix {
+        display: none !important;
+      }
+      .appbar-actions {
+        gap: 3.5px !important;
+      }
+      .appbar-quick-btn,
+      .holo-menu-trigger {
+        width: 30px !important;
+        height: 30px !important;
+        font-size: 0.84rem !important;
+      }
+      .appbar-user-pill {
+        height: 30px !important;
+        padding: 2px 6px !important;
+        gap: 3px !important;
+        font-size: 0.66rem !important;
+      }
+      .section-selector-label {
+        font-size: clamp(0.60rem, 2.0vw, 0.68rem) !important;
+      }
+      .active-sec-badge {
+        font-size: clamp(0.55rem, 1.8vw, 0.62rem) !important;
+        padding: 2px 7px !important;
+      }
+      .orbit-dot {
+        width: clamp(27px, 7.8vw, 32px) !important;
+        height: clamp(27px, 7.8vw, 32px) !important;
+      }
+    }
+
+    /* ULTRA-COMPACT MOBILE SCREENS (320px - 360px) */
+    @media (max-width: 360px) {
+      .top-appbar {
+        padding: max(4px, env(safe-area-inset-top)) 6px 4px 6px;
+      }
+      .brand-title-wrap .brand-name-text {
+        font-size: 1.02rem;
+      }
+      .brand-secd-pill {
+        font-size: 0.55rem;
+        padding: 1px 4px;
+      }
+      .appbar-actions {
+        gap: 2.5px;
+      }
+      .appbar-user-pill {
+        padding: 2px 4px;
+        font-size: 0.62rem;
+        height: 27px;
+      }
+      .user-pill-sub-badge {
+        font-size: 0.50rem;
+        padding: 1px 3.5px;
+      }
+      .appbar-quick-btn,
+      .holo-menu-trigger {
+        width: 27px !important;
+        height: 27px !important;
+        font-size: 0.76rem !important;
+        border-radius: 6px;
+      }
+      .sec-locked-hero-pill {
+        height: 38px;
+        padding: 0 8px;
+        font-size: 0.78rem;
+      }
+      .set-active-green-btn {
+        height: 35px;
+        padding: 0 8px 0 5px;
+        font-size: 0.78rem;
+      }
+      .brand-cursive-slogan span {
+        font-size: 0.90rem;
+      }
+      .glow-highlight-ribbon,
+      .time-status-ribbon,
+      .circular-hero-card,
+      .orbit-tracker-section,
+      .schedule-quick-switch-bar,
+      .day-pills-bar,
+      .schedule-summary-banner {
+        margin-left: 5px !important;
+        margin-right: 5px !important;
+      }
+      .orbit-dot {
+        width: 26px !important;
+        height: 26px !important;
+        font-size: 0.70rem !important;
+      }
+      .day-pills-bar {
+        gap: 2px !important;
+      }
+      .day-pill {
+        min-height: 38px !important;
+        border-radius: 8px !important;
+      }
+      .quick-view-btn {
+        height: 32px !important;
+        font-size: 0.68rem !important;
+      }
+      .bottom-nav {
+        height: 56px;
+      }
     }
 
     /* CLASS CANCELLATION BADGES ON TIMETABLE CARDS */
@@ -6912,16 +7122,35 @@
 
     /* Top Appbar */
     :root[data-theme="aura-light"] .top-appbar {
-      background: #ffffff !important;
+      background: rgba(255, 255, 255, 0.94) !important;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border-bottom: 1.5px solid #e2e8f0 !important;
       box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05) !important;
     }
 
+    :root[data-theme="aura-light"] .brand-logo-neon-circle {
+      background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%) !important;
+      box-shadow: 0 2px 10px rgba(37, 99, 235, 0.25) !important;
+    }
+
     :root[data-theme="aura-light"] .brand-title-wrap .brand-name-text {
-      background: linear-gradient(90deg, #1e3a8a 0%, #2563eb 50%, #4f46e5 100%) !important;
+      text-shadow: none !important;
+    }
+
+    :root[data-theme="aura-light"] .brand-name-text .qtime-part {
+      background: linear-gradient(90deg, #1e3a8a 0%, #2563eb 60%, #3b82f6 100%) !important;
       -webkit-background-clip: text !important;
-      background-clip: text !important;
       -webkit-text-fill-color: transparent !important;
+      color: #1e3a8a !important;
+      text-shadow: none !important;
+    }
+
+    :root[data-theme="aura-light"] .brand-name-text .x-gold-part {
+      background: linear-gradient(90deg, #b45309 0%, #d97706 60%, #eab308 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      color: #b45309 !important;
       text-shadow: none !important;
     }
 
@@ -6929,11 +7158,14 @@
       background: #eff6ff !important;
       border: 1.2px solid #3b82f6 !important;
       color: #1d4ed8 !important;
-      box-shadow: 0 0 8px rgba(59, 130, 246, 0.15) !important;
+      box-shadow: 0 1px 6px rgba(59, 130, 246, 0.2) !important;
     }
 
-    :root[data-theme="aura-light"] .brand-univ-title {
-      color: #0f172a !important;
+    :root[data-theme="aura-light"] .brand-univ-title,
+    :root[data-theme="aura-light"] .brand-univ-title .univ-word-q,
+    :root[data-theme="aura-light"] .brand-univ-title .univ-word-u {
+      color: #1e293b !important;
+      text-shadow: none !important;
     }
 
     :root[data-theme="aura-light"] .brand-univ-motto {
@@ -6945,6 +7177,12 @@
       border: 1.2px solid #cbd5e1 !important;
       color: #0f172a !important;
       box-shadow: 0 1px 4px rgba(15, 23, 42, 0.06) !important;
+    }
+
+    :root[data-theme="aura-light"] .user-pill-sub-badge {
+      background: #eff6ff !important;
+      border: 1px solid #bfdbfe !important;
+      color: #1d4ed8 !important;
     }
 
     :root[data-theme="aura-light"] .appbar-quick-btn {
@@ -6963,7 +7201,11 @@
       background: #334155 !important;
     }
     :root[data-theme="aura-light"] .holo-menu-trigger .hbar-2 {
-      background: #4f46e5 !important;
+      background: #2563eb !important;
+    }
+    :root[data-theme="aura-light"] .menu-status-dot {
+      background: #10b981 !important;
+      box-shadow: 0 0 6px rgba(16, 185, 129, 0.6) !important;
     }
 
     :root[data-theme="aura-light"] .section-selector-label {
@@ -6974,7 +7216,7 @@
       background: #eff6ff !important;
       border: 1.2px solid #93c5fd !important;
       color: #1d4ed8 !important;
-      box-shadow: none !important;
+      box-shadow: 0 1px 4px rgba(59, 130, 246, 0.12) !important;
     }
 
     /* Section Pills */
@@ -6992,23 +7234,41 @@
     }
 
     :root[data-theme="aura-light"] .sec-pill-btn.active {
-      background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%) !important;
-      border: 1.2px solid #3730a3 !important;
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+      border: 1.2px solid #1e40af !important;
       color: #ffffff !important;
-      box-shadow: 0 3px 10px rgba(79, 70, 229, 0.3) !important;
+      box-shadow: 0 3px 10px rgba(37, 99, 235, 0.3) !important;
     }
 
     :root[data-theme="aura-light"] .sec-pill-btn.is-enrolled:not(.active) {
-      border-color: #818cf8 !important;
-      color: #4338ca !important;
-      background: #eef2ff !important;
+      border-color: #93c5fd !important;
+      color: #1d4ed8 !important;
+      background: #eff6ff !important;
     }
 
     :root[data-theme="aura-light"] .sec-locked-hero-pill {
-      background: #eff6ff !important;
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%) !important;
       border: 1.5px solid #3b82f6 !important;
       color: #1e40af !important;
       box-shadow: 0 2px 10px rgba(59, 130, 246, 0.15) !important;
+    }
+    :root[data-theme="aura-light"] .sec-locked-hero-pill .lock-icon-box {
+      background: #fef3c7 !important;
+      border: 1.2px solid #f59e0b !important;
+      color: #b45309 !important;
+      box-shadow: none !important;
+    }
+    :root[data-theme="aura-light"] .sec-locked-hero-pill .pill-title {
+      color: #1e40af !important;
+    }
+    :root[data-theme="aura-light"] .sec-locked-hero-pill .pill-bullet {
+      color: #60a5fa !important;
+    }
+    :root[data-theme="aura-light"] .sec-locked-hero-pill .pill-batch-text {
+      color: #1d4ed8 !important;
+    }
+    :root[data-theme="aura-light"] .sec-locked-hero-pill .pill-chevron {
+      color: #3b82f6 !important;
     }
 
     /* Set Button & Slogan */
@@ -7062,11 +7322,25 @@
     :root[data-theme="aura-light"] .clock-ticker {
       color: #0f172a !important;
     }
+    :root[data-theme="aura-light"] .clock-icon {
+      color: #2563eb !important;
+    }
+    :root[data-theme="aura-light"] .live-status-dot {
+      background: #10b981 !important;
+      box-shadow: 0 0 6px rgba(16, 185, 129, 0.5) !important;
+    }
+    :root[data-theme="aura-light"] .live-status-text {
+      color: #059669 !important;
+      font-weight: 700 !important;
+    }
 
     :root[data-theme="aura-light"] .date-card {
       background: #ffffff !important;
       border: 1.5px solid #e2e8f0 !important;
       box-shadow: 0 2px 10px rgba(15, 23, 42, 0.05) !important;
+    }
+    :root[data-theme="aura-light"] .date-icon {
+      color: #7c3aed !important;
     }
 
     :root[data-theme="aura-light"] .date-card-text {
@@ -7102,6 +7376,10 @@
 
     :root[data-theme="aura-light"] .circle-bg-track {
       stroke: #e2e8f0 !important;
+    }
+
+    :root[data-theme="aura-light"] .circle-progress-ring {
+      stroke: #2563eb !important;
     }
 
     :root[data-theme="aura-light"] .circle-timer-val {
@@ -7204,14 +7482,32 @@
     }
 
     :root[data-theme="aura-light"] .orbit-header-right {
-      color: #4f46e5 !important;
+      color: #2563eb !important;
+      font-weight: 800 !important;
+    }
+
+    :root[data-theme="aura-light"] .orbit-line {
+      background: #cbd5e1 !important;
     }
 
     :root[data-theme="aura-light"] .orbit-dot {
       background: #f8fafc !important;
       border: 1.5px solid #cbd5e1 !important;
-      color: #0f172a !important;
+      color: #334155 !important;
       box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05) !important;
+    }
+
+    :root[data-theme="aura-light"] .orbit-dot.current {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8) !important;
+      border: 2px solid #1e40af !important;
+      color: #ffffff !important;
+      box-shadow: 0 0 12px rgba(37, 99, 235, 0.45) !important;
+    }
+
+    :root[data-theme="aura-light"] .orbit-dot.completed {
+      background: #ecfdf5 !important;
+      border: 1.5px solid #10b981 !important;
+      color: #065f46 !important;
     }
 
     :root[data-theme="aura-light"] .orbit-lunch-dot {
@@ -7237,10 +7533,10 @@
     }
 
     :root[data-theme="aura-light"] .schedule-quick-switch-bar .quick-view-btn.active {
-      background: linear-gradient(135deg, #4f46e5, #4338ca) !important;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8) !important;
       border-color: transparent !important;
       color: #ffffff !important;
-      box-shadow: 0 3px 12px rgba(79, 70, 229, 0.3) !important;
+      box-shadow: 0 3px 12px rgba(37, 99, 235, 0.3) !important;
     }
 
     :root[data-theme="aura-light"] .schedule-quick-switch-bar .quick-view-btn#btnViewTomorrow.active {
@@ -7258,10 +7554,10 @@
     }
 
     :root[data-theme="aura-light"] .day-pills-bar .day-pill.active {
-      background: linear-gradient(135deg, #4f46e5, #4338ca) !important;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8) !important;
       border-color: transparent !important;
       color: #ffffff !important;
-      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35) !important;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35) !important;
     }
 
     :root[data-theme="aura-light"] .day-pills-bar .day-pill.today-highlight:not(.active) {
@@ -7450,16 +7746,17 @@
     }
 
     :root[data-theme="aura-light"] .nav-item.active {
-      color: #4f46e5 !important;
+      color: #2563eb !important;
+      font-weight: 850 !important;
     }
 
     :root[data-theme="aura-light"] .nav-item.active .nav-icon {
-      color: #4f46e5 !important;
+      color: #2563eb !important;
     }
 
     :root[data-theme="aura-light"] .nav-item.active::after {
-      color: #4f46e5 !important;
-      text-shadow: 0 0 8px rgba(79, 70, 229, 0.5) !important;
+      color: #2563eb !important;
+      text-shadow: 0 0 8px rgba(37, 99, 235, 0.4) !important;
       background: transparent !important;
     }
 
@@ -7833,15 +8130,18 @@
               <span class="brand-name" id="brandTitle" onclick="triggerQuantumBrandSurge()" title="Qtimex"><span class="brand-name-text"><span class="qtime-part">QTIME</span><span class="x-gold-part">X</span></span></span>
               <span class="brand-secd-pill" id="brandSectionBadge" onclick="showToast('Tap section pill below to switch!')" style="cursor:pointer;" title="Current Section">Sec-D</span>
             </div>
-            <span class="brand-univ-title">QUANTUM UNIVERSITY</span>
+            <div class="brand-univ-title">
+              <span class="univ-word-q">QUANTUM</span>
+              <span class="univ-word-u">UNIVERSITY</span>
+            </div>
           </div>
         </div>
-        <div class="appbar-actions" style="display:flex; align-items:center; gap:6px;">
+        <div class="appbar-actions" style="display:flex; align-items:center; gap:clamp(3px, 1vw, 4px);">
           <!-- Active Authenticated User Profile Pill -->
           <button class="appbar-user-pill" id="authUserPill" onclick="openUserProfileModal()" title="View Account & Profile" style="display:flex;">
             <span id="userPillIcon">🎓</span>
-            <span id="userPillName" style="max-width:85px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">Rahul ▾</span>
-            <span id="userPillBadge" class="user-pill-sub-badge">Sec-D (Set-A)</span>
+            <span id="userPillName" style="max-width:clamp(45px, 12vw, 68px); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">Rahul ▾</span>
+            <span id="userPillBadge" class="user-pill-sub-badge"><span class="badge-sec-prefix">Sec-D </span><span class="badge-set-text">(Set-A)</span></span>
           </button>
           <!-- 1-Tap Colorful Themes Studio / Quick Toggle -->
           <button class="appbar-quick-btn" id="themeQuickBtn" onclick="toggleTheme()" title="Switch Theme (Quantum Campus ⇄ Cyberpunk Neon)" aria-label="Switch Theme">
@@ -9964,7 +10264,15 @@
       }
       if (pillName) pillName.textContent = (user.name.split(' ')[0] || user.name) + ' ▾';
       if (pillBadge) {
-        pillBadge.textContent = user.role === 'admin' ? 'ADMIN' : (user.role === 'cr' ? 'CR' : `${user.section || 'Sec-D'} (${user.set || selectedBatch || 'Set-A'})`);
+        if (user.role === 'admin') {
+          pillBadge.textContent = 'ADMIN';
+        } else if (user.role === 'cr') {
+          pillBadge.textContent = 'CR';
+        } else {
+          const sec = user.section || 'Sec-D';
+          const set = user.set || selectedBatch || 'Set-A';
+          pillBadge.innerHTML = `<span class="badge-sec-prefix">${sec} </span><span class="badge-set-text">(${set})</span>`;
+        }
         pillBadge.style.display = 'inline-flex';
       }
 
@@ -12000,9 +12308,9 @@
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '6.4.6';
-    const LOCAL_APP_VERSION_CODE = 99;
-    const LOCAL_APP_BUILD_HASH = 'c08133ebaf8d';
+    const LOCAL_APP_VERSION_NAME = '6.4.8';
+    const LOCAL_APP_VERSION_CODE = 101;
+    const LOCAL_APP_BUILD_HASH = '838bd17c4a53';
 
     let cachedLatestVersionCode = 29;
 
