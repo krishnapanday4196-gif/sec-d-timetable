@@ -1,11 +1,11 @@
 {
-  "versionName": "6.4.2",
-  "versionCode": 95,
-  "apkVersionCode": 95,
-  "htmlHash": "b0188f704c32",
-  "apkHash": "6f374163b5f3",
+  "versionName": "6.4.4",
+  "versionCode": 97,
+  "apkVersionCode": 97,
+  "htmlHash": "3c48d812abe7",
+  "apkHash": "3c47b8580c5d",
   "apkSize": 2405492,
-  "updatedAt": 1792177779332,
+  "updatedAt": 1792180602469,
   "publicUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main",
   "cloudflareUrl": "",
   "githubUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main",
@@ -13,9 +13,9 @@
   "apkUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/SecD_Timetable.apk",
   "htmlUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/index.html",
   "downloadUrl": "https://krishnapanday4196-gif.github.io/sec-d-timetable",
-  "lastUpdated": "2026-10-16T19:09:39.332Z",
-  "apkMd5": "6f374163b5f3f6e4e6ecf70c5d3ec463",
-  "releaseNotes": "v6.4.2: Pixel-Perfect Redesign Matching Screenshot - Twilight Campus Header, Glowing Logo Rings, Custom Gold Cursive Accents, Laurel Wreath Completion Gauge, 8-Period Connected Orbit Tracker & Rapid Responsive Switching",
-  "apkSizeBytes": 2444316,
-  "apkSizeFormatted": "2.33 MB"
+  "lastUpdated": "2026-10-16T19:56:42.469Z",
+  "apkMd5": "3c47b8580c5d2e4cff4f7cd02ca99f8c",
+  "releaseNotes": "v6.4.4: Pure CSS/SVG Cybernetic Portal (No Image Dependency), Strict Account Creation Before Login, 3-Role Support (Student, CR, Admin), and Optimized Mobile Layout",
+  "apkSizeBytes": 2635683,
+  "apkSizeFormatted": "2.51 MB"
 }

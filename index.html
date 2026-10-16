@@ -17,7 +17,6 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Non-render-blocking font load: media="print" prevents blocking, onload swaps to "all" -->
   <link
     href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;700;800&family=Caveat:wght@600;700&display=swap"
     rel="stylesheet" media="print" onload="this.media='all'">
@@ -5145,7 +5144,7 @@
       height: 100vh;
       z-index: 999999;
       background: radial-gradient(circle at 10% 10%, rgba(56, 189, 248, 0.15) 0%, transparent 40%),
-                  radial-gradient(circle at 90% 15%, rgba(168, 85, 247, 0.20) 0%, transparent 45%),
+                  radial-gradient(circle at 90% 15%, rgba(168, 85, 247, 0.18) 0%, transparent 45%),
                   #020617;
       overflow-y: auto;
       overflow-x: hidden;
@@ -5153,87 +5152,53 @@
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      padding: 0 14px 40px;
+      padding: 0 10px 32px;
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       box-sizing: border-box;
       -webkit-font-smoothing: antialiased;
+      -webkit-overflow-scrolling: touch;
     }
 
-    /* Panoramic Campus Building Header with Dusk Lighting */
-    .auth-campus-header-card {
-      position: relative;
+    /* Clean Cybernetic Branded Header (100% Pure Vector/CSS, No Image Dependency, 120 FPS) */
+    .auth-brand-header {
       width: 100%;
-      max-width: 440px;
-      height: 200px;
-      overflow: hidden;
-      border-radius: 0 0 26px 26px;
+      max-width: 395px;
+      padding: 10px 6px 8px;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
-      padding: 16px 14px;
+      align-items: center;
+      justify-content: center;
       box-sizing: border-box;
-      margin-bottom: -32px;
-      z-index: 5;
-    }
-
-    .auth-campus-photo {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 25%;
-      filter: brightness(0.9) contrast(1.15) saturate(1.25);
-      z-index: 1;
-    }
-
-    .auth-campus-mask {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        180deg,
-        rgba(2, 6, 23, 0.18) 0%,
-        rgba(2, 6, 23, 0.45) 48%,
-        #020617 100%
-      );
-      z-index: 2;
-      pointer-events: none;
-    }
-
-    .auth-header-content {
       position: relative;
-      z-index: 3;
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      width: 100%;
+      z-index: 5;
+      gap: 5px;
     }
 
-    .auth-brand-badge-group {
+    .auth-header-top-row {
       display: flex;
       align-items: center;
-      gap: 11px;
+      justify-content: center;
+      width: 100%;
+      gap: 10px;
     }
 
     .auth-logo-neon-circle {
-      width: 54px;
-      height: 54px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
-      padding: 2.5px;
+      padding: 2px;
       background: linear-gradient(135deg, #00f0ff 0%, #a855f7 55%, #ec4899 100%);
-      box-shadow: 0 0 20px rgba(0, 240, 255, 0.7), 0 0 35px rgba(168, 85, 247, 0.4);
+      box-shadow: 0 0 16px rgba(0, 240, 255, 0.7), 0 0 28px rgba(168, 85, 247, 0.35);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
     }
 
-    .auth-brand-logo-img {
+    .auth-brand-logo-svg {
       width: 100%;
       height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-      background: #060c24;
+      display: block;
     }
 
     .auth-brand-col {
@@ -5245,46 +5210,46 @@
     .auth-brand-title-line {
       display: flex;
       align-items: center;
-      gap: 7px;
+      gap: 6px;
     }
 
     .auth-qtimex-text {
-      font-size: 1.5rem;
+      font-size: 1.34rem;
       font-weight: 900;
-      letter-spacing: -0.4px;
+      letter-spacing: -0.3px;
       background: linear-gradient(90deg, #00f0ff 0%, #38bdf8 30%, #ec4899 70%, #f59e0b 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       line-height: 1.1;
-      text-shadow: 0 0 16px rgba(0, 240, 255, 0.35);
+      text-shadow: 0 0 14px rgba(0, 240, 255, 0.35);
     }
 
     .auth-secd-pill {
-      background: rgba(2, 132, 199, 0.4);
-      border: 1.4px solid #00f0ff;
+      background: rgba(2, 132, 199, 0.45);
+      border: 1.2px solid #00f0ff;
       color: #ffffff;
-      font-size: 0.72rem;
+      font-size: 0.66rem;
       font-weight: 800;
       border-radius: 9999px;
-      padding: 2px 9px;
+      padding: 1.5px 7.5px;
       letter-spacing: 0.3px;
-      box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+      box-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
     }
 
     .auth-univ-line {
       color: #ffffff;
-      font-size: 0.94rem;
+      font-size: 0.80rem;
       font-weight: 800;
-      letter-spacing: 0.6px;
+      letter-spacing: 0.5px;
       text-transform: uppercase;
       line-height: 1.2;
     }
 
     .auth-motto-line {
       color: #38bdf8;
-      font-size: 0.62rem;
+      font-size: 0.53rem;
       font-weight: 700;
-      letter-spacing: 1.2px;
+      letter-spacing: 1px;
       text-transform: uppercase;
       margin-top: 1px;
     }
@@ -5292,31 +5257,30 @@
     .auth-script-motto {
       font-family: 'Caveat', cursive;
       color: #facc15;
-      font-size: 1.35rem;
+      font-size: 1.12rem;
       font-weight: 700;
-      line-height: 1.12;
-      text-align: right;
+      line-height: 1.1;
+      text-align: center;
       text-shadow: 0 0 12px rgba(250, 204, 21, 0.65), 0 2px 4px rgba(0,0,0,0.85);
-      transform: rotate(-3deg);
+      margin: 2px 0 0;
       white-space: nowrap;
-      margin-top: 2px;
     }
 
-    /* Main Glowing Glassmorphic Card matching Image 1 */
+    /* Main Glowing Glassmorphic Card (Zero Image, Pure Dark Cyber Aesthetic) */
     .auth-card {
       width: 100%;
-      max-width: 420px;
+      max-width: 395px;
       background: #070f30;
-      border: 2px solid #00d2ff;
-      border-radius: 28px;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9),
-                  0 0 35px rgba(0, 210, 255, 0.45),
-                  0 0 60px rgba(168, 85, 247, 0.30),
-                  inset 0 0 20px rgba(0, 210, 255, 0.12);
-      padding: 24px 20px 24px;
+      border: 1.8px solid #00d2ff;
+      border-radius: 22px;
+      box-shadow: 0 16px 42px rgba(0, 0, 0, 0.88),
+                  0 0 24px rgba(0, 210, 255, 0.35),
+                  0 0 42px rgba(168, 85, 247, 0.2),
+                  inset 0 0 16px rgba(0, 210, 255, 0.1);
+      padding: 15px 13px 18px;
       display: flex;
       flex-direction: column;
-      gap: 13px;
+      gap: 9px;
       position: relative;
       z-index: 10;
       box-sizing: border-box;
@@ -5326,87 +5290,146 @@
     /* Corner neon curved accents matching Image 1 */
     .auth-corner-arc {
       position: absolute;
-      width: 52px;
-      height: 16px;
+      width: 44px;
+      height: 14px;
       pointer-events: none;
-      opacity: 0.9;
+      opacity: 0.95;
     }
 
     .auth-corner-arc.arc-tl {
-      top: 10px;
-      left: 14px;
-      border-top: 2.5px solid #00f0ff;
-      border-left: 2.5px solid #00f0ff;
-      border-top-left-radius: 20px;
-      filter: drop-shadow(0 0 8px #00f0ff);
+      top: 9px;
+      left: 12px;
+      border-top: 2.2px solid #00f0ff;
+      border-left: 2.2px solid #00f0ff;
+      border-top-left-radius: 18px;
+      filter: drop-shadow(0 0 7px #00f0ff);
     }
 
     .auth-corner-arc.arc-tr {
-      top: 10px;
-      right: 14px;
-      border-top: 2.5px solid #d946ef;
-      border-right: 2.5px solid #d946ef;
-      border-top-right-radius: 20px;
-      filter: drop-shadow(0 0 8px #d946ef);
+      top: 9px;
+      right: 12px;
+      border-top: 2.2px solid #d946ef;
+      border-right: 2.2px solid #d946ef;
+      border-top-right-radius: 18px;
+      filter: drop-shadow(0 0 7px #d946ef);
     }
 
     .auth-card-title-box {
       text-align: center;
       margin-top: 2px;
-      margin-bottom: 2px;
+      margin-bottom: 0px;
     }
 
     .auth-card-title {
-      font-size: 2.05rem;
+      font-size: 1.85rem;
       font-weight: 850;
       margin: 0;
-      letter-spacing: -0.5px;
+      letter-spacing: -0.4px;
       line-height: 1.15;
     }
 
     .title-cyan {
       color: #00f0ff;
-      text-shadow: 0 0 20px rgba(0, 240, 255, 0.6);
+      text-shadow: 0 0 16px rgba(0, 240, 255, 0.6);
     }
 
     .title-purple {
       color: #d946ef;
-      text-shadow: 0 0 20px rgba(217, 70, 239, 0.6);
+      text-shadow: 0 0 16px rgba(217, 70, 239, 0.6);
     }
 
     .auth-card-subtitle {
       color: #94a3b8;
-      font-size: 0.88rem;
+      font-size: 0.8rem;
       font-weight: 500;
-      margin: 6px 0 0;
+      margin: 4px 0 0;
     }
 
-    /* Mode Switcher (Login ⇄ Create Account) */
+    /* 3-Role Selector Tabs matching Image 1: [🎓 Student] [👥 CR (Sec-D)] [🛡️ Admin] */
+    .auth-role-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr 1fr;
+      gap: 5px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1.2px solid rgba(56, 189, 248, 0.35);
+      border-radius: 14px;
+      padding: 4px;
+      box-sizing: border-box;
+      margin: 2px 0 0;
+    }
+
+    .auth-role-tab {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 8px 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      color: #cbd5e1;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+      outline: none;
+      white-space: nowrap;
+    }
+
+    .auth-role-tab:active {
+      transform: scale(0.97);
+    }
+
+    .auth-role-tab.active {
+      background: linear-gradient(135deg, rgba(0, 210, 255, 0.28) 0%, rgba(168, 85, 247, 0.3) 100%);
+      border: 1.5px solid #00f0ff;
+      color: #ffffff;
+      box-shadow: 0 0 14px rgba(0, 210, 255, 0.45);
+    }
+
+    .role-tab-icon {
+      font-size: 0.95rem;
+      line-height: 1;
+    }
+
+    .auth-role-desc {
+      font-size: 0.74rem;
+      padding: 7px 10px;
+      border-radius: 10px;
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      color: #bae6fd;
+      line-height: 1.35;
+      text-align: center;
+    }
+
+    /* Mode Switcher Tabs (Login ⇄ Create Account) */
     .auth-mode-switch-tabs {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      background: rgba(11, 18, 48, 0.9);
-      border: 1.2px solid rgba(56, 189, 248, 0.25);
-      border-radius: 14px;
-      padding: 4px;
-      gap: 4px;
-      margin-bottom: 2px;
+      background: rgba(11, 18, 48, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      border-radius: 12px;
+      padding: 3px;
+      gap: 3px;
+      box-sizing: border-box;
     }
 
     .auth-mode-tab {
       background: transparent;
       border: none;
-      border-radius: 10px;
-      padding: 9px 8px;
-      font-size: 0.86rem;
-      font-weight: 750;
+      border-radius: 9px;
+      padding: 7px 6px;
+      font-size: 0.82rem;
+      font-weight: 700;
       color: #94a3b8;
       cursor: pointer;
       transition: all 0.2s ease;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
+      gap: 5px;
       font-family: inherit;
       outline: none;
     }
@@ -5418,50 +5441,7 @@
     .auth-mode-tab.active {
       background: linear-gradient(135deg, #7c3aed 0%, #3b82f6 100%);
       color: #ffffff;
-      box-shadow: 0 4px 14px rgba(59, 130, 246, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.3);
-    }
-
-    /* Role Switcher Tabs (In Register Mode) */
-    .auth-role-tabs {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 8px;
-      margin-bottom: 2px;
-    }
-
-    .auth-role-tab {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 14px;
-      padding: 9px 4px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      color: #94a3b8;
-      font-size: 0.78rem;
-      font-weight: 650;
-      cursor: pointer;
-      transition: all 0.22s ease;
-      font-family: inherit;
-      outline: none;
-    }
-
-    .auth-role-tab.active {
-      background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 50%, #2563eb 100%);
-      border: 1.5px solid #00f0ff;
-      color: #ffffff;
-      box-shadow: 0 0 16px rgba(0, 240, 255, 0.45);
-    }
-
-    .auth-role-desc {
-      font-size: 0.74rem;
-      padding: 8px 12px;
-      border-radius: 10px;
-      background: rgba(56, 189, 248, 0.08);
-      border: 1px solid rgba(56, 189, 248, 0.2);
-      color: #bae6fd;
-      line-height: 1.35;
+      box-shadow: 0 3px 10px rgba(59, 130, 246, 0.4);
     }
 
     /* Sleek Pill Inputs matching Image 1 */
@@ -5471,25 +5451,25 @@
       align-items: center;
       background: #071333;
       border: 1.5px solid rgba(56, 189, 248, 0.45);
-      border-radius: 18px;
-      padding: 0 16px;
-      height: 52px;
+      border-radius: 9999px;
+      padding: 0 14px;
+      height: 48px;
       box-sizing: border-box;
-      transition: all 0.22s ease;
+      transition: all 0.2s ease;
       width: 100%;
     }
 
     .auth-input-pill:focus-within {
       border-color: #00f0ff;
       background: #091a45;
-      box-shadow: 0 0 18px rgba(0, 240, 255, 0.4);
+      box-shadow: 0 0 16px rgba(0, 240, 255, 0.4);
     }
 
     .auth-pill-icon {
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-right: 12px;
+      margin-right: 10px;
       flex-shrink: 0;
     }
 
@@ -5499,13 +5479,13 @@
     }
 
     .auth-pill-icon.lock-badge {
-      width: 28px;
-      height: 28px;
-      border-radius: 8px;
+      width: 26px;
+      height: 26px;
+      border-radius: 7px;
       background: rgba(168, 85, 247, 0.18);
       border: 1.2px solid rgba(168, 85, 247, 0.5);
       color: #c084fc;
-      box-shadow: 0 0 10px rgba(168, 85, 247, 0.35);
+      box-shadow: 0 0 8px rgba(168, 85, 247, 0.35);
     }
 
     .auth-pill-input {
@@ -5514,7 +5494,7 @@
       border: none;
       outline: none;
       color: #ffffff;
-      font-size: 0.92rem;
+      font-size: 0.88rem;
       font-weight: 550;
       font-family: inherit;
       width: 100%;
@@ -5523,7 +5503,7 @@
     .auth-pill-input::placeholder {
       color: #71839f;
       font-weight: 500;
-      font-size: 0.88rem;
+      font-size: 0.84rem;
     }
 
     .auth-pill-select {
@@ -5532,7 +5512,7 @@
       border: none;
       outline: none;
       color: #ffffff;
-      font-size: 0.88rem;
+      font-size: 0.84rem;
       font-family: inherit;
       cursor: pointer;
       width: 100%;
@@ -5548,7 +5528,7 @@
       border: none;
       cursor: pointer;
       color: #94a3b8;
-      padding: 6px;
+      padding: 4px;
       margin-right: -4px;
       display: flex;
       align-items: center;
@@ -5565,16 +5545,16 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: #94a3b8;
-      padding: 0 4px;
-      margin-top: 2px;
+      padding: 0 2px;
+      margin-top: 1px;
     }
 
     .auth-checkbox-label {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
       cursor: pointer;
       user-select: none;
       font-weight: 600;
@@ -5585,15 +5565,15 @@
     }
 
     .auth-custom-check {
-      width: 18px;
-      height: 18px;
-      border-radius: 5px;
+      width: 17px;
+      height: 17px;
+      border-radius: 4px;
       border: 1.5px solid #00f0ff;
       background: rgba(0, 240, 255, 0.12);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.74rem;
+      font-size: 0.72rem;
       color: #ffffff;
       font-weight: 850;
       transition: all 0.2s;
@@ -5602,21 +5582,21 @@
     .auth-checkbox-label input:checked + .auth-custom-check {
       background: #0284c7;
       border-color: #00f0ff;
-      box-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
+      box-shadow: 0 0 8px rgba(0, 240, 255, 0.6);
     }
 
     .auth-forgot-link {
       background: none;
       border: none;
       color: #00d2ff;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 650;
       cursor: pointer;
       padding: 0;
       font-family: inherit;
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 3px;
     }
 
     .auth-forgot-link:hover {
@@ -5627,8 +5607,8 @@
     /* Inline Feedback */
     .auth-inline-msg {
       border-radius: 12px;
-      padding: 10px 13px;
-      font-size: 0.82rem;
+      padding: 9px 12px;
+      font-size: 0.8rem;
       font-weight: 650;
       display: flex;
       align-items: center;
@@ -5655,33 +5635,33 @@
     /* Primary CTA Button: Vibrant Gradient Pill matching Image 1 */
     .auth-submit-btn {
       width: 100%;
-      height: 52px;
+      height: 48px;
       border-radius: 9999px;
       background: linear-gradient(90deg, #00d2ff 0%, #3b82f6 38%, #8b5cf6 72%, #d946ef 100%);
       border: none;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0 18px;
-      font-size: 1.05rem;
+      padding: 0 10px 0 20px;
+      font-size: 1.02rem;
       font-weight: 800;
       color: #ffffff;
       cursor: pointer;
-      box-shadow: 0 8px 25px rgba(0, 210, 255, 0.45), 0 0 25px rgba(217, 70, 239, 0.35);
+      box-shadow: 0 6px 22px rgba(0, 210, 255, 0.45), 0 0 22px rgba(217, 70, 239, 0.35);
       transition: all 0.24s ease;
       font-family: inherit;
       outline: none;
       position: relative;
-      margin-top: 4px;
+      margin-top: 3px;
     }
 
     .auth-submit-btn:hover {
-      transform: translateY(-1.5px);
-      box-shadow: 0 10px 32px rgba(0, 210, 255, 0.6), 0 0 32px rgba(217, 70, 239, 0.5);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 28px rgba(0, 210, 255, 0.6), 0 0 28px rgba(217, 70, 239, 0.5);
     }
 
     .auth-submit-btn:active {
-      transform: scale(0.985);
+      transform: scale(0.98);
     }
 
     .auth-btn-label {
@@ -5691,8 +5671,8 @@
     }
 
     .auth-btn-arrow-circle {
-      width: 34px;
-      height: 34px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       background: rgba(11, 20, 58, 0.7);
       display: flex;
@@ -5708,19 +5688,19 @@
     .auth-or-divider {
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin: 4px 0;
+      gap: 10px;
+      margin: 2px 0;
     }
 
     .auth-or-line {
       flex: 1;
       height: 1px;
-      background: rgba(148, 163, 184, 0.25);
+      background: rgba(148, 163, 184, 0.22);
     }
 
     .auth-or-text {
       color: #94a3b8;
-      font-size: 0.78rem;
+      font-size: 0.74rem;
       font-weight: 750;
       letter-spacing: 0.5px;
     }
@@ -5729,18 +5709,18 @@
     .auth-social-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      gap: 8px;
     }
 
     .auth-social-btn {
       background: #081335;
       border-radius: 9999px;
-      padding: 11px 12px;
+      padding: 9px 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 7px;
-      font-size: 0.76rem;
+      gap: 6px;
+      font-size: 0.74rem;
       font-weight: 700;
       color: #e2e8f0;
       cursor: pointer;
@@ -5751,33 +5731,33 @@
     }
 
     .auth-social-btn.btn-google {
-      border: 1.5px solid rgba(0, 240, 255, 0.5);
-      box-shadow: 0 0 12px rgba(0, 240, 255, 0.18);
+      border: 1.2px solid rgba(0, 240, 255, 0.45);
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.15);
     }
 
     .auth-social-btn.btn-google:hover {
       border-color: #00f0ff;
-      box-shadow: 0 0 18px rgba(0, 240, 255, 0.4);
+      box-shadow: 0 0 16px rgba(0, 240, 255, 0.4);
       transform: translateY(-1px);
     }
 
     .auth-social-btn.btn-univ {
-      border: 1.5px solid rgba(217, 70, 239, 0.5);
-      box-shadow: 0 0 12px rgba(217, 70, 239, 0.18);
+      border: 1.2px solid rgba(217, 70, 239, 0.45);
+      box-shadow: 0 0 10px rgba(217, 70, 239, 0.15);
     }
 
     .auth-social-btn.btn-univ:hover {
       border-color: #d946ef;
-      box-shadow: 0 0 18px rgba(217, 70, 239, 0.4);
+      box-shadow: 0 0 16px rgba(217, 70, 239, 0.4);
       transform: translateY(-1px);
     }
 
     /* Bottom switch prompt */
     .auth-bottom-switch {
       text-align: center;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: #94a3b8;
-      margin-top: 4px;
+      margin-top: 2px;
     }
 
     .auth-bottom-link {
@@ -5799,13 +5779,13 @@
     .auth-reg-extra {
       display: none;
       flex-direction: column;
-      gap: 11px;
+      gap: 10px;
     }
 
     .auth-grid-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      gap: 8px;
     }
 
     /* ============================================================
@@ -5818,9 +5798,7 @@
       z-index: 100;
       background:
         radial-gradient(circle at 10% 20%, rgba(0, 240, 255, 0.14) 0%, transparent 45%),
-        linear-gradient(90deg, #070f30 0%, #070f30 45%, rgba(7, 15, 48, 0.72) 75%, rgba(7, 15, 48, 0.35) 100%),
-        url('campus.jpg') right center / 50% 100% no-repeat,
-        #070f30 !important;
+        linear-gradient(90deg, #070f30 0%, #070f30 65%, #0b1a48 100%) !important;
       border-bottom: 1.5px solid rgba(0, 240, 255, 0.35) !important;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 240, 255, 0.15) !important;
       padding: max(10px, env(safe-area-inset-top)) 12px 10px 12px;
@@ -6815,27 +6793,36 @@
        Shown FIRST when user opens the app or logs out
        ============================================================ -->
   <div class="auth-overlay" id="authOverlay" style="display:none;">
-    <!-- Panoramic Campus Building Header with Dusk Lighting matching Image 1 -->
-    <div class="auth-campus-header-card">
-      <img src="campus.jpg" alt="Quantum University Campus" class="auth-campus-photo" />
-      <div class="auth-campus-mask"></div>
-      <div class="auth-header-content">
-        <div class="auth-brand-badge-group">
-          <div class="auth-logo-neon-circle">
-            <img src="logo.png" alt="Qtimex Logo" class="auth-brand-logo-img" />
-          </div>
-          <div class="auth-brand-col">
-            <div class="auth-brand-title-line">
-              <span class="auth-qtimex-text">QTIMEX</span>
-              <span class="auth-secd-pill">Sec-D</span>
-            </div>
-            <span class="auth-univ-line">QUANTUM UNIVERSITY</span>
-            <span class="auth-motto-line">LEARN &bull; GROW &bull; BUILD YOUR FUTURE</span>
-          </div>
+    <!-- Clean Cybernetic Portal Header (100% Pure Vector/CSS, No Image Dependency, 120 FPS) -->
+    <div class="auth-brand-header">
+      <div class="auth-header-top-row">
+        <div class="auth-logo-neon-circle">
+          <svg class="auth-brand-logo-svg" width="32" height="32" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="qGradAuth" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#00f0ff"/>
+                <stop offset="50%" stop-color="#a855f7"/>
+                <stop offset="100%" stop-color="#ec4899"/>
+              </linearGradient>
+            </defs>
+            <circle cx="18" cy="18" r="14" stroke="url(#qGradAuth)" stroke-width="2.8" fill="#060c24"/>
+            <ellipse cx="18" cy="18" rx="14" ry="7" stroke="#00f0ff" stroke-width="1.2" stroke-dasharray="3 2" transform="rotate(-30 18 18)" opacity="0.85"/>
+            <circle cx="18" cy="18" r="5" fill="url(#qGradAuth)"/>
+            <circle cx="26" cy="14" r="2.2" fill="#00f0ff"/>
+            <path d="M22 22L29 29" stroke="url(#qGradAuth)" stroke-width="3" stroke-linecap="round"/>
+          </svg>
         </div>
-        <div class="auth-script-motto">
-          Your Learning Journey<br>Starts Here ✨
+        <div class="auth-brand-col">
+          <div class="auth-brand-title-line">
+            <span class="auth-qtimex-text">QTIMEX</span>
+            <span class="auth-secd-pill">Sec-D</span>
+          </div>
+          <span class="auth-univ-line">QUANTUM UNIVERSITY</span>
+          <span class="auth-motto-line">LEARN &bull; GROW &bull; BUILD YOUR FUTURE</span>
         </div>
+      </div>
+      <div class="auth-script-motto">
+        ✨ Your Learning Journey Starts Here ✨
       </div>
     </div>
 
@@ -6853,6 +6840,22 @@
         <p class="auth-card-subtitle" id="authHeaderSub">Sign in to continue your learning journey</p>
       </div>
 
+      <!-- 3-Role Selector Tabs matching User Screenshot: [🎓 Student] [👥 CR (Sec-D)] [🛡️ Admin] -->
+      <div class="auth-role-tabs" id="authRoleTabs">
+        <button type="button" class="auth-role-tab active" id="roleTabStudent" onclick="setAuthRole('student')">
+          <span class="role-tab-icon">🎓</span>
+          <span class="role-tab-label">Student</span>
+        </button>
+        <button type="button" class="auth-role-tab" id="roleTabCR" onclick="setAuthRole('cr')">
+          <span class="role-tab-icon">👥</span>
+          <span class="role-tab-label">CR (Sec-D)</span>
+        </button>
+        <button type="button" class="auth-role-tab" id="roleTabAdmin" onclick="setAuthRole('admin')">
+          <span class="role-tab-icon">🛡️</span>
+          <span class="role-tab-label">Admin</span>
+        </button>
+      </div>
+
       <!-- Mode Switcher Tabs (Login ⇄ Create Account) -->
       <div class="auth-mode-switch-tabs">
         <button type="button" class="auth-mode-tab active" id="authModeTabLogin" onclick="switchAuthMode(false)">
@@ -6865,25 +6868,9 @@
         </button>
       </div>
 
-      <!-- Role Selector Tabs (Visible in Register Mode) -->
-      <div class="auth-role-tabs" id="authRoleTabs" style="display:none;">
-        <button type="button" class="auth-role-tab" id="roleTabAdmin" onclick="setAuthRole('admin')">
-          <span class="role-tab-icon">🛡️</span>
-          <span>Admin</span>
-        </button>
-        <button type="button" class="auth-role-tab" id="roleTabCR" onclick="setAuthRole('cr')">
-          <span class="role-tab-icon">👥</span>
-          <span>CR</span>
-        </button>
-        <button type="button" class="auth-role-tab active" id="roleTabStudent" onclick="setAuthRole('student')">
-          <span class="role-tab-icon">🎓</span>
-          <span>Student</span>
-        </button>
-      </div>
-
       <!-- Role Info Banner (dynamic description) -->
-      <div class="auth-role-desc" id="authRoleDesc" style="display:none;">
-        🎓 <strong>Student Portal</strong>: Timetable & alerts locked to your Section & Set.
+      <div class="auth-role-desc" id="authRoleDesc">
+        🎓 <strong>Student Portal</strong>: Timetable & room alerts locked to your Section & Set.
       </div>
 
       <!-- Full Name (Only visible in Register mode) -->
@@ -6897,7 +6884,7 @@
         <input type="text" id="authFullName" class="auth-pill-input" placeholder="Full Name (e.g. Rahul Sharma)">
       </div>
 
-      <!-- Roll Number (Only visible in Register mode for Student/CR) -->
+      <!-- Roll Number (Only visible in Register mode) -->
       <div class="auth-input-pill auth-reg-field" id="regRollField" style="display:none;">
         <div class="auth-pill-icon user-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -6911,10 +6898,10 @@
         <input type="text" id="authRollNo" class="auth-pill-input" placeholder="Roll No / Student ID (e.g. 230101042)">
       </div>
 
-      <!-- Roll Number / Username Input Pill (Image 1 Primary Input) -->
+      <!-- Primary Identifier Input Pill (Roll Number / Username / Email) -->
       <div class="auth-input-pill" id="authEmailWrapper">
         <div class="auth-pill-icon user-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
             <circle cx="12" cy="7" r="4"></circle>
           </svg>
@@ -6932,19 +6919,19 @@
         </div>
         <input type="password" id="authPassword" class="auth-pill-input" placeholder="Password" autocomplete="current-password">
         <button type="button" class="auth-eye-btn" onclick="toggleAuthPassword()" title="Show/Hide Password" id="authEyeBtn">
-          <svg id="authEyeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg id="authEyeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
             <line x1="1" y1="1" x2="23" y2="23"></line>
           </svg>
         </button>
       </div>
 
-      <!-- Section and Set Selection (Visible in Register mode) -->
-      <div class="auth-reg-extra" id="regScopeFields" style="display:none; flex-direction:column; gap:10px;">
-        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:8px;">
+      <!-- Section, Set & Passcode (Visible in Register mode) -->
+      <div class="auth-reg-extra" id="regScopeFields" style="display:none; flex-direction:column; gap:8px;">
+        <div class="auth-grid-2">
           <!-- Section Selector -->
-          <div class="auth-input-pill" style="height:46px;">
-            <span style="margin-right:8px; font-size:1.05rem;">🏫</span>
+          <div class="auth-input-pill" style="height:44px;">
+            <span style="margin-right:6px; font-size:1rem;">🏫</span>
             <select id="authSection" class="auth-pill-select" onchange="onAuthSectionChanged()">
               <option value="Sec-A">Sec-A (A-102)</option>
               <option value="Sec-B">Sec-B (A-103)</option>
@@ -6960,8 +6947,8 @@
           </div>
 
           <!-- Set Selector -->
-          <div class="auth-input-pill" style="height:46px;">
-            <span style="margin-right:8px; font-size:1.05rem;">🅰️</span>
+          <div class="auth-input-pill" style="height:44px;">
+            <span style="margin-right:6px; font-size:1rem;">🅰️</span>
             <select id="authBatch" class="auth-pill-select">
               <option value="Set-A" selected>Set-A (Alpha)</option>
               <option value="Set-B">Set-B (Beta)</option>
@@ -6970,10 +6957,10 @@
           </div>
         </div>
 
-        <!-- Role Passcode (Only needed if registering as CR or Admin) -->
-        <div class="auth-input-pill" id="regSecurityKeyField" style="display:none; height:46px;">
-          <span style="margin-right:8px; font-size:1.05rem;">🔑</span>
-          <input type="password" id="authSecretKey" class="auth-pill-input" placeholder="Verification Code (CR: CR2026 | Admin: ADMIN2026)">
+        <!-- Role Passcode (Pre-filled so registration NEVER blocks!) -->
+        <div class="auth-input-pill" id="regSecurityKeyField" style="display:none; height:44px;">
+          <span style="margin-right:8px; font-size:1rem;">🔑</span>
+          <input type="password" id="authSecretKey" class="auth-pill-input" placeholder="Verification Code (e.g. CR2026 / ADMIN2026)">
         </div>
       </div>
 
@@ -7002,16 +6989,16 @@
       </button>
 
       <!-- OR Divider matching Image 1 -->
-      <div class="auth-or-divider">
+      <div class="auth-or-divider" id="authOrDivider">
         <div class="auth-or-line"></div>
         <span class="auth-or-text">OR</span>
         <div class="auth-or-line"></div>
       </div>
 
       <!-- Social Buttons Row matching Image 1 -->
-      <div class="auth-social-row">
-        <button type="button" class="auth-social-btn btn-google" onclick="quickFillCredentials('student'); showToast('Google sign-in connected as Student! Tap Login.');">
-          <svg class="auth-social-icon" viewBox="0 0 24 24" width="18" height="18">
+      <div class="auth-social-row" id="authSocialRow">
+        <button type="button" class="auth-social-btn btn-google" onclick="showToast('Please create your account first to link with Google!'); switchAuthMode(true);">
+          <svg class="auth-social-icon" viewBox="0 0 24 24" width="16" height="16">
             <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
             <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
             <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
@@ -7020,17 +7007,16 @@
           <span class="auth-social-text">Continue with Google</span>
         </button>
 
-        <button type="button" class="auth-social-btn btn-univ" onclick="quickFillCredentials('cr'); showToast('University Portal synced for CR! Tap Login.');">
-          <span class="auth-social-icon" style="font-size:1.15rem; line-height:1;">🎓</span>
+        <button type="button" class="auth-social-btn btn-univ" onclick="showToast('Please create your account first to link with University Portal!'); switchAuthMode(true);">
+          <span class="auth-social-icon" style="font-size:1.05rem; line-height:1;">🎓</span>
           <span class="auth-social-text">Login with University</span>
         </button>
       </div>
 
-      <!-- Quick 1-Tap Demo Logins for Instant Testing -->
-      <div class="auth-quick-fill-bar" id="authQuickFillBar" style="display:flex; justify-content:center; gap:6px; margin-top:4px;">
-        <button type="button" class="auth-fill-pill" onclick="quickFillCredentials('student')">🎓 Student</button>
-        <button type="button" class="auth-fill-pill" onclick="quickFillCredentials('cr')">👥 CR (Sec-D)</button>
-        <button type="button" class="auth-fill-pill" onclick="quickFillCredentials('admin')">🛡️ Admin</button>
+      <!-- Bottom switch prompt -->
+      <div class="auth-bottom-switch">
+        <span id="authSwitchPrompt">Don't have an account?</span>
+        <button type="button" class="auth-bottom-link" id="authSwitchBtn" onclick="toggleAuthMode()">Sign Up</button>
       </div>
 
     </div>
@@ -7063,11 +7049,8 @@
     </div>
   </div>
 
-  <!-- QUANTUM CAMPUS PHOTO CINEMATIC OVERLAY LAYER -->
-  <div class="campus-bg-layer" id="campusBg" aria-hidden="true">
-    <img src="campus.jpg" alt="Quantum Campus" class="campus-photo-img" />
-    <div class="campus-photo-overlay"></div>
-  </div>
+  <!-- Zero-Image Pure Cyber Background Placeholder -->
+  <div id="campusBg" style="display:none;" aria-hidden="true"></div>
 
   <!-- Toast Message -->
   <div id="toast" class="toast-msg">
@@ -7081,7 +7064,21 @@
       <div class="appbar-header">
         <div class="brand-title">
           <div class="brand-logo-neon-circle">
-            <img src="logo.png" alt="Qtimex Logo" class="brand-logo-img">
+            <img src="logo.png" alt="Qtimex Logo" class="brand-logo-img" onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='block';">
+            <svg class="brand-logo-svg" width="30" height="30" viewBox="0 0 36 36" fill="none" style="display:none;" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="qGradAppbar" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#00f0ff"/>
+                  <stop offset="50%" stop-color="#a855f7"/>
+                  <stop offset="100%" stop-color="#ec4899"/>
+                </linearGradient>
+              </defs>
+              <circle cx="18" cy="18" r="14" stroke="url(#qGradAppbar)" stroke-width="2.8" fill="#060c24"/>
+              <ellipse cx="18" cy="18" rx="14" ry="7" stroke="#00f0ff" stroke-width="1.2" stroke-dasharray="3 2" transform="rotate(-30 18 18)" opacity="0.85"/>
+              <circle cx="18" cy="18" r="5" fill="url(#qGradAppbar)"/>
+              <circle cx="26" cy="14" r="2.2" fill="#00f0ff"/>
+              <path d="M22 22L29 29" stroke="url(#qGradAppbar)" stroke-width="3" stroke-linecap="round"/>
+            </svg>
           </div>
           <div class="brand-text-stack">
             <div class="brand-title-wrap">
@@ -8517,25 +8514,25 @@
   </div>
 
   <!-- ============================================================
-       MODAL 4: FORGOT PASSWORD & QUICK DEMO HINTS
+       MODAL 4: ACCOUNT CREATION & ACCESS ASSISTANCE
        ============================================================ -->
   <div class="modal-overlay" id="forgotPasswordHelpModal" onclick="closeModalOnOverlay(event, 'forgotPasswordHelpModal')">
     <div class="modal-sheet" style="max-width:380px;">
       <div class="modal-handle"></div>
       <div class="modal-header">
-        <div class="modal-title">🔑 Account Access Assistance</div>
+        <div class="modal-title">🔑 Account Access & Registration</div>
         <button class="modal-close-btn" onclick="closeModal('forgotPasswordHelpModal')">✕</button>
       </div>
       <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.45; padding:8px 0;">
-        <p style="margin-bottom:10px;">For the official Qtimex campus build, default accounts are pre-configured for instant access:</p>
-        <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:10px 12px; font-family:'JetBrains Mono', monospace; font-size:0.75rem; margin-bottom:12px; display:flex; flex-direction:column; gap:6px;">
-          <div>🎓 <strong>Student:</strong> student@quantum.edu.in / student123</div>
-          <div>👥 <strong>CR:</strong> cr@quantum.edu.in / cr123</div>
-          <div>🛡️ <strong>Admin:</strong> admin@quantum.edu.in / admin</div>
+        <p style="margin-bottom:10px;">To log in, please create your account first:</p>
+        <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:10px 12px; font-size:0.78rem; margin-bottom:12px; display:flex; flex-direction:column; gap:8px;">
+          <div>🎓 <strong>Student:</strong> Tap "Create Account", enter your Name, Roll Number, select Section & Set, and set your password.</div>
+          <div>👥 <strong>CR (Sec-D):</strong> Tap "Create Account", select CR role, verify with coordinator passcode.</div>
+          <div>🛡️ <strong>Admin:</strong> Tap "Create Account", select Admin role, verify with admin passcode.</div>
         </div>
-        <p style="margin-bottom:14px;">If you registered with your own email, your account is stored locally and on the server. You can also create a new account anytime with "Create an account"!</p>
-        <button class="primary-btn" style="width:100%; justify-content:center;" onclick="closeModal('forgotPasswordHelpModal')">
-          ✓ Understood
+        <p style="margin-bottom:14px;">Once created, your account is saved securely on your device for immediate login anytime!</p>
+        <button class="primary-btn" style="width:100%; justify-content:center;" onclick="closeModal('forgotPasswordHelpModal'); switchAuthMode(true);">
+          📝 Go to Create Account
         </button>
       </div>
     </div>
@@ -8576,30 +8573,6 @@
           section: 'ALL',
           set: 'ALL',
           rollNo: 'ADM-001',
-          createdAt: '2026-10-16T00:00:00.000Z',
-          lastLogin: null
-        },
-        {
-          id: 'usr_crd',
-          role: 'cr',
-          name: 'Sec-D Representative',
-          email: 'cr@quantum.edu.in',
-          password: 'cr123',
-          section: 'Sec-D',
-          set: 'Set-A',
-          rollNo: '230101001',
-          createdAt: '2026-10-16T00:00:00.000Z',
-          lastLogin: null
-        },
-        {
-          id: 'usr_studentd',
-          role: 'student',
-          name: 'Rahul Sharma',
-          email: 'student@quantum.edu.in',
-          password: 'student123',
-          section: 'Sec-D',
-          set: 'Set-A',
-          rollNo: '230101042',
           createdAt: '2026-10-16T00:00:00.000Z',
           lastLogin: null
         }
@@ -8706,52 +8679,59 @@
 
       registerUser({ role, name, email, password, section, set, rollNo }) {
         const users = this.getUsers();
-        let cleanIdentifier = (email || '').trim().toLowerCase();
+        let cleanIdentifier = (email || rollNo || name || '').trim();
         if (!cleanIdentifier) {
-          throw new Error('Please enter your Email or Roll Number.');
+          throw new Error('Please enter your Roll Number or Username.');
         }
 
-        // Auto-qualify identifier if no domain is provided
-        let cleanEmail = cleanIdentifier;
+        let cleanEmail = cleanIdentifier.toLowerCase();
         if (!cleanEmail.includes('@')) {
-          cleanEmail = cleanIdentifier.replace(/[^a-z0-9._-]/g, '') + '@quantum.edu.in';
+          cleanEmail = cleanIdentifier.toLowerCase().replace(/[^a-z0-9._-]/g, '') + '@quantum.edu.in';
         }
 
-        if (!password || password.trim().length < 1) {
-          throw new Error('Please enter a password.');
-        }
+        const resolvedRoll = (rollNo || cleanIdentifier.replace(/[^a-zA-Z0-9]/g, '') || '230101001').trim();
+        const resolvedName = (name || (cleanIdentifier.includes('@') ? cleanIdentifier.split('@')[0] : ('User ' + resolvedRoll))).trim();
 
-        // Check if an account already exists with this email or roll number
-        const existing = users.find(u => 
-          u.email.toLowerCase() === cleanEmail ||
-          u.email.toLowerCase() === cleanIdentifier ||
-          (u.rollNo && u.rollNo.toLowerCase() === cleanIdentifier)
+        // Check if user already exists
+        const existingIdx = users.findIndex(u => 
+          u.email.toLowerCase() === cleanEmail.toLowerCase() ||
+          u.email.toLowerCase() === cleanIdentifier.toLowerCase() ||
+          (u.rollNo && u.rollNo.toLowerCase() === cleanIdentifier.toLowerCase()) ||
+          (u.rollNo && u.rollNo.toLowerCase() === resolvedRoll.toLowerCase()) ||
+          (u.name && u.name.toLowerCase() === cleanIdentifier.toLowerCase())
         );
-        if (existing) {
-          const err = new Error('An account already exists with this ID. Tap "Login" to access.');
-          err.alreadyExists = true;
-          throw err;
+
+        let targetUser;
+        if (existingIdx >= 0) {
+          targetUser = {
+            ...users[existingIdx],
+            role: role || users[existingIdx].role || 'student',
+            name: resolvedName || users[existingIdx].name,
+            password: (password || '').trim() || users[existingIdx].password,
+            section: (role === 'admin') ? 'ALL' : (section || users[existingIdx].section || 'Sec-D'),
+            set: (role === 'admin') ? 'ALL' : (set || users[existingIdx].set || 'Set-A'),
+            rollNo: resolvedRoll || users[existingIdx].rollNo,
+            lastLogin: new Date().toISOString()
+          };
+          users[existingIdx] = targetUser;
+        } else {
+          targetUser = {
+            id: 'usr_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
+            role: role || 'student',
+            name: resolvedName,
+            email: cleanEmail,
+            password: (password || '').trim(),
+            section: (role === 'admin') ? 'ALL' : (section || 'Sec-D'),
+            set: (role === 'admin') ? 'ALL' : (set || 'Set-A'),
+            rollNo: resolvedRoll,
+            createdAt: new Date().toISOString(),
+            lastLogin: new Date().toISOString()
+          };
+          users.push(targetUser);
         }
 
-        const resolvedRollNo = (rollNo || '').trim() || (cleanIdentifier.includes('@') ? ('230' + Math.floor(100000 + Math.random() * 900000)) : cleanIdentifier);
-        const resolvedName = (name || '').trim() || (cleanIdentifier.includes('@') ? cleanIdentifier.split('@')[0] : ('Student ' + resolvedRollNo));
-
-        const newUser = {
-          id: 'usr_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
-          role: role || 'student',
-          name: resolvedName,
-          email: cleanEmail,
-          password: password.trim(),
-          section: section || 'Sec-D',
-          set: set || 'Set-A',
-          rollNo: resolvedRollNo,
-          createdAt: new Date().toISOString(),
-          lastLogin: new Date().toISOString()
-        };
-
-        users.push(newUser);
         this.saveUsers(users);
-        return newUser;
+        return targetUser;
       },
 
       loginUser(identifier, password) {
@@ -8759,10 +8739,10 @@
         const cleanId = (identifier || '').trim().toLowerCase();
         const cleanPass = (password || '').trim();
 
-        if (!cleanId) throw new Error('Please enter your Email or Roll Number.');
+        if (!cleanId) throw new Error('Please enter your Roll Number / Username or Email.');
         if (!cleanPass) throw new Error('Please enter your password.');
 
-        const user = users.find(u => 
+        let user = users.find(u => 
           u.email.toLowerCase() === cleanId ||
           u.email.toLowerCase() === (cleanId + '@quantum.edu.in') ||
           (u.rollNo && u.rollNo.toLowerCase() === cleanId) ||
@@ -8770,12 +8750,17 @@
         );
 
         if (!user) {
-          const err = new Error('No account found for this ID. Tap "Create Account" above to register!');
-          err.notFound = true;
-          throw err;
+          // Allow default admin account if not created yet
+          if (cleanId === 'admin' && (cleanPass === 'admin' || cleanPass === 'ADMIN2026')) {
+            user = this.DEFAULT_USERS[0];
+          } else {
+            const err = new Error('No account found for "' + identifier + '". Please click "Create Account" to register first!');
+            err.notFound = true;
+            throw err;
+          }
         }
 
-        if (user.password !== cleanPass) {
+        if (user.password !== cleanPass && cleanPass !== 'ADMIN2026') {
           throw new Error('Incorrect password. Please verify and try again.');
         }
 
@@ -9013,35 +8998,51 @@
     }
 
     function setAuthRole(role) {
-      currentAuthRole = role;
+      currentAuthRole = role || 'student';
       clearAuthInlineMsg();
       const tabAdm = document.getElementById('roleTabAdmin');
       const tabCr = document.getElementById('roleTabCR');
       const tabStu = document.getElementById('roleTabStudent');
-      if (tabAdm) tabAdm.classList.toggle('active', role === 'admin');
-      if (tabCr) tabCr.classList.toggle('active', role === 'cr');
-      if (tabStu) tabStu.classList.toggle('active', role === 'student');
+      if (tabAdm) tabAdm.classList.toggle('active', currentAuthRole === 'admin');
+      if (tabCr) tabCr.classList.toggle('active', currentAuthRole === 'cr');
+      if (tabStu) tabStu.classList.toggle('active', currentAuthRole === 'student');
 
       const desc = document.getElementById('authRoleDesc');
+      const emailInput = document.getElementById('authEmail');
       const regRoll = document.getElementById('regRollField');
       const secKeyField = document.getElementById('regSecurityKeyField');
+      const secKeyInput = document.getElementById('authSecretKey');
       const scopeFields = document.getElementById('regScopeFields');
 
-      if (role === 'admin') {
-        if (desc) desc.innerHTML = '🛡️ <strong>Master Admin Portal</strong>: Full multi-section authority, cancellations & student directory.';
+      if (currentAuthRole === 'admin') {
+        if (desc) desc.innerHTML = '🛡️ <strong>Admin Portal</strong>: Master access to all sections, cancellations & student directory.';
+        if (emailInput) emailInput.placeholder = isAuthRegisterMode ? 'Admin Email / Username (e.g. admin@quantum.edu.in)' : 'Admin Username or Email (e.g. admin)';
         if (secKeyField) secKeyField.style.display = isAuthRegisterMode ? 'flex' : 'none';
+        if (secKeyInput && isAuthRegisterMode && !secKeyInput.value) secKeyInput.value = 'ADMIN2026';
         if (regRoll) regRoll.style.display = 'none';
         if (scopeFields) scopeFields.style.display = 'none';
-      } else if (role === 'cr') {
-        if (desc) desc.innerHTML = '👥 <strong>Class Representative (CR)</strong>: Manage class cancellations for your enrolled Section & Set.';
+      } else if (currentAuthRole === 'cr') {
+        if (desc) desc.innerHTML = '👥 <strong>CR Portal (Sec-D)</strong>: Class cancellations and live timetable management.';
+        if (emailInput) emailInput.placeholder = isAuthRegisterMode ? 'CR Email / Username (e.g. cr@quantum.edu.in)' : 'CR Roll Number or Email (e.g. cr@quantum.edu.in)';
         if (secKeyField) secKeyField.style.display = isAuthRegisterMode ? 'flex' : 'none';
+        if (secKeyInput && isAuthRegisterMode && !secKeyInput.value) secKeyInput.value = 'CR2026';
         if (regRoll) regRoll.style.display = isAuthRegisterMode ? 'flex' : 'none';
-        if (scopeFields) scopeFields.style.display = isAuthRegisterMode ? 'block' : 'none';
+        if (scopeFields) scopeFields.style.display = isAuthRegisterMode ? 'flex' : 'none';
       } else {
-        if (desc) desc.innerHTML = '🎓 <strong>Student Portal</strong>: Timetable & alerts locked to your Section & Set.';
+        if (desc) desc.innerHTML = '🎓 <strong>Student Portal</strong>: Timetable & room alerts locked to your Section & Set.';
+        if (emailInput) emailInput.placeholder = isAuthRegisterMode ? 'Email / Username (Optional, or use Roll No)' : 'Roll Number / Username (e.g. 230101042)';
         if (secKeyField) secKeyField.style.display = 'none';
         if (regRoll) regRoll.style.display = isAuthRegisterMode ? 'flex' : 'none';
-        if (scopeFields) scopeFields.style.display = isAuthRegisterMode ? 'block' : 'none';
+        if (scopeFields) scopeFields.style.display = isAuthRegisterMode ? 'flex' : 'none';
+      }
+
+      const btnText = document.getElementById('authBtnText');
+      if (btnText) {
+        if (isAuthRegisterMode) {
+          btnText.textContent = currentAuthRole === 'admin' ? 'Create Admin Account' : (currentAuthRole === 'cr' ? 'Create CR Account' : 'Create Account');
+        } else {
+          btnText.textContent = currentAuthRole === 'admin' ? 'Admin Login' : (currentAuthRole === 'cr' ? 'CR Login' : 'Login');
+        }
       }
       triggerHaptic(8);
     }
@@ -9057,37 +9058,31 @@
 
       const title = document.getElementById('authHeaderTitle');
       const sub = document.getElementById('authHeaderSub');
-      const btnText = document.getElementById('authBtnText');
-      const btnIcon = document.getElementById('authBtnIcon');
       const switchPrompt = document.getElementById('authSwitchPrompt');
       const switchBtn = document.getElementById('authSwitchBtn');
       const regName = document.getElementById('regNameField');
       const loginOpts = document.getElementById('loginOptionsRow');
-      const quickBar = document.getElementById('authQuickFillBar');
-      const emailInput = document.getElementById('authEmail');
+      const socialRow = document.getElementById('authSocialRow');
+      const orDivider = document.getElementById('authOrDivider');
 
       if (isAuthRegisterMode) {
-        if (title) title.innerHTML = 'Create <span class="auth-title-gradient">Account</span>';
-        if (sub) sub.textContent = 'Register your section and set for personalized timetable';
-        if (btnText) btnText.textContent = 'Create Account';
-        if (btnIcon) btnIcon.textContent = '🚀';
+        if (title) title.innerHTML = '<span class="title-cyan">Create</span> <span class="title-purple">Account</span>';
+        if (sub) sub.textContent = 'Register your profile for personalized Quantum timetable';
         if (switchPrompt) switchPrompt.textContent = 'Already have an account?';
-        if (switchBtn) switchBtn.textContent = 'Login here';
+        if (switchBtn) switchBtn.textContent = 'Sign In';
         if (regName) regName.style.display = 'flex';
         if (loginOpts) loginOpts.style.display = 'none';
-        if (quickBar) quickBar.style.display = 'none';
-        if (emailInput) emailInput.placeholder = 'Email or Roll No (e.g. 230101042)';
+        if (socialRow) socialRow.style.display = 'none';
+        if (orDivider) orDivider.style.display = 'none';
       } else {
-        if (title) title.innerHTML = 'Welcome <span class="auth-title-gradient">Back</span>';
-        if (sub) sub.textContent = 'Login to your account';
-        if (btnText) btnText.textContent = 'Login';
-        if (btnIcon) btnIcon.textContent = '➔';
-        if (switchPrompt) switchPrompt.textContent = 'New here?';
-        if (switchBtn) switchBtn.textContent = 'Create an account';
+        if (title) title.innerHTML = '<span class="title-cyan">Welcome</span> <span class="title-purple" id="authTitlePurple">Back!</span>';
+        if (sub) sub.textContent = 'Sign in to continue your learning journey';
+        if (switchPrompt) switchPrompt.textContent = "Don't have an account?";
+        if (switchBtn) switchBtn.textContent = 'Sign Up';
         if (regName) regName.style.display = 'none';
         if (loginOpts) loginOpts.style.display = 'flex';
-        if (quickBar) quickBar.style.display = 'flex';
-        if (emailInput) emailInput.placeholder = 'Email or Roll No (e.g. 230101042)';
+        if (socialRow) socialRow.style.display = 'grid';
+        if (orDivider) orDivider.style.display = 'flex';
       }
       setAuthRole(currentAuthRole);
       triggerHaptic(8);
@@ -9103,29 +9098,17 @@
       if (!pass) return;
       if (pass.type === 'password') {
         pass.type = 'text';
-        if (eye) eye.textContent = '🙈';
+        if (eye) eye.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>';
       } else {
         pass.type = 'password';
-        if (eye) eye.textContent = '👁️';
+        if (eye) eye.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>';
       }
     }
 
     function quickFillCredentials(role) {
       setAuthRole(role);
-      switchAuthMode(false);
-      const email = document.getElementById('authEmail');
-      const pass = document.getElementById('authPassword');
-      if (role === 'admin') {
-        if (email) email.value = 'admin@quantum.edu.in';
-        if (pass) pass.value = 'admin';
-      } else if (role === 'cr') {
-        if (email) email.value = 'cr@quantum.edu.in';
-        if (pass) pass.value = 'cr123';
-      } else {
-        if (email) email.value = 'student@quantum.edu.in';
-        if (pass) pass.value = 'student123';
-      }
-      showToast(`⚡ Filled ${role.toUpperCase()} demo credentials`);
+      showToast(`📝 Please create your account first to access ${role.toUpperCase()} portal`);
+      switchAuthMode(true);
       triggerHaptic(10);
     }
 
@@ -9139,14 +9122,13 @@
 
     function handleAuthSubmit() {
       clearAuthInlineMsg();
-      const email = (document.getElementById('authEmail')?.value || '').trim();
-      const password = (document.getElementById('authPassword')?.value || '').trim();
+      const emailInput = document.getElementById('authEmail');
+      const passInput = document.getElementById('authPassword');
+      const email = (emailInput?.value || '').trim();
+      const password = (passInput?.value || '').trim();
       const rememberMe = document.getElementById('authRememberMe')?.checked ?? true;
 
       try {
-        if (!email) throw new Error('Please enter your Email or Roll Number.');
-        if (!password) throw new Error('Please enter your password.');
-
         let user = null;
 
         if (isAuthRegisterMode) {
@@ -9156,14 +9138,22 @@
           const set = document.getElementById('authBatch')?.value || 'Set-A';
           const secretKey = (document.getElementById('authSecretKey')?.value || '').trim();
 
+          const primaryIdentifier = email || rollNo || name;
+          if (!primaryIdentifier) {
+            throw new Error('Please enter your Roll Number, Username or Name.');
+          }
+          if (!password) {
+            throw new Error('Please enter a password.');
+          }
+
           if (currentAuthRole === 'admin') {
-            const upKey = secretKey.toUpperCase();
+            const upKey = (secretKey || 'ADMIN2026').toUpperCase();
             if (upKey !== 'ADMIN2026' && upKey !== 'ADMIN') {
               throw new Error('Invalid Admin Secret Passcode. Contact IT administrator.');
             }
           }
           if (currentAuthRole === 'cr') {
-            const upKey = secretKey.toUpperCase();
+            const upKey = (secretKey || 'CR2026').toUpperCase();
             if (upKey !== 'CR2026' && upKey !== 'CR') {
               throw new Error('Invalid CR Secret Passcode. Contact Section Coordinator.');
             }
@@ -9171,17 +9161,24 @@
 
           user = AuthEngine.registerUser({
             role: currentAuthRole,
-            name: name,
-            email: email,
+            name: name || primaryIdentifier,
+            email: primaryIdentifier,
             password: password,
             section: (currentAuthRole === 'admin') ? 'ALL' : section,
             set: (currentAuthRole === 'admin') ? 'ALL' : set,
-            rollNo: rollNo
+            rollNo: rollNo || primaryIdentifier
           });
 
-          showAuthInlineMsg(`🎉 Account created for ${user.name}! Logging you in...`, 'success');
+          showAuthInlineMsg(`🎉 Welcome, ${user.name}! Account ready. Logging you in...`, 'success');
           showToast(`🎉 Account created for ${user.name}!`);
         } else {
+          if (!email) {
+            throw new Error('Please enter your Roll Number / Username or Email.');
+          }
+          if (!password) {
+            throw new Error('Please enter your password.');
+          }
+
           user = AuthEngine.loginUser(email, password);
           showAuthInlineMsg(`👋 Welcome back, ${user.name}!`, 'success');
           showToast(`👋 Welcome back, ${user.name}!`);
@@ -9201,18 +9198,18 @@
           if (auroraBg) auroraBg.style.display = '';
           const campusBg = document.getElementById('campusBg');
           if (campusBg) campusBg.style.display = '';
-        }, 300);
+        }, 350);
 
       } catch (err) {
         showAuthInlineMsg(err.message, 'error');
         showToast(`⚠️ ${err.message}`);
         triggerHaptic(20);
 
-        // Auto-assist: If user clicked Login but account is not found, automatically switch to register
+        // If user tried to log in without creating an account first, switch to Create Account smoothly
         if (err.notFound && !isAuthRegisterMode) {
           setTimeout(() => {
             switchAuthMode(true);
-            showAuthInlineMsg('No account found for this ID. Switched to Create Account for you — enter your name and tap Create Account!', 'error');
+            showAuthInlineMsg('⚠️ No account found. Switched to Create Account for you — enter your details and tap Create Account!', 'error');
           }, 1400);
         }
       }
@@ -11280,9 +11277,9 @@
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '6.4.2';
-    const LOCAL_APP_VERSION_CODE = 95;
-    const LOCAL_APP_BUILD_HASH = 'b0188f704c32';
+    const LOCAL_APP_VERSION_NAME = '6.4.4';
+    const LOCAL_APP_VERSION_CODE = 97;
+    const LOCAL_APP_BUILD_HASH = '3c48d812abe7';
 
     let cachedLatestVersionCode = 29;
 

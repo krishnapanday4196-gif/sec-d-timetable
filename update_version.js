@@ -3,12 +3,12 @@ const crypto = require('crypto');
 const path = require('path');
 
 let ver = JSON.parse(fs.readFileSync('version.json', 'utf8'));
-ver.versionName = "6.4.2";
-ver.versionCode = 95;
-ver.apkVersionCode = 95;
+ver.versionName = "6.4.4";
+ver.versionCode = 97;
+ver.apkVersionCode = 97;
 ver.updatedAt = Date.now();
 ver.lastUpdated = new Date().toISOString();
-ver.releaseNotes = "v6.4.2: Pixel-Perfect Redesign Matching Screenshot - Twilight Campus Header, Glowing Logo Rings, Custom Gold Cursive Accents, Laurel Wreath Completion Gauge, 8-Period Connected Orbit Tracker & Rapid Responsive Switching";
+ver.releaseNotes = "v6.4.4: Pure CSS/SVG Cybernetic Portal (No Image Dependency), Strict Account Creation Before Login, 3-Role Support (Student, CR, Admin), and Optimized Mobile Layout";
 
 let html = fs.readFileSync('index.html', 'utf8');
 html = html.replace(/const LOCAL_APP_VERSION_NAME = '[^']+';/, "const LOCAL_APP_VERSION_NAME = '" + ver.versionName + "';");
@@ -39,6 +39,9 @@ try {
   fs.copyFileSync('sections_data.json', 'android/app/src/main/assets/sections_data.json');
   if (fs.existsSync('campus.jpg')) {
     fs.copyFileSync('campus.jpg', 'android/app/src/main/assets/campus.jpg');
+  }
+  if (fs.existsSync('campus_data.js')) {
+    fs.copyFileSync('campus_data.js', 'android/app/src/main/assets/campus_data.js');
   }
   if (fs.existsSync('logo.png')) {
     fs.copyFileSync('logo.png', 'android/app/src/main/assets/logo.png');

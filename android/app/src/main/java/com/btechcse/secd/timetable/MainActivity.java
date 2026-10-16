@@ -312,6 +312,14 @@ public class MainActivity extends Activity {
                 prefs.edit().remove("apk_ver").remove("ota_version_code").remove("ota_hash").apply();
             } catch (Exception ignored) {}
         }
+        // Always ensure images exist in internal storage as well
+        copyAssetToInternal("campus.jpg");
+        copyAssetToInternal("campus_data.js");
+        copyAssetToInternal("logo.png");
+        copyAssetToInternal("icon-192.png");
+        copyAssetToInternal("icon-512.png");
+        copyAssetToInternal("manifest.json");
+
         if (isUsingOtaFile()) {
             mWebView.loadUrl("file://" + otaHtml.getAbsolutePath());
         } else {
@@ -655,6 +663,8 @@ public class MainActivity extends Activity {
                 if (newHtmlContent == null || newHtmlContent.length() < 1000) return false;
 
                 // Ensure static image assets exist in internal files dir so relative paths work
+                copyAssetToInternal("campus.jpg");
+                copyAssetToInternal("campus_data.js");
                 copyAssetToInternal("logo.png");
                 copyAssetToInternal("icon-192.png");
                 copyAssetToInternal("icon-512.png");
