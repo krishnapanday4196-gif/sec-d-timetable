@@ -10,8 +10,8 @@ android {
         applicationId "com.btechcse.secd.timetable"
         minSdk 24
         targetSdk 34
-        versionCode 101
-        versionName "6.4.8"
+        versionCode 102
+        versionName "6.4.9"
     }
 
     buildTypes {

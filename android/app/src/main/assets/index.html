@@ -7827,6 +7827,62 @@
       color: #94a3b8 !important;
     }
 
+    /* Profile Modal Text Visibility & Theme Contrast */
+    #profileName {
+      color: var(--text-main, #ffffff) !important;
+    }
+    #profileRoll {
+      color: var(--text-muted, #cbd5e1) !important;
+    }
+    #profileEmail {
+      color: var(--text-sub, #94a3b8) !important;
+    }
+    .profile-card-banner {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .profile-scope-card {
+      background: rgba(56, 189, 248, 0.10);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+    }
+    .profile-scope-card span {
+      color: #38bdf8;
+    }
+    #profileScopeDesc {
+      color: #e0f2fe;
+    }
+
+    /* Aura Light (White Theme) Overrides for Profile Modal */
+    :root[data-theme="aura-light"] #profileName {
+      color: #0f172a !important;
+      text-shadow: none !important;
+    }
+    :root[data-theme="aura-light"] #profileRoll {
+      color: #334155 !important;
+    }
+    :root[data-theme="aura-light"] #profileEmail {
+      color: #64748b !important;
+    }
+    :root[data-theme="aura-light"] .profile-card-banner {
+      background: #f8fafc !important;
+      border: 1.5px solid #e2e8f0 !important;
+    }
+    :root[data-theme="aura-light"] .profile-scope-card {
+      background: #eff6ff !important;
+      border: 1.5px solid #bfdbfe !important;
+    }
+    :root[data-theme="aura-light"] .profile-scope-card span {
+      color: #1d4ed8 !important;
+    }
+    :root[data-theme="aura-light"] #profileScopeDesc {
+      color: #1e40af !important;
+    }
+
+    /* User Pill Hidden from Top Bar Per User Instruction */
+    .appbar-user-pill {
+      display: none !important;
+    }
+
   </style>
   <!-- Splash Screen Removed for Instant Direct Launch -->
 </head>
@@ -8137,8 +8193,8 @@
           </div>
         </div>
         <div class="appbar-actions" style="display:flex; align-items:center; gap:clamp(3px, 1vw, 4px);">
-          <!-- Active Authenticated User Profile Pill -->
-          <button class="appbar-user-pill" id="authUserPill" onclick="openUserProfileModal()" title="View Account & Profile" style="display:flex;">
+          <!-- Active Authenticated User Profile Pill (Hidden from top bar per user instruction) -->
+          <button class="appbar-user-pill" id="authUserPill" onclick="openUserProfileModal()" title="View Account & Profile" style="display:none !important;">
             <span id="userPillIcon">🎓</span>
             <span id="userPillName" style="max-width:clamp(45px, 12vw, 68px); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">Rahul ▾</span>
             <span id="userPillBadge" class="user-pill-sub-badge"><span class="badge-sec-prefix">Sec-D </span><span class="badge-set-text">(Set-A)</span></span>
@@ -9509,23 +9565,23 @@
       </div>
 
       <div style="display:flex; flex-direction:column; gap:14px; padding:6px 0;">
-        <div style="display:flex; align-items:center; gap:14px; background:rgba(255,255,255,0.035); border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:14px;">
+        <div class="profile-card-banner" style="display:flex; align-items:center; gap:14px; border-radius:16px; padding:14px;">
           <div class="stu-avatar" id="profileAvatar" style="width:50px; height:50px; font-size:1.25rem;">
             🎓
           </div>
           <div style="display:flex; flex-direction:column; gap:2px; flex:1; min-width:0;">
             <div style="display:flex; align-items:center; gap:6px;">
-              <strong id="profileName" style="font-size:1rem; color:#f8fafc; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">Student Name</strong>
+              <strong id="profileName" style="font-size:1.05rem; font-weight:800; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">Student Name</strong>
               <span class="stu-badge-role" id="profileRoleBadge">STUDENT</span>
             </div>
-            <div id="profileRoll" style="font-size:0.75rem; color:#94a3b8; font-family:'JetBrains Mono', monospace;">Roll: 230101042</div>
-            <div id="profileEmail" style="font-size:0.73rem; color:#64748b; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">student@quantum.edu.in</div>
+            <div id="profileRoll" style="font-size:0.78rem; font-weight:600; font-family:'JetBrains Mono', monospace;">Roll: 230101042</div>
+            <div id="profileEmail" style="font-size:0.75rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">student@quantum.edu.in</div>
           </div>
         </div>
 
-        <div style="background:rgba(56,189,248,0.08); border:1px solid rgba(56,189,248,0.22); border-radius:12px; padding:10px 12px; font-size:0.77rem; color:#bae6fd; line-height:1.4;">
-          <span style="font-weight:700;">📌 Assigned Scope:</span>
-          <div id="profileScopeDesc" style="margin-top:2px;">Section D • Set-A (Timetable & alerts personalized for this class)</div>
+        <div class="profile-scope-card" style="border-radius:12px; padding:10px 12px; font-size:0.77rem; line-height:1.4;">
+          <span style="font-weight:700; display:block; margin-bottom:2px;">📌 Assigned Scope:</span>
+          <div id="profileScopeDesc" style="font-weight:600;">Section D • Set-A (Timetable & alerts personalized for this class)</div>
         </div>
 
         <!-- Quick Admin & CR Actions -->
@@ -10258,7 +10314,7 @@
       const pillName = document.getElementById('userPillName');
       const pillBadge = document.getElementById('userPillBadge');
 
-      if (pill) pill.style.display = 'inline-flex';
+      if (pill) pill.style.display = 'none';
       if (pillIcon) {
         pillIcon.textContent = user.role === 'admin' ? '🛡️' : (user.role === 'cr' ? '👑' : '🎓');
       }
@@ -10289,8 +10345,16 @@
       if (pName) pName.textContent = user.name;
       if (pRole) {
         pRole.textContent = user.role.toUpperCase();
-        pRole.style.background = user.role === 'admin' ? 'rgba(168,85,247,0.2)' : (user.role === 'cr' ? 'rgba(56,189,248,0.2)' : 'rgba(16,185,129,0.2)');
-        pRole.style.color = user.role === 'admin' ? '#c084fc' : (user.role === 'cr' ? '#38bdf8' : '#34d399');
+        const isLight = document.documentElement.getAttribute('data-theme') === 'aura-light';
+        if (isLight) {
+          pRole.style.background = user.role === 'admin' ? 'rgba(168,85,247,0.15)' : (user.role === 'cr' ? 'rgba(56,189,248,0.15)' : 'rgba(16,185,129,0.15)');
+          pRole.style.color = user.role === 'admin' ? '#7c3aed' : (user.role === 'cr' ? '#0284c7' : '#047857');
+          pRole.style.border = user.role === 'admin' ? '1px solid #c084fc' : (user.role === 'cr' ? '1px solid #93c5fd' : '1px solid #a7f3d0');
+        } else {
+          pRole.style.background = user.role === 'admin' ? 'rgba(168,85,247,0.2)' : (user.role === 'cr' ? 'rgba(56,189,248,0.2)' : 'rgba(16,185,129,0.2)');
+          pRole.style.color = user.role === 'admin' ? '#c084fc' : (user.role === 'cr' ? '#38bdf8' : '#34d399');
+          pRole.style.border = '';
+        }
       }
       if (pRoll) pRoll.textContent = `Roll No: ${user.rollNo || 'N/A'}`;
       if (pEmail) pEmail.textContent = user.email;
@@ -12308,9 +12372,9 @@
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '6.4.8';
-    const LOCAL_APP_VERSION_CODE = 101;
-    const LOCAL_APP_BUILD_HASH = '838bd17c4a53';
+    const LOCAL_APP_VERSION_NAME = '6.4.9';
+    const LOCAL_APP_VERSION_CODE = 102;
+    const LOCAL_APP_BUILD_HASH = '2490dacf529d';
 
     let cachedLatestVersionCode = 29;
 

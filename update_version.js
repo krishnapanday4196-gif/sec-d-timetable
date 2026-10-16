@@ -3,12 +3,12 @@ const crypto = require('crypto');
 const path = require('path');
 
 let ver = JSON.parse(fs.readFileSync('version.json', 'utf8'));
-ver.versionName = "6.4.8";
-ver.versionCode = 101;
-ver.apkVersionCode = 101;
+ver.versionName = "6.4.9";
+ver.versionCode = 102;
+ver.apkVersionCode = 102;
 ver.updatedAt = Date.now();
 ver.lastUpdated = new Date().toISOString();
-ver.releaseNotes = "v6.4.8: Next-level mobile responsive layout (zero text truncation, stacked Quantum University title, fluid user pill) and luxury high-contrast White Theme (Aura Celestial) color combination";
+ver.releaseNotes = "v6.4.9: Removed top bar user pill for clean uncluttered header and fixed profile modal text visibility with high contrast styling in white theme";
 
 let html = fs.readFileSync('index.html', 'utf8');
 html = html.replace(/const LOCAL_APP_VERSION_NAME = '[^']+';/, "const LOCAL_APP_VERSION_NAME = '" + ver.versionName + "';");
