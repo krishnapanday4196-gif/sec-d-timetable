@@ -1,11 +1,11 @@
 {
-  "versionName": "6.4.4",
-  "versionCode": 97,
-  "apkVersionCode": 97,
-  "htmlHash": "3c48d812abe7",
-  "apkHash": "3c47b8580c5d",
+  "versionName": "6.4.5",
+  "versionCode": 98,
+  "apkVersionCode": 98,
+  "htmlHash": "3c1bd53bd2a5",
+  "apkHash": "a46a65d4279f",
   "apkSize": 2405492,
-  "updatedAt": 1792180602469,
+  "updatedAt": 1792182114893,
   "publicUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main",
   "cloudflareUrl": "",
   "githubUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main",
@@ -13,9 +13,9 @@
   "apkUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/SecD_Timetable.apk",
   "htmlUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/index.html",
   "downloadUrl": "https://krishnapanday4196-gif.github.io/sec-d-timetable",
-  "lastUpdated": "2026-10-16T19:56:42.469Z",
-  "apkMd5": "3c47b8580c5d2e4cff4f7cd02ca99f8c",
-  "releaseNotes": "v6.4.4: Pure CSS/SVG Cybernetic Portal (No Image Dependency), Strict Account Creation Before Login, 3-Role Support (Student, CR, Admin), and Optimized Mobile Layout",
-  "apkSizeBytes": 2635683,
-  "apkSizeFormatted": "2.51 MB"
+  "lastUpdated": "2026-10-16T20:21:54.893Z",
+  "apkMd5": "a46a65d4279f2c4608403f1c0a25739a",
+  "releaseNotes": "v6.4.5: Compact mobile layout adjustment (no truncation on QTIMEX/Sec-D, unified section controls), and pristine White Theme color combination overhaul",
+  "apkSizeBytes": 2448480,
+  "apkSizeFormatted": "2.34 MB"
 }

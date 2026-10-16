@@ -5801,19 +5801,19 @@
         linear-gradient(90deg, #070f30 0%, #070f30 65%, #0b1a48 100%) !important;
       border-bottom: 1.5px solid rgba(0, 240, 255, 0.35) !important;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 240, 255, 0.15) !important;
-      padding: max(10px, env(safe-area-inset-top)) 12px 10px 12px;
+      padding: max(8px, env(safe-area-inset-top)) 10px 8px 10px;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 6px;
     }
 
     .brand-logo-neon-circle {
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
-      padding: 2.2px;
+      padding: 2px;
       background: linear-gradient(135deg, #00f0ff 0%, #a855f7 50%, #ec4899 100%);
-      box-shadow: 0 0 16px rgba(0, 240, 255, 0.7), 0 0 28px rgba(168, 85, 247, 0.4);
+      box-shadow: 0 0 14px rgba(0, 240, 255, 0.7), 0 0 24px rgba(168, 85, 247, 0.4);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -5833,13 +5833,15 @@
     .brand-title-wrap {
       display: flex;
       align-items: center;
-      gap: 7px;
+      gap: 5px;
+      flex-shrink: 0;
+      white-space: nowrap;
     }
 
     .brand-title-wrap .brand-name-text {
-      font-size: 1.3rem;
+      font-size: 1.22rem;
       font-weight: 900;
-      letter-spacing: -0.4px;
+      letter-spacing: -0.3px;
       color: #ffffff;
       background: linear-gradient(90deg, #00f0ff 0%, #e0f2fe 55%, #ffffff 100%);
       -webkit-background-clip: text;
@@ -5852,20 +5854,22 @@
       background: #0284c7;
       border: 1.2px solid #00f0ff;
       color: #ffffff;
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       font-weight: 800;
       border-radius: 9999px;
-      padding: 1.5px 8px;
-      box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+      padding: 1.5px 7px;
+      box-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
       letter-spacing: 0.3px;
       line-height: 1.2;
+      flex-shrink: 0;
+      white-space: nowrap;
     }
 
     .brand-univ-title {
       color: #ffffff;
-      font-size: 0.84rem;
+      font-size: 0.82rem;
       font-weight: 800;
-      letter-spacing: 0.6px;
+      letter-spacing: 0.5px;
       text-transform: uppercase;
       line-height: 1.15;
       margin-top: 1px;
@@ -5873,9 +5877,9 @@
 
     .brand-univ-motto {
       color: #38bdf8;
-      font-size: 0.54rem;
+      font-size: 0.53rem;
       font-weight: 700;
-      letter-spacing: 1.1px;
+      letter-spacing: 1px;
       text-transform: uppercase;
       line-height: 1.1;
       margin-top: 1px;
@@ -5886,17 +5890,19 @@
       background: rgba(11, 20, 52, 0.92);
       border: 1.4px solid rgba(56, 189, 248, 0.45);
       border-radius: 9999px;
-      padding: 4px 10px;
+      padding: 4px 8px;
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 4px;
       color: #ffffff;
-      font-size: 0.74rem;
+      font-size: 0.72rem;
       font-weight: 750;
       cursor: pointer;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
       outline: none;
       font-family: inherit;
+      max-width: 90px;
+      white-space: nowrap;
     }
 
     .appbar-user-pill:hover {
@@ -5905,10 +5911,7 @@
     }
 
     .user-pill-sub-badge {
-      font-size: 0.62rem;
-      color: #94a3b8;
-      font-weight: 600;
-      margin-left: 2px;
+      display: none !important;
     }
 
     .appbar-quick-btn {
@@ -6010,17 +6013,17 @@
     }
 
     .set-active-green-btn {
-      height: 42px;
-      padding: 0 16px 0 10px;
+      height: 38px;
+      padding: 0 14px 0 8px;
       border-radius: 9999px;
       background: #061a14;
-      border: 2px solid #22c55e;
-      box-shadow: 0 0 20px rgba(34, 197, 94, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      border: 1.8px solid #22c55e;
+      box-shadow: 0 0 16px rgba(34, 197, 94, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.2);
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       color: #ffffff;
-      font-size: 0.95rem;
+      font-size: 0.90rem;
       font-weight: 850;
       cursor: pointer;
       transition: all 0.2s ease;
@@ -6033,10 +6036,10 @@
     }
 
     .set-letter-badge {
-      width: 24px;
-      height: 24px;
+      width: 22px;
+      height: 22px;
       border-radius: 6px;
-      background: #ef4444;
+      background: linear-gradient(135deg, #10b981, #059669);
       color: #ffffff;
       display: flex;
       align-items: center;
@@ -6078,16 +6081,16 @@
 
     /* GLOWING HIGHLIGHTED STATUS RIBBON (Image 2) */
     .glow-highlight-ribbon {
-      margin: 6px 12px;
-      height: 44px;
+      margin: 4px 12px;
+      height: 38px;
       border-radius: 9999px;
       background: #070e28;
       border: 1.6px solid #d946ef;
       box-shadow: 0 0 22px rgba(217, 70, 239, 0.35);
       display: flex;
       align-items: center;
-      padding: 0 14px 0 6px;
-      gap: 8px;
+      padding: 0 12px 0 6px;
+      gap: 7px;
       cursor: pointer;
       overflow: hidden;
     }
@@ -6096,31 +6099,31 @@
       background: #ef4444;
       border: 1px solid #f87171;
       color: #ffffff;
-      font-size: 0.68rem;
+      font-size: 0.65rem;
       font-weight: 900;
       border-radius: 9999px;
-      padding: 4px 10px;
+      padding: 3px 8px;
       letter-spacing: 0.5px;
       box-shadow: 0 0 12px rgba(239, 68, 68, 0.6);
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 4px;
     }
 
     .ribbon-sec-badge {
       background: #3b82f6;
       color: #ffffff;
-      font-size: 0.65rem;
+      font-size: 0.63rem;
       font-weight: 850;
       border-radius: 9999px;
-      padding: 4px 10px;
+      padding: 3px 8px;
       letter-spacing: 0.3px;
       white-space: nowrap;
     }
 
     .ribbon-highlight-text {
       color: #ffffff;
-      font-size: 0.78rem;
+      font-size: 0.74rem;
       font-weight: 700;
       white-space: nowrap;
       overflow: hidden;
@@ -6130,7 +6133,7 @@
     .ribbon-chevron {
       margin-left: auto;
       color: #00f0ff;
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 700;
     }
 
@@ -6138,8 +6141,8 @@
     .time-status-ribbon {
       display: grid;
       grid-template-columns: 1.25fr 1fr;
-      gap: 10px;
-      margin: 6px 12px;
+      gap: 8px;
+      margin: 4px 12px;
       padding: 0;
       background: transparent;
       border: none;
@@ -6148,11 +6151,11 @@
     .time-ribbon-card {
       background: #071333;
       border: 1.5px solid rgba(0, 240, 255, 0.4);
-      border-radius: 18px;
-      padding: 10px 14px;
+      border-radius: 14px;
+      padding: 8px 12px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       box-shadow: 0 0 18px rgba(0, 240, 255, 0.15);
       box-sizing: border-box;
     }
@@ -6164,7 +6167,7 @@
     }
 
     .clock-ticker {
-      font-size: 1.15rem;
+      font-size: 1.08rem;
       font-weight: 900;
       color: #ffffff;
       font-family: inherit;
@@ -6173,7 +6176,7 @@
     }
 
     .live-status-indicator {
-      font-size: 0.68rem;
+      font-size: 0.66rem;
       font-weight: 700;
       color: #22c55e;
       display: flex;
@@ -6200,7 +6203,7 @@
     }
 
     .date-card-text {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       font-weight: 800;
       color: #ffffff;
     }
@@ -6214,15 +6217,15 @@
     .circular-hero-card {
       background: #071333 !important;
       border: 2px solid #00d2ff !important;
-      border-radius: 24px !important;
-      padding: 16px 18px !important;
-      margin: 6px 12px !important;
+      border-radius: 20px !important;
+      padding: 12px 14px !important;
+      margin: 4px 12px !important;
       position: relative;
       overflow: hidden;
       box-shadow: 0 0 30px rgba(0, 210, 255, 0.35), inset 0 0 20px rgba(0, 210, 255, 0.1) !important;
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
     }
 
     .done-laurel-badge-wrap {
@@ -6412,8 +6415,8 @@
     .schedule-quick-switch-bar {
       display: grid !important;
       grid-template-columns: 1fr 1fr 1.15fr !important;
-      gap: 8px !important;
-      margin: 6px 12px !important;
+      gap: 6px !important;
+      margin: 4px 12px !important;
       padding: 0 !important;
     }
 
@@ -6421,14 +6424,14 @@
       background: #0a112c !important;
       border: 1.2px solid rgba(168, 85, 247, 0.35) !important;
       border-radius: 9999px !important;
-      height: 40px !important;
+      height: 36px !important;
       padding: 0 10px !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
-      gap: 6px !important;
+      gap: 5px !important;
       color: #ffffff !important;
-      font-size: 0.82rem !important;
+      font-size: 0.80rem !important;
       font-weight: 750 !important;
       cursor: pointer;
     }
@@ -6443,17 +6446,17 @@
     .day-pills-bar {
       display: grid !important;
       grid-template-columns: repeat(6, 1fr) !important;
-      gap: 6px !important;
-      margin: 6px 12px !important;
+      gap: 4px !important;
+      margin: 4px 12px !important;
       padding: 0 !important;
     }
 
     .day-pill {
       background: #071333 !important;
       border: 1.2px solid rgba(56, 189, 248, 0.3) !important;
-      border-radius: 14px !important;
-      padding: 6px 2px !important;
-      min-height: 52px !important;
+      border-radius: 12px !important;
+      padding: 4px 2px !important;
+      min-height: 44px !important;
       display: flex !important;
       flex-direction: column !important;
       align-items: center !important;
@@ -6471,11 +6474,11 @@
 
     /* SCHEDULE SUMMARY BANNER (Image 2) */
     .schedule-summary-banner {
-      margin: 6px 12px 10px 12px;
+      margin: 4px 12px 8px 12px;
       background: linear-gradient(90deg, #071a48 0%, #0c2d6b 50%, #0369a1 100%);
       border: 1.5px solid #00f0ff;
-      border-radius: 18px;
-      padding: 10px 14px;
+      border-radius: 16px;
+      padding: 8px 12px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -6780,6 +6783,662 @@
       padding: 2px 6px;
       font-size: 0.68rem;
       font-weight: 700;
+    }
+
+    /* ============================================================
+       AURA CELESTIAL WHITE THEME — COMPLETE LUXURY HARMONY
+       Pure White, Frosted Pearl, Royal Indigo, Crisp Slate Typography
+       100% Comprehensive Overrides for All Top Bar & Dashboard Components
+       ============================================================ */
+    :root[data-theme="aura-light"] {
+      color-scheme: light !important;
+      --bg-canvas: #f8fafc !important;
+      --bg-phone: #f8fafc !important;
+      --card-bg: #ffffff !important;
+      --card-solid: #ffffff !important;
+      --card-surface-grad: linear-gradient(165deg, #ffffff 0%, #f8fafc 100%) !important;
+      --card-border: #e2e8f0 !important;
+      --card-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.04) !important;
+      --text-main: #0f172a !important;
+      --text-muted: #334155 !important;
+      --text-sub: #64748b !important;
+      --accent: #4f46e5 !important;
+      --accent-glow: rgba(79, 70, 229, 0.25) !important;
+      --accent-bg: #eff6ff !important;
+      --gold-bg: #fffbeb !important;
+      --gold-border: #fde68a !important;
+      --gold-accent: #b45309 !important;
+      --set-a-bg: #ecfdf5 !important;
+      --set-a-color: #047857 !important;
+      --set-a-border: #a7f3d0 !important;
+      --set-b-bg: #f5f3ff !important;
+      --set-b-color: #6d28d9 !important;
+      --set-b-border: #ddd6fe !important;
+    }
+
+    :root[data-theme="aura-light"] body,
+    :root[data-theme="aura-light"] .app-viewport {
+      background: #f8fafc !important;
+      color: #0f172a !important;
+    }
+
+    /* Top Appbar */
+    :root[data-theme="aura-light"] .top-appbar {
+      background: #ffffff !important;
+      border-bottom: 1.5px solid #e2e8f0 !important;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05) !important;
+    }
+
+    :root[data-theme="aura-light"] .brand-title-wrap .brand-name-text {
+      background: linear-gradient(90deg, #1e3a8a 0%, #2563eb 50%, #4f46e5 100%) !important;
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      text-shadow: none !important;
+    }
+
+    :root[data-theme="aura-light"] .brand-secd-pill {
+      background: #eff6ff !important;
+      border: 1.2px solid #3b82f6 !important;
+      color: #1d4ed8 !important;
+      box-shadow: 0 0 8px rgba(59, 130, 246, 0.15) !important;
+    }
+
+    :root[data-theme="aura-light"] .brand-univ-title {
+      color: #0f172a !important;
+    }
+
+    :root[data-theme="aura-light"] .brand-univ-motto {
+      color: #475569 !important;
+    }
+
+    :root[data-theme="aura-light"] .appbar-user-pill {
+      background: #ffffff !important;
+      border: 1.2px solid #cbd5e1 !important;
+      color: #0f172a !important;
+      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.06) !important;
+    }
+
+    :root[data-theme="aura-light"] .appbar-quick-btn {
+      background: #ffffff !important;
+      border: 1.2px solid #cbd5e1 !important;
+      color: #1e293b !important;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05) !important;
+    }
+
+    :root[data-theme="aura-light"] .holo-menu-trigger {
+      background: #ffffff !important;
+      border: 1.2px solid #cbd5e1 !important;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05) !important;
+    }
+    :root[data-theme="aura-light"] .holo-menu-trigger .hbar {
+      background: #334155 !important;
+    }
+    :root[data-theme="aura-light"] .holo-menu-trigger .hbar-2 {
+      background: #4f46e5 !important;
+    }
+
+    :root[data-theme="aura-light"] .section-selector-label {
+      color: #334155 !important;
+    }
+
+    :root[data-theme="aura-light"] .active-sec-badge {
+      background: #eff6ff !important;
+      border: 1.2px solid #93c5fd !important;
+      color: #1d4ed8 !important;
+      box-shadow: none !important;
+    }
+
+    /* Section Pills */
+    :root[data-theme="aura-light"] .sec-pill-btn {
+      background: #ffffff !important;
+      border: 1.2px solid #e2e8f0 !important;
+      color: #475569 !important;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
+    }
+
+    :root[data-theme="aura-light"] .sec-pill-btn:hover {
+      background: #f8fafc !important;
+      color: #0f172a !important;
+      border-color: #cbd5e1 !important;
+    }
+
+    :root[data-theme="aura-light"] .sec-pill-btn.active {
+      background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%) !important;
+      border: 1.2px solid #3730a3 !important;
+      color: #ffffff !important;
+      box-shadow: 0 3px 10px rgba(79, 70, 229, 0.3) !important;
+    }
+
+    :root[data-theme="aura-light"] .sec-pill-btn.is-enrolled:not(.active) {
+      border-color: #818cf8 !important;
+      color: #4338ca !important;
+      background: #eef2ff !important;
+    }
+
+    :root[data-theme="aura-light"] .sec-locked-hero-pill {
+      background: #eff6ff !important;
+      border: 1.5px solid #3b82f6 !important;
+      color: #1e40af !important;
+      box-shadow: 0 2px 10px rgba(59, 130, 246, 0.15) !important;
+    }
+
+    /* Set Button & Slogan */
+    :root[data-theme="aura-light"] .set-active-green-btn {
+      background: #ecfdf5 !important;
+      border: 1.5px solid #10b981 !important;
+      color: #065f46 !important;
+      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.15) !important;
+    }
+
+    :root[data-theme="aura-light"] .set-letter-badge {
+      background: #10b981 !important;
+      color: #ffffff !important;
+    }
+
+    :root[data-theme="aura-light"] .set-chevron {
+      color: #059669 !important;
+    }
+
+    :root[data-theme="aura-light"] .brand-cursive-slogan span,
+    :root[data-theme="aura-light"] .brand-cursive-quote {
+      color: #4f46e5 !important;
+      text-shadow: none !important;
+    }
+
+    :root[data-theme="aura-light"] .cursive-underline-flourish {
+      background: linear-gradient(90deg, #4f46e5, transparent) !important;
+    }
+
+    /* Live Ribbon & Clock Card */
+    :root[data-theme="aura-light"] .glow-highlight-ribbon {
+      background: #ffffff !important;
+      border: 1.5px solid #e2e8f0 !important;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.05) !important;
+    }
+
+    :root[data-theme="aura-light"] .ribbon-highlight-text {
+      color: #1e293b !important;
+    }
+
+    :root[data-theme="aura-light"] .ribbon-chevron {
+      color: #4f46e5 !important;
+    }
+
+    :root[data-theme="aura-light"] .time-ribbon-card {
+      background: #ffffff !important;
+      border: 1.5px solid #e2e8f0 !important;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.05) !important;
+    }
+
+    :root[data-theme="aura-light"] .clock-ticker {
+      color: #0f172a !important;
+    }
+
+    :root[data-theme="aura-light"] .date-card {
+      background: #ffffff !important;
+      border: 1.5px solid #e2e8f0 !important;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.05) !important;
+    }
+
+    :root[data-theme="aura-light"] .date-card-text {
+      color: #0f172a !important;
+    }
+
+    :root[data-theme="aura-light"] .date-dropdown-arrow {
+      color: #64748b !important;
+    }
+
+    /* Hero Card & Circular Countdown Gauge */
+    :root[data-theme="aura-light"] .circular-hero-card {
+      background: #ffffff !important;
+      border: 1.5px solid #e2e8f0 !important;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06) !important;
+    }
+
+    :root[data-theme="aura-light"] .circular-hero-card * {
+      text-shadow: none !important;
+    }
+
+    :root[data-theme="aura-light"] .circular-gauge-container {
+      background: radial-gradient(circle, #f8fafc 0%, #f1f5f9 70%, transparent 72%) !important;
+    }
+
+    :root[data-theme="aura-light"] .circular-gauge-container::before {
+      border-color: rgba(79, 70, 229, 0.25) !important;
+    }
+
+    :root[data-theme="aura-light"] .circular-gauge-container::after {
+      border-color: rgba(245, 158, 11, 0.25) !important;
+    }
+
+    :root[data-theme="aura-light"] .circle-bg-track {
+      stroke: #e2e8f0 !important;
+    }
+
+    :root[data-theme="aura-light"] .circle-timer-val {
+      color: #0f172a !important;
+    }
+
+    :root[data-theme="aura-light"] .circle-timer-sub {
+      color: #b45309 !important;
+    }
+
+    :root[data-theme="aura-light"] .hero-slot-badge {
+      background: #eff6ff !important;
+      border: 1px solid #bfdbfe !important;
+      color: #1d4ed8 !important;
+    }
+
+    :root[data-theme="aura-light"] .hero-batch-badge.badge-set-a {
+      background: #ecfdf5 !important;
+      color: #047857 !important;
+      border: 1px solid #a7f3d0 !important;
+    }
+
+    :root[data-theme="aura-light"] .hero-batch-badge.badge-set-b {
+      background: #f5f3ff !important;
+      color: #6d28d9 !important;
+      border: 1px solid #ddd6fe !important;
+    }
+
+    :root[data-theme="aura-light"] .hero-batch-badge.badge-set-all {
+      background: #eff6ff !important;
+      color: #1d4ed8 !important;
+      border: 1px solid #bfdbfe !important;
+    }
+
+    :root[data-theme="aura-light"] .hero-subject-name {
+      color: #0f172a !important;
+    }
+
+    :root[data-theme="aura-light"] .hero-room-badge {
+      background: #eff6ff !important;
+      color: #1d4ed8 !important;
+      border: 1px solid #bfdbfe !important;
+    }
+
+    :root[data-theme="aura-light"] .faculty-badge {
+      background: #fffbeb !important;
+      color: #b45309 !important;
+      border: 1px solid #fde68a !important;
+    }
+
+    :root[data-theme="aura-light"] .done-outer-gold-ring {
+      background: #fffbeb !important;
+      border-color: #f59e0b !important;
+      box-shadow: 0 0 12px rgba(245, 158, 11, 0.25) !important;
+    }
+
+    :root[data-theme="aura-light"] .done-word {
+      color: #0f172a !important;
+    }
+
+    :root[data-theme="aura-light"] .done-check-circle {
+      border-color: #10b981 !important;
+      color: #10b981 !important;
+    }
+
+    :root[data-theme="aura-light"] .hero-dismissed-badge {
+      background: #f1f5f9 !important;
+      color: #475569 !important;
+      border-color: #cbd5e1 !important;
+    }
+
+    :root[data-theme="aura-light"] .hero-setdone-badge {
+      background: #ecfdf5 !important;
+      color: #065f46 !important;
+      border-color: #10b981 !important;
+      box-shadow: none !important;
+    }
+
+    :root[data-theme="aura-light"] .hero-see-tomorrow-btn {
+      background: linear-gradient(135deg, #4f46e5, #4338ca) !important;
+      border: none !important;
+      color: #ffffff !important;
+      box-shadow: 0 3px 10px rgba(79, 70, 229, 0.3) !important;
+    }
+
+    :root[data-theme="aura-light"] .hero-great-work-script {
+      color: #d97706 !important;
+      text-shadow: none !important;
+    }
+
+    /* 8-Period Orbit Stepper */
+    :root[data-theme="aura-light"] .orbit-tracker-section {
+      background: #ffffff !important;
+      border: 1.5px solid #e2e8f0 !important;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05) !important;
+    }
+
+    :root[data-theme="aura-light"] .orbit-header-left {
+      color: #0f172a !important;
+    }
+
+    :root[data-theme="aura-light"] .orbit-header-right {
+      color: #4f46e5 !important;
+    }
+
+    :root[data-theme="aura-light"] .orbit-dot {
+      background: #f8fafc !important;
+      border: 1.5px solid #cbd5e1 !important;
+      color: #0f172a !important;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05) !important;
+    }
+
+    :root[data-theme="aura-light"] .orbit-lunch-dot {
+      background: #fffbeb !important;
+      border-color: #f59e0b !important;
+      color: #b45309 !important;
+      box-shadow: 0 2px 8px rgba(245, 158, 11, 0.2) !important;
+    }
+
+    :root[data-theme="aura-light"] .orbit-final-dot {
+      background: #f5f3ff !important;
+      border-color: #8b5cf6 !important;
+      color: #6d28d9 !important;
+      box-shadow: 0 2px 8px rgba(139, 92, 246, 0.2) !important;
+    }
+
+    /* Quick Day Switcher & Day Pills */
+    :root[data-theme="aura-light"] .schedule-quick-switch-bar .quick-view-btn {
+      background: #ffffff !important;
+      border: 1.2px solid #cbd5e1 !important;
+      color: #334155 !important;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05) !important;
+    }
+
+    :root[data-theme="aura-light"] .schedule-quick-switch-bar .quick-view-btn.active {
+      background: linear-gradient(135deg, #4f46e5, #4338ca) !important;
+      border-color: transparent !important;
+      color: #ffffff !important;
+      box-shadow: 0 3px 12px rgba(79, 70, 229, 0.3) !important;
+    }
+
+    :root[data-theme="aura-light"] .schedule-quick-switch-bar .quick-view-btn#btnViewTomorrow.active {
+      background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+      border-color: transparent !important;
+      color: #ffffff !important;
+      box-shadow: 0 3px 12px rgba(245, 158, 11, 0.3) !important;
+    }
+
+    :root[data-theme="aura-light"] .day-pills-bar .day-pill {
+      background: #ffffff !important;
+      border: 1.2px solid #cbd5e1 !important;
+      color: #334155 !important;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05) !important;
+    }
+
+    :root[data-theme="aura-light"] .day-pills-bar .day-pill.active {
+      background: linear-gradient(135deg, #4f46e5, #4338ca) !important;
+      border-color: transparent !important;
+      color: #ffffff !important;
+      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35) !important;
+    }
+
+    :root[data-theme="aura-light"] .day-pills-bar .day-pill.today-highlight:not(.active) {
+      border-color: #818cf8 !important;
+      color: #4338ca !important;
+      background: #eef2ff !important;
+    }
+
+    :root[data-theme="aura-light"] .day-pills-bar .day-pill.tomorrow-highlight:not(.active) {
+      border-color: #fcd34d !important;
+      color: #b45309 !important;
+      background: #fffbeb !important;
+    }
+
+    :root[data-theme="aura-light"] .day-pills-bar .day-pill .day-pill-sub {
+      color: #64748b !important;
+    }
+
+    :root[data-theme="aura-light"] .day-pills-bar .day-pill.active .day-pill-sub {
+      color: rgba(255, 255, 255, 0.9) !important;
+    }
+
+    /* Schedule Summary Banner */
+    :root[data-theme="aura-light"] .schedule-summary-banner {
+      background: linear-gradient(90deg, #eff6ff 0%, #e0e7ff 50%, #ede9fe 100%) !important;
+      border: 1.5px solid #c7d2fe !important;
+      color: #1e1b4b !important;
+      box-shadow: 0 2px 10px rgba(79, 70, 229, 0.08) !important;
+    }
+
+    :root[data-theme="aura-light"] .sched-cal-badge {
+      background: #ffffff !important;
+      border: 1.2px solid #c7d2fe !important;
+      color: #4f46e5 !important;
+    }
+
+    :root[data-theme="aura-light"] .sched-banner-texts strong {
+      color: #1e1b4b !important;
+    }
+
+    :root[data-theme="aura-light"] .sched-banner-texts span {
+      color: #4338ca !important;
+    }
+
+    :root[data-theme="aura-light"] .sched-live-pill-btn {
+      background: linear-gradient(135deg, #4f46e5, #4338ca) !important;
+      border: 1px solid #3730a3 !important;
+      color: #ffffff !important;
+      box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3) !important;
+    }
+
+    /* Timetable Lecture Cards (100% Crisp White Theme) */
+    :root[data-theme="aura-light"] .lecture-card {
+      background: #ffffff !important;
+      border: 1.5px solid #e2e8f0 !important;
+      box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.03) !important;
+      color: #0f172a !important;
+    }
+
+    :root[data-theme="aura-light"] .lecture-card:hover {
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08) !important;
+    }
+
+    :root[data-theme="aura-light"] .lecture-card .card-subject-title {
+      color: #0f172a !important;
+    }
+
+    :root[data-theme="aura-light"] .lecture-card .slot-pill-name {
+      background: #eff6ff !important;
+      border: 1px solid #bfdbfe !important;
+      color: #4f46e5 !important;
+    }
+
+    :root[data-theme="aura-light"] .lecture-card .slot-timing-str {
+      color: #475569 !important;
+    }
+
+    :root[data-theme="aura-light"] .lecture-card .hero-room-badge {
+      background: #eff6ff !important;
+      border: 1px solid #bfdbfe !important;
+      color: #1d4ed8 !important;
+    }
+
+    :root[data-theme="aura-light"] .lecture-card .faculty-badge {
+      background: #fffbeb !important;
+      border: 1px solid #fde68a !important;
+      color: #b45309 !important;
+    }
+
+    :root[data-theme="aura-light"] .lecture-card.is-live {
+      background: #ffffff !important;
+      border: 2px solid #ef4444 !important;
+      border-left: 6px solid #ef4444 !important;
+      box-shadow: 0 4px 20px rgba(239, 68, 68, 0.15) !important;
+    }
+
+    :root[data-theme="aura-light"] .lecture-card.is-live .card-subject-title {
+      color: #0f172a !important;
+    }
+
+    :root[data-theme="aura-light"] .lecture-card.set-a-card {
+      border-left: 5px solid #10b981 !important;
+    }
+
+    :root[data-theme="aura-light"] .lecture-card.set-b-card {
+      border-left: 5px solid #8b5cf6 !important;
+    }
+
+    :root[data-theme="aura-light"] .lecture-card.all-card {
+      border-left: 5px solid #4f46e5 !important;
+    }
+
+    :root[data-theme="aura-light"] .status-live-pill {
+      background: #ef4444 !important;
+      color: #ffffff !important;
+    }
+
+    :root[data-theme="aura-light"] .status-done-pill {
+      background: #f1f5f9 !important;
+      color: #64748b !important;
+      border: 1px solid #e2e8f0 !important;
+    }
+
+    :root[data-theme="aura-light"] .status-upcoming-pill {
+      background: #eff6ff !important;
+      border: 1px solid #bfdbfe !important;
+      color: #2563eb !important;
+    }
+
+    /* Cancelled Lecture Card in Aura Light */
+    :root[data-theme="aura-light"] .lecture-card.is-cancelled {
+      background: #fff1f2 !important;
+      border-color: #fecdd3 !important;
+      box-shadow: 0 2px 12px rgba(244, 63, 94, 0.1) !important;
+    }
+
+    :root[data-theme="aura-light"] .cancelled-alert-banner {
+      background: #ffe4e6 !important;
+      border-color: #f43f5e !important;
+      color: #9f1239 !important;
+    }
+
+    :root[data-theme="aura-light"] .lecture-card.is-cancelled .card-subject-title {
+      color: #94a3b8 !important;
+    }
+
+    :root[data-theme="aura-light"] .cancelled-reason-tag {
+      color: #be123c !important;
+    }
+
+    :root[data-theme="aura-light"] .cancelled-by-tag {
+      color: #64748b !important;
+    }
+
+    /* Holiday & Empty State Card in Aura Light */
+    :root[data-theme="aura-light"] .empty-holiday-card {
+      background: #ffffff !important;
+      border: 1.5px solid #e2e8f0 !important;
+      color: #0f172a !important;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06) !important;
+    }
+
+    :root[data-theme="aura-light"] .holiday-title {
+      color: #0f172a !important;
+    }
+
+    :root[data-theme="aura-light"] .holiday-desc {
+      color: #475569 !important;
+    }
+
+    :root[data-theme="aura-light"] .holiday-quote {
+      background: #f8fafc !important;
+      border-color: #e2e8f0 !important;
+      color: #334155 !important;
+    }
+
+    /* Bottom Nav */
+    :root[data-theme="aura-light"] .bottom-nav {
+      background: rgba(255, 255, 255, 0.98) !important;
+      border-top: 1.5px solid #e2e8f0 !important;
+      box-shadow: 0 -4px 20px rgba(15, 23, 42, 0.06) !important;
+    }
+
+    :root[data-theme="aura-light"] .nav-item {
+      color: #64748b !important;
+    }
+
+    :root[data-theme="aura-light"] .nav-item.active {
+      color: #4f46e5 !important;
+    }
+
+    :root[data-theme="aura-light"] .nav-item.active .nav-icon {
+      color: #4f46e5 !important;
+    }
+
+    :root[data-theme="aura-light"] .nav-item.active::after {
+      background: #4f46e5 !important;
+      box-shadow: 0 0 8px rgba(79, 70, 229, 0.5) !important;
+    }
+
+    /* Modals & Flyouts */
+    :root[data-theme="aura-light"] .modal-sheet {
+      background: #ffffff !important;
+      border: 1px solid #e2e8f0 !important;
+      box-shadow: 0 -10px 40px rgba(15, 23, 42, 0.12) !important;
+      color: #0f172a !important;
+    }
+
+    :root[data-theme="aura-light"] .modal-title {
+      color: #0f172a !important;
+    }
+
+    :root[data-theme="aura-light"] .modal-close-btn {
+      background: #f1f5f9 !important;
+      color: #475569 !important;
+      border: 1px solid #cbd5e1 !important;
+    }
+
+    :root[data-theme="aura-light"] .modal-handle {
+      background: #cbd5e1 !important;
+    }
+
+    /* Holo Command Deck Quick Menu */
+    :root[data-theme="aura-light"] .holo-command-deck {
+      background: #ffffff !important;
+      border: 1.5px solid #e2e8f0 !important;
+      box-shadow: 0 10px 40px rgba(15, 23, 42, 0.15) !important;
+    }
+
+    :root[data-theme="aura-light"] .holo-deck-title {
+      color: #0f172a !important;
+    }
+
+    :root[data-theme="aura-light"] .holo-deck-tag {
+      background: #eff6ff !important;
+      border-color: #bfdbfe !important;
+      color: #1d4ed8 !important;
+    }
+
+    :root[data-theme="aura-light"] .holo-menu-item {
+      background: #f8fafc !important;
+      border: 1px solid #e2e8f0 !important;
+    }
+
+    :root[data-theme="aura-light"] .holo-menu-item:hover {
+      background: #eff6ff !important;
+      border-color: #bfdbfe !important;
+    }
+
+    :root[data-theme="aura-light"] .holo-item-title {
+      color: #0f172a !important;
+    }
+
+    :root[data-theme="aura-light"] .holo-item-sub {
+      color: #64748b !important;
+    }
+
+    :root[data-theme="aura-light"] .holo-item-pill {
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      color: #334155 !important;
+    }
+
+    :root[data-theme="aura-light"] .holo-item-arrow {
+      color: #94a3b8 !important;
     }
 
   </style>
@@ -9230,7 +9889,7 @@
         pillIcon.textContent = user.role === 'admin' ? '🛡️' : (user.role === 'cr' ? '👥' : '🎓');
       }
       if (pillName) pillName.textContent = user.name.split(' ')[0] || user.name;
-      if (pillBadge) pillBadge.textContent = user.role === 'admin' ? 'ADMIN' : `${user.section} (${user.set})`;
+      if (pillBadge) pillBadge.textContent = user.role === 'admin' ? 'ADMIN' : (user.role === 'cr' ? 'CR' : '');
 
       // Profile Modal details
       const pAvatar = document.getElementById('profileAvatar');
@@ -9716,39 +10375,29 @@
       if (!_allSectionsLoaded) { _ensureAllSections(() => renderSectionPills()); }
       const track = document.getElementById('sectionPillsTrack');
       if (track) {
-        if (window.CURRENT_USER && window.CURRENT_USER.role === 'student') {
-          const k = window.CURRENT_USER.section || 'Sec-D';
-          const sec = ALL_SECTIONS[k] || { name: k, room: 'A-108' };
-          track.innerHTML = `<button class="sec-locked-hero-pill" style="cursor:default;" title="Locked to your enrolled section">
-            <span class="pill-lock-icon">🔒</span>
-            <span class="pill-title">${k} (My Section)</span>
-            <span class="pill-bullet">&bull;</span>
-            <span class="pill-batch-text">${window.CURRENT_USER.set || 'Set-A'}</span>
-            <span class="pill-chevron">&rsaquo;</span>
+        const secKeys = Object.keys(ALL_SECTIONS);
+        track.innerHTML = secKeys.map(k => {
+          const isActive = (k === currentSection);
+          const isEnrolled = window.CURRENT_USER && (window.CURRENT_USER.section === k);
+          const sec = ALL_SECTIONS[k];
+          return `<button class="sec-pill-btn ${isActive ? 'active' : ''} ${isEnrolled ? 'is-enrolled' : ''}" onclick="selectSection('${k}')" title="${sec.name} • Room ${sec.room}${isEnrolled ? ' (Enrolled Section)' : ''}">
+            <span>${isEnrolled ? '🔒 ' : ''}${k}</span>
+            <span style="font-size:0.58rem; opacity:0.8;">(${sec.room})</span>
           </button>`;
-        } else {
-          const secKeys = Object.keys(ALL_SECTIONS);
-          track.innerHTML = secKeys.map(k => {
-            const isActive = (k === currentSection);
-            const sec = ALL_SECTIONS[k];
-            return `<button class="sec-pill-btn ${isActive ? 'active' : ''}" onclick="selectSection('${k}')" title="${sec.name} • Room ${sec.room}">
-              <span>${k}</span>
-              <span style="font-size:0.58rem; opacity:0.75;">(${sec.room})</span>
-            </button>`;
-          }).join('');
+        }).join('');
 
-          // Auto-scroll active pill horizontally into view WITHOUT vertical window scroll
-          const activeBtn = track.querySelector('.sec-pill-btn.active');
-          if (activeBtn && track) {
-            const leftPos = activeBtn.offsetLeft - (track.clientWidth - activeBtn.clientWidth) / 2;
-            track.scrollTo({ left: leftPos, behavior: 'smooth' });
-          }
+        // Auto-scroll active pill horizontally into view WITHOUT vertical window scroll
+        const activeBtn = track.querySelector('.sec-pill-btn.active');
+        if (activeBtn && track) {
+          const leftPos = activeBtn.offsetLeft - (track.clientWidth - activeBtn.clientWidth) / 2;
+          track.scrollTo({ left: leftPos, behavior: 'smooth' });
         }
       }
 
       const badge = document.getElementById('activeSecBadge');
       if (badge && ALL_SECTIONS[currentSection]) {
-        badge.textContent = `📍 ${ALL_SECTIONS[currentSection].name.toUpperCase()} (${ALL_SECTIONS[currentSection].room})`;
+        const isEnrolled = window.CURRENT_USER && (window.CURRENT_USER.section === currentSection);
+        badge.textContent = `📍 ${ALL_SECTIONS[currentSection].name.toUpperCase()} (${ALL_SECTIONS[currentSection].room})${isEnrolled ? ' • Enrolled' : ''}`;
       }
       const brandBadge = document.getElementById('brandSectionBadge');
       if (brandBadge) {
@@ -11277,9 +11926,9 @@
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '6.4.4';
-    const LOCAL_APP_VERSION_CODE = 97;
-    const LOCAL_APP_BUILD_HASH = '3c48d812abe7';
+    const LOCAL_APP_VERSION_NAME = '6.4.5';
+    const LOCAL_APP_VERSION_CODE = 98;
+    const LOCAL_APP_BUILD_HASH = '3c1bd53bd2a5';
 
     let cachedLatestVersionCode = 29;
 
