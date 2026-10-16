@@ -3,12 +3,12 @@ const crypto = require('crypto');
 const path = require('path');
 
 let ver = JSON.parse(fs.readFileSync('version.json', 'utf8'));
-ver.versionName = "6.4.0";
-ver.versionCode = 93;
-ver.apkVersionCode = 93;
+ver.versionName = "6.4.1";
+ver.versionCode = 94;
+ver.apkVersionCode = 94;
 ver.updatedAt = Date.now();
 ver.lastUpdated = new Date().toISOString();
-ver.releaseNotes = "v6.4.0: Official Dark Neon Glassmorphism Authentication Portal, Student Section/Set Lock, CR & Admin Cancellation Hub, and Student Records Directory";
+ver.releaseNotes = "v6.4.1: Instant Account Creation Fix, Forgiving Student ID/Roll Registration, Zero-Lag 120 FPS Mobile Optimization, Segmented Login Tabs, and Inline Alerts";
 
 let html = fs.readFileSync('index.html', 'utf8');
 html = html.replace(/const LOCAL_APP_VERSION_NAME = '[^']+';/, "const LOCAL_APP_VERSION_NAME = '" + ver.versionName + "';");

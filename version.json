@@ -1,11 +1,11 @@
 {
-  "versionName": "6.4.0",
-  "versionCode": 93,
-  "apkVersionCode": 93,
-  "htmlHash": "661fd505a49b",
-  "apkHash": "37ae37871437",
+  "versionName": "6.4.1",
+  "versionCode": 94,
+  "apkVersionCode": 94,
+  "htmlHash": "c4d0ca672a26",
+  "apkHash": "6d9455ed6bba",
   "apkSize": 2405492,
-  "updatedAt": 1792173642011,
+  "updatedAt": 1792175425008,
   "publicUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main",
   "cloudflareUrl": "",
   "githubUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main",
@@ -13,9 +13,9 @@
   "apkUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/SecD_Timetable.apk",
   "htmlUrl": "https://raw.githubusercontent.com/krishnapanday4196-gif/sec-d-timetable/main/index.html",
   "downloadUrl": "https://krishnapanday4196-gif.github.io/sec-d-timetable",
-  "lastUpdated": "2026-10-16T18:00:42.011Z",
-  "apkMd5": "37ae37871437e6829a57319d63bac4ec",
-  "releaseNotes": "v6.4.0: Official Dark Neon Glassmorphism Authentication Portal, Student Section/Set Lock, CR & Admin Cancellation Hub, and Student Records Directory",
-  "apkSizeBytes": 2436372,
-  "apkSizeFormatted": "2.32 MB"
+  "lastUpdated": "2026-10-16T18:30:25.008Z",
+  "apkMd5": "6d9455ed6bbaf19b58c2a3df7b583e26",
+  "releaseNotes": "v6.4.1: Instant Account Creation Fix, Forgiving Student ID/Roll Registration, Zero-Lag 120 FPS Mobile Optimization, Segmented Login Tabs, and Inline Alerts",
+  "apkSizeBytes": 2438128,
+  "apkSizeFormatted": "2.33 MB"
 }

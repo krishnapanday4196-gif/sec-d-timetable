@@ -3466,7 +3466,7 @@
       font-size: 0.82rem;
       font-weight: 800;
       box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45), 0 0 12px rgba(16, 185, 129, 0.4);
-      z-index: 2000;
+      z-index: 10000000 !important;
       transition: transform 0.38s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.26s ease;
       display: flex;
       align-items: center;
@@ -5246,13 +5246,7 @@
     .auth-emblem-svg {
       width: 100%;
       height: 100%;
-      filter: drop-shadow(0 0 16px rgba(0, 240, 255, 0.55)) drop-shadow(0 0 30px rgba(168, 85, 247, 0.4));
-      animation: authEmblemGlow 3s ease-in-out infinite alternate;
-    }
-
-    @keyframes authEmblemGlow {
-      0% { filter: drop-shadow(0 0 12px rgba(0, 240, 255, 0.45)) drop-shadow(0 0 22px rgba(168, 85, 247, 0.35)); }
-      100% { filter: drop-shadow(0 0 20px rgba(0, 240, 255, 0.75)) drop-shadow(0 0 36px rgba(168, 85, 247, 0.6)); }
+      filter: drop-shadow(0 0 14px rgba(0, 240, 255, 0.55)) drop-shadow(0 0 24px rgba(168, 85, 247, 0.35));
     }
 
     .auth-main-title {
@@ -5279,27 +5273,96 @@
       font-weight: 500;
     }
 
-    /* Main Glowing Glassmorphic Card */
+    /* Main High-Performance Glassmorphic Card (Zero GPU Lag) */
     .auth-card {
       width: 100%;
       max-width: 410px;
-      background: rgba(8, 14, 38, 0.82);
-      backdrop-filter: blur(28px) saturate(190%);
-      -webkit-backdrop-filter: blur(28px) saturate(190%);
+      background: #090e26;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       border-radius: 26px;
       border: 1.5px solid rgba(56, 189, 248, 0.36);
       box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.85),
-                  0 0 40px -5px rgba(56, 189, 248, 0.22),
+                  0 0 35px -5px rgba(56, 189, 248, 0.22),
                   0 0 20px -2px rgba(168, 85, 247, 0.25),
                   inset 0 1px 0 rgba(255, 255, 255, 0.18);
-      padding: 22px 20px 24px;
+      padding: 20px 18px 24px;
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 13px;
       position: relative;
       z-index: 10;
       box-sizing: border-box;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      contain: content;
+      transform: translateZ(0);
+    }
+
+    /* Top Prominent Auth Mode Switcher (Login ⇄ Create Account) */
+    .auth-mode-switch-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: rgba(11, 18, 48, 0.9);
+      border: 1.2px solid rgba(56, 189, 248, 0.25);
+      border-radius: 14px;
+      padding: 4px;
+      gap: 4px;
+      margin-bottom: 2px;
+    }
+
+    .auth-mode-tab {
+      background: transparent;
+      border: none;
+      border-radius: 10px;
+      padding: 9px 8px;
+      font-size: 0.86rem;
+      font-weight: 750;
+      color: #94a3b8;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-family: inherit;
+      outline: none;
+    }
+
+    .auth-mode-tab:active {
+      transform: scale(0.97);
+    }
+
+    .auth-mode-tab.active {
+      background: linear-gradient(135deg, #7c3aed 0%, #3b82f6 100%);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(59, 130, 246, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+
+    /* Inline Visual Feedback Alert for Errors & Success */
+    .auth-inline-msg {
+      border-radius: 12px;
+      padding: 10px 13px;
+      font-size: 0.82rem;
+      font-weight: 650;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      line-height: 1.35;
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    .auth-inline-msg.error {
+      background: rgba(220, 38, 38, 0.16);
+      border: 1.2px solid rgba(239, 68, 68, 0.55);
+      color: #fca5a5;
+      box-shadow: 0 0 14px rgba(239, 68, 68, 0.2);
+    }
+
+    .auth-inline-msg.success {
+      background: rgba(16, 185, 129, 0.16);
+      border: 1.2px solid rgba(16, 185, 129, 0.55);
+      color: #6ee7b7;
+      box-shadow: 0 0 14px rgba(16, 185, 129, 0.2);
     }
 
     /* Role Switcher Tabs inside the Card */
@@ -5983,6 +6046,18 @@
     <!-- Glowing Glassmorphic Card -->
     <div class="auth-card">
 
+      <!-- Prominent Mode Switcher Tabs (Login ⇄ Create Account) -->
+      <div class="auth-mode-switch-tabs">
+        <button type="button" class="auth-mode-tab active" id="authModeTabLogin" onclick="switchAuthMode(false)">
+          <span>🔑</span>
+          <span>Login</span>
+        </button>
+        <button type="button" class="auth-mode-tab" id="authModeTabRegister" onclick="switchAuthMode(true)">
+          <span>📝</span>
+          <span>Create Account</span>
+        </button>
+      </div>
+
       <!-- Role Selector Tabs inside Card (Admin | CR | Student) -->
       <div class="auth-role-tabs">
         <button type="button" class="auth-role-tab" id="roleTabAdmin" onclick="setAuthRole('admin')">
@@ -6016,10 +6091,10 @@
         <input type="text" id="authRollNo" class="auth-input" placeholder="Roll No / Student ID (e.g. 230101042)">
       </div>
 
-      <!-- Email Address (Always visible) -->
+      <!-- Email Address / Roll Number (Always visible) -->
       <div class="auth-field">
         <span class="auth-field-icon">✉️</span>
-        <input type="email" id="authEmail" class="auth-input" placeholder="Email Address" autocomplete="email">
+        <input type="text" id="authEmail" class="auth-input" placeholder="Email or Roll No (e.g. 230101042)" autocomplete="username">
       </div>
 
       <!-- Password (Always visible) -->
@@ -6076,6 +6151,9 @@
         </label>
         <button type="button" class="auth-link-btn" onclick="openForgotPasswordHelp()">Forgot Password?</button>
       </div>
+
+      <!-- Inline Visual Feedback Alert for Errors & Success -->
+      <div id="authInlineMsg" class="auth-inline-msg" style="display:none;"></div>
 
       <!-- Main Action CTA Button (➔ Login / 🚀 Create Account) -->
       <button type="button" class="auth-cta-btn" id="authSubmitBtn" onclick="handleAuthSubmit()">
@@ -7577,6 +7655,8 @@
     let CURRENT_USER = null;
     let currentAuthRole = 'student';
     let isAuthRegisterMode = false;
+    let _memoryUsers = null;
+    let _memorySession = null;
 
     function escapeHtml(str) {
       if (!str) return '';
@@ -7633,17 +7713,25 @@
       ],
 
       getUsers() {
+        if (_memoryUsers && Array.isArray(_memoryUsers) && _memoryUsers.length > 0) {
+          return _memoryUsers;
+        }
         try {
           const raw = localStorage.getItem(this.USERS_KEY);
           if (raw) {
             const parsed = JSON.parse(raw);
-            if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+            if (Array.isArray(parsed) && parsed.length > 0) {
+              _memoryUsers = parsed;
+              return parsed;
+            }
           }
         } catch (_) {}
-        return [...this.DEFAULT_USERS];
+        _memoryUsers = [...this.DEFAULT_USERS];
+        return _memoryUsers;
       },
 
       saveUsers(users) {
+        if (Array.isArray(users)) _memoryUsers = users;
         try {
           localStorage.setItem(this.USERS_KEY, JSON.stringify(users));
         } catch (_) {}
@@ -7692,51 +7780,78 @@
       },
 
       getCurrentSession() {
+        if (_memorySession) return _memorySession;
         try {
           const stored = localStorage.getItem(this.SESSION_KEY) || sessionStorage.getItem(this.SESSION_KEY);
-          if (stored) return JSON.parse(stored);
+          if (stored) {
+            _memorySession = JSON.parse(stored);
+            return _memorySession;
+          }
         } catch (_) {}
         return null;
       },
 
       setSession(user, remember = true) {
+        _memorySession = user;
         const json = JSON.stringify(user);
-        if (remember) {
-          localStorage.setItem(this.SESSION_KEY, json);
-          try { sessionStorage.removeItem(this.SESSION_KEY); } catch (_) {}
-        } else {
-          sessionStorage.setItem(this.SESSION_KEY, json);
-          try { localStorage.removeItem(this.SESSION_KEY); } catch (_) {}
-        }
+        try {
+          if (remember) {
+            localStorage.setItem(this.SESSION_KEY, json);
+            try { sessionStorage.removeItem(this.SESSION_KEY); } catch (_) {}
+          } else {
+            sessionStorage.setItem(this.SESSION_KEY, json);
+            try { localStorage.removeItem(this.SESSION_KEY); } catch (_) {}
+          }
+        } catch (_) {}
       },
 
       clearSession() {
+        _memorySession = null;
         try { localStorage.removeItem(this.SESSION_KEY); } catch (_) {}
         try { sessionStorage.removeItem(this.SESSION_KEY); } catch (_) {}
       },
 
       registerUser({ role, name, email, password, section, set, rollNo }) {
         const users = this.getUsers();
-        const cleanEmail = (email || '').trim().toLowerCase();
-        if (!cleanEmail || !cleanEmail.includes('@')) {
-          throw new Error('Please enter a valid university or personal email address.');
+        let cleanIdentifier = (email || '').trim().toLowerCase();
+        if (!cleanIdentifier) {
+          throw new Error('Please enter your Email or Roll Number.');
         }
-        if (!password || password.length < 4) {
-          throw new Error('Password must be at least 4 characters.');
+
+        // Auto-qualify identifier if no domain is provided
+        let cleanEmail = cleanIdentifier;
+        if (!cleanEmail.includes('@')) {
+          cleanEmail = cleanIdentifier.replace(/[^a-z0-9._-]/g, '') + '@quantum.edu.in';
         }
-        if (users.some(u => u.email.toLowerCase() === cleanEmail)) {
-          throw new Error('An account with this email already exists. Please log in.');
+
+        if (!password || password.trim().length < 1) {
+          throw new Error('Please enter a password.');
         }
+
+        // Check if an account already exists with this email or roll number
+        const existing = users.find(u => 
+          u.email.toLowerCase() === cleanEmail ||
+          u.email.toLowerCase() === cleanIdentifier ||
+          (u.rollNo && u.rollNo.toLowerCase() === cleanIdentifier)
+        );
+        if (existing) {
+          const err = new Error('An account already exists with this ID. Tap "Login" to access.');
+          err.alreadyExists = true;
+          throw err;
+        }
+
+        const resolvedRollNo = (rollNo || '').trim() || (cleanIdentifier.includes('@') ? ('230' + Math.floor(100000 + Math.random() * 900000)) : cleanIdentifier);
+        const resolvedName = (name || '').trim() || (cleanIdentifier.includes('@') ? cleanIdentifier.split('@')[0] : ('Student ' + resolvedRollNo));
 
         const newUser = {
           id: 'usr_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
           role: role || 'student',
-          name: (name || '').trim() || cleanEmail.split('@')[0],
+          name: resolvedName,
           email: cleanEmail,
-          password: password,
+          password: password.trim(),
           section: section || 'Sec-D',
           set: set || 'Set-A',
-          rollNo: (rollNo || '').trim() || ('230' + Math.floor(100000 + Math.random() * 900000)),
+          rollNo: resolvedRollNo,
           createdAt: new Date().toISOString(),
           lastLogin: new Date().toISOString()
         };
@@ -7746,17 +7861,29 @@
         return newUser;
       },
 
-      loginUser(email, password) {
+      loginUser(identifier, password) {
         const users = this.getUsers();
-        const cleanEmail = (email || '').trim().toLowerCase();
+        const cleanId = (identifier || '').trim().toLowerCase();
         const cleanPass = (password || '').trim();
 
-        const user = users.find(u => u.email.toLowerCase() === cleanEmail);
+        if (!cleanId) throw new Error('Please enter your Email or Roll Number.');
+        if (!cleanPass) throw new Error('Please enter your password.');
+
+        const user = users.find(u => 
+          u.email.toLowerCase() === cleanId ||
+          u.email.toLowerCase() === (cleanId + '@quantum.edu.in') ||
+          (u.rollNo && u.rollNo.toLowerCase() === cleanId) ||
+          (u.name && u.name.toLowerCase() === cleanId)
+        );
+
         if (!user) {
-          throw new Error('No account found for this email. Tap "Create an account" below.');
+          const err = new Error('No account found for this ID. Tap "Create Account" above to register!');
+          err.notFound = true;
+          throw err;
         }
+
         if (user.password !== cleanPass) {
-          throw new Error('Incorrect password. Please verify your credentials.');
+          throw new Error('Incorrect password. Please verify and try again.');
         }
 
         user.lastLogin = new Date().toISOString();
@@ -7976,8 +8103,25 @@
     };
 
     // ── AUTH UI CONTROLLERS ──
+    function showAuthInlineMsg(text, type = 'error') {
+      const el = document.getElementById('authInlineMsg');
+      if (!el) return;
+      el.className = `auth-inline-msg ${type}`;
+      el.innerHTML = type === 'error' ? `<span>⚠️</span> <span>${escapeHtml(text)}</span>` : `<span>✅</span> <span>${escapeHtml(text)}</span>`;
+      el.style.display = 'flex';
+    }
+
+    function clearAuthInlineMsg() {
+      const el = document.getElementById('authInlineMsg');
+      if (el) {
+        el.style.display = 'none';
+        el.textContent = '';
+      }
+    }
+
     function setAuthRole(role) {
       currentAuthRole = role;
+      clearAuthInlineMsg();
       const tabAdm = document.getElementById('roleTabAdmin');
       const tabCr = document.getElementById('roleTabCR');
       const tabStu = document.getElementById('roleTabStudent');
@@ -8009,8 +8153,15 @@
       triggerHaptic(8);
     }
 
-    function toggleAuthMode() {
-      isAuthRegisterMode = !isAuthRegisterMode;
+    function switchAuthMode(isRegister) {
+      isAuthRegisterMode = !!isRegister;
+      clearAuthInlineMsg();
+
+      const tabLogin = document.getElementById('authModeTabLogin');
+      const tabReg = document.getElementById('authModeTabRegister');
+      if (tabLogin) tabLogin.classList.toggle('active', !isAuthRegisterMode);
+      if (tabReg) tabReg.classList.toggle('active', isAuthRegisterMode);
+
       const title = document.getElementById('authHeaderTitle');
       const sub = document.getElementById('authHeaderSub');
       const btnText = document.getElementById('authBtnText');
@@ -8020,10 +8171,11 @@
       const regName = document.getElementById('regNameField');
       const loginOpts = document.getElementById('loginOptionsRow');
       const quickBar = document.getElementById('authQuickFillBar');
+      const emailInput = document.getElementById('authEmail');
 
       if (isAuthRegisterMode) {
         if (title) title.innerHTML = 'Create <span class="auth-title-gradient">Account</span>';
-        if (sub) sub.textContent = 'Register with your section and set';
+        if (sub) sub.textContent = 'Register your section and set for personalized timetable';
         if (btnText) btnText.textContent = 'Create Account';
         if (btnIcon) btnIcon.textContent = '🚀';
         if (switchPrompt) switchPrompt.textContent = 'Already have an account?';
@@ -8031,6 +8183,7 @@
         if (regName) regName.style.display = 'flex';
         if (loginOpts) loginOpts.style.display = 'none';
         if (quickBar) quickBar.style.display = 'none';
+        if (emailInput) emailInput.placeholder = 'Email or Roll No (e.g. 230101042)';
       } else {
         if (title) title.innerHTML = 'Welcome <span class="auth-title-gradient">Back</span>';
         if (sub) sub.textContent = 'Login to your account';
@@ -8041,9 +8194,14 @@
         if (regName) regName.style.display = 'none';
         if (loginOpts) loginOpts.style.display = 'flex';
         if (quickBar) quickBar.style.display = 'flex';
+        if (emailInput) emailInput.placeholder = 'Email or Roll No (e.g. 230101042)';
       }
       setAuthRole(currentAuthRole);
-      triggerHaptic(10);
+      triggerHaptic(8);
+    }
+
+    function toggleAuthMode() {
+      switchAuthMode(!isAuthRegisterMode);
     }
 
     function toggleAuthPassword() {
@@ -8061,6 +8219,7 @@
 
     function quickFillCredentials(role) {
       setAuthRole(role);
+      switchAuthMode(false);
       const email = document.getElementById('authEmail');
       const pass = document.getElementById('authPassword');
       if (role === 'admin') {
@@ -8086,12 +8245,13 @@
     }
 
     function handleAuthSubmit() {
+      clearAuthInlineMsg();
       const email = (document.getElementById('authEmail')?.value || '').trim();
       const password = (document.getElementById('authPassword')?.value || '').trim();
       const rememberMe = document.getElementById('authRememberMe')?.checked ?? true;
 
       try {
-        if (!email) throw new Error('Please enter your email address.');
+        if (!email) throw new Error('Please enter your Email or Roll Number.');
         if (!password) throw new Error('Please enter your password.');
 
         let user = null;
@@ -8103,11 +8263,17 @@
           const set = document.getElementById('authBatch')?.value || 'Set-A';
           const secretKey = (document.getElementById('authSecretKey')?.value || '').trim();
 
-          if (currentAuthRole === 'admin' && secretKey !== 'ADMIN2026' && secretKey !== 'admin') {
-            throw new Error('Invalid Admin Secret Passcode. Contact IT administrator.');
+          if (currentAuthRole === 'admin') {
+            const upKey = secretKey.toUpperCase();
+            if (upKey !== 'ADMIN2026' && upKey !== 'ADMIN') {
+              throw new Error('Invalid Admin Secret Passcode. Contact IT administrator.');
+            }
           }
-          if (currentAuthRole === 'cr' && secretKey !== 'CR2026' && secretKey !== 'cr') {
-            throw new Error('Invalid CR Secret Passcode. Contact Section Coordinator.');
+          if (currentAuthRole === 'cr') {
+            const upKey = secretKey.toUpperCase();
+            if (upKey !== 'CR2026' && upKey !== 'CR') {
+              throw new Error('Invalid CR Secret Passcode. Contact Section Coordinator.');
+            }
           }
 
           user = AuthEngine.registerUser({
@@ -8120,24 +8286,42 @@
             rollNo: rollNo
           });
 
+          showAuthInlineMsg(`🎉 Account created for ${user.name}! Logging you in...`, 'success');
           showToast(`🎉 Account created for ${user.name}!`);
         } else {
           user = AuthEngine.loginUser(email, password);
+          showAuthInlineMsg(`👋 Welcome back, ${user.name}!`, 'success');
           showToast(`👋 Welcome back, ${user.name}!`);
         }
 
         AuthEngine.setSession(user, rememberMe);
         applyAuthenticatedUser(user);
 
-        // Transition from Auth Screen to App
-        const overlay = document.getElementById('authOverlay');
-        if (overlay) overlay.style.display = 'none';
-        const vp = document.getElementById('appViewport');
-        if (vp) vp.style.display = 'block';
+        // Smooth transition to app and restore active background graphics
+        setTimeout(() => {
+          const overlay = document.getElementById('authOverlay');
+          if (overlay) overlay.style.display = 'none';
+          const vp = document.getElementById('appViewport');
+          if (vp) vp.style.display = 'block';
+
+          const auroraBg = document.getElementById('auroraBg');
+          if (auroraBg) auroraBg.style.display = '';
+          const campusBg = document.getElementById('campusBg');
+          if (campusBg) campusBg.style.display = '';
+        }, 300);
 
       } catch (err) {
+        showAuthInlineMsg(err.message, 'error');
         showToast(`⚠️ ${err.message}`);
         triggerHaptic(20);
+
+        // Auto-assist: If user clicked Login but account is not found, automatically switch to register
+        if (err.notFound && !isAuthRegisterMode) {
+          setTimeout(() => {
+            switchAuthMode(true);
+            showAuthInlineMsg('No account found for this ID. Switched to Create Account for you — enter your name and tap Create Account!', 'error');
+          }, 1400);
+        }
       }
     }
 
@@ -8259,6 +8443,11 @@
 
       const overlay = document.getElementById('authOverlay');
       if (overlay) overlay.style.display = 'flex';
+
+      const auroraBg = document.getElementById('auroraBg');
+      if (auroraBg) auroraBg.style.display = 'none';
+      const campusBg = document.getElementById('campusBg');
+      if (campusBg) campusBg.style.display = 'none';
 
       showToast('👋 Logged out successfully');
       triggerHaptic(15);
@@ -10195,9 +10384,9 @@
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '6.4.0';
-    const LOCAL_APP_VERSION_CODE = 93;
-    const LOCAL_APP_BUILD_HASH = '661fd505a49b';
+    const LOCAL_APP_VERSION_NAME = '6.4.1';
+    const LOCAL_APP_VERSION_CODE = 94;
+    const LOCAL_APP_BUILD_HASH = 'c4d0ca672a26';
 
     let cachedLatestVersionCode = 29;
 
@@ -12652,12 +12841,24 @@
         if (vp) vp.style.display = 'none';
         const pill = document.getElementById('authUserPill');
         if (pill) pill.style.display = 'none';
+
+        // Physically suppress background grid/canvas to free up 100% of mobile GPU
+        const auroraBg = document.getElementById('auroraBg');
+        if (auroraBg) auroraBg.style.display = 'none';
+        const campusBg = document.getElementById('campusBg');
+        if (campusBg) campusBg.style.display = 'none';
       } else {
         // Authenticated Session exists: unlock app and personalize
         const authOverlay = document.getElementById('authOverlay');
         if (authOverlay) authOverlay.style.display = 'none';
         const vp = document.getElementById('appViewport');
         if (vp) vp.style.display = 'block';
+
+        const auroraBg = document.getElementById('auroraBg');
+        if (auroraBg) auroraBg.style.display = '';
+        const campusBg = document.getElementById('campusBg');
+        if (campusBg) campusBg.style.display = '';
+
         applyAuthenticatedUser(existingSession);
       }
 
@@ -12732,6 +12933,8 @@
       // Lightweight 60fps real-time ticking every second
       // Only tick when tab/app is visible — saves CPU when minimized
       let _liveInterval = setInterval(() => {
+        const authEl = document.getElementById('authOverlay');
+        if (authEl && authEl.style.display !== 'none') return; // Skip background ticking on auth screen
         if (!document.hidden) updateLiveState(false);
       }, 1000);
       document.addEventListener('visibilitychange', () => {
@@ -12833,6 +13036,7 @@
       var lastY = window.innerHeight * 0.35;
 
       function updateSpotlight(x, y) {
+        if (!bg || bg.style.display === 'none') return;
         lastX = x;
         lastY = y;
         if (!rafId) {
@@ -12844,15 +13048,12 @@
         }
       }
 
-      window.addEventListener('pointermove', function(e) {
-        updateSpotlight(e.clientX, e.clientY);
-      }, { passive: true });
-
-      window.addEventListener('touchmove', function(e) {
-        if (e.touches && e.touches[0]) {
-          updateSpotlight(e.touches[0].clientX, e.touches[0].clientY);
-        }
-      }, { passive: true });
+      var isMobileDevice = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      if (!isMobileDevice) {
+        window.addEventListener('pointermove', function(e) {
+          updateSpotlight(e.clientX, e.clientY);
+        }, { passive: true });
+      }
     })();
   </script>
 
