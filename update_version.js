@@ -3,12 +3,12 @@ const crypto = require('crypto');
 const path = require('path');
 
 let ver = JSON.parse(fs.readFileSync('version.json', 'utf8'));
-ver.versionName = "6.4.9";
-ver.versionCode = 102;
-ver.apkVersionCode = 102;
+ver.versionName = "6.5.0";
+ver.versionCode = 103;
+ver.apkVersionCode = 103;
 ver.updatedAt = Date.now();
 ver.lastUpdated = new Date().toISOString();
-ver.releaseNotes = "v6.4.9: Removed top bar user pill for clean uncluttered header and fixed profile modal text visibility with high contrast styling in white theme";
+ver.releaseNotes = "v6.5.0: Zero-lag performance optimization, strict student enrolled class lock, room number corrections, and smooth UI updates";
 
 let html = fs.readFileSync('index.html', 'utf8');
 html = html.replace(/const LOCAL_APP_VERSION_NAME = '[^']+';/, "const LOCAL_APP_VERSION_NAME = '" + ver.versionName + "';");
