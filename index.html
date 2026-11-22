@@ -12993,9 +12993,9 @@ function handleLogout() {
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '6.7.0';
-    const LOCAL_APP_VERSION_CODE = 105;
-    const LOCAL_APP_BUILD_HASH = '35abdbf726a6';
+    const LOCAL_APP_VERSION_NAME = '6.8.0';
+    const LOCAL_APP_VERSION_CODE = 106;
+    const LOCAL_APP_BUILD_HASH = '15894ea7b5d7';
 
     let cachedLatestVersionCode = 29;
 
@@ -14413,7 +14413,7 @@ function handleLogout() {
           const cancelInfo = CancelEngine.getCancellation(currentSection, selectedBatch, now, periods[i].id);
           if (cancelInfo) continue; // Skip alarm when class is cancelled
 
-          const notifKey = `${now.toDateString()}_${periods[i].id}_${selectedBatch}`;
+          const notifKey = `${now.toDateString()}_${currentSection}_${selectedBatch}_${periods[i].id}`;
           if (lastFiveMinNotifiedKey !== notifKey) {
             lastFiveMinNotifiedKey = notifKey;
             localStorage.setItem('secD_last_5m_notif', notifKey);

@@ -19,6 +19,10 @@ import android.os.Build;
 import android.os.PowerManager;
 
 import java.util.Calendar;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 
 public class ClassReminderReceiver extends BroadcastReceiver {
     public static final String ACTION_CLASS_REMINDER = "com.btechcse.secd.timetable.CLASS_REMINDER";
@@ -122,8 +126,9 @@ public class ClassReminderReceiver extends BroadcastReceiver {
         int dayIdx = calDay - 1;
         if (dayIdx <= 0 || dayIdx > 6) return;
 
+        String section = prefs.getString("selected_section", "Sec-D");
         String batch = prefs.getString("selected_batch", "Set-A");
-        ClassInfo info = getClassInfo(dayIdx, periodIdx, batch);
+        ClassInfo info = getClassInfo(context, section, batch, dayIdx, periodIdx);
         if (info == null || info.isSkip) return;
 
         // Skip non-lecture periods: Lunch, Free Period, Self Study
@@ -132,15 +137,80 @@ public class ClassReminderReceiver extends BroadcastReceiver {
         }
 
         String startTime = PERIOD_TIMINGS[periodIdx].split("-")[0].trim();
-        String title = "⏰ Class 5 Minute Me Shuru Hone Wali Hai! (" + PERIOD_IDS[periodIdx] + " • " + startTime + ")";
+        String title = "⏰ [" + section + "] Class 5 Minute Me Shuru Hone Wali Hai! (" + PERIOD_IDS[periodIdx] + " • " + startTime + ")";
         String shortBody = "📚 " + info.subject + " • 👨‍🏫 " + info.faculty + " (📍 " + info.room + ")";
         String bigText = "⏰ Aapki class 5 minute me shuru hone wali hai!\n"
+                + "🏫 Section: " + section + " (" + info.batchLabel + ")\n"
                 + "📚 Subject: " + info.subject + "\n"
                 + "👨‍🏫 Faculty: " + info.faculty + "\n"
-                + "📍 Room: " + info.room + " (" + info.batchLabel + ")\n"
+                + "📍 Room: " + info.room + "\n"
                 + "🕘 Timing: " + PERIOD_TIMINGS[periodIdx];
 
         showImmediateNotification(context, title, shortBody, bigText, 1000 + periodIdx);
+    }
+
+        private static JSONObject sSectionsCache = null;
+
+    public static synchronized JSONObject getSectionsData(Context context) {
+        if (sSectionsCache != null) return sSectionsCache;
+        if (context == null) return null;
+        try {
+            InputStream is = context.getAssets().open("sections_data.json");
+            byte[] buf = new byte[is.available()];
+            is.read(buf);
+            is.close();
+            sSectionsCache = new JSONObject(new String(buf, StandardCharsets.UTF_8));
+        } catch (Exception e) {
+            android.util.Log.e("ClassReminder", "Error loading sections_data.json", e);
+        }
+        return sSectionsCache;
+    }
+
+    public static ClassInfo getClassInfo(Context context, String section, String batch, int dayIdx, int periodIdx) {
+        if (periodIdx == 3) {
+            return new ClassInfo("Lunch Break", "", "-", "ALL", true);
+        }
+        try {
+            JSONObject allSecs = getSectionsData(context);
+            if (allSecs != null) {
+                String secKey = (section != null && !section.isEmpty()) ? section : "Sec-D";
+                JSONObject secObj = allSecs.optJSONObject(secKey);
+                if (secObj != null) {
+                    JSONObject scheduleObj = secObj.optJSONObject("schedule");
+                    if (scheduleObj != null) {
+                        JSONArray daySlots = scheduleObj.optJSONArray(String.valueOf(dayIdx));
+                        if (daySlots != null && periodIdx < daySlots.length()) {
+                            JSONObject slot = daySlots.optJSONObject(periodIdx);
+                            if (slot != null) {
+                                String subj = slot.optString("subject", "");
+                                String room = slot.optString("room", secObj.optString("room", "A-108"));
+                                String faculty = slot.optString("faculty", "");
+                                String set = slot.optString("set", "ALL");
+
+                                boolean isMatch = set.equalsIgnoreCase("ALL")
+                                        || "ALL".equalsIgnoreCase(batch)
+                                        || set.equalsIgnoreCase(batch);
+
+                                if (!isMatch) {
+                                    return new ClassInfo("Self Study / Off Batch", "", "-", batch, true);
+                                }
+
+                                if (subj.isEmpty() || subj.contains("Lunch") || subj.contains("Self Study") || subj.contains("Free Period")) {
+                                    return new ClassInfo(subj, faculty, room, set, true);
+                                }
+
+                                return new ClassInfo(subj, faculty, room, set, false);
+                            }
+                        }
+                    }
+                }
+            }
+        } catch (Exception e) {
+            android.util.Log.e("ClassReminder", "Error resolving class info from JSON", e);
+        }
+
+        // Fallback to existing hardcoded routine if JSON resolution fails
+        return getClassInfo(dayIdx, periodIdx, batch);
     }
 
     public static class ClassInfo {

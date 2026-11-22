@@ -401,17 +401,25 @@ public class MainActivity extends Activity {
         }
 
         @JavascriptInterface
-        public void syncNotificationSettings(String batch, boolean enabled) {
+        public void syncNotificationSettings(String section, String batch, boolean enabled) {
             try {
                 SharedPreferences prefs = mContext.getSharedPreferences(ClassReminderReceiver.PREFS_NAME, Context.MODE_PRIVATE);
                 prefs.edit()
-                        .putString("selected_batch", batch != null ? batch : "Set-A")
+                        .putString("selected_section", section != null && !section.isEmpty() ? section : "Sec-D")
+                        .putString("selected_batch", batch != null && !batch.isEmpty() ? batch : "Set-A")
                         .putBoolean("alerts_enabled", enabled)
                         .apply();
                 if (enabled) {
                     ClassReminderReceiver.scheduleAllReminders(mContext);
                 }
             } catch (Exception ignored) {}
+        }
+
+        @JavascriptInterface
+        public void syncNotificationSettings(String batch, boolean enabled) {
+            SharedPreferences prefs = mContext.getSharedPreferences(ClassReminderReceiver.PREFS_NAME, Context.MODE_PRIVATE);
+            String existingSec = prefs.getString("selected_section", "Sec-D");
+            syncNotificationSettings(existingSec, batch, enabled);
         }
 
         @JavascriptInterface
