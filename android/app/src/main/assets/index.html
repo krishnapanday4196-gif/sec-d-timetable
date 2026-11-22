@@ -7606,6 +7606,902 @@
       display: none !important;
     }
 
+  
+    /* ============================================================
+       /* ============================================================
+       /* ============================================================
+       PREMIUM DUAL-MODE RESPONSIVE SYSTEM (FULL-SIZE DESKTOP & MOBILE)
+       - Mobile (<768px): Compact 1-handed phone experience
+       - Desktop (>=768px): 100% Full-Screen Edge-to-Edge University Dashboard
+       ============================================================ */
+
+    /* ── BASE & GLOBAL ── */
+    body {
+      background-color: #070b19 !important;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+      -webkit-font-smoothing: antialiased !important;
+      -moz-osx-font-smoothing: grayscale !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      overflow-x: hidden !important;
+    }
+
+    .aurora-ambient-bg {
+      position: fixed !important;
+      inset: 0 !important;
+      pointer-events: none !important;
+      z-index: 0 !important;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(14, 165, 233, 0.14) 0%, transparent 45%),
+        radial-gradient(circle at 85% 25%, rgba(139, 92, 246, 0.10) 0%, transparent 40%),
+        radial-gradient(circle at 50% 80%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+        #070b19 !important;
+      opacity: 1 !important;
+    }
+
+    /* ── 1. MOBILE FIRST (< 768px) ── */
+    @media (max-width: 767px) {
+      .desktop-layout-row,
+      .desktop-widgets-col,
+      .desktop-timetable-col {
+        display: contents !important;
+      }
+
+      .app-viewport {
+        width: 100% !important;
+        max-width: 480px !important;
+        margin: 0 auto !important;
+        padding-bottom: calc(88px + env(safe-area-inset-bottom)) !important;
+        position: relative !important;
+        z-index: 1 !important;
+        box-sizing: border-box !important;
+      }
+
+      .top-appbar {
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 100 !important;
+        background: rgba(7, 11, 25, 0.90) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35) !important;
+        padding: max(10px, env(safe-area-inset-top)) 14px 10px 14px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+      }
+
+      .section-pills-track {
+        display: flex !important;
+        gap: 8px !important;
+        overflow-x: auto !important;
+        flex-wrap: nowrap !important;
+        scrollbar-width: none !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding: 4px 2px 6px 2px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+      }
+      .section-pills-track::-webkit-scrollbar {
+        display: none !important;
+      }
+
+      .circular-hero-card {
+        margin: 10px 12px 8px 12px !important;
+        padding: 16px 18px !important;
+      }
+
+      .orbit-tracker-section {
+        margin: 6px 12px 8px 12px !important;
+      }
+
+      .day-pills-bar {
+        margin: 8px 12px 10px 12px !important;
+      }
+
+      .lectures-container {
+        padding: 0 12px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+      }
+
+      .bottom-nav {
+        position: fixed !important;
+        bottom: max(10px, env(safe-area-inset-bottom, 10px)) !important;
+        left: 10px !important;
+        right: 10px !important;
+        max-width: 460px !important;
+        margin: 0 auto !important;
+      }
+    }
+
+    /* Common Card & Component Foundations */
+    .appbar-header {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      width: 100% !important;
+    }
+
+    .brand-title {
+      display: flex !important;
+      align-items: center !important;
+      gap: 10px !important;
+    }
+
+    .brand-logo-neon-circle {
+      width: 36px !important;
+      height: 36px !important;
+      border-radius: 12px !important;
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.2), rgba(139, 92, 246, 0.2)) !important;
+      border: 1px solid rgba(56, 189, 248, 0.35) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.2) !important;
+    }
+
+    .brand-text-stack {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 1px !important;
+    }
+
+    .brand-name-text {
+      font-size: 1.15rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.04em !important;
+      background: linear-gradient(135deg, #38bdf8 0%, #ffffff 50%, #818cf8 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+    }
+
+    .brand-secd-pill {
+      font-size: 0.72rem !important;
+      font-weight: 700 !important;
+      padding: 2px 8px !important;
+      border-radius: 20px !important;
+      background: rgba(56, 189, 248, 0.15) !important;
+      color: #38bdf8 !important;
+      border: 1px solid rgba(56, 189, 248, 0.35) !important;
+      margin-left: 6px !important;
+      letter-spacing: 0.03em !important;
+      transition: all 0.2s ease !important;
+    }
+
+    .brand-univ-title {
+      font-size: 0.65rem !important;
+      letter-spacing: 0.12em !important;
+      color: #94a3b8 !important;
+      font-weight: 600 !important;
+      text-transform: uppercase !important;
+    }
+
+    .appbar-actions {
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+    }
+
+    .appbar-quick-btn,
+    .holo-menu-trigger {
+      width: 36px !important;
+      height: 36px !important;
+      border-radius: 12px !important;
+      background: rgba(255, 255, 255, 0.06) !important;
+      border: 1px solid rgba(255, 255, 255, 0.10) !important;
+      color: #f8fafc !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      cursor: pointer !important;
+      transition: all 0.2s ease !important;
+    }
+
+    .section-selector-container {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 6px !important;
+      width: 100% !important;
+    }
+
+    .section-selector-header-row {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      width: 100% !important;
+    }
+
+    .section-selector-label {
+      font-size: 0.74rem !important;
+      font-weight: 700 !important;
+      color: #94a3b8 !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+    }
+
+    .active-sec-badge {
+      font-size: 0.74rem !important;
+      font-weight: 800 !important;
+      color: #38bdf8 !important;
+      background: rgba(56, 189, 248, 0.10) !important;
+      border: 1px solid rgba(56, 189, 248, 0.25) !important;
+      border-radius: 6px !important;
+      padding: 2px 7px !important;
+    }
+
+    .set-active-green-btn {
+      height: 32px !important;
+      padding: 0 10px 0 4px !important;
+      border-radius: 20px !important;
+      background: rgba(16, 185, 129, 0.15) !important;
+      border: 1px solid rgba(16, 185, 129, 0.4) !important;
+      color: #34d399 !important;
+      font-size: 0.76rem !important;
+      font-weight: 700 !important;
+      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.15) !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      cursor: pointer !important;
+    }
+
+    .set-letter-badge {
+      width: 22px !important;
+      height: 22px !important;
+      border-radius: 50% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 0.72rem !important;
+      font-weight: 800 !important;
+      color: #ffffff !important;
+    }
+
+    .sec-pill-btn {
+      flex: 0 0 auto !important;
+      background: rgba(15, 23, 42, 0.72) !important;
+      border: 1px solid rgba(255, 255, 255, 0.10) !important;
+      color: #94a3b8 !important;
+      border-radius: 12px !important;
+      padding: 6px 12px !important;
+      font-size: 0.74rem !important;
+      font-weight: 700 !important;
+      cursor: pointer !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 5px !important;
+      user-select: none !important;
+      transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+    }
+    .sec-pill-btn:hover {
+      background: rgba(30, 41, 59, 0.9) !important;
+      color: #ffffff !important;
+      border-color: rgba(56, 189, 248, 0.4) !important;
+    }
+    .sec-pill-btn.active {
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.35) 0%, rgba(37, 99, 235, 0.35) 100%) !important;
+      border: 1.5px solid #38bdf8 !important;
+      color: #ffffff !important;
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.45) !important;
+    }
+    .sec-pill-name { font-weight: 800 !important; color: #f8fafc !important; }
+    .sec-pill-room { font-size: 0.68rem !important; color: #94a3b8 !important; }
+    .sec-pill-btn.active .sec-pill-room { color: #e0f2fe !important; }
+
+    /* Hero Card Base */
+    .circular-hero-card {
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.78) 0%, rgba(10, 16, 34, 0.88) 100%) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+      border: 1px solid rgba(56, 189, 248, 0.22) !important;
+      border-radius: 20px !important;
+      padding: 16px 18px !important;
+      box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.5) !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 12px !important;
+    }
+
+    .hero-top-status-bar {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      width: 100% !important;
+    }
+
+    .time-ribbon-card.clock-card {
+      background: rgba(255, 255, 255, 0.05) !important;
+      border: 1px solid rgba(255, 255, 255, 0.10) !important;
+      border-radius: 12px !important;
+      padding: 5px 12px !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+    }
+
+    .ribbon-live-pill-red {
+      background: rgba(244, 63, 94, 0.18) !important;
+      color: #fb7185 !important;
+      border: 1px solid rgba(244, 63, 94, 0.4) !important;
+      border-radius: 10px !important;
+      padding: 2px 7px !important;
+      font-size: 0.68rem !important;
+      font-weight: 800 !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 4px !important;
+    }
+
+    .clock-ticker {
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.88rem !important;
+      font-weight: 700 !important;
+      color: #f8fafc !important;
+    }
+
+    .time-ribbon-card.date-card {
+      background: rgba(255, 255, 255, 0.05) !important;
+      border: 1px solid rgba(255, 255, 255, 0.10) !important;
+      border-radius: 12px !important;
+      padding: 5px 12px !important;
+      color: #f8fafc !important;
+      font-size: 0.80rem !important;
+      font-weight: 600 !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      cursor: pointer !important;
+    }
+
+    .hero-main-row {
+      display: flex !important;
+      align-items: center !important;
+      gap: 16px !important;
+      width: 100% !important;
+    }
+
+    .circular-gauge-container {
+      width: 74px !important;
+      height: 74px !important;
+      flex-shrink: 0 !important;
+      position: relative !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    .circular-svg { width: 100% !important; height: 100% !important; }
+
+    .circle-content-center {
+      position: absolute !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    .circle-timer-val {
+      font-size: 0.90rem !important;
+      font-weight: 800 !important;
+      color: #38bdf8 !important;
+      font-family: 'JetBrains Mono', monospace !important;
+    }
+
+    .circle-timer-sub {
+      font-size: 0.60rem !important;
+      font-weight: 700 !important;
+      color: #94a3b8 !important;
+    }
+
+    .hero-info-column {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 4px !important;
+      flex: 1 !important;
+      min-width: 0 !important;
+    }
+
+    .hero-subject-name {
+      font-size: 1.05rem !important;
+      font-weight: 800 !important;
+      color: #ffffff !important;
+      line-height: 1.35 !important;
+    }
+
+    .hero-room-badge,
+    .faculty-badge {
+      font-size: 0.74rem !important;
+      font-weight: 600 !important;
+      color: #cbd5e1 !important;
+      background: rgba(255, 255, 255, 0.06) !important;
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
+      border-radius: 8px !important;
+      padding: 3px 8px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 4px !important;
+    }
+
+    /* Orbit Tracker */
+    .orbit-tracker-section {
+      padding: 10px 14px !important;
+      background: rgba(15, 23, 42, 0.6) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+      border: 1px solid rgba(255, 255, 255, 0.07) !important;
+      border-radius: 16px !important;
+    }
+
+    .orbit-circles-row {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      position: relative !important;
+      padding: 4px 2px !important;
+    }
+
+    .orbit-dot {
+      width: 28px !important;
+      height: 28px !important;
+      border-radius: 50% !important;
+      font-size: 0.74rem !important;
+      font-weight: 800 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      background: rgba(255, 255, 255, 0.08) !important;
+      border: 1px solid rgba(255, 255, 255, 0.12) !important;
+      color: #94a3b8 !important;
+      cursor: pointer !important;
+    }
+    .orbit-dot.orbit-active {
+      background: #38bdf8 !important;
+      border-color: #38bdf8 !important;
+      color: #030712 !important;
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.6) !important;
+    }
+
+    /* Day Pills */
+    .day-pills-bar {
+      display: grid !important;
+      grid-template-columns: repeat(6, 1fr) !important;
+      gap: 6px !important;
+      padding: 0 !important;
+    }
+
+    .day-pill {
+      min-height: 52px !important;
+      background: rgba(15, 23, 42, 0.65) !important;
+      border: 1px solid rgba(255, 255, 255, 0.07) !important;
+      border-radius: 14px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 6px 2px !important;
+      gap: 2px !important;
+      cursor: pointer !important;
+    }
+    .day-pill.active {
+      background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%) !important;
+      border: 1px solid rgba(56, 189, 248, 0.6) !important;
+      box-shadow: 0 6px 18px rgba(14, 165, 233, 0.35) !important;
+    }
+    .day-pill-name {
+      font-size: 0.68rem !important;
+      font-weight: 700 !important;
+      text-transform: uppercase !important;
+      color: #94a3b8 !important;
+    }
+    .day-pill.active .day-pill-name { color: rgba(255, 255, 255, 0.9) !important; }
+    .day-pill-num {
+      font-size: 0.95rem !important;
+      font-weight: 800 !important;
+      color: #f8fafc !important;
+    }
+
+    /* Lecture Cards */
+    .lecture-card {
+      background: linear-gradient(145deg, rgba(16, 26, 52, 0.72) 0%, rgba(10, 18, 38, 0.84) 100%) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
+      border-radius: 18px !important;
+      padding: 16px 18px !important;
+      margin: 0 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 10px !important;
+      box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.45) !important;
+      position: relative !important;
+      overflow: hidden !important;
+      box-sizing: border-box !important;
+    }
+    .lecture-card.set-a-card { border-left: 3.5px solid #ef4444 !important; }
+    .lecture-card.set-b-card { border-left: 3.5px solid #3b82f6 !important; }
+    .lecture-card.all-card { border-left: 3.5px solid #06b6d4 !important; }
+    .lecture-card.is-live {
+      border-color: rgba(56, 189, 248, 0.6) !important;
+      border-left: 4px solid #38bdf8 !important;
+      box-shadow: 0 0 25px rgba(14, 165, 233, 0.25) !important;
+      background: linear-gradient(145deg, rgba(20, 35, 70, 0.85) 0%, rgba(12, 22, 48, 0.92) 100%) !important;
+    }
+    .lecture-card.is-completed { opacity: 0.76 !important; }
+
+    .card-top-row {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      width: 100% !important;
+    }
+
+    .slot-timing-box {
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+    }
+
+    .slot-pill-name {
+      font-size: 0.72rem !important;
+      font-weight: 800 !important;
+      background: rgba(56, 189, 248, 0.15) !important;
+      color: #38bdf8 !important;
+      border: 1px solid rgba(56, 189, 248, 0.3) !important;
+      border-radius: 8px !important;
+      padding: 3px 8px !important;
+    }
+
+    .slot-timing-str {
+      font-size: 0.80rem !important;
+      font-weight: 600 !important;
+      color: #94a3b8 !important;
+      font-family: 'JetBrains Mono', monospace !important;
+    }
+
+    .status-tag {
+      font-size: 0.68rem !important;
+      font-weight: 700 !important;
+      padding: 3px 9px !important;
+      border-radius: 12px !important;
+    }
+    .status-live-pill {
+      background: rgba(244, 63, 94, 0.18) !important;
+      color: #fb7185 !important;
+      border: 1px solid rgba(244, 63, 94, 0.4) !important;
+    }
+    .status-done-pill {
+      background: rgba(16, 185, 129, 0.15) !important;
+      color: #34d399 !important;
+      border: 1px solid rgba(16, 185, 129, 0.3) !important;
+    }
+    .status-upcoming-pill {
+      background: rgba(255, 255, 255, 0.06) !important;
+      color: #cbd5e1 !important;
+      border: 1px solid rgba(255, 255, 255, 0.10) !important;
+    }
+
+    .card-subject-title {
+      font-size: 1.08rem !important;
+      font-weight: 800 !important;
+      color: #f8fafc !important;
+      line-height: 1.35 !important;
+      margin: 2px 0 !important;
+    }
+
+    .card-faculty-row {
+      display: flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+    }
+
+    .card-footer-info {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding-top: 4px !important;
+      border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
+      margin-top: 2px !important;
+    }
+
+    .card-footer-badges {
+      display: flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      flex-wrap: wrap !important;
+    }
+
+    .hero-batch-badge {
+      font-size: 0.68rem !important;
+      font-weight: 700 !important;
+      padding: 2px 8px !important;
+      border-radius: 6px !important;
+    }
+    .badge-set-a {
+      background: rgba(239, 68, 68, 0.15) !important;
+      color: #f87171 !important;
+      border: 1px solid rgba(239, 68, 68, 0.3) !important;
+    }
+    .badge-set-b {
+      background: rgba(59, 130, 246, 0.15) !important;
+      color: #60a5fa !important;
+      border: 1px solid rgba(59, 130, 246, 0.3) !important;
+    }
+    .badge-set-all {
+      background: rgba(139, 92, 246, 0.15) !important;
+      color: #a78bfa !important;
+      border: 1px solid rgba(139, 92, 246, 0.3) !important;
+    }
+
+    .att-toggle-btn {
+      font-size: 0.74rem !important;
+      font-weight: 700 !important;
+      padding: 5px 12px !important;
+      border-radius: 20px !important;
+      background: rgba(255, 255, 255, 0.06) !important;
+      border: 1px solid rgba(255, 255, 255, 0.12) !important;
+      color: #cbd5e1 !important;
+      cursor: pointer !important;
+      transition: all 0.2s ease !important;
+    }
+    .att-toggle-btn.attended {
+      background: rgba(16, 185, 129, 0.20) !important;
+      border-color: rgba(16, 185, 129, 0.5) !important;
+      color: #34d399 !important;
+    }
+    .att-toggle-btn.missed {
+      background: rgba(244, 63, 94, 0.20) !important;
+      border-color: rgba(244, 63, 94, 0.5) !important;
+      color: #fb7185 !important;
+    }
+
+    .bottom-nav {
+      background: rgba(7, 11, 25, 0.88) !important;
+      backdrop-filter: blur(24px) !important;
+      -webkit-backdrop-filter: blur(24px) !important;
+      border: 1px solid rgba(255, 255, 255, 0.10) !important;
+      border-radius: 24px !important;
+      box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.7), 0 0 18px rgba(56, 189, 248, 0.1) !important;
+      padding: 6px 6px !important;
+      height: auto !important;
+      z-index: 1000 !important;
+      display: grid !important;
+      grid-template-columns: repeat(5, 1fr) !important;
+      align-items: center !important;
+    }
+
+    .nav-item {
+      padding: 6px 2px !important;
+      border-radius: 16px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 3px !important;
+      color: #94a3b8 !important;
+      font-size: 0.68rem !important;
+      font-weight: 600 !important;
+      background: transparent !important;
+      border: none !important;
+      cursor: pointer !important;
+    }
+    .nav-item.active {
+      color: #38bdf8 !important;
+      font-weight: 800 !important;
+      background: rgba(56, 189, 248, 0.12) !important;
+    }
+
+    /* ── 2. DESKTOP FULL-SIZE DASHBOARD (>= 768px) ── */
+    /* Truly uses the full desktop width edge-to-edge! */
+    @media (min-width: 768px) {
+      .app-viewport {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding-left: clamp(16px, 2.5vw, 40px) !important;
+        padding-right: clamp(16px, 2.5vw, 40px) !important;
+        padding-bottom: 96px !important;
+        box-sizing: border-box !important;
+      }
+
+      .top-appbar {
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 100 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        background: rgba(7, 11, 25, 0.92) !important;
+        backdrop-filter: blur(24px) !important;
+        -webkit-backdrop-filter: blur(24px) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4) !important;
+        padding: 14px clamp(16px, 2.5vw, 40px) 12px clamp(16px, 2.5vw, 40px) !important;
+        border-radius: 0 0 24px 24px !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+      }
+
+      .brand-name-text {
+        font-size: 1.4rem !important;
+      }
+
+      .brand-secd-pill {
+        font-size: 0.82rem !important;
+        padding: 4px 14px !important;
+      }
+
+      /* All 10 Section Pills Spread Out Cleanly on Desktop */
+      .section-pills-track {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 10px !important;
+        overflow-x: visible !important;
+        width: 100% !important;
+        padding: 4px 0 !important;
+      }
+
+      .sec-pill-btn {
+        padding: 7px 16px !important;
+        font-size: 0.82rem !important;
+        border-radius: 14px !important;
+      }
+
+      .set-active-green-btn {
+        height: 36px !important;
+        padding: 0 16px 0 6px !important;
+        font-size: 0.84rem !important;
+      }
+
+      /* Desktop Layout: Left Sidebar + Right Timetable (Full Width Flex) */
+      .desktop-layout-row {
+        display: flex !important;
+        align-items: flex-start !important;
+        gap: clamp(20px, 2vw, 32px) !important;
+        margin-top: 18px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+      }
+
+      /* Left Sidebar: Fixed Width 380px with Sticky Scrolling */
+      .desktop-widgets-col {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 16px !important;
+        width: 380px !important;
+        min-width: 340px !important;
+        max-width: 420px !important;
+        flex-shrink: 0 !important;
+        position: sticky !important;
+        top: 110px !important;
+      }
+
+      .desktop-widgets-col .circular-hero-card {
+        margin: 0 !important;
+        padding: 20px 22px !important;
+        border-radius: 22px !important;
+      }
+
+      .desktop-widgets-col .circular-gauge-container {
+        width: 82px !important;
+        height: 82px !important;
+      }
+
+      .desktop-widgets-col .orbit-tracker-section {
+        margin: 0 !important;
+        padding: 14px 18px !important;
+        border-radius: 20px !important;
+      }
+
+      .desktop-widgets-col .orbit-dot {
+        width: 32px !important;
+        height: 32px !important;
+        font-size: 0.80rem !important;
+      }
+
+      .desktop-widgets-col .day-pills-bar {
+        margin: 0 !important;
+        gap: 8px !important;
+      }
+
+      .desktop-widgets-col .day-pill {
+        min-height: 58px !important;
+        border-radius: 16px !important;
+      }
+
+      /* Right Main Timetable Column: Expands to fill 100% of remaining screen */
+      .desktop-timetable-col {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 16px !important;
+        flex: 1 1 0 !important;
+        min-width: 0 !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+      }
+
+      .desktop-timetable-col .viewing-date-banner {
+        margin: 0 !important;
+        border-radius: 18px !important;
+      }
+
+      /* Dynamic Responsive Grid: Automatically fills 2 or 3 or 4 columns based on screen width! */
+      .desktop-timetable-col .lectures-container {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)) !important;
+        gap: 16px !important;
+        padding: 0 !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+      }
+
+      .desktop-timetable-col .lecture-card {
+        padding: 18px 22px !important;
+        border-radius: 20px !important;
+        margin: 0 !important;
+        min-height: 125px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+      }
+
+      .desktop-timetable-col .empty-holiday-card {
+        grid-column: 1 / -1 !important;
+      }
+
+      /* Centered Floating Dock on Full-Size Desktop */
+      .bottom-nav {
+        position: fixed !important;
+        bottom: 20px !important;
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%) !important;
+        max-width: 520px !important;
+        width: 90% !important;
+        border-radius: 30px !important;
+        padding: 8px 16px !important;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 25px rgba(56, 189, 248, 0.15) !important;
+      }
+
+      /* Holo Command Deck Menu position on desktop */
+      .holo-command-deck {
+        right: clamp(16px, 2.5vw, 40px) !important;
+      }
+
+      /* Centered Dialog Modals on Desktop */
+      .modal-overlay {
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 24px !important;
+      }
+
+      /* Guarantee that hidden modals stay completely hidden on desktop */
+      .modal-overlay:not([style*="display: flex"]):not([style*="display: block"]) {
+        display: none !important;
+      }
+
+      .modal-sheet {
+        max-width: 540px !important;
+        margin: auto !important;
+        border-radius: 24px !important;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75) !important;
+        max-height: 85vh !important;
+      }
+
+      .notif-lib-sheet,
+      #facultyModal .modal-sheet,
+      #academicCalendarModal .modal-sheet {
+        max-width: 720px !important;
+      }
+    }
+
   </style>
   <!-- Splash Screen Removed for Instant Direct Launch -->
 </head>
@@ -7616,7 +8512,8 @@
        QUANTUM NEON GLASSMORPHIC AUTHENTICATION PORTAL (OFFICIAL UI)
        Shown FIRST when user opens the app or logs out
        ============================================================ -->
-  <div class="auth-overlay" id="authOverlay" style="display:none;">
+  <div class="auth-overlay" id="authOverlay" style="display:none !important;" style="display:none;">
+    <button type="button" class="auth-close-x-btn" onclick="closeAuthOverlay()" title="Close and continue as guest" style="position:fixed; top:16px; right:16px; z-index:9999; width:38px; height:38px; border-radius:50%; background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); color:#ffffff; font-size:1.15rem; cursor:pointer; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(8px);">✕</button>
     <!-- Clean Cybernetic Portal Header (100% Pure Vector/CSS, No Image Dependency, 120 FPS) -->
     <div class="auth-brand-header">
       <div class="auth-header-top-row">
@@ -8110,12 +9007,12 @@
           <div class="holo-item-left">
             <div class="holo-orb-icon orb-amber">👤</div>
             <div class="holo-item-texts">
-              <span class="holo-item-title">My Account & Profile</span>
-              <span class="holo-item-sub" id="menuAccountSub">Logged in</span>
+              <span class="holo-item-title">Class & Profile Settings</span>
+              <span class="holo-item-sub" id="menuAccountSub">Section & Set Setup</span>
             </div>
           </div>
           <div class="holo-item-right">
-            <span class="holo-item-pill" style="color:#38bdf8;">Profile / Exit</span>
+            <span class="holo-item-pill" style="color:#38bdf8;">Settings</span>
             <span class="holo-item-arrow">›</span>
           </div>
         </button>
@@ -8155,7 +9052,9 @@
       <span class="ribbon-highlight-text">Live Classes &bull; Lab &amp; Faculty Schedule</span>
     </div>
 
-    <!-- DYNAMIC LIVE STAGE HERO CARD (Integrated Clock, Date & Current Lecture) -->
+    <div class="desktop-layout-row">
+      <aside class="desktop-widgets-col">
+        <!-- DYNAMIC LIVE STAGE HERO CARD (Integrated Clock, Date & Current Lecture) -->
     <section class="circular-hero-card" id="circularHeroCard">
       <!-- Status Top Bar: Real-time Clock & Interactive Date Picker -->
       <div class="time-status-ribbon hero-top-status-bar" id="heroTimeStatusRow">
@@ -8284,7 +9183,10 @@
       </button>
     </div>
 
-    <!-- VIEWING DATE REMINDER BANNER (Visible when viewing tomorrow or specific date) -->
+    </aside>
+
+      <section class="desktop-timetable-col">
+        <!-- VIEWING DATE REMINDER BANNER (Visible when viewing tomorrow or specific date) -->
     <div class="viewing-date-banner" id="viewingDateBanner" style="display:none;">
       <div class="banner-date-left">
         <span id="bannerDateIcon" style="font-size:1.15rem;">🌅</span>
@@ -8311,6 +9213,8 @@
     <main class="lectures-container" id="lecturesContainer">
       <!-- Populated dynamically -->
     </main>
+      </section>
+    </div>
 
     <!-- BOTTOM APP BAR -->
     <nav class="bottom-nav">
@@ -9316,10 +10220,8 @@
           </button>
         </div>
 
-        <!-- Logout Button -->
-        <button class="secondary-btn" style="width:100%; justify-content:center; padding:11px; font-size:0.85rem; color:#f43f5e; border-color:rgba(244,63,94,0.45); background:rgba(244,63,94,0.08); margin-top:4px;" onclick="handleLogout()">
-          🚪 Log Out of Account
-        </button>
+        <!-- Login/Logout completely removed as requested -->
+        <!-- No login or logout option displayed -->
       </div>
     </div>
   </div>
@@ -10027,32 +10929,11 @@
     }
 
     function applyAuthenticatedUser(user) {
-      if (!user) return;
       window.CURRENT_USER = user;
 
       // Update Top Appbar User Pill
       const pill = document.getElementById('authUserPill');
-      const pillIcon = document.getElementById('userPillIcon');
-      const pillName = document.getElementById('userPillName');
-      const pillBadge = document.getElementById('userPillBadge');
-
       if (pill) pill.style.display = 'none';
-      if (pillIcon) {
-        pillIcon.textContent = user.role === 'admin' ? '🛡️' : (user.role === 'cr' ? '👑' : '🎓');
-      }
-      if (pillName) pillName.textContent = (user.name.split(' ')[0] || user.name) + ' ▾';
-      if (pillBadge) {
-        if (user.role === 'admin') {
-          pillBadge.textContent = 'ADMIN';
-        } else if (user.role === 'cr') {
-          pillBadge.textContent = 'CR';
-        } else {
-          const sec = user.section || 'Sec-D';
-          const set = user.set || selectedBatch || 'Set-A';
-          pillBadge.innerHTML = `<span class="badge-sec-prefix">${sec} </span><span class="badge-set-text">(${set})</span>`;
-        }
-        pillBadge.style.display = 'inline-flex';
-      }
 
       // Profile Modal details
       const pAvatar = document.getElementById('profileAvatar');
@@ -10062,6 +10943,45 @@
       const pEmail = document.getElementById('profileEmail');
       const pScope = document.getElementById('profileScopeDesc');
       const pActions = document.getElementById('profileManagerActions');
+      const pLogout = document.getElementById('profileLogoutBtn');
+      const pLogin = document.getElementById('profileLoginBtn');
+
+      if (!user) {
+        // GUEST / LOGGED OUT MODE
+        if (pAvatar) pAvatar.textContent = '👤';
+        if (pName) pName.textContent = 'Guest User';
+        if (pRole) {
+          pRole.textContent = 'GUEST (ALL SECTIONS)';
+          pRole.style.background = 'rgba(56,189,248,0.15)';
+          pRole.style.color = '#38bdf8';
+          pRole.style.border = '1px solid rgba(56,189,248,0.3)';
+        }
+        if (pRoll) pRoll.textContent = 'Status: Not Logged In';
+        if (pEmail) pEmail.textContent = 'Browsing all sections freely';
+        if (pScope) pScope.textContent = `${currentSection} • ${selectedBatch} (Universal Access)`;
+        if (pActions) pActions.style.display = 'none';
+        if (pLogout) pLogout.style.display = 'none';
+        if (pLogin) pLogin.style.display = 'flex';
+
+        const menuCancel = document.getElementById('menuCancelHubBtn');
+        const menuStu = document.getElementById('menuStudentRecBtn');
+        if (menuCancel) menuCancel.style.display = 'none';
+        if (menuStu) menuStu.style.display = 'none';
+
+        const menuAccountSub = document.getElementById('menuAccountSub');
+        if (menuAccountSub) menuAccountSub.textContent = 'Guest (Tap to Log In)';
+        const menuPill = document.querySelector('#menuLogoutBtn .holo-item-pill');
+        if (menuPill) menuPill.textContent = 'Log In';
+
+        weeklySchedule = getActiveSchedule();
+        renderSectionPills();
+        syncStudentBatchTabs();
+        return;
+      }
+
+      // LOGGED IN MODE
+      if (pLogout) pLogout.style.display = 'flex';
+      if (pLogin) pLogin.style.display = 'none';
 
       if (pAvatar) pAvatar.textContent = user.role === 'admin' ? '🛡️' : (user.role === 'cr' ? '👥' : '🎓');
       if (pName) pName.textContent = user.name;
@@ -10086,7 +11006,7 @@
         } else if (user.role === 'cr') {
           pScope.textContent = `${user.section} • ${user.set} • Class Representative Cancellation Authority`;
         } else {
-          pScope.textContent = `${user.section} • ${user.set} • Schedule and alerts locked to enrolled class`;
+          pScope.textContent = `${user.section} • ${user.set} • Enrolled Student Routine`;
         }
       }
       if (pActions) {
@@ -10099,18 +11019,10 @@
       if (menuCancel) menuCancel.style.display = (user.role === 'admin' || user.role === 'cr') ? 'flex' : 'none';
       if (menuStu) menuStu.style.display = (user.role === 'admin' || user.role === 'cr') ? 'flex' : 'none';
 
-      // ENFORCE PERSONALIZED ROLE SCOPE
-      if (user.role === 'student') {
-        currentSection = user.section || 'Sec-D';
-        selectedBatch = user.set || 'Set-A';
-        localStorage.setItem('quantum_section_pref', currentSection);
-        localStorage.setItem('secD_batch_pref', selectedBatch);
-      } else if (user.role === 'cr') {
-        if (!localStorage.getItem('quantum_section_pref')) {
-          currentSection = user.section || 'Sec-D';
-          selectedBatch = user.set || 'Set-A';
-        }
-      }
+      const menuAccountSub = document.getElementById('menuAccountSub');
+      if (menuAccountSub) menuAccountSub.textContent = `${user.name} (${user.role.toUpperCase()})`;
+      const menuPill = document.querySelector('#menuLogoutBtn .holo-item-pill');
+      if (menuPill) menuPill.textContent = 'Profile / Log Out';
 
       weeklySchedule = getActiveSchedule();
       renderSectionPills();
@@ -10140,10 +11052,6 @@
     }
 
     function openUserProfileModal() {
-      if (!window.CURRENT_USER) {
-        document.getElementById('authOverlay').style.display = 'flex';
-        return;
-      }
       const editBox = document.getElementById('profileScopeEditBox');
       const editBtn = document.getElementById('editScopeToggleBtn');
       if (editBox) editBox.style.display = 'none';
@@ -10151,8 +11059,10 @@
 
       const secSel = document.getElementById('profileSectionSelect');
       const setSel = document.getElementById('profileSetSelect');
-      if (secSel) secSel.value = window.CURRENT_USER.section || currentSection || 'Sec-D';
-      if (setSel) setSel.value = window.CURRENT_USER.set || selectedBatch || 'Set-A';
+      if (secSel) secSel.value = currentSection || 'Sec-D';
+      if (setSel) setSel.value = selectedBatch || 'Set-A';
+
+      applyAuthenticatedUser(window.CURRENT_USER);
 
       openModal('userProfileModal');
     }
@@ -10206,29 +11116,36 @@
       triggerHaptic(15);
     }
 
-    function handleLogout() {
+        function openLoginModal() {
+      const overlay = document.getElementById('authOverlay');
+      if (overlay) overlay.style.display = 'flex';
+      const vp = document.getElementById('appViewport');
+      if (vp) vp.style.display = 'none';
+    }
+
+    function closeAuthOverlay() {
+      const overlay = document.getElementById('authOverlay');
+      if (overlay) overlay.style.display = 'none';
+      const vp = document.getElementById('appViewport');
+      if (vp) vp.style.display = 'block';
+    }
+
+function handleLogout() {
       AuthEngine.clearSession();
       window.CURRENT_USER = null;
+      _memorySession = null;
 
       closeModal('userProfileModal');
       closeModal('studentRecordsModal');
       closeModal('classCancelModal');
 
-      const pill = document.getElementById('authUserPill');
-      if (pill) pill.style.display = 'none';
+      // Reset to Guest mode
+      applyAuthenticatedUser(null);
+      renderSectionPills();
+      renderTodayLectures(viewingDate);
+      updateLiveState(true);
 
-      const vp = document.getElementById('appViewport');
-      if (vp) vp.style.display = 'none';
-
-      const overlay = document.getElementById('authOverlay');
-      if (overlay) overlay.style.display = 'flex';
-
-      const auroraBg = document.getElementById('auroraBg');
-      if (auroraBg) auroraBg.style.display = 'none';
-      const campusBg = document.getElementById('campusBg');
-      if (campusBg) campusBg.style.display = 'none';
-
-      showToast('👋 Logged out successfully');
+      showToast('👋 Successfully logged out! Now in Guest mode.');
       triggerHaptic(15);
     }
 
@@ -10575,9 +11492,8 @@
 
     function selectSection(secKey) {
       triggerHaptic(12);
-      if (window.CURRENT_USER && window.CURRENT_USER.role === 'student') {
-        showToast(`🎓 You are enrolled in ${window.CURRENT_USER.section} (${window.CURRENT_USER.set}).`);
-        return;
+      if (window.CURRENT_USER) {
+        window.CURRENT_USER.section = secKey;
       }
       if (!ALL_SECTIONS[secKey]) {
         showToast('⏳ Loading section data...');
@@ -10600,11 +11516,6 @@
     }
 
     function cycleSectionOrToggle() {
-      if (window.CURRENT_USER && window.CURRENT_USER.role === 'student') {
-        showToast(`🎓 Enrolled in ${window.CURRENT_USER.section} (${window.CURRENT_USER.set}) • Tap profile to change class`);
-        triggerHaptic(10);
-        return;
-      }
       triggerHaptic(15);
       const secKeys = Object.keys(ALL_SECTIONS);
       const currIdx = secKeys.indexOf(currentSection);
@@ -10627,36 +11538,12 @@
       const isAdmin = Boolean(window.CURRENT_USER && window.CURRENT_USER.role === 'admin');
       const isCR = Boolean(window.CURRENT_USER && window.CURRENT_USER.role === 'cr');
 
-      // STRICT ROLE ENFORCEMENT: If student is logged in, lock currentSection and selectedBatch strictly to their account
-      if (isStudent && window.CURRENT_USER) {
-        currentSection = window.CURRENT_USER.section || currentSection || 'Sec-D';
-        selectedBatch = window.CURRENT_USER.set || selectedBatch || 'Set-A';
-        weeklySchedule = getActiveSchedule();
-      }
-
-      // Update Section Header Label & Badge
+      // Update Section Header Label & Badge: ALWAYS show ALL SECTIONS
       if (labelContainer) {
-        if (isStudent) {
-          labelContainer.innerHTML = `
-            <span>🎓 MY ENROLLED CLASS:</span>
-            <span class="active-sec-badge" id="activeSecBadge">${(ALL_SECTIONS[currentSection]?.name || currentSection).toUpperCase()} (${ALL_SECTIONS[currentSection]?.room || 'Campus'})</span>
-          `;
-        } else if (isAdmin) {
-          labelContainer.innerHTML = `
-            <span>🛡️ MASTER ADMIN:</span>
-            <span class="active-sec-badge" id="activeSecBadge">${(ALL_SECTIONS[currentSection]?.name || currentSection).toUpperCase()} (${ALL_SECTIONS[currentSection]?.room || 'Campus'})</span>
-          `;
-        } else if (isCR) {
-          labelContainer.innerHTML = `
-            <span>👑 CLASS REP (CR):</span>
-            <span class="active-sec-badge" id="activeSecBadge">${(ALL_SECTIONS[currentSection]?.name || currentSection).toUpperCase()} (${ALL_SECTIONS[currentSection]?.room || 'Campus'})</span>
-          `;
-        } else {
-          labelContainer.innerHTML = `
-            <span>🏛️ ALL SECTIONS:</span>
-            <span class="active-sec-badge" id="activeSecBadge">${(ALL_SECTIONS[currentSection]?.name || currentSection).toUpperCase()} (${ALL_SECTIONS[currentSection]?.room || 'Campus'})</span>
-          `;
-        }
+        labelContainer.innerHTML = `
+          <span>🏛️ ALL SECTIONS:</span>
+          <span class="active-sec-badge" id="activeSecBadge">${(ALL_SECTIONS[currentSection]?.name || currentSection).toUpperCase()} (${ALL_SECTIONS[currentSection]?.room || 'Campus'})</span>
+        `;
       }
 
       // Update Set Indicator
@@ -10676,47 +11563,28 @@
         }
       }
       if (setGreenBtn) {
-        setGreenBtn.title = isStudent ? `Enrolled in ${selectedBatch} (${currentSection})` : 'Tap to switch Set-A / Set-B';
+        setGreenBtn.title = 'Tap to switch Set-A / Set-B / Combined';
       }
 
-      // Render Track:
+      // Render Track: ALWAYS render all sections for instant switching
       if (track) {
-        if (isStudent) {
-          // STRICT PERSONALIZATION: Student ONLY sees their enrolled section card!
-          const sec = ALL_SECTIONS[currentSection] || { name: currentSection, room: '' };
-          track.innerHTML = `
-            <div class="stu-enrolled-hero-pill" onclick="openUserProfileModal()" title="Enrolled Class: ${sec.name} • Tap to view account or change class">
-              <span class="stu-pill-avatar">🎓</span>
-              <div class="stu-pill-body">
-                <span class="stu-pill-sec">${currentSection}</span>
-                <span class="stu-pill-sep">•</span>
-                <span class="stu-pill-room">Room ${sec.room || 'Campus'}</span>
-                <span class="stu-pill-sep">•</span>
-                <span class="stu-pill-batch ${selectedBatch === 'Set-B' ? 'batch-b' : 'batch-a'}">${selectedBatch}</span>
-              </div>
-              <span class="stu-pill-lock-badge">✓ Enrolled Class</span>
-            </div>
-          `;
-        } else {
-          // Universal View: Admin, CR, or Guest sees all sections
-          const secKeys = Object.keys(ALL_SECTIONS);
-          track.innerHTML = secKeys.map(k => {
-            const isActive = (k === currentSection);
-            const sec = ALL_SECTIONS[k] || { name: k, room: '' };
-            return `<button class="sec-pill-btn ${isActive ? 'active' : ''}" onclick="selectSection('${k}')" title="${sec.name} • Room ${sec.room}">
-              <span class="sec-pill-name">${k}</span>
-              <span class="sec-pill-room">(${sec.room || 'Campus'})</span>
-            </button>`;
-          }).join('');
+        const secKeys = Object.keys(ALL_SECTIONS);
+        track.innerHTML = secKeys.map(k => {
+          const isActive = (k === currentSection);
+          const sec = ALL_SECTIONS[k] || { name: k, room: '' };
+          return `<button class="sec-pill-btn ${isActive ? 'active' : ''}" onclick="selectSection('${k}')" title="${sec.name} • Room ${sec.room}">
+            <span class="sec-pill-name">${k}</span>
+            <span class="sec-pill-room">(${sec.room || 'Campus'})</span>
+          </button>`;
+        }).join('');
 
-          setTimeout(() => {
-            const activeBtn = track.querySelector('.sec-pill-btn.active');
-            if (activeBtn && track) {
-              const leftPos = activeBtn.offsetLeft - (track.clientWidth - activeBtn.clientWidth) / 2;
-              track.scrollTo({ left: Math.max(0, leftPos), behavior: 'smooth' });
-            }
-          }, 60);
-        }
+        setTimeout(() => {
+          const activeBtn = track.querySelector('.sec-pill-btn.active');
+          if (activeBtn && track) {
+            const leftPos = activeBtn.offsetLeft - (track.clientWidth - activeBtn.clientWidth) / 2;
+            track.scrollTo({ left: Math.max(0, leftPos), behavior: 'smooth' });
+          }
+        }, 60);
       }
 
       // Update Top Brand Badges & Ribbons
@@ -12246,9 +13114,9 @@
     }
 
     // IN-APP AUTO-UPDATE & OTA ENGINE (Works seamlessly on Mobile Data 4G/5G & Local Wi-Fi!)
-    const LOCAL_APP_VERSION_NAME = '6.5.0';
-    const LOCAL_APP_VERSION_CODE = 103;
-    const LOCAL_APP_BUILD_HASH = '4b54376d2654';
+    const LOCAL_APP_VERSION_NAME = '6.6.0';
+    const LOCAL_APP_VERSION_CODE = 104;
+    const LOCAL_APP_BUILD_HASH = 'c2579a6257d7';
 
     let cachedLatestVersionCode = 29;
 
@@ -12707,20 +13575,15 @@
     }
 
     function cycleBatchFilter() {
-      if (window.CURRENT_USER && window.CURRENT_USER.role === 'student') {
-        showToast(`🎓 You are enrolled in ${window.CURRENT_USER.set} of ${window.CURRENT_USER.section}. Displaying your official class timetable.`);
-        triggerHaptic(10);
-        return;
-      }
       if (selectedBatch === 'Set-A') setBatchFilter('Set-B');
-      else if (selectedBatch === 'Set-B') setBatchFilter('Set-A');
+      else if (selectedBatch === 'Set-B') setBatchFilter('ALL');
       else setBatchFilter('Set-A');
     }
 
     // SWITCH BETWEEN SET-A, SET-B, AND COMPARE BOTH
     function setBatchFilter(batch) {
-      if (window.CURRENT_USER && window.CURRENT_USER.role === 'student') {
-        batch = window.CURRENT_USER.set || 'Set-A';
+      if (window.CURRENT_USER) {
+        window.CURRENT_USER.set = batch;
       }
       triggerHaptic(14);
       selectedBatch = batch;
@@ -14764,34 +15627,22 @@
       AuthEngine.fetchRemoteUsers();
       CancelEngine.init();
 
-      const existingSession = AuthEngine.getCurrentSession();
-      if (!existingSession) {
-        // App is locked: Show Futuristic Neon Login Portal FIRST
-        const authOverlay = document.getElementById('authOverlay');
-        if (authOverlay) authOverlay.style.display = 'flex';
-        const vp = document.getElementById('appViewport');
-        if (vp) vp.style.display = 'none';
-        const pill = document.getElementById('authUserPill');
-        if (pill) pill.style.display = 'none';
+      // Direct Access: App is always unlocked (No login barrier)
+      const authOverlay = document.getElementById('authOverlay');
+      if (authOverlay) authOverlay.style.display = 'none';
+      const vp = document.getElementById('appViewport');
+      if (vp) vp.style.display = 'block';
 
-        // Physically suppress background grid/canvas to free up 100% of mobile GPU
-        const auroraBg = document.getElementById('auroraBg');
-        if (auroraBg) auroraBg.style.display = 'none';
-        const campusBg = document.getElementById('campusBg');
-        if (campusBg) campusBg.style.display = 'none';
-      } else {
-        // Authenticated Session exists: unlock app and personalize
-        const authOverlay = document.getElementById('authOverlay');
-        if (authOverlay) authOverlay.style.display = 'none';
-        const vp = document.getElementById('appViewport');
-        if (vp) vp.style.display = 'block';
+      const auroraBg = document.getElementById('auroraBg');
+      if (auroraBg) auroraBg.style.display = '';
+      const campusBg = document.getElementById('campusBg');
+      if (campusBg) campusBg.style.display = '';
 
-        const auroraBg = document.getElementById('auroraBg');
-        if (auroraBg) auroraBg.style.display = '';
-        const campusBg = document.getElementById('campusBg');
-        if (campusBg) campusBg.style.display = '';
-
+      let existingSession = AuthEngine.getCurrentSession();
+      if (existingSession) {
         applyAuthenticatedUser(existingSession);
+      } else {
+        applyAuthenticatedUser(null);
       }
 
       let savedTheme = localStorage.getItem('secD_theme');
@@ -14805,18 +15656,21 @@
       syncHoloMenuPills();
       enforcePermanentDriveShareLock();
 
-      // Check stored batch: strictly lock to student enrolled set if logged in
-      if (window.CURRENT_USER && window.CURRENT_USER.role === 'student') {
-        currentSection = window.CURRENT_USER.section || 'Sec-D';
-        selectedBatch = window.CURRENT_USER.set || 'Set-A';
-        setBatchFilter(selectedBatch);
+      // Load stored section preference (defaults to Sec-D, user can switch to ANY section)
+      let storedSecPref = localStorage.getItem('quantum_section_pref');
+      if (storedSecPref && ALL_SECTIONS[storedSecPref]) {
+        currentSection = storedSecPref;
+      } else if (window.CURRENT_USER && window.CURRENT_USER.section && ALL_SECTIONS[window.CURRENT_USER.section]) {
+        currentSection = window.CURRENT_USER.section;
       } else {
-        let storedPref = localStorage.getItem('secD_batch_pref');
-        if (!storedPref || (storedPref !== 'Set-A' && storedPref !== 'Set-B' && storedPref !== 'ALL')) {
-          storedPref = 'Set-A';
-        }
-        setBatchFilter(storedPref);
+        currentSection = 'Sec-D';
       }
+
+      let storedPref = localStorage.getItem('secD_batch_pref');
+      if (!storedPref || (storedPref !== 'Set-A' && storedPref !== 'Set-B' && storedPref !== 'ALL')) {
+        storedPref = (window.CURRENT_USER && window.CURRENT_USER.set) || 'Set-A';
+      }
+      setBatchFilter(storedPref);
 
       const today = new Date();
       const yyyy = today.getFullYear();
